@@ -1,0 +1,114 @@
+\begin{thebibliography}{14}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Chakeres y Belding-Royer(2004)}]{AODVimplementation}
+{\sc Chakeres, I.~D.} y {\sc Belding-Royer, E.~M.}
+\newblock \mbox{AODV} routing protocol implementation design.
+\newblock En {\em Proceedings of the 24th International Conference on
+  Distributed Computing Systems Workshops - W7: EC (ICDCSW'04) - Volume 7\/},
+  ICDCSW '04, p\'aginas 698--703. IEEE Computer Society, Washington, DC, USA,
+  2004.
+\newblock ISBN 0-7695-2087-1.
+
+\bibitem[{Chakeres y Klein-Berndt(2002)}]{AODVjr}
+{\sc Chakeres, I.~D.} y {\sc Klein-Berndt, L.}
+\newblock \mbox{AODVjr}, \mbox{AODV} simplified.
+\newblock {\em SIGMOBILE Mob. Comput. Commun. Rev.\/}, vol.\ 6, p\'aginas
+  100--101, 2002.
+\newblock ISSN 1559-1662.
+
+\bibitem[{Das et\ al.(2000)Das, Perkins y
+  Royer}]{DasComparisonRoutingProtocols}
+{\sc Das, S.}, {\sc Perkins, C.} y {\sc Royer, E.}
+\newblock Performance comparison of two on-demand routing protocols for ad hoc
+  networks.
+\newblock En {\em INFOCOM 2000. Nineteenth Annual Joint Conference of the IEEE
+  Computer and Communications Societies. Proceedings. IEEE\/}, vol.\ 1,
+  p\'aginas 3 --12 vol.1. 2000.
+
+\bibitem[{Domingo-Aladr\'{e}n(2005)}]{DomingoCarmen2005PhD}
+{\sc Domingo-Aladr\'{e}n, M.~C.}
+\newblock {\em Diferenciaci\'{o}n de servicios y mejora de la supervivencia en
+  redes ad hoc conectadas a redes fijas\/}.
+\newblock Phd, Universitat Polit\`{e}cnica de Catalunya, 2005.
+
+\bibitem[{Gomez et\ al.(2006)Gomez, Salvatella, Alonso y
+  Paradells}]{AdaptingAODVforMSN}
+{\sc Gomez, C.}, {\sc Salvatella, P.}, {\sc Alonso, O.} y {\sc Paradells, J.}
+\newblock Adapting \mbox{AODV} for \mbox{IEEE 802.15.4} mesh sensor networks:
+  theoretical discussion and performance evaluation in a real environment.
+\newblock En {\em Proceedings of the 2006 International Symposium on on World
+  of Wireless, Mobile and Multimedia Networks\/}, WOWMOM '06, p\'aginas
+  159--170. IEEE Computer Society, Washington, DC, USA, 2006.
+\newblock ISBN 0-7695-2593-8.
+
+\bibitem[{Kawadia et\ al.(2003)Kawadia, Zhang y
+  Gupta}]{AdHocRoutingImplementation}
+{\sc Kawadia, V.}, {\sc Zhang, Y.} y {\sc Gupta, B.}
+\newblock System services for ad-hoc routing: architecture, implementation and
+  experiences.
+\newblock En {\em Proceedings of the 1st international conference on Mobile
+  systems, applications and services\/}, MobiSys '03, p\'aginas 99--112. ACM,
+  New York, NY, USA, 2003.
+
+\bibitem[{Klein-Berndt(2001)}]{quickAODV}
+{\sc Klein-Berndt, L.}
+\newblock {\em A quick guide to \mbox{AODV} routing\/}.
+\newblock Wireless Communications Technologies Group; National Institute of
+  Standards and Technology, 2001.
+\newblock Disponible en \url{http://www.antd.nist.gov/wctg/aodv_kernel/}
+  (último acceso,  Abril, 2011).
+
+\bibitem[{Klein-Berndt y Chakeres(2002)}]{quickAODVjr}
+{\sc Klein-Berndt, L.} y {\sc Chakeres, I.~D.}
+\newblock {\em \mbox{AODVjr}. A simplified version of \mbox{AODV}\/}.
+\newblock Mobility Management and Networking Laboratory UC Santa Barbara;
+  National Institute of Standards and Technology, 2002.
+\newblock Disponible en \url{http://www.ianchak.com/} (último acceso,  Mayo,
+  2011).
+
+\bibitem[{Kong et\ al.(2008)Kong, Wang, Ge, Ang, Wen, Pathmasuntharam, Zhou y
+  Dien}]{ComparisonRoutingProtocols}
+{\sc Kong, P.}, {\sc Wang, H.}, {\sc Ge, Y.}, {\sc Ang, C.}, {\sc Wen, S.},
+  {\sc Pathmasuntharam, J.}, {\sc Zhou, M.} y {\sc Dien, H.}
+\newblock A performance comparison of routing protocols for maritime wireless
+  mesh networks.
+\newblock En {\em Wireless Communications and Networking Conference, 2008. WCNC
+  2008. IEEE\/}, p\'aginas 2170 --2175. 2008.
+\newblock ISSN 1525-3511.
+
+\bibitem[{Perkins y Royer(1999)}]{PerkinsAODV}
+{\sc Perkins, C.} y {\sc Royer, E.}
+\newblock Ad-hoc on-demand distance vector routing.
+\newblock En {\em Mobile Computing Systems and Applications, 1999. Proceedings.
+  WMCSA '99. Second IEEE Workshop on\/}, p\'aginas 90 --100. 1999.
+
+\bibitem[{Perkins et\ al.(2003)Perkins, Belding-Royers y Das}]{PerkinsAODVlong}
+{\sc Perkins, C.~E.}, {\sc Belding-Royers, E.} y {\sc Das, S.~R.}
+\newblock Ad-hoc on-demand distance vector \mbox{(AODV)} routing.
+\newblock {\em Request For Comments Experimental 3561, Internet Engineering
+  Task Force\/}, 2003.
+
+\bibitem[{Royer y Toh(1999)}]{RoyerRoutingProtocols}
+{\sc Royer, E.} y {\sc Toh, C.-K.}
+\newblock A review of current routing protocols for ad hoc mobile wireless
+  networks.
+\newblock {\em Personal Communications, IEEE\/}, vol.\ 6(2), p\'aginas 46 --55,
+  1999.
+\newblock ISSN 1070-9916.
+
+\bibitem[{Wang et\ al.(2006)Wang, Youn y Sharif}]{EnergyRouting}
+{\sc Wang, W.}, {\sc Youn, J.-H.} y {\sc Sharif, H.}
+\newblock The implementation of an energy balanced routing protocol with
+  dynamic power scaling in tinyos.
+\newblock En {\em Sensor Networks, Ubiquitous, and Trustworthy Computing, 2006.
+  IEEE International Conference on\/}, vol.\ 2, p\'aginas 262 --267. 2006.
+
+\bibitem[{Yapicioglu y Oktug(2009)}]{waveHeight}
+{\sc Yapicioglu, T.} y {\sc Oktug, S.~F.}
+\newblock Effect of wave height to connectivity and coverage in sea surface
+  wireless sensor networks.
+\newblock En {\em International Symposium on Computer and Information
+  Sciences\/}, p\'aginas 328--333. 2009.
+
+\end{thebibliography}

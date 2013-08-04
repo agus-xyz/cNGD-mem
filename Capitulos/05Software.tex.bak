@@ -1,0 +1,2060 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 5
+%
+%---------------------------------------------------------------------
+
+\chapter{Software}
+
+\begin{FraseCelebre}
+\begin{Frase}
+No fracasé, sólo descubrí 999 maneras\\
+de cómo no hacer una bombilla.
+\end{Frase}
+\begin{Fuente}
+Thomas Alva Edison
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+En este capítulo se describe en detalle el software del \ac{SAEA}, es decir, la parte inteligente del mismo. Esta se compone del protocolo de encaminamiento y del sistema de gestión de alarmas. El primero se encarga de encontrar los caminos óptimos y activos entre un nodo fuente y uno destino superando, en la medida de lo posible, las diversas dificultades que se pueden presentar en el medio, y haciendo posible la comunicación entre ellos. Por otro lado, el sistema de gestión de alarmas: chequea periodicamente la aparición de estas en el nodo local, envía las existentes al nodo destino, controla la correcta recepción de las mismas, el número de reenvíos posibles y las funciones de localización de nodos.
+\end{resumen}
+
+
+%-------------------------------------------------------------------
+\section{Protocolos de encaminamiento}
+%-------------------------------------------------------------------
+\label{cap5:sec:protocolos}
+%-------------------------------------------------------------------
+Como ya se comentó en la Sección~\ref{cap2:sec:redesadhoc}, las redes ad hoc ofrecen grandes posibilidades, sobre todo en aquellos medios donde no existe una infraestructura de red \mbox{preexistente}. El diseño de protocolos de encaminamiento para este tipo de redes es \mbox{actualmente} un gran desafío debido a su naturaleza cambiante: tamaño, densidad de tráfico, rutas entre nodos, etc.
+
+Existen una serie de critérios importantes a tener en cuenta en la selección o \mbox{implementación} de un protocolo de encaminamiento para una red ad hoc \citep{DomingoCarmen2005PhD}:
+\begin{itemize}
+\item Señalización mínima:\\La reducción del número de mensajes de control y del tamaño de estos ayuda a conservar la batería y el porcentaje de ciclo de trabajo disponible para transmitir, a reducir la contienda de acceso al medio y por lo tanto, a mejorar la comunicación entre los nodos. 
+\item Tiempo de procesamiento mínimo:\\Cuanto más simples sean las operaciones computacionales realizadas por el protocolo, menor será el tiempo de procesamiento necesario y, por tanto, las baterías tendrán mayor tiempo de vida.
+\item Mantenimiento en condiciones de topología dinámica:\\El protocolo debe ser capaz de detectar rupturas en los enlaces y detectar nuevas rutas alternativas lo antes posible.
+\item Modo de operación distribuido:\\Propiedad esencial de las redes ad hoc.
+\item Libre de bucles:\\Se debe evitar la existencia de paquetes perdidos circulando por la red, así como el envío de mensajes repetidos.
+\end{itemize}
+
+Existe una gran variedad de protocolos de encaminamiento para redes ad hoc. Con el objetivo de realizar la elección del más apropiado para el \ac{SAEA}, en la siguiente subsección se realiza una posible clasificación de ellos atendiendo a su modo creación de rutas bajo demanda o no. 
+
+%-------------------------------------------------------------------
+\subsection{Protocolos de encaminamiento proactivos, reactivos e híbridos}
+%-------------------------------------------------------------------
+Una de las clasificaciones de protocolos de encaminamiento más extendidas es la siguiente \citep{RoyerRoutingProtocols}:
+
+\begin{itemize}
+\item Protocolos proactivos, globales o basados en tablas
+\item Protocolos reactivos o bajo demanda
+\item Protocolos híbridos
+\end{itemize}
+
+A continuación, se prensentan las rasgos principales de cada una de las categorías, para al final de la subsección analizar cual de ellas se ajusta más a las características del \ac{SAEA}.
+
+%-------------------------------------------------------------------
+\subsubsection{Protocolos de encaminamiento proactivo}
+%-------------------------------------------------------------------
+Mantienen información de encaminamiento actualizada entre todos los nodos de la red. Esta información se guarda en las tablas de encaminamiento, que periódicamente se actualizan para adaptarse a los cambios en la topología de la red. 
+
+Los protocolos proactivos se diferencian unos de otros según los criterios y el \mbox{procedimiento} de actualización de la información, el número de tablas de encaminamiento y las entradas de dichas tablas. Los protocolos proactivos más destacados son: \ac{OLSR}, basado en el algoritmo de estado de enlace, y \ac{DSDV}, basado en el algoritmo de vector distancia. 
+
+%-------------------------------------------------------------------
+\subsubsection{Protocolos de encaminamiento reactivo}
+%-------------------------------------------------------------------
+Se obtiene la información de encaminamiento entre dos nodos bajo demanda, es decir, únicamente cuando existe una información que debe ser transmitida entre ellos. De esta manera recursos como la energía o el ancho de banda se utilizan de una manera más eficiente que en el caso anterior. El inconveniente está en que el retardo por descubrimiento de ruta es considerablemente mayor.
+
+El descubrimiento de rutas se realiza mediante el intercambio de mensajes de solicitud de ruta, \ac{RREQ}, y respuesta de ruta, \ac{RREP}.
+
+A su vez, los protocolos de encaminamiento reactivos pueden subdividirse en dos grupos:
+\begin{itemize}
+\item Basados en la fuente:\\Los paquetes de datos transportan en su cabecera toda la ruta completa, de modo que los nodos intermedios deben consultar dicha cabecera para saber dónde deben \mbox{reenviarlo}. El protocolo más destacado de este grupo es el \ac{DSR}.
+\item Salto a salto:\\Los paquetes llevan en su cabecera únicamente la dirección de destino y la del próximo nodo en la ruta. Cada uno se encarga de ir actualizando dicha cabecera según sus tablas de encaminamiento. Es necesario que cada nodo vaya actualizando permanentemente su tabla de encaminamiento mediante el intercambio periódico de mensajes. El protocolo más destacado de este grupo es el \ac{AODV}.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsubsection{Protocolos de encaminamiento híbridos}
+%-------------------------------------------------------------------
+Básicamente, aprovechan las ventajas de los protocolos proactivos y reactivos. El procedimiento suele consistir en dividir la red en zonas, o bien árboles o clusters, para trabajar con diferentes tipos de nodos. De esta manera, cuando se buscan rutas entre nodos cercanos se utiliza ecaminamiento proactivo y, por el contrario, entre nodos lejanos encaminamiento bajo demanda. Es común encontrar protocolos que utilizan información auxiliar, como posiciones mediante un GPS, para complementar estos protocolos. El más destacado de este grupo es el \ac{ZRP}.
+
+%-------------------------------------------------------------------
+\subsubsection{Elección de un protocolo de encaminamiento}
+%-------------------------------------------------------------------
+En esta sección se realiza un análisis cualitativo de las diferentes categorías de protocolos de enrutamiento presentadas con el objetivo seleccionar la más adecuada para su utilización en el \ac{SAEA}. Para otras aplicaciones, incluso en el medio marino, el análisis podría tener conclusiones distintas \citep{ComparisonRoutingProtocols}.
+
+Por sus características, los protocolos de encaminamiento proactivo son especialmente adecuados en aquellas redes en que es necesario que el procedimiento de descubrimiento de ruta no tenga una latencia excesiva. Además, estas redes deben disponer de los recursos suficientes, como energía y ancho de banda, para asumir su funcionamiento. En el caso del \ac{SAEA}, la entrega inmediata de las alarmas no es un factor especialmente crítico. Este sistema se utilizará para formar perímetros de seguridad entorno a fuentes de ruido antropogénico en el medio marino. Así, existirá un margen de tiempo suficiente para poder entregar las alarmas y detener la emisión de ruido antes de que éste tenga efectos nocivos en ciertas especies. Por otro lado, como se vió en la Sección {\bfseries 3.1loquesea}, la energía y el ancho de banda si que son recursos limitados en el sistema. De esta manera se puede concluir que los protocolos de encaminamiento proactivo no son la opción más adecuada para el \ac{SAEA}.
+
+Por otra parte, los híbridos, están especialmente pensados para redes extensas divididas en zonas. En ellos, se utilizan protocolos de encaminamiento proactivo para la comunicación entre nodos cercanos, y reactivo entre nodos lejanos. Inicialmente, el \ac{SAEA} no está pensado para grandes poblaciones de nodos, por lo que la utilización de este tipo de protocolos, tendría un resultado similar a la categoría anterior. Por ello, los protocolos de encaminamiento híbridos tampoco se consideran una opción apropiada.
+
+Finalmente, están los protocolos reactivos, entre los que diferenciamos dos tipos: basados en la fuente, como \ac{DSR}, y salta a salto, como \ac{AODV}. Anteriormente se comentó que la principal diferencia entre ellos es que el primer tipo transporta en la cabecera de sus paquetes la información de toda la ruta completa, mientras que el segundo únicamente lleva la dirección de destino y la del próximo nodo. Existen numerosos estudios comparando exclusivamente los protocolos de encaminamiento \ac{AODV} y \ac{DSR} \citep{DasComparisonRoutingProtocols} \citep{DomingoCarmen2005PhD}. Para evaluar que tipo es más apropiado, se destacan las siguientes características del \ac{SAEA}:
+\begin{itemize}
+\item Limitación del ciclo de trabajo máximo en la banda 868 MHz: 10\%
+\item Tasa maxima de transmisión radio del módulo XBee-PRO-868MHz: 24 kbps
+\item Generalmente no existe un gran flujo de alarmas.
+\end{itemize}
+
+Atendiendo a las dos primeras limitaciones, el \ac{AODV} supera al \ac{DSR} ya que tanto sus mensajes \ac{RREQ} como los \ac{RREP} utilizan una señalización menor. Además, de la tercera característica nombrada se extrae que es probable que entre el envio de diferentes alarmas, la topología de la red vaya variando. En este caso, ambos protocolos deberán iniciar un nuevo proceso de búsqueda de ruta para cada alarma, siendo el del \ac{AODV} el más óptimo de los dos. Cabe destacar que en el protocolo \ac{DSR} cada nodo intermedio a lo largo de una ruta puede aprovechar la opción \textit{promiscuous listening} y el hecho de que el encaminamiento esté basado en la fuente para aprender más rutas. Sin embargo, ya que en el \ac{SAEA} existirá un nodo sumidero encargado de recoger todas las alarmas, las rutas se crearan hacia él y, por lo tanto, en este caso el protocolo \ac{AODV} tendrá la misma ventaja. 
+
+En conclusión, los protocolos de encaminamiento reactivo salto a salto son la opción más adecuada para el \ac{SAEA}. Dentro de este grupo, el más destacado, y del que se hará un estudio más en profundidad, es el \ac{AODV}. Además, como veremos en las siguientes secciones, existen numerosos protocolos basados en él que proponen diferentes modificaciones para lograr una versión final más simple y óptima computacionalmente hablando.
+
+Como se indicaba al inicio de este punto, el análisis realizado es cualitativo, ya que para un primer prototipo se considera que esto es suficiente. En versiones futuras, sería interesante y apropiado realizar pruebas con distintos protocolos de encaminamiento para obtener unos resultados cuantitativos y poder realizar una elección más precisa.
+
+
+%-------------------------------------------------------------------
+\subsection{Protocolo AODV}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+\subsubsection{Visión general}
+%-------------------------------------------------------------------
+\ac{AODV} \citep{PerkinsAODVlong} \citep{PerkinsAODV} es un protocolo de encaminamiento reactivo salto a salto. Por ello, las rutas de cada nodo a cada nodo de la red no están permanentemente actualizadas, sino que se descubren y mantienen únicamente cuando es necesario. Sus principales características son:
+\begin{itemize}
+\item Señalización de control baja. Dado su carácter reactivo.
+\item Señalización de procesamiento mínima. Mensajes sencillos que requieren poco cálculo.
+\item Ausencia de bucles. Existen mecanismos específicos para su prevención.
+\item Funciona sólo con enlaces bidireccionales.
+\end{itemize}
+
+Con el fín de evitar bucles, cada nodo dispone de un número de secuencia (también llamado número de secuencia de destino) que permite mantener sólo la información de encaminamiento más reciente. Este número aumenta en una unidad cada vez que se envía un mensaje de solicitud de ruta, \ac{RREQ}. Cuando un nodo recibe un \ac{RREQ} del que es destinatario final, antes de responder con un mensaje de respuesta de ruta, \ac{RREP}, debe actualizar su número de secuencia $NumSec_D$ al valor máximo según la expresión:
+\begin{equation}
+NumSec_{D} = Max(NumSec_{D.actual}, RREQ.NumSec+1)	\label{aodvNumSec}  % Para referenciarla se utilizará: expresión~\ref{aodvNumSec}
+\end{equation}
+, donde $NumSec_D.actual$ es su número de secuencia actual y $RREQ.NumSec$ el número de secuencia del destino que se haya contenido en el \ac{RREQ}.
+
+En el caso de que un nodo reciba dos paquetes con el mismo identificador del nodo de origen pero diferentes números de secuencia, la información más reciente será la contenida en el paquete con el mayor de los dos. Si los números de secuencia son iguales se utilizará otra métrica para decidir, generalmente se obtará por la ruta con el menor número de saltos hacia el destino.
+
+%-------------------------------------------------------------------
+\subsubsection{Declaración de aplicabilidad}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} está especialmente diseñado para redes ad hoc dinámicas con poblaciones de entre decenas y miles de nodos móviles. \ac{AODV} puede operar con tasas de movilidad bajas, medias y elevadas así como con varios niveles de tráfico de datos. Está pensado para su utilización en redes donde todos los nodos pueden confiar en los demás, ya sea por el uso de claves preconfiguradas, o porque se sabe que no hay nodos intrusos maliciosos. \ac{AODV} se ha diseñado para reducir la diseminación del tráfico de control, mediante la utilización del campo \ac{TTL}, y eliminar la sobrecarga de cabeceras en el tráfico de datos, con el fin de mejorar la escalabilidad y el rendimiento.
+
+%-------------------------------------------------------------------
+\subsubsection{Tabla de rutas y tabla de RREQ's}
+%-------------------------------------------------------------------
+\ac{AODV} utiliza tablas de rutas para almacenar la información de encaminamiento. Cada nodo de la red mantiene la suya propia, que tiene tantas entradas como destinos conoce. Cada entrada de la tabla cuenta con los siguientes campos:
+\begin{itemize}
+\item Dirección de destino
+\item Dirección del próximo salto
+\item Número de secuencia de destino
+\item Tiempo de vida (tiempo requerido para eliminar la ruta)
+\item Contador de saltos (número de saltos para alcanzar el destino)
+\item Otros indicadores de estado y rutas: validez del número de secuencia de destino, validez de ruta, si es o no reparable, y si lo es, si se está o no reparando.
+\end{itemize}
+
+Cada entrada de la tabla de rutas está asociada a un temporizador, de modo que si una ruta no se utiliza durante un determinado periodo de tiempo, esta expira y deja de ser válida. Sin embargo, cada vez que se emplea la información de la entrada o se recibe un mensaje de HELLO, el temporizador se actualiza.
+
+Para cada entrada válida en la tabla de rutas de un determinado nodo, se mantiene una lista de precursores que contiene los nodos que utilizan dicha ruta como próximo salto en el camino hacia un nodo destino, es decir, los nodos vecinos que han recibido algún mensaje desde el nodo destino. Estos precursores recibirán notificaciones del nodo en caso de que se detecte algún problema en la ruta, como se explica más adelante en el proceso de Mantenimiento de Ruta.
+
+Además, cada nodo mantiene un registro de los mensajes \ac{RREQ} que recibe. Utiliza los campos \ac{RREQ} ID y dirección de origen, que identifican inequívocamente cada \ac{RREQ}, para poder descartar los repetidos, y optimizar el rendimiento general de la red.
+
+%-------------------------------------------------------------------
+\subsubsection{Formato de mensajes}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} define los siguientes tipos de mensajes:
+\begin{itemize}
+\item {\bfseries Mensaje \ac{RREQ}}
+
+El mensaje \ac{RREQ} se utiliza para descubrir una ruta hacia un determinado nodo destino. En la Figura~\ref{fig:aodvRREQ} se muestra el formato del mismo, que incluye los siguientes campos:
+
+\begin{itemize}
+\item Tipo: indica el tipo de mensaje.
+\item J: Join flag; utilizado cuando el nodo de origen quiere formar parte de un grupo multicast.
+\item R: Repair flag; utilizado cuando un nodo se dispone a iniciar un reparación de dos partes de un árbol multicast que se han desconectado.
+\item G: Gratuitous \ac{RREP} flag; indica si es necesario enviar en modo unicast un \ac{RREP} Gratuito  al nodo indicado en el campo \textit{dirección de destino}.
+\item D: Destination only falg; indica que únicamente el nodo destino puede responder a este mensaje \ac{RREQ}.
+\item U: Unknow sequence number flag; indica que el campo \textit{número de secuencia de destino} es desconocido. 
+\item Reservado: Bits reservados. Se envían con el valor 0, y son ignorados en la \mbox{recepción}.
+\item Contador de saltos: indica el número de saltos desde el nodo de origen hasta el nodo que esta procesando este mensaje \ac{RREQ}.
+\item RREQ ID: número de secuencia que junto con la dirección del nodo origen identifica inequívocamente el mensaje \ac{RREQ}. Se incrementa cada vez que un nodo inicia el envío de uno de ellos.
+\item Dirección de destino: identificador del nodo con el que se quiere realizar la comunicación.
+\item Número de secuencia de destino: el último número de secuencia recibido en el nodo origen de cualquier ruta hacia el nodo destino.
+\item Dirección de origen: identificador del nodo que inicia el descubrimiento de ruta.
+\item Número de secuencia de origen: número de secuencia actual del nodo origen.
+\end{itemize}
+
+\figura{Bitmap/Capitulo5/aodvRREQmessage}{width=.8\textwidth}{fig:aodvRREQ}%
+{Formato del mensaje RREQ del protocolo AODV.}
+
+
+\item {\bfseries Mensaje \ac{RREP}}
+
+El mensaje \ac{RREP} es la contestación a un \ac{RREQ}. Indica que existe una ruta hacia el nodo destino. En la Figura~\ref{fig:aodvRREP} se muestra el formato del mismo, que incluye los siguientes campos:
+
+\begin{itemize}
+\item Tipo: indica el tipo de mensaje.
+\item R: Repair flag; utilizado cuando un nodo se dispone a iniciar un reparación de dos partes de un árbol multicast que se han desconectado.
+\item A: Acknowledgment required flag; se utiliza para comprobar si un enlace es unidireccional. 
+\item Reservado: Bits reservados. Se envían con el valor 0, y son ignorados en la recepción.
+\item Longitud del prefijo: si no es cero, especifica que el siguiente salto indicado puede ser utilizado por nodos con el mismo prefijo, como si fuesen los destinatarios de la petición.
+\item Contador de saltos: indica el número de saltos desde el nodo de origen hasta el nodo que esta procesando este mensaje \ac{RREQ}.
+\item Dirección de destino: identificador del nodo con el que se quiere realizar la comunicación.
+\item Número de secuencia de destino: el último número de secuencia recibido en el nodo origen de cualquier ruta hacia el nodo destino.
+\item Dirección de origen: identificador del nodo que inicia el descubrimiento de ruta.
+\item Tiempo de vida: tiempo en milisegundos durante el cual los nodos que han recibido el mensaje \ac{RREP} deben considerar válida la ruta.
+\end{itemize}
+
+\figura{Bitmap/Capitulo5/aodvRREPmessage}{width=.8\textwidth}{fig:aodvRREP}%
+{Formato del mensaje RREP del protocolo AODV.}
+
+
+\item {\bfseries Mensaje \ac{RERR}}
+
+El mensaje \ac{RERR} se utiliza si se rompe algún enlace provocando que uno o más nodos se vuelvan inalcanzables desde ciertos nodos vecinos. En la Figura~\ref{fig:aodvRERR} se muestra el formato del mismo, que incluye los siguientes campos:
+
+\begin{itemize}
+\item Tipo: indica el tipo de mensaje.
+\item N: No delete flag; se utiliza cuando se está realizando una reparación local \textit{(local repair)} de un enlace roto y el nodo receptor del mensaje \ac{RERR} no debe borrar ninguna ruta. 
+\item Reservado: Bits reservados. Se envían con el valor 0, y son ignorados en la recepción.
+\item Contador de destinos: el número de destinos inalcanzables que se incluyen en el mensaje. El valor mínimo de este campo es uno.
+\item Dirección de destino inalcanzable: identificador del nodo destino que actualmente es inalcanzable debido a la rotura del enlace.
+\item Número de secuencia de destino inalcanzable: el número de secuencia del nodo destino inalcanzable indicado en el campo anterior que se encuentra en la entrada de la tabla de rutas.
+
+\figura{Bitmap/Capitulo5/aodvRERRmessage}{width=.8\textwidth}{fig:aodvRERR}%
+{Formato del mensaje RERR del protocolo AODV.}
+\end{itemize}
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsubsection{Descubrimiento de Ruta}
+%-------------------------------------------------------------------
+Cuando un nodo de la red necesita comunicarse con otro, en primer lugar debe \mbox{comprobar} si en su tabla de rutas existe algun camino válido hacia el nodo destino. De ser así, el nodo podría comenzar a enviar su información sin necesidad de realizar ninguna otra operación. En el caso contrario, comenzará el proceso de Descubrimiento de Ruta, que si concluye \mbox{satisfactoriamente} proporcionará la información necesaria al nodo origen para poder realizar la comunicación (Véase la Figura~\ref{fig:cap5:aodvDR}).
+
+En el proceso pueden distinguirse dos fases: la formación del camino de vuelta y la \mbox{formación} del camino de ida. La primera de ellas establece todas las rutas posibles entre el origen y el destino, trazadas por el recorrido de los mensajes \ac{RREQ} que se transmiten en modo difusión o \textit{broadcast}. La segunda determina el itinerario que finalmente seguirán los paquetes desde un nodo al otro.
+
+A continuación, se describen ambas fases. El material ilustrativo creado para ello está basado en el documento \citep{quickAODV} y en unas imágenes creadas por el profesor Nitin Vaidya incluidas en \citep{DomingoCarmen2005PhD}.
+\begin{itemize}
+\item {\bfseries Formación del camino de vuelta}
+
+Como representa la Figura~\ref{fig:cap5:aodvDR2}, el nodo origen, al no encontrar una ruta válida hacia el nodo destino en su tabla de rutas, genera un mensaje \ac{RREQ} y lo envía en modo broadcast. Este mensaje podrá ser respondido con un \ac{RREP} por el nodo destino o por cualquier nodo de la red que conozca una ruta actualizada hacia él.
+
+Cuando un nodo intermedio obtiene un \ac{RREQ} debe comprobar si ya ha recibido anteriormente dicho mensaje. Para ello, mira los campos RREQ ID y dirección de origen y verifica si dicha información se encuentra en alguna entrada de su tabla de registro de \ac{RREQ}'s. Si es así, el nodo descarta el paquete, como ocurre por ejemplo en la Figura~\ref{fig:cap5:aodvDR4} donde el nodo C recibe los \ac{RREQ} de los nodos G y H, pero no hace una retransmisión porque ya la hizo una vez anteriormente, concretamente en la Figura~\ref{fig:cap5:aodvDR3}. Si no ha recibido anteriormente dicho mensaje, el nodo registra la recepción del \ac{RREQ} y crea una entrada en su tabla de rutas que contiene el camino hacía el nodo origen, es decir el de vuelta (Véase la Figura~\ref{fig:cap5:aodvDR3}). Esta ruta tiene un tiempo de vida determinado tras el que es eliminada. El camino de vuelta tiene su utilidad cuando el nodo recibe más tarde un \ac{RREP} que debe ser entregado al nodo origen a través del mismo.
+
+Para poder responder a un mensaje \ac{RREQ}, un nodo debe ser el destinatario final del mismo o verificar que:
+\begin{itemize}
+\item Exista en la tabla de rutas una entrada con un camino hacia el destino que no haya expirado.
+\item El número de secuencia de destino de dicha entrada en la tabla de rutas sea mayor o igual que el número de secuencia de destino del mensaje \ac{RREQ}, es decir:
+\begin{equation}
+NumSec_{tabla}\ge NumSec_{RREQ}	\label{aodvNumSec2} 
+\end{equation}
+\end{itemize}
+
+Si esto se cumple, el nodo incrementa el contador de número de saltos del \ac{RREQ} y genera el correspondiente mensaje \ac{RREP}. Si no, el nodo incrementa el contador del número de saltos del \ac{RREQ} y reenvía dicho mensaje en modo broadcast para continuar con el Descubrimiento de Ruta.
+
+Para evitar un consumo excesivo de recursos, el protocolo cuenta con un mecanismo conocido como búsqueda expansiva en anillo (\textit{expanding ring search}). Éste consiste en inicialmente asignar a los mensajes \ac{RREQ} un \ac{TTL} pequeño, tras el cual el mensaje se descarta. Si en un determinado tiempo no se recibe un \ac{RREP}, este valor se va incrementando prograsivamente en los siguientes reintentos de Descubrimiento de Ruta, hasta alcanzar el número máximo de ellos.
+
+\item {\bfseries Formación del camino de ida}
+
+Dependiendo de si es el nodo destino el que responde el \ac{RREQ}, o es un nodo intermedio, se procede de una u otra manera. Concretamente en el primer caso el nodo destino:
+\begin{itemize}
+\item Introduce su número de secuencia en el paquete de acuerdo con la expresión~\ref{aodvNumSec}.
+\item Sitúa el contador de saltos a cero.
+\end{itemize}
+
+Si es un nodo intermedio el que inicia el envío del \ac{RREP}, procede de la siguiente manera:
+\begin{itemize}
+\item Introduce el número de secuencia del nodo destino en el paquete. Este valor se encuentra en la correspondiente entrada de su tabla de rutas.
+\item Sitúa el contador de saltos al mismo valor que el número de los mismos que tiene en su ruta hacia el nodo destino.
+\end{itemize}
+
+A continuación, en ambos casos se asigna un valor determinado al temporizador de tiempo de vida y por último se envía en modo unicast el mensaje según el camino de vuelta formado en la primera fase del proceso de Descubrimiento de Ruta.
+
+Cuando un nodo intermedio recibe un mensaje \ac{RREP} incrementa el contador de saltos del paquete en una unidad y guarda en su tabla de rutas la información del camino de ida hacia el nodo destino, utilizando como próximo salto el nodo del cual recibió el \ac{RREP}. Finalmente, reenvía este paquete al siguiente nodo en dirección a la fuente.
+
+Podría producirse la situación de que un nodo reciba un \ac{RREP} por parte de más de un nodo vecino. En tal caso, reenviaría el primero de ellos, y un segundo únicamente en caso de que el número de secuencia de destino contenido en el paquete fuese mayor, o el valor del contador de saltos menor, actualizando en tal caso su tabla de rutas. Este mismo criterio es utilizado por el nodo origen para establecer el camino de ida al recibir varios paquetes \ac{RREP}. Una vez establecido este camino, es posible comenzar a utilizarlo para el envío bidireccional de paquetes de datos (Véase la Figura~\ref{fig:cap5:aodvDR8}).
+
+En la Figura~\ref{fig:cap5:aodvDR6} vemos como el nodo destino tiene dos opciones, a través del nodo F o del K, para establecer el camino de vuelta. De ellas, opta por la que tiene el menor número de saltos, pero esto no siempre implica que se trate de la trayectoria más óptima de toda la red. En el protocolo de encaminamiento \ac{AODV} los nodos únicamente aceptan y procesan un \ac{RREQ}, rechazando aquellos paquetes con el mismo RREQ ID y dirección de destino que se reciben posteriormente. De este modo, algunas trayectorias más óptimas que la ruta final podrían no descubrirse al utilizar algún nodo común.
+
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR1}%
+Escenario inicial propuesto.}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR1}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR2}%
+Inicio del Descubrimiento de Ruta}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR2}%
+\end{SubFloat}
+% La siguiente no entra; ira en otra 'linea'
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR3}%
+Propagación de los RREQ por la red (1).}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR3}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR4}%
+Propagación de los RREQ por la red (2).}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR4}%
+\end{SubFloat}
+% La siguiente no entra; ira en otra 'linea'
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR5}%
+Propagación de los RREQ por la red (3).}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR5}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR6}%
+Ruta seleccionada para el envío unicast de mensajes RREP.}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR6}%
+\end{SubFloat}
+% La siguiente no entra; ira en otra 'linea'
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR7}%
+Ruta bidireccional establecida entre los nodos S y D.}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR7}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR8}%
+Envío de datos entre los nodos S y D.}%
+\includegraphics[angle=270,width=0.40\textwidth]%
+{Imagenes/Vectorial/Capitulo5/aodvDR8}%
+\end{SubFloat}
+\caption{Proceso de Descubrimiento de Ruta en una red ad hoc que utiliza el protocolo de encaminamiento AODV para enviar datos desde un nodo origen S hasta un nodo destino D.%
+\label{fig:cap5:aodvDR}}
+\end{figure}
+
+
+%-------------------------------------------------------------------
+\subsubsection{Mantenimiento de Ruta}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} está especialmente pensado para operar en el medio radio y con nodos móviles. Esto hace común la rotura de enlaces entre ellos. Además, como ya se ha visto, las rutas que se descubren tienen un tiempo de vida durante el que pueden ser utilizadas y que al terminar las inhabilita. Esto permite que no sea necesario establecer un camino cada vez que se quiere mandar un mensaje de datos, pero a su vez hace necesaria la existencia de algún proceso encargado de la monitorización del estado de los enlaces y de su gestión en caso de rotura. Este proceso se conoce como Mantenimiento de Ruta.
+
+El protocolo \ac{AODV} utiliza mensajes HELLO, que contienen la dirección del nodo, su número de secuencia actual y el tiempo de vida de los enlaces, y que cada nodo envía \mbox{periódicamente} en modo broadcast a sus vecinos para comprobar si existe conectividad entre ellos. De este modo, cada nodo puede actualizar la información referente a sus vecinos en su tabla de rutas. Si durante un determinado intervalo de tiempo un nodo deja de recibir estos mensajes de alguno de sus vecinos, elimina la entrada asociada ha dicho vecino de su tabla de rutas. La utilización de mensajes HELLO no es necesaria si existe algún otro mecanismo que realice su tarea, como puede ser retroalimentación procedente de la capa de enlace de datos, \ac{LLN}.
+
+Cuando un nodo detecta un fallo en un enlace, envía un mensaje de error de ruta, \ac{RERR} (\textit{Route Error}), hacia el nodo fuente para informar de los destinos que ya no pueden alcanzarse. Si existen varios nodos precursores (entre el nodo origen y el nodo que detectó la rotura) que estaban utilizando el enlace, el mensaje \ac{RERR} se envia en modo broadcast, en caso contrario se envia en modo unicast.
+
+Al recibir un paquete de \ac{RERR}, un nodo verifica que efectivamente la rotura afecta a alguna de sus entradas en la tabla de rutas, la invalida y por último reenvía el mensaje hacia la fuente. Cuando es el nodo origen el que recibe el \ac{RERR}, éste puede optar por iniciar un nuevo proceso de Descubrimiento de Ruta si lo considera necesario.
+
+\ac{AODV} también cuenta con algunas opciones de optimización, como la posibilidad de realizar reparaciones locales de los enlaces. Cuando un nodo detecta la rotura de un enlace, en vez de mandar inmediatamente un mensaje \ac{RERR} a la fuente, envía un \ac{RREQ} hacia el nodo destino con el número de secuencia de destino incrementado en una unidad. Mientras espera el \ac{RREP} va almacenando los paquetes de datos. Si tras un determinado tiempo no se recibe respuesta, la reparación local no habrá tenido éxito y será necesario avisar a la fuente con un mensaje \ac{RERR}.
+
+Otra característica adicional del protocolo \ac{AODV} consiste en enviar mensajes \ac{RREP} \mbox{gratuitos} desde un nodo intermedio hacia el nodo destino para informarle de que el propio nodo \mbox{intermedio} a respondido un \ac{RREQ}. Esto permite que el nodo destino conozca una ruta hacia el nodo origen por si la comunicación fuese bidireccional. De otro modo, el nodo destino no tendría noción de que existe tal ruta hacia él y por lo tanto no podría responder a la fuente si tuviera que hacerlo. 
+
+
+%-------------------------------------------------------------------
+\subsection{Protocolos basados en el AODV}
+%-------------------------------------------------------------------
+\label{cap5:sec:protocolos:basadosAODV}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} es uno de los más estudiados para su utilización en redes ad hoc móviles, también conocidas como \ac{MANET}. Esto a dado lugar a la aparición de numerosos protocolos que proponen diferentes modificaciones sobre el original según la aplicación final que se les quiera dar. En la presente subsección, se realiza una revisión de los principales protocolos, orientados a redes de sensores, que están basados en el \ac{AODV} \mbox{\citep{AdaptingAODVforMSN}}.
+
+%-------------------------------------------------------------------
+\subsubsection{AODVjr}
+%-------------------------------------------------------------------
+AODVjr \citep{AODVjr} \citep{quickAODVjr} es una de las primeras versiones simplificadas del \ac{AODV}. Los autores muestran a través de varias \mbox{simulaciones} unos resultados muy próximos a los obtenidos con el protocolo \ac{AODV} \mbox{completo}. Al mismo tiempo, reducen significativamente la complejidad de implementación de éste al \mbox{eliminar} varias características definidas en su especificación original. En primer lugar, dejan de \mbox{utilizarse} los números de secuencia. El protocolo AODVjr evita la formación de bucles definiendo que únicamente el nodo destino puede generar los mensajes \ac{RREP}. Esto también elimina la necesidad del envió de mensajes \ac{RREP} gratuitos desde nodos intermedios. Además, este protocolo ya no emplea el número de saltos de las rutas como métrica. En su lugar establece que la ruta relacionada con el primer mensaje \ac{RREP} que recibe el nodo origen es la elegida. Por último, se eliminan los mensajes HELLO, RERR y la lista de precursores, y el mantenimiento de ruta pasa a realizarse de la siguiente manera. Si la comunicación es unidireccional, el nodo destino manda mensajes de conexión (\textit{connect messages}) al nodo origen. Si es bidireccional, no se utilizan mensajes adicionales; un nodo origen detecta la rotura de una ruta cuando deja de recibir mensajes desde el nodo destino.
+
+%-------------------------------------------------------------------
+\subsubsection{AODVbis}
+%-------------------------------------------------------------------
+AODVbis es una revisión de la especificación original del \ac{AODV} que aclara algunos \mbox{aspectos} de funcionalidad y deja varias características como opcionales. La utilización de mensajes \ac{RERR} ya no es obligatoria. En caso de utilizarse, estos se envían en modo \mbox{broadcast} localmente, de modo que se evita tener que mantener una lista de precursores para cada entrada de la tabla de rutas. Cada nodo que reciba un \ac{RERR} debe añadir los destinos \mbox{inalcanzables} que provienen de procesar dicho mensaje a los nuevos mensajes \ac{RERR} que sean generados. El contador de saltos también deja de ser la métrica obligatoria para las rutas, y por defecto se procede como en el caso del AODVjr. También se eliminan las reparaciones locales y se añade la \mbox{característica} acumulación de rutas (\textit{path accumulation}), que permite a un determinado \mbox{nodo} adquirir información de enrutamiento extra de una lista con el camino recorrido incluida en los mensajes \ac{RREQ} y \ac{RREP} que pasan por él.
+
+%-------------------------------------------------------------------
+\subsubsection{LoWPAN-AODV}
+%-------------------------------------------------------------------
+LoWPAN-AODV es una propuesta para adaptar \ac{AODV} a entornos \ac{LoWPAN}, como es el caso de las redes de sensores. AODVbis es la especificación por defecto del LoWPAN-AODV, salvo por algunos aspectos que conserva de la filosofía del AODVjr. Los únicos mensajes de control definidos son \ac{RREQ} y \ac{RREP}. Sólo el nodo destino puede responder un \ac{RREQ} con un \ac{RREP}. La conectividad local se mantiene por el mecanismo \ac{LLN}, según establece el estándar IEEE 802.15.4. En este caso, el contador de saltos sí que es la métrica utilizada para determinar las mejores rutas.
+
+%-------------------------------------------------------------------
+\subsubsection{LOAD}
+%-------------------------------------------------------------------
+LOAD, al igual que AODVjr y LoWPAN-AODV, sólo permite que el nodo destino genere los mensajes \ac{RREP}, evitando así el uso de números de secuencia. Permite las reparaciones locales, y en caso de que estas no finalicen satisfactoriamente, el nodo que detectó el fallo del enlace debe generar y enviar en modo unicast un mensaje \ac{RERR} al nodo origen. La métrica de encaminamiento utilizada en LOAD es el coste acumulado del enlace entre el origen y el destino, usando el indicador de calidad de enlace (\textit{Link Quality Indicator (LQI)}) de la capa física del IEEE 802.15.4 como entrada para el cálculo. Finalmente, como en el LoWPAN-AODV, se utiliza el mecanismo \ac{LLN} para evaluar la conectividad de las rutas. 
+
+%-------------------------------------------------------------------
+\subsubsection{TinyAODV}
+%-------------------------------------------------------------------
+TinyAODV es una implementación minimalista del \ac{AODV} para dispositivos que utilizan el sistema operativo TinyOS. En este protocolo, si un paquete de datos debe enviarse y no existe una ruta válida hacia el destino, se inicia el proceso de Descubrimiento de Ruta, pero el paquete que requirió la ruta es descartado. De este modo, el siguiente paquete de datos será el primero en utilizar la ruta descubierta. El número de reintentos de Descubrimiento de Ruta se puede modificar, pero su valor por defecto es tres.
+
+De igual modo que algunos de los protocolos anteriores, sólo el nodo destino puede generar los mensajes \ac{RREP}. El mecanismo \ac{LLN} puede utilizarse para detectar fallos en los enlaces, aunque por defecto no está habilitado. Por ello, TinyAODV está especialmente pensado para redes con topologías estáticas, donde no se esperan apenas fallos en los enlaces. Si un paquete de datos no puede entregarse por un fallo en un enlace, éste será descartado. A continuación, se generará un mensaje \ac{RERR} que será enviado en modo broadcast localmente, como hacía el AODVbis. Por último, la reparación local no está soportada, y el contador de saltos es la métrica utilizada para determinar las mejores rutas.
+
+%-------------------------------------------------------------------
+\subsubsection{NST-AODV}
+%-------------------------------------------------------------------
+Not So Tiny - \ac{AODV} (NST-AODV) es una implementación de un protocolo de encaminamiento en nesC para plataformas TinyOS. Fué diseñado con el objetivo de añadir varias prestaciones adicionales a las básicas del TinyAODV con el objetivo de lograr un mejor rendimiento, especialmente en redes dinámicas.
+
+Sus características principales son:
+\begin{itemize}
+\item El mecanismo \ac{LLN} está activado por defecto, ya que se asume que el protocolo operará en redes con topología dinámica.
+\item El paquete de datos que dispara un proceso de Descubrimiento de Ruta no es descartado, y en cuanto la ruta está disponible es enviado.
+\item Tras una transmisión fallida a nivel de enlace, desde la capa de red se pueden realizar hasta dos reintentos adicionales.
+\item Si un paquete no puede ser enviado tras los tres intentos de la capa de red, será \mbox{almacenado} en un buffer y enviado si se encuentra una nueva ruta. Esta operación puede realizarla tanto el nodo origen como un nodo intermedio que repare localmente la ruta.
+\item Se han añadido dos colas FIFO (\textit{First In, First Out}): una para guardar los paquetes recibidos mientras se realiza un Descubrimiento de Ruta, y otra para los paquetes a enviar. Ambas colas pueden dimensionarse según interese en su configuración.
+\item Un nodo intermedio puede generar un mensaje \ac{RREP} si conoce una ruta válida al destino solicitado en el \ac{RREQ}.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsection{Definición del protocolo de encaminamiento AODV-LAB}
+%-------------------------------------------------------------------
+\label{cap5:sec:protocolos:AODV-LAB}
+%-------------------------------------------------------------------
+Como se vió en la Sección {\bfseries 4.1loquesea}, actualmente no existen en el mercado módulos de comunicación en la banda de 868 MHz que incorporen en su firmware el soporte para una topología mallada dinámica. Por ello, surgió la necesidad de incorporar esta funcionalidad a los módulos de comunicación seleccionados. En primer lugar, se realizó una búsqueda de protocolos de encaminamiento reactivos ya desarrollados que pudiesen ser válidos para el proyecto, pero únicamente se encontraron implementaciones orientadas a su utilización en: Internet, el simulador de redes ns-2 y el sistema operativo TinyOS. Por ello, finalmente se decidió desarrollar en C/Linux un protocolo de encaminamiento propio, llamado \mbox{AODV-LAB}, para poder utilizarlo con el \ac{SAEA}, que en su versión final utilizará un \textit{PC embedded} con el sistema operativo Linux. 
+
+A continuación, a partir del análisis de los protocolos presentados en la Subsección~\ref{cap5:sec:protocolos:basadosAODV}, se definen las características principales del AODV-LAB:
+
+\begin{itemize}
+\item Para evitar bucles y la utilización de mensajes \ac{RREP} gratuitos, únicamente el nodo destino puede generar mensajes \ac{RREP}. Además, se mantienen los números de \mbox{secuencia} como en el \ac{AODV}. Esto pérmite diferenciar los mensajes \ac{RREQ} y \ac{RREP} más recientes. De este modo, en el AODV-LAB cuando un nodo recibe uno de estos mensajes, en primer lugar da prioridad a la información de encaminamiento más actual y, únicamente en caso de que el número de secuencia del mensaje coincida con el de la tabla de rutas, utilizará el contador de saltos para optar por el camino con menor número de ellos. Como mejora en un futuro, se contempla añadir sistemas de evaluación de la calidad de los enlaces como criterio para la selección de rutas que, especialmente en el medio marino, puede suponer importantes mejoras. 
+\item Se eliminan los mensajes HELLO, \ac{RERR}, y la lista de precursores, reduciendo la \mbox{complejidad} de implementación, la utilización de recursos del sistema y \mbox{manteniendo} unas características de funcionamiento similares, como se explicó anteriormente en el caso de AODVjr.
+\item Como mecanismo para el mantenimiento de la conectividad se utiliza el envío de mensajes de acuse de recibo de datos, llamados ACK (\emph{Acknowledgement}). Si tras un periodo de tiempo definido un nodo que ha enviado un paquete de datos no recibe su correspondiente ACK, volverá a enviar el paquete tantas veces como se indique en el número de reintentos. Una vez agotados se dará la ruta por inválida y se volverá a iniciar el proceso de Descubrimiento de Ruta. El empleo de un número de reintentos por encima de la capa de enlace, se utiliza para evitar que por pérdidas de conexión temporales y esporádicas, o por pequeños periodos con peores condiciones para la transmisión radio, se inicien nuevos Descubrimientos de Ruta innecesarios, con el gasto de recursos que esto supone.
+\item No se contempla la utilización del mecanismo \ac{LLN} ya que éste depende del hardware utilizado, aunque en un futuro podría suponer una mejora considerable del sistema gracias a sus numerosas ventajas: detección más rápida de roturas de enlace, utilización más eficiente del ancho de banda y menor consumo de energía.
+\item Cuando una ruta se da como inválida, el paquete que agotó sus reintentos es descartado. Esto es así ya que en ese momento habrá transcurrido demasiado tiempo y dicha alarma ya no será útil, por lo que enviarla únicamente supondría un gasto de recursos.
+\item Existe una cola \ac{FIFO} para los mensajes de entrada, de modo que los mensajes serán procesados en el orden en que se recibieron.
+\item No se realiza reparación local de rutas. La aplicación princial de este sistema será crear perímetros de seguridad alrededor de fuentes de contaminación acústica. Estos perímetros no requerirán a priori rutas de más de 3 saltos entre un nodo origen y uno destino, por lo que la reparación local en este caso no tiene mucho sentido, ya que este mecanismo está especialmente pensado para grandes redes.
+\end{itemize} 
+
+%-------------------------------------------------------------------
+\subsection{Comparación entre los distintos protocolos de encaminamiento}
+%-------------------------------------------------------------------
+En la Tabla~\ref{cap5:tab:AODVprotocols} se muestra un resumen de todos los protocolos de encaminamiento basados en el \ac{AODV} que se han presentado anteriormente.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c c c c c c}
+\hline
+\hline
+Nombre del	& Mecanismo de	  & Mensaje	& Lista		& Reparación	& Sólo el	& Métrica de	 & Especificación \\
+protocolo	& mantenimiento   & RERR 	& precursores 	& local 	& nodo destino	& encaminamiento & y/o estado de  \\
+		& de conectividad & 		& 		& 		& genera RREP 	& 		 & implementación \\
+& & & & & & & \\ 
+\hline
+AODV	& Mensajes HELLO,& Si & Si & Si    & No & Contador & Implementado para\\
+	& LLN, etc.	 &    &    &(puede)&    & de saltos& múltiples\\
+	&		 &    &    &       &    &          & plataformas\\  
+& & & & & & & \\ 
+AODVjr  & Mensajes de	    & No & No & No & Si & Primer RREP & Implementado   \\
+	& de conexión 	    &    &    &    &    & recibido    & para el        \\
+	& (tráfico unidir.) &    &    &    &    &	      & simulador ns-2 \\
+& & & & & & & \\ 
+AODVbis  & Mensajes HELLO,& Si     & No & No & No & Primer RREP & Proyecto Internet\\
+	 & LLN, etc.      & (debe) &    &    &    & recibido    & expirado         \\
+& & & & & & & \\ 
+LoWPAN-  & LLN & No & No & No & Si & Contador & Proyecto Internet\\
+AODV     &     &    &    &    &    & de saltos& expirado         \\
+& & & & & & & \\ 
+LOAD    & LLN & Si      & No & Si      & Si     & Basado & Proyecto Internet\\
+	&     & (puede) &    & (puede) & (debe) & en LQI & 		    \\
+& & & & & & & \\ 
+TinyAODV& LLN (deshabilitado & Si & No & No & Si & Contador  & Implementado   \\
+	& por defecto)       &    &    &    &    & de saltos & para TinyOS    \\
+& & & & & & & \\ 
+NST-AODV& LLN & Si & No & Si & No & Contador  & Implementado   \\
+	&     &    &    &    &    & de saltos & para TinyOS    \\
+& & & & & & & \\ 
+AODV-LAB& Mensajes ACK	    & No & No & No & Si & Contador & Implementado   \\
+	& y timeouts	    &    &    &    &    & de saltos  & en C/Linux     \\
+\hline
+\hline
+\end{tabular}}
+\caption{Comparación de protocolos de encaminamiento basados en el AODV%
+         \label{cap5:tab:AODVprotocols}}
+\end{table}
+
+
+%-------------------------------------------------------------------
+\section{Descripción detallada del Sistema de Alarma de Eventos Acústicos (SAEA)}
+%-------------------------------------------------------------------
+\label{cap5:sec:saea}
+%-------------------------------------------------------------------
+Como ya se vió en la Sección {\bfseries 3.3loquesea}, el SAEA es un sistema orientado al estudio y mitigación del impacto ambiental de la contaminación acústica en el medio marino. Se encarga de la aquisición de datos acústicos mediante hidrófonos, para a continuación realizar el procesado de los mismos y, finalmente, en caso de detectar algún evento acústico definido inicialmente, envíar una alarma con dicha información a un nodo colector.
+
+La primera parte del sistema, correspondiente a las etapas de adquisición, procesado de audio y generación de alarmas, ya ha sido desarrollada y probada en el \ac{LAB}. La idea de este proyecto ha sido por lo tanto trabajar a partir ahí para desarrollar finalmente un prototipo del sistema completo. Concretamente, el software implementado se encarga de:
+
+\begin{itemize}
+\item Detectar la aparición de nuevas alarmas en el sistema.
+\item Emplear el protocolo de encaminamiento AODV-LAB para descubrir rutas hacia el nodo colector.
+\item Envío de las alarmas.
+\item Verificar la correcta entrega de las mismas mediante los acuses de recibo.
+\item Indicar sus coordenadas en caso de que el nodo colector lo solicite.
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\subsection{Envío, enrutado y acuse de recibo de alarmas}
+%-------------------------------------------------------------------
+Una vez que el sistema detecta un determinado evento acústico, genera la alarma correspondiente y la añade como una nueva línea en un fichero que contiene todas las alarmas. Este archivo es constantemente chequeado por el software implementado en este proyecto, a la espera de detectar nuevas entradas. Cuando se detecta una nueva alarma, se mira la tabla de rutas por si existe algún camino válido hacia el nodo colector, y si es así se envía directamente. En caso contrario, se inicia el proceso de Descubrimiento de Ruta. Si éste finaliza satisfactoriamente, existirá por lo tanto un ruta válida bidireccional entre ambos nodos, y se enviará la alarma. Si no encuentra un camino entre ellos, esperará un determinado tiempo, fijado en la configuración del sistema, y volverá a comenzar el Descubrimiento de Ruta. 
+
+Una vez que se envía una alarma, no se manda la siguiente hasta que no se recibe el correspondiente acuse de recibo de la primera. Si tras un determinado tiempo, también fijado en la configuración, no hay noticia del nodo colector, se volverá a enviar la misma alarma nuevamente. Este proceso se repetirá hasta que se reciba el correspondiente acuse de recibo o en su defecto se agote el número de reintentos determinado en la configuración del sistema. En este último caso, se descartará dicha alarma, ya que tras los reintentos y esperas dejará de ser útil. Únicamente en caso de existir nuevas alarmas esperando, se iniciará el proceso de Descubrimiento de Ruta de nuevo.
+
+Al trabajar todos los nodos con el AODV-LAB, cada uno de ellos tiene capacidad de enrutamiento y, por lo tanto, reenviará las alarmas de otros nodos que pasen por él. Por último, destacar que el nodo colector genera un registro de todas las alarmas que recibe durante la ejecución. De esta manera, es posible disponer de dicha información para su estudio más adelante.
+
+%-------------------------------------------------------------------
+\subsection{Localización de nodos}
+%-------------------------------------------------------------------
+\label{cap5:sec:locNodos}
+%-------------------------------------------------------------------
+Cada nodo de la red irá implementado en una embarcación, estructura flotante o, la mayor parte de las veces, en boyas. En muchas aplicaciones estas no irán ancladas al fondo marino sino que se podrán desplegar y recoger desde pequeñas embarcaciones y, durante el periodo de operación, estarán flotando libres en el mar. Por esta razón, se ha previsto que cada nodo de la red incluya un sistema de \ac{GPS} que pueda obtener en cada momento sus coordenadas geográficas exactas.
+
+El nodo colector, tiene la posibilidad de enviar un mensaje \ac{PREQ} en broadcast que llegue a todos los nodos de la red para que cada uno responda con un \ac{PREP} que incluya sus coordenadas y la fecha y hora exacta de la \mbox{consulta}. Estos mensajes incialmente se mandan únicamente bajo demanda pero, dependiendo de las aplicaciones finales que pueda tener el sistema, se podrá modificar para que se realice \mbox{periódicamente} o según interese.
+
+De esta manera, desde el nodo colector se puede realizar un registro de las posiciones de los demás nodos de la red. Esta información servirá de apoyo al estudio realizado con el registro de alarmas y, por supuesto, en muchos casos será vital para la recogida de las boyas al finalizar su utilización en el mar.
+
+%-------------------------------------------------------------------
+\section{Implementación en C/Linux}
+%-------------------------------------------------------------------
+\label{cap5:sec:implementacion}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+\subsection{Introducción y justificación}
+%-------------------------------------------------------------------
+El SAEA, en su primera aproximación, es un sistema que introducirá muy poco tráfico en la red. Las alarmas correspondientes a las distintas vocalizaciones de cetáceos no son muy frecuentes ya que la presencia de ellos no es contínua y, además, el sistema no enviará una por sonido detectado sino que tratará de identificar la presencia de individuos en una determinada zona y avisar de esta periódicamente mientras continúen allí. Esto ha permitido, en la realización de este proyecto, centrarse directamente en la implementación de un prototipo sin la necesidad previa de: llevar a cabo un estudio exahustivo en un simulador de redes del protocolo de encaminamiento, realizar comparaciones con otros ya existentes y, finalmente, buscar la mejor solución. El objetivo es dar una primera aproximación al problema y demostrar su viabilidad en condiciones reales.
+
+Se destaca la importancia de realizar una implementación de un protocolo de encaminamiento \citep{AODVimplementation}. La simulación es una gran herramienta para el desarrollo de los mismos, pero esta no garantiza que un protocolo funcione en la práctica. Los simuladores realizan suposiciones y utilizan modelos simplificados que pueden no reflejar del todo el funcionamiento real de la red. Por otro lado, en un simulador el código se encuentra contenido en una única unidad lógica, que está cláramente definida. Sin embargo, una implementación requiere la utilización de un sistema con muchos componentes, algunos incluso con poca documentación o sin ella. Esto obliga al desarrollador a comprender no solo el protocolo de encaminamiento, sino también todos los componentes del sistema y sus interacciones.
+
+Como ya se comentó en la Subsección~\ref{cap5:sec:protocolos:AODV-LAB}, para este proyecto en primer lugar se trató de encontrar alguna implementación ya desarrollada para utilizarla al completo o como punto de partida. De esta búsqueda resultaron principalmente dos grupos que, como se explica a continuación, no se ajustan del todo a lo requerido:
+
+\begin{itemize}
+\item Implementaciones orientadas a Internet \citep{AODVimplementation} \citep{AdHocRoutingImplementation}. Son muy complejas. Van integradas en el kernel de Linux, y por su aplicación utilizan muchas señales e indicadores que para este proyecto no son necesarias y lo complican considerablemente.
+\item Implementaciones para el sistema operativo TinyOS \citep{AdaptingAODVforMSN} \citep{EnergyRouting}. TinyOS es un sistema operativo de código abierto diseñado para dispositivos inalámbricos de bajo consumo como los utilizados en redes de sensores. El \ac{SAEA} posee algunas características de las redes de sensores pero, al trabajar con audio y tener que procesarlo en tiempo real, requiere de un sistema operativo más potente y supone un mayor consumo energético. Concretamente el \ac{SAEA} operará sobre GNU/Linux.
+\end{itemize}
+
+Por último, como se comentó en la Sección {\bfseries4.1.loquesea}, los módulos XBee poseen un modo de operación transparente en el que se comportan como una conexión serie. Esto nos permite crear nuestras propias tramas, enviarlas al módulo como si se hiciera hacia el puerto serie y recibirlas del mismo modo.
+
+Por todo ello, como muestra la Figura~\ref{fig:arquitectura}, finalmente se ha optado por realizar una implementación del sistema como un programa en C/Linux donde el \ac{SAEA} utiliza el protocolo de encaminamiento AODV-LAB para encontrar rutas hacia el nodo colector y poder mandar sus alarmas y recibir los correspondientes ACKs. A continuación se detallará la organización del código, las tramas que utiliza y el flujo del programa.
+\figura{Vectorial/Capitulo5/arquitectura}{angle=270,width=.6\textwidth}{fig:arquitectura}%
+{Representación de la arquitectura básica del sistema.}
+
+%-------------------------------------------------------------------
+\subsection{Organización del código}
+%-------------------------------------------------------------------
+\figura{Vectorial/Capitulo5/estructuraAODV-LAB}{width=1\textwidth}{fig:estructuraAODV-LAB}%
+{Organización del código implementado.}
+
+En la Figura~\ref{fig:estructuraAODV-LAB} se muestra como está organizado el código implementado para este proyecto. Dentro de cada fichero se han indicado los archivos con extensión \texttt{.c} y las funciones que contiene cada uno. Para darle una mayor claridad al diagrama se han omitido los archivos con extensión \texttt{.h} que contienen los prototipos de las funciones y definiciones de variables. Las cabeceras de las funciones más importantes se pueden consultar en el Apéndice~\ref{ap1:cabeceras}.
+
+%-------------------------------------------------------------------
+\subsection{Tramas}
+%-------------------------------------------------------------------
+\label{cap5:sec:tramas}
+%-------------------------------------------------------------------
+En el sistema únicamente se definen seis tipos de tramas. En la Tabla~\ref{cap5:tab:TramasSistema} se indican sus nombres, identificadores y una breve descripción de cada una. Posteriormente, se detallan todas ellas indicando, en cada caso, los campos de la trama y una especificación de los mismos.
+
+\begin{table}[t]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c}
+\hline
+\hline
+Nombre de la trama	& Identificador	& Descripción \\
+& & \\ 
+\hline
+RREQ	& Q & Mensaje de solicitud de ruta \\
+& & \\
+RREP	& P & Respuesta a solicitud de ruta \\
+& & \\
+DATA	& D & Mensaje de datos de alarma \\
+& & \\
+ACK	& A & Acuse de recibo de datos \\
+& & \\
+PREQ	& W & Mensaje de solicitud de posición \\
+	&   & (Where are you?) \\
+& & \\
+PREP	& C & Mensaje de posición \\
+        &   & (Coordinates) \\  
+\hline
+\hline
+\end{tabular}}
+\caption{Tramas definidas en el sistema%
+         \label{cap5:tab:TramasSistema}}
+\end{table}
+
+En el programa en C/Linux se utilizan corchetes para delimitar cada trama. De esta \mbox{manera} se evita procesar mensajes incompletos. Además, los campos van separados por el caracter "|". Esto permite no asignarles un tamaño determinado. Así, por ejemplo, la dimensión de una trama que contenga el campo \textit{número de secuencia} irá aumentando según aumente el número de dígitos de éste, y no utilizará desde el principio un tamaño definido. Esto ayuda a reducir la cantidad de información transmitida. En este proyecto no se ha trabajado la compresión de las tramas, pero en futuro podrá suponer una mejora del sistema. Todos los campos se han definido de manera parametrizable dotando al código de una mayor versatilidad. Por último, indicar que el orden de los campos en las tramas está determinado por la necesidad de la información que contienen en el procesado de los mismos por el sistema.
+
+%-------------------------------------------------------------------
+\subsubsection{Trama RREQ}
+%-------------------------------------------------------------------
+Se describe en la Tabla~\ref{cap5:tab:tramaRREQ}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c l}
+\hline
+\hline
+& & & \\ 
+Campos de la trama RREQ	& Identificador	& Definición 	& Descripción 	\\
+& & & \\ 
+\hline
+Next Node ID		& NNID		& \tt{char nnid[NID\_BYTES];}	& Indica el destinatario inmediato de la trama, es decir, \\
+			&		&				& el próximo nodo en la ruta hacia el destinatario final. \\
+			&		&				& El valor 0 se corresponde con el modo Broadcast. \\
+& & & \\
+Frame ID		& frameID	& \tt{char frameID[FID\_BYTES];}& Indica el tipo de trama. \\
+& & & \\
+Source Node ID		& SNID		& \tt{char snid[NID\_BYTES];}	& Indica el nodo que inició la búsqueda de ruta hacia el \\
+			&		&				& nodo destino indicado. \\
+& & & \\
+Sequence Number 	& seqN		& \tt{unsigned long int seqN;}	& Número de secuencia. Se utiliza para evitar bucles e \\
+			&		&				& identificar la información más reciente. \\
+& & & \\
+Destination Node ID	& DNID		& \tt{char dnid[NID\_BYTES];}	& Indica el nodo destino por el que se inició la búsqueda. \\
+			&		& 				& En esta aplicación coincidirá con el nodo colector. \\
+& & & \\
+Previous Node ID	& PNID		& \tt{char pnid[NID\_BYTES];}	& Indica el predecesor inmediato en la ruta, es decir, al \\
+			&		&				& nodo del que hemos recibido la trama. El nodo fuente se \\
+			&		&				& pone a sí mismo como predecesor. \\
+& & & \\
+Hop Counter		& HOPS		& \tt{int hops;}		& Indica el número de saltos en la ruta de la trama en el \\
+			&		&				& momento de su recepción, por lo tanto, se incrementa \\
+			&		&				& justo antes de enviarse. Este campo permite controlar \\
+			&		&				& la dispersión de los mensajes. \\
+& & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Campos de la trama RREQ del protocolo AODV-LAB%
+         \label{cap5:tab:tramaRREQ}}
+\end{table}
+
+Para una mejor comprensión de la trama y sus campos, a continuación se muestra un ejemplo comentado.
+\begin{center}
+\texttt{[NNID|frameID|SNID| \enspace \enspace seqN \enspace \enspace |DNID|PNID|hops]}\\
+\texttt{[ 0 \enspace| \enspace \enspace Q \enspace \enspace| S \enspace |1304427351| D \enspace | S \enspace | 1 \enspace ]}
+\end{center}
+
+El campo \texttt{NNID} a cero, indica que esta trama se ha enviado en modo broadcast. Por ello, ningún nodo que la reciba la descartará a priori. Únicamente lo harán si debe ser así tras su procesado. El campo \texttt{frameID} con el caracter \texttt{Q} nos informa que se trata de un mensaje \ac{RREQ}. Esta solicitud de ruta la ha iniciado el \texttt{SNID}, es decir, el nodo \texttt{S}. Su número de secuencia, \texttt{seqN}, es \texttt{1304427351}. El campo \texttt{DNID} se corresponde con el nodo con el que se quiere comunicar \texttt{SNID}, en este caso el \texttt{D}. \texttt{PNID} es el identificador del nodo inmediato del que se recibe esta trama. En este caso, su valor coincide con \texttt{SNID}. Esto quiere decir que este mensaje se recibe directamente desde el nodo que lo genera, sin pasar por ningún nodo repetidor, aunque podría perfectamente ser así. Los nodos contenidos en el campo \texttt{PNID} de los mensajes recibidos son vecinos. Por último, \texttt{hops} contiene el número de saltos que ha dado el mensaje previamente a su recepción. En este caso, su valor es el mínimo posible, es decir, uno. Esto indica que el mensaje se ha recibido directmente del nodo que lo generó.
+
+%-------------------------------------------------------------------
+\subsubsection{Trama RREP}
+%-------------------------------------------------------------------
+Se describe en la Tabla~\ref{cap5:tab:tramaRREP}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c l}
+\hline
+\hline
+& & & \\ 
+Campos de la trama RREP	& Identificador	& Definición 	& Descripción 	\\
+& & & \\ 
+\hline
+Next Node ID		& NNID		& \tt{char nnid[NID\_BYTES];}	& Indica el destinatario inmediato de la trama, es decir, \\
+			&		&				& el próximo nodo en la ruta hacia el destinatario final. \\
+& & & \\
+Frame ID		& frameID	& \tt{char frameID[FID\_BYTES];}& Indica el tipo de trama. \\
+& & & \\
+Previous Node ID	& PNID		& \tt{char pnid[NID\_BYTES];}	& Indica el predecesor inmediato en la ruta, es decir, al \\
+			&		&				& nodo del que hemos recibido la trama. El nodo fuente se \\
+			&		&				& pone a sí mismo como predecesor. \\
+& & & \\
+Source Node ID		& SNID		& \tt{char snid[NID\_BYTES];}	& Indica el nodo que inició la respuesta de solicitud de ruta.\\
+			&		&				& Se corresponde con el campo DNID del mensaje RREQ \\
+			&		&				& al que responde. En esta aplicación coincidirá con el nodo \\
+			&		&				& colector. \\
+& & & \\
+Sequence Number 	& seqN		& \tt{unsigned long int seqN;}	& Número de secuencia. Se utiliza para evitar bucles e \\
+			&		&				& identificar la información más reciente. \\
+& & & \\
+Hop Counter		& HOPS		& \tt{int hops;}		& Indica el número de saltos en la ruta de la trama en el \\
+			&		&				& momento de su recepción, por lo tanto, se incrementa \\
+			&		&				& justo antes de enviarse. Este campo permite controlar \\
+			&		&				& la dispersión de los mensajes. \\
+& & & \\
+Destination Node ID	& DNID		& \tt{char dnid[NID\_BYTES];}	& Indica el nodo destino de la respuesta de solicitud de ruta. \\
+			&		&				& Se corresponde con el campo SNID del mensaje RREQ \\
+			&		&				& al que responde. \\
+& & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Campos de la trama RREP del protocolo AODV-LAB%
+         \label{cap5:tab:tramaRREP}}
+\end{table}
+
+Para una mejor comprensión de la trama y sus campos, a continuación se muestra un ejemplo comentado.
+\begin{center}
+\texttt{[NNID|frameID|PNID|SNID| \enspace \enspace seqN \enspace \enspace |hops|DNID]}\\
+\texttt{[ S \enspace| \enspace \enspace P \enspace \enspace| A \enspace | D \enspace |1304433774| 2 \enspace | S \enspace ]}
+\end{center}
+
+Al haberse formado el camino de vuelta con un mensaje \ac{RREQ}, su respuesta se realiza de modo unicast, por ello el campo \texttt{NNID} en los mensajes \ac{RREP} lleva el identificador de un nodo concreto, en este caso el \texttt{S}. El \texttt{frameID} es la letra \texttt{P}, correspondiente a este tipo de mensajes. El campo \texttt{PNID} señala que el nodo \texttt{A} es el nodo anterior inmediato en la ruta, es decir, del que se recibe la trama. El nodo \texttt{D}, indicado en \texttt{SNID}, se corresponde con el nodo que generó el RREP, que por lo tanto, coincide con el campo \texttt{DNID} del mensaje \ac{RREQ} al que responde. En este caso, el número de secuencia, \texttt{seqN}, es \texttt{1304433774}. El número de saltos, \texttt{hops}, es dos. Concretamente del nodo \texttt{D} al \texttt{A}, y éste que se lo envía al \texttt{S}. Por último, el campo \texttt{DNID}, que indica el destinatario del \ac{RREP} y, por lo tanto, se corresponde con el \texttt{SNID} del mensaje \ac{RREQ}, es el nodo \texttt{S}. Es automático deducir que cuando los campos \texttt{NNID} y \texttt{DNID} coinciden el mensaje ha llegado a su destinatario final y por lo tanto se habrá creado la correspondiente ruta bidireccional entre dos nodos.
+
+%-------------------------------------------------------------------
+\subsubsection{Trama DATA}
+%-------------------------------------------------------------------
+Se describe en la Tabla~\ref{cap5:tab:tramaDATA}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c l}
+\hline
+\hline
+& & & \\ 
+Campos de la		& Identificador	& Definición 	& Descripción 	\\
+trama DATA		&		&		&		\\
+& & & \\ 
+\hline
+Next Node ID		& NNID		& \tt{char nnid[NID\_BYTES];}		& Indica el destinatario inmediato de la trama, es decir, \\
+			&		&					& el próximo nodo en la ruta hacia el destinatario final. \\
+& & & \\
+Frame ID		& frameID	& \tt{char frameID[FID\_BYTES];}	& Indica el tipo de trama. \\
+& & & \\
+Destination Node ID	& DNID		& \tt{char dnid[NID\_BYTES];}		& Indica el nodo destino de la trama DATA. En esta \\
+			&		&					& aplicación coincidirá siempre con el nodo colector. \\
+& & & \\
+Source Node ID		& SNID		& \tt{char snid[NID\_BYTES];}		& Indica el nodo que manda los datos. En esta \\
+			&		&					& aplicación serán siempre alarmas. \\
+& & & \\
+Alarm ID		& alarmID	& \tt{char alarmID[11];}		& Junto con el campo SNID identifica inequívocamente \\
+			&		&					& cada alarma. Cada nodo va incrementando este valor \\
+			&		&					& según genera nuevas alarmas. \\
+& & & \\
+Timestamp		& timeStamp	& \tt{char timeStamp[11];}		& Timestamp (fecha y hora) en que se generó la alarma. \\
+& & & \\
+Alarm type		& alarmType	& \tt{char alarmType[ATYPE\_BYTES];}	& Indica el tipo de alarma generada en función del evento \\
+			&		&					& acústico registrado. \\
+& & & \\
+Latitude		& latitude	& \tt{char latitude[MAXALEN];}		& Latitud geográfica del nodo en el momento de generar \\
+			&		&					& la alarma. Se obtiene de un GPS. \\
+& & & \\
+Longitude		& longitude	& \tt{char longitude[MAXALEN];}		& Longitud geográfica del nodo en el momento de generar \\
+			&		&					& la alarma. Se obtiene de un GPS. \\
+& & & \\
+Percentage of		& perConf	& \tt{char perConf[MAXALEN];}		& Porcentaje de confianza asociado a la alarma generada. \\
+confidence		&		&					&  \\
+& & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Campos de la trama DATA del protocolo AODV-LAB%
+         \label{cap5:tab:tramaDATA}}
+\end{table}
+
+Para una mejor comprensión de la trama y sus campos, a continuación se muestra un ejemplo comentado.
+\begin{center}
+\texttt{[NNID|frameID|DNID|SNID|alarmID|\thinspace \thinspace timeStamp\thinspace|alarmType|latitude|longitude|perConf]}\\*
+\mbox{\texttt{[ A \enspace| \enspace \enspace D \enspace \enspace| D \enspace| S \enspace| \enspace \enspace 1 \enspace \enspace|1304433727|  \enspace \enspace \enspace W  \enspace \enspace \enspace|\thinspace \thinspace 41.2061\thinspace|\thinspace \thinspace \enspace 1.7300\enspace \thinspace| \enspace \enspace 87\enspace \enspace]}}
+\end{center}
+
+La trama se envía al nodo \texttt{A}. Es de tipo DATA ya que su \texttt{frameID} es la letra \texttt{D}. El mensaje va del nodo \texttt{S} al \texttt{D} como indican respectivamente los campos \texttt{SNID} y \texttt{DNID}. El identificador de alarma, \texttt{alarmID} es uno, lo que señala que es la primera alarma que genera el nodo \texttt{S}. El campo \texttt{timeStamp}, con valor \texttt{1304433727}, nos permite conocer la fecha y hora en que se generó la alarma. Concretamente, en el sistema operativo GNU/Linux se utiliza el  timestamp UNIX, que es el número de segundos desde 00:00:00 UTC del 1 de enero de 1970 hasta el momento en que se crea el timestamp. De esta manera, utilizando un conversor, se puede obtener que esta alarma se generó el 3 de mayo de 2011 a las 15:42:07 (GMT+1). Como se indica en la Tabla~\ref{cap5:tab:tramaDATA}, el campo \texttt{alarmType} determina el tipo de alarma en función del evento acústico registrado. En este proyecto no se ha definido un diccionario de alarmas, por lo tanto se ha utilizado la letra \texttt{W} únicamente como ejemplo. En el momento de generar la alarma el nodo se encontraba en las coordenadas geográficas \texttt{41.2061 N - 1.73 E}. Los valores negativos corresponderán por tanto a la latitud sur (S) y longitud oeste (W). Por último, el porcentaje de confianza de la alarma generada es del $87\%$, como indica el campo \texttt{perConf}.
+
+
+%-------------------------------------------------------------------
+\subsubsection{Trama ACK}
+%-------------------------------------------------------------------
+Se describe en la Tabla~\ref{cap5:tab:tramaACK}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c l}
+\hline
+\hline
+& & & \\ 
+Campos de la		& Identificador	& Definición 	& Descripción 	\\
+trama ACK		&		&		&		\\
+& & & \\ 
+\hline
+Next Node ID		& NNID		& \tt{char nnid[NID\_BYTES];}		& Indica el destinatario inmediato de la trama, es decir, \\
+			&		&					& el próximo nodo en la ruta hacia el destinatario final. \\
+& & & \\
+Frame ID		& frameID	& \tt{char frameID[FID\_BYTES];}	& Indica el tipo de trama. \\
+& & & \\
+Destination Node ID	& DNID		& \tt{char dnid[NID\_BYTES];}		& Indica el nodo destino de la trama ACK. Se corresponderá \\
+			&		&					& con el campo SNID de la alarma a la que responde. \\
+& & & \\
+Alarm ID		& alarmID	& \tt{char alarmID[11];}		& Identificador de alarma. Cuando un nodo recibe un ACK \\
+			&		&					& y él es el DNID de la trama, con el campo alarmID puede \\
+			&		&					& saber que alarma de las que envió se entregó con éxito. \\
+& & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Campos de la trama ACK del protocolo AODV-LAB%
+         \label{cap5:tab:tramaACK}}
+\end{table}
+
+Para una mejor comprensión de la trama y sus campos, a continuación se muestra un ejemplo comentado.
+\begin{center}
+\texttt{[NNID|frameID|DNID|alarmID]}\\
+\texttt{[ S \enspace| \enspace \enspace A \enspace \enspace| S \enspace| \enspace \enspace 1 \enspace \enspace]}
+\end{center}
+
+La trama se envía al nodo \texttt{S}, que además es el destinatario final de la misma, como indican los campos \texttt{NNID} y \texttt{DNID}. Es una trama ACK ya que su \texttt{frameID} es la letra \texttt{A}. \mbox{Concretamente} este acuse de recibo le indica al nodo \texttt{S} que su primera alarma generada y enviada \mbox{(\texttt{alarmID = 1})} se ha recibido con éxito.
+
+
+%-------------------------------------------------------------------
+\subsubsection{Trama PREQ}
+%-------------------------------------------------------------------
+Se describe en la Tabla~\ref{cap5:tab:tramaPREQ}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c l}
+\hline
+\hline
+& & & \\ 
+Campos de la trama PREQ	& Identificador	& Definición 	& Descripción 	\\
+& & & \\ 
+\hline
+Next Node ID		& NNID		& \tt{char nnid[NID\_BYTES];}	& Indica el destinatario inmediato de la trama, es decir, \\
+			&		&				& el próximo nodo en la ruta hacia el destinatario final. \\
+			&		&				& El valor 0 se corresponde con el modo Broadcast. \\
+& & & \\
+Frame ID		& frameID	& \tt{char frameID[FID\_BYTES];}& Indica el tipo de trama. \\
+& & & \\
+Source Node ID		& SNID		& \tt{char snid[NID\_BYTES];}	& Indica el nodo que inició la solicitud de posición. En \\
+			&		&				& esta aplicación coincidirá con el nodo colector. \\
+& & & \\
+Sequence Number 	& seqN		& \tt{unsigned long int seqN;}	& Número de secuencia. Se utiliza para evitar bucles e \\
+			&		&				& identificar la información más reciente. La trama \\
+			&		&				& PREQ descubre rutas de vuelta hacia el nodo que la \\
+			&		&				& envió, por eso incluye este campo. \\
+& & & \\
+Previous Node ID	& PNID		& \tt{char pnid[NID\_BYTES];}	& Indica el predecesor inmediato en la ruta, es decir, el \\
+			&		&				& nodo del que hemos recibido la trama. El nodo fuente \\
+			&		&				& se pone a sí mismo como predecesor. \\
+& & & \\
+Hop Counter		& HOPS		& \tt{int hops;}		& Indica el número de saltos en la ruta de la trama en el \\
+			&		&				& momento de su recepción, por lo tanto, se incrementa \\
+			&		&				& justo antes de enviarse. En los mensajes PREQ no es un \\
+			&		&				& factor para controlar la dispersión ya que una solicitud \\
+			&		&				& de posición debe llegar a todos los nodos de la red. \\
+& & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Campos de la trama PREQ del protocolo AODV-LAB%
+         \label{cap5:tab:tramaPREQ}}
+\end{table}
+
+Para una mejor comprensión de la trama y sus campos, a continuación se muestra un ejemplo comentado.
+\begin{center}
+\texttt{[NNID|frameID|SNID| \enspace \enspace seqN \enspace \enspace |PNID|hops]}\\
+\texttt{[ 0 \enspace| \enspace \enspace W \enspace \enspace| D \enspace|1304516600| D \enspace | 1 \enspace ]}
+\end{center}
+
+El nodo \texttt{D} envía un mensaje PREQ en modo broadcast. El número de secuencia en el mensaje es \texttt{1304516600}. En este caso, el nodo predecesor, \texttt{PNID}, se corresponde con el \texttt{SNID}, por lo tanto, la trama capturada únicamente ha dado un salto, como se puede observar en el campo \texttt{hops} del ejemplo.
+
+%-------------------------------------------------------------------
+\subsubsection{Trama PREP}
+%-------------------------------------------------------------------
+Se describe en la Tabla~\ref{cap5:tab:tramaPREP}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c l}
+\hline
+\hline
+& & & \\ 
+Campos de la trama PREP	& Identificador	& Definición 	& Descripción 	\\
+& & & \\ 
+\hline
+Next Node ID		& NNID		& \tt{char nnid[NID\_BYTES];}		& Indica el destinatario inmediato de la trama, es decir, \\
+			&		&					& el próximo nodo en la ruta hacia el destinatario final. \\
+& & & \\
+Frame ID		& frameID	& \tt{char frameID[FID\_BYTES];}	& Indica el tipo de trama. \\
+& & & \\
+Destination Node ID	& DNID		& \tt{char dnid[NID\_BYTES];}		& Indica el nodo destino de la respuesta de solicitud de \\
+			&		&					& posición. Se corresponde con el campo SNID del mensaje \\
+			&		&					& PREQ al que responde, que en esta aplicación siempre \\
+			&		&					& será el nodo colector. \\
+& & & \\
+Timestamp		& timeStamp	& \tt{char timeStamp[11];}		& Timestamp (fecha y hora) en que se genera el PREP. \\
+& & & \\
+Source Node ID		& SNID		& \tt{char snid[NID\_BYTES];}		& Indica el nodo que inició la respuesta de solicitud de\\
+			&		&					& posición, es decir el que está indicando sus coordenadas \\
+			&		&					& geográficas en esta misma trama. \\
+& & & \\
+Latitude		& latitude	& \tt{char latitude[MAXALEN];}		& Latitud geográfica del nodo en el momento de generar \\
+			&		&					& el PREP. Se obtiene de un GPS. \\
+& & & \\
+Longitude		& longitude	& \tt{char longitude[MAXALEN];}		& Longitud geográfica del nodo en el momento de generar \\
+			&		&					& el PREP. Se obtiene de un GPS. \\
+& & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Campos de la trama PREP del protocolo AODV-LAB%
+         \label{cap5:tab:tramaPREP}}
+\end{table}
+
+Para una mejor comprensión de la trama y sus campos, a continuación se muestra un ejemplo comentado.
+\begin{center}
+\texttt{[NNID|frameID|DNID|\thinspace \thinspace timeStamp\thinspace|SNID|latitude|longitude]}\\
+\texttt{[ D \enspace| \enspace \enspace C \enspace \enspace| D \enspace|1304516621| A \enspace|\thinspace \thinspace 41.2061\thinspace|\thinspace \thinspace \enspace 1.7300\enspace \thinspace]}
+\end{center}
+
+Esta trama PREP, con \texttt{frameID C}, va dirigida al nodo D, que además fué el que inició la solicitud de posiciones con un mensaje PREQ. El timestamp que contiene la fecha y hora en la que el nodo \texttt{A} consulta su posición al GPS es \texttt{1304516621}. Por último, los campos \texttt{SNID}, \texttt{latitude} y \texttt{longitude} indican que en el momento en que se generó el PREP el nodo \texttt{A} se encontraba en las coordenadas geográficas \texttt{41.2061 N - 1.73 E}.
+
+
+%-------------------------------------------------------------------
+\subsection{Estructura y flujo de ejecución del programa}
+%-------------------------------------------------------------------
+\label{cap5:sec:estructura}
+%-------------------------------------------------------------------
+En la Figura~\ref{fig:flujoPrograma} se muestra la estructura del programa principal, donde se pueden diferenciar claramente dos etapas, una primera que realiza una serie de operaciones de manera secuencial y, la segunda que lo hace en bucle indefinidamente hasta que se detiene la ejecución del programa.
+
+\figura{Vectorial/Capitulo5/flujoPrograma}{width=.5\textwidth}{fig:flujoPrograma}%
+{Estructura y flujo de ejecución del programa.}
+
+En la primera parte se realizan las siguientes operaciones:
+\begin{itemize}
+\item \textbf{Configuración del nodo}. Lectura del fichero de configuración \texttt{node.conf} donde se definen los siguientes parámetros:
+\begin{itemize}
+\item \texttt{SERIAL\_NAME}. Nombre del puerto serie en el sistema. En GNU/Linux serán de la siguiente manera: \texttt{/dev/ttyUSB0}.
+\item \texttt{SERIAL\_BAUD\_RATE}. Velocidad del puerto serie en bits por segundo (bps). En el fichero \texttt{node.conf} se indican los valores posibles.
+\item \texttt{NODE\_ID}. Identificador del propio nodo.
+\item \texttt{SINK\_NODE\_ID}. Identificador del nodo colector.
+\item \texttt{MAX\_NUM\_HOPS}. Número máximo de saltos en una ruta.
+\item \texttt{LIFETIME\_RTENTRY}. Tiempo de vida de las entradas de la tabla de rutas. Tras este periodo las rutas dejan de ser válidas.
+\item \texttt{ALARM\_RETRIES}. Número de reintentos de envío de una alarma en caso de que no se entregue con éxito.
+\item \texttt{ALARM\_TIMEOUT}. Tiempo de espera tras el envío de una alarma para recibir su correspondiente acuse de recibo (ACK). Si en ese periodo no llega, se procederá al reenvío de la alarma.
+\item \texttt{RREQ\_TIMEOUT}. Tiempo de espera tras el envío de una solicitud de ruta (RREQ) para recibir su correspondiente respuesta (RREP). Si en ese periodo no llega, se procederá al reenvío del \ac{RREQ}.
+\end{itemize}
+\item \textbf{Abrir y configurar el puerto serie}, utilizando los valores leídos anteriormente en el fichero \texttt{node.conf}.
+\item \textbf{Crear cola de mensajes}. Ésta seguirá la disciplina \ac{FIFO}. En ella se guardaran los mensajes que se reciban por el puerto serie, y se tomarán posteriormente para ser procesados.
+\item \textbf{Inicializar número de secuencia}. El número de secuencia se inicializa siempre que se ejecuta el programa con la función \texttt{time()}. De esta manera, aunque un nodo se resetee, al reiniciarse no causará ningún problema en la red, ya que los números de secuencia que utilizará serán mayores que los empleados antes del reseteo. 
+\end{itemize}
+
+Estas operaciones son imprescindibles para para que el nodo pueda operar en la red correctamente. En caso de que alguna de ellas falle, se detendrá la ejecución del programa automáticamente, indicando por pantalla el motivo de error para facilitar su corrección.
+
+En la segunda parte del programa se realizan en bucle cuatro procesos distintos. A continuación, se detalla cada uno de ellos.
+
+%-------------------------------------------------------------------
+\subsubsection{Primer chequeo: Alarmas}
+%-------------------------------------------------------------------
+\figura{Vectorial/Capitulo5/chequeoAlarmas}{angle=270,width=1.13\textwidth}{fig:chequeoAlarmas}%
+{Diagrama de flujo de la parte de chequeo de alarmas.}
+
+El proceso de chequeo de alarmas se encarga de gestionar: la recepción de acuses de recibo, el envío y reenvío alarmas y, en caso de ser necesario, el inicio del descubrimiento de ruta hacia el nodo colector. En la Figura~\ref{fig:chequeoAlarmas} se muestra el diagrama de flujo de este proceso. En él se puede observar que operaciones se van realizando según las condiciones actuales del sistema como: estado de espera de acuse de recibo, contador de reeintentos de envío de alarmas, caminos válidos disponibles en la tabla de rutas, etc. 
+
+%-------------------------------------------------------------------
+\subsubsection{Segundo chequeo: Puerto serie}
+%-------------------------------------------------------------------
+\figura{Vectorial/Capitulo5/chequeoSerial}{angle=270,width=.65\textwidth}{fig:chequeoSerial}%
+{Diagrama de flujo de la parte de chequeo del puerto serie.}
+
+En segundo lugar, se realiza el chequeo del puerto serie. Como se observa en la Figura~\ref{fig:chequeoSerial}, inicialmente se lee el puerto durante \texttt{SERIAL\_TIMEOUT}, definido en el programa. Si no hay nada de información, se finaliza el proceso. En caso contrario, se buscan tramas completas entre los datos recibidos y, si se encuentra alguna, se coloca en la cola de mensajes. Si a pesar de haber recibido información por el puerto serie no se detecta ninguna trama completa, esta se descarta y se finaliza el chequeo.
+
+%-------------------------------------------------------------------
+\subsubsection{Tercer chequeo: Cola de mensajes}
+%-------------------------------------------------------------------
+\figura{Vectorial/Capitulo5/chequeoCola}{angle=270,width=.8\textwidth}{fig:chequeoCola}%
+{Diagrama de flujo de la parte de chequeo de la cola de mensajes.}
+
+En esta parte del programa principal se leen todos los mensajes recibidos y almacenados en la cola de mensajes hasta ese momento. Esto es así por dos razones:
+\begin{itemize}
+\item Cuando se procesa un mensaje se actualiza la información del propio sistema, del estado de la red, etc. Por ello, cada vez que se llega a esta parte del programa principal, interesa procesar todos los mensajes, actualizando así al máximo dicha información, que será utilizada en otros chequeos, como el de alarmas. Esto evita el envío de mensajes innecesarios, cosa que podría ocurrir si al pasar por el chequeo de la cola de mensajes solo se procesase un mensaje por pasada.
+\item Cada vez que se finaliza esta acción la cola de mensajes queda vacía, evitando problemas de almacenamiento de datos.
+\end{itemize}
+
+Como se observa en la Figura~\ref{fig:chequeoCola}, cuando se toma un mensaje de la cola, el nodo se encarga de comprobar si es el destinatario del mismo, o si éste fue enviado en modo broadcast. Si se da uno de estos dos casos, existe una función encargada del procesamiento de cada cada tipo de mensaje. Así, dependiendo de su campo \texttt{frameID}, el mensaje es enviado a la función correspondiente para su procesado. Al terminar esta operación, o tras haber descartado un mensaje, se vuelve a comprobar si hay más en la cola, y únicamente cuando esta está vacía se termina el proceso.
+
+%-------------------------------------------------------------------
+\subsubsection{Cuarto chequeo: Envío de PREQ}
+%-------------------------------------------------------------------
+Como se comentó en la Subsección~\ref{cap5:sec:locNodos}, el nodo colector tiene la posibilidad de enviar mensajes de solicitud de posición en modo broadcast para conocer la localización exacta del resto de nodos de la red. De la gestión de esta operación se encarga el proceso de chequeo de envío de mensajes PREQ. Como se muestra en la Figura~\ref{fig:chequeoPREQ}, en esta parte del programa el nodo comprueba si el mismo es el colector o no. En caso de serlo, la señal para enviar un mensaje \ac{PREQ} en modo broadcast es la pulsación de la letra w o W, que proviene de la sentencia \textit{Where are you?}. Si esta tecla se ha pulsado, al llegar a este punto el nodo enviará un PREQ y finalizará este cuarto chequeo, volviendo nuevamente al primero, como se mostraba en la Figura~\ref{fig:flujoPrograma}. Incluir esta parte en el programa permite emplear un código génerico para todos los nodos, independientemente de ser o no colector, utilizando el archivo de configuración para definir estas características.
+
+\figura{Vectorial/Capitulo5/chequeoPREQ}{angle=270,width=.55\textwidth}{fig:chequeoPREQ}%
+{Diagrama de flujo de la parte de envío de mensajes PREQ.}
+
+
+%-------------------------------------------------------------------
+\section{Validación y resultados}
+%-------------------------------------------------------------------
+\label{cap5:sec:simulacion}
+%-------------------------------------------------------------------
+Para verificar el correcto funcionamiento del software implementado se ha realizado una simulación del sistema completo. Es importante destacar que un sistema de estas características en funcionamiento puede dar lugar a un gran número de situaciones distintas, que vendrán determinadas por: el flujo de alarmas, el número de nodos de la red, los parámetros de configuración u otras circunstancias. Contemplar todos estos casos en una simulación es una tarea tediosa y compleja que, para la implementación de una primera versión o prototipo, no tiene lugar. Por ello, esta sección únicamente pretende constatar las principales funcionalidades deseadas, tanto del protocolo de encaminamiento AODV-LAB, como del \ac{SAEA}. Concretamente se han simulado cuatro escenarios, cada uno de ellos con una distribución distinta, en número y posición, de nodos. A continuación, se detalla el procedimiento seguido para la simulación, así como las características de cada escenario y los resultados obtenidos.
+
+%------------------------------------------------------------------- 
+\subsection{Método de simulación}
+%-------------------------------------------------------------------
+Emular el funcionamiento real del sistema completo desarrollado implica, por un lado, simular los nodos de la red operando independientemente y, por otro, los enlaces entre ellos. Las Figuras~\ref{fig:cap5:simulacion12} y~\ref{fig:cap5:simulacion34} representan un esquema global del método utilizado.
+
+\begin{figure}[t]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:simulacion1}%
+Representación de un enlace bidireccional entre dos nodos.}%
+\includegraphics[width=0.35\textwidth]%
+{Imagenes/Bitmap/Capitulo5/simulacion1}%
+\end{SubFloat}
+%\qquad
+\begin{SubFloat}
+{\label{fig:cap5:simulacion2}%
+Esquema de simulación de un enlace bidireccional entre dos nodos.}%
+\includegraphics[angle=270,width=0.63\textwidth]%
+{Imagenes/Vectorial/Capitulo5/simulacion2}%
+\end{SubFloat}
+\caption{Simulación de un enlace bidireccional entre dos nodos.}
+\label{fig:cap5:simulacion12}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:simulacion3}%
+Representación de enlaces bidireccionales entre tres nodos.}%
+\includegraphics[angle=270,width=0.35\textwidth]%
+{Imagenes/Vectorial/Capitulo5/simulacion3}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:simulacion4}%
+Esquema de simulación de enlaces bidireccionales entre tres nodos.}%
+\includegraphics[angle=270,width=0.75\textwidth]%
+{Imagenes/Vectorial/Capitulo5/simulacion4}%
+\end{SubFloat}
+\caption{Simulación de enlaces bidireccionales entre tres nodos.}
+\label{fig:cap5:simulacion34}
+\end{figure}
+
+Cada nodo del sistema en la simulación consta principalmente de tres partes:
+\begin{itemize}
+\item Fichero de configuración ({\tt node.config}). Contiene los parámetros de configuración del nodo, por ejemplo: identificador del propio nodo, identificador del nodo colector, número máximo posible de saltos en una ruta, etc. (Véase la Subsección~\ref{cap5:sec:estructura}).
+\item Generador aleatorio de alarmas ({\tt alarmGen}). Cada cierto intervalo de tiempo, de duración variable entre dos márgenes definidos, se forma una alarma y se incluye en el fichero {\tt alarm.dat}, que si no existe previamente se crea. Cada alarma lleva su correspondiente identificador que la diferencia inequívocamente de las demás.
+\item Programa principal ({\tt main}). Consiste en el \ac{SAEA} descrito en la Sección~\ref{cap5:sec:saea}, que a su vez utiliza el protocolo de encaminamiento AODV-LAB, descrito en la Subsección~\ref{cap5:sec:protocolos:AODV-LAB}.
+\end{itemize}
+
+Durante la simulación, los distintos nodos existentes se ejecutan en paralelo en la misma máquina, en este caso bajo el sistema operativo GNU/Linux Ubuntu 10.10 64 bits.
+
+Por otro lado, se debe definir el modo en que los nodos se comunicarán entre sí. En la realidad, dos nodos podrán comunicarse cuando se encuentren respectivamente uno dentro del área de cobertura del otro. En la simulación, esto se simplifica y se definen directamente los enlaces entre los nodos. Esto tiene lugar en el fichero {\tt bash.nodes}, donde en la primera columna aparecen listados todos los nodos de la simulación y a la derecha de cada uno la lista de nodos con los que puede comunicarse. Por ejemplo, el siguiente fragmento nos indican que el nodo 1 puede comunicarse con el 2, éste a su vez con el nodo 1 y 3 y, por último, el nodo 3 únicamente con el nodo 2.
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Ejemplo fichero {\tt bash.nodes}:\\
+\> \> {\tt fifo1 fifo2}\\
+\> \> {\tt fifo2 fifo1 fifo3}\\
+\>\> {\tt fifo3 fifo2}
+\end{tabbing}
+
+Se emplea la notación {\tt fifoX}, donde {\tt X} es el número correspondiente al nodo, ya que la información se escribe y lee en ficheros tipo \ac{FIFO}. Concretamente se utilizan ficheros {\tt fifoX\_out} donde los nodos escriben la información que transmiten y {\tt fifoX\_in} donde leen la que reciben. Para crear estos ficheros desde consola basta con introducir el comando: \mbox{{\tt\$ mkfifo fifoX\_out}}. Para que los nodos trabajen en modo simulación, es decir utilizando los ficheros \ac{FIFO}, en vez de en modo de operación, que emplea el puerto serie, debe ponerse la variable global {\tt SIMULATION} en {\tt serial.c} a uno. 
+
+Por último, se ha implementado un script en bash, {\tt bash\_router.sh}, que se encarga de leer periódica y secuencialmente los ficheros {\tt fifoX\_out} y en caso de encontrar algún mensaje escrito en alguno de ellos lo copia en los ficheros {\tt fifoX\_in} correspondientes según esté indicado en {\tt bash.nodes}.
+
+Este método de simulación se comporta como si se trabajase en un medio ideal, sin interferencias ni ruido. Para emular una rotura de enlace se procederá deteniendo la ejecución del \texttt{main} de algún nodo. Esto se tratará con mayor detalle en las próximas subsecciones. 
+
+Además, se ha programado el script \texttt{bash\_router.sh} para que imprima por pantalla los mensajes que se escriben en cada fichero \texttt{fifoX\_out}. De esta manera, y apollándose en el formato de las tramas descrito en la Subsección~\ref{cap5:sec:tramas}, se comprenderá mejor el modo de operación de la red. También se utilizarán los ficheros \texttt{alarmReg.dat} que genera el nodo colector, \texttt{nodo D} en todos los ejemplos, para registrar las alarmas que recibe. Así, se tendrá constancia del orden de llegada de estas, o de si llegan repetidas. Se procederá de igual manera con el fichero \texttt{positionReg.dat} cuando sea necesario. Por último, en algunos casos, cuando esto clarifique la explicación de lo ocurrido durante la simulación, se utilizarán fragmentos de la información que van reportando los nodos durante su operación en la red.
+
+%-------------------------------------------------------------------
+\subsection{Escenario 1}
+%-------------------------------------------------------------------
+El primer escenario a simular es el caso más simple posible. Como se observa en la Figura~\ref{fig:escenario1}, se trata de un enlace entre dos nodos, donde el \texttt{nodo S} sería un nodo generador de alarmas y el \texttt{nodo D} un nodo colector.
+
+\figura{Bitmap/Capitulo5/escenario1}{width=.4\textwidth}{fig:escenario1}%
+{Escenario 1 de simulación:\\Enlace bidireccional entre dos nodos.}
+
+A continuación, se detallan las diferentes situaciones simuladas sobre este escenario y se comentan los resultados obtenidos. Destacar que \texttt{fifo2\_out} es lo que transmite el \texttt{nodo S} y \texttt{fifo1\_out} lo del \texttt{nodo D}.
+\begin{enumerate}
+\item \textbf{Descubrimiento de nodos vecinos, envío de alarmas y acuses de recibo}. El \texttt{nodo S} tiene dos alarmas pendientes de enviar.
+\begin{lstlisting}[style=C]
+// El nodo S envía en modo broadcast un RREQ buscando una
+// ruta hacia el nodo D
+fifo2_out: [0|Q|S|1304421715|D|S|1]                     // RREQ
+// Cuando el nodo D recibe el RREQ, guarda la ruta hacia
+// el nodo S y responde en modo unicast con un RREP
+fifo1_out: [S|P|D|D|1304421716|1|S]                     // RREP
+// Tras recibir el nodo S el RREP, conoce una ruta hacia
+// el nodo D y envía la primera alarma
+fifo2_out: [D|D|D|S|1|1304421690|W|41.2061|1.7300|87]   // ALARM1
+// Cuando el nodo D recibe la alarma envía un acuse de
+// recibo hacia el nodo S
+fifo1_out: [S|A|S|1]                                    // ACK1
+// Sólo cuando el nodo S recibe el acuse de recibo de la
+// alarma anterior, procede a enviar la siguiente 
+fifo2_out: [D|D|D|S|2|1304421694|W|41.2061|1.7300|87]   // ALARM2
+// Al recibir el nodo D la alarma, envía un acuse de
+// recibo hacia el nodo S
+fifo1_out: [S|A|S|2]                                    // ACK2
+// El nodo S recibe el acuse de recibo y como no tiene más
+// alarmas pendientes, por el momento no envía nada más.
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304421690	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304421694	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Destacar que los campos \texttt{alarmType}, \texttt{latitude}, \texttt{longitude} y \texttt{perConf} de las alarmas que genera el \texttt{alarmGen} no varían, únicamente varían el \texttt{alarmID} y el \texttt{timeStamp}.
+
+\item \textbf{Falla la comunicación temporalmente entre los dos nodos, pero ninguno se resetea}. El \texttt{nodo S} tiene dos alarmas pendientes de enviar.
+\begin{lstlisting}[style=C]
+// El nodo S envía en modo broadcast un RREQ buscando una
+fifo2_out: [0|Q|S|1304423364|D|S|1]                     // RREQ
+fifo1_out: [S|P|D|D|1304423365|1|S]                     // RREP
+fifo2_out: [D|D|D|S|1|1304423354|W|41.2061|1.7300|87]   // ALARM1
+// Tras ALARM_TIMEOUT sin recibir el correspondiente ACK y,
+// como ALARM_RETRIES es 2, el nodo S vuelve a intentar
+// enviar su alarma
+fifo2_out: [D|D|D|S|1|1304423354|W|41.2061|1.7300|87]   // ALARM1
+// Esta vez llega correctamente al nodo D y éste responde 
+// con el correspondiente acuse de recibo
+fifo1_out: [S|A|S|1]                                    // ACK1
+fifo2_out: [D|D|D|S|2|1304423359|W|41.2061|1.7300|87]   // ALARM2
+fifo1_out: [S|A|S|2]                                    // ACK2
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304423354	& W	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304423354	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304423359	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Al contemplar el fichero de registro de alarmas se ve que la primera está repetida. Esto indica que la alarma llegó perfectamente al \texttt{nodo D} y que la comunicación falló exáctamente en el envío del acuse de recibo. Por ello, el \texttt{nodo S} al no recibirlo desconoce que su alarma ha llegado correctamente y, tras comprobar que en su configuración se ha fijado el número de reintentos a dos, la vuelve a enviar.
+
+\item \textbf{Agotar los reintentos con la última alarma del \texttt{alarm.dat}}. El \texttt{nodo S} tiene dos alarmas pendientes de enviar.
+\begin{lstlisting}[style=C]
+fifo2_out: [0|Q|S|1304424109|D|S|1]                     // RREQ
+fifo1_out: [S|P|D|D|1304424110|1|S]                     // RREP
+fifo2_out: [D|D|D|S|1|1304424100|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]                                    // ACK1
+fifo2_out: [D|D|D|S|2|1304424104|W|41.2061|1.7300|87]   // ALARM2
+// Tras ALARM_TIMEOUT, primer reintento
+fifo2_out: [D|D|D|S|2|1304424104|W|41.2061|1.7300|87]   // ALARM2
+// Tras ALARM_TIMEOUT segundo y último reintento
+fifo2_out: [D|D|D|S|2|1304424104|W|41.2061|1.7300|87]   // ALARM2
+// Descarta la alarma y, como no hay nuevas alarmas pendientes,
+// no realiza ninguna operación más
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304424100	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Tras enviar una alarma correctamente, al tratar de enviar la segúnda y última pendiente en el fichero \texttt{alarm.dat}, no recibe respuesta del \texttt{nodo D}. Efectúa el número de reintentos definido por \texttt{ALARM\_RETRIES} y una vez se agotan, al ser la última pendiente, la descarta y no realiza más operaciones. En el fichero \texttt{alarmReg.dat} generado por el \texttt{nodo D} únicamente aparece la primera alarma. Esto índica que la comunicación falló antes de que este nodo recibiese la segunda y probablemente no se volvió a recuperar. Esto podría corresponderse con una situación en la realidad en la que el nodo colector sale del área de cobertura de un nodo que le estaba enviando alarmas. Al proceder como se ha descrito se evita que el nodo continúe enviando mensajes sin sentido y por lo tanto malgastnado recursos. La alarma se descarta porque tras dos reintentos habrá transcurrido tres veces el tiempo definido en \texttt{ALARM\_TIMEOUT} y, por lo tanto, la información de dicha alarma será anticuada.
+
+\item \textbf{Agotar los reintentos con una alarma y tener otras posteriores pendientes en el \texttt{alarm.dat}}. El \texttt{nodo S} tiene tres alarmas pendientes de enviar.
+\begin{lstlisting}[style=C]
+fifo2_out: [0|Q|S|1304424294|D|S|1]                     // RREQ
+fifo1_out: [S|P|D|D|1304424295|1|S]                     // RREP
+fifo2_out: [D|D|D|S|1|1304424257|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]                                    // ACK1
+fifo2_out: [D|D|D|S|2|1304424260|W|41.2061|1.7300|87]   // ALARM2
+// Tras ALARM_TIMEOUT, primer reintento
+fifo2_out: [D|D|D|S|2|1304424260|W|41.2061|1.7300|87]   // ALARM2
+// Tras ALARM_TIMEOUT segundo y último reintento
+fifo2_out: [D|D|D|S|2|1304424260|W|41.2061|1.7300|87]   // ALARM2
+// Descarta la alarma 2 y como todavía tiene una tercera
+// pendiente inicia un Descubrimiento de Ruta para tratar
+// de encontrar un camino válido al nodo D, ya que el que
+// tenía no le ha permitido entregar la alarma anterior.
+fifo2_out: [0|Q|S|1304424297|D|S|1]                     // RREQ
+fifo1_out: [S|P|D|D|1304424347|1|S]                     // RREP
+// Descubre una ruta, que puede ser la misma de antes
+// o no, y envía la siguiente alarma pendiente
+fifo2_out: [D|D|D|S|3|1304424267|W|41.2061|1.7300|87]   // ALARM3  
+fifo1_out: [S|A|S|3]				        // ACK3
+// El nodo S no tiene más alarmas que entregar
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304424257	& W	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304424267	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Esta situación es similar a la anterior, pero esta vez, después de la alarma descartada, hay otra pendiente de ser enviada. Por ello, el \texttt{nodo S} reinicia el proceso de Descubrimiento de Ruta. Si éste concluye con éxito, como es el caso, continúa mandando las alarmas por la nueva ruta, que podría ser la misma que la que falló. En el fichero \texttt{alarmReg.dat} se puede ver que únicamente han quedado registradas la primera y última alarma.
+
+\item \textbf{Tratar periódicamente de descubrir una ruta hacia el nodo colector cuando hay alarmas pendientes de ser enviadas}. El \texttt{nodo S} tiene dos alarmas pendientes de enviar.
+\begin{lstlisting}[style=C]
+fifo2_out: [0|Q|S|1304424779|D|S|1]			// RREQ1
+// Tras RREQ_TIMEOUT se vuelve a enviar un RREQ
+fifo2_out: [0|Q|S|1304424780|D|S|1]			// RREQ2
+// Tras RREQ_TIMEOUT se vuelve a enviar un RREQ
+fifo2_out: [0|Q|S|1304424781|D|S|1]			// RREQ3
+// Tras RREQ_TIMEOUT se vuelve a enviar un RREQ
+fifo2_out: [0|Q|S|1304424782|D|S|1]			// RREQ4
+// Tras RREQ_TIMEOUT se vuelve a enviar un RREQ
+fifo2_out: [0|Q|S|1304424783|D|S|1]			// RREQ5
+fifo1_out: [S|P|D|D|1304424811|1|S]			// RREP
+fifo2_out: [D|D|D|S|1|1304424753|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]				 	// ACK1
+fifo2_out: [D|D|D|S|2|1304424756|W|41.2061|1.7300|87]	// ALARM2
+fifo1_out: [S|A|S|2]					// ACK2
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304424753	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304424756	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+El Descubrimiento de Ruta, al contrario que el envío de una alarma, no tiene un número de reintentos definido. Mientras haya alarmas pendientes de ser enviadas, el sistema tratará de descubrir una ruta hacia el nodo colector periódicamente cada \texttt{RREQ\_TIMEOUT}. Una vez que encuentre una ruta, enviará las alarmas que tenga acumuladas en su fichero \texttt{alarm.dat}.
+
+\item \textbf{Importancia de la inicialización del número de secuencia con la función \texttt{time()}}. El \texttt{nodo S} tiene dos alarmas pendientes de enviar.
+\begin{lstlisting}[style=C]
+fifo2_out: [0|Q|S|1304425663|D|S|1]			// RREQ
+fifo1_out: [S|P|D|D|1304425664|1|S]			// RREP
+fifo2_out: [D|D|D|S|1|1304425637|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]					// ACK1
+// El nodo S se resetea y por lo tanto pierde toda
+// la información que tenía: sus tablas, el identificador
+// de la última alarma que envió, etc. Tras un periodo
+// de tiempo se reinicia y como tiene alarmas en el 
+// alarm.dat inicia el Descubrimiento de Ruta.
+fifo2_out: [0|Q|S|1304425677|D|S|1]			// RREQ
+fifo1_out: [S|P|D|D|1304425678|1|S]			// RREP
+// Una vez tiene una ruta hacia el nodo D, vuelve a
+// enviar la primera alarma, ya que en el reseteo perdió
+// la información de cual fué la última que envió.
+fifo2_out: [D|D|D|S|1|1304425637|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]					// ACK1
+fifo2_out: [D|D|D|S|2|1304425643|W|41.2061|1.7300|87]	// ALARM2
+fifo1_out: [S|A|S|2]					// ACK2
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304425637	& W	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304425637	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304425643	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Cuando un nodo se resetea pierde su número de secuencia y la información que guardaba en sus tablas de: RREQ, encaminamiento y PREQ.  Por ello, al reiniciarse vuelve a lanzar el proceso de Descubrimiento de Ruta, como se observa en la línea 10. Si sus nodos vecinos no se han reseteado, para que estos al recibir el mensaje RREQ no lo descarten, su número de secuencia debe ser superior al guardado anteriormente en sus tablas de RREQ, que en este caso se correpondería con el del RREQ de la línea 1, es decir, \texttt{1304425663}. Tal como se veía en la Subsección~\ref{cap5:sec:estructura}, al utilizar la función \texttt{time()} para inicializar el número de secuencia, en vez de hacerlo con cero, por ejemplo, obtendremos un número mayor que el primero, en este caso \texttt{1304425677}. La diferencia entre ambos valores, que es 14, nos indica el número de segundos transcurrido entre las dos inicializaciones. Este número siempre será mayor que el número de mensajes enviados en ese intervalo, por lo tanto, procediendo de esta manera la red soporta sin problemas el reseteo de alguno de sus nodos.
+
+Como vemos en el fichero \texttt{alarmReg.dat}, la primera alarma se recibió dos veces, ya que en el reseteo además se perdió el identificador de la última alarma enviada del fichero \texttt{alarm.dat}. Este efecto podría ser muy negativo si hubiese muchas alarmas ya enviadas y hubiese que volver a enviarlas pero, por la aplicación que tendrá el \ac{SAEA}, será muy poco común que se produzca una gran acumulación de estas en un nodo. 
+
+\item \textbf{Caducidad de las rutas guardadas en la tabla de encaminamiento}. El \texttt{nodo S} tiene inicialmente una alarma pendiente de enviar y, tras un periodo de tiempo superior a \texttt{LIFETIME\_RTENTRY}, aparecen dos nuevas alarmas que entregar.
+\begin{lstlisting}[style=C]
+fifo2_out: [0|Q|S|1304427351|D|S|1]			// RREQ
+fifo1_out: [S|P|D|D|1304427352|1|S]			// RREP
+fifo2_out: [D|D|D|S|1|1304427340|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]					// ACK1
+// Tras el envío de la primera alarma transcurre un
+// tiempo superior a LIFETIME_RTENTRY, y la ruta al 
+// nodo colector caduca. Al aparecer nuevas alarmas
+// es necesario iniciar de nuevo el proceso de
+// Descubrimiento de Ruta.
+fifo2_out: [0|Q|S|1304427352|D|S|1]			// RREQ
+fifo1_out: [S|P|D|D|1304427353|1|S]			// RREP
+fifo2_out: [D|D|D|S|2|1304427389|W|41.2061|1.7300|87]	// ALARM2
+fifo1_out: [S|A|S|2]					// ACK2
+fifo2_out: [D|D|D|S|3|1304427393|W|41.2061|1.7300|87]	// ALARM3
+fifo1_out: [S|A|S|3]					// ACK3
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304427340	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304427389	& W	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304427393	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Si tras haber utilizado una ruta descubierta transcurre un tiempo sin utilizarla superior a \texttt{LIFETIME\_RTENTRY}, esta caduca y deja de ser válida. Por ello, si en algún momento se requiere enviar algo al mismo destinatario será necesario volver realizar el proceso de Descubrimiento de Ruta. Lo ideal será ajustar el valor de \texttt{LIFETIME\_RTENTRY} en función de la frecuencia de cambio de posición de los nodos en la red. Si hay mucha movilidad interesa que sea un valor pequeño, mientras que si hay poca, o es prácticamente estática, se pueden fijar valores más altos.
+
+\item \textbf{Reseteo del \texttt{nodo D} y recepción de alarmas}. El \texttt{nodo S} tiene tres alarmas pendientes de enviar. 
+\begin{lstlisting}[style=C]
+fifo2_out: [0|Q|S|1304430565|D|S|1]			// RREQ
+fifo1_out: [S|P|D|D|1304430566|1|S]			// RREP
+fifo2_out: [D|D|D|S|1|1304430528|W|41.2061|1.7300|87]   // ALARM1
+fifo1_out: [S|A|S|1]					// ACK1
+// En este punto se resetea el nodo D, perdiendo la 
+// información de su tabla de encaminamiento entre
+// entre otras. El nodo S continúa enviando sus alarmas
+fifo2_out: [D|D|D|S|2|1304430534|W|41.2061|1.7300|87]   // ALARM2
+// Al reiniciarse, el nodo D recibe la segunda alarma,
+// pero su tabla de encaminamiento está vacía y para
+// poder mandar su acuse de recibo debe encontrar una
+// ruta hacia el nodo S, por ello esta vez es el nodo D
+// el que inicial el proceso de Descubrimiento de Ruta
+fifo1_out: [0|Q|D|1304430573|S|D|1]			// RREQ
+fifo2_out: [D|P|S|S|1304430574|1|D]			// RREP
+// Mientras que se completa el Descubrimiento de Ruta
+// transcurre ALARM_TIMEOUT y el nodo S vuelve a 
+// enviar su segunda alarma
+fifo2_out: [D|D|D|S|2|1304430534|W|41.2061|1.7300|87]   // ALARM2
+// Esta vez el nodo D ya tiene una ruta válida en su 
+// tabla de encaminamiento y puede mandar su ACK 
+// correspondiente al nodo S
+fifo1_out: [S|A|S|2]					// ACK2
+fifo2_out: [D|D|D|S|3|1304430539|W|41.2061|1.7300|87]   // ALARM3
+fifo1_out: [S|A|S|3]					// ACK3
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304430528	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304430534	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304430534	& W	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304430539	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Como se comentaba en el punto 6, cuando un nodo se resetea pierde, entre otra información, su tabla de encaminamiento. En este caso, esto le ocurre al \texttt{nodo D}. Sucede que tras reiniciarse, recibe una alarma del \texttt{nodo S}, y debe arrancar el proceso de Descubrimiento de Ruta para poder contestarle con un ACK. Cuando esta operación termina, envía el correspondiente acuse de recibo y todo sigue funcionando con normalidad. Si el tiempo que tarda en descubrirse la nueva ruta es superior a \texttt{ALARM\_TIMEOUT}, como ocurre en este caso, el \texttt{nodo S} volverá a enviar su alarma, y por eso vemos la número dos repetida en el fichero \texttt{alarmReg.dat}.
+
+\end{enumerate}
+
+%-------------------------------------------------------------------
+\subsection{Escenario 2}
+%-------------------------------------------------------------------
+El segundo escenario a simular consta de tres nodos alineados, dos de ellos generadores de alarmas, \texttt{nodo S} y \texttt{nodo A}, y el otro colector, \texttt{nodo D}. Su configuración se puede apreciar en la Figura~\ref{fig:escenario2}. Ya que el \texttt{nodo S} no tiene conexión directa con el \texttt{nodo D}, cuando estos requieran comunicarse dependerán del \texttt{nodo A}, que actuará de puente entre ambos.
+
+\figura{Bitmap/Capitulo5/escenario2}{width=.6\textwidth}{fig:escenario2}%
+{Escenario 2 de simulación:\\Enlace bidireccional entre tres nodos alineados.}
+
+A continuación, se detallan las diferentes situaciones simuladas sobre este escenario y se comentan los resultados obtenidos. Destacar que \texttt{fifo3\_out} es lo transmitido por el \texttt{nodo S}, \texttt{fifo2\_out} lo del \texttt{nodo A} y \texttt{fifo1\_out} lo del \texttt{nodo D}.
+\begin{enumerate}
+\item \textbf{Descubrimiento de nodos no vecinos, envio de alarmas y acuses de recibo. Multisalto}. El \texttt{nodo S} tiene dos alarmas pendientes de enviar y el \texttt{nodo A} ninguna. 
+\begin{lstlisting}[style=C]
+// El nodo S envía en modo broadcast un RREQ buscando una
+// ruta hacia el nodo D
+fifo3_out: [0|Q|S|1304433773|D|S|1]			// RREQ
+// El nodo A recibe el RREQ del nodo S, guarda una ruta
+// hacia él en su tabla de encaminamiento y vuelve a 
+// enviar en modo broadcast el mensaje RREQ con sus 
+// campos correspondientes actualizados
+fifo2_out: [0|Q|S|1304433773|D|A|2]			// RREQ
+// Cuando el nodo D recibe el RREQ, guarda la ruta hacia
+// el nodo S a través del A, y responde con un RREP unicast
+fifo1_out: [A|P|D|D|1304433774|1|S]			// RREP
+// El nodo A recibe el RREP del nodo D, guarda una ruta
+// hacia él en su tabla de encaminamiento y vuelve a 
+// enviar en modo unicast el mensaje RREP con sus 
+// campos correspondientes actualizados al nodo S
+fifo2_out: [S|P|A|D|1304433774|2|S]			// RREP
+// Tras recibir el nodo S el RREP, conoce una ruta hacia
+// el nodo D y envía la primera alarma
+fifo3_out: [A|D|D|S|1|1304433727|W|41.2061|1.7300|87]   // ALARM1
+// El nodo A recibe la alarma 1 del nodo S y la reenvía
+// según su tabla de encaminamiento al nodo D
+fifo2_out: [D|D|D|S|1|1304433727|W|41.2061|1.7300|87]   // ALARM1
+// Cuando el nodo D recibe la alarma envía un acuse de
+// recibo hacia el nodo S, a través del A
+fifo1_out: [A|A|S|1]					// ACK1
+// El nodo A recibe el ACK1 del nodo D y lo reenvía
+// según su tabla de encaminamiento al nodo S
+fifo2_out: [S|A|S|1]					// ACK1
+// Sólo cuando el nodo S recibe el acuse de recibo de la
+// alarma anterior, procede a enviar la siguiente 
+fifo3_out: [A|D|D|S|2|1304433732|W|41.2061|1.7300|87]	// ALARM2
+fifo2_out: [D|D|D|S|2|1304433732|W|41.2061|1.7300|87]	// ALARM2
+fifo1_out: [A|A|S|2]					// ACK2
+fifo2_out: [S|A|S|2]					// ACK2
+// El nodo S recibe el acuse de recibo y como no tiene más
+// alarmas pendientes, por el momento no envía nada más.
+\end{lstlisting}
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304433727	& W	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304433732	& W	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+El sistema es capaz de descubrir rutas hacia nodos no vecinos, y de igual manera hacerles llegar alarmas y acuses de recibo. Esta característica se conoce con el nombre de multisalto. El parámetro \texttt{MAX\_NUM\_HOPS} del fichero de configuración \texttt{node.conf}, determinará el número de saltos que puede haber entre dos nodos que se quieren comunicar.
+
+En las Figuras~\ref{fig:cap5:rutavuelta} y ~\ref{fig:cap5:rutaida}, se muestra gráficamente la formación de los caminos de vuelta e ida indicando, en cada caso, el contenido de la tabla de encaminamiento de cada nodo.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:rutavuelta1}%
+El nodo A recibe el RREQ que el nodo S envía en modo broadcast.}%
+\includegraphics[width=0.65\textwidth]%
+{Imagenes/Bitmap/Capitulo5/rutavuelta1}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:rutavuelta2}%
+El nodo D recibe el RREQ que el nodo A reenvía en modo broadcast.}%
+\includegraphics[width=0.65\textwidth]%
+{Imagenes/Bitmap/Capitulo5/rutavuelta2}%
+\end{SubFloat}
+\caption{Formación del camino de vuelta del nodo D al S.}
+\label{fig:cap5:rutavuelta}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:rutaida1}%
+El nodo A recibe el RREP que le envía el nodo D.}%
+\includegraphics[width=0.65\textwidth]%
+{Imagenes/Bitmap/Capitulo5/rutaida1}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:rutaida2}%
+El nodo S recibe el RREP que le reenvía el nodo A.}%
+\includegraphics[width=0.65\textwidth]%
+{Imagenes/Bitmap/Capitulo5/rutaida2}%
+\end{SubFloat}
+\caption{Formación del camino de ida del nodos S al D.}
+\label{fig:cap5:rutaida}
+\end{figure}
+
+\item \textbf{Descarte de paquetes no dirigidos al propio nodo}. \\En la Figura~\ref{fig:cap5:rutavuelta2}, por claridad únicamente se ha representado el mensaje RREQ que recibe el \texttt{nodo D} del \texttt{nodo A}, pero en realidad ese mensaje, al retransmitirse con una antena omnidireccional, también le llega al \texttt{nodo S}, que fué el que inició el Descubrimiento de Ruta. Este nodo, en primer lugar, no descarta el mensaje ya que el campo \texttt{NNID} indica modo broadcast y, por lo tanto, debe continuar procesándolo. Es más adelante, al comprobar que el campo \texttt{SNID} del mensaje corresponde con él mismo, cuando reconoce que ese mensaje fué generado por él y lo descarta. Por pantalla, el \texttt{nodo S} devuelve los siguientes mensajes:
+
+\texttt{RREQ message sent (24 bytes): [0|Q|S|1304433773|D|S|1]\\
+Timeout!\\
+Serial data received (25 bytes): [0|Q|S|1304433773|D|A|2]\\
+RREQ message received!\\
+This message is not for me.\\ 
+Serial data received (25 bytes): [S|P|A|D|1304433774|2|S]\\
+RREP message received!\\
+}
+
+Cuando un nodo recibe un mensaje que no se ha transmitido en broadcast y él no es el \texttt{NNID}, lo descarta de inmediato. Esto sucede por ejemplo cuando el \texttt{nodo S} envía su alarma hacia el \texttt{nodo D} y recibe la retransmisión que hace de esta el \texttt{nodo A}. Como las alarmas se envian de modo unicast, el \texttt{nodo S} descarta de inmediato ese mensaje y continua esperando su correspondiente ACK. Esta es la salida por pantalla del \texttt{nodo S}: 
+
+\texttt{Alarm message sent (42 bytes): [A|D|D|S|1|1304433727|W|41.2061|1.7300|87]\\
+Timeout!\\
+Serial data received (43 bytes): [D|D|D|S|1|1304433727|W|41.2061|1.7300|87]\\
+This message is not for me. \\
+Serial data received (10 bytes): [S|A|S|1]\\
+ACK message received!\\
+}
+
+\item \textbf{Actualización de tablas de encaminamiento}.\\
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:esc2act1}%
+El nodo A realiza un Descubrimiento de Ruta hacia el nodo D.}%
+\includegraphics[width=0.8\textwidth]%
+{Imagenes/Bitmap/Capitulo5/act1}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:esc2act2}%
+El nodo S realiza un Descubrimiento de Ruta hacia el nodo D.}%
+\includegraphics[width=0.8\textwidth]%
+{Imagenes/Bitmap/Capitulo5/act2}%
+\end{SubFloat}
+\caption{Actualización de tablas de encaminamiento.}
+\label{fig:cap5:esc2act}
+\end{figure}
+
+Inicialmente el \texttt{nodo A} dispone de varias alarmas que debe hacer llegar al \texttt{nodo D}. Por ello, realiza un Descubrimiento de Ruta hacia dicho nodo, como se puede observar en la Figura~\ref{fig:cap5:esc2act1}. En ella, se muestran además las tablas de encaminamiento de todos los nodos al finalizar el proceso. A continuación, el \texttt{nodo S} empieza a generar alarmas y, como no tiene una ruta hacia el nodo colector, debe realizar otro Descubrimiento de Ruta, que se representa en la Figura~\ref{fig:cap5:esc2act2}. Se puede observar como en las tablas de los nodos \texttt{S} y \texttt{D} se incorpora una entrada con la nueva ruta descubierta. La tabla del \texttt{nodo A} actualiza la entrada que ya tenía por una ruta más actual, es decir, con un número de secuencia mayor, y añade una nueva ruta hacia el \texttt{nodo S}. De esta manera, quedan todas actualizadas a la nueva situación en la que ambos nodos pueden enviar sus alarmas al nodo colector.
+
+\newpage
+\item \textbf{Envio de alarmas desde dos nodos}. En la simulación, el \texttt{nodo A} envía siete alarmas y el \texttt{nodo S} cinco. En este caso se han modificado los campos \texttt{alarmType} de las alarmas poniendo en su lugar el identificador del nodo que las envía. De esta manera, al concluir la simulación, en el fichero \texttt{alarmReg.dat} del \texttt{nodo D} se puede observar en que orden llegaron y si se entregaron todas, como en este caso.
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304441541	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304441548	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304441543	& S	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304441554	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304441549	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304441561	& A	& 41.2061	& 1.7300	& 87 \\
+& 5	& 1304441566	& A	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304441552	& S	& 41.2061	& 1.7300	& 87 \\
+& 6	& 1304441570	& A	& 41.2061	& 1.7300	& 87 \\
+& 7	& 1304441577	& A	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304441555	& S	& 41.2061	& 1.7300	& 87 \\
+& 5	& 1304441559	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Como se puede ver, todas las alarmas llegaron al nodo colector correctamente. Las del \texttt{nodo A} se entregaron antes a pesar de ser más, ya que la ruta que siguieron no era multisalto.
+
+\item \textbf{Envío de alarmas desde dos nodos con pérdida temporal de la comunicación}. El \texttt{nodo A} entrega cinco alarmas y el \texttt{nodo S} seis. Durante el proceso se pierde temporalmente la comunicación entre los nodos generadores.
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304511821	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304511827	& A	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304511830	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304511825	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304511821	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304511825	& S	& 41.2061	& 1.7300	& 87 \\
+& 5	& 1304511856	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304511830	& S	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304511837	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304511843	& S	& 41.2061	& 1.7300	& 87 \\
+& 5	& 1304511850	& S	& 41.2061	& 1.7300	& 87 \\
+& 6	& 1304511856	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Llegan todas las alarmas correctamente al nodo colector. Lo único destacable es que la alarma 1 del \texttt{nodo S} llega repetida ya que es entregada correctamente la primera vez, pero al perderse temporalmente la comunicación entre el \texttt{nodo A} y el \texttt{S}, éste no recibe el ACK correspondiente, por lo que tras \texttt{ALARM\_TIMEOUT} la reenvía.
+
+\item \textbf{Solicitud de posición de los nodos}. Durante el envío de los mensajes PREQ y PREP no se están enviando alarmas.
+\begin{lstlisting}[style=C]
+// El nodo D realiza una solicitud de posición al 
+// resto de nodos de la red
+fifo1_out: [0|W|D|1304516600|D|1]
+// El nodo A recibe la solicitud, la responde con
+// mensaje PREP y reenvía esa solicitud nuevamente
+// para propagarla por la red
+fifo2_out: [D|C|D|1304516621|A|+90.1234|-127.4321]
+fifo2_out: [0|W|D|1304516600|A|2]
+// El nodo S recibe la solicitud que reenvió el nodo
+// A, la responde con un mensaje PREP y la reenvía
+// nuevamente para propagarla por la red
+fifo3_out: [A|C|D|1304516622|S|+90.1234|-127.4321]
+fifo3_out: [0|W|D|1304516600|S|3]
+// Cuando el nodo A recibe el PREP del nodo S, lo
+// envía según su tabla de encaminamiento hacia el
+// nodo D
+fifo2_out: [D|C|D|1304516622|S|+90.1234|-127.4321]
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt positionReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c}
+& timeStamp & NID & latitude & longitude \\ 
+& 1304516621	& A	& +90.1234	& -127.4321 \\
+& 1304516622	& S	& +90.1234	& -127.4321
+\end{tabular}}
+\end{table}
+
+Observando los timestamp correspondientes a los nodos \texttt{A} y \texttt{S}, vemos que la respuesta de éste último se generó un segundo después que la del \texttt{nodo A}. Por lo tanto, en un caso real esa diferencia de tiempo será igual o mayor a ese valor.
+
+\item \textbf{Envío conjunto de alarmas, PREQ y PREP}. El \texttt{nodo A} envía cuatro alarmas, el \texttt{S} otras cuatro y el \texttt{nodo D} realiza dos solicitudes de posición.
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304516437	& S	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304516442	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304516449	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304516443	& S	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304516453	& A	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304516456	& A	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1304516449	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304516454	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt positionReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c}
+& timeStamp & NID & latitude & longitude \\ 
+& 1304516448	& A	& +90.1234	& -127.4321 \\
+& 1304516452	& S	& +90.1234	& -127.4321 \\
+& 1304516466	& A	& +90.1234	& -127.4321 \\
+& 1304516469	& S	& +90.1234	& -127.4321
+\end{tabular}}
+\end{table}
+
+Tanto el envío de alarmas como las solicitudes de posición se realizan satisfactoriamente. En este caso, al haber más tráfico en la red, la diferencia de tiempo entre los timestamp de los mensajes PREP es mayor que en el caso anterior.
+
+\end{enumerate}
+
+
+%-------------------------------------------------------------------
+\subsection{Escenario 3}
+%-------------------------------------------------------------------
+El tercer escenario a simular consta de cinco nodos. Como se observa en la Figura~\ref{fig:escenario3}, están configurados de modo que entre el \texttt{nodo S} y el \texttt{nodo D} existen dos posibles caminos. Uno de ellos es idéntico al del escenario dos, y el otro depende de los nodos \texttt{B} y \texttt{C}, y por lo tanto cuenta con tres saltos, en este caso el máximo permitido para una ruta. De esta manera, se rompe la dependencia del \texttt{nodo A} que tenían los nodos \texttt{S} y \texttt{D} para comunicarse, ya que en caso de fallo existiría una ruta alternativa.
+
+\figura{Vectorial/Capitulo5/escenario3}{angle=270,width=.55\textwidth}{fig:escenario3}%
+{Escenario 3 de simulación: Varias rutas distintas entre dos nodos.}
+
+A continuación, se detallan las diferentes situaciones simuladas sobre este escenario y se comentan los resultados obtenidos.
+
+\begin{enumerate}
+\item \textbf{Descubrimiento de la ruta más corta entre los nodos \texttt{S} y \texttt{D}}. \\
+Partiendo de que todos los nodos tienen sus tablas de encaminamiento vacías, al realizar el \texttt{S} un Descubrimiento de Ruta hacia el \texttt{D}, el resultado es el que se observa en la Figura~\ref{fig:esc3p1}. El \texttt{nodo D}, en condiciones ideales, recibirá un RREQ reenviado por el \texttt{A} y otro por el \texttt{C}. Independientemente de cuál de los dos le llegue primero, la ruta elegida finalmente será la que cuente con el menor número de saltos, en este caso a través del \texttt{nodo A}. Esto es así ya que los dos mensajes RREQ llevarán el mismo número de secuencia y, por lo tanto, pertenecerán al mismo Descubrimiento de Ruta. En caso de que tuvieran un número de secuencia distinto, se daría prioridad a la ruta más actual, aunque tuviese un mayor número de saltos. En el caso simulado, se extrae que el RREQ llegó primero a través del \texttt{nodo A}. Por eso, los \texttt{nodos B} y \texttt{C} únicamente tienen rutas hacia el \texttt{nodo S}, y no hacia el \texttt{D}, ya que estas se habrían formado al propagar un mensaje RREP.
+
+\figura{Vectorial/Capitulo5/esc3p1}{angle=270,width=.95\textwidth}{fig:esc3p1}%
+{Descubrimiento de la ruta más corta entre los nodos S y D.}
+
+\item \textbf{Redescubrimiento de ruta. Primera prueba}. \\
+Inicialmente los cinco nodos de la red están activos. El \texttt{nodo S} tiene cuatro alarmas pendientes de entregar. Por ello, realiza un Descubrimiento de Ruta que, como se explico en el punto anterior, al finalizar deja su tabla de encaminamiento como en la Figura~\ref{fig:cap5:esc3p2a}. Una vez dispone de una ruta válida comienza a enviar sus alarmas. Tras las dos primeras, el \texttt{nodo A} falla. El \texttt{S} agota los reintentos de envío de la alarma 3 y, al no tener respuesta, la descarta. Como todavía tiene una cuarta alarma que entregar, relanza un Descubrimiento de Ruta obteniendo una nueva ruta a través de los \texttt{nodos B} y \texttt{C}, como se observa en la Figura~\ref{fig:cap5:esc3p2b}. A través de ella, logra enviar su última alarma. 
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:esc3p2a}%
+Tabla de encaminamiento del nodo S tras el primer Descubrimiento de Ruta.}%
+\includegraphics[width=0.3\textwidth]%
+{Imagenes/Bitmap/Capitulo5/esc3p2a}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:esc3p2b}%
+Tabla de encaminamiento del nodo S tras el segundo Descubrimiento de Ruta.}%
+\includegraphics[width=0.3\textwidth]%
+{Imagenes/Bitmap/Capitulo5/esc3p2b}%
+\end{SubFloat}
+\caption{Evolución de las tablas de encaminamiento del nodo S.}
+\label{fig:cap5:esc3p2}
+\end{figure}
+
+\newpage
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304523038	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304523044	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304523052	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Como se puede ver, la caída por un periodo prolongado de tiempo del \texttt{nodo A} supuso la pérdida de la tercera alarma.
+
+\item \textbf{Redescubrimiento de ruta. Segunda prueba}. \\
+Esta prueba es una continuación de la anterior. Inicialmente el \texttt{nodo S} tiene ocho alarmas que entregar. Después del primer Descubrimiento de Ruta (ver Figura~\ref{fig:cap5:esc3p3a}) se envían las dos primeras alarmas. El \texttt{nodo A} deja de operar en la red, y trás perderse la alarma 3, el \texttt{S} vuelve a buscar un camino para enviar sus alarmas (ver Figura~\ref{fig:cap5:esc3p3b}). En este momento, el \texttt{nodo A} vuelve a estar activo, pero mientras que la nueva ruta no caduque o de problemas no se cambiaría, aunque esté operativa una más corta. Tras enviar la alarma 4, el \texttt{nodo C} deja de operar. Con la quinta alarma ocurre lo mismo que con la tercera y a continuación se realiza un nuevo Descubrimiento de Ruta (ver Figura~\ref{fig:cap5:esc3p3c}). Por este último camino se logran entregar las últimas tres alarmas.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:esc3p3a}%
+Tabla de encaminamiento del nodo S tras el primer Descubrimiento de Ruta.}%
+\includegraphics[width=0.29\textwidth]%
+{Imagenes/Bitmap/Capitulo5/esc3p3a}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:esc3p3b}%
+Tabla de encaminamiento del nodo S tras el segundo Descubrimiento de Ruta.}%
+\includegraphics[width=0.29\textwidth]%
+{Imagenes/Bitmap/Capitulo5/esc3p3b}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:esc3p3c}%
+Tabla de encaminamiento del nodo S tras el tercer Descubrimiento de Ruta.}%
+\includegraphics[width=0.29\textwidth]%
+{Imagenes/Bitmap/Capitulo5/esc3p3c}%
+\end{SubFloat}
+\caption{Evolución de las tablas de encaminamiento del nodo S.}
+\label{fig:cap5:esc3p3}
+\end{figure}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304524407	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304524411	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1304524418	& S	& 41.2061	& 1.7300	& 87 \\
+& 6	& 1304524428	& S	& 41.2061	& 1.7300	& 87 \\
+& 7	& 1304524434	& S	& 41.2061	& 1.7300	& 87 \\
+& 8	& 1304524441	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+\newpage
+Tras esta prueba y la anterior, se puede concluir que ante caídas prolongadas de nodos que forman parte de una ruta activa se perderá siempre una alarma.
+
+\item \textbf{Envío de alarmas desde cuatro nodos. Influencia del parámetro \texttt{ALARM\_TIMEOUT} en el tráfico}. \\
+Cada nodo de la red tiene dos alarmas para entregar al nodo colector. Tras los Descubrimientos de Ruta, la tabla de encaminamiento del \texttt{nodo D} se muestra en la Figura~\ref{fig:esc3p4}.
+
+\figura{Vectorial/Capitulo5/esc3p4}{angle=270,width=.29\textwidth}{fig:esc3p4}%
+{Tabla de encaminamiento del nodo D.}
+En primer lugar, el parámetro de configuración \texttt{ALARM\_TIMEOUT} se fija a 8 segundos y el fichero \texttt{alarmReg.dat} generado tras la simulación por el \texttt{nodo D} es:
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304528134	& C	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304528134	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304528137	& C	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304528137	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304528134	& S	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304528134	& B	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304528134	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304528137	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304528137	& B	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+En este caso, la primera alarma del \texttt{nodo S} se envía y recibe dos veces. Esto se debe a que la primera vez su ACK tarda en llegar más de \texttt{ALARM\_TIMEOUT} por el tráfico de la red, y el nodo reintenta el envío. Esto solo ocurre con la primera ya que es el momento en el que más tráfico hay en la red.
+
+A continuación, se repite la prueba pero esta vez con el parámetro \texttt{ALARM\_TIMEOUT} a 12 segundos. El fichero \texttt{alarmReg.dat} generado por el \texttt{nodo D} es el siguiente:
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304529073	& C	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304529073	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529080	& C	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529080	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304529073	& S	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304529073	& B	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529080	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529080	& B	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+En este segundo caso, ninguna alarma llega repetida. Se observa que las alarmas de los \texttt{nodos A} y \texttt{C} llegan antes que las de \texttt{S} y \texttt{B}. Esto se debe a que los primeros únicamente tiene un salto de distancia con el nodo colector, mientras que los otros tiene dos. Por último, resaltar que el parámetro \texttt{ALARM\_TIMEOUT} deberá ajustarse correctamente según la aplicación para optimizar la utilización de recursos de la red.
+
+\item \textbf{Envío de alarmas desde tres nodos en línea}. \\
+Realizando una pequeña modificación del fichero \texttt{bash.nodes} se configura la red de modo que el \texttt{nodo A} no puede comunicar con ningún otro y el resto se mantienen como antes. De este modo, se logra tener tres nodos generadores de alarmas en línea que envian a un nodo colector. Como se puede observar en la Figura~\ref{fig:esc3p5}, en la tabla de encaminamiento del \texttt{nodo D} observamos que la distancia a los \texttt{nodos C}, \texttt{B} y \texttt{S} es de uno, dos y tres saltos, respectivamente. Cada uno de estos nodos tiene dos alarmas para enviar.
+
+\figura{Vectorial/Capitulo5/esc3p5}{angle=270,width=.3\textwidth}{fig:esc3p5}%
+{Tabla de encaminamiento del nodo D.}
+Igual que en el caso anterior, inicialmente se realiza la simulación con el parámetro \texttt{ALARM\_TIMEOUT} a 8 segundos. El fichero \texttt{alarmReg.dat} generado por el \texttt{nodo D} es el siguiente:
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304529073	& C	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529080	& C	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304529073	& B	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304529414	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529080	& B	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304529414	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304529420	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Nuevamente, y por los mismos motivos, observamos que la primera alarma del \texttt{nodo S} se vuelve entregar duplicada.
+
+Al repetir la simulación modificando \texttt{ALARM\_TIMEOUT} a 12 segundos, los resultados son:
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304530117	& C	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304530120	& C	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304530117	& B	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304530117	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304530120	& B	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304530120	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Se concluye que en redes con muchos nodos, donde puede haber varias alarmas que se entreguen a la vez, el parámetro \texttt{ALARM\_TIMEOUT} deberá ser seleccionado a conciencia para evitar reenvíos innecesarios y aumentar de esa manera el tráfico de la misma.
+
+\end{enumerate}
+
+
+%-------------------------------------------------------------------
+\subsection{Escenario 4}
+%-------------------------------------------------------------------
+El cuarto, y último, escenario a simular consta de cinco nodos. Como se observa en la Figura~\ref{fig:escenario4}, se representa una red dinámica en la que inicialmente el \texttt{nodo D} únicamente puede comunicarse con el \texttt{C}. A continuación, tras un desplazamiento, esta conexión se perderá y el \texttt{nodo D} establecerá una nueva con el \texttt{B}. Este hecho reducirá en un salto la distancia entre \texttt{S} y \texttt{D}. Para simular esta situación, se han implmentado los ficheros \texttt{bash1.nodes} y \texttt{bash2.nodes}, correspondientes relativamente a las situaciones descritas.
+
+\figura{Bitmap/Capitulo5/escenario4}{width=.8\textwidth}{fig:escenario4}%
+{Escenario 4 de simulación: Red dinámica.}
+
+A continuación, se detallan las diferentes situaciones simuladas sobre este escenario y se comentan los resultados obtenidos.
+
+\begin{enumerate}
+\item \textbf{Límite de saltos de una ruta}.\\
+En la configuración de todos los nodos de la red se fija el número máximo de saltos en una ruta, \texttt{MAX\_NUM\_HOPS}, a tres. El \texttt{nodo S} tiene alarmas que enviar al \texttt{D} y para ello debe realizar un Descubrimiento de Ruta. Con la configuración inicial, nunca encontrará dicho camino, ya que la distancia entre estos nodos es de cuatro saltos. En la simulación vemos lo siguiente:
+\begin{lstlisting}[style=C]
+// El nodo S envía un RREQ
+fifo3_out: [0|Q|S|1304601056|D|S|1]	// RREQ1
+// El nodo A lo recibe, ve que el campo 'hops' es menor
+// que MAX_NUM_HOPS y lo reenvía
+fifo2_out: [0|Q|S|1304601056|D|A|2]	// RREQ1
+// El nodo B lo recibe, ve que el campo 'hops' es menor
+// que MAX_NUM_HOPS y lo reenvía
+fifo4_out: [0|Q|S|1304601056|D|B|3]	// RREQ1
+// El nodo C lo recibe, ve que el campo 'hops' es igual
+// que MAX_NUM_HOPS y no lo reenvía.
+// Tras RREQ_TIMEOUT el nodo S repite la operación.
+fifo3_out: [0|Q|S|1304601057|D|S|1]	// RREQ2
+fifo2_out: [0|Q|S|1304601057|D|A|2]	// RREQ2
+fifo4_out: [0|Q|S|1304601057|D|B|3]	// RREQ2
+\end{lstlisting}
+
+\figura{Bitmap/Capitulo5/esc4p1}{width=.35\textwidth}{fig:esc4p1}%
+{Tabla de encaminamiento del nodo C.}
+Tras el mensaje RREQ del \texttt{nodo S}, los tres siguientes nodos crean una ruta hacia él, pero el tercero de ellos, en este caso el \texttt{nodo C}, compara el campo \texttt{hops} del mensaje RREQ con el parámetro \texttt{MAX\_NUM\_HOPS} de su configuración y, al ver que son iguales, ya no reenvía nuevamente el RREQ. Por ello, el \texttt{nodo D} nunca recibe la solicitud de ruta del \texttt{S} y la alarma o alarmas de éste no podrán ser entregadas.
+Como ya se comentó anteriormente, la utilización de una restricción de saltos para una ruta, permite controlar la dispersión de los mensajes en la red.
+
+\item \textbf{Dinamicidad de la red}.\\
+El \texttt{nodo D}, que anteriormente no era alcanzable desde el \texttt{nodo S}, se mueve y pasa a serlo.
+\begin{lstlisting}[style=C]
+// Se comienza con la primera configuración correspondiente
+// a 'bash1.nodes'
+$ ./bash_router.sh bash1.nodes 
+fifo3_out: [0|Q|S|1304601583|D|S|1]	// RREQ1 (NODO S)
+fifo2_out: [0|Q|S|1304601583|D|A|2]	// RREQ1 (NODO A)
+fifo4_out: [0|Q|S|1304601583|D|B|3]	// RREQ1 (NODO B)
+fifo3_out: [0|Q|S|1304601584|D|S|1]	// RREQ2 (NODO S)
+fifo2_out: [0|Q|S|1304601584|D|A|2]	// RREQ2 (NODO A)
+fifo4_out: [0|Q|S|1304601584|D|B|3]	// RREQ2 (NODO B)
+// Se cambia a la segunda configuración correspondiente
+// a 'bash2.nodes'
+$ ./bash_router.sh bash2.nodes 
+fifo3_out: [0|Q|S|1304601585|D|S|1]	// RREQ3 (NODO S)
+fifo2_out: [0|Q|S|1304601585|D|A|2]	// RREQ3 (NODO A)
+fifo4_out: [0|Q|S|1304601585|D|B|3]	// RREQ3 (NODO B)
+// Cuando el nodo B reenvía el RREQ el nodo D lo recibe 
+// por fín, y responde con el correspondiente RREP
+fifo1_out: [B|P|D|D|1304601586|1|S]	// RREP  (NODO D)
+fifo4_out: [A|P|B|D|1304601586|2|S]	// RREP  (NODO B)
+fifo2_out: [S|P|A|D|1304601586|3|S]	// RREP  (NODO A)
+// El nodo S recibe el RREP del nodo A y manda su alarma
+fifo3_out: [A|D|D|S|1|1304532488|S|41.2061|1.7300|87]	// ALARM1
+// El nodo A reenvía la alarma 1 del nodo S
+fifo2_out: [B|D|D|S|1|1304532488|S|41.2061|1.7300|87]	// ALARM1
+// El nodo B reenvía la alarma 1 del nodo S
+fifo4_out: [D|D|D|S|1|1304532488|S|41.2061|1.7300|87]	// ALARM1
+// Cuando el nodo B reenvía la alarma 1 del nodo S, el 
+// nodo D la recibe y responde con el correspondiente
+// acuse de recibo (ACK1)
+fifo1_out: [B|A|S|1]	// ACK1 (NODO D)
+fifo4_out: [A|A|S|1]	// ACK1 (NODO B)
+fifo2_out: [S|A|S|1]	// ACK1 (NODO A)
+// El nodo S recibe el ACK de su primera alarma y si tuviera
+// más alarmas las seguiría enviando
+\end{lstlisting}
+
+\figura{Bitmap/Capitulo5/esc4p2}{width=.35\textwidth}{fig:esc4p2}%
+{Tabla de encaminamiento del nodo D.}
+Cuando el \texttt{nodo D} cambia de posición, recibe el RREQ del \texttt{nodo S} y responde con el correspondiente RREP, formando una ruta entre ambos. Una vez que el RREP llega a \texttt{S}, éste comienza a enviar sus alarmas que serán respondidas por \texttt{D} con acuses de recibo.
+
+El protocolo de encaminamiento AODV-LAB soporta y detecta cambios en la topología de la red, de modo que si existe algún camino posible entre dos nodos para comunicarse, éste se descubrirá y podrá utilizarse.
+
+\item \textbf{Envío de alarmas desde múltiples nodos}.\\
+Utilizando la configuración definida por \texttt{bash2.nodes}, es decir, la que resulta tras el movimiento del \texttt{nodo D}, se envían dos alarmas desde cada nodo de la red. A continuación, se muestran la tabla de encaminamiento y el fichero \texttt{alarmReg.dat} generado por \texttt{D}.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf \\ 
+& 1	& 1304602164	& B	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304602169	& B	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304602164	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304602164	& S	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1304602164	& C	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304602169	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304602169	& C	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1304602169	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+\figura{Vectorial/Capitulo5/esc4p3}{angle=270,width=.35\textwidth}{fig:esc4p3}%
+{Tabla de encaminamiento del nodo D.}
+
+Al igual que sucedió en el escenario 3, se vuelve a observar que los nodos más próximos al colector entregan sus alarmas ántes que los más alejados.
+
+\end{enumerate}
+
+
+%-------------------------------------------------------------------
+\subsection{Conclusiones}
+%-------------------------------------------------------------------
+Como se comentaba al inicio de esta Sección, el objetivo que se perseguía era constatar las principales funcionalidades deseadas, tanto del protocolo de encaminamiento AODV-LAB, como del SAEA. Además de ello, la simulación también ha servido para verificar el comportamiento deseado en ciertas situaciones y, finalmente, lograr una mejor comprensión del sistema.
+
+Sobre sus funcionalidades se puede afirmar que éste soporta:
+\begin{itemize}
+\item Descubrimiento de rutas hacia nodos vecinos.
+\item Descubrimiento de la ruta más corta entre dos nodos no vecinos.
+\item Redescubrimiento de una ruta alternativa entre dos nodos en caso de fallo prolongado de la actual. Este hecho, se vió que produce siempre la pérdida de una alarma en caso de que se estén enviando.
+\item Envío de alarmas y acuses de recibo entre dos nodos, o simultáneamente desde varios a un nodo colector. Capacidad de multisalto.
+\item Pérdidas temporales de la comunicación entre nodos sin extravío de datos. Esto es posible gracias a la utilización de acuses de recibo y a la posibilidad de reintentar el envío de alarmas tantas veces como se indique en \texttt{ALARM\_RETRIES}.
+\item Envío de solicitudes y respuestas de posición sin necesidad de realizar un Descubrimiento de Ruta.
+\item Envío conjunto de alarmas y datos de posición entre varios nodos y un colector.
+\item Limitación del número máximo de saltos en una ruta para controlar la dispersión de los mensajes en la red.
+\item Dinamicidad de la red, es decir, detecta cambios en la topología y responde en consecuencia para mantener su operatividad. Caducidad de las entradas en la tabla de encaminamiento.
+\item Reseteo de los nodos de la red. Éste hecho puede producir que se entreguen alarmas repetidas, pero gracias a que el número de secuencia se inicializa con la función \texttt{time()}, al reiniciarse el nodo puede comenzar a operar sin ningún problema en la red.
+\end{itemize}
+
+Además, se ha verificado el comportamiento deseado frente a la siguientes situaciones:
+\begin{itemize}
+\item Agotamiento de los reintentos de envío de la última alarma del fichero \texttt{alarm.dat}. En tal caso, ésta se descarta y no se realiza ninguna operación más.
+\item Agotamiento de los reintentos de envío de una alarma del fichero \texttt{alarm.dat} que tiene, además de ésta, otras pendientes de entregar. En este caso, se descarta la que agotó los reintentos y, antes de continuar enviando nuevas alarmas, se realiza un Descubrimiento de Ruta nuevo, ya que el camino anterior no fué válido.
+\item Un nodo con alarmas pendientes de entregar, inicia periódicamente un Descubrimiento de Ruta, hasta que este finalice con éxito y pueda entregar sus alarmas.
+\item Descarte de mensajes no dirigidos al propio nodo.
+\item Actualización de las tablas de encaminamiento.
+\item Influencia del parámetro \texttt{ALARM\_TIMEOUT} en el tráfico de la red.
+\end{itemize}
+
+Por todo ello, se considera que el software implementado para este primer prototipo de red ad hoc de datos cumple los objetivos deseados y, por lo tanto, será válido para continuar con las pruebas. Se destaca el enfoque del mismo hacía un uso óptimo de los recursos, característica muy importante en un medio aislado como es el mar. No obstante, la mejora del software será una línea importate para continuar con este proyecto, ya sea trabajando sobre: los protocolos de encaminamiento, las funcionalidades del SAEA, la mejora del código, o todos ellos.
+
+%-------------------------------------------------------------------
+%\section*{\NotasBibliograficas}
+%-------------------------------------------------------------------
+%\TocNotasBibliograficas
+
+%Citamos algo para que aparezca en la bibliografía\ldots
+%\citep{ldesc2e}
+
+%\medskip
+
+%Y también ponemos el acrónimo \ac{CVS} para que no cruja.
+
+%Ten en cuenta que si no quieres acrónimos (o no quieres que te falle la compilación en ``release'' mientras no tengas ninguno) basta con que no definas la constante \verb+\acronimosEnRelease+ (en \texttt{config.tex}).
+
+
+%-------------------------------------------------------------------
+%\section*{\ProximoCapitulo}
+%-------------------------------------------------------------------
+%\TocProximoCapitulo
+
+%...
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

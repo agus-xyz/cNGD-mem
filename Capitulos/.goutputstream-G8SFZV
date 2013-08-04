@@ -1,0 +1,187 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 2
+%
+%---------------------------------------------------------------------
+
+\chapter{Fundamentos y estado del arte}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Aprende como si fueras a vivir toda la vida,\\
+y vive como si fueras a morir mañana.
+\end{Frase}
+\begin{Fuente}
+Charles Chaplin
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+...
+\end{resumen}
+
+
+%-------------------------------------------------------------------
+\section{Bandas de frecuencia}
+%-------------------------------------------------------------------
+\label{cap1:sec:bandasfrec}
+El espectro radioeléctrico se divide en bandas de frecuencia, que son asignadas a los diferentes servicios o sistemas radioeléctricos por la \ac{UIT}. En segundo lugar, las administraciones de los diferentes países efectúan las atribuciones de frecuencias. Por ello, la utilización de sistemas radioeléctricos debe hacerse dentro del régimen de legalidad vigente, permitiendo la normal coexistencia de las comunicaciones de esta naturaleza.
+
+Las bandas libres, o de uso común, dentro del espectro radioeléctrico, son aquellas en las que se permite la operación de dispositivos de radiocomunicaciones sin una autorización individual de cada estación. Por otra parte, se tiene las bandas con licencia, en las que se asigna una frecuencia o canal para un uso exclusivo del mismo. Obtener una licencia de operación en estas bandas supone la realización de ciertos trámites burocráticos, y la inversión de tiempo y dinero. Por ello, y por la limitación que supone tener que ajustarse en cada país o región a sus restricciones y condiciones para obtener la correspondiente licencia, para este proyecto se estudiarán únicamente las bandas libres. 
+
+Esta terminilogía de clasificación es muy utilizada en la jerga del sector, pero en los textos de regulación del espectro no se emplea como tal, y se habla de las bandas para aplicaciones \ac{ICM}. Éstas fueron definidas por la \ac{UIT} en el artículo 5 del \ac{RR}\footnote{Concrétamente en los puntos 5.138 y 5.150.}. Las bandas \ac{ICM}, están reservadas internacionalmente\footnote{Existen algunas excepciones a nivel regional.} para el uso no comercial de radiofrecuencia electromagnética en las áreas industrial, científica y médica. La utilización de estas bandas de frecuencia está abierto a todo el mundo sin necesidad de licencia, respetando las regulaciones que limitan los niveles de potencia, ancho de banda, etc. Este hecho a dado lugar a su uso en comunicaciones (p.e. WLAN o WPAN), donde la tecnología empleada cuenta con una cierta tolerancia a errores y utiliza mecanismos de protección contra interferencias, como técnicas de espectro ensanchado\footnote{Ver RR 15.13.}, y de acceso múltiple a la banda.
+
+Concretamente, las bandas \ac{ICM} actuales se muestran en la Tabla~\ref{cap2:tab:bandasICM}:
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c c l}
+\hline
+\hline
+& & & & \\ 
+Banda	& Frecuencia central	& Unidad	& RR No. &	Disponibilidad \\
+& & & & \\ 
+\hline
+6.765 - 6.795	& 6.780		& MHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+13.553 - 13.567	& 13.560	& MHz	& 5.150 & \\
+& & & & \\
+26.957 - 27.283 & 27.120	& MHz	& 5.150 & \\
+& & & & \\
+40.66 - 40.70	& 40.680	& MHz	& 5.150 & \\
+& & & & \\
+433.05 - 434.79	& 433.92	& MHz	& 5.138 & Región 1 y sujeta a la aceptación \\
+		&		&	&	& local. Ver RR No. 5.280 \\
+& & & & \\
+902 - 928	& 915		& MHz   & 5.150 & Únicamente Región 2 \\
+& & & & \\
+2.4 - 2.5	& 2.45		& GHz	& 5.150 & \\
+& & & & \\
+5.725 - 5.875	& 5.8		& GHz	& 5.150 & \\
+& & & & \\
+24 - 24.25	& 24.125	& GHz	& 5.150 & \\
+& & & & \\
+61 - 61.5	& 61.25		& GHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+122 - 123	& 122.5		& GHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+244 - 246	& 245		& GHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Bandas ICM definidas por la UIT.%
+         \label{cap2:tab:bandasICM}}
+\end{table}
+
+En la Figura~\ref{cap2:fig:regionesUIT} se muestra un mapa con las regiones definidas por la \ac{UIT}. Además, se destaca que, como se observa en la Tabla~\ref{cap2:tab:bandasICM}, las bandas definidas en RR No. 5.138 tienen su uso sujeto a una autorización especial de la administración en cuestión, de acuero con las otras administraciones cuyos servicios de radiocomunicación puedan resultar afectados. Por último, para todas las bandas \ac{ICM} la \ac{UIT} advierte: \textit{Los servicios de radiocomunicación que operen en estas bandas deben aceptar la interferencia perjudicial que puede ser causada por las aplicaciones ICM.}
+
+\figura{Vectorial/Capitulo2/regionesUIT}{angle=270,width=.55\textwidth}{cap2:fig:regionesUIT}%
+{Regiones definidas por la UIT en su Reglamento de Radiocomunicaciones.}
+
+En Europa, la banda 902 - 928 MHz se utiliza para aplicaciones de telefonía móvil automática GSM, por ello, se ha definido\footnote{ETSI TR 102 649-2 V1.1.1 (2008-09).} otra banda de 868 a 870 MHz para dispositivos de corto alcance, \ac{SRD}. Ésta se encuentra dividida en sub-bandas destinadas a diferentes aplicaciones.
+
+En España, las restricciones de potencia y condiciones de utilización aplicadas sobre las bandas \ac{ICM} definidas por la \ac{UIT} se recogen en el \ac{CNAF}, publicado por el Ministerio de Industria, Turismo y Comercio. En la Tabla~\ref{cap2:tab:bandasICM}, se recogen los valores actualmente en vigor según las Notas de Utilización Nacional del \ac{CNAF} 2010.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c c l}
+\hline
+\hline
+& & & & \\ 
+Banda		& Unidad	& Campo magnético /	& Nota		& Observaciones \\
+		& 		& Potencia máxima	&		&		\\
+\hline
+6.765 - 6.795	& MHz		& 42 $dB\mu A/m$	& UN-115	& Aplicaciones de bucle inductivo \\
+		&		& (a 10 m)		&		& \\
+& & & & \\
+13.553 - 13.567	& MHz		& 42 $dB\mu A/m$	& UN-115	& Aplicaciones de bucle inductivo \\
+		&		& (a 10 m)		&		& \\
+& & & & \\
+26.957 - 27.283 & MHz 		& 10 mW pra		& UN-4 		& Aplicaciones genéricas de SRD. \\
+		&		&			&		& Coincide con los primeros 28 canales \\
+		&		&			&		& de la Banda Ciudadana, CB-27 \\
+& & & & \\
+40.66 - 40.70	& MHz		& 10 mW pra		& UN-11 	& Aplicaciones genéricas de SRD\\
+& & & & \\
+433.05 - 434.79	& MHz		& 1 mW pra		& UN-30		& Ciclo de trabajo 100\% \\
+		&		& 10 mW pra		&		& Ciclo de trabajo 10\% \\
+& & & & \\
+434.04 - 434.79 & MHz		& 10 mW pra		& UN-30		& Ciclo de trabajo 100\% \\
+		&		&			& 		& Canalización $\le 25kHz$ \\
+& & & & \\
+869.40 - 869.65	& MHz	 	& 500 mW pra		& UN-39		& C. trabajo 100\% con canalización $25kHz$ \\
+		&		&			&		& C. trabajo 10\% sin canalización \\
+& & & & \\
+2.4000 - 2.4835	& GHz		& 100 mW pire		& UN-85a	& La norma de referencia para los equipos \\
+		&		&			&		& es el estándar ETSI EN 300 328 en su \\
+		&		&			&		& versión actualizada \\
+& & & & \\
+5.725 - 5.875	& GHz		& 25 mW pire		& UN-130	& La norma técnica de referencia para estos \\
+		&		&			& 		& dispositivos es la norma ETSI EN 300 440 \\
+& & & & \\
+24 - 24.25	& GHz		& 100 mW pire		& UN-86		& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+61 - 61.5	& GHz		& 100 mW pire		& UN-115	& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+122 - 123	& GHz		& 100 mW pire		& UN-115	& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+244 - 246	& GHz		& 100 mW pire		& UN-115	& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Notas de Utilización Nacional de las Bandas ICM definidas en el CNAF 2010.%
+         \label{cap2:tab:bandasICM}}
+\end{table}
+
+A la hora de optar por trabajar en una u otra banda de frecuencia deberá tenerse en cuenta:
+\begin{itemize}
+\item La existencia de normas o estándares de operación en la banda que proporcionen criterios uniformes en el ámbito territorial más extenso posible, de manera que se pueda garantizar la interoperabilidad a nivel global. Los estándares consensuados, o \textit{de iure}, suelen contar con un respaldo más amplio y con menos detractores que los estándares \textit{de facto}, puesto que éstos últimos pueden contener tecnologías privativas protegidas con patentes y para las que no negocien acuerdos de licencia, algo que no es habitual en los estándares elaborados por organismos.
+\item La presencia en el mercado de tecnologías que operen en dicha banda. Cuanto mayor sea, es decir, cuanto mayor oferta haya, más se abaratará esa tecnología. Además, su disponibilidad también será mayor.
+\item La potencia de transmisión y sensibilidad de los módulos de comunicación. Cuanto más elevada sea la diferencia entre estos dos parámetros, mayor será la distancia posible entre los nodos de la red. 
+\item La frecuencia de operación. Las frecuencias altas permiten una velocidad de transmisión de datos más elevada, pero se ven más afectadas por fenómenos como: la difracción, la refracción, los agentes metereológicos, etc. Ésto se traduce en una reducción del alcance de la señal e incluso, en algunos casos, en una pérdida temporal de la comunicación.\citep{uhfvhfmicrowave}
+\item La modulación, el protocolo de acceso al medio y otros parámetros que también influyen en: la calidad, el alcance y la robustez del sistema de comunicación. 
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\section{Zigbee}
+%-------------------------------------------------------------------
+\label{cap1:sec:zigbee}
+ZigBee es el nombre de la especificación de un conjunto de protocolos de alto nivel (integra radio y computación) de comunicación inalámbrica para su utilización con radiodifusión digital de bajo consumo, basada en el estándar IEEE 802.15.4 de redes inalámbricas de área personal, que únicamente define la capa física y MAC. Su objetivo son las aplicaciones que requieren comunicaciones seguras con baja tasa de envío de datos y maximización de la vida útil de sus baterías.
+
+Uno de los campos en los que mayor aceptación ha tenido esta tecnología han sido en las redes de sensores inalámbricas (Wireless Sensor Network, WSN), gracias a:
+\begin{itemize}
+\item Su bajo consumo
+\item Su topología de red en malla
+\item Su fácil integración (se pueden fabricar nodos con muy poca electrónica).
+\end{itemize}
+
+Existen módulos ZigBee de largo alcance que integran componentes de diversos fabricantes (Atmel, Digi International, etc.) y ofrecen una solución de fácil acceso y gran versatilidad, gracias a sus diseños modulares y generalmente basados en software libre. Presentamos en este documento dos de las opciones más interesantes que se han encontrado:
+\begin{itemize}
+\item Libelium Waspmote (datasheet castellano y datasheet inglés)
+\item Meshnetics ZigBit Amp (datasheet inglés)
+\end{itemize}
+
+Como se puede ver en los enlaces anteriores, se habla de distancias bastantes interesantes, aunque parece que la tasa máxima de transferencia está en 250 kbps, lo cual es insuficiente para la idea inicial de este proyecto.
+
+En este punto cabe destacar la posibilidad de implementación de un sistema de alarma de eventos. Esta aplicación podría implementarse conjunta o independiente de la opción inicial de envío de toda la información acústica.
+
+Se ha buscado información sobre medidas empíricas en la utilización de estos módulos, destacando dos documentos:
+\begin{itemize}
+\item Experimental Evaluation of Radio Transceivers for Sensor Networks in Harsh Environments.\\
+Este artículo publicado por Libelium, la empresa fabricante del dispositivo Waspmote, muestra los resultados de varias pruebas realizadas con el mismo, configurado con las diferentes antenas y módulos de XBee (los módulos de ZigBee desarrollados por Digi Internacional se denominan XBee) que comercializa. Estas pruebas se realizan para distintas distancias y condiciones de visión (LOS y NLOS). Se puede observar que los resultados para NLOS son muy negativos para 2,4GHz, aun utilizando la máxima potencia. De cualquier modo, es posible que las condiciones NLOS que se puedan producir en el mar no sean tan perjudiciales como las de este experimento. Estos resultados habría que tenerlos muy en cuenta ya que WiFi, por ejemplo, también trabaja a la misma potencia y rango de frecuencias.
+\item Low Power Sensor Platform for Environmental Monitoring.\\
+En este segundo artículo, se describe una aplicación similar a la del presente proyecto en lo referente a boyas trabajando en el mar (altura de las antenas de 1,5 metros sobre nivel de flotación), pero aquí se trabaja midiendo la temperatura, lo que supone un menor flujo de datos y un funcionamiento periódico, no en tiempo real. En él se comenta que utilizando Meshnetics ZigBit Amp development kit con las antenas de máxima ganancia, la máxima distancia a la que se ha conseguido transmitir es 1km, pese a que Meshnetics habla de 4km. A continuación prueban el módulo XBee-PRO 868 RF, y afirman haber logrado una transmisión boya a boya de 3km. No se comenta nada del flujo de datos pero se puede suponer que, siendo la información a transmitir temperaturas y además utilizando el módulo de 868MHz, el flujo no será muy elevado.
+
+Tras la consulta de estos documentos queda presente la duda de la distancia posible a alcanzar en enlaces NLOS entre boyas, ya que en el caso del medio marino se logran varios kilómetros pero en el desierto parece no funcionar nada bien, y no se describe en detalle el perfil del enlace.
+En cuanto al tema del flujo de datos no hay duda de que, incluso trabajando algo
+en la compresión de los mismos, los valores posibles son muy escasos.
+Tras una detallada búsqueda se encontró el módulo Synapse 2Mbps RF Engine el
+cual parece muy integrable en el dispositivo Waspmote, y entre sus especificaciones
+se destaca:

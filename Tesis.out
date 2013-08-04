@@ -1,0 +1,99 @@
+\BOOKMARK [0][-]{titulo.0}{P\341gina de T\355tulo}{}
+\BOOKMARK [0][-]{dedicatoria.0}{Dedicatoria}{}
+\BOOKMARK [0][-]{chapter*.2}{Acknowledgements}{}
+\BOOKMARK [0][-]{chapter*.3}{Abstract}{}
+\BOOKMARK [0][-]{indices.0}{Indices}{}
+\BOOKMARK [1][-]{table of contents.1}{Table of contents}{indices.0}
+\BOOKMARK [1][-]{list of figures.1}{List of Figures}{indices.0}
+\BOOKMARK [1][-]{list of tables.1}{List of Tables}{indices.0}
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [0][-]{chapter.2}{Cognitive Wireless Sensor Networks: State of Art}{}
+\BOOKMARK [0][-]{chapter.3}{Review Study}{}
+\BOOKMARK [0][-]{chapter.4}{Design Study}{}
+\BOOKMARK [0][-]{chapter.5}{Software}{}
+\BOOKMARK [1][-]{section.5.1}{M\363dulo de entrega remota de datos}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.1.1}{Env\355o, enrutado y acuse de recibo de alarmas}{section.5.1}
+\BOOKMARK [2][-]{subsection.5.1.2}{Localizaci\363n de nodos}{section.5.1}
+\BOOKMARK [1][-]{section.5.2}{Protocolos de encaminamiento}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.2.1}{Protocolos de encaminamiento proactivos, reactivos e h\355bridos}{section.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.1.1}{Protocolos de encaminamiento proactivo}{subsection.5.2.1}
+\BOOKMARK [3][-]{subsubsection.5.2.1.2}{Protocolos de encaminamiento reactivo}{subsection.5.2.1}
+\BOOKMARK [3][-]{subsubsection.5.2.1.3}{Protocolos de encaminamiento h\355bridos}{subsection.5.2.1}
+\BOOKMARK [3][-]{subsubsection.5.2.1.4}{Elecci\363n de un protocolo de encaminamiento}{subsection.5.2.1}
+\BOOKMARK [2][-]{subsection.5.2.2}{Protocolo AODV}{section.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2.1}{Visi\363n general}{subsection.5.2.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2.2}{Declaraci\363n de aplicabilidad}{subsection.5.2.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2.3}{Tabla de rutas y tabla de RREQ's}{subsection.5.2.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2.4}{Formato de mensajes}{subsection.5.2.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2.5}{Descubrimiento de Ruta}{subsection.5.2.2}
+\BOOKMARK [3][-]{subsubsection.5.2.2.6}{Mantenimiento de Ruta}{subsection.5.2.2}
+\BOOKMARK [2][-]{subsection.5.2.3}{Protocolos basados en el AODV}{section.5.2}
+\BOOKMARK [3][-]{subsubsection.5.2.3.1}{AODVjr}{subsection.5.2.3}
+\BOOKMARK [3][-]{subsubsection.5.2.3.2}{AODVbis}{subsection.5.2.3}
+\BOOKMARK [3][-]{subsubsection.5.2.3.3}{LoWPAN-AODV}{subsection.5.2.3}
+\BOOKMARK [3][-]{subsubsection.5.2.3.4}{LOAD}{subsection.5.2.3}
+\BOOKMARK [3][-]{subsubsection.5.2.3.5}{TinyAODV}{subsection.5.2.3}
+\BOOKMARK [3][-]{subsubsection.5.2.3.6}{NST-AODV}{subsection.5.2.3}
+\BOOKMARK [2][-]{subsection.5.2.4}{Definici\363n del protocolo de encaminamiento AODV-LAB}{section.5.2}
+\BOOKMARK [2][-]{subsection.5.2.5}{Comparaci\363n entre los distintos protocolos de encaminamiento}{section.5.2}
+\BOOKMARK [1][-]{section.5.3}{Implementaci\363n en C/Linux}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.3.1}{Introducci\363n y justificaci\363n}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.2}{Organizaci\363n del c\363digo}{section.5.3}
+\BOOKMARK [2][-]{subsection.5.3.3}{Tramas}{section.5.3}
+\BOOKMARK [3][-]{subsubsection.5.3.3.1}{Trama RREQ}{subsection.5.3.3}
+\BOOKMARK [3][-]{subsubsection.5.3.3.2}{Trama RREP}{subsection.5.3.3}
+\BOOKMARK [3][-]{subsubsection.5.3.3.3}{Trama DATA}{subsection.5.3.3}
+\BOOKMARK [3][-]{subsubsection.5.3.3.4}{Trama ACK}{subsection.5.3.3}
+\BOOKMARK [3][-]{subsubsection.5.3.3.5}{Trama PREQ}{subsection.5.3.3}
+\BOOKMARK [3][-]{subsubsection.5.3.3.6}{Trama PREP}{subsection.5.3.3}
+\BOOKMARK [2][-]{subsection.5.3.4}{Estructura y flujo de ejecuci\363n del programa}{section.5.3}
+\BOOKMARK [3][-]{subsubsection.5.3.4.1}{Primer chequeo: Alarmas}{subsection.5.3.4}
+\BOOKMARK [3][-]{subsubsection.5.3.4.2}{Segundo chequeo: Puerto serie}{subsection.5.3.4}
+\BOOKMARK [3][-]{subsubsection.5.3.4.3}{Tercer chequeo: Cola de mensajes}{subsection.5.3.4}
+\BOOKMARK [3][-]{subsubsection.5.3.4.4}{Cuarto chequeo: Env\355o de PREQ}{subsection.5.3.4}
+\BOOKMARK [1][-]{section.5.4}{Validaci\363n y resultados}{chapter.5}
+\BOOKMARK [2][-]{subsection.5.4.1}{M\351todo de simulaci\363n}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.2}{Escenario 1}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.3}{Escenario 2}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.4}{Escenario 3}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.5}{Escenario 4}{section.5.4}
+\BOOKMARK [2][-]{subsection.5.4.6}{Conclusiones}{section.5.4}
+\BOOKMARK [0][-]{chapter.6}{Prueba final del prototipo de red ad hoc de datos}{}
+\BOOKMARK [1][-]{section.6.1}{Introducci\363n}{chapter.6}
+\BOOKMARK [1][-]{section.6.2}{Primera prueba}{chapter.6}
+\BOOKMARK [1][-]{section.6.3}{Segunda prueba}{chapter.6}
+\BOOKMARK [1][-]{section.6.4}{Tercera prueba}{chapter.6}
+\BOOKMARK [1][-]{section.6.5}{Discusi\363n de resultados}{chapter.6}
+\BOOKMARK [0][-]{chapter.7}{Conclusiones y trabajo futuro}{}
+\BOOKMARK [1][-]{section.7.1}{Conclusiones}{chapter.7}
+\BOOKMARK [1][-]{section.7.2}{Trabajo futuro}{chapter.7}
+\BOOKMARK [0][-]{appendix.A}{Presupuesto}{}
+\BOOKMARK [0][-]{appendix.B}{C\363digo MATLAB}{}
+\BOOKMARK [1][-]{section.B.1}{freeSpace.m}{appendix.B}
+\BOOKMARK [1][-]{section.B.2}{twoRayModel.m}{appendix.B}
+\BOOKMARK [1][-]{section.B.3}{measurements.m}{appendix.B}
+\BOOKMARK [0][-]{appendix.C}{Cabecera y definici\363n de funciones}{}
+\BOOKMARK [1][-]{section.C.1}{extractMessInfo}{appendix.C}
+\BOOKMARK [1][-]{section.C.2}{checkAlarm}{appendix.C}
+\BOOKMARK [1][-]{section.C.3}{sendLocalAlarm}{appendix.C}
+\BOOKMARK [1][-]{section.C.4}{exeDATA}{appendix.C}
+\BOOKMARK [1][-]{section.C.5}{sendDATA}{appendix.C}
+\BOOKMARK [1][-]{section.C.6}{exeACK}{appendix.C}
+\BOOKMARK [1][-]{section.C.7}{sendACK}{appendix.C}
+\BOOKMARK [1][-]{section.C.8}{serialData2queue}{appendix.C}
+\BOOKMARK [1][-]{section.C.9}{initSeqNum}{appendix.C}
+\BOOKMARK [1][-]{section.C.10}{updateSeqNum}{appendix.C}
+\BOOKMARK [1][-]{section.C.11}{checkRREQ}{appendix.C}
+\BOOKMARK [1][-]{section.C.12}{exeRREQ}{appendix.C}
+\BOOKMARK [1][-]{section.C.13}{sendRREQ}{appendix.C}
+\BOOKMARK [1][-]{section.C.14}{checkPREQ}{appendix.C}
+\BOOKMARK [1][-]{section.C.15}{exePREQ}{appendix.C}
+\BOOKMARK [1][-]{section.C.16}{sendPREQ}{appendix.C}
+\BOOKMARK [1][-]{section.C.17}{exeRREP}{appendix.C}
+\BOOKMARK [1][-]{section.C.18}{sendRREP}{appendix.C}
+\BOOKMARK [1][-]{section.C.19}{exePREP}{appendix.C}
+\BOOKMARK [1][-]{section.C.20}{sendPREP}{appendix.C}
+\BOOKMARK [1][-]{section.C.21}{checkNewRoute}{appendix.C}
+\BOOKMARK [1][-]{section.C.22}{newRoute}{appendix.C}
+\BOOKMARK [1][-]{section.C.23}{getRoute}{appendix.C}
+\BOOKMARK [0][-]{appendix*.71}{Bibliograf\355a}{}

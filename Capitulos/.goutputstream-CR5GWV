@@ -1,0 +1,517 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 5
+%
+%---------------------------------------------------------------------
+
+\chapter{Software}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Caminante, son tus huellas\\
+el camino y nada más;\\
+Caminante, no hay camino,\\
+se hace camino al andar.
+\end{Frase}
+\begin{Fuente}
+Antonio Machado
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+En este capítulo se describe en detalle el software del \ac{SAEA}, es decir, la parte inteligente del mismo. Esta se compone del protocolo de encaminamiento y del sistema de gestión de alarmas. El primero se encarga de encontrar los caminos óptimos y activos entre un nodo fuente y uno destino superando, en la medida de lo posible, las diversas dificultades que se pueden presentar en el medio, y haciendo posible la comunicación entre ellos. Por otro lado, el sistema de gestión de alarmas: chequea periodicamente la aparición de estas en el nodo local, envía las existentes al nodo destino, controla la correcta recepción de las mismas, el número de reenvíos posibles y las funciones de localización de nodos.
+\end{resumen}
+
+
+%-------------------------------------------------------------------
+\section{Protocolos de encaminamiento}
+%-------------------------------------------------------------------
+\label{cap5:sec:protocolos}
+%-------------------------------------------------------------------
+Como ya se comentó en la Sección {\bfseries punto 3.1.loquesea}, las redes ad hoc ofrecen grandes posibilidades, sobre todo en aquellos medios donde no existe una infraestructura de red \mbox{preexistente}. El diseño de protocolos de encaminamiento para este tipo de redes es \mbox{actualmente} un gran desafío debido a su naturaleza cambiante: tamaño, densidad de tráfico, rutas entre nodos...
+
+Existen una serie de critérios importantes a tener en cuenta en la selección o \mbox{implementación} de un protocolo de encaminamiento para una red ad hoc \citep{DomingoCarmen2005PhD}:
+\begin{itemize}
+\item Señalización mínima:\\La reducción del número de mensajes de control y del tamaño de estos ayuda a conservar la batería y el porcentaje de ciclo de trabajo disponible para transmitir, a reducir la contienda de acceso al medio y por lo tanto, a mejorar la comunicación entre los nodos. 
+\item Tiempo de procesamiento mínimo:\\Cuanto más simples sean las operaciones computacionales realizadas por el protocolo, menor será el tiempo de procesamiento necesario y, por tanto, las baterías tendrán mayor tiempo de vida.
+\item Mantenimiento en condiciones de topología dinámica:\\El protocolo debe ser capaz de detectar rupturas en los enlaces y detectar nuevas rutas alternativas lo antes posible.
+\item Modo de operación distribuido:\\Propiedad esencial de las redes ad hoc.
+\item Libre de bucles:\\Se debe evitar la existencia de paquetes perdidos circulando por la red, así como el envío de mensajes repetidos.
+\end{itemize}
+
+Existe una gran variedad de protocolos de encaminamiento para redes ad hoc. Con el objetivo de realizar la elección del más apropiado para el \ac{SAEA}, en la siguiente subsección se realiza una posible clasificación de ellos atendiendo a su modo creación de rutas bajo demanda o no. 
+
+%-------------------------------------------------------------------
+\subsection{Protocolos de encaminamiento proactivos, reactivos e híbridos}
+%-------------------------------------------------------------------
+Una de las clasificaciones de protocolos de encaminamiento más extendidas es la siguiente \citep{RoyerRoutingProtocols}:
+
+\begin{itemize}
+\item Protocolos proactivos, globales o basados en tablas
+\item Protocolos reactivos o bajo demanda
+\item Protocolos híbridos
+\end{itemize}
+
+A continuación, se prensentan las rasgos principales de cada una de las categorías, para al final de la subsección analizar cual de ellas se ajusta más a las características del \ac{SAEA}.
+
+%-------------------------------------------------------------------
+\subsubsection{Protocolos de encaminamiento proactivo}
+%-------------------------------------------------------------------
+Mantienen información de encaminamiento actualizada entre todos los nodos de la red. Esta información se guarda en las tablas de encaminamiento, que periódicamente se actualizan para adaptarse a los cambios en la topología de la red. 
+
+Los protocolos proactivos se diferencian unos de otros según los criterios y el \mbox{procedimiento} de actualización de la información, el número de tablas de encaminamiento y las entradas de dichas tablas. Los protocolos proactivos más destacados son: \ac{OLSR}, basado en el algoritmo de estado de enlace, y \ac{DSDV}, basado en el algoritmo de vector distancia. 
+
+%-------------------------------------------------------------------
+\subsubsection{Protocolos de encaminamiento reactivo}
+%-------------------------------------------------------------------
+Se obtiene la información de encaminamiento entre dos nodos bajo demanda, es decir, únicamente cuando existe una información que debe ser transmitida entre ellos. De esta manera recursos como la energía o el ancho de banda se utilizan de una manera más eficiente que en el caso anterior. El inconveniente está en que el retardo por descubrimiento de ruta es considerablemente mayor.
+
+El descubrimiento de rutas se realiza mediante el intercambio de mensajes de solicitud de ruta, \ac{RREQ}, y respuesta de ruta, \ac{RREP}.
+
+A su vez, los protocolos de encaminamiento reactivos pueden subdividirse en dos grupos:
+\begin{itemize}
+\item Basados en la fuente:\\Los paquetes de datos transportan en su cabecera toda la ruta completa, de modo que los nodos intermedios deben consultar dicha cabecera para saber dónde deben \mbox{reenviarlo}. El protocolo más destacado de este grupo es el \ac{DSR}.
+\item Salto a salto:\\Los paquetes llevan en su cabecera únicamente la dirección de destino y la del próximo nodo en la ruta. Cada uno se encarga de ir actualizando dicha cabecera según sus tablas de encaminamiento. Es necesario que cada nodo vaya actualizando permanentemente su tabla de encaminamiento mediante el intercambio periódico de mensajes. El protocolo más destacado de este grupo es el \ac{AODV}.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsubsection{Protocolos de encaminamiento híbridos}
+%-------------------------------------------------------------------
+Básicamente, aprovechan las ventajas de los protocolos proactivos y reactivos. El procedimiento suele consistir en dividir la red en zonas, o bien árboles o clusters, para trabajar con diferentes tipos de nodos. De esta manera, cuando se buscan rutas entre nodos cercanos se utiliza ecaminamiento proactivo y, por el contrario, entre nodos lejanos encaminamiento bajo demanda. Es común encontrar protocolos que utilizan información auxiliar, como posiciones mediante un GPS, para complementar estos protocolos. El más destacado de este grupo es el \ac{ZRP}.
+
+%-------------------------------------------------------------------
+\subsubsection{Elección de un protocolo de encaminamiento}
+%-------------------------------------------------------------------
+En esta sección se realiza un análisis cualitativo de las diferentes categorías de protocolos de enrutamiento presentadas con el objetivo seleccionar la más adecuada para su utilización en el \ac{SAEA}. Para otras aplicaciones, incluso en el medio marino, el análisis podría tener conclusiones distintas \citep{ComparisonRoutingProtocols}.
+
+Por sus características, los protocolos de encaminamiento proactivo son especialmente adecuados en aquellas redes en que es necesario que el procedimiento de descubrimiento de ruta no tenga una latencia excesiva. Además, estas redes deben disponer de los recursos suficientes, como energía y ancho de banda, para asumir su funcionamiento. En el caso del \ac{SAEA}, la entrega inmediata de las alarmas no es un factor especialmente crítico. Este sistema se utilizará para formar perímetros de seguridad entorno a fuentes de ruido antropogénico en el medio marino. Así, existirá un margen de tiempo suficiente para poder entregar las alarmas y detener la emisión de ruido antes de que este tenga efectos nocivos en ciertas especies. Por otro lado, como se vió en la Sección {\bfseries 3.1loquesea}, la energía y el ancho de banda si que son recursos limitados en el sistema. De esta manera se puede concluir que los protocolos de encaminamiento proactivo no son la opción más adecuada para el \ac{SAEA}.
+
+Por otra parte, los híbridos, están especialmente pensados para redes extensas divididas en zonas. En ellos, se utilizan protocolos de encaminamiento proactivo para la comunicación entre nodos cercanos, y reactivo entre nodos lejanos. Inicialmente, el \ac{SAEA} no está pensado para grandes poblaciones de nodos, por lo que la utilización de este tipo de protocolos, tendría un resultado similar a la categoría anterior. Por ello, los protocolos de encaminamiento híbridos tampoco se consideran una opción apropiada.
+
+Finalmente, están los protocolos reactivos, entre los que diferenciamos dos tipos: basados en la fuente, como \ac{DSR}, y salta a salto, como \ac{AODV}. Anteriormente se comentó que la principal diferencia entre ellos es que el primer tipo transporta en la cabecera de sus paquetes la información de toda la ruta completa, mientras que el segundo únicamente lleva la dirección de destino y la del próximo nodo. Existen numerosos estudios comparando exclusivamente los protocolos de encaminamiento \ac{AODV} y \ac{DSR} \citep{DasComparisonRoutingProtocols} \citep{DomingoCarmen2005PhD}. Para evaluar que tipo es más apropiado, se destacan las siguientes características del \ac{SAEA}:
+\begin{itemize}
+\item Limitación del ciclo de trabajo máximo en la banda 868 MHz: 10\%
+\item Tasa maxima de transmisión radio del módulo XBee-PRO-868MHz: 24 kbps
+\item Generalmente no existe un gran flujo de alarmas.
+\end{itemize}
+
+Atendiendo a las dos primeras limitaciones, el \ac{AODV} supera al \ac{DSR} ya que tanto sus mensajes \ac{RREQ} como los \ac{RREP} utilizan una señalización menor. Además, de la tercera característica nombrada se extrae que es probable que entre el envio de diferentes alarmas, la topología de la red vaya variando. En este caso, ambos protocolos deberán iniciar un nuevo proceso de búsqueda de ruta para cada alarma, siendo el del \ac{AODV} el más óptimo de los dos. Cabe destacar que en el protocolo \ac{DSR} cada nodo intermedio a lo largo de una ruta puede aprovechar la opción \textit{promiscuous listening} y el hecho de que el encaminamiento esté basado en la fuente para aprender más rutas. Sin embargo, ya que en el \ac{SAEA} existirá un nodo sumidero encargado de recoger todas las alarmas, las rutas se crearan hacia él y, por lo tanto, en este caso el protocolo \ac{AODV} tendrá la misma ventaja. 
+
+En conclusión, los protocolos de encaminamiento reactivo salto a salto son la opción más adecuada para el \ac{SAEA}. Dentro de este grupo, el más destacado, y del que se hará un estudio más en profundidad, es el \ac{AODV}. Además, como veremos en las siguientes secciones, existen numerosos protocolos basados en él que proponen diferentes modificaciones para lograr una versión final más simple y óptima computacionalmente hablando.
+
+Como se indicaba al inicio de este punto, el análisis realizado es cualitativo, ya que para un primer prototipo se considera que esto es suficiente. En versiones futuras, sería interesante y apropiado realizar pruebas con distintos protocolos de encaminamiento para obtener unos resultados cuantitativos y poder realizar una elección más precisa.
+
+
+%-------------------------------------------------------------------
+\subsection{Protocolo AODV}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+\subsubsection{Visión general}
+%-------------------------------------------------------------------
+\ac{AODV} \citep{PerkinsAODVlong} \citep{PerkinsAODV} es un protocolo de encaminamiento reactivo salto a salto. Por ello, las rutas de cada nodo a cada nodo de la red no están permanentemente actualizadas, sino que se descubren y mantienen únicamente cuando es necesario. Sus principales características son:
+\begin{itemize}
+\item Señalización de control baja. Dado su carácter reactivo.
+\item Señalización de procesamiento mínima. Mensajes sencillos que requieren poco cálculo.
+\item Ausencia de bucles. Existen mecanismos específicos para su prevención.
+\item Funciona sólo con enlaces bidireccionales.
+\end{itemize}
+
+Con el fín de evitar bucles, cada nodo dispone de un número de secuencia (también llamado número de secuencia de destino) que permite mantener sólo la información de encaminamiento más reciente. Este número aumenta en una unidad cada vez que se envía un mensaje de solicitud de ruta, \ac{RREQ}. Cuando un nodo recibe un \ac{RREQ} del que es destinatario final, antes de responder con un mensaje de respuesta de ruta, \ac{RREP}, debe actualizar su número de secuencia $NumSec_D$ al valor máximo según la expresión:
+\begin{equation}
+NumSec_{D} = Max(NumSec_{D.actual}, RREQ.NumSec+1)	\label{aodvNumSec}  % Para referenciarla se utilizará: expresión~\ref{aodvNumSec}
+\end{equation}
+, donde $NumSec_D.actual$ es su número de secuencia actual y $RREQ.NumSec$ el número de secuencia del destino que se haya contenido en el \ac{RREQ}.
+
+En el caso de que un nodo reciba dos paquetes con el mismo identificador del nodo de origen pero diferentes números de secuencia, la información más reciente será la contenida en el paquete con el mayor de los dos. Si los números de secuencia son iguales se utilizará otra métrica para decidir, generalmente se obtará por la ruta con el menor número de saltos hacia el destino.
+
+%-------------------------------------------------------------------
+\subsubsection{Declaración de aplicabilidad}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} está especialmente diseñado para redes ad hoc dinámicas con poblaciones de entre decenas y miles de nodos móviles. \ac{AODV} puede operar con tasas de movilidad bajas, medias y elevadas así como con varios niveles de tráfico de datos. Está pensado para su utilización en redes donde todos los nodos pueden confiar en los demás, ya sea por el uso de claves preconfiguradas, o porque se sabe que no hay nodos intrusos maliciosos. \ac{AODV} se ha diseñado para reducir la diseminación del tráfico de control, mediante la utilización del campo \ac{TTL}, y eliminar la sobrecarga de cabeceras en el tráfico de datos, con el fin de mejorar la escalabilidad y el rendimiento.
+
+%-------------------------------------------------------------------
+\subsubsection{Tabla de rutas y tabla de RREQ's}
+%-------------------------------------------------------------------
+\ac{AODV} utiliza tablas de rutas para almacenar la información de encaminamiento. Cada nodo de la red mantiene la suya propia, que tiene tantas entradas como destinos conoce. Cada entrada de la tabla cuenta con los siguientes campos:
+\begin{itemize}
+\item Dirección de destino
+\item Dirección del próximo salto
+\item Número de secuencia de destino
+\item Tiempo de vida (tiempo requerido para eliminar la ruta)
+\item Contador de saltos (número de saltos para alcanzar el destino)
+\item Otros indicadores de estado y rutas: validez del número de secuencia de destino, validez de ruta, si es o no reparable, y si lo es, si se está o no reparando.
+\end{itemize}
+
+Cada entrada de la tabla de rutas está asociada a un temporizador, de modo que si una ruta no se utiliza durante un determinado periodo de tiempo, esta expira y deja de ser válida. Sin embargo, cada vez que se emplea la información de la entrada o se recibe un mensaje de HELLO, el temporizador se actualiza.
+
+Para cada entrada válida en la tabla de rutas de un determinado nodo, se mantiene una lista de precursores que contiene los nodos que utilizan dicha ruta como próximo salto en el camino hacia un nodo destino, es decir, los nodos vecinos que han recibido algún mensaje desde el nodo destino. Estos precursores recibirán notificaciones del nodo en caso de que se detecte algún problema en la ruta, como se explica más adelante en el proceso de Mantenimiento de Ruta.
+
+Además, cada nodo mantiene un registro de los mensajes \ac{RREQ} que recibe. Utiliza los campos \ac{RREQ} ID y dirección de origen, que identifican inequívocamente cada \ac{RREQ}, para poder descartar los repetidos, y optimizar el rendimiento general de la red.
+
+%-------------------------------------------------------------------
+\subsubsection{Formato de mensajes}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} define los siguientes tipos de mensajes:
+\begin{itemize}
+\item {\bfseries Mensaje \ac{RREQ}}
+
+El mensaje \ac{RREQ} se utiliza para descubrir una ruta hacia un determinado nodo destino. En la Figura~\ref{fig:aodvRREQ} se muestra el formato del mismo, que incluye los siguientes campos:
+
+\begin{itemize}
+\item Tipo: indica el tipo de mensaje.
+\item J: Join flag; utilizado cuando el nodo de origen quiere formar parte de un grupo multicast.
+\item R: Repair flag; utilizado cuando un nodo se dispone a iniciar un reparación de dos partes de un árbol multicast que se han desconectado.
+\item G: Gratuitous \ac{RREP} flag; indica si es necesario enviar en modo unicast un \ac{RREP} Gratuito  al nodo indicado en el campo \textit{dirección de destino}.
+\item D: Destination only falg; indica que únicamente el nodo destino puede responder a este mensaje \ac{RREQ}.
+\item U: Unknow sequence number flag; indica que el campo \textit{número de secuencia de destino} es desconocido. 
+\item Reservado: Bits reservados. Se envían con el valor 0, y son ignorados en la \mbox{recepción}.
+\item Contador de saltos: indica el número de saltos desde el nodo de origen hasta el nodo que esta procesando este mensaje \ac{RREQ}.
+\item RREQ ID: número de secuencia que junto con la dirección del nodo origen identifica inequívocamente el mensaje \ac{RREQ}. Se incrementa cada vez que un nodo inicia el envío de uno de ellos.
+\item Dirección de destino: identificador del nodo con el que se quiere realizar la comunicación.
+\item Número de secuencia de destino: el último número de secuencia recibido en el nodo origen de cualquier ruta hacia el nodo destino.
+\item Dirección de origen: identificador del nodo que inicia el descubrimiento de ruta.
+\item Número de secuencia de origen: número de secuencia actual del nodo origen.
+\end{itemize}
+
+\figura{Bitmap/Capitulo5/aodvRREQmessage}{width=.8\textwidth}{fig:aodvRREQ}%
+{Formato del mensaje RREQ del protocolo AODV.}
+
+
+\item {\bfseries Mensaje \ac{RREP}}
+
+El mensaje \ac{RREP} es la contestación a un \ac{RREQ}. Indica que existe una ruta hacia el nodo destino. En la Figura~\ref{fig:aodvRREP} se muestra el formato del mismo, que incluye los siguientes campos:
+
+\begin{itemize}
+\item Tipo: indica el tipo de mensaje.
+\item R: Repair flag; utilizado cuando un nodo se dispone a iniciar un reparación de dos partes de un árbol multicast que se han desconectado.
+\item A: Acknowledgment required flag; se utiliza para comprobar si un enlace es unidireccional. 
+\item Reservado: Bits reservados. Se envían con el valor 0, y son ignorados en la recepción.
+\item Longitud del prefijo: si no es cero, especifica que el siguiente salto indicado puede ser utilizado por nodos con el mismo prefijo, como si fuesen los destinatarios de la petición.
+\item Contador de saltos: indica el número de saltos desde el nodo de origen hasta el nodo que esta procesando este mensaje \ac{RREQ}.
+\item Dirección de destino: identificador del nodo con el que se quiere realizar la comunicación.
+\item Número de secuencia de destino: el último número de secuencia recibido en el nodo origen de cualquier ruta hacia el nodo destino.
+\item Dirección de origen: identificador del nodo que inicia el descubrimiento de ruta.
+\item Tiempo de vida: tiempo en milisegundos durante el cual los nodos que han recibido el mensaje \ac{RREP} deben considerar válida la ruta.
+\end{itemize}
+
+\figura{Bitmap/Capitulo5/aodvRREPmessage}{width=.8\textwidth}{fig:aodvRREP}%
+{Formato del mensaje RREP del protocolo AODV.}
+
+
+\item {\bfseries Mensaje \ac{RERR}}
+
+El mensaje \ac{RERR} se utiliza si se rompe algún enlace provocando que uno o más nodos se vuelvan inalcanzables desde ciertos nodos vecinos. En la Figura~\ref{fig:aodvRERR} se muestra el formato del mismo, que incluye los siguientes campos:
+
+\begin{itemize}
+\item Tipo: indica el tipo de mensaje.
+\item N: No delete flag; se utiliza cuando se está realizando una reparación local \textit{(local repair)} de un enlace roto y el nodo receptor del mensaje \ac{RERR} no debe borrar ninguna ruta. 
+\item Reservado: Bits reservados. Se envían con el valor 0, y son ignorados en la recepción.
+\item Contador de destinos: el número de destinos inalcanzables que se incluyen en el mensaje. El valor mínimo de este campo es uno.
+\item Dirección de destino inalcanzable: identificador del nodo destino que actualmente es inalcanzable debido a la rotura del enlace.
+\item Número de secuencia de destino inalcanzable: el número de secuencia del nodo destino inalcanzable indicado en el campo anterior que se encuentra en la entrada de la tabla de rutas.
+
+\figura{Bitmap/Capitulo5/aodvRERRmessage}{width=.8\textwidth}{fig:aodvRERR}%
+{Formato del mensaje RERR del protocolo AODV.}
+\end{itemize}
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsubsection{Descubrimiento de Ruta}
+%-------------------------------------------------------------------
+Cuando un nodo de la red necesita comunicarse con otro, en primer lugar debe \mbox{comprobar} si en su tabla de rutas existe algun camino válido hacia el nodo destino. De ser así, el nodo podría comenzar a enviar su información sin necesidad de realizar ninguna otra operación. En el caso contrario, comenzará el proceso de Descubrimiento de Ruta, que si concluye \mbox{satisfactoriamente} proporcionará la información necesaria al nodo origen para poder realizar la comunicación (Véase la Figura~\ref{fig:cap5:aodvDR}).
+
+En el proceso pueden distinguirse dos fases: la formación del camino de vuelta y la \mbox{formación} del camino de ida. La primera de ellas establece todas las rutas posibles entre el origen y el destino, trazadas por el recorrido de los mensajes \ac{RREQ} que se transmiten en modo difusión o \textit{broadcast}. La segunda determina el itinerario que finalmente seguirán los paquetes desde un nodo al otro.
+
+A continuación, se describen ambas fases. El material ilustrativo creado para ello está basado en el documento \citep{quickAODV} y en unas imágenes creadas por el profesor Nitin Vaidya incluidas en \citep{DomingoCarmen2005PhD}.
+\begin{itemize}
+\item {\bfseries Formación del camino de vuelta}
+
+Como representa la Figura~\ref{fig:cap5:aodvDR2}, el nodo origen, al no encontrar una ruta válida hacia el nodo destino en su tabla de rutas, genera un mensaje \ac{RREQ} y lo envía en modo broadcast. Este mensaje podrá ser respondido con un \ac{RREP} por el nodo destino o por cualquier nodo de la red que conozca una ruta actualizada hacia él.
+
+Cuando un nodo intermedio obtiene un \ac{RREQ} debe comprobar si ya ha recibido anteriormente dicho mensaje. Para ello, mira los campos RREQ ID y dirección de origen y verifica si dicha información se encuentra en alguna entrada de su tabla de registro de \ac{RREQ}'s. Si es así, el nodo descarta el paquete, como ocurre por ejemplo en la Figura~\ref{fig:cap5:aodvDR4} donde el nodo C recibe los \ac{RREQ} de los nodos G y H, pero no hace una retransmisión porque ya la hizo una vez anteriormente, concretamente en la Figura~\ref{fig:cap5:aodvDR3}. Si no ha recibido anteriormente dicho mensaje, el nodo registra la recepción del \ac{RREQ} y crea una entrada en su tabla de rutas que contiene el camino hacía el nodo origen, es decir el de vuelta (Véase la Figura~\ref{fig:cap5:aodvDR3}). Esta ruta tiene un tiempo de vida determinado tras el que es eliminada. El camino de vuelta tiene su utilidad cuando el nodo recibe más tarde un \ac{RREP} que debe ser entregado al nodo origen a través del mismo.
+
+Para poder responder a un mensaje \ac{RREQ}, un nodo debe ser el destinatario final del mismo o verificar que:
+\begin{itemize}
+\item Exista en la tabla de rutas una entrada con un camino hacia el destino que no haya expirado.
+\item El número de secuencia de destino de dicha entrada en la tabla de rutas sea mayor o igual que el número de secuencia de destino del mensaje \ac{RREQ}, es decir:
+\begin{equation}
+NumSec_{tabla}\ge NumSec_{RREQ}	\label{aodvNumSec2} 
+\end{equation}
+\end{itemize}
+
+Si esto se cumple, el nodo incrementa el contador de número de saltos del \ac{RREQ} y genera el correspondiente mensaje \ac{RREP}. Si no, el nodo incrementa el contador del número de saltos del \ac{RREQ} y reenvía dicho mensaje en modo broadcast para continuar con el Descubrimiento de Ruta.
+
+Para evitar un consumo excesivo de recursos, el protocolo cuenta con un mecanismo conocido como búsqueda expansiva en anillo (\textit{expanding ring search}). Este consiste en inicialmente asignar a los mensajes \ac{RREQ} un \ac{TTL} pequeño, tras el cual el mensaje se descarta. Si en un determinado tiempo no se recibe un \ac{RREP}, este valor se va incrementando prograsivamente en los siguientes reintentos de Descubrimiento de Ruta, hasta alcanzar el número máximo de ellos.
+
+\item {\bfseries Formación del camino de ida}
+
+Dependiendo de si es el nodo destino el que responde el \ac{RREQ}, o es un nodo intermedio, se procede de una u otra manera. Concretamente en el primer caso el nodo destino:
+\begin{itemize}
+\item Introduce su número de secuencia en el paquete de acuerdo con la expresión~\ref{aodvNumSec}.
+\item Sitúa el contador de saltos a cero.
+\end{itemize}
+
+Si es un nodo intermedio el que inicia el envío del \ac{RREP}, procede de la siguiente manera:
+\begin{itemize}
+\item Introduce el número de secuencia del nodo destino en el paquete. Este valor se encuentra en la correspondiente entrada de su tabla de rutas.
+\item Sitúa el contador de saltos al mismo valor que el número de los mismos que tiene en su ruta hacia el nodo destino.
+\end{itemize}
+
+A continuación, en ambos casos se asigna un valor determinado al temporizador de tiempo de vida y por último se envía en modo unicast el mensaje según el camino de vuelta formado en la primera fase del proceso de Descubrimiento de Ruta.
+
+Cuando un nodo intermedio recibe un mensaje \ac{RREP} incrementa el contador de saltos del paquete en una unidad y guarda en su tabla de rutas la información del camino de ida hacia el nodo destino, utilizando como próximo salto el nodo del cual recibió el \ac{RREP}. Finalmente, reenvía este paquete al siguiente nodo en dirección a la fuente.
+
+Podría producirse la situación de que un nodo reciba un \ac{RREP} por parte de más de un nodo vecino. En tal caso, reenviaría el primero de ellos, y un segundo únicamente en caso de que el número de secuencia de destino contenido en el paquete fuese mayor, o el valor del contador de saltos menor, actualizando en tal caso su tabla de rutas. Este mismo criterio es utilizado por el nodo origen para establecer el camino de ida al recibir varios paquetes \ac{RREP}. Una vez establecido este camino, es posible comenzar a utilizarlo para el envío bidireccional de paquetes de datos (Véase la Figura~\ref{fig:cap5:aodvDR8}).
+
+En la Figura~\ref{fig:cap5:aodvDR6} vemos como el nodo destino tiene dos opciones, a través del nodo F o del K, para establecer el camino de vuelta. De ellas, opta por la que tiene el menor número de saltos, pero esto no siempre implica que se trate de la trayectoria más óptima de toda la red. En el protocolo de encaminamiento \ac{AODV} los nodos únicamente aceptan y procesan un \ac{RREQ}, rechazando aquellos paquetes con el mismo RREQ ID y dirección de destino que se reciben posteriormente. De este modo, algunas trayectorias más óptimas que la ruta final podrían no descubrirse al utilizar algún nodo común.
+
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR1}%
+Escenario inicial propuesto.}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR1}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR2}%
+Inicio del Descubrimiento de Ruta}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR2}%
+\end{SubFloat}
+% La siguiente no entra; ira en otra 'linea'
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR3}%
+Propagación de los RREQ por la red (1).}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR3}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR4}%
+Propagación de los RREQ por la red (2).}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR4}%
+\end{SubFloat}
+% La siguiente no entra; ira en otra 'linea'
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR5}%
+Propagación de los RREQ por la red (3).}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR5}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR6}%
+Ruta seleccionada para el envío unicast de mensajes RREP.}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR6}%
+\end{SubFloat}
+% La siguiente no entra; ira en otra 'linea'
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR7}%
+Ruta bidireccional establecida entre los nodos S y D.}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR7}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap5:aodvDR8}%
+Envío de datos entre los nodos S y D.}%
+\includegraphics[width=0.46\textwidth]%
+{Imagenes/Bitmap/Capitulo5/aodvDR8}%
+\end{SubFloat}
+\caption{Proceso de Descubrimiento de Ruta en una red ad hoc que utiliza el protocolo de encaminamiento AODV para enviar datos desde un nodo origen S hasta un nodo destino D.%
+\label{fig:cap5:aodvDR}}
+\end{figure}
+
+
+%-------------------------------------------------------------------
+\subsubsection{Mantenimiento de Ruta}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} está especialmente pensado para operar en el medio radio y con nodos móviles. Esto hace común la rotura de enlaces entre ellos. Además, como ya se ha visto, las rutas que se descubren tienen un tiempo de vida durante el que pueden ser utilizadas y que al terminar las inhabilita. Esto permite que no sea necesario establecer un camino cada vez que se quiere mandar un mensaje de datos, pero a su vez hace necesaria la existencia de algún proceso encargado de la monitorización del estado de los enlaces y de su gestión en caso de rotura. Este proceso se conoce como Mantenimiento de Ruta.
+
+El protocolo \ac{AODV} utiliza mensajes HELLO, que contienen la dirección del nodo, su número de secuencia actual y el tiempo de vida de los enlaces, y que cada nodo envía \mbox{periódicamente} en modo broadcast a sus vecinos para comprobar si existe conectividad entre ellos. De este modo, cada nodo puede actualizar la información referente a sus vecinos en su tabla de rutas. Si durante un determinado intervalo de tiempo un nodo deja de recibir estos mensajes de alguno de sus vecinos, elimina la entrada asociada ha dicho vecino de su tabla de rutas. La utilización de mensajes HELLO no es necesaria si existe algún otro mecanismo que realice su tarea, como puede ser retroalimentación procedente de la capa de enlace de datos, \ac{LLN}.
+
+Cuando un nodo detecta un fallo en un enlace, envía un mensaje de error de ruta, \ac{RERR} (\textit{Route Error}), hacia el nodo fuente para informar de los destinos que ya no pueden alcanzarse. Si existen varios nodos precursores (entre el nodo origen y el nodo que detectó la rotura) que estaban utilizando el enlace, el mensaje \ac{RERR} se envia en modo broadcast, en caso contrario se envia en modo unicast.
+
+Al recibir un paquete de \ac{RERR}, un nodo verifica que efectivamente la rotura afecta a alguna de sus entradas en la tabla de rutas, la invalida y por último reenvía el mensaje hacia la fuente. Cuando es el nodo origen el que recibe el \ac{RERR}, este puede optar por iniciar un nuevo proceso de Descubrimiento de Ruta si lo considera necesario.
+
+\ac{AODV} también cuenta con algunas opciones de optimización, como la posibilidad de realizar reparaciones locales de los enlaces. Cuando un nodo detecta la rotura de un enlace, en vez de mandar inmediatamente un mensaje \ac{RERR} a la fuente, envía un \ac{RREQ} hacia el nodo destino con el número de secuencia de destino incrementado en una unidad. Mientras espera el \ac{RREP} va almacenando los paquetes de datos. Si tras un determinado tiempo no se recibe respuesta, la reparación local no habrá tenido éxito y será necesario avisar a la fuente con un mensaje \ac{RERR}.
+
+Otra característica adicional del protocolo \ac{AODV} consiste en enviar mensajes \ac{RREP} \mbox{gratuitos} desde un nodo intermedio hacia el nodo destino para informarle de que el propio nodo \mbox{intermedio} a respondido un \ac{RREQ}. Esto permite que el nodo destino conozca una ruta hacia el nodo origen por si la comunicación fuese bidireccional. De otro modo, el nodo destino no tendría noción de que existe tal ruta hacia él y por lo tanto no podría responder a la fuente si tuviera que hacerlo. 
+
+
+%-------------------------------------------------------------------
+\subsection{Protocolos basados en el AODV}
+%-------------------------------------------------------------------
+\label{cap5:sec:protocolos:basadosAODV}
+%-------------------------------------------------------------------
+El protocolo de encaminamiento \ac{AODV} es uno de los más estudiados para su utilización en redes ad hoc móviles, también conocidas como \ac{MANET}. Esto a dado lugar a la aparición de numerosos protocolos que proponen diferentes modificaciones sobre el original según la aplicación final que se les quiera dar. En la presente subsección, se realiza una revisión de los principales protocolos, orientados a redes de sensores, que están basados en el \ac{AODV} \mbox{\citep{AdaptingAODVforMSN}}.
+
+%-------------------------------------------------------------------
+\subsubsection{AODVjr}
+%-------------------------------------------------------------------
+AODVjr \citep{AODVjr} \citep{quickAODVjr} es una de las primeras versiones simplificadas del \ac{AODV}. Los autores muestran a través de varias \mbox{simulaciones} unos resultados muy próximos a los obtenidos con el protocolo \ac{AODV} \mbox{completo}. Al mismo tiempo, reducen significativamente la complejidad de implementación de este al \mbox{eliminar} varias características definidas en su especificación original. En primer lugar, dejan de \mbox{utilizarse} los números de secuencia. El protocolo AODVjr evita la formación de bucles definiendo que únicamente el nodo destino puede generar los mensajes \ac{RREP}. Esto también elimina la necesidad del envió de mensajes \ac{RREP} gratuitos desde nodos intermedios. Además, este protocolo ya no emplea el número de saltos de las rutas como métrica. En su lugar establece que la ruta relacionada con el primer mensaje \ac{RREP} que recibe el nodo origen es la elegida. Por último, se eliminan los mensajes HELLO, RERR y la lista de precursores, y el mantenimiento de ruta pasa a realizarse de la siguiente manera. Si la comunicación es unidireccional, el nodo destino manda mensajes de conexión (\textit{connect messages}) al nodo origen. Si es bidireccional, no se utilizan mensajes adicionales; un nodo origen detecta la rotura de una ruta cuando deja de recibir mensajes desde el nodo destino.
+
+%-------------------------------------------------------------------
+\subsubsection{AODVbis}
+%-------------------------------------------------------------------
+AODVbis es una revisión de la especificación original del \ac{AODV} que aclara algunos \mbox{aspectos} de funcionalidad y deja varias características como opcionales. La utilización de mensajes \ac{RERR} ya no es obligatoria. En caso de utilizarse, estos se envían en modo \mbox{broadcast} localmente, de modo que se evita tener que mantener una lista de precursores para cada entrada de la tabla de rutas. Cada nodo que reciba un \ac{RERR} debe añadir los destinos \mbox{inalcanzables} que provienen de procesar dicho mensaje a los nuevos mensajes \ac{RERR} que sean generados. El contador de saltos también deja de ser la métrica obligatoria para las rutas, y por defecto se procede como en el caso del AODVjr. También se eliminan las reparaciones locales y se añade la \mbox{característica} acumulación de rutas (\textit{path accumulation}), que permite a un determinado \mbox{nodo} adquirir información de enrutamiento extra de una lista con el camino recorrido incluida en los mensajes \ac{RREQ} y \ac{RREP} que pasan por él.
+
+%-------------------------------------------------------------------
+\subsubsection{LoWPAN-AODV}
+%-------------------------------------------------------------------
+LoWPAN-AODV es una propuesta para adaptar \ac{AODV} a entornos \ac{LoWPAN}, como es el caso de las redes de sensores. AODVbis es la especificación por defecto del LoWPAN-AODV, salvo por algunos aspectos que conserva de la filosofía del AODVjr. Los únicos mensajes de control definidos son \ac{RREQ} y \ac{RREP}. Sólo el nodo destino puede responder un \ac{RREQ} con un \ac{RREP}. La conectividad local se mantiene por el mecanismo \ac{LLN}, según establece el estándar IEEE 802.15.4. En este caso, el contador de saltos sí que es la métrica utilizada para determinar las mejores rutas.
+
+%-------------------------------------------------------------------
+\subsubsection{LOAD}
+%-------------------------------------------------------------------
+LOAD, al igual que AODVjr y LoWPAN-AODV, sólo permite que el nodo destino genere los mensajes \ac{RREP}, evitando así el uso de números de secuencia. Permite las reparaciones locales, y en caso de que estas no finalicen satisfactoriamente, el nodo que detectó el fallo del enlace debe generar y enviar en modo unicast un mensaje \ac{RERR} al nodo origen. La métrica de encaminamiento utilizada en LOAD es el coste acumulado del enlace entre el origen y el destino, usando el indicador de calidad de enlace (\textit{Link Quality Indicator (LQI)}) de la capa física del IEEE 802.15.4 como entrada para el cálculo. Finalmente, como en el LoWPAN-AODV, se utiliza el mecanismo \ac{LLN} para evaluar la conectividad de las rutas. 
+
+%-------------------------------------------------------------------
+\subsubsection{TinyAODV}
+%-------------------------------------------------------------------
+TinyAODV es una implementación minimalista del \ac{AODV} para dispositivos que utilizan el sistema operativo TinyOS. En este protocolo, si un paquete de datos debe enviarse y no existe una ruta válida hacia el destino, se inicia el proceso de Descubrimiento de Ruta, pero el paquete que requirió la ruta es descartado. De este modo, el siguiente paquete de datos será el primero en utilizar la ruta descubierta. El número de reintentos de Descubrimiento de Ruta se puede modificar, pero su valor por defecto es tres.
+
+De igual modo que algunos de los protocolos anteriores, sólo el nodo destino puede generar los mensajes \ac{RREP}. El mecanismo \ac{LLN} puede utilizarse para detectar fallos en los enlaces, aunque por defecto no está habilitado. Por ello, TinyAODV está especialmente pensado para redes con topologías estáticas, donde no se esperan apenas fallos en los enlaces. Si un paquete de datos no puede entregarse por un fallo en un enlace, éste será descartado. A continuación, se generará un mensaje \ac{RERR} que será enviado en modo broadcast localmente, como hacía el AODVbis. Por último, la reparación local no está soportada, y el contador de saltos es la métrica utilizada para determinar las mejores rutas.
+
+%-------------------------------------------------------------------
+\subsubsection{NST-AODV}
+%-------------------------------------------------------------------
+Not So Tiny - \ac{AODV} (NST-AODV) es una implementación de un protocolo de encaminamiento en nesC para plataformas TinyOS. Fué diseñado con el objetivo de añadir varias prestaciones adicionales a las básicas del TinyAODV con el objetivo de lograr un mejor rendimiento, especialmente en redes dinámicas.
+
+Sus características principales son:
+\begin{itemize}
+\item El mecanismo \ac{LLN} está activado por defecto, ya que se asume que el protocolo operará en redes con topología dinámica.
+\item El paquete de datos que dispara un proceso de Descubrimiento de Ruta no es descartado, y en cuanto la ruta está disponible es enviado.
+\item Tras una transmisión fallida a nivel de enlace, desde la capa de red se pueden realizar hasta dos reintentos adicionales.
+\item Si un paquete no puede ser enviado tras los tres intentos de la capa de red, será \mbox{almacenado} en un buffer y enviado si se encuentra una nueva ruta. Esta operación puede realizarla tanto el nodo origen como un nodo intermedio que repare localmente la ruta.
+\item Se han añadido dos colas FIFO (\textit{First In, First Out}): una para guardar los paquetes recibidos mientras se realiza un Descubrimiento de Ruta, y otra para los paquetes a enviar. Ambas colas pueden dimensionarse según interese en su configuración.
+\item Un nodo intermedio puede generar un mensaje \ac{RREP} si conoce una ruta válida al destino solicitado en el \ac{RREQ}.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\subsection{Definición del protocolo de encaminamiento AODV-LAB}
+%-------------------------------------------------------------------
+\label{cap5:sec:protocolos:AODV-LAB}
+%-------------------------------------------------------------------
+Como se vió en la Sección {\bfseries 4.1loquesea}, actualmente no existen en el mercado módulos de comunicación en la banda de 868 MHz que incorporen en su firmware el soporte para una topología mallada dinámica. Por ello, surgió la necesidad de incorporar esta funcionalidad a los módulos de comunicación seleccionados. En primer lugar, se realizó una búsqueda de protocolos de encaminamiento reactivos ya desarrollados que pudiesen ser válidos para el proyecto, pero únicamente se encontraron implementaciones orientadas a su utilización en: Internet, el simulador de redes ns-2 y el sistema operativo TinyOS. Por ello, finalmente se decidió desarrollar en C/Linux un protocolo de encaminamiento propio, llamado \mbox{AODV-LAB}, para poder utilizarlo con el \ac{SAEA}, que en su versión final utilizará un \textit{PC embedded} con el sistema operativo Linux. 
+
+A continuación, a partir del análisis de los protocolos presentados en la Subsección~\ref{cap5:sec:protocolos:basadosAODV}, se definen las características principales del AODV-LAB:
+
+\begin{itemize}
+\item Para evitar bucles y la utilización de mensajes \ac{RREP} gratuitos, únicamente el nodo destino puede generar mensajes \ac{RREP}. Además, se mantienen los números de \mbox{secuencia} como en el \ac{AODV}. Esto pérmite diferenciar los mensajes \ac{RREQ} y \ac{RREP} más recientes. De este modo, en el AODV-LAB cuando un nodo recibe uno de estos mensajes, en primer lugar da prioridad a la información de encaminamiento más actual y, únicamente en caso de que el número de secuencia del mensaje coincida con el de la tabla de rutas, utilizará el contador de saltos para optar por el camino con menor número de ellos. Como mejora en un futuro, se contempla añadir sistemas de evaluación de la calidad de los enlaces como criterio para la selección de rutas que, especialmente en el medio marino, puede suponer importantes mejoras. 
+\item Se eliminan los mensajes HELLO, \ac{RERR}, y la lista de precursores, reduciendo la \mbox{complejidad} de implementación, la utilización de recursos del sistema y \mbox{manteniendo} unas características de funcionamiento similares, como se explicó anteriormente en el caso de AODVjr.
+\item Como mecanismo para el mantenimiento de la conectividad se utiliza el envío de mensajes de acuse de recibo de datos, llamados ACK (\emph{Acknowledgement}). Si tras un periodo de tiempo definido un nodo que ha enviado un paquete de datos no recibe su correspondiente ACK, volverá a enviar el paquete tantas veces como se indique en el número de reintentos. Una vez agotados se dará la ruta por inválida y se volverá a iniciar el proceso de Descubrimiento de Ruta. El empleo de un número de reintentos por encima de la capa de enlace, se utiliza para evitar que por pérdidas de conexión temporales y esporádicas, o por pequeños periodos con peores condiciones para la transmisión radio, se inicien nuevos Descubrimientos de Ruta innecesarios, con el gasto de recursos que esto supone.
+\item No se contempla la utilización del mecanismo \ac{LLN} ya que éste depende del hardware utilizado, aunque en un futuro podría suponer una mejora considerable del sistema gracias a sus numerosas ventajas: detección más rápida de roturas de enlace, utilización más eficiente del ancho de banda y menor consumo de energía.
+\item Cuando una ruta se da como inválida, el paquete que agotó sus reintentos es descartado. Esto es así ya que en ese momento habrá transcurrido demasiado tiempo y dicha alarma ya no será útil, por lo que enviarla únicamente supondría un gasto de recursos.
+\item Existe una cola \ac{FIFO} para los mensajes de entrada, de modo que los mensajes serán procesados en el orden en que se recibieron.
+\item No se realiza reparación local de rutas. La aplicación princial de este sistema será crear perímetros de seguridad alrededor de fuentes de contaminación acústica. Estos perímetros no requerirán a priori rutas de más de 3 saltos entre un nodo origen y uno destino, por lo que la reparación local en este caso no tiene mucho sentido, ya que este mecanismo está especialmente pensado para grandes redes.
+\end{itemize} 
+
+%-------------------------------------------------------------------
+\subsection{Comparación entre los distintos protocolos de encaminamiento}
+%-------------------------------------------------------------------
+En la Tabla~\ref{cap5:tab:AODVprotocols} se muestra un resumen de todos los protocolos de encaminamiento basados en el \ac{AODV} que se han presentado anteriormente.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c c c c c c}
+\hline
+\hline
+Nombre del	& Mecanismo de	  & Mensaje	& Lista		& Reparación	& Sólo el	& Métrica de	 & Especificación \\
+protocolo	& mantenimiento   & RERR 	& precursores 	& local 	& nodo destino	& encaminamiento & y/o estado de  \\
+		& de conectividad & 		& 		& 		& genera RREP 	& 		 & implementación \\
+& & & & & & & \\ 
+\hline
+AODV	& Mensajes HELLO,& Si & Si & Si    & No & Contador & Implementado para\\
+	& LLN, etc.	 &    &    &(puede)&    & de saltos& múltiples\\
+	&		 &    &    &       &    &          & plataformas\\  
+& & & & & & & \\ 
+AODVjr  & Mensajes de	    & No & No & No & Si & Primer RREP & Implementado   \\
+	& de conexión 	    &    &    &    &    & recibido    & para el        \\
+	& (tráfico unidir.) &    &    &    &    &	      & simulador ns-2 \\
+& & & & & & & \\ 
+AODVbis  & Mensajes HELLO,& Si     & No & No & No & Primer RREP & Proyecto Internet\\
+	 & LLN, etc.      & (debe) &    &    &    & recibido    & expirado         \\
+& & & & & & & \\ 
+LoWPAN-  & LLN & No & No & No & Si & Contador & Proyecto Internet\\
+AODV     &     &    &    &    &    & de saltos& expirado         \\
+& & & & & & & \\ 
+LOAD    & LLN & Si      & No & Si      & Si     & Basado & Proyecto Internet\\
+	&     & (puede) &    & (puede) & (debe) & en LQI & 		    \\
+& & & & & & & \\ 
+TinyAODV& LLN (deshabilitado & Si & No & No & Si & Contador  & Implementado   \\
+	& por defecto)       &    &    &    &    & de saltos & para TinyOS    \\
+& & & & & & & \\ 
+NST-AODV& LLN & Si & No & Si & No & Contador  & Implementado   \\
+	&     &    &    &    &    & de saltos & para TinyOS    \\
+& & & & & & & \\ 
+AODV-LAB& Mensajes ACK	    & No & No & No & Si & Contador & Implementado   \\
+	& y timeouts	    &    &    &    &    & de saltos  & en C/Linux     \\
+\hline
+\hline
+\end{tabular}}
+\caption{Comparación de protocolos de encaminamiento basados en el AODV%
+         \label{cap5:tab:AODVprotocols}}
+\end{table}
+
+
+%-------------------------------------------------------------------
+\section{Descripción detallada del Sistema de Alarma de Eventos Acústicos (SAEA)}
+%-------------------------------------------------------------------
+\label{cap5:sec:saea}
+%-------------------------------------------------------------------
+Como ya se vió en la Sección {\bfseries 3.3loquesea}, el SAEA es un sistema orientado al estudio y mitigación del impacto ambiental de la contaminación acústica en el medio marino. Se encarga de la aquisición de datos acústicos mediante hidrófonos, para a continuación realizar el procesado de los mismos y, finalmente, en caso de detectar algún evento acústico definido inicialmente, envíar una alarma con dicha información a un nodo colector.
+
+La primera parte del sistema, correspondiente a las etapas de adquisición, procesado de audio y generación de alarmas, ya ha sido desarrollada y probada en el \ac{LAB}. La idea de este proyecto ha sido por lo tanto trabajar a partir ahí para desarrollar finalmente un prototipo del sistema completo. Concretamente, el software implementado se encarga de:
+
+\begin{itemize}
+\item Detectar la aparición de nuevas alarmas en el sistema.
+\item Emplear el protocolo de encaminamiento AODV-LAB para descubrir rutas hacia el nodo colector.
+\item Envío de las alarmas.
+\item Verificar la correcta entrega de las mismas mediante los acuses de recibo.
+\item Indicar sus coordenadas en caso de que el nodo colector lo solicite.
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\subsection{Envío, enrutado y acuse de recibo de alarmas}
+%-------------------------------------------------------------------
+Una vez que el sistema detecta un determinado evento acústico, genera la alarma correspondiente y la añade como una nueva línea en un fichero que contiene todas las alarmas. Este archivo es constantemente chequeado por el software implementado en este proyecto, a la espera de detectar nuevas entradas. Cuando se detecta una nueva alarma, se mira la tabla de rutas por si existe algún camino válido hacia el nodo colector, y si es así se envía directamente. En caso contrario, se inicia el proceso de Descubrimiento de Ruta. Si este finaliza satisfactoriamente, existirá por lo tanto un ruta válida bidireccional entre ambos nodos, y se enviará la alarma. Si no encuentra un camino entre ellos, esperará un determinado tiempo, fijado en la configuración del sistema, y volverá a comenzar el Descubrimiento de Ruta. 
+
+Una vez que se envía una alarma, no se manda la siguiente hasta que no se recibe el correspondiente acuse de recibo de la primera. Si tras un determinado tiempo, también fijado en la configuración, no hay noticia del nodo colector, se volverá a enviar la misma alarma nuevamente. Este proceso se repetirá hasta que se reciba el correspondiente acuse de recibo o en su defecto se agote el número de reintentos determinado en la configuración del sistema. En este último caso, se descartará dicha alarma, ya que tras los reintentos y esperas dejará de ser útil. Únicamente en caso de existir nuevas alarmas esperando, se iniciará el proceso de Descubrimiento de Ruta de nuevo.
+
+Al trabajar todos los nodos con el AODV-LAB, cada uno de ellos tiene capacidad de enrutamiento y, por lo tanto, reenviará las alarmas de otros nodos que pasen por él. Por último, destacar que el nodo colector genera un registro de todas las alarmas que recibe durante la ejecución. De esta manera, es posible disponer de dicha información para su estudio más adelante.
+
+%-------------------------------------------------------------------
+\subsection{Localización de nodos}
+%-------------------------------------------------------------------
+Cada nodo de la red irá implementado en una embarcación, estructura flotante o, la mayor parte de las veces, en boyas. En muchas aplicaciones estas no irán ancladas al fondo marino sino que se podrán desplegar y recoger desde pequeñas embarcaciones y, durante el periodo de operación, estarán flotando libres en el mar. Por esta razón, se ha previsto que cada nodo de la red incluya un sistema de \ac{GPS} que pueda obtener en cada momento sus coordenadas exactas.
+
+El nodo colector, tiene la posibilidad de enviar un mensaje \ac{PREQ} en broadcast que llegue a todos los nodos de la red para que cada uno responda con un \ac{PREP} que incluya sus coordenadas y la fecha y hora exacta de la \mbox{consulta}. Estos mensajes incialmente se mandan únicamente bajo demanda, pero dependiendo de las aplicaciones finales que pueda tener el sistema se podrá modificar para que se realice \mbox{periódicamente} o según interese.
+
+De esta manera, desde el nodo colector se puede realizar un registro de las posiciones de los demás nodos de la red. Esta información servirá de apoyo al estudio realizado con el registro de alarmas y, por supuesto, en muchos casos será vital para la recogida de las boyas al finalizar su utilización en el mar.
+
+%-------------------------------------------------------------------
+\section{Implementación en C/Linux}
+%-------------------------------------------------------------------
+\label{cap5:sec:implementacion}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+\subsection{Introducción}
+%-------------------------------------------------------------------
+El SAEA, en su primera aproximación, es un sistema que introducirá muy poco tráfico en la red. Las alarmas correspondientes a las distintas vocalizaciones de cetáceos no son muy frecuentes ya que la presencia de ellos no es contínua y, además, el sistema no enviará una por sonido detectado sino que tratará de identificar la presencia de individuos en una determinada zona y avisar de esta periódicamente mientras continúen allí. Esto ha permitido, en la realización de este proyecto, centrarse directamente en la implementación de un prototipo sin la necesidad de realizar previamente un estudio exahustivo en un simulador de redes del \mbox{protocolo} de encaminamiento, comparaciones con otros y búsqueda de la solución más \mbox{óptima}. El objetivo es dar una primera aproximación al problema y demostrar su viabilidad. Quedará por lo tanto como trabajo futuro optimizar la presente solución.
+
+Existen \citep{AODVimplementation} \citep{AdHocRoutingImplementation} bla bla bla.
+
+
+\begin{lstlisting}[language=C, numbers=left, numberstyle=\tiny]
+for (int i:=MAX_INT;i>=0;i

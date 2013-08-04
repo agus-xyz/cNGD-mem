@@ -1,0 +1,148 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 2
+%
+%---------------------------------------------------------------------
+
+\chapter{Fundamentos y estado del arte}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Aprende como si fueras a vivir toda la vida,\\
+y vive como si fueras a morir mañana.
+\end{Frase}
+\begin{Fuente}
+Charles Chaplin
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+...
+\end{resumen}
+
+
+%-------------------------------------------------------------------
+\section{Bandas de frecuencia}
+%-------------------------------------------------------------------
+\label{cap1:sec:bandasfrec}
+El espectro radioeléctrico se divide en bandas de frecuencia, que son asignadas a los diferentes servicios o sistemas radioeléctricos por la \ac{UIT}. En segundo lugar, las administraciones de los diferentes países efectúan las atribuciones de frecuencias. Por ello, la utilización de sistemas radioeléctricos debe hacerse dentro del régimen de legalidad vigente, permitiendo la normal coexistencia de las comunicaciones de esta naturaleza.
+
+Las bandas libres, o de uso común, dentro del espectro radioeléctrico, son aquellas en las que se permite la operación de dispositivos de radiocomunicaciones sin una autorización individual de cada estación. Por otra parte, se tiene las bandas con licencia, en las que se asigna una frecuencia o canal para un uso exclusivo del mismo. Obtener una licencia de operación en estas bandas supone la realización de ciertos trámites burocráticos, y la inversión de tiempo y dinero. Por ello, y por la limitación que supone tener que ajustarse en cada país o región a sus restricciones y condiciones para obtener la correspondiente licencia, para este proyecto se estudiarán únicamente las bandas libres. 
+
+Esta terminilogía de clasificación es muy utilizada en la jerga del sector, pero en los textos de regulación del espectro no se emplea como tal, y se habla de las bandas para aplicaciones \ac{ICM}. Éstas fueron definidas por la \ac{UIT} en el artículo 5 del \ac{RR}\footnote{Concrétamente en los puntos 5.138 y 5.150.}. Las bandas \ac{ICM}, están reservadas internacionalmente\footnote{Existen algunas excepciones a nivel regional.} para el uso no comercial de radiofrecuencia electromagnética en las áreas industrial, científica y médica. La utilización de estas bandas de frecuencia está abierto a todo el mundo sin necesidad de licencia, respetando las regulaciones que limitan los niveles de potencia, ancho de banda, etc. Este hecho a dado lugar a su uso en comunicaciones (p.e. WLAN o WPAN), donde la tecnología empleada cuenta con una cierta tolerancia a errores y utiliza mecanismos de protección contra interferencias, como técnicas de espectro ensanchado\footnote{Ver RR 15.13.}, y de acceso múltiple a la banda.
+
+Concretamente, las bandas \ac{ICM} actuales se muestran en la Tabla~\ref{cap2:tab:bandasICM}:
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c c l}
+\hline
+\hline
+& & & & \\ 
+Banda	& Frecuencia central	& Unidad	& RR No. &	Disponibilidad \\
+& & & & \\ 
+\hline
+6.765 - 6.795	& 6.780		& MHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+13.553 - 13.567	& 13.560	& MHz	& 5.150 & \\
+& & & & \\
+26.957 - 27.283 & 27.120	& MHz	& 5.150 & \\
+& & & & \\
+40.66 - 40.70	& 40.680	& MHz	& 5.150 & \\
+& & & & \\
+433.05 - 434.79	& 433.92	& MHz	& 5.138 & Región 1 y sujeta a la aceptación \\
+		&		&	&	& local. Ver RR No. 5.280 \\
+& & & & \\
+902 - 928	& 915		& MHz   & 5.150 & Únicamente Región 2 \\
+& & & & \\
+2.4 - 2.5	& 2.45		& GHz	& 5.150 & \\
+& & & & \\
+5.725 - 5.875	& 5.8		& GHz	& 5.150 & \\
+& & & & \\
+24 - 24.25	& 24.125	& GHz	& 5.150 & \\
+& & & & \\
+61 - 61.5	& 61.25		& GHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+122 - 123	& 122.5		& GHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+244 - 246	& 245		& GHz	& 5.138 & Sujeta a la aceptación local \\
+& & & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Bandas ICM definidas por la UIT.%
+         \label{cap2:tab:bandasICM}}
+\end{table}
+
+En la Figura~\ref{cap2:fig:regionesUIT} se muestra un mapa con las regiones definidas por la \ac{UIT}. Además, se destaca que, como se observa en la Tabla~\ref{cap2:tab:bandasICM}, las bandas definidas en RR No. 5.138 tienen su uso sujeto a una autorización especial de la administración en cuestión, de acuero con las otras administraciones cuyos servicios de radiocomunicación puedan resultar afectados. Por último, para todas las bandas \ac{ICM} la \ac{UIT} advierte: \textit{Los servicios de radiocomunicación que operen en estas bandas deben aceptar la interferencia perjudicial que puede ser causada por las aplicaciones ICM.}
+
+\figura{Vectorial/Capitulo2/regionesUIT}{angle=270,width=.55\textwidth}{cap2:fig:regionesUIT}%
+{Regiones definidas por la UIT en su Reglamento de Radiocomunicaciones.}
+
+En Europa, la banda 902 - 928 MHz se utiliza para aplicaciones de telefonía móvil automática GSM, por ello, se ha definido\footnote{ETSI TR 102 649-2 V1.1.1 (2008-09).} otra banda de 868 a 870 MHz para dispositivos de corto alcance, \ac{SRD}. Ésta se encuentra dividida en sub-bandas destinadas a diferentes aplicaciones.
+
+En España, las restricciones de potencia y condiciones de utilización aplicadas sobre las bandas \ac{ICM} definidas por la \ac{UIT} se recogen en el \ac{CNAF}, publicado por el Ministerio de Industria, Turismo y Comercio. En la Tabla~\ref{cap2:tab:bandasICM}, se recogen los valores actualmente en vigor según las Notas de Utilización Nacional del \ac{CNAF} 2010.
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.8}{
+\begin{tabular}{c c c c l}
+\hline
+\hline
+& & & & \\ 
+Banda		& Unidad	& Campo magnético /	& Nota		& Observaciones \\
+		& 		& Potencia máxima	&		&		\\
+\hline
+6.765 - 6.795	& MHz		& 42 $dB\mu A/m$	& UN-115	& Aplicaciones de bucle inductivo \\
+		&		& (a 10 m)		&		& \\
+& & & & \\
+13.553 - 13.567	& MHz		& 42 $dB\mu A/m$	& UN-115	& Aplicaciones de bucle inductivo \\
+		&		& (a 10 m)		&		& \\
+& & & & \\
+26.957 - 27.283 & MHz 		& 10 mW pra		& UN-4 		& Aplicaciones genéricas de SRD. \\
+		&		&			&		& Coincide con los primeros 28 canales \\
+		&		&			&		& de la Banda Ciudadana, CB-27 \\
+& & & & \\
+40.66 - 40.70	& MHz		& 10 mW pra		& UN-11 	& Aplicaciones genéricas de SRD\\
+& & & & \\
+433.05 - 434.79	& MHz		& 1 mW pra		& UN-30		& Ciclo de trabajo 100\% \\
+		&		& 10 mW pra		&		& Ciclo de trabajo 10\% \\
+& & & & \\
+434.04 - 434.79 & MHz		& 10 mW pra		& UN-30		& Ciclo de trabajo 100\% \\
+		&		&			& 		& Canalización $\le 25kHz$ \\
+& & & & \\
+869.40 - 869.65	& MHz	 	& 500 mW pra		& UN-39		& C. trabajo 100\% con canalización $25kHz$ \\
+		&		&			&		& C. trabajo 10\% sin canalización \\
+& & & & \\
+2.4000 - 2.4835	& GHz		& 100 mW pire		& UN-85a	& La norma de referencia para los equipos \\
+		&		&			&		& es el estándar ETSI EN 300 328 en su \\
+		&		&			&		& versión actualizada \\
+& & & & \\
+5.725 - 5.875	& GHz		& 25 mW pire		& UN-130	& La norma técnica de referencia para estos \\
+		&		&			& 		& dispositivos es la norma ETSI EN 300 440 \\
+& & & & \\
+24 - 24.25	& GHz		& 100 mW pire		& UN-86		& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+61 - 61.5	& GHz		& 100 mW pire		& UN-115	& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+122 - 123	& GHz		& 100 mW pire		& UN-115	& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+244 - 246	& GHz		& 100 mW pire		& UN-115	& Aplicaciones no específicas de baja potencia \\
+& & & & \\
+\hline
+\hline
+\end{tabular}}
+\caption{Notas de Utilización Nacional de las Bandas ICM definidas en el CNAF 2010.%
+         \label{cap2:tab:bandasICM}}
+\end{table}
+
+A la hora de optar por trabajar en una u otra banda de frecuencia deberá tenerse en cuenta:
+\begin{itemize}
+\item La existencia de normas o estándares de operación en la banda qu
+\end{itemize}
+
+En el caso de las telecomunicaciones, el contexto al que hace referencia la ISO es casi exclusivamente tecnológico. Los estándares de telecomunicaciones deben alcanzar únicamente el nivel de concreción necesario para llevar a cabo implementaciones del estándar de manera inequívoca y que sean compatibles entre sí. Además, las normas técnicas de telecomunicaciones deben proporcionar criterios uniformes en el ámbito territorial más extenso posible, de manera que se pueda garantizar la interoperabilidad a nivel global.
+Como se ha indicado más arriba, los estándares pueden ser 

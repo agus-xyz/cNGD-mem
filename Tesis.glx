@@ -1,0 +1,34 @@
+
+
+\GlossTeXEntry{AODV}{AODV}{\emph{Ad hoc On-demand Distance Vector}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}
+\GlossTeXEntry{DSDV}{DSDV}{\emph{Destination Sequenced Distance Vector}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}
+\GlossTeXEntry{DSR}{DSR}{\emph{Dynamic Source Routing}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}
+\GlossTeXEntry{FIFO}{FIFO}{\emph{First In, First Out}}{}{acr}{a}{\GlossTeXPage{n}{26}}
+\GlossTeXNull{0}
+\GlossTeXEntry{GPS}{GPS}{\emph{Global Positioning System}}{}{acr}{a}{\GlossTeXPage{n}{10}}
+\GlossTeXNull{0}
+\GlossTeXEntry{LAB}{LAB}{\emph{Laboratorio de Aplicaciones Bioacústicas}}{}{acr}{a}{\GlossTeXPage{n}{9}}
+\GlossTeXNull{0}
+\GlossTeXEntry{LLN}{LLN}{\emph{Link Layer Notification}}{}{acr}{a}{\GlossTeXPage{n}{22}}
+\GlossTeXNull{0}
+\GlossTeXEntry{LoWPAN}{LoWPAN}{\emph{Low-Rate Wireless Personal Area Network}}{}{acr}{a}{\GlossTeXPage{n}{23}}
+\GlossTeXNull{0}
+\GlossTeXEntry{MANET}{MANET}{\emph{Mobile Ad hoc Network}}{}{acr}{a}{\GlossTeXPage{n}{22}}
+\GlossTeXNull{0}
+\GlossTeXEntry{OLSR}{OLSR}{\emph{Optimized Link State Routing}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}
+\GlossTeXEntry{PREQ}{PREQ}{\emph{Position Request}}{}{acr}{a}{\GlossTeXPage{n}{38}}
+\GlossTeXNull{0}
+\GlossTeXEntry{RERR}{RERR}{\emph{Route Error}}{}{acr}{a}{\GlossTeXPage{n}{18}}
+\GlossTeXNull{0}
+\GlossTeXEntry{RREP}{RREP}{\emph{Route Reply}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}
+\GlossTeXEntry{RREQ}{RREQ}{\emph{Route Request}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}
+\GlossTeXEntry{TTL}{TTL}{\emph{Time To Live}, Tiempo de Vida}{}{acr}{a}{\GlossTeXPage{n}{15}}
+\GlossTeXNull{0}
+\GlossTeXEntry{ZRP}{ZRP}{\emph{Zone Routing Protocol}}{}{acr}{a}{\GlossTeXPage{n}{12}}
+\GlossTeXNull{0}

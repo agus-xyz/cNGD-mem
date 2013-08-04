@@ -1,0 +1,267 @@
+%---------------------------------------------------------------------
+%
+%                          Apéndice B
+%
+%---------------------------------------------------------------------
+
+\chapter{Código MATLAB}
+\label{ap2:matlab}
+
+En este apéndice se incluye el código MATLAB utilizado en el Capítulo 4 para el estudio teórico de un enlace radioeléctrico en el mar.
+
+%-------------------------------------------------------------------
+\section{freeSpace.m}
+%-------------------------------------------------------------------
+\label{ap1:freeSpace}
+\begin{lstlisting}[language=Matlab, numbers=left]
+%---------------------------%
+% Ramiro Utrilla Gutiérrez  %
+% Julio 2011                %
+%---------------------------%
+close all
+clear all
+clc
+
+% RADIO LINK - FREE SPACE PROPAGATION
+% Definitions
+d = [1000:100:1000*10^3]; % m 
+freq = 869.525 * 10^6; % Hz
+speed = 3 * 10^8; % m/s
+lambda = speed / freq; % m
+Pt = 25; % dBm
+Gt = 4.5; % dBi
+Gr = 4.5; % dBi
+Pr = zeros(1,length(d)); % dBm
+sens = -104*ones(1,length(d)); % dBm
+
+% Free Space Path Loss
+Lbf = zeros(1,length(d));
+Lbf = 32.45 + 20*log10(d/(10^3)) + 20*log10(freq/(10^6)); % dB
+
+% Receive Power
+Pr = Pt + Gt - Lbf + Gr; % dBm
+
+% Figure 1. Free Space Path Loss
+figure
+semilogx(d/(10^3), Lbf, 'b', 'linewidth', 2);
+grid on
+set(gca,'XTickLabel',{'1','10','100','1.000'})
+xlabel('\bfDistancia [km]')
+ylabel('\bfL_{bf} [dB]')
+title(sprintf('Pérdida básica de propagación en condiciones de espacio libre \n Frecuencia de operación: 869.525 MHz'));
+
+% Figure 2. Receive Power
+figure
+semilogx(d/(10^3), Pr, 'b', 'linewidth', 2);
+grid on
+set(gca,'XTickLabel',{'1','10','100','1.000'})
+xlabel('\bfDistancia [km]')
+ylabel('\bfP_{r} [dBm]')
+title(sprintf('Potencia disponible en el receptor en condiciones de espacio libre \n P_{t}: %d dBm; G_{t}: %g dBi; G_{r}: %g dBi', Pt, Gt, Gr));
+hold on
+semilogx(d/(10^3), sens, 'r', 'linewidth', 2);
+legend('Potencia disponible en el receptor','Sensibilidad del receptor')
+hold off
+\end{lstlisting}
+
+
+%-------------------------------------------------------------------
+\section{twoRayModel.m}
+%-------------------------------------------------------------------
+\label{ap1:twoRayModel}
+\begin{lstlisting}[language=Matlab, numbers=left]
+%---------------------------%
+% Ramiro Utrilla Gutiérrez  %
+% Julio 2011                %
+%---------------------------%
+clear all
+close all
+clc
+
+% RADIO LINK - TWO RAY PROPAGATION MODEL
+% Definitions
+d = [1:.01:10000]; % m
+f = 869.525 * 10^6; % Hz
+c = 3 * 10^8; % m/s
+lambda = c/f; % m
+Pt = 25; % dBm
+Gt = 4.5; % dBi
+Gr = 4.5; % dBi
+ht = 2; % m
+hr = 2; % m
+beta = pi; % rad
+modR = 1;
+lb = zeros(1,length(d));
+Lb = zeros(1,length(d)); % dB
+Lbf = zeros(1,length(d)); % dB
+Lb2 = zeros(1,length(d)); % dB
+Pr = zeros(1,length(d)); % dBm
+sens = -104*ones(1,length(d)); % dBm
+
+% Two Ray Model Path Loss
+delta = (4*pi*ht*hr)./(lambda*d);
+for i=1:length(d)
+    lb(i) = ((4*pi*d(i))/lambda)^2 / (2*(1-cos(delta(i))));
+    Lb(i) = 10*log10(lb(i));
+end
+
+% Free Space Path Loss
+Lbf = 32.45 + 20*log10(d/(10^3)) + 20*log10(f/(10^6)); % dBm
+
+% Two Ray Model Path Loss for long distances
+Lb2 = 40*log10(d/(10^3)) - 20*log10(ht*hr) + 120;
+
+% Receive Power
+Pr = Pt + Gt - Lb + Gr; % dBm
+
+% Figure 1. Two Ray Path Loss 1
+figure
+semilogx(d, Lb, 'linewidth', 2)
+grid on
+set(gca,'XTickLabel',{'1','10','100','1.000','10.000'})
+xlabel('\bfDistancia [m]')
+ylabel('\bfPérdida básica de propagación [dB]')
+title(sprintf('Pérdida básica de propagación \n f: 869.525 MHz; h_{t}: %d m; h_{r}: %d m', ht, hr));
+hold on
+semilogx(d, Lbf,'r', 'linewidth', 2);
+legend('Modelo de tierra plana','En condiciones de espacio libre',2)
+hold off
+
+% Figure 2. Two Ray Path Loss 2
+figure
+semilogx(d, Lb, 'linewidth', 2)
+grid on
+set(gca,'XTickLabel',{'1','10','100','1.000','10.000'})
+xlabel('\bfDistancia [m]')
+ylabel('\bfPérdida básica de propagación [dB]')
+title(sprintf('Pérdida básica de propagación \n f: 869.525 MHz; h_{t}: %d m; h_{r}: %d m', ht, hr));
+hold on
+semilogx(d, Lb2, 'k', 'linewidth', 2);
+semilogx(d, Lbf,'r', 'linewidth', 2);
+legend('Modelo de tierra plana','Modelo de tierra plana largas distancias','En condiciones de espacio libre',2)
+hold off
+
+% Figure 3. Receive Power
+figure
+semilogx(d/(10^3), Pr, 'b', 'linewidth', 2);
+grid on
+set(gca,'XTickLabel',{'1','10','100','1.000','10.000'})
+xlabel('\bfDistancia [m]')
+ylabel('\bfP_{r} [dBm]')
+title(sprintf('Potencia disponible en el receptor con modelo de tierra plana \n f: 869.525 MHz; P_{t}: %d dBm; G_{t}: %g dBi; G_{r}: %g dBi; h_{t}: %d m; h_{r}: %d m', Pt, Gt, Gr, ht, hr));
+hold on
+semilogx(d/(10^3), sens, 'r', 'linewidth', 2);
+legend('Potencia disponible en el receptor','Sensibilidad del receptor')
+hold off
+\end{lstlisting}
+
+
+%-------------------------------------------------------------------
+\section{measurements.m}
+%-------------------------------------------------------------------
+\label{ap1:measurements}
+\begin{lstlisting}[language=Matlab, numbers=left]
+%---------------------------%
+% Ramiro Utrilla Gutiérrez  %
+% Julio 2011                %
+%---------------------------%
+clear all
+close all
+clc
+
+% RADIO LINK - TWO RAY PROPAGATION MODEL
+% Definitions
+d = [1:.001:10]; % m
+f = 869.525 * 10^6; % Hz
+c = 3 * 10^8; % m/s
+lambda = c/f; % m
+Pt = 25; % dBm
+Gt = 4.5; % dBi
+Gr = 4.5; % dBi
+ht = 2; % m
+hr = 2; % m
+beta = pi; % rad
+modR = 1;
+lb = zeros(1,length(d));
+Lb = zeros(1,length(d)); % dB
+day1e1 = zeros(1,5); % dBm
+day2e1 = zeros(1,5); % dBm
+day1e2 = zeros(1,5); % dBm
+day2e2 = zeros(1,5); % dBm
+day1e3 = zeros(1,5); % dBm
+day2e3 = zeros(1,5); % dBm
+Pr = zeros(1,length(d)); % dBm
+sens = -104*ones(1,length(d)); % dBm
+link1 = 1.84*ones(1,5); % km
+link2 = 3.06*ones(1,5); % km
+link3 = 3.5*ones(1,5); % km
+
+% Two Ray Model Path Loss
+delta = (4*pi*ht*hr)./(lambda*(d*10^3));
+for i=1:length(d)
+    lb(i) = ((4*pi*(d(i)*10^3))/lambda)^2 / (2*(1-cos(delta(i))));
+    Lb(i) = 10*log10(lb(i));
+end
+
+% Receive Power
+Pr = Pt + Gt - Lb + Gr; % dBm
+
+% Measurements
+day1e1 = [-95; -93; -96; -103; -97];
+day2e1 = [-92; -98; -95; -102; -97];
+
+% Hypothetical Link 2
+space1 = Pr(841) - Pr(2061);
+day1e2 = day1e1 - space1;
+day2e2 = day2e1 - space1;
+
+% Hypothetical Link 2
+space2 = Pr(841) - Pr(2501);
+day1e3 = day1e1 - space2;
+day2e3 = day2e1 - space2;
+
+% Figure 1. Receive Power and Link 1 Measurements
+figure
+semilogx(d, Pr, 'b', 'linewidth', 2);
+grid on
+set(gca,'XTickLabel',{'1','10'})
+xlabel('\bfDistancia [km]')
+ylabel('\bfP_{r} [dBm]')
+title(sprintf('Potencia disponible en el receptor. ENLACE 1 \n f: 869.525 MHz; P_{t}: %d dBm; G_{t}: %g dBi; G_{r}: %g dBi; h_{t}: %d m; h_{r}: %d m', Pt, Gt, Gr, ht, hr));
+hold on
+semilogx(link1, day1e1, 'kx', 'linewidth',2);
+semilogx(link1, day2e1, 'mo', 'linewidth',2);
+semilogx(d, sens, 'r', 'linewidth', 2);
+legend('Modelo de tierra plana','Medidas de la jornada 1','Medidas de la jornada 2','Sensibilidad del receptor')
+hold off
+
+% Figure 2. Receive Power and Hypothetical Link 2 Measurements
+figure
+semilogx(d, Pr, 'b', 'linewidth', 2);
+grid on
+set(gca,'XTickLabel',{'1','10'})
+xlabel('\bfDistancia [km]')
+ylabel('\bfP_{r} [dBm]')
+title(sprintf('Potencia disponible en el receptor. ENLACE 2 \n f: 869.525 MHz; P_{t}: %d dBm; G_{t}: %g dBi; G_{r}: %g dBi; h_{t}: %d m; h_{r}: %d m', Pt, Gt, Gr, ht, hr));
+hold on
+semilogx(link2, day1e2, 'kx', 'linewidth',2);
+semilogx(link2, day2e2, 'mo', 'linewidth',2);
+semilogx(d, sens, 'r', 'linewidth', 2);
+legend('Modelo de tierra plana','Medidas hipotéticas de la jornada 1','Medidas hipotéticas de la jornada 2','Sensibilidad del receptor')
+hold off
+
+% Figure 3. Receive Power and Hypothetical Link 3 Measurements
+figure
+semilogx(d, Pr, 'b', 'linewidth', 2);
+grid on
+set(gca,'XTickLabel',{'1','10'})
+xlabel('\bfDistancia [km]')
+ylabel('\bfP_{r} [dBm]')
+title(sprintf('Potencia disponible en el receptor. ENLACE 3 \n f: 869.525 MHz; P_{t}: %d dBm; G_{t}: %g dBi; G_{r}: %g dBi; h_{t}: %d m; h_{r}: %d m', Pt, Gt, Gr, ht, hr));
+hold on
+semilogx(link3, day1e3, 'kx', 'linewidth',2);
+semilogx(link3, day2e3, 'mo', 'linewidth',2);
+semilogx(d, sens, 'r', 'linewidth', 2);
+legend('Modelo de tierra plana','Medidas hipotéticas de la jornada 1','Medidas hipotéticas de la jornada 2','Sensibilidad del receptor')
+hold off
+\end{lstlisting}

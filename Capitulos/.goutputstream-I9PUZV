@@ -1,0 +1,28 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 1
+%
+%---------------------------------------------------------------------
+
+\chapter{Introducción}
+
+\begin{FraseCelebre}
+\begin{Frase}
+...
+\end{Frase}
+\begin{Fuente}
+...
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+...
+\end{resumen}
+
+
+%-------------------------------------------------------------------
+\section{Modelo de 2 rayos}
+%-------------------------------------------------------------------
+\label{cap1:sec:introduccion}
+
+Modelo de Friis o espacio libre resulta muy idealista en algunos casos 

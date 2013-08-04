@@ -1,0 +1,65 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: Tesis.aux
+A level-1 auxiliary file: Cascaras/cover.aux
+A level-1 auxiliary file: Cascaras/dedicatoria.aux
+A level-1 auxiliary file: Cascaras/agradecimientos.aux
+A level-1 auxiliary file: Cascaras/resumen.aux
+A level-1 auxiliary file: TeXiS/TeXiS_toc.aux
+A level-1 auxiliary file: Capitulos/01Introduction.aux
+A level-1 auxiliary file: Capitulos/02StateOfArt.aux
+A level-1 auxiliary file: Capitulos/03ReviewStudy.aux
+A level-1 auxiliary file: Capitulos/04DesignStudy.aux
+A level-1 auxiliary file: Capitulos/05Software.aux
+A level-1 auxiliary file: Capitulos/06PruebaFinal.aux
+A level-1 auxiliary file: Capitulos/07ConclusionesTrabajoFuturo.aux
+A level-1 auxiliary file: Apendices/Presupuesto.aux
+A level-1 auxiliary file: Apendices/Matlab.aux
+A level-1 auxiliary file: Apendices/Cabeceras.aux
+A level-1 auxiliary file: Cascaras/bibliografia.aux
+The style file: TeXiS/TeXiS.bst
+Database file #1: capitulo1.bib
+Database file #2: capitulo2.bib
+Database file #3: capitulo3.bib
+Database file #4: capitulo4.bib
+Database file #5: capitulo5.bib
+You've used 14 entries,
+            2962 wiz_defined-function locations,
+            1203 strings with 16306 characters,
+and the built_in function-call counts, 10159 in all, are:
+= -- 830
+> -- 332
+< -- 22
++ -- 136
+- -- 114
+* -- 736
+:= -- 1387
+add.period$ -- 57
+call.type$ -- 14
+change.case$ -- 122
+chr.to.int$ -- 14
+cite$ -- 14
+duplicate$ -- 832
+empty$ -- 811
+format.name$ -- 164
+if$ -- 2121
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 158
+newline$ -- 81
+num.names$ -- 56
+pop$ -- 347
+preamble$ -- 1
+purify$ -- 94
+quote$ -- 0
+skip$ -- 342
+stack$ -- 0
+substring$ -- 478
+swap$ -- 476
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 134
+warning$ -- 0
+while$ -- 66
+width$ -- 0
+write$ -- 204

@@ -1,0 +1,284 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 1
+%
+%---------------------------------------------------------------------
+
+\chapter{Introducción}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Cuando hayáis talado el último árbol, matado\\
+el último animal y contaminado el último río,\\
+os daréis cuenta de que el dinero no se come.
+\end{Frase}
+\begin{Fuente}
+Proverbio de los indios Cris, Canadá
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+...
+\end{resumen}
+
+%-------------------------------------------------------------------
+\section{Motivación}
+%-------------------------------------------------------------------
+\label{cap1:sec:motivacion} 
+%-------------------------------------------------------------------
+El ruido en el mar ha existido siempre, de forma natural o biológica. Sin embargo, en los últimos cien años, la introducción masiva de fuentes sonoras artificiales en este medio ha crecido hasta una escala nunca experimentada. Por ello, debido a su carácter reciente y no controlado, el ruido antropogénico se ha convertido en una amenaza para su equilibrio. \citep{buenasPracticas}
+
+Las fuentes sonoras producidas por actividades humanas presentan efectos físicos, fisiológicos y de comportamiento sobre la fauna marina: mamíferos, reptiles, peces e invertebrados. Éstos pueden ser de diversa magnitud según la cercanía a la fuente sonora. Entre estos impactos se incluyen, por ejemplo:
+\begin{itemize}
+\item Una reducción de la abundancia de especies pesqueras hasta en un 50\% en las zonas de prospección. \citep{engas1993}\citep{skalski1992}
+\item Cambios de comportamiento y rutas migratorias de cetáceos. \citep{richardson1995} \citep{gordon1996}
+\item Daños de distinto rango, incluidos físicos, en vertebrados e invertebrados marinos. \mbox{\citep{mccauley2000} \citep{guerra2004}}
+\end{itemize}
+
+Pueden existir, además, efectos a largo plazo a causa de una exposición crónica, y el sonido puede afectar a los animales indirectamente debido a cambios en la accesibilidad de sus presas, que sufren a su vez los efectos de la contaminación acústica. Estos daños podrían afectar de forma significativa a la conservación de las poblaciones de especies de fauna marina amenazadas que utilicen áreas contaminadas acústicamente como ruta migratoria, área de reproducción o alimentación.
+
+Las fuentes de contaminación acústica marina producidas por actividades humanas incluyen, entre otras: el transporte marítimo, la exploración y producción de gas y petróleo, el sonar militar e industrial, las fuentes de acústica experimental, las explosiones submarinas, militares o civiles, las actividades de ingeniería (dragados, construcciones, etc.), el ruido de aviones supersónicos, y la construcción y operación de parques eólicos.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap1:ferry}%
+\scriptsize{Ferry turístico de gran velocidad entre Las Palmas y \mbox{Santa} Cruz. (Eric Vandeville/\copyright Rolex Awards)}}%
+\includegraphics[width=0.28\textwidth]%
+{Imagenes/Bitmap/Capitulo1/ferry}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:oilplatform}%
+\scriptsize{Plataforma petrolífera en el Mar del Norte. (Erik Christensen)}}%
+\includegraphics[width=0.28\textwidth]%
+{Imagenes/Bitmap/Capitulo1/oilplatform}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:parqueeolico}%
+\scriptsize{Parque eólico marino de West of Duddon Sands, que contará con 108 aerogeneradores. (Paul \mbox{Langrock} Agentur)}}%
+\includegraphics[width=0.28\textwidth]%
+{Imagenes/Bitmap/Capitulo1/parqueeolico}%
+\end{SubFloat}
+\caption{Fuentes de contaminación acústica marina producidas por actividades humanas.}
+\label{fig:cap1:fuentescontaminacion}
+\end{figure}
+
+Estas fuentes sonoras se introducen en el espacio acústico y físico de los organismos marinos (ver Figura~\ref{fig:cap1:sonidosoceano}) y no existen actualmente niveles de referencia que permitan prever las consecuencias negativas de estas interacciones a corto, medio o largo plazo sobre el equilibrio natural de los océanos y sus efectos sobre la biodiversidad marina.
+
+\figura{Bitmap/Capitulo1/sonidosoceano}{width=.7\textwidth}{fig:cap1:sonidosoceano}%
+{Niveles de sonido y frecuencias de fuentes sonoras antropogénicas y naturales del medio marino.}
+
+Evaluar el impacto acústico de fuentes sonoras artificiales en el medio marino es, en la actualidad, una tarea costosa, por varios motivos. El primero es la relativa falta de información sobre el mecanismo de proceso y análisis de sonidos por parte de los organismos marinos. Aunque es posible grabar y catalogar la mayoría de estas señales, no se conoce aun su papel e importancia en el equilibrio y desarrollo de las poblaciones. En segundo lugar, el posible impacto de emisiones sonoras no sólo concierne los sistemas de recepción auditiva sino que puede intervenir a otros niveles sensoriales o sistémicos y resultar letal para el animal afectado. Si a estas dos razones de peso se añade el hecho que una exposición puntual o prolongada a un ruido determinado puede tener consecuencias negativas a medio y largo plazo y, por lo tanto, no observarse de inmediato, se entiende la gran dificultad a la cual se está confrontando la comunidad científica para obtener unos datos objetivos que permitan controlar de forma efectiva la introducción de ruido antropogénico en el mar.
+
+El medio marino, como todo medio natural, se organiza sobre la base del equilibrio de los organismos que la habitan, cada uno de los cuales se sitúa a un nivel trófico específico que permite el desarrollo de los niveles superiores. Un desajuste de cualquiera de estos niveles desequilibra la cadena en los dos sentidos. Frente a un problema de conservación, el reto de los científicos es encontrar un organismo suficientemente representativo, es decir, cuyo equilibrio y desarrollo pueden influir de igual manera en el resto de la cadena trófica, y utilizarlo como bioindicador frente a la fuente contaminante.
+
+La elección de los cetáceos como biodindicadores de la contaminación acústica del mar, no es fortuita. Ellos dependen del intercambio acústico para un gran número de actividades y comportamientos vitales como: la comunicación, orientación, relación con el medio, alimentación, y la gran mayoría de actividades dentro de su grupo social (cohesión, alarmas, relaciones materno-filiales, etc.). Por todo ello, los cetáceos representan, hasta la fecha, el mejor bioindicador de los efectos de la contaminación acústica en el mar.
+
+Aunque el ruido ambiental en tierra fue regulado con anterioridad, la contaminación acústica marina se ha introducido en los marcos legales internacionales sólo recientemente\footnote{Estas regulaciones incluyen los artículos 192, 194 (2,3), 206 y 235 de UNCLOS 1982 , y UNCED 1992}, traspasándose a las regulaciones nacionales de algunos países como el Reino Unido.
+
+El Consejo Superior de la Sociedad Europea de Cetáceos (\textit{European Cetacean Society}), sociedad que agrupa a los 500 científicos europeos que dedican sus investigaciones a la biología de los cetáceos, considera que\footnote{Conclusiones del 17 Congreso Internacional de esta sociedad celebrado en Las Palmas de Gran Canaria en marzo de 2003 bajo el tema principal \textit{Marine Mammals and Sound}}:
+\begin{itemize}
+\item Se necesita de forma urgente investigación sobre los efectos de la contaminación acústica humana en el mar, investigación que deberá conducirse bajo los más altos estándares de credibilidad científica, evitando los conflictos de intereses.
+\item Se deben desarrollar e implementar lo antes posible medidas de mitigación no intrusivas.
+\item Se tendría que limitar el uso de fuentes sonoras submarinas potentes hasta que se conozcan los efectos a corto, medio y largo plazo sobre los mamíferos marinos y evitar este uso en áreas de concentración de estas especies.
+\item Se deben desarrollar instrumentos legislativos en materia de contaminación acústica marina que permitan cumplir las políticas europeas y nacionales de protección de la biodiversidad marina. \citep{andre2007}
+\end{itemize}
+
+Además del riesgo ambiental que supone el ruido antropogénico en el mar, existe otra serie de problemas asociados a la actividad humana en este medio, por ejemplo: el \textit{bycatch}, captura accidental de animales que no son objeto de pesca, o las colisiones entre barcos y cetáceos u otras especies.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap1:varamiento}%
+\scriptsize{Existen varios estudios que coinciden en relacionar varamientos masivos con operaciones militares en las que se utilizaron señales de sónar de frecuencias \mbox{medias} y bajas. En la foto playa de Naracoopa, en la isla \mbox{australiana} de King. Marzo 2009. (Reuters)}}%
+\includegraphics[width=0.45\textwidth]%
+{Imagenes/Bitmap/Capitulo1/varamiento}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:bycatch}%
+\scriptsize{Captura accidental de la vaquita marina, una \mbox{especie} de marsopa, en el Golfo de California. (\mbox{Cristian} Faezi y Omar Vidal)}}%
+\includegraphics[width=0.45\textwidth]%
+{Imagenes/Bitmap/Capitulo1/bycatch}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:collision1}%
+\scriptsize{Alrededor del 20\% de las ballenas encontradas muertas en el Mediterráneo ha chocado con barcos. (\copyright BBC News)}}%
+\includegraphics[width=0.45\textwidth]%
+{Imagenes/Bitmap/Capitulo1/collision1}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:collision2}%
+\scriptsize{Un cachalote muere tras una colisión con un ferry de alta velocidad que viajaba entre las islas de Gran Canaria y Tenerife. (Vidal Martin)}}%
+\includegraphics[width=0.45\textwidth]%
+{Imagenes/Bitmap/Capitulo1/collision2}%
+\end{SubFloat}
+\caption{Ejemplos del impacto ambiental generado por el ser humano en el medio marino.}
+\label{fig:cap1:ejemplosImpacto}
+\end{figure}
+
+
+
+%-------------------------------------------------------------------
+\section{Marco de trabajo}
+%-------------------------------------------------------------------
+\label{cap1:sec:marcotrabajo}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
+\subsection{Laboratorio de Aplicaciones Bioacústicas}
+%-------------------------------------------------------------------
+La creación del \ac{LAB}\footnote{http://www.lab.upc.es} representa la respuesta madura de un grupo multidisciplinar de científicos a la continua degradación acústica del medio marino que está teniendo lugar en el Atlántico Norte y el Mediterráneo.
+
+El LAB nace para responder con soluciones tecnológicas a la conservación del hábitat marino y prevenir su deterioro progresivo. Tiene como objetivo principal el desarrollo de aplicaciones capaces de limitar los efectos del ruido antropogénico en el mar y contribuir al desarrollo sostenible de las actividades marítimas. De este modo, se podrá dar respuesta a las exigencias planteadas al respecto por las instituciones locales, nacionales e internacionales y la sociedad en general a través de mecanismos de control de la contaminación acústica marina. 
+
+Si bien el monitoreo y seguimiento de las actividades con impacto ambiental es una necesidad aceptada generalmente y una obligación legal para cualquier clase de plan o proyecto, en el campo de la  contaminación acústica subacuática resulta de una importancia verdaderamente vital. Las carencias de investigación comentadas en la Sección~\ref{cap1:sec:motivacion} podrían ser paliadas a través del establecimiento de estos sistemas en las correspondientes Declaraciones de Impacto Ambiental o en las directrices de gestión de las Áreas Marinas Protegidas. 
+
+Por ello, el monitoreo y seguimiento de actividades generadoras de contaminación acústica marina, se encuentra entre las principales líneas de investigación del \ac{LAB} \citep{andre2008}\citep{andre2009}. Como principal herramienta para ello se destaca el \ac{PAM}. Grabar mediante hidrófonos las señales específicas que producen muchas especies y sub-grupos de ellas, permite revelar su presencia en zonas de interés de manera no intrusiva, es decir, sin añadir más ruido al medio. Como el sonido se propaga de manera muy eficiente en el agua, el alcance de la detección puede ser muy grande, superior a 100 Km. en condiciones favorables para las señales de baja frecuencia. Esto excede en gran medida las posibilidades de detección visual. Además, los avances en electrónica, informática y análisis numérico permiten ahora que esta técnica pueda aplicarse con una tecnología barata y accesible, convirtiéndola en una solución viable y sostenible para la mitigación de los efectos de la contaminación acústica marina.
+
+Concretamente, el \ac{LAB} desarrolla técnicas de \ac{DCL} de eventos acústicos y las implementa en tiempo real en diferentes soportes o sistemas integrados, como: observatorios submarinos cableados, boyas autónomas, estructuras sumergibles, planeadores, etc. \citep{andre2011} \citep{zaugg2010} \citep{houegnigan2010}
+
+
+%-------------------------------------------------------------------
+\subsection{Proyecto LIDO}
+%-------------------------------------------------------------------
+En las próximas dos décadas, se prevé un incremento de los niveles de desarrollo industrial en alta mar. Por ejemplo, los océanos, cada vez más, van apareciendo como una fuente alternativa de energía, gracias al desarrollo de parques eólicos marinos y de otras tecnologías para obtener energía de las olas o las mareas. Todo ésto, entre otros problemas, se traducirá en un aumento de los niveles de contaminación acústica en este medio, lo que, como se vio anteriormente, repercutirá gravemente en su equilibrio. Por ello, el problema que enfrenta actualmente la industria, y en general la sociedad, es que muchas actividades de importancia económica en el mar están en riesgo debido a la falta de información sobre los efectos del ruido antropogénico sobre los mamíferos marinos y, especialmente, la falta de herramientas disponibles para mitigar estos efectos. El desafío pues, es desarrollar soluciones tecnológicas que combinen los intereses de la industria y el buen estado ecológico de los océanos, logrando así un desarrollo sostenible.
+
+El \ac{LAB} está actualmente liderando un proyecto financiado por la Unión Europea en el marco de \ac{ESONET}\footnote{http://www.esonet-noe.org} llamado \ac{LIDO}\footnote{http://www.listentothedeep.com}. Se busca establecer una base científica centrada en cinco aspectos principales: 
+\begin{itemize}
+\item Identificación y clasificación automática de fuentes de ruido artificiales, naturales y biológicas, para el posterior análisis de sus interacciones.
+\item Monitorización de los organismos marinos y su dinámica de poblaciones.
+\item Evaluación y control de los efectos a largo plazo de las fuentes antropogénicas de ruido en los organismos marinos, especialmente en zonas de seguridad o exclusión\footnote{Entendiéndose como tal, cualquier área marina protegida o cualquier otro área, de la cual, en virtud de su sistema de gestión o de una degradación de impacto ambiental se hayan excluido las posibilidades de desarrollar actividades que generen contaminación acústica submarina.}.
+\item Educación social y de las administraciones.
+\item Aprobación de normas éticas y procedimientos objetivos y estandarizados en el desarrollo de actividades en alta mar en presencia de cetáceos, de una manera científicamente contrastada garantizando un desarrollo sostenible.
+\end{itemize}
+
+El software implementado en este proyecto está actualmente activo en los observatorios submarinos, conectados por cable a la costa, de: ANTARES (Colaboración Antares, Europa), OBSEA (UPC, Universidad Politécnica de Cataluña, España), Neptuno (University of Victoria, Canadá), Kushiro y Hatsushima (JAMSTEC, Japón) y NEMO (INFN, Italia). Además, parte del sistema está siendo probada para determinar su viabilidad en planeadores autónomos, en colaboración con el NURC. 
+
+En tiempo real, el software divide las grabaciones en diferentes bandas de frecuencias cubriendo los nichos acústicos de la mayor parte de especies de animales marinos. A continuación, cada banda es analizada por una serie de algoritmos organizados en módulos, concretamente de: detección, clasificación, localización de fuentes y medida de ruido. Con ello, se está creando una base de datos única y, además, está permitiendo crear sets de entrenamiento y calibración para el propio sistema, en función de: el estado del mar, la ubicación geográfica, el nivel de ruido, etc. En resumen el sistema \ac{LIDO}, toma como entrada una secuencia de datos acústicos y produce una salida con la caracterización de los eventos que se han detectado en ellos, espectrogramas para una rápida visualización y audio comprimido. Esta salida se pone a disposición del público en Internet, donde se puede ver con una aplicación específica (ver Figura~\ref{fig:cap1:interfazLIDO}). La interfaz pública se puede encontrar en la página web del proyecto.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap1:mapaobservatorios}%
+\scriptsize{Detalle de la localización de los observatorio en el globo terráqueo.}}%
+\includegraphics[width=0.24\textwidth]%
+{Imagenes/Bitmap/Capitulo1/mapaobservatorios}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:espectrograma}%
+\scriptsize{Detalle espectrograma del observatorio NEMO al este de Sicilia.}}%
+\includegraphics[width=0.38\textwidth]%
+{Imagenes/Bitmap/Capitulo1/espectrograma}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:localizacion}%
+\scriptsize{Detalle de mapa de \mbox{localización} de eventos \mbox{acústicos}.}}%
+\includegraphics[width=0.23\textwidth]%
+{Imagenes/Bitmap/Capitulo1/localizacion}%
+\end{SubFloat}
+\caption{Detalles de la interfaz pública del proyecto LIDO.}
+\label{fig:cap1:interfazLIDO}
+\end{figure}
+
+Por su funcionalidad en tiempo real, y la posibilidad de integrarse en diferentes soportes, como: observatorios cableados, boyas autónomas, estructuras sumergibles, planeadores, etc; el sistema LIDO DCL, con la incorporación de un servicio de alarma, constituye una gran herramienta de mitigación no intrusiva.
+
+Actualmente, LIDO permite el análisis exhaustivo de datos, sin restricción de frecuencias ni consumo, cuando el sistema está cableado. En su utilización en boyas autónomas, existen dos casos:
+\begin{itemize}
+\item Alimentación por paneles solares. Se acerca a las condiciones de análisis de los sistemas cableados, pero la transmisión de datos está limitada en alcance y velocidad por el radioenlace.
+\item Alimentación por baterías. Presenta las mismas limitaciones que el caso anterior en la transmisión de datos y, además, requiere algunas restricciones en el análisis de los mismos.
+\end{itemize}
+
+En el caso de desplegar varias boyas, todas ellas deberían tener conexión directa, punto a punto, con la estación base, formando una topología estrella (ver Figura~\ref{fig:cap1:estrella}). Pero existe otra opción, permitir la intercomunicación entre boyas, que se convierten así en nodos de una red multisalto, con capacidad de enrutamiento (ver Figura~\ref{fig:cap1:malla}). De esta forma, basta con que una de ellas tenga conexión con la estación base para asegurar que todos los nodos de la red puedan comunicarse con ésta. Añadir dicha funcionalidad al sistema permitirá, entre otras cosas: eliminar la limitación de alcance comentada anteriormente, cubrir mayores áreas para DCL y mitigación, contrastar el análisis de las señales que se reciben desde boyas cercanas, etc. De esta manera, se obtendría una solución económica que permite el \ac{PAM} con una resolución espacial, además de temporal. Los datos de todos los nodos se envían, casi en tiempo real, a una estación en tierra, o a una determinada embarcación, permitiendo así tomar medidas de mitigación a tiempo. Algunas aplicaciones, entre otras muchas, podrían ser:
+\begin{itemize}
+\item Creación de perímetros de seguridad entorno a fuentes sonoras de alta potencia, como pueden ser: barcos de prospección petrolífera, parques eólicos, actividades de ingeniería, explosiones y pruebas con sónar militar, experimentos científicos, etc.
+\item Detección de cetáceos, u otros animales, en áreas de pesca para evitar el bycatch.
+\item Alertar de la presencia de cetáceos en zonas de alto tráfico marítimo, para que los barcos puedan reducir su velocidad y prevenir colisiones, o en caso de producirse, minimizar sus consecuencias.
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap1:estrella}%
+\scriptsize{Topología estrella.}}%
+\includegraphics[angle=270,width=0.47\textwidth]%
+{Imagenes/Vectorial/Capitulo1/estrella}%
+\end{SubFloat}
+\begin{SubFloat}
+{\label{fig:cap1:malla}%
+\scriptsize{Topología mallada.}}%
+\includegraphics[angle=270,width=0.47\textwidth]%
+{Imagenes/Vectorial/Capitulo1/malla}%
+\end{SubFloat}
+\caption{Ejemplos de topologías de red.}
+\label{fig:cap1:topologias}
+\end{figure}
+
+La tecnología utilizada para la implementación de esta red, determinará diferentes parámetros del sistema, como:
+\begin{itemize}
+\item La velocidad de transmisión de datos, que se traducirá en la capacidad de envío del flujo bruto de información, únicamente de alarmas o soluciones intermedias.
+\item El soporte de diversas topologías de red.
+\item La distancia máxima posible entre boyas, y a la estación base, que puede ser un barco, un receptor en tierra, una estación marina con conexión a
+tierra vía cable, etc.
+\item El consumo de energía.
+\item El tipo de boya necesaria.
+\item Otros.
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\section{Objetivos}
+%-------------------------------------------------------------------
+\label{cap1:sec:objetivos}
+%-------------------------------------------------------------------
+Partiendo de la problemática medioambiental descrita anteriormente, y del estado actual de desarrollo de las herramientas de mitigación para la misma, se definen los siguientes objetivos para el presente \ac{PFC}.
+\begin{itemize}
+\item \textbf{Objetivo General}: Realizar un estudio de posibilidades tecnológicas para la implementación de una red multisalto en el medio marino, donde cada nodo pueda encaminar la información para comunicarse con otros con los que no tiene conexión directa. El estudio debe tener en cuenta varios aspectos como: la distancia máxima de la conexión entre nodos en dicho medio, la velocidad de transmisión de datos, el consumo de energía, el precio de los equipos, etc. Basándose en los resultados de dicho estudio, se debe definir una opción concreta y desarrollar y caracterizar un prototipo de la misma.
+\item \textbf{Objetivos específicos}:
+\begin{itemize}
+\item Estudio de posibilidades e implementación de un radioenlace simple de datos en entorno marino. Realización previa de un cálculo teórico del alcance esperado.
+\item Estudio de mercado de la tecnología disponible para la implementación de la red.
+\item Puesta en marcha de la red con flujo real de datos.
+\end{itemize}
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\section{Metodología de trabajo}
+%-------------------------------------------------------------------
+\label{cap1:sec:plantrabajo}
+%-------------------------------------------------------------------
+Para la consecución de los objetivos del \ac{PFC}, tal y como muestra la Figura~\ref{fig:cap1:metodologia}, se ha utilizado una metodología de trabajo basada en cuatro líneas paralelas con diferente inicio temporal:
+\begin{itemize}
+\item \textbf{Formación}. La lectura de publicaciones científicas, libros y otras fuentes, ha sido constante durante todo el desarrollo del \ac{PFC}. Inicialmente se sintetizó el estado del arte en redes multisalto, radiocomunicaciones en el mar, boyas autónomas, etc. Tras el análisis de posibilidades y el estudio de mercado, como ya se verá más adelante, se centró el estudio en protocolos de encaminamiento. Finalmente, se repasó y completó los conocimientos en radiopropagación y balance de radioenlaces, para la realización de las pruebas de campo. En la etapa final, también se comenzó a trabajar con el sistema \LaTeX\, concretamente con la plantilla \textsc{TeXiS}, para la elaboración de la memoria.
+\item \textbf{Investigación}. Tras el estudio de varios protocolos de encaminamiento, y la necesidad detectada de tener que realizar la implementación de uno, se decidió realizar algunas modificaciones sobre el original, con el objetivo de lograr dar soporte a una nueva aplicación.
+\item \textbf{Desarrollo}. En el análisis de mercado se detectó la necesidad de desarrollar una implementación propia de un protocolo de encaminamiento. Tras ello, se desarrolló también un sistema para la simulación y prueba del mismo. Tras ello, procedió de todas las partes del sistema y la realización de la prueba final del prototipo, y a su evaluación.
+\item \textbf{Escritura}. La escritura se ha llevado a cabo a lo largo de todo el proyecto, condensando la mayor carga de trabajo al finalizar el periodo de desarrollo.
+\end{itemize}
+
+\figura{Bitmap/Capitulo1/metodologia}{width=.97\textwidth}{fig:cap1:metodologia}%
+{Diagrama de la metodología de trabajo.}
+
+Además, durante todo el proceso de realización del proyecto, se ha mantenido una comunicación periódica y un seguimiento del trabajo realizado con los compañeros del \ac{LAB}.
+
+\figura{Bitmap/Capitulo1/comunicacion}{width=.4\textwidth}{fig:cap1:comunicacion}%
+{Comunicación con los compañeros del LAB.}
+
+%-------------------------------------------------------------------
+\section{Organización del documento}
+%-------------------------------------------------------------------
+\label{cap1:sec:organización}
+%-------------------------------------------------------------------
+El presente documento está organizado de la siguiente forma:
+\begin{itemize}
+\item Capítulo 1: En él se presenta la motivacion, circunstancias y contexto en que se desarrolla este \ac{PFC}, sus objetivos y metodología de trabajo y comunicación.
+\item Capítulo 2: Se presenta todo el estudio del estado del arte, que permite al lector ponerse en el punto de partida de este trabajo. Se incluye un m 

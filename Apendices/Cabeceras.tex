@@ -1,0 +1,495 @@
+%---------------------------------------------------------------------
+%
+%                          Apéndice C
+%
+%---------------------------------------------------------------------
+
+\chapter{Cabecera y definición de funciones}
+\label{ap1:cabeceras}
+
+En este apéndice se incluyen las cabeceras y declaraciones de las principales funciones implementadas en el sistema.
+
+%\begin{FraseCelebre}
+%\begin{Frase}
+%...
+%\end{Frase}
+%\begin{Fuente}
+%...
+%\end{Fuente}
+%\end{FraseCelebre}
+
+%\begin{resumen}
+%...
+%\end{resumen}
+
+%-------------------------------------------------------------------
+\section{extractMessInfo}
+%-------------------------------------------------------------------
+\label{ap1:extractMessInfo}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Take out the NNID and frameID headers of the message received  */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -message:   Message received                                  */
+/*                                                                */
+/* OUTPUT                                                         */
+/*  -message:   Message received without NNID and frameID fields. */
+/*  -nnid:      NNID field                                        */
+/*  -frameID:   frameID field                                     */
+/*                                                                */
+/* RETURNS                                                        */
+/*  - ERROR if there is any problem in the process.               */
+/*  - OK if the process is succesful.                             */
+/*                                                                */
+/******************************************************************/
+int extractMessInfo (char *nnid, char *frameID, char *message);
+\end{lstlisting}
+
+
+%-------------------------------------------------------------------
+\section{checkAlarm}
+%-------------------------------------------------------------------
+\label{ap1:checkAlarm}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Check if there are new alarms in the alarm.dat file.           */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -lastAlarm: The alarmID of the last alarm used.               */
+/*                                                                */
+/* RETURNS                                                        */
+/*  -ERROR if there is not more alarms now.                       */
+/*  -The index of the line in the file with the next alarm to send*/
+/******************************************************************/
+int checkAlarm (unsigned int lastAlarm);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendLocalAlarm}
+%-------------------------------------------------------------------
+\label{ap1:sendLocalAlarm}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Read an alarm in the 'alarmIndex' line from the 'alarm.dat'    */
+/* file and send it.                                              */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -dnid:       DNID field                                       */
+/*  -nnid:       NNID field                                       */
+/*  -nid:        SNID field                                       */
+/*  -alarmIndex: The alarm index of the alarm to read.            */
+/*                                                                */
+/* RETURNS                                                        */
+/*  -The alarmID of the alarm sended.                             */
+/*  -0 if there is any problem in the process.                    */
+/******************************************************************/
+unsigned int sendLocalAlarm (char *dnid, char *nnid, char *nid, int alarmIndex);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{exeDATA}
+%-------------------------------------------------------------------
+\label{ap1:exeDATA}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Execute the DATA reception process.                            */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -nid:         NID of the own node.                            */
+/*  -DATAmessage: DATA message received.                          */
+/*  -lt_rte:      Lifetime of a routing table entry.              */
+/*                                                                */
+/* OUTPUT                                                         */
+/*  -auxdnid:     DNID of the ACK, when a route has to be         */
+/*                rediscovered.                                   */
+/*                                                                */
+/* RETURNS                                                        */
+/*  -ERROR if there is any problem in the process.                */
+/*  -OK if the process is succesful.                              */
+/******************************************************************/
+int exeDATA(char *nid, char *DATAmessage, int lt_rte, char *auxdnid);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendDATA}
+%-------------------------------------------------------------------
+\label{ap1:sendDATA}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Send a unicast DATA message.                                   */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -nnid:        Next node ID in the route.                      */
+/*  -DATAmessage: The part of the message with the info.          */
+/******************************************************************/
+void sendDATA (char *nnid, char *DATAmessage);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{exeACK}
+%-------------------------------------------------------------------
+\label{ap1:exeACK}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Execute the ACK reception process.                             */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -nid            NID of the own node.                          */
+/*  -ACKmessage:    ACK message received.                         */
+/*  -lt_rte:        Lifetime of a routing table entry.            */
+/* RETURNS                                                        */
+/*  -alarmID when the ACK messages corresponds with a local       */
+/*   alarm sended.                                                */
+/*  -0 in other cases.                                            */
+/******************************************************************/
+unsigned int exeACK (char *nid, char *ACKmessage, int lt_rte);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendACK}
+%-------------------------------------------------------------------
+\label{ap1:sendACK}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Send a unicast ACK message.                                    */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -nnid           Next node ID in the route.                    */
+/*  -ACKmessage:    The part of the message with the info.        */
+/******************************************************************/
+void sendACK (char *nnid, char *ACKmessage);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{serialData2queue}
+%-------------------------------------------------------------------
+\label{ap1:serialData2queue}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Read the serial data and put the messages received between     */
+/* brackets ([Hello world!]) in the message queue.		  */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -serialData: Data readed in the serial port.                  */
+/*  -Q:          Message queue.			                  */
+/******************************************************************/
+void serialData2queue (char *serialData, queue Q);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{initSeqNum}
+%-------------------------------------------------------------------
+\label{ap1:initSeqNum}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Inicialize the sequence number with time(NULL) for making a    */
+/* strong system against resets.				  */
+/******************************************************************/
+void initSeqNum (void);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{updateSeqNum}
+%-------------------------------------------------------------------
+\label{ap1:updateSeqNum}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Update the sequence number.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -seqN: The sequence number received in a RREQ or PREQ messages*/
+/*  								  */
+/* RETURNS							  */
+/*  -The sequence number updated.				  */
+/******************************************************************/
+unsigned long int updateSeqNum (unsigned long int seqN);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{checkRREQ}
+%-------------------------------------------------------------------
+\label{ap1:checkRREQ}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Check the RREQ table to verify that the RREQ is updated.	  */
+/******************************************************************/
+/* INPUT							  */
+/*  -snid: Source node id of the RREQ message.			  */
+/*  -seqN: The sequence number received in a RREQ message.	  */
+/*  								  */
+/* RETURNS							  */
+/*  -OK to add the new entry.					  */
+/*  -ERROR to discard the new entry.				  */
+/******************************************************************/
+int checkRREQ (char *snid, unsigned long int seqN);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{exeRREQ}
+%-------------------------------------------------------------------
+\label{ap1:exeRREQ}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Execute the RREQ process.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -nid:  	  NID of the own node.  			  */
+/*  -max_hops:    Maximum number of hops setted in the node.conf  */
+/*  -RREQmessage: RREQ message received.			  */
+/*  -lt_rte: 	  Lifetime of a routing table entry.		  */
+/*  								  */
+/* RETURNS							  */
+/*  -OK if the process is succesful.				  */
+/*  -ERROR if there is any problem in the process.		  */
+/*                                                                */
+/******************************************************************/
+int exeRREQ (char *nid, int max_hops, char *RREQmessage, int lt_rte);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendRREQ}
+%-------------------------------------------------------------------
+\label{ap1:sendRREQ}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Send a broadcast RREQ message. If the sequence number in the   */
+/* argument is '0', the RREQ is local and the function increase   */
+/* the local seqNum. If the argument is different of 0, the RREQ  */
+/* is not local, it is a rebroadcast and it have its own sequence */
+/* number.							  */
+/******************************************************************/
+/* INPUT							  */
+/*  -snid: SNID field.			  			  */
+/*  -seqN: The sequence number of the RREQ, or 0 if it is a local */
+/*         RREQ which has to be sent.				  */
+/*  -dnid: DNID field.						  */
+/*  -pnid: PNID field.						  */
+/*  -hops: The number of hops of the frame.			  */
+/*  								  */
+/* RETURNS							  */
+/*  -OK when make a RREQ rebroadcast. 				  */
+/*  -Sequence number when sends a local RREQ.			  */
+/******************************************************************/
+unsigned long int sendRREQ (char *snid, unsigned long int seqN, char *dnid, char *pnid, int hops);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{checkPREQ}
+%-------------------------------------------------------------------
+\label{ap1:checkPREQ}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Check the PREQ table to verify that the PREQ is updated.	  */
+/******************************************************************/
+/* INPUT							  */
+/*  -snid: Source node id of the PREQ message.			  */
+/*  -seqN: The sequence number received in a PREQ message.	  */
+/*  								  */
+/* RETURNS							  */
+/*  -OK to add the new entry.					  */
+/*  -ERROR to discard the new entry.				  */
+/******************************************************************/
+int checkPREQ (char *snid, unsigned long int seqN);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{exePREQ}
+%-------------------------------------------------------------------
+\label{ap1:exePREQ}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Execute the PREQ process.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -nid:  	  NID of the own node.  			  */
+/*  -PREQmessage: PREQ message received.			  */
+/*  -lt_rte: 	  Lifetime of a routing table entry.		  */
+/*  								  */
+/* RETURNS							  */
+/*  -OK if the process is succesful.				  */
+/*  -ERROR if there is any problem in the process.		  */
+/******************************************************************/
+int exePREQ (char *nid, char *PREQmessage, int lt_rte);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendPREQ}
+%-------------------------------------------------------------------
+\label{ap1:sendPREQ}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Send a broadcast PREQ message. If the sequence number in the   */
+/* argument is '0', the PREQ is local and the function increase   */
+/* the local seqNum. If the argument is different of 0, the PREQ  */
+/* is not local, it is a rebroadcast and it have its own sequence */
+/* number.							  */
+/******************************************************************/
+/* INPUT							  */
+/*  -snid: SNID field.			  			  */
+/*  -seqN: The sequence number of the PREQ, or 0 if it is a local */
+/*         PREQ which has to be sent.				  */
+/*  -pnid: PNID field.						  */
+/*  -hops: The number of hops of the frame.			  */
+/*  								  */
+/* RETURNS							  */
+/*  -OK when make a PREQ rebroadcast. 				  */
+/*  -Sequence number when sends a local PREQ.			  */
+/******************************************************************/
+unsigned long int sendPREQ (char *snid, unsigned long int seqN, char *pnid, int hops);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{exeRREP}
+%-------------------------------------------------------------------
+\label{ap1:exeRREP}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Execute the RREP process.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -nid:  	  NID of the own node.  			  */
+/*  -max_hops:    Maximum number of hops setted in the node.conf  */
+/*  -RREPmessage: RREP message received.			  */
+/*  -lt_rte: 	  Lifetime of a routing table entry.		  */
+/*  								  */
+/* RETURNS							  */
+/*  -The sequence number (seqN > 0) when the RREP corresponds	  */
+/*   with one local RREQ.					  */
+/*  -0 in the other cases.					  */
+/******************************************************************/
+unsigned long int exeRREP (char *nid, int max_hops, char *RREPmessage, int lt_rte);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendRREP}
+%-------------------------------------------------------------------
+\label{ap1:sendRREP}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Send a unicast RREP message.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -nnid: NNID field.			  			  */
+/*  -pnid: PNID field.						  */
+/*  -snid: SNID field.						  */
+/*  -seqN: The sequence number.					  */
+/*  -hops: The number of hops of the frame.			  */
+/*  -dnid: DNID field.			  			  */
+/******************************************************************/
+void sendRREP (char *nnid, char *pnid, char *snid, unsigned long int seqN, int hops, char *dnid);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{exePREP}
+%-------------------------------------------------------------------
+\label{ap1:exePREP}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Execute the PREP process.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -nid:  	  NID of the own node.  			  */
+/*  -PREPmessage: PREP message received.			  */
+/*  -lt_rte: 	  Lifetime of a routing table entry.		  */
+/* RETURNS							  */
+/*  -OK if the process is succesful.				  */
+/*  -ERROR if there is any problem in the process.		  */
+/******************************************************************/
+int exePREP (char *nid, char *PREPmessage, int lt_rte);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{sendPREP}
+%-------------------------------------------------------------------
+\label{ap1:sendPREP}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Send a unicast PREP message.					  */
+/******************************************************************/
+/* INPUT							  */
+/*  -nnid: 	NNID field.			  		  */
+/*  -dnid:  	DNID field.			  		  */
+/*  -timeStamp: Timestamp in the PREP received, or 0 if it is a   */
+/*              local PREP message.				  */
+/*  -snid: 	SNID field.					  */
+/*  -latitude: 	Latitude in the PREP received, or NULL if it is a */
+/*              local PREP message.				  */
+/*  -longitude: Longitude in the PREP received, or NULL if it is a*/
+/*              local PREP message.				  */
+/******************************************************************/
+void sendPREP (char *nnid, char *dnid, unsigned long int timeStamp, char *snid, char *latitude, char *longitude);
+\end{lstlisting}
+
+
+%-------------------------------------------------------------------
+\section{checkNewRoute}
+%-------------------------------------------------------------------
+\label{ap1:checkNewRoute}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Check if the new route is already in the routing table and	  */
+/* also check the update conditions.				  */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -dnid:   Destination node of the route.			  */
+/*  -seqn:   Sequence number of the route.			  */
+/*  -hops:   The number of hops of the route till the own node.   */
+/*  -lt_tre: Lifetime of a routing table entry.			  */
+/* RETURNS                                                        */
+/*  - OK when the routing table is OK to be updated.              */
+/*  - ERROR if the routing table is already updated.              */
+/******************************************************************/
+int checkNewRoute (char *dnid, unsigned long int seqn, int hops, int lt_rte);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{newRoute}
+%-------------------------------------------------------------------
+\label{ap1:newRoute}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Add a new route to the routing table.			  */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -dnid: Destination node of the route.			  */
+/*  -nnid: Next node in the route to the DNID.			  */
+/*  -seqn: Sequence number of the route.			  */
+/*  -hops: The number of hops of the route till the own node.     */
+/* RETURNS                                                        */
+/*  -OK if the process is succesful.				  */
+/*  -ERROR if there is any problem in the process.		  */
+/******************************************************************/
+int newRoute(char *dnid,char *nnid,unsigned long int seqn,int hops);
+\end{lstlisting}
+
+%-------------------------------------------------------------------
+\section{getRoute}
+%-------------------------------------------------------------------
+\label{ap1:getRoute}
+\begin{lstlisting}[style=C]
+/******************************************************************/
+/* Look for a valid route to the dnid.				  */
+/******************************************************************/
+/* INPUT                                                          */
+/*  -dnid:   Destination node of the route.			  */
+/*  -lt_rte: Lifetime of a routing table entry.			  */
+/* OUTPUT							  */
+/*  -nnid:   Next node in the route to the DNID.		  */
+/* RETURNS                                                        */
+/*  -OK if the process is succesful.				  */
+/*  -ERROR if there is any problem in the process.		  */
+/******************************************************************/
+int getRoute (char *dnid, int lt_rte, char *nnid);
+\end{lstlisting}
+
+
+
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

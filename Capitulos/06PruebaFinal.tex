@@ -1,0 +1,542 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 6
+%
+%---------------------------------------------------------------------
+
+\chapter{Prueba final del prototipo de red \mbox{ad hoc} de datos}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Lo importante es no dejar\\de hacerse preguntas.
+\end{Frase}
+\begin{Fuente}
+Albert Einstein
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+Este capítulo describe una serie de pruebas realizadas con el prototipo final de red ad hoc de datos, concretamente utilizando 3 nodos para constituir la red. Los resultados observados muestran algunas situaciones nuevas respecto a las simulaciones. Se confirma el funcionamiento de la red y algunas de las funcionalidades deseadas, pero es necesario profundizar en la realización de este tipo de pruebas, a ser posible en el mar, para: lograr una configuración de los nodos tanto a nivel de hardware como de software más óptima, probar funcionalidades que requieren un mayor número de nodos y detectar posibles fallos del código y corregirlos.
+\end{resumen}
+
+%-------------------------------------------------------------------
+\section{Introducción}
+%-------------------------------------------------------------------
+\label{cap6:sec:intro} 
+%-------------------------------------------------------------------
+Una vez finalizado el desarrollo de las distintas partes del prototipo por separado, se ha procedido a la integración de las mismas según el diseño realizado inicialmente. Este capítulo documenta una serie de pruebas realizadas con tres nodos que emplean el software desarrollado y el hardware seleccionado y probado anteriormente en este proyecto.
+
+Los nodos se han colocado de manera alineada en tierra firme formando un enlace bidireccional en el que, como se muestra en la Figura~\ref{cap6:fig:escenario2}, los \texttt{nodos S} y \texttt{D} requieren del \texttt{A} para poderse comunicar entre sí. Los nodos se han formado de la siguiente manera:
+\begin{itemize}
+\item \texttt{Nodo D}. Actúa como colector o destino de todas las alarmas. Consiste en un módulo de comunicación (XBee-PRO 868 + Antena + Conversor UART-USB) conectado por el puerto USB a un ordenador de mesa con la distribución Ubuntu 11.04 de GNU/Linux. 
+\item \texttt{Nodos A y S}. Actúan como nodos generadores de alarmas, que sería el equivalente a una boya operando en el mar. Cada uno consiste en un ordenador portatil con Ubuntu 10.04 y un módulo de comunicación conectado por el puerto USB.
+\end{itemize}
+
+\newpage
+
+\figura{Bitmap/Capitulo6/escenario2}{width=.6\textwidth}{cap6:fig:escenario2}%
+{Escenario de pruebas: Enlace bidireccional entre tres nodos alineados.}
+
+El firmware de todos los XBee-PRO 868 se ha mantenido configurado sin reenvíos a nivel de MAC (RR=0 y MT=0). La potencia utilizada ha sido la mínima (PL=0) ya que las pruebas se han realizado con los nodos relativamente próximos entre sí. Los parámetros de configuración del software de todos los nodos han sido:
+\begin{itemize}
+\item \texttt{SERIAL\_NAME = \'{}/dev/ttyUSB0\'{}}
+\item \texttt{SERIAL\_BAUD\_RATE = 9600}
+\item \texttt{NODE\_ID = \'{}S\'{}, \'{}A\'{} o \'{}D\'{}}. Cada uno el suyo.
+\item \texttt{SINK\_NODE\_ID = \'{}D\'{}}
+\item \texttt{MAX\_NUM\_HOPS = 3}
+\item \texttt{LIFETIME\_RTENTRY = 300}. Valor en segundos.
+\item \texttt{ALARM\_RETRIES = 2}
+\item \texttt{ALARM\_TIMEOUT = 12}. Valor en segundos.
+\item \texttt{RREQ\_TIMEOUT = 12}. Valor en segundos.
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\section{Primera prueba}
+%-------------------------------------------------------------------
+\label{cap6:sec:prueba1} 
+%-------------------------------------------------------------------
+Ha consistido en el envío de 4 alarmas desde en \texttt{nodo S} al \texttt{D}. 
+
+Durante su operación cada nodo va imprimiendo mensajes por pantalla indicando los datos que recibe y los que envía. De esta manera es posible, al finalizar cada prueba, observar cómo se ha desarrollado todo. Se han registrado los mensajes del \texttt{nodo D} y a continuación se presentan comentados, permitiendo así seguir y entender lo sucedido en el proceso de entrega de las 4 alarmas.  
+
+\begin{lstlisting}[style=C]
+// Se recibe un RREQ del nodo S a través del A. Se puede observar que el número de saltos es 2.
+Serial data received (24 bytes): [0|Q|S|1310577406|D|A|2]   
+RREQ message received!
+
+// Se guarda la ruta hacia el nodo S y se responde al RREQ con un RREP unicast.
+Unicast RREP message (24 bytes): [A|P|D|D|1310577407|1|S]   
+// Se imprime por pantalla la tabla de rutas y de registro de RREQs.
+*************************************************
+***               ROUTING TABLE               ***
+*-----------------------------------------------*
+*    DNID    NNID        SEQN    HOPS    	*
+*-----------------------------------------------*
+*     S     A     1310577406     2    		*
+*************************************************
+*****************************************
+***             RREQ TABLE            ***
+*---------------------------------------*
+*    SNID        SeqNum        		*
+*---------------------------------------*
+*     S          1310577406    		*
+*****************************************
+
+// Se recibe el RREP que el nodo A envía al S, y como es unicast se descarta.
+Serial data received (24 bytes): [S|P|A|D|1310577407|2|S]
+This message is not for me.
+
+// Llega la primera alarma. El nodo S la mandó al A, y éste al D. 
+Serial data received (42 bytes):
+    [D|D|D|S|1|1310564064|S|41.2061|1.7300|87]
+DATA message received!
+
+// Se imprime la información de la alarma recibida.
+Alarm received: alID: 1    	timeStmp: 1310564064    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+
+// Se envía el acuse de recibo (ACK) de la primera alarma.
+Unicast ACK message (9 bytes): [A|A|S|1]
+
+// Se vuelve a recibir la primera alarma. Como no llegó el ACK reenviado por el nodo A, se sabe que ese mensaje falló entre el D y el A y, por eso, tras ALARM_TIMEOUT el nodo S vuelve a enviar su primera alarma.
+Serial data received (42 bytes): 
+    [D|D|D|S|1|1310564064|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 1    	timeStmp: 1310564064    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+
+// Se envía el ACK de la primera alarma.
+Unicast ACK message (9 bytes): [A|A|S|1]
+
+// Llega el ACK reenviado por el nodo A. Como va dirigido a S, el nodo D lo descarta.
+Serial data received (9 bytes): [S|A|S|1]
+This message is not for me.
+
+// Llega la alarma 2 que el nodo S envía al A. Esto significa que por algún motivo los nodos S y D se encuentra uno dentro del área de cobertura del otro pero, como el mensaje es unicast, el nodo D lo descarta.
+Serial data received (42 bytes): 
+    [A|D|D|S|2|1310564070|S|41.2061|1.7300|87]
+This message is not for me.
+
+// Ahora se recibe la alarma 2 reenviada por el nodo A. Como D es el destinatario se registra la alarma y se imprime por pantalla.
+Serial data received (42 bytes): 
+    [D|D|D|S|2|1310564070|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 2    	timeStmp: 1310564070    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+
+//Se envía el ACK de la segunda alarma.
+Unicast ACK message (9 bytes): [A|A|S|2]
+
+// Llega el ACK reenviado por el nodo A. Como va dirigido a S, el nodo D lo descarta.
+Serial data received (9 bytes): [S|A|S|2]
+This message is not for me.
+
+// Se recibe la alarma 3.
+Serial data received (42 bytes): 
+    [D|D|D|S|3|1310564077|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 3    	timeStmp: 1310564077    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+
+// Envio de ACKs por los nodos D y A.
+Unicast ACK message (9 bytes): [A|A|S|3]
+Serial data received (9 bytes): [S|A|S|3]
+This message is not for me.
+
+// Se recibe la alarma 4.
+Serial data received (42 bytes): 
+    [D|D|D|S|4|1310564082|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 4    	timeStmp: 1310564082    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+
+// Envío de ACKs por los nodos D y A.
+Unicast ACK message (9 bytes): [A|A|S|4]
+Serial data received (9 bytes): [S|A|S|4]
+This message is not for me.
+
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf  \\ 
+& 1	& 1310564064	& S	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1310564064	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1310564070	& S	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1310564077	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1310564082	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+Todas las alarmas han llegado correctamente. Al igual que se comprobó en la simulación (ver Subsección~\ref{cap5:sec:escenario2}), los nodos de la red son capaces de descubrir rutas hacia otros no vecinos y, de igual manera, hacerles llegar alarmas y acuses de recibo. Por lo tanto, la red soporta el multisalto. De esta prueba, únicamente, se destacan dos situaciones:
+\begin{itemize}
+\item Se ha registrado una pérdida temporal de la comunicación entre los \texttt{nodos D} y \texttt{A}, probablemente debida a la variabilidad del canal radio. Este efecto ha provocado la pérdida de un acuse de recibo. Esta situación ya se contempló en el desarrollo del software y, como se ha visto, el sistema la soporta sin mayor problema. Al no recibir el \texttt{nodo S} su acuse de recibo tras \texttt{ALARM\_TIMEOUT}, como en la configuración \texttt{ALARM\_RETRIES} es dos, se reintenta el envío de la alarma, en este caso la 1. La segunda vez todo va correctamente. Por este motivo dicha alarma aparece repetida en el fichero \texttt{alarmReg.dat} generado por el \texttt{nodo D}.
+\item En cierto momento, el \texttt{nodo D} ha recibido un mensaje del \texttt{S}, que inicialmente se intentó colocar lo suficientemente separado para que esto no ocurriera. Al ser un mensaje unicast dirigido al \texttt{nodo A} el \texttt{D} lo ha descartado sin más. De este caso se destaca que el área de cobertura varía y, por lo tanto, dos nodos situados a una distancía próxima al límite de éste pueden tener una comunicación intermitente. Para garantizar un comportamiento más estable habrá que dejar cierto margen respecto al límite.
+\end{itemize}
+
+
+%-------------------------------------------------------------------
+\section{Segunda prueba}
+%-------------------------------------------------------------------
+\label{cap6:sec:prueba2} 
+%-------------------------------------------------------------------
+Ha consistido en el envío de 4 alarmas desde el \texttt{nodo S} y otras 4 desde el \texttt{A}. Además, durante el proceso de envío de las alarmas, el \texttt{nodo D} ha realizado una solicitud de posición mediante el envío en broadcast de un mensaje PREQ.
+
+Nuevamente se han registrado los mensajes del \texttt{nodo D} para posteriormente analizar lo sucedido durante la prueba.
+
+\begin{lstlisting}[style=C]
+// Lee del puerto serie un RREQ del nodo A y otro del S y los pone en la cola de mensajes.
+Serial data received (48 bytes): [0|Q|A|1310570952|D|A|1]
+				 [0|Q|S|1310578153|D|A|2]
+
+// Coge de la cola de mensajes el RREQ del nodo A, guarda la ruta y responde con un RREP unicast.
+RREQ message received!
+Unicast RREP message (24 bytes): [A|P|D|D|1310570953|1|A]
+*************************************************
+***               ROUTING TABLE               ***
+*-----------------------------------------------*
+*    DNID    NNID        SEQN    HOPS    	*
+*-----------------------------------------------*
+*     A     A     1310570952     1    		*
+*************************************************
+*****************************************
+***             RREQ TABLE            ***
+*---------------------------------------*
+*    SNID        SeqNum        		*
+*---------------------------------------*
+*     A          1310570952    		*
+*****************************************
+
+// Coge de la cola de mensajes el RREQ del nodo S, guarda la ruta y responde con un RREP unicast.
+RREQ message received!
+Unicast RREP message (24 bytes): [A|P|D|D|1310578154|1|S]
+*************************************************
+***               ROUTING TABLE               ***
+*-----------------------------------------------*
+*    DNID    NNID        SEQN    HOPS    	*
+*-----------------------------------------------*
+*     A     A     1310570952     1    		*
+*     S     A     1310578153     2		*
+*************************************************
+*****************************************
+***             RREQ TABLE            ***
+*---------------------------------------*
+*    SNID        SeqNum        		*
+*---------------------------------------*
+*     A          1310570952    		*
+*     S          1310578153    		*
+*****************************************
+
+// Lee del puerto serie la primera alarma de los nodos A y S y las pone en la cola de mensajes.
+Serial data received (84 bytes): 
+    [D|D|D|A|1|1310564064|A|41.2061|1.7300|87]
+    [D|D|D|S|1|1310564064|S|41.2061|1.7300|87]
+
+// Coge la primera alarma del nodo A de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 1    	timeStmp: 1310564064    alType: A    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|A|1]
+
+// Coge la primera alarma del nodo S de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 1    	timeStmp: 1310564064    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|S|1]
+
+// El nodo D manda un mensaje de solicitud de posición, PREQ.
+PREQ message sent (22 bytes): [0|W|D|1310578155|D|1]
+
+// Lee del puerto serie la segunda alarma del nodo A y el ACK de la primera alarma del S reenviado por el nodo A.
+Serial data received (51 bytes): 
+    [D|D|D|A|2|1310564070|A|41.2061|1.7300|87]
+    [S|A|S|1]
+
+// Coge la segunda alarma del nodo A de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 2    	timeStmp: 1310564070    alType: A    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|A|2]
+
+// Coge el ACK de la primera alarma del nodo S reenviado por el A y lo descarta.
+This message is not for me.
+
+// Lee del puerto serie la segunda alarma del nodo S, el PREP del A y el reenvío del PREQ hecho también por el nodo A.
+Serial data received (103 bytes): 
+    [D|D|D|S|2|1310564070|S|41.2061|1.7300|87]
+    [D|C|D|1310570975|A|+90.1234|-127.4321]
+    [0|W|D|1310578155|A|2]
+
+// Coge la segunda alarma del nodo S de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 2    	timeStmp: 1310564070    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|S|2]
+
+// Coge el PREP del nodo A de la cola de mensajes y lo registra.
+PREP message received!
+PREP message received:  TS: 1310570975    NID: A    
+			LAT: +90.1234     LON: -127.4321
+
+// Coge el reenvío del PREQ hecho por el nodo A, y no hace nada ya que él es el nodo que hizo el PREQ.
+PREQ message received!
+
+// Lee del puerto serie la tercera alarma del nodo A y el ACK de la segunda alarma del S reenviado por el nodo A.
+Serial data received (51 bytes): 
+    [D|D|D|A|3|1310564077|A|41.2061|1.7300|87]
+    [S|A|S|2]
+
+// Coge la tercera alarma del nodo A de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 3    	timeStmp: 1310564077    alType: A    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|A|3]
+// Coge el ACK de la segunda alarma del nodo S reenviado por el A y lo descarta.
+This message is not for me.
+
+// Lee del puerto serie la tercera alarma del nodo S y la cuarta alarma del A
+Serial data received (84 bytes): 
+    [D|D|D|S|3|1310564077|S|41.2061|1.7300|87]
+    [D|D|D|A|4|1310564082|A|41.2061|1.7300|87]
+
+// Coge la tercera alarma del nodo S de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 3    	timeStmp: 1310564077    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|S|3]
+
+// Coge la cuarta alarma del nodo A de la cola de mensajes, la registra y manda su correspondiente ACK.
+DATA message received!
+Alarm received: alID: 4    	timeStmp: 1310564082    alType: A    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|A|4]
+
+// Lee del puerto serie el ACK de la tercera alarma del nodo S reenviado por el A y lo descarta.
+Serial data received (9 bytes): [S|A|S|3]
+This message is not for me.
+
+// Lee del puerto serie la cuarta alarma del nodo S, la registra y manda su correspondiente ACK.
+Serial data received (42 bytes): 
+    [D|D|D|S|4|1310564082|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 4    	timeStmp: 1310564082    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|S|4]
+
+// Lee del puerto serie el ACK de la cuarta alarma del nodo S reenviado por el A y lo descarta.
+Serial data received (9 bytes): [S|A|S|4]
+This message is not for me.
+
+// Vuelve a recibir la cuarta alarma del nodo S, la registra de nuevo y vuelve a mandar su correspondiente ACK. Recibir esta alarma de nuevo significa que el ACK que reenvió el nodo A no llego al S, y éste tras esperar ALARM_TIMEOUT volvió a mandar la alarma 4.
+Serial data received (42 bytes): 
+    [D|D|D|S|4|1310564082|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 4    	timeStmp: 1310564082    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [A|A|S|4]
+
+// Recibe el ACK de la cuarta alarma del nodo S reenviado por el A y lo descarta.
+Serial data received (9 bytes): [S|A|S|4]
+This message is not for me.
+
+// Tras un periodo de tiempo sin recibir nada, puede suceder que el nodo A se haya caído y el S y D no puedan comunicarse, o que el los nodos hayan terminado de enviar sus alarmas y estén a la espera de que aparezcan nuevas.
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf  \\ 
+& 1	& 1310564064	& A	& 41.2061	& 1.7300	& 87 \\
+& 1	& 1310564064	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1310564070	& A	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1310564070	& S	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1310564077	& A	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1310564077	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1310564082	& A	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1310564082	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1310564082	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt positionReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c }
+& timeStamp 	& SNID 	& latitude 	& longitude \\ 
+& 1310570975	& A	& +90.1234	& -127.4321
+\end{tabular}}
+\end{table}
+
+\newpage
+
+En este caso, también han llegado todas las alarmas correctamente al nodo colector, sin embargo, la información de posición del \texttt{nodo S} no lo ha hecho. Se destacan los siguientes sucesos:
+\begin{itemize}
+\item En todos los casos se reciben primero las alarmas del \texttt{nodo A}, que es el más cercano al colector. En caso de existir más nodos, o de haber rutas con más saltos, este efecto puede verse aumentado, pudiendo influir en el correcto funcionamiento de la herramienta. De todos modos, como ya se ha reseñado varias veces en la memoria, el sistema de alarmas de eventos acústicos avisará de la presencia de la fuente sonora en un área y, por lo tanto, el número de alarmas y la frecuencia de aparición de las mismas no se espera que sea tan elevado.
+\item El \texttt{nodo D} no ha recibido el PREP del \texttt{S}. Mirando con detalle el flujo de mensajes, en la línea 81, vemos que el \texttt{nodo A} reenvía correctamente el PREQ, por consiguiente, el mensaje se ha perdido entre este nodo y el \texttt{S}. Nuevamente se vuelve a detectar una caída temporal de la comunicación. En este caso, para obtener la información de localización del \texttt{nodo S}, el colector debería volver a enviar el PREQ con el gasto de recursos que ello supone.
+\item La cuarta alarma del \texttt{nodo S} llega repetida debido a la pérdida de un ACK, concretamente entre el \texttt{S} y el \texttt{A} (línea 140).
+\end{itemize} 
+
+
+%-------------------------------------------------------------------
+\section{Tercera prueba}
+%-------------------------------------------------------------------
+\label{cap6:sec:prueba3} 
+%-------------------------------------------------------------------
+Como se comentó en la Subsección~\ref{cap2:sec:entornoMarino}, \citet{waveHeight} proponían en las conclusiones de su estudio sobre la influencia de la altura de las olas en las redes de sensores en el mar la utilización de boyas únicamente enrutadoras o repetidoras, sin sistema sensor. En esta prueba se ha desconectado el ordenador portatil del \texttt{nodo A} y se ha configurado éste en modo \textit{loopback}, tal y como se hizo para el estudio de alcance. De esta manera, el nodo únicamente actúa como repetidor de todos los mensajes que reciba.
+
+En la prueba el \texttt{nodo S} envía 4 alarmas al colector. A continuación, se muestran los mensajes que este último ha generado en el proceso.
+
+\begin{lstlisting}[style=C]
+// El nodo D recibe un RREQ del S, pero el contador de saltos se encuentra a 1. Esto se debe a que este mensaje a sido repetido por el nodo A, sin haberle incrementado el contador de saltos. El nodo D guarda la ruta, y responde con un RREP.
+Serial data received (24 bytes): [0|Q|S|1310578564|D|S|1]
+RREQ message received!
+Unicast RREP message (24 bytes): [S|P|D|D|1310578565|1|S]
+*************************************************
+***               ROUTING TABLE               ***
+*-----------------------------------------------*
+*    DNID    NNID        SEQN    HOPS    	*
+*-----------------------------------------------*
+*     S     S     1310578564     1    		*
+*************************************************
+***             RREQ TABLE            ***
+*---------------------------------------*
+*    SNID        SeqNum        		*
+*---------------------------------------*
+*     S          1310578564    		*
+*****************************************
+// El nodo D recibe su propio RREP cuando éste es repetido por el nodo A, pero lo descarta ya que este tipo de mensaje es unicast y su DNID es el nodo S.
+Serial data received (24 bytes): [S|P|D|D|1310578565|1|S]
+This message is not for me.
+
+// Recibe la primera alarma del nodo S, la registra y responde con el correspondiente ACK.
+Serial data received (42 bytes): 
+    [D|D|D|S|1|1310564064|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 1    	timeStmp: 1310564064    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [S|A|S|1]
+
+// Repetición del ACK por el nodo A descartada.
+Serial data received (9 bytes): [S|A|S|1]
+This message is not for me.
+
+// Recibe la segunda alarma del nodo S, la registra y responde con el correspondiente ACK.
+Serial data received (42 bytes): 
+    [D|D|D|S|2|1310564070|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 2    	timeStmp: 1310564070    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [S|A|S|2]
+
+// En este caso el nodo A no ha repetido el ACK. Esto significa que no lo ha recibido por una pérdida temporal de la comunicación. Tras ALARM_TIMEOUT el nodo S vuelve a enviar su segunda alarma. Ésta es repetida por el nodo A y, finalmente, la recibe el D. La registra nuevamente y responde con el correspondiente ACK. 
+Serial data received (42 bytes): 
+    [D|D|D|S|2|1310564070|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 2    	timeStmp: 1310564070    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [S|A|S|2]
+
+// Repetición del ACK por el nodo A descartada.
+Serial data received (9 bytes): [S|A|S|2]
+This message is not for me.
+
+// Recibe la tercera alarma del nodo S, la registra y responde con el correspondiente ACK.
+Serial data received (42 bytes): 
+    [D|D|D|S|3|1310564077|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 3    	timeStmp: 1310564077    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [S|A|S|3]
+
+// Repetición del ACK por el nodo A descartada.
+Serial data received (9 bytes): [S|A|S|3]
+This message is not for me.
+// Recibe la cuarta alarma del nodo S, la registra y responde con el correspondiente ACK.
+Serial data received (42 bytes): [D|D|D|S|4|1310564082|S|41.2061|1.7300|87]
+DATA message received!
+Alarm received: alID: 4    	timeStmp: 1310564082    alType: S    
+		Lat: 41.2061    Lon: 1.7300    		PerConf: 87
+Unicast ACK message (9 bytes): [S|A|S|4]
+
+// Repetición del ACK por el nodo A descartada.
+Serial data received (9 bytes): [S|A|S|4]
+This message is not for me.
+\end{lstlisting}
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> Fichero {\tt alarmReg.dat} generado por el \texttt{nodo D}:
+\end{tabbing}
+
+\begin{table}[h!]
+\footnotesize
+\centering
+\scalebox{0.9}{
+\begin{tabular}{c c c c c c c}
+& alarm ID & timeStamp & alarmType & latitude & longitude & perConf  \\ 
+& 1	& 1310564064	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1310564070	& S	& 41.2061	& 1.7300	& 87 \\
+& 2	& 1310564070	& S	& 41.2061	& 1.7300	& 87 \\
+& 3	& 1310564077	& S	& 41.2061	& 1.7300	& 87 \\
+& 4	& 1310564082	& S	& 41.2061	& 1.7300	& 87
+\end{tabular}}
+\end{table}
+
+El \texttt{nodo D} ha recibido todas las alarmas de \texttt{S} correctamente. Se ha vuelto a detectar una pérdida temporal de la comunicación, teniendo que reenviarse una alarma tras el \texttt{ALARM\_TIMEOUT} correspondiente.
+
+Utilizar boyas repetidoras puede ser una buena solución para aumentar la distancia entre boyas sensoras, en el caso de que eso interese. Estas boyas requerirán muy poca \mbox{electrónica}; se eliminará el subsistema sensor y el módulo de procesado de audio del computacional, así podrá utilizarse un subsistema de energía reducido.
+
+
+%-------------------------------------------------------------------
+\section{Discusión de resultados}
+%-------------------------------------------------------------------
+\label{cap6:sec:discusionResultados} 
+%-------------------------------------------------------------------
+El objetivo de la realización de esta prueba final ha sido verificar el correcto \mbox{funcionamiento} de todas las partes de este proyecto integradas: módulo de comunicación del subsistema radio y módulo de entrega remota de datos y protocolo de encaminamiento AODV-LAB del subsistema computacional. El resultado, como se ha ido comentado en cada una de las pruebas, ha sido positivo. Únicamente se destaca la pérdida de algún paquete, suceso común en los sistemas de comunicación inalámbrica. De este modo, queda implementada una herramienta o prototipo a partir del cual se puede continuar experimentando y trabajando para ir logrando cada vez una solución mejor.
+
+En base a los resultados obtenidos se pueden extraer una serie de conlusiones más concretas:
+\begin{itemize}
+\item El proceso de Descubrimiento de Ruta con 3 nodos funciona correctamente.
+\item La red soporta multisalto y realiza adecuadamente la entrega de alarmas.
+\item Las pérdidas temporales de comunicación entre nodos debido a la variabilidad del canal radio están presentes en todos los casos. En la mayoría de las pruebas realizadas la capacidad de reenvío de alarmas, configurable a nivel de software, permite solventar estos problemas sin un consumo elevado de recursos. Exísten algunas excepciones, como es el caso de la pérdida de mensajes de posición, en las que, si se produce un fallo, la nueva solicitud debe hacerse manualmente por el usuario. En este caso, reenviar un PREQ implica que nuevamente todos los nodos que lo reciban envíen su PREP, siendo redundante para todos aquellos que la primera vez lo hicieron correctamente.
+\item El área de cobertura de un nodo es variable. Por ello, a la hora de colocar los nodos habrá que dejar un determinado margen respecto al límite medido.
+\item La operación con nodos repetidores en la red es viable y permite aumentar la distancia entre boyas de forma económica.
+\end{itemize}
+
+Para pruebas futuras se considera apropiado:
+\begin{itemize}
+\item Utilizar una población de nodos algo mayor. Permitirá realizar pruebas de descubrimiento de rutas óptimas, y analizar en profundidad el efecto del número de saltos (\texttt{MAX\_NUM\_HOPS}) entre un nodo fuente y el colector.
+\item Estudiar la opción del firmware de utilizar repeticiones a nivel de MAC. Esta caraterística puede disminuir el efecto de la pérdida temporal de comunicación entre nodos, ya sea: reduciendo la carga computacional que implica, el número de paquetes redundantes que se introducen a la red, o el tiempo empleado en solventar la pérdida de mensajes. Concrétamente, las repeticiones a nivel de MAC parecen más apropiadas para pérdidas breves de la comunicación y los reintentos a nivel de red para periodos más largos sin conexión. Debe prestarse atención a la restricción del ciclo de trabajo que existe en la banda, ya que estas repeticiones estarán introduciendo más tráfico al medio.
+\item Realizar pruebas en el mar. Podrán detectarse efectos nuevos a los registrados en tierra, o de mayor magnitud. También permitirá cuantificar la variabilidad del área de cobertura de los nodos.
+\item Utilizar un tráfico de datos real o acorde con el que generará el sistema de alarmas.
+\item Estudiar en detalle las opciones de configuración de los nodos y ver su efecto en la red para lograr un funcionamiento más óptimo.
+\end{itemize}
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

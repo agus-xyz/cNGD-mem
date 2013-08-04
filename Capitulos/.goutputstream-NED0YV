@@ -1,0 +1,123 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 1
+%
+%---------------------------------------------------------------------
+
+\chapter{Introducción}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Cuando hayáis talado el último árbol, matado\\
+el último animal y contaminado el último río,\\
+os daréis cuenta de que el dinero no se come.
+\end{Frase}
+\begin{Fuente}
+Proverbio de los indios Cris, Canadá
+\end{Fuente}
+\end{FraseCelebre}
+
+
+%-------------------------------------------------------------------
+\section{Motivación}
+%-------------------------------------------------------------------
+\label{cap1:sec:motivacion}
+%-------------------------------------------------------------------
+El ruido en el mar ha existido siempre, de forma natural o biológica. Sin embargo, en los últimos cien años, la introducción de ruido antropogénico en este medio ha crecido hasta una escala nunca experimentada. Debido a su carácter reciente y no controlado, se ha convertido en una amenaza para su equilibrio, más importante que cualquier otra fuente de contaminación a la que se enfrenta.
+
+Las fuentes de contaminación acústica marina producidas por actividades humanas incluyen, entre otras: el transporte marítimo, la exploración y producción de gas y petróleo, el sonar militar e industrial, las fuentes de acústica experimental, las explosiones submarinas, militares o civiles, las actividades de ingeniería (dragados, construcciones, etc.), el ruido de aviones supersónicos, y la construcción y operación de parques eólicos.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap1:ferry}%
+\scriptsize{Ferry turístico de gran velocidad entre Las Palmas y Santa Cruz. (Foto: \copyright Rolex Awards/Eric Vandeville)}}%
+\includegraphics[width=0.28\textwidth]%
+{Imagenes/Bitmap/Capitulo1/ferry}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:oilplatform}%
+\scriptsize{Plataforma petrolífera en el Mar del Norte. (Foto: Erik Christensen)}}%
+\includegraphics[width=0.28\textwidth]%
+{Imagenes/Bitmap/Capitulo1/oilplatform}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap1:parqueeolico}%
+\scriptsize{Parque eólico marino de West of Duddon Sands, que contará con 108 aerogeneradores. (Foto: Paul Langrock Agentur)}}%
+\includegraphics[width=0.28\textwidth]%
+{Imagenes/Bitmap/Capitulo1/parqueeolico}%
+\end{SubFloat}
+\caption{Fuentes de contaminación acústica marina producidas por actividades humanas.}
+\label{fig:cap1:fuentescontaminacion}
+\end{figure}
+
+Estas fuentes sonoras se introducen en el espacio acústico y físico de los organismos marinos (ver Figura~\ref{fig:cap1:sonidosoceano}) y no existen actualmente niveles de referencia que permitan prever las consecuencias negativas de estas interacciones a corto, medio o largo plazo sobre el equilibrio natural de los océanos y sus efectos sobre la biodiversidad marina.
+
+\figura{Bitmap/Capitulo1/sonidosoceano}{width=.7\textwidth}{fig:cap1:sonidosoceano}%
+{Niveles de sonido y frecuencias de fuentes sonoras antropogénicas y naturales del medio marino.}
+
+Las fuentes sonoras producidas por actividades humanas presentan efectos físicos, fisiológicos y de comportamiento sobre la fauna marina: mamíferos, reptiles, peces e invertabrados, efectos que pueden ser de diverso rango según la cercanía a la fuente sonora. Estos impactos, por ejemplo, incluyen una reducción de la abundancia de especies pesqueras hasta en un 50\% en las zonas de prospección, cambios de comportamiento y rutas migratorias de cetáceos, y daños de distintos rangos, incluidos físicos, en vertebrados e invertebrados marinos. Pueden existir, además, efectos a largo plazo debido a exposición crónica y el sonido puede afectar a los animales indirectamente debido a cambios en la accesibilidad de sus presas, que sufren a su vez los efectos de la contaminación acústica. Estos daños podrían afectar de forma significativa a la conservación de las poblaciones de especies de fauna marina amenazadas que utilicen áreas contaminadas acústicamente como ruta migratoria, área de reproducción o alimentación.
+
+Evaluar el impacto acústico de fuentes sonoras artificiales en el medio marino es, en la actualidad, una tarea costosa, por varios motivos. El primero es la relativa falta de información sobre el mecanismo de proceso y análisis de sonidos por parte de los organismos marinos. Aunque somos capaces de grabar y catalogar la mayoría de estas señales, no conocemos aun su papel e importancia en el equilibrio y desarrollo de las poblaciones. En segundo lugar, el posible impacto de emisiones sonoras no sólo concierne los sistemas de recepción auditiva sino que puede intervenir a otros niveles sensoriales o sistémicos y resultar letal para el animal afectado. Si a estas dos razones de peso se añade el hecho que una exposición puntual o prolongada a un ruido determinado puede tener consecuencias negativas a medio y largo plazo y por lo tanto no observarse de inmediato, se entiende la gran dificultad a la cual se está confrontando la comunidad científica para obtener unos datos objetivos que permitan controlar de forma efectiva la introducción de ruido antropogénico en el mar.
+
+Los mamíferos marinos, y especialmente los cetáceos, dependen del intercambio acústico para un gran número de actividades y comportamientos vitales como la comunicación, orientación, relación con el medio, alimentación, y la gran mayoría de actividades dentro de su grupo social (cohesión, alarmas, relaciones materno-filiales, etc.). Debido a su papel fundamental en el equilibrio de la cadena alimenticia marina, los cetáceos representarán en este proyecto los bioindicadores de las interacciones con el ruido de origen antropogénico.
+
+Aunque el ruido ambiental en tierra fue regulado con anterioridad, la contaminación acústica marina se ha introducido en los marcos legales internacionales sólo recientemente, traspasándose a las regulaciones nacionales de algunos países como el Reino Unido.
+
+El Consejo Superior de la Sociedad Europea de Cetáceos (\textit{European Cetacean Society}), sociedad que agrupa a los 500 científicos europeos que dedican sus investigaciones a la biología de los cetáceos, considera que:
+\begin{itemize}
+\item Se necesita de forma urgente investigación sobre los efectos de la contaminación acústica humana en el mar, investigación que deberá conducirse bajo los más altos estándares de credibilidad científica, evitando los conflictos de intereses.
+\item Se deben desarrollar e implementar lo antes posible medidas de mitigación no intrusivas.
+\item Se tendría que limitar el uso de fuentes sonoras submarinas potentes hasta que se conozcan los efectos a corto, medio y largo plazo sobre los mamíferos marinos y evitar este uso en áreas de concentración de estas especies.
+\item Se deben desarrollar instrumentos legislativos en materia de contaminación acústica marina que permitan cumplir las políticas europeas y nacionales de protección de la biodiversidad marina.
+\end{itemize}
+
+Aún más recientemente, la Convención sobre Especies Migratorias (CTM), reconociendo que...
+
+\begin{tabbing}
+--- \= ------ \= \kill
+\> \textit{
+el ruido antropogénico en los océanos constituye una forma de contaminación que puede degradar el medio marino y tener efectos adversos sobre la fauna, pudiendo llegar hasta la muerte de individuos y reafirmando que la dificultad en determinar el impacto acúsitco negativo sobre cetáceos requiere establecer principios de precaución en casos donde el impacto es posible,
+}
+\end{tabbing}
+
+acaba de publicar entre otras resoluciones, una que urge a los organismo que ejercen jurisdicción sobre cualquier especies de organismos marinos listados en los apéndices de la CMS, a ...
+
+\textit{
+...desarrollar medidas de control del impacto de emisiones acústicas provenientes de actividades humanas en hábitats susceptibles de servir de concentración o de lugar de paso de especies amenazadas y de llevar a cabo estudios de impacto ambiental sobre la introducción de sistemas que pueden producir ruido y riesgos derivados para especies de mamíferos marinos.
+}
+
+La elección de los cetáceos como biodindicadores de la contaminación acústica del mar, no es fortuita. El medio marino, como todo medio natural, se organiza sobre la base del equilibrio de los organismos que la habitan, cada uno de los cuales se sitúa a un nivel trófico específico que permite el desarrollo de los niveles superiores. Un desajuste de cualquier de estos niveles desequilibra la cadena, en los dos sentidos. Frente a un problema de conservación, el reto de los científicos es encontrar un organismo suficientemente representativo, es decir, cuyo equilibrio y desarrrollo pueden influir sobre el equilibrio y desarrollo del resto de la cadena trófica y utilizarlo como bioindicador frenta a la fuente contaminante. Los cetáceos, por su relación de dependencia vital y casi exclusiva con la información acústica, representan hasta la fecha el mejor bioindicador de los efectos de la contaminación acústica marina.
+However other especies are sawing increassing sensitivity to noise, like cephalopods and fish, leading to heatend concer because of their large distribution and their economic valuate
+
+
+
+
+
+%-------------------------------------------------------------------
+\section{Marco de trabajo}
+%-------------------------------------------------------------------
+\label{cap1:sec:marcotrabajo}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{Laboratorio de Aplicaciones Bioacústicas}
+%-------------------------------------------------------------------
+La creación del Laboratorio de Aplicaciones Bioacústicas (LAB) representa la respuesta madura de un grupo multi-disciplinar de científicos a la continua degradación acústica del medio marino que está teniendo lugar en el Atlántico Norte y el Mediterráneo.
+
+
+El LAB nace para responder con soluciones tecnológicas a la conservación del hábitat marino y prevenir su deterioro progresivo. Tiene como objetivo principal el desarrollo de aplicaciones capaces de limitar los efectos del ruido antropogénico en el mar y contribuir al desarrollo sostenible de las actividades marítimas . De este modo se podrá dar respuesta a las exigencias planteadas al respecto por las instituciones locales, nacionales e internacionales y la sociedad en general a través de mecanismos de control de la contaminación acústica marina.
+
+El Laboratorio de Aplicaciones Bioacústicas de la Escuela Politécnica Superior de Ingeniería de Vilanova i la Geltrú ha sido creado con fondos del Ministerio de Ciencia y Tecnología y el apoyo institucional del Ayuntamiento de Vilanova i la Geltrú y de la Dirección General de Ports de la Generalitat de Cataluña.
+
+%-------------------------------------------------------------------
+\subsection{Proyecto LIDO}
+%-------------------------------------------------------------------
+we are increasingly tournig  atencion to the oceans for alternative sources of energy, such as ofsore wine farms and wave ower...Revista
+
+The next two decades will see increasing levels of offshore industrial development that will lead to increased amounts of noise pollution in the oceans. These sounds can have physical, physiological and behavioural effects on the marine fauna in the area of action: mammals, reptiles, fish and invertebrates can be affected at various levels depending on the distance to the sound source. The problem faced by the industry, and more generally by the society, is that many economically important activities at sea are at risk because of a lack of information about the effects of anthropogenic sound on marine mammals and especially a lack of available tools to mitigate these effects. The challenge here was to implement technological developments that combined the interests of the industry and the good environmental status of the oceans. 
+
+The Laboratory of Applied Bioacoustics (LAB) is leading a project under the ESONET Network of Excellence entitled 

@@ -1,0 +1,65 @@
+\select@language {spanish}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Formato del mensaje RREQ del protocolo AODV.\relax }}{17}{figure.caption.8}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Formato del mensaje RREP del protocolo AODV.\relax }}{18}{figure.caption.9}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Formato del mensaje RERR del protocolo AODV.\relax }}{18}{figure.caption.10}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Proceso de Descubrimiento de Ruta en una red ad hoc que utiliza el protocolo de encaminamiento AODV para enviar datos desde un nodo origen S hasta un nodo destino D.\relax }}{20}{figure.caption.11}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Escenario inicial propuesto.}}}{20}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Inicio del Descubrimiento de Ruta}}}{20}{subfigure.4.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Propagaci\'on de los RREQ por la red (1).}}}{20}{subfigure.4.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Propagaci\'on de los RREQ por la red (2).}}}{20}{subfigure.4.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Propagaci\'on de los RREQ por la red (3).}}}{20}{subfigure.4.5}
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Ruta seleccionada para el env\IeC {\'\i }o unicast de mensajes RREP.}}}{20}{subfigure.4.6}
+\contentsline {subfigure}{\numberline {(g)}{\ignorespaces {Ruta bidireccional establecida entre los nodos S y D.}}}{20}{subfigure.4.7}
+\contentsline {subfigure}{\numberline {(h)}{\ignorespaces {Env\IeC {\'\i }o de datos entre los nodos S y D.}}}{20}{subfigure.4.8}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Arquitectura de operaci\'on del m\'odulo de entrega remota de datos.\relax }}{28}{figure.caption.13}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Organizaci\'on del c\'odigo implementado.\relax }}{29}{figure.caption.14}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Estructura y flujo de ejecuci\'on del programa.\relax }}{35}{figure.caption.22}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Diagrama de flujo de la parte de chequeo de alarmas.\relax }}{37}{figure.caption.23}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Diagrama de flujo de la parte de chequeo del puerto serie.\relax }}{37}{figure.caption.24}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Diagrama de flujo de la parte de chequeo de la cola de mensajes.\relax }}{38}{figure.caption.25}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Diagrama de flujo de la parte de env\IeC {\'\i }o de mensajes PREQ.\relax }}{39}{figure.caption.26}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Simulaci\'on de un enlace bidireccional entre dos nodos.\relax }}{40}{figure.caption.27}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Representaci\'on de un enlace bidireccional entre dos nodos.}}}{40}{subfigure.12.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Esquema de simulaci\'on de un enlace bidireccional entre dos nodos.}}}{40}{subfigure.12.2}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Simulaci\'on de enlaces bidireccionales entre tres nodos.\relax }}{41}{figure.caption.28}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Representaci\'on de enlaces bidireccionales entre tres nodos.}}}{41}{subfigure.13.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Esquema de simulaci\'on de enlaces bidireccionales entre tres nodos.}}}{41}{subfigure.13.2}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Escenario 1 de simulaci\'on: Enlace bidireccional entre dos nodos.\relax }}{42}{figure.caption.29}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Escenario 2 de simulaci\'on: Enlace bidireccional entre tres nodos alineados.\relax }}{49}{figure.caption.38}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Formaci\'on del camino de vuelta del nodo D al S.\relax }}{50}{figure.caption.40}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {El nodo A recibe el RREQ que el nodo S env\IeC {\'\i }a en modo broadcast.}}}{50}{subfigure.16.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {El nodo D recibe el RREQ que el nodo A reenv\IeC {\'\i }a en modo broadcast.}}}{50}{subfigure.16.2}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Formaci\'on del camino de ida del nodos S al D.\relax }}{51}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {El nodo A recibe el RREP que le env\IeC {\'\i }a el nodo D.}}}{51}{subfigure.17.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {El nodo S recibe el RREP que le reenv\IeC {\'\i }a el nodo A.}}}{51}{subfigure.17.2}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Actualizaci\'on de tablas de encaminamiento.\relax }}{52}{figure.caption.42}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {El nodo A realiza un Descubrimiento de Ruta hacia el nodo D.}}}{52}{subfigure.18.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {El nodo S realiza un Descubrimiento de Ruta hacia el nodo D.}}}{52}{subfigure.18.2}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Escenario 3 de simulaci\'on: Varias rutas distintas entre dos nodos.\relax }}{55}{figure.caption.48}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Descubrimiento de la ruta m\'as corta entre los nodos S y D.\relax }}{56}{figure.caption.49}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Evoluci\'on de las tablas de encaminamiento del nodo S.\relax }}{56}{figure.caption.50}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Tabla de encaminamiento del nodo S tras el primer Descubrimiento de Ruta.}}}{56}{subfigure.21.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tabla de encaminamiento del nodo S tras el segundo Descubrimiento de Ruta.}}}{56}{subfigure.21.2}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces Evoluci\'on de las tablas de encaminamiento del nodo S.\relax }}{57}{figure.caption.52}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Tabla de encaminamiento del \unhbox \voidb@x \hbox {nodo} S tras el primer Descubrimiento de Ruta.}}}{57}{subfigure.22.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Tabla de encaminamiento del nodo S tras el segundo Descubrimiento de Ruta.}}}{57}{subfigure.22.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Tabla de encaminamiento del \unhbox \voidb@x \hbox {nodo} S tras el tercer Descubrimiento de \unhbox \voidb@x \hbox {Ruta}.}}}{57}{subfigure.22.3}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Tabla de encaminamiento del nodo D.\relax }}{58}{figure.caption.54}
+\contentsline {figure}{\numberline {5.24}{\ignorespaces Tabla de encaminamiento del nodo D.\relax }}{59}{figure.caption.57}
+\contentsline {figure}{\numberline {5.25}{\ignorespaces Escenario 4 de simulaci\'on: Red din\'amica.\relax }}{60}{figure.caption.60}
+\contentsline {figure}{\numberline {5.26}{\ignorespaces Tabla de encaminamiento del nodo C.\relax }}{61}{figure.caption.61}
+\contentsline {figure}{\numberline {5.27}{\ignorespaces Tabla de encaminamiento del nodo D.\relax }}{62}{figure.caption.62}
+\contentsline {figure}{\numberline {5.28}{\ignorespaces Tabla de encaminamiento del nodo D.\relax }}{62}{figure.caption.64}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Escenario de pruebas: Enlace bidireccional entre tres nodos alineados.\relax }}{68}{figure.caption.65}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

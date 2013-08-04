@@ -1,0 +1,49 @@
+%---------------------------------------------------------------------
+%
+%                      resumen.tex
+%
+%---------------------------------------------------------------------
+%
+% Contiene el capítulo del resumen.
+%
+% Se crea como un capítulo sin numeración.
+%
+%---------------------------------------------------------------------
+
+\chapter{Resumen}
+\cabeceraEspecial{Resumen}
+
+%\begin{FraseCelebre}
+%\begin{Frase}
+%...
+%\end{Frase}
+%\begin{Fuente}
+%...
+%\end{Fuente}
+%\end{FraseCelebre}
+ 
+
+% PARRAFO 1: Introducción
+La contaminación acústica generada por la actividad humana en el mar presenta efectos nocivos a nivel físico, fisiológico y de comportamiento sobre la fauna marina. El Laboratorio de Aplicaciones Bioacústicas (LAB) de la Universidad Politécnica de Cataluña (UPC), dentro del proyecto LIDO, trabaja en el desarrollo de herramientas de control y mitigación de estos efectos. Concretamente emplea técnicas de Monitorización mediante Acústica Pasiva (PAM) para la detección, clasificación y localización de fuentes acústicas. Con el fin de adquirir información del medio marino mediante hidrófonos se plantea la utilización de una red de boyas autónomas capaces de enviar sus datos a través de otras boyas intermedias hasta una estación colectora.
+\vspace{.2cm}
+
+% PÁRRAFO 2: Objetivos
+Este proyecto, comprendido dentro del proyecto LIDO, tiene como objetivo diseñar y realizar un primer prototipo de red multisalto especialmente pensada para su operación en el mar. El diseño ha de ir dirigido a soportar un servicio de envío de alarmas orientado a la detección de la presencia de cetáceos en una determinada área de actuación, y buscar la operatividad del sistema logrando una distancia entre boyas de algunos kilómetros, y un cosumo energético reducido. 
+
+%El objetivo de este proyecto es diseñar y realizar un primer prototipo de red multisalto especialmente pensada para su operación en el mar. La red debe soportar un servicio de envío de alarmas orientado a la detección de la presencia de cetáceos en un determinado área de actuación. Para que el sistema sea operativo debe lograrse una distancia entre boyas de algunos kilómetros, y un cosumo energético reducido. Además, la viabilidad y sostenibilidad económica son factores a tener muy en cuenta.
+\vspace{.2cm}
+
+% PÁRRAFO 3: Plan de Acción o actividades desarrolladas
+Para alcanzar este objetivo se han realizado las siguientes actividades: estudiar las posibilidades tecnológicas para la elección de los equipos, definir la arquitectura del sistema para integrar correctamente los nuevos módulos con los ya desarrollados por el LAB, elaborar un estudio teórico de un enlace radioeléctrico en el medio marino y compararlo con medidas reales de alcance realizadas con los equipos adquiridos en el mismo medio, e implementar y simular el software necesario para la gestión de entrega de alarmas al nodo colector.
+
+%Para alcanzar este objetivo se ha realizado, en primer lugar, un estudio de posibilidades tecnológicas orientado a la elección de los equipos. En segundo lugar, se ha definido la arquitectura del sistema para integrar correctamente los nuevos módulos con los ya desarrollados por el LAB. En tercer lugar, se ha elaborado un estudio teórico de un enlace radioeléctrico en el medio marino y, a continuación, se han realizado medidas de alcance con los equipos adquiridos en el mismo medio. En cuarto lugar, se ha implementado y simulado el software necesario para la gestión de entrega de alarmas al nodo colector.
+\vspace{.2cm}
+
+% PÁRRAFO 4: Metodología
+El desarrollo de todo el proyecto ha estado guiado por un plan de mejora continua, basado en: Planificar objetivos concretos, evaluables y contrastables. Actuar de
+manera comedida y precisa, utilizando recursos: eficaces, eficientes y operativos en base a los parámetros de viabilidad y sostenibilidad presente en el proyecto.
+Evaluar de manera sistemática el desarrollo del mismo y Mejorar de manera continua su proceso.
+
+% PÁRRAFO 5: Principios rectores
+Los principios rectores del proyecto han sido: La coherencia y el equilibrio para el desarrollo sostenible en el medio marino. El Compromiso de aportar buenas
+prácticas mediante el estudio, la investigación e innovación en lo que a ...se refiere. El respeto a la normativa vigente en materia de 

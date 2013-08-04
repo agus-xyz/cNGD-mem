@@ -1,0 +1,1388 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.8.3)  5 AUG 2013 01:28
+entering extended mode
+ %&-line parsing enabled.
+**Tesis
+(./Tesis.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, farsi, arabic, croatian, bulgarian, ukrainian, russian, czech, slov
+ak, danish, dutch, finnish, french, basque, ngerman, german, german-x-2009-06-1
+9, ngerman-x-2009-06-19, ibycus, monogreek, greek, ancientgreek, hungarian, san
+skrit, italian, latin, latvian, lithuanian, mongolian2a, mongolian, bokmal, nyn
+orsk, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppersorbian
+, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, polish, po
+rtuguese, spanish, galician, catalan, swedish, ukenglish, pinyin, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/book.cls
+Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/bk11.clo
+File: bk11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count88
+\Gm@cntv=\count89
+\c@Gm@tempcnt=\count90
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@dimlist=\toks15
+
+(/usr/share/texmf-texlive/tex/xelatex/xetexconfig/geometry.cfg))
+(/usr/share/texmf-texlive/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box26
+)
+(/usr/share/texmf/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
+\Gread@gobject=\count91
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen107
+)
+\@input{config.aux}
+\openout2 = `config.aux'.
+
+(./config.tex) (./TeXiS/TeXiS.sty
+Package: TeXiS/TeXiS 
+
+(/usr/share/texmf-texlive/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks16
+\verbatim@line=\toks17
+\verbatim@in@stream=\read1
+)
+\example@out=\write3
+
+\@input{TeXiS/TeXiS_pream.aux}
+\openout2 = `TeXiS/TeXiS_pream.aux'.
+
+(./TeXiS/TeXiS_pream.tex (/usr/share/texmf/tex/latex/glosstex/glosstex.sty
+Package: glosstex 1997/12/13 0.4 GlossTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+Using the standard configuration file glosstex.std
+(/usr/share/texmf/tex/latex/glosstex/glosstex.std))
+(/usr/share/texmf-texlive/tex/latex/base/shortvrb.sty
+Package: shortvrb 2006/02/02 v2.1d Standard LaTeX documentation package (FMi)
+)
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+
+(/usr/share/texmf-texlive/tex/latex/base/latin1.def
+File: latin1.def 2008/03/30 v1.1d Input encoding file
+))
+(/usr/share/texmf-texlive/tex/latex/natbib/natbib.sty
+Package: natbib 2009/07/16 8.31 (PWD, AO)
+\bibhang=\skip43
+\bibsep=\skip44
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count92
+)
+(/var/lib/texmf/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/spanish.ldf
+Language: spanish.ldf 2009/01/02 v5.0h Spanish support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count93
+\U@D=\dimen108
+)
+\es@datefmt=\count94
+\es@quottoks=\toks20
+\es@quotdepth=\count95
+Package babel Info: Making " an active character on input line 492.
+Package babel Info: Making . an active character on input line 585.
+Package babel Info: Making < an active character on input line 630.
+Package babel Info: Making > an active character on input line 630.
+Package babel Info: Making ' an active character on input line 657.
+))
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
+
+(/usr/share/texmf-texlive/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2009/01/23 v0.5 Provides ifxetex conditional
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/hycolor.sty
+Package: hycolor 2009/10/02 v1.5 Code for color options of hyperref/bookmark (H
+O)
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/xcolor-patch.sty
+Package: xcolor-patch 2009/10/02 xcolor patch
+))
+\@linkdim=\dimen109
+\Hy@linkcounter=\count96
+\Hy@pagecounter=\count97
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2007/12/12 v1.2 Prefix for e-TeX command names (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2007/09/09 v1.2 Providing info/warning/message (HO)
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2009/08/13 v3.4 Keyval support for LaTeX options (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2009/07/30 v1.5 Key value parser with default handler suppor
+t (HO)
+))
+Package hyperref Info: Option `colorlinks' set `true' on input line 2864.
+Package hyperref Info: Option `hyperindex' set `true' on input line 2864.
+Package hyperref Info: Option `pdfpagelabels' set `true' on input line 2864.
+Package hyperref Info: Hyper figures OFF on input line 2975.
+Package hyperref Info: Link nesting OFF on input line 2980.
+Package hyperref Info: Hyper index ON on input line 2983.
+Package hyperref Info: Plain pages OFF on input line 2990.
+Package hyperref Info: Backreferencing OFF on input line 2995.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 3191.
+LaTeX Info: Redefining \url on input line 3428.
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bitset.sty
+Package: bitset 2007/09/28 v1.0 Data type bit set (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/intcalc.sty
+Package: intcalc 2007/09/27 v1.1 Expandable integer calculations (HO)
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/bigintcalc.sty
+Package: bigintcalc 2007/11/11 v1.1 Expandable big integer calculations (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2009/09/23 v0.6 LuaTeX support for pdfTeX utility functions
+ (HO)
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2009/04/17 v1.2 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2009/08/05 v1.0 Some LaTeX kernel commands for general use (HO
+)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)))
+\Fld@menulength=\count98
+\Field@Width=\dimen110
+\Fld@charsize=\dimen111
+\Field@toks=\toks21
+Package hyperref Info: Hyper figures OFF on input line 4377.
+Package hyperref Info: Link nesting OFF on input line 4382.
+Package hyperref Info: Hyper index ON on input line 4385.
+Package hyperref Info: backreferencing OFF on input line 4392.
+Package hyperref Info: Link coloring ON on input line 4395.
+Package hyperref Info: Link coloring with OCG OFF on input line 4402.
+Package hyperref Info: PDF/A mode OFF on input line 4407.
+
+(/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
+Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
+)
+\Hy@abspage=\count99
+\c@Item=\count100
+\c@Hfootnote=\count101
+)
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count102
+)
+Package hyperref Info: Option `colorlinks' set `false' on input line 269.
+
+(/usr/share/texmf-texlive/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+\@indexfile=\write4
+\openout4 = `Tesis.idx'.
+
+
+Writing index file Tesis.idx
+(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
+Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
+\c@tracingmulticols=\count103
+\mult@box=\box27
+\multicol@leftmargin=\dimen112
+\c@unbalance=\count104
+\c@collectmore=\count105
+\doublecol@number=\count106
+\multicoltolerance=\count107
+\multicolpretolerance=\count108
+\full@width=\dimen113
+\page@free=\dimen114
+\premulticols=\dimen115
+\postmulticols=\dimen116
+\multicolsep=\skip45
+\multicolbaselineskip=\skip46
+\partial@page=\box28
+\last@line=\box29
+\mult@rightbox=\box30
+\mult@grightbox=\box31
+\mult@gfirstbox=\box32
+\mult@firstbox=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\c@columnbadness=\count109
+\c@finalcolumnbadness=\count110
+\last@try=\dimen117
+\multicolovershoot=\dimen118
+\multicolundershoot=\dimen119
+\mult@nat@firstbox=\box51
+\colbreak@box=\box52
+)
+(/usr/share/texmf-texlive/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption.sty
+Package: caption 2009/10/09 v3.1k Customizing captions (AR)
+
+(/usr/share/texmf-texlive/tex/latex/caption/caption3.sty
+Package: caption3 2009/10/09 v3.1k caption3 kernel (AR)
+\captionmargin=\dimen120
+\captionmargin@=\dimen121
+\captionwidth=\dimen122
+\caption@indent=\dimen123
+\caption@parindent=\dimen124
+\caption@hangindent=\dimen125
+)
+\c@ContinuedFloat=\count111
+Package caption Info: hyperref package is loaded.
+)
+\c@KVtest=\count112
+\sf@farskip=\skip47
+\sf@captopadj=\dimen126
+\sf@capskip=\skip48
+\sf@nearskip=\skip49
+\c@subfigure=\count113
+\c@subfigure@save=\count114
+\c@lofdepth=\count115
+\c@subtable=\count116
+\c@subtable@save=\count117
+\c@lotdepth=\count118
+\sf@top=\skip50
+\sf@bottom=\skip51
+)
+\sf@box=\box53
+
+(/usr/share/texmf-texlive/tex/latex/listings/listings.sty
+\lst@mode=\count119
+\lst@gtempboxa=\box54
+\lst@token=\toks22
+\lst@length=\count120
+\lst@currlwidth=\dimen127
+\lst@column=\count121
+\lst@pos=\count122
+\lst@lostspace=\dimen128
+\lst@width=\dimen129
+\lst@newlines=\count123
+\lst@lineno=\count124
+\lst@maxwidth=\dimen130
+
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+\c@lstnumber=\count125
+\lst@skipnumbers=\count126
+\lst@framebox=\box55
+)
+(/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
+File: listings.cfg 2007/02/22 1.4 listings configuration
+))
+Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/tools/tabularx.sty
+Package: tabularx 1999/01/07 v2.07 `tabularx' package (DPC)
+
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen131
+\extrarowheight=\dimen132
+\NC@list=\toks23
+\extratabsurround=\skip52
+\backup@length=\skip53
+)
+\TX@col@width=\dimen133
+\TX@old@table=\dimen134
+\TX@old@col=\dimen135
+\TX@target=\dimen136
+\TX@delta=\dimen137
+\TX@cols=\count127
+\TX@ftn=\toks24
+)
+(/usr/share/texmf-texlive/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texmf-texlive/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/share/texmf-texlive/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen138
+\Gin@req@width=\dimen139
+)
+\epsfxsize=\dimen140
+\epsfysize=\dimen141
+)
+(/usr/share/texmf-texlive/tex/latex/tools/calc.sty
+Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count128
+\calc@Bcount=\count129
+\calc@Adimen=\dimen142
+\calc@Bdimen=\dimen143
+\calc@Askip=\skip54
+\calc@Bskip=\skip55
+LaTeX Info: Redefining \setlength on input line 76.
+LaTeX Info: Redefining \addtolength on input line 77.
+\calc@Ccount=\count130
+\calc@Cskip=\skip56
+)
+(/usr/share/texmf-texlive/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2007/08/12 v2.8 Sectioning titles
+\ttl@box=\box56
+\beforetitleunit=\skip57
+\aftertitleunit=\skip58
+\ttl@plus=\dimen144
+\ttl@minus=\dimen145
+\ttl@toksa=\toks25
+\titlewidth=\dimen146
+\titlewidthlast=\dimen147
+\titlewidthfirst=\dimen148
+))
+\@input{TeXiS/TeXiS_cab.aux}
+\openout2 = `TeXiS/TeXiS_cab.aux'.
+
+(./TeXiS/TeXiS_cab.tex
+(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip59
+\f@ncyO@elh=\skip60
+\f@ncyO@erh=\skip61
+\f@ncyO@olh=\skip62
+\f@ncyO@orh=\skip63
+\f@ncyO@elf=\skip64
+\f@ncyO@erf=\skip65
+\f@ncyO@olf=\skip66
+\f@ncyO@orf=\skip67
+))
+\@input{TeXiS/TeXiS_cover.aux}
+\openout2 = `TeXiS/TeXiS_cover.aux'.
+
+(./TeXiS/TeXiS_cover.tex)
+\@input{TeXiS/TeXiS_part.aux}
+\openout2 = `TeXiS/TeXiS_part.aux'.
+
+(./TeXiS/TeXiS_part.tex)
+\@input{TeXiS/TeXiS_dedic.aux}
+\openout2 = `TeXiS/TeXiS_dedic.aux'.
+
+(./TeXiS/TeXiS_dedic.tex)
+\@input{TeXiS/TeXiS_bib.aux}
+\openout2 = `TeXiS/TeXiS_bib.aux'.
+
+(./TeXiS/TeXiS_bib.tex))
+\@input{constantes.aux}
+\openout2 = `constantes.aux'.
+
+(./constantes.tex) (./Tesis.aux (./Cascaras/cover.aux)
+(./Cascaras/dedicatoria.aux) (./Cascaras/agradecimientos.aux)
+(./Cascaras/resumen.aux) (./TeXiS/TeXiS_toc.aux)
+(./Capitulos/01Introduction.aux) (./Capitulos/02StateOfArt.aux)
+(./Capitulos/03ReviewStudy.aux) (./Capitulos/04DesignStudy.aux)
+(./Capitulos/05Software.aux) (./Capitulos/06PruebaFinal.aux)
+(./Capitulos/07ConclusionesTrabajoFuturo.aux) (./Apendices/Presupuesto.aux)
+(./Apendices/Matlab.aux) (./Apendices/Cabeceras.aux)
+(./Cascaras/bibliografia.aux))
+\openout1 = `Tesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+
+*geometry auto-detecting driver*
+*geometry detected driver: pdftex*
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: true
+asymmetric: --
+h-parts: 93.95122pt, 438.5141pt, 65.04256pt
+v-parts: 65.04256pt, 682.44046pt, 97.56383pt
+hmarginratio: --
+vmarginratio: 2:3
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  438.5141pt
+\textheight 682.44046pt
+\oddsidemargin  21.68123pt
+\evensidemargin -7.22743pt
+\topmargin  -39.10123pt
+\headheight 14.0pt
+\headsep    19.8738pt
+\footskip   27.46295pt
+\marginparwidth 106.0pt
+\marginparsep   7.0pt
+\columnsep  10.0pt
+\skip\footins  10.0pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+\@twosidetrue \@mparswitchtrue 
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count131
+\scratchdimen=\dimen149
+\scratchbox=\box57
+\nofMPsegments=\count132
+\nofMParguments=\count133
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count134
+\MPscratchDim=\dimen150
+\MPnumerator=\count135
+\everyMPtoPDFconversion=\toks27
+) (./Tesis.glx)
+Package hyperref Info: Link coloring OFF on input line 117.
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
+
+(/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
+)
+\c@section@level=\count136
+)
+LaTeX Info: Redefining \ref on input line 117.
+LaTeX Info: Redefining \pageref on input line 117.
+ (./Tesis.out)
+(./Tesis.out)
+\@outlinefile=\write5
+\openout5 = `Tesis.out'.
+
+\AtBeginShipoutBox=\box58
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 117.
+Package caption Info: listings package is loaded.
+Package caption Info: End \AtBeginDocument code.
+\c@lstlisting=\count137
+ (./guionado.tex)
+\openout2 = `Cascaras/cover.aux'.
+
+ (./Cascaras/cover.tex
+\cambioIzquierdo=\skip68
+\cambioDerecho=\skip69
+\margenPortada=\skip70
+\evensidemarginOriginal=\skip71
+\oddsidemarginOriginal=\skip72
+\GPT@outputbox=\box59
+
+<Imagenes/Bitmap/Otras/logo_UPM_ETSIT_black.png, id=399, 1317.92375pt x 375.402
+5pt>
+File: Imagenes/Bitmap/Otras/logo_UPM_ETSIT_black.png Graphic file (type png)
+ <use Imagenes/Bitmap/Otras/logo_UPM_ETSIT_black.png> [1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Imagenes/Bitmap/Otras/lo
+go_UPM_ETSIT_black.png>] [2]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 183.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 183.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 183.
+
+Underfull \hbox (badness 1205) in paragraph at lines 183--183
+[]|\T1/cmr/m/sc/12 Development of a mul-ti-ple RF in-ter-fa-ced
+ []
+
+[3] [4
+
+] <Imagenes/Bitmap/Otras/logo_LSI.png, id=428, 407.5225pt x 250.9375pt>
+File: Imagenes/Bitmap/Otras/logo_LSI.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Otras/logo_LSI.png>
+<Imagenes/Bitmap/Otras/logo_DIE.jpg, id=429, 213.79875pt x 91.34125pt>
+File: Imagenes/Bitmap/Otras/logo_DIE.jpg Graphic file (type jpg)
+
+<use Imagenes/Bitmap/Otras/logo_DIE.jpg>
+<Imagenes/Bitmap/Otras/logo_UPM_ETSIT.jpg, id=430, 948.9051pt x 270.2898pt>
+File: Imagenes/Bitmap/Otras/logo_UPM_ETSIT.jpg Graphic file (type jpg)
+
+<use Imagenes/Bitmap/Otras/logo_UPM_ETSIT.jpg> [5 <./Imagenes/Bitmap/Otras/logo
+_LSI.png> <./Imagenes/Bitmap/Otras/logo_DIE.jpg> <./Imagenes/Bitmap/Otras/logo_
+UPM_ETSIT.jpg>]) [6]
+\openout2 = `Cascaras/dedicatoria.aux'.
+
+ (./Cascaras/dedicatoria.tex [7
+
+
+] [8])
+\openout2 = `Cascaras/agradecimientos.aux'.
+
+
+(./Cascaras/agradecimientos.tex) [9
+
+
+
+]
+\openout2 = `Cascaras/resumen.aux'.
+
+ (./Cascaras/resumen.tex [10
+
+
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 60.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 60.
+) [11]
+\openout2 = `TeXiS/TeXiS_toc.aux'.
+
+
+(./TeXiS/TeXiS_toc.tex [12
+
+
+
+] (./Tesis.toc [13] [14])
+\tf@toc=\write6
+\openout6 = `Tesis.toc'.
+
+ [15] [16
+
+] (./Tesis.lof)
+\tf@lof=\write7
+\openout7 = `Tesis.lof'.
+
+
+[17] [18
+
+] (./Tesis.lot)
+\tf@lot=\write8
+\openout8 = `Tesis.lot'.
+
+ [19]) [20
+
+
+]
+\openout2 = `Capitulos/01Introduction.aux'.
+
+ (./Capitulos/01Introduction.tex
+Chapter 1.
+) [1
+
+
+]
+\openout2 = `Capitulos/02StateOfArt.aux'.
+
+ (./Capitulos/02StateOfArt.tex [2
+
+
+
+]
+Chapter 2.
+) [3]
+\openout2 = `Capitulos/03ReviewStudy.aux'.
+
+ (./Capitulos/03ReviewStudy.tex [4
+
+
+
+]
+Chapter 3.
+) [5]
+\openout2 = `Capitulos/04DesignStudy.aux'.
+
+ (./Capitulos/04DesignStudy.tex [6
+
+
+
+]
+Chapter 4.
+) [7]
+\openout2 = `Capitulos/05Software.aux'.
+
+ (./Capitulos/05Software.tex [8
+
+
+
+]
+Chapter 5.
+
+LaTeX Warning: Reference `cap1:sec:proyLIDO' on page 9 undefined on input line 
+30.
+
+[9]
+
+LaTeX Warning: Reference `cap2:sec:redesadhoc' on page 10 undefined on input li
+ne 69.
+
+[10] [11]
+Underfull \vbox (badness 1533) has occurred while \output is active []
+
+ [12]
+
+LaTeX Warning: Reference `cap3:sec:factoresDeterminantes' on page 13 undefined 
+on input line 125.
+
+
+LaTeX Warning: Reference `cap3:sec:caracteristicasDeseables' on page 13 undefin
+ed on input line 125.
+
+[13] [14] [15]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 202.
+
+ (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 202.
+ [16]
+<Imagenes/Bitmap/Capitulo5/aodvRREQmessage.png, id=779, 705.38531pt x 255.20343
+pt>
+File: Imagenes/Bitmap/Capitulo5/aodvRREQmessage.png Graphic file (type png)
+ <use Imagenes/Bitmap/Capitulo5/aodvRREQmessage.png>
+<Imagenes/Bitmap/Capitulo5/aodvRREPmessage.png, id=781, 697.8572pt x 220.57407p
+t>
+File: Imagenes/Bitmap/Capitulo5/aodvRREPmessage.png Graphic file (type png)
+ <use Imagenes/Bitmap/Capitulo5/aodvRREPmessage.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[17 <./Imagenes/Bitmap/Capitulo5/aodvRREQmessage.png (PNG copy)>]
+<Imagenes/Bitmap/Capitulo5/aodvRERRmessage.png, id=788, 697.10437pt x 219.82124
+pt>
+File: Imagenes/Bitmap/Capitulo5/aodvRERRmessage.png Graphic file (type png)
+ <use Imagenes/Bitmap/Capitulo5/aodvRERRmessage.png> [18 <./Imagenes/Bitmap/Cap
+itulo5/aodvRREPmessage.png (PNG copy)> <./Imagenes/Bitmap/Capitulo5/aodvRERRmes
+sage.png (PNG copy)>]
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR1.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR1.pdf, id=799, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR1.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR1.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR2.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR2.pdf, id=801, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR2.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR2.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR3.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR3.pdf, id=803, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR3.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR3.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR4.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR4.pdf, id=805, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR4.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR4.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR5.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR5.pdf, id=807, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR5.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR5.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR6.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR6.pdf, id=809, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR6.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR6.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR7.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR7.pdf, id=811, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR7.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR7.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/aodvDR8.pdf): PDF
+ inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/aodvDR8.pdf, id=813, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/aodvDR8.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/aodvDR8.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[19]
+
+LaTeX Warning: Text page 20 contains only floats.
+
+
+Overfull \vbox (2.8459pt too high) has occurred while \output is active []
+
+
+[20 <./Imagenes/Vectorial/Capitulo5/aodvDR1.pdf> <./Imagenes/Vectorial/Capitulo
+5/aodvDR2.pdf> <./Imagenes/Vectorial/Capitulo5/aodvDR3.pdf> <./Imagenes/Vectori
+al/Capitulo5/aodvDR4.pdf> <./Imagenes/Vectorial/Capitulo5/aodvDR5.pdf> <./Image
+nes/Vectorial/Capitulo5/aodvDR6.pdf> <./Imagenes/Vectorial/Capitulo5/aodvDR7.pd
+f> <./Imagenes/Vectorial/Capitulo5/aodvDR8.pdf>] [21] [22] [23]
+
+LaTeX Warning: Reference `cap4:sec:mercadoEquipo' on page 24 undefined on input
+ line 447.
+
+[24] [25]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 505.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 505.
+
+Overfull \hbox (2.72832pt too wide) in paragraph at lines 505--507
+ [][] 
+ []
+
+[26]
+
+LaTeX Warning: Reference `cap4:sec:descripcion' on page 27 undefined on input l
+ine 530.
+
+
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/arquitectura2.pdf
+): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/arquitectura2.pdf, id=1009, 597.50786pt x 845.046
+86pt>
+File: Imagenes/Vectorial/Capitulo5/arquitectura2.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/arquitectura2.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/estructuraAODV-LA
+B.pdf): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allow
+ed
+
+<Imagenes/Vectorial/Capitulo5/estructuraAODV-LAB.pdf, id=1011, 597.50786pt x 84
+5.04686pt>
+File: Imagenes/Vectorial/Capitulo5/estructuraAODV-LAB.pdf Graphic file (type pd
+f)
+ <use Imagenes/Vectorial/Capitulo5/estructuraAODV-LAB.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 542.
+
+(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+) [27] [28 <./Imagenes/Vectorial/Capitulo5/arquitectura2.pdf>]
+
+LaTeX Warning: Text page 29 contains only floats.
+
+
+Overfull \vbox (0.33957pt too high) has occurred while \output is active []
+
+
+[29 <./Imagenes/Vectorial/Capitulo5/estructuraAODV-LAB.pdf>]
+Overfull \hbox (6.8642pt too wide) in paragraph at lines 626--628
+ [][] 
+ []
+
+[30]
+Overfull \hbox (12.9049pt too wide) in paragraph at lines 685--687
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[31]
+Overfull \hbox (55.36548pt too wide) in paragraph at lines 756--756
+ \T1/cmtt/m/n/12 [NNID|frameID|DNID|SNID|alarmID|timeStamp|alarmType|latitude|l
+ongitude|perConf] 
+ []
+
+
+Overfull \hbox (55.36566pt too wide) in paragraph at lines 757--758
+ [][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[32]
+Overfull \hbox (6.53755pt too wide) in paragraph at lines 850--852
+ [][] 
+ []
+
+[33]
+Overfull \hbox (7.82727pt too wide) in paragraph at lines 903--905
+ [][] 
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/flujoPrograma.pdf
+): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/flujoPrograma.pdf, id=1076, 597.50786pt x 845.046
+86pt>
+File: Imagenes/Vectorial/Capitulo5/flujoPrograma.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/flujoPrograma.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[34] [35 <./Imagenes/Vectorial/Capitulo5/flujoPrograma.pdf>]
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/chequeoAlarmas.pd
+f): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/chequeoAlarmas.pdf, id=1095, 597.50786pt x 845.04
+686pt>
+File: Imagenes/Vectorial/Capitulo5/chequeoAlarmas.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/chequeoAlarmas.pdf>
+Overfull \hbox (57.01616pt too wide) in paragraph at lines 954--954
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/chequeoSerial.pdf
+): PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/chequeoSerial.pdf, id=1098, 597.50786pt x 845.046
+86pt>
+File: Imagenes/Vectorial/Capitulo5/chequeoSerial.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/chequeoSerial.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[36]
+Underfull \vbox (badness 1769) has occurred while \output is active []
+
+ [37 <./Imagenes/Vectorial/Capitulo5/chequeoAlarmas.pdf> <./Imagenes/Vectorial/
+Capitulo5/chequeoSerial.pdf>]
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/chequeoCola.pdf):
+ PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/chequeoCola.pdf, id=1126, 597.50786pt x 845.04686
+pt>
+File: Imagenes/Vectorial/Capitulo5/chequeoCola.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/chequeoCola.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/chequeoPREQ.pdf):
+ PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/chequeoPREQ.pdf, id=1131, 597.50786pt x 845.04686
+pt>
+File: Imagenes/Vectorial/Capitulo5/chequeoPREQ.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/chequeoPREQ.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[38 <./Imagenes/Vectorial/Capitulo5/chequeoCola.pdf>]
+<Imagenes/Bitmap/Capitulo5/simulacion1.png, id=1147, 296.10625pt x 54.2025pt>
+File: Imagenes/Bitmap/Capitulo5/simulacion1.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/simulacion1.png>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/simulacion2.pdf):
+ PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/simulacion2.pdf, id=1148, 597.50786pt x 845.04686
+pt>
+File: Imagenes/Vectorial/Capitulo5/simulacion2.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/simulacion2.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[39 <./Imagenes/Vectorial/Capitulo5/chequeoPREQ.pdf>]
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/simulacion3.pdf):
+ PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/simulacion3.pdf, id=1162, 597.50786pt x 845.04686
+pt>
+File: Imagenes/Vectorial/Capitulo5/simulacion3.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/simulacion3.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/simulacion4.pdf):
+ PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/simulacion4.pdf, id=1164, 597.50786pt x 845.04686
+pt>
+File: Imagenes/Vectorial/Capitulo5/simulacion4.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/simulacion4.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[40 <./Imagenes/Bitmap/Capitulo5/simulacion1.png (PNG copy)> <./Imagenes/Vector
+ial/Capitulo5/simulacion2.pdf>] [41 <./Imagenes/Vectorial/Capitulo5/simulacion3
+.pdf> <./Imagenes/Vectorial/Capitulo5/simulacion4.pdf>]
+<Imagenes/Bitmap/Capitulo5/escenario1.png, id=1222, 323.2075pt x 60.225pt>
+File: Imagenes/Bitmap/Capitulo5/escenario1.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/escenario1.png>
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+)
+(/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
+) [42 <./Imagenes/Bitmap/Capitulo5/escenario1.png (PNG copy)>] [43]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 1162.
+ [44] [45] [46] [47]
+<Imagenes/Bitmap/Capitulo5/escenario2.png, id=1388, 521.95pt x 60.225pt>
+File: Imagenes/Bitmap/Capitulo5/escenario2.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/escenario2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[48]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[49 <./Imagenes/Bitmap/Capitulo5/escenario2.png (PNG copy)>]
+<Imagenes/Bitmap/Capitulo5/rutavuelta1.png, id=1461, 841.73294pt x 327.34059pt>
+File: Imagenes/Bitmap/Capitulo5/rutavuelta1.png Graphic file (type png)
+<use Imagenes/Bitmap/Capitulo5/rutavuelta1.png>
+<Imagenes/Bitmap/Capitulo5/rutavuelta2.png, id=1462, 841.73294pt x 311.75294pt>
+File: Imagenes/Bitmap/Capitulo5/rutavuelta2.png Graphic file (type png)
+<use Imagenes/Bitmap/Capitulo5/rutavuelta2.png>
+<Imagenes/Bitmap/Capitulo5/rutaida1.png, id=1463, 840.31589pt x 308.91882pt>
+File: Imagenes/Bitmap/Capitulo5/rutaida1.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/rutaida1.png>
+<Imagenes/Bitmap/Capitulo5/rutaida2.png, id=1464, 847.40118pt x 297.58235pt>
+File: Imagenes/Bitmap/Capitulo5/rutaida2.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/rutaida2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1527--1528
+
+ []
+
+[50 <./Imagenes/Bitmap/Capitulo5/rutavuelta1.png (PNG copy)> <./Imagenes/Bitmap
+/Capitulo5/rutavuelta2.png (PNG copy)>]
+Overfull \hbox (39.52591pt too wide) in paragraph at lines 1537--1538
+[]\T1/cmtt/m/n/12 Alarm message sent (42 bytes): [A|D|D|S|1|1304433727|W|41.206
+1|1.7300|87] 
+ []
+
+
+Overfull \hbox (51.8729pt too wide) in paragraph at lines 1537--1538
+\T1/cmtt/m/n/12 Serial data received (43 bytes): [D|D|D|S|1|1304433727|W|41.206
+1|1.7300|87] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1537--1538
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1539--1540
+
+ []
+
+<Imagenes/Bitmap/Capitulo5/act1.png, id=1474, 840.31589pt x 338.67706pt>
+File: Imagenes/Bitmap/Capitulo5/act1.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/act1.png>
+<Imagenes/Bitmap/Capitulo5/act2.png, id=1475, 841.73294pt x 365.60118pt>
+File: Imagenes/Bitmap/Capitulo5/act2.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/act2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[51 <./Imagenes/Bitmap/Capitulo5/rutaida1.png (PNG copy)> <./Imagenes/Bitmap/Ca
+pitulo5/rutaida2.png (PNG copy)>] [52 <./Imagenes/Bitmap/Capitulo5/act1.png (PN
+G copy)> <./Imagenes/Bitmap/Capitulo5/act2.png (PNG copy)>] [53] [54]
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/escenario3.pdf): 
+PDF inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+
+<Imagenes/Vectorial/Capitulo5/escenario3.pdf, id=1528, 597.50786pt x 845.04686p
+t>
+File: Imagenes/Vectorial/Capitulo5/escenario3.pdf Graphic file (type pdf)
+ <use Imagenes/Vectorial/Capitulo5/escenario3.pdf>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/esc3p1.pdf): PDF 
+inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/esc3p1.pdf, id=1531, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/esc3p1.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/esc3p1.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<Imagenes/Bitmap/Capitulo5/esc3p2a.png, id=1535, 841.73294pt x 274.90941pt>
+File: Imagenes/Bitmap/Capitulo5/esc3p2a.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc3p2a.png>
+<Imagenes/Bitmap/Capitulo5/esc3p2b.png, id=1536, 841.73294pt x 274.90941pt>
+File: Imagenes/Bitmap/Capitulo5/esc3p2b.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc3p2b.png> [55 <./Imagenes/Vectorial/Capitulo5
+/escenario3.pdf>] [56 <./Imagenes/Vectorial/Capitulo5/esc3p1.pdf> <./Imagenes/B
+itmap/Capitulo5/esc3p2a.png (PNG copy)> <./Imagenes/Bitmap/Capitulo5/esc3p2b.pn
+g (PNG copy)>]
+<Imagenes/Bitmap/Capitulo5/esc3p3a.png, id=1582, 840.31589pt x 274.90941pt>
+File: Imagenes/Bitmap/Capitulo5/esc3p3a.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc3p3a.png>
+<Imagenes/Bitmap/Capitulo5/esc3p3b.png, id=1583, 841.73294pt x 274.90941pt>
+File: Imagenes/Bitmap/Capitulo5/esc3p3b.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc3p3b.png>
+<Imagenes/Bitmap/Capitulo5/esc3p3c.png, id=1584, 841.73294pt x 274.90941pt>
+File: Imagenes/Bitmap/Capitulo5/esc3p3c.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc3p3c.png> [57 <./Imagenes/Bitmap/Capitulo5/es
+c3p3a.png (PNG copy)> <./Imagenes/Bitmap/Capitulo5/esc3p3b.png (PNG copy)> <./I
+magenes/Bitmap/Capitulo5/esc3p3c.png (PNG copy)>]
+Overfull \hbox (32.96764pt too wide) in paragraph at lines 1823--1825
+[]\T1/cmr/bx/n/12 Envío de alar-mas des-de cua-tro no-dos. In-fluen-cia del pa-
+rá-me-tro \T1/cmtt/m/n/12 ALARM_TIMEOUT
+ []
+
+
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/esc3p4.pdf): PDF 
+inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/esc3p4.pdf, id=1595, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/esc3p4.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/esc3p4.pdf>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[58 <./Imagenes/Vectorial/Capitulo5/esc3p4.pdf>]
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/esc3p5.pdf): PDF 
+inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/esc3p5.pdf, id=1613, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/esc3p5.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/esc3p5.pdf> [59 <./Imagenes/Vectorial/Capitul
+o5/esc3p5.pdf>]
+<Imagenes/Bitmap/Capitulo5/escenario4.png, id=1632, 778.91pt x 201.75375pt>
+File: Imagenes/Bitmap/Capitulo5/escenario4.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/escenario4.png> [60 <./Imagenes/Bitmap/Capitulo5
+/escenario4.png (PNG copy)>]
+<Imagenes/Bitmap/Capitulo5/esc4p1.png, id=1650, 819.06pt x 267.82411pt>
+File: Imagenes/Bitmap/Capitulo5/esc4p1.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc4p1.png> [61 <./Imagenes/Bitmap/Capitulo5/esc
+4p1.png (PNG copy)>]
+<Imagenes/Bitmap/Capitulo5/esc4p2.png, id=1690, 819.06pt x 267.82411pt>
+File: Imagenes/Bitmap/Capitulo5/esc4p2.png Graphic file (type png)
+
+<use Imagenes/Bitmap/Capitulo5/esc4p2.png>
+
+pdfTeX warning: pdflatex (file ./Imagenes/Vectorial/Capitulo5/esc4p3.pdf): PDF 
+inclusion: found PDF version <1.5>, but at most version <1.4> allowed
+<Imagenes/Vectorial/Capitulo5/esc4p3.pdf, id=1691, 597.50786pt x 845.04686pt>
+File: Imagenes/Vectorial/Capitulo5/esc4p3.pdf Graphic file (type pdf)
+
+<use Imagenes/Vectorial/Capitulo5/esc4p3.pdf> [62 <./Imagenes/Bitmap/Capitulo5/
+esc4p2.png (PNG copy)> <./Imagenes/Vectorial/Capitulo5/esc4p3.pdf>] [63]
+[64]) [65]
+\openout2 = `Capitulos/06PruebaFinal.aux'.
+
+ (./Capitulos/06PruebaFinal.tex [66
+
+
+
+]
+Chapter 6.
+[67]
+<Imagenes/Bitmap/Capitulo6/escenario2.jpg, id=1733, 834.7185pt x 136.5903pt>
+File: Imagenes/Bitmap/Capitulo6/escenario2.jpg Graphic file (type jpg)
+
+<use Imagenes/Bitmap/Capitulo6/escenario2.jpg> [68 <./Imagenes/Bitmap/Capitulo6
+/escenario2.jpg>]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 88.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [69]
+[70] [71]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [72]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [73]
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[74]
+
+LaTeX Warning: Reference `cap2:sec:entornoMarino' on page 75 undefined on input
+ line 407.
+
+[75]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [76]
+[77]) [78]
+\openout2 = `Capitulos/07ConclusionesTrabajoFuturo.aux'.
+
+ (./Capitulos/07ConclusionesTrabajoFuturo.tex
+Chapter 7.
+[79
+
+
+
+] [80]) [81]
+\openout2 = `Apendices/Presupuesto.aux'.
+
+ (./Apendices/Presupuesto.tex [82
+
+
+
+]
+Ap\'{e}ndice A.
+
+Underfull \hbox (badness 10000) in alignment at lines 13--64
+[][][][] 
+ []
+
+) [83]
+\openout2 = `Apendices/Matlab.aux'.
+
+ (./Apendices/Matlab.tex [84
+
+
+
+]
+Ap\'{e}ndice B.
+(/usr/share/texmf-texlive/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2004/09/05 1.3 listings language file
+) [85] [86] [87]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [88]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [89])
+[90]
+\openout2 = `Apendices/Cabeceras.aux'.
+
+ (./Apendices/Cabeceras.tex
+Ap\'{e}ndice C.
+[91
+
+
+
+] [92] [93]
+Underfull \vbox (badness 1112) has occurred while \output is active []
+
+ [94]
+[95] [96] [97]) [98]
+\openout2 = `Cascaras/bibliografia.aux'.
+
+ (./Cascaras/bibliografia.tex (./Tesis.bbl [99
+
+
+
+])) [100]
+(./Tesis.aux (./Cascaras/cover.aux) (./Cascaras/dedicatoria.aux)
+(./Cascaras/agradecimientos.aux) (./Cascaras/resumen.aux)
+(./TeXiS/TeXiS_toc.aux) (./Capitulos/01Introduction.aux)
+(./Capitulos/02StateOfArt.aux) (./Capitulos/03ReviewStudy.aux)
+(./Capitulos/04DesignStudy.aux) (./Capitulos/05Software.aux)
+(./Capitulos/06PruebaFinal.aux) (./Capitulos/07ConclusionesTrabajoFuturo.aux)
+(./Apendices/Presupuesto.aux) (./Apendices/Matlab.aux)
+(./Apendices/Cabeceras.aux) (./Cascaras/bibliografia.aux))
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 13562 strings out of 493848
+ 196225 string characters out of 1152824
+ 807730 words of memory out of 3000000
+ 14622 multiletter control sequences out of 15000+50000
+ 31597 words of font info for 64 fonts, out of 3000000 for 9000
+ 1035 hyphenation exceptions out of 8191
+ 55i,13n,60p,1452b,2397s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/eurosym/feymr10.pfb
+></usr/share/texmf/fonts/type1/public/cm-super/sfbi1200.pfb></usr/share/texmf/f
+onts/type1/public/cm-super/sfbi1440.pfb></usr/share/texmf/fonts/type1/public/cm
+-super/sfbx0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1095.pfb>
+</usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fo
+nts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-
+super/sfbx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx2074.pfb><
+/usr/share/texmf/fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf/fon
+ts/type1/public/cm-super/sfcc1000.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfcc1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1200.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfcc2074.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sfrm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></u
+sr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts
+/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfti1000.pfb></us
+r/share/texmf/fonts/type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/
+type1/public/cm-super/sfti1440.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr
+/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfxc1000.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sfxc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfxc1728.pfb></usr/
+share/texmf/fonts/type1/public/cm-super/sfxc2074.pfb>
+Output written on Tesis.pdf (120 pages, 1985665 bytes).
+PDF statistics:
+ 3194 PDF objects out of 3580 (max. 8388607)
+ 1495 named destinations out of 1728 (max. 500000)
+ 1033 words of extra memory for PDF output out of 10000 (max. 10000000)
+

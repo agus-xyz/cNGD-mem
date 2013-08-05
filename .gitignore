@@ -39,7 +39,28 @@ Thumbs.db
 #Auxiliar Latex Files
 #####################
 *.aux
+*.bak
+*.backup
 *.bbl
+*.blg
+*.cdx
+*.clg
+*.cnd
+*.dvi
+*.exa
+*.glx
+*.gxg
+*.gxs
+*.idx
+*.ilg
+*.ind
+*.log
+*.lof
+*.lot
+*.out
+*.pdf
+*.ps
+*.toc
 
 #Open Files
 ###########

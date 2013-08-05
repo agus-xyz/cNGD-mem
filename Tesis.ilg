@@ -1,8 +1,0 @@
-This is makeindex, version 2.15 [TeX Live 2012] (kpathsea + Thai support).
-Scanning style file /usr/share/texmf/makeindex/glosstex.ist.........
-** Input style error (file = /usr/share/texmf/makeindex/glosstex.ist, line = 63):
-   -- Unknown specifier \endinput.
-done (9 attributes redefined, 1 ignored).
-Scanning input file Tesis.gxs...done (0 entries accepted, 0 rejected).
-Nothing written in Tesis.glx.
-Transcript written in Tesis.ilg.

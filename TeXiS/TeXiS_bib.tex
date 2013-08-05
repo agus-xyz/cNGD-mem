@@ -83,6 +83,10 @@
 % renewcommand)... como eso es un  lío, utilizamos let y def, pues def
 % no falla si ya estaba definido.
 
+
+% Renombramos Bibliography to References. by Agus
+\renewcommand{\bibname}{References}
+
 \let\oldbibpreamble\bibpreamble
 
 \def\bibpreamble{%
@@ -96,14 +100,14 @@
 \ifx\generatoc\undefined
 \else
 \ifx\tienePartesTeXiS\undefined
-\addcontentsline{toc}{chapter}{Bibliografía}
+\addcontentsline{toc}{chapter}{References}
 \else
-\addcontentsline{toc}{part}{Bibliografía}
+\addcontentsline{toc}{part}{References}
 \fi
 \fi
 % Añadimos también una etiqueta, para poder referenciar el número
 % de página en el que comienza
-\label{bibliografia}
+\label{references}
 % Frase célebre configurada por el usuario
 \citaBibliografia
 }
@@ -119,7 +123,7 @@
 % que aparezca la palabra "Bibliografía" en ambas páginas.
 %
 %
-\cabeceraEspecial{Bibliografía}
+\cabeceraEspecial{References}
 
 
 % Creamos la  bibliografía. Lo hacemos  dentro de un bloque  (entre la

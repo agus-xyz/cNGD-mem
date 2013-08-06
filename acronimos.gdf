@@ -20,53 +20,24 @@
 % tienes ninguno  referenciado, basta con que no  definas la constante
 % \acronimosEnRelease en config.tex
 
-% CAPITULO 1
-@entry{PFC, , \emph{Proyecto Fin de Carrera}}
 
-@entry{LAB, , \emph{Laboratorio de Aplicaciones Bioacústicas}}
+@entry{CR, , \emph{Corgnitive Radio}}
 
-@entry{LIDO, , \emph{Listening to the Deep-Ocean Environment}}
+@entry{ISM, , \emph{Industrial, Scientific and Medical}}
 
-@entry{ESONET, , \emph{European Sea-floor Observatory Network of Excellence}}
+@entry{CN, , \emph{Cognitive Network}}
 
-@entry{PAM, , \emph{Passive Acoustic Monitoring}, Monitorización mediante Acústica Pasiva}
-
-@entry{DCL, , \emph{Detección, Clasificación y Localización}} 
-
-% CAPITULO 2
-@entry{UIT, , \emph{Unión Internacional de Telecomunicaciones}}
-
-@entry{ICM, , \emph{Industriales, Científicas y Médicas}}
-
-@entry{RR, , \emph{Reglamento de Radiocomunicaciones}}
-
-@entry{SRD, , \emph{Short Range Devices}}
-
-@entry{CNAF, , \emph{Cuadro Nacional de Atribución de Frecuencias}}
-
-@entry{SRD, , \emph{Short Range Devices}, Dispositivos de corto alcance}
-
-@entry{WMN, , \emph{Wireless Mesh Network}}
+@entry{SN, , \emph{Sensor Network}}
 
 @entry{WSN, , \emph{Wireless Sensor Network}}
 
-@entry{AP, , \emph{Access Point}}
+@entry{CWSN, , \emph{Cognitive Wireless Sensor Network}}
 
-@entry{LOS, , \emph{Line of Sight}}
+@entry{WAHSN, , \emph{Wireless Ad-hoc Sensor Network}}
 
-@entry{NLOS, , \emph{Non Line of Sight}}
+@entry{CNGD,cNGD, \emph{Cognitive Next Generation Device}}
 
-@entry{EHAS, , \emph{Enlace Hispano Americano de Salud}}
-
-@entry{TIC, , \emph{Tecnologías de la Información y la Comunicación}}
-
-@entry{WDS, , \emph{Wireless Distribution System}, Sistema de Distribución Inalámbrico}
-
-@entry{OFDM, , \emph{Orthogonal Frequency-Division Multiplexing}}
-
-@entry{OFDMA, , \emph{Orthogonal Frequency-Division Multiple Access}}
-
-@entry{PIRE, , \emph{Potencia Isotrópica Radiada Equivalente}}
+@entry{FCD,, \emph{First Cognitive Device}}
 
 @entry{FFD, , \emph{Full Function Device}}
 
@@ -76,48 +47,12 @@
 
 @entry{SNR, , \emph{Signal to Noise Ratio}, Relación Señal-Ruido}
 
-% CAPITULO 3
-
-
-% CAPITULO 4
 @entry{API, , \emph{Application Programming Interface}}
 
-@entry{PER, , \emph{Packet Error Rate}}
+@entry{HAL, , \emph{Hardware Abstraction Layer}}
 
-% CAPITULO 5 
-@entry{AODV, , \emph{Ad hoc On-demand Distance Vector}}
-
-@entry{DSDV, , \emph{Destination Sequenced Distance Vector}}
-
-@entry{OLSR, , \emph{Optimized Link State Routing}}
-
-@entry{DSR, , \emph{Dynamic Source Routing}}
-
-@entry{ZRP, , \emph{Zone Routing Protocol}}
-
-@entry{RREQ, , \emph{Route Request}}
-
-@entry{PREQ, , \emph{Position Request}}
-
-@entry{RREP, , \emph{Route Reply}}
-
-@entry{PREP, , \emph{Position Reply}}
-
-@entry{RERR, , \emph{Route Error}}
-
-@entry{RREP-ACK, , \emph{Route Reply Acknowledgment}}
-
-@entry{TTL, , \emph{Time To Live}, Tiempo de Vida}
+@entry{ACK, , \emph{Acknowledgment}}
 
 @entry{FIFO, , \emph{First In, First Out}}
 
-@entry{MANET, , \emph{Mobile Ad hoc Network}}
-
-@entry{LLN, , \emph{Link Layer Notification}}
-
 @entry{LoWPAN, , \emph{Low-Rate Wireless Personal Area Network}}
-
-@entry{GPS, , \emph{Global Positioning System}}
-
-% CAPITULO 6
-

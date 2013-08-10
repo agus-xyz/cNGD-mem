@@ -21,9 +21,42 @@
 % \acronimosEnRelease en config.tex
 
 @entry{PAN, , \emph{Personal Area Network},}
+
 @entry{WPAN, , \emph{Wireless Personal Area Network},}
-@entry{SN, , \emph{Sensor Network},}
-@entry{WSN, , \emph{Wireless Sensor Network},}
 
+@entry{CR, , \emph{Corgnitive Radio}}
 
+@entry{ISM, , \emph{Industrial, Scientific and Medical}}
 
+@entry{CN, , \emph{Cognitive Network}}
+
+@entry{SN, , \emph{Sensor Network}}
+
+@entry{WSN, , \emph{Wireless Sensor Network}}
+
+@entry{CWSN, , \emph{Cognitive Wireless Sensor Network}}
+
+@entry{WAHSN, , \emph{Wireless Ad-hoc Sensor Network}}
+
+@entry{CNGD,cNGD, \emph{Cognitive Next Generation Device}}
+
+@entry{FCD,, \emph{First Cognitive Device}}
+
+@entry{FFD, , \emph{Full Function Device}}
+
+@entry{RFD, , \emph{Reduced Function Device}}
+
+@entry{RSSI, , \emph{Received Signal Strength Indication}, Indicador de Potencia de Señal Recibida}
+
+@entry{SNR, , \emph{Signal to Noise Ratio}, Relación Señal-Ruido}
+
+@entry{API, , \emph{Application Programming Interface}}
+
+@entry{HAL, , \emph{Hardware Abstraction Layer}}
+
+@entry{ACK, , \emph{Acknowledgment}}
+
+@entry{FIFO, , \emph{First In, First Out}}
+
+@entry{LoWPAN, , \emph{Low-Rate Wireless Personal Area Network}}
+>>>>>>> a1611710281f8337978a3f73aa4341be414ec914

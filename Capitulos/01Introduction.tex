@@ -16,7 +16,8 @@ Something in the air
 \end{FraseCelebre}
 
 \begin{resumen}
-Resumen
+In this chapter, a global description of the project is shown. This global description covers an introduction to the context,
+the need of this project, defined goals and the project organization in time. Besides, it is described the structure of this dissertation.  
 \end{resumen}
 
 
@@ -26,20 +27,251 @@ Resumen
 \label{cap1:sec:background}
 %-------------------------------------------------------------------
 
-<<<<<<< HEAD
-Ey tu! \ac{WSN}
+Ubiquitous computing, with a 40-fold increase between 2010 and 2015 according to the CISCO report \cite{cisco}, 
+is nowadays one of the most important trends. Related applications include security and surveillance, industrial control,
+infrastructure maintenance, automatic environmental monitoring, domotics, localization and tracking, health or vehicular networks. 
+\ac{WSNS} provide a technological solution to these challenges, so their growth is closely linked to these fields. 
+
+Together with this growth, in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the 
+great demand by users. This fact, in addition to obvious benefits for the public, brought a remarkable radio spectrum saturation.
+This increasing demand for wireless communication presents a challenge to efficient spectrum utilization and spectral 
+coexistence.
+
+Regarding spectrum scarcity, most WSN solutions operate on unlicensed frequency bands. Normally they use \ac{ISM} bands,
+like the 2.4 GHz band, also used by Wi-Fi or IEEE 802.15.4 devices. For this reason, the unlicensed spectrum bands are 
+becoming overcrowded \cite{wpanIssues}.
+
+The spectrum saturation is reflected over the increasing interferences and other damages between systems. These troubles find their
+origin in the increasing amount of traffic, the heterogeneous networks and devices, as well as the inefficient use of the spectrum
+they do. Nowadays, techniques focused on expand spectrum efficiency over communications seems totally exploited and new long-term
+solutions are required. 
+
+To address this challenge, new techniques such as \ac{CR} arise. \ac{CR} was introduced by Mitola in 1999 \cite{mitola1}
+and 2000\cite{mitola2} and it integrates into communication networks concepts as self-learning, self-management, context 
+analysis or data sharing. Basically, \ac{CR} enables opportunistic access to the spectrum through cooperation and context
+awareness. Spectrum sensing capabilities and cooperation among devices allow for better spectrum utilization and \ac{QOS}.
+The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters,
+thanks to cooperation, in order to achieve more reliable and efficient communications.
+
+
+
+Las redes de sensores, en concreto, se plantean como un entorno idneo para la
+ implementación del concepto de Red Cognitiva ya que, en muchos casos,
+las restricciones impuestas sobre la red y las condiciones de trabajo
+requieren de comunicaciones inalambricas eficientes, colaboracion entre los nod
+os y adaptación frente a posibles incidencias. Estas redes conforman la infraestructu
+ra básica para el desarrollo de aplicaciones y sistemas en el campo de los entornos
+inteligentes. 
+
+. WAHSNs are one of the areas with the highest demand for 
+cognitive networking due to overcrowded unlicensed bands. Introducing CR capabilities in sensor networks structures
+provides benefits by implementing a more efficient and dynamic way to use the spectrum. However, there are also 
+some challenges to face [4], specifically the study of the sensing state, collaboration among devices, energy efficiency,
+and decision taking. 
+
+But, despite the potential of CWSNs, they are not yet deeply explored. Real or simulated scenarios scarcely exist and 
+realistic platforms are crucial to the improvement and development of this new field. The shortage of CWSN devices
+or test-beds contributes to the scarcity of results in this area. 
+
+WAHSN is a mature area, and platform devices and test-beds
+for research and even real applications are common, but on the
+other hand, realistic devices with access to different spectrum
+zones for CWSNs do not exist. In order to enable and promote 
+this new paradigm, an effort to facilitate the technology with 
+devices and test-beds is necessary. Therefore, in this work, a 
+new platform for CWSN development is proposed. It consists 
+of a WSN device which provides access to different spectrum
+bands.
+
+When designing CWSN devices, the fact that WSN nodes are
+very limited in terms of memory, computational power or 
+energy consumption is crucial and must be taken into account
+in the design process. Hence, the architecture must be cost
+saving, meaning that the processing resources of the 
+
+Microcontroller (MCU) are finite both in raw processing as 
+well as in memory allocation for data. As a development
+platform, the software architecture must provide advantages
+when implementing cognitive strategies in order to be a 
+valuable tool. The design must be modular, so it will not need
+to be redone entirely with every particular change, and
+scalable, allowing flexibility in the complexity of applications.
+
 \ac{CR}
-=======
-En los últimos años se ha vivido un enorme, y aún creciente, despliegue de redes y servicios inalámbricos originado por la gran demanda y aceptación de los usuarios. Este hecho, además de grandes bondades para el público, ha traído consigo una notable saturación del espectro radioeléctrico que se ha visto reflejado en un  aumento en las interferencias y otros perjuicios entre sistemas. Estos problemas se originan debido a la demanda creciente de tráfico, la heterogeneidad de redes y terminales existentes, así como al uso ineficiente que estos hacen del espectro. A día de hoy, las técnicas centradas en aumentar la eficiencia espectral en las comunicaciones se encuentran prácticamente agotadas y se requieren soluciones consistentes a largo plazo.
 
 
->>>>>>> a1611710281f8337978a3f73aa4341be414ec914
+
+%-------------------------------------------------------------------
+\section{Goals}
+%-------------------------------------------------------------------
+\label{cap1:sec:goals}
+%-------------------------------------------------------------------
+
+The project main goal is to design and implement, regarding strong 
+efficiency, modularity and scalability constraints, a node for a 
+\ac{CWSN}. Code an application demo and integrate it together with
+the already implemented \ac{HAL} and \ac{CRMODULE}.
+
+A downtrend regarding cost and power consumption is required
+for commercial purposes. Besides, it must allow the evaluation
+of different CN-related strategies.  
+
+It is important to make clear that the design must fill the gaps
+and deficiencies that current devices show and expand some desirable capabilities.
+Furthermore, a definition of new needs and a researching team sharing,
+ together with an important review of the \ac{FCD} is needed. 
+
+Here the main goal is fragmented into shorter subgoals:
+
+\begin{itemize}
+
+\item Análisis de las conclusiones y resultados del proto
+tipo demostrador.
+Estudio
+intensivo de todos aspectos sometidos a prueba. Def
+inición de nuevas pruebas que
+aporten nuevos datos de interés. Estas conclusiones
+versarán acerca de los tipos de
+interfaz radio, elección del microcontrolador, etc.
+
+
+
+\item Redefinición del nodo
+. Estudio de las necesidades y las limitaciones (co
+ste,
+tamaño, recursos, consumo) con vistas al desarrollo
+de aplicaciones que hagan uso del
+nodo. Definición del nuevo demostrador.
+
+
+
+\item Rediseño hardware.
+Búsqueda de carencias sobre el actual diseño o posi
+bles
+potencialidades beneficiosas para alcanzar los requ
+isitos definidos. Optimizaciones al
+diseño del nodo demostrador. Selección de component
+es y diseño del trazado en PCB.
+
+
+
+\item Implementación y depuración hardware.
+Disposición y soldadura de
+componentes. Validación del diseño PCB.
+
+
+
+\item Desarrollo de la capa de aplicación.
+Familiarización con la capa de abstracción
+hardware y cognitiva. Desarrollo de un demostrador
+que integre estas capas y que
+permita evaluar el sistema implementado. La aplicac
+ión incluirá funcionalidades
+típicas en el estudio de redes de sensores.
+
+
+
+Pruebas generales del nodo.
+Pruebas orientadas a probar el funcionamiento del
+nodo y a verificar la optimización con respecto a l
+a versión anterior, así como una
+adecuada ejecución de las estrategias cognitivas di
+señadas.
+
+
+
+Análisis de resultados y conclusiones.
+Evaluación de las capacidades del dispositivo
+implementado. Observar posibles debilidades o mejo
+ras. Definición de líneas futuras. 
+
+\end{itemize}
 %-------------------------------------------------------------------
 \section{Project Organization}
 %-------------------------------------------------------------------
 \label{cap1:sec:projectOrganization}
 %-------------------------------------------------------------------
-añkldjfañdsl \ac{WSN},
+
+Estudio del estado del arte
+
+ En esta primera etapa se adquirirá información y c
+onocimientos específicos
+relacionados con las redes de sensores cognitivas.
+Asimismo, servirá como toma de
+contacto con las herramientas de desarrollo. Objeti
+vos:
+
+Análisis del estado del arte en materia de redes de
+sensores y radio cognitiva.
+Estudio de las soluciones comerciales.
+
+Familiarizarse con el software específico de desarr
+ollo y demás herramientas de
+trabajo (documentación, manuales, herramientas del
+laboratorio...).
+
+Asimilación de los resultados que arrojen proyectos
+relacionados ya finalizados o
+en fase de desarrollo.
+Diseño e implementación Hardware
+Esta fase cubre toda la actividad desde la definic
+ión de requisitos y especificaciones
+hasta el montaje e implementación del sistema. Obje
+tivos:
+
+Definición de requisitos y especificaciones general
+es del nodo. Limitaciones y
+criterios de diseño.
+
+Evaluación de las interfaces inalámbricas y otros d
+ispositivos que se emplearán en
+la plataforma.
+
+Diseño de optimizaciones hardware respecto al proto
+tipo demostrador.
+
+Rediseño hardware del prototipo. Elección de compon
+entes. Reajustes de diseño y
+verificación de las fases anteriores. Diseño de la
+placa de circuito impreso.
+
+Implementación del nodo.
+Diseño Software
+Una vez implementado el demostrador se pasará a tra
+bajar sobre el software. Objetivos:
+
+Familiarización con la HAL desarrollada y test modu
+lar del sistema recién
+implementado.
+
+Implementación software de las funciones y aplicaci
+ón requeridos y depuración del
+código fuente.
+
+Generación de la documentación de la capa software
+desarrollada.
+Pruebas y evaluación
+Finalmente se procederá a evaluar el correcto func
+ionamiento del nodo y analizar
+los resultados.
+
+Pruebas hardware y software del sistema. Sensado de
+l espectro, consumo y
+autonomía, comunicación entre nodos, conectividad c
+on otros dispositivos, torres de
+protocolo, capacidades cognitivas, etc.
+
+Interpretación de resultados y análisis de conclusi
+ones. Valoración de líneas futuras
+de desarrollo y evaluación de los problemas encontr
+ados.
+
+
+
+
+
+
+
 %-------------------------------------------------------------------
 \section{Disposition}
 %-------------------------------------------------------------------

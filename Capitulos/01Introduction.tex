@@ -17,7 +17,8 @@ Something in the air
 
 \begin{resumen}
 In this chapter, a global description of the project is shown. This global description covers an introduction to the context,
-the need of this project, defined goals and the project organization in time. Besides, it is described the structure of this dissertation.  
+the need of this project and a brief description if it. It defines goals and the project organization in time. Besides, it is 
+described the structure of this dissertation.  
 \end{resumen}
 
 
@@ -29,10 +30,10 @@ the need of this project, defined goals and the project organization in time. Be
 
 Ubiquitous computing, with a 40-fold increase between 2010 and 2015 according to the CISCO report \cite{cisco}, 
 is nowadays one of the most important trends. Related applications include security and surveillance, industrial control,
-infrastructure maintenance, automatic environmental monitoring, domotics, localization and tracking, health or vehicular networks. 
+infrastructure maintenance, automatic environmental monitoring, domotics, localization and tracking or health. 
 \ac{WSNS} provide a technological solution to these challenges, so their growth is closely linked to these fields. 
 
-Together with this growth, in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the 
+Together with this significant growth, in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the 
 great demand by users. This fact, in addition to obvious benefits for the public, brought a remarkable radio spectrum saturation.
 This increasing demand for wireless communication presents a challenge to efficient spectrum utilization and spectral 
 coexistence.
@@ -53,53 +54,34 @@ awareness. Spectrum sensing capabilities and cooperation among devices allow for
 The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters,
 thanks to cooperation, in order to achieve more reliable and efficient communications.
 
+\ac{WSNS} are shown as one of the areas with the highest demand for cognitive networking since the imposed constraints
+and hard operation conditions require efficient wireless communications, collaboration among nodes and self-adaptation
+against possible environmental incidents. However, there are also some challenges to face ****************** REF [4], specifically the study
+of the sensing state, collaboration among devices or decision taking.  
 
-
-Las redes de sensores, en concreto, se plantean como un entorno idneo para la
- implementación del concepto de Red Cognitiva ya que, en muchos casos,
-las restricciones impuestas sobre la red y las condiciones de trabajo
-requieren de comunicaciones inalambricas eficientes, colaboracion entre los nod
-os y adaptación frente a posibles incidencias. Estas redes conforman la infraestructu
-ra básica para el desarrollo de aplicaciones y sistemas en el campo de los entornos
-inteligentes. 
-
-. WAHSNs are one of the areas with the highest demand for 
-cognitive networking due to overcrowded unlicensed bands. Introducing CR capabilities in sensor networks structures
-provides benefits by implementing a more efficient and dynamic way to use the spectrum. However, there are also 
-some challenges to face [4], specifically the study of the sensing state, collaboration among devices, energy efficiency,
-and decision taking. 
-
-But, despite the potential of CWSNs, they are not yet deeply explored. Real or simulated scenarios scarcely exist and 
-realistic platforms are crucial to the improvement and development of this new field. The shortage of CWSN devices
+Despite the potential of \ac{CWSNS}, they are not deeply explored yet. Real or simulated scenarios scarcely exist and 
+realistic platforms are crucial to the improvement and development of this new field. The shortage of \ac{CWSN} devices
 or test-beds contributes to the scarcity of results in this area. 
 
-WAHSN is a mature area, and platform devices and test-beds
-for research and even real applications are common, but on the
-other hand, realistic devices with access to different spectrum
-zones for CWSNs do not exist. In order to enable and promote 
-this new paradigm, an effort to facilitate the technology with 
-devices and test-beds is necessary. Therefore, in this work, a 
-new platform for CWSN development is proposed. It consists 
-of a WSN device which provides access to different spectrum
-bands.
+The first \ac{CWSN} node platform was developed in 2011\cite{fcd} by researchers at the laboratory where this project is framed, the
+\ac{LSI}, belonging to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to security, \ac{WSN},
+and wireless devices. The developed device, the \ac{FCD}, become the first real generic platform to study \ac{CWSNS} but it was just a
+first approach and it was still far to be a stable commercial testbed platform. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities. 
 
-When designing CWSN devices, the fact that WSN nodes are
-very limited in terms of memory, computational power or 
-energy consumption is crucial and must be taken into account
-in the design process. Hence, the architecture must be cost
-saving, meaning that the processing resources of the 
-
-Microcontroller (MCU) are finite both in raw processing as 
-well as in memory allocation for data. As a development
-platform, the software architecture must provide advantages
-when implementing cognitive strategies in order to be a 
-valuable tool. The design must be modular, so it will not need
-to be redone entirely with every particular change, and
-scalable, allowing flexibility in the complexity of applications.
-
-\ac{CR}
+Continuing with the development of the \ac{FCD}, some software implementation were carried out at \ac{LSI}. A combined protocol stack for
+three different transceivers, described in********REF******** and *******REF******* was created together with a \ac{HAL}. This firmware offers
+to the application layers ease of use facing communication taks and it brings memory and resources savings compared with
+the previous three stacks based-on protocol scheme. As well, in order to deal with cognitive strategy and agorithmics, a software module
+that runs in parallel with the application layer was launched. This module, called \ac{CRMODULE} include the theoretical model described
+in ************************ REF and it is a crucial progress for our goals.  
 
 
+This dissertation describes the development and operation of the \ac{CNGD}, a node platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSNS} allowing test strategies and better investigation deployments.
+The final implementation must integrate the developed software modules \ac{HAL} and \ac{CRMODULE} together with a demo application layer that shows the full operation of the device. 
+   
+When designing CWSN devices, the fact that WSN nodes are very limited in terms of memory, computational power or energy consumption is crucial and it must be taken into account in the design process. The aim is a flexible scheme based on three different RF bands. On the one hand, as a \ac{WSN} platform, it must have a downward trend regarding power consumption, cost, size and resources. On the other hand, as development platform, the software and hardware architecture must provide advantages when implementing cognitive strategies as a valuable tool. 
+ 
+The design must be modular, so it will not need to be redone entirely with every particular change, and scalable, allowing flexibility in the complexity of applications.
 
 %-------------------------------------------------------------------
 \section{Goals}
@@ -109,165 +91,130 @@ scalable, allowing flexibility in the complexity of applications.
 
 The project main goal is to design and implement, regarding strong 
 efficiency, modularity and scalability constraints, a node for a 
-\ac{CWSN}. Code an application demo and integrate it together with
+\ac{CWSN}. Develop a demo application layer and integrate it together with
 the already implemented \ac{HAL} and \ac{CRMODULE}.
 
-A downtrend regarding cost and power consumption is required
+A downtrend regarding cost and power consumption is required, making the device suitable
 for commercial purposes. Besides, it must allow the evaluation
 of different CN-related strategies.  
 
 It is important to make clear that the design must fill the gaps
-and deficiencies that current devices show and expand some desirable capabilities.
+and deficiencies that current devices show and provide new desirable capabilities.
 Furthermore, a definition of new needs and a researching team sharing,
- together with an important review of the \ac{FCD} is needed. 
+together with an important review of the \ac{FCD} is needed. 
 
 Here the main goal is fragmented into shorter subgoals:
 
 \begin{itemize}
 
-\item Análisis de las conclusiones y resultados del proto
-tipo demostrador.
-Estudio
-intensivo de todos aspectos sometidos a prueba. Def
-inición de nuevas pruebas que
-aporten nuevos datos de interés. Estas conclusiones
-versarán acerca de los tipos de
-interfaz radio, elección del microcontrolador, etc.
+\item \emph{Previous conclusions and results analysis}.
+Study of already tested aspects. Definition of new tests 
+to provide new data of interest. These data will help
+to take decisions about transceivers, microcontroller,
+power supply...
 
+\item \emph{Definition of the node}. Study of needs and constraints 
+(cost, resources, size, consumption...) according to the future running applications.
+Definition of features and requirements. Definition of the demo application.
 
-
-\item \emph{Definition of the node}. Redefinición del nodo
-. Estudio de las necesidades y las limitaciones (co
-ste,
-tamaño, recursos, consumo) con vistas al desarrollo
-de aplicaciones que hagan uso del
-nodo. Definición del nuevo demostrador.
-
-
-
-\item \emph{Hardware design}.
-Búsqueda de carencias sobre el actual diseño o posi
-bles
-potencialidades beneficiosas para alcanzar los requ
-isitos definidos. Optimizaciones al
-diseño del nodo demostrador. Selección de component
-es y diseño del trazado en PCB.
-
-
+\item \emph{Hardware design}. Pursuit of deficiencies over 
+the \ac{FCD} design and possible beneficial potentialities 
+to achieve the new defined requirements. Design optimization.
+Components selection and final layout development. 
 
 \item \emph{Hardware debugging and implementation}.
 Component disposition and soldering. PCB design validation.
 
-
-
 \item \emph{Application layer development}.
-Familiarización con la capa de abstracción
-hardware y cognitiva. Desarrollo de un demostrador
-que integre estas capas y que
-permita evaluar el sistema implementado. La aplicac
-ión incluirá funcionalidades
-típicas en el estudio de redes de sensores.
+Adaptation to the \ac{HAL} and \ac{CRMODULE}.
+Development of the demo application layer integrating
+the two already named software modules enabling a 
+full test of the platform. The application will include
+tipical \ac{WSN} functionalities.
 
-
-\item \emph{General purpose tests}.
-Pruebas orientadas a probar el funcionamiento del
-nodo y a verificar la optimización con respecto a l
-a versión anterior, así como una
-adecuada ejecución de las estrategias cognitivas di
-señadas.
+\item \emph{General purpose tests}. 
+Tests oriented to prove the proper operation and verify
+the achievement of the requirements and constraints compliance.
 
 \item \emph{Results analysis and conclusions}.
-Evaluación de las capacidades del dispositivo
-implementado. Observar posibles debilidades o mejo
-ras. Definición de líneas futuras. 
+Evaluation of capabilities. Study of weaknesses or 
+posible improvements. Definition of further studies.
 
 \end{itemize}
+
 %-------------------------------------------------------------------
 \section{Project Organization}
 %-------------------------------------------------------------------
 \label{cap1:sec:projectOrganization}
 %-------------------------------------------------------------------
 
-Estudio del estado del arte
+The project organization is here described:
 
- En esta primera etapa se adquirirá información y c
-onocimientos específicos
-relacionados con las redes de sensores cognitivas.
-Asimismo, servirá como toma de
-contacto con las herramientas de desarrollo. Objeti
-vos:
+\begin{itemize}
 
-Análisis del estado del arte en materia de redes de
-sensores y radio cognitiva.
-Estudio de las soluciones comerciales.
+\item \emph{Art state review}.
 
-Familiarizarse con el software específico de desarr
-ollo y demás herramientas de
-trabajo (documentación, manuales, herramientas del
-laboratorio...).
+At this first stage, \ac{CWSNS} related information and specific knowledge
+was acquired. Also, it was an approach to the development tools. Goals:  
 
-Asimilación de los resultados que arrojen proyectos
-relacionados ya finalizados o
-en fase de desarrollo.
-Diseño e implementación Hardware
-Esta fase cubre toda la actividad desde la definic
-ión de requisitos y especificaciones
-hasta el montaje e implementación del sistema. Obje
+\begin{itemize}
+\item \ac{SN} and \ac{CR} art state review. Commercial solutions review.
+
+\item Adaptation to the developement platform as well as other tools (
+documentation, manuals, hardware at the lab...).
+
+\item Absorption of related projects results, either completed or under
+development.
+\end{itemize}
+
+\item \emph{Hardware design and implementation}.
+
+Over this phase covered from the first definitions and specifications
+to the system mounting and implementation. Goals:
 tivos:
 
-Definición de requisitos y especificaciones general
-es del nodo. Limitaciones y
-criterios de diseño.
+\begin{itemize}
+\item Requirements definition and general node specifications. Constraints and
+design criteria.
 
-Evaluación de las interfaces inalámbricas y otros d
-ispositivos que se emplearán en
-la plataforma.
+\item Wireless interfaces and other used devices evaluation.
 
-Diseño de optimizaciones hardware respecto al proto
-tipo demostrador.
+\item Design optimizations repect to the \ac{FCD}.
 
-Rediseño hardware del prototipo. Elección de compon
-entes. Reajustes de diseño y
-verificación de las fases anteriores. Diseño de la
-placa de circuito impreso.
+\item Hardware full design. Componentes election. Design adjustments and previous
+work verification. Layout design.
 
-Implementación del nodo.
-Diseño Software
-Una vez implementado el demostrador se pasará a tra
-bajar sobre el software. Objetivos:
+\item Platform implementation.
 
-Familiarización con la HAL desarrollada y test modu
-lar del sistema recién
-implementado.
+\end{itemize}
 
-Implementación software de las funciones y aplicaci
-ón requeridos y depuración del
-código fuente.
+\item \emph{Software design}
 
-Generación de la documentación de la capa software
-desarrollada.
-Pruebas y evaluación
-Finalmente se procederá a evaluar el correcto func
-ionamiento del nodo y analizar
-los resultados.
+Once the hardware was operating, the work turned over the software. Goals:
 
-Pruebas hardware y software del sistema. Sensado de
-l espectro, consumo y
-autonomía, comunicación entre nodos, conectividad c
-on otros dispositivos, torres de
-protocolo, capacidades cognitivas, etc.
+\begin{itemize}
 
-Interpretación de resultados y análisis de conclusi
-ones. Valoración de líneas futuras
-de desarrollo y evaluación de los problemas encontr
+\item Adaptation to the developed \ac{HAL} and \ac{CRMODULE}.
+
+\item Software implementation of required functions and application. Source code debugging.
+
+\item Generation of documentation about the developed modules.
+
+\end{itemize}
+
+\item \emph{Tests and evaluation}. Finally the proper operation of the device was 
+evaluated and its results analysed.
+
+\begin{itemize}
+\item Fully integrated hardware and software test. Spectrum sensing, power consumption and
+autonomy, communication among nodes, connectivity to other devices, protocol stacks, 
+cognitive capabilities...
+ 
+\item Results interpretation and conclusions review. Statement of further studies 
+and future development lines. Found problems evaluation.
 ados.
-
-
-
-
-
-
-
+\end{itemize}
+\end{itemize}
 %-------------------------------------------------------------------
 \section{Disposition}
 %-------------------------------------------------------------------

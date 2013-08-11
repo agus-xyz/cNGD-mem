@@ -22,6 +22,8 @@
 
 @entry{WSNS, WSNs , \emph{Wireless Sensor Networks}}
 
+@entry{CWSNS, CWSNs, \emph{Cognitive Wireless Sensor Networks},}
+
 @entry{IEEE, , \emph{Institute of Electrical and Electronics Engineers},}
 
 @entry{QOS,QoS,\emph{Quality of Service},}
@@ -40,7 +42,7 @@
 
 @entry{WN, , \emph{Wireless Network}}
 
-@entry{PAN, , \emph{Personal Area Network},}
+@entry{PAN, , \emph{Personal Area Network}}
 
 @entry{CWSN, , \emph{Cognitive Wireless Sensor Network}}
 
@@ -64,7 +66,13 @@
 
 @entry{ACK, , \emph{Acknowledgment}}
 
-@entry{FIFO, , \emph{First In, First Out}}
+@entry{LSI, , \emph{Integrated Systems Laboratory}}
+
+@entry{DIE, , \emph{Electronic Engineering Department}}
+
+@entry{ETSIT, , \emph{Higher Technical School of Telecommunications Engineering}}
+
+@entry{UPM, , \emph{Technical University of Madrid}}
 
 @entry{LoWPAN, , \emph{Low-Rate Wireless Personal Area Network}}
 >>>>>>> a1611710281f8337978a3f73aa4341be414ec914

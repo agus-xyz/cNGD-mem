@@ -21,23 +21,275 @@ It's amazing what you'll find face to face
 \begin{resumen}
 This chapter shows an approach to the fundamentals of Wireless Sensor Networks and
 the current development state of new paradigms such as Cognitive Radio, Cognitive Networks or Cognitive 
-Wireless Sensor Networks. It describes current related implementations and introduce terms used all along
+Wireless Sensor Networks. It describes current related applications and implementations, and introduce terms used all along
 this dissertation.
 \end{resumen}
 
 
 %-------------------------------------------------------------------
-\section{Cognitive Radio}
+\section{Cognitive Radio and Cognitive Networks}
 %-------------------------------------------------------------------
 \label{cap2:sec:cognitiveRadio}
 %-------------------------------------------------------------------
 
-%-------------------------------------------------------------------
-\section{Cognitive Networks}
-%-------------------------------------------------------------------
-\label{cap2:sec:cognitiveNetworks}
-%-------------------------------------------------------------------
+Nowadays, it is widely accepted that the main limitation in next-generation wireless systems is bandwidth scarcity. 
+It is commonly believed that there is a crisis of spectrum availability for wireless communications.***** REF *****.
+However, according to regulatory bodies as the \ac{FCC} ****REF**** or the \ac{OFCOM}, most radio frequency spectrum is under-utilized while some spectrum bands are heavily used. Military, amateur radio or satellital frecuencies, for instance, are insuffiently utilized compared to cellular networks or the overcrowded \ac{ISM} bands\cite{wpanIssues}.
 
+Most of the spectrum is allocated to specific applications and the static assignment of the spectrum 
+results in an inefficient use of it. ******FIGURA ***** shows how the actual utilization in the 3-4 GHz
+frequency band is 0.5\% and drops to 0.3\% in the 4-5 GHz band. This seems totally in contradiction to the concern of spectrum
+shortage.
+
+Spectrum utilization depends strongly on time and place, however, fixed spectrum allocation prevents specific assigned frequencies 
+from being used, even when this use would not cause noticeable interference to the assigned service. These facts lead to the current inneficiency situation where the utilization of the total spectrum can be considered around 10\% and more than 95\% of the use is below 3GHz.
+
+%datos triples sacaos de http://www.cmpe.boun.edu.tr/WiCo/doku.php?id=research#cognitive_radio
+
+%  IMAGENNNNNNNNNN \cite{seung}
+  
+The concept of \ac{CR} was first published by Joseph Mitola III and Gerald Q. Maguire, Jr. in 1999\cite{mitola1} and later on within Mitola's phD Dissertation in 2000\cite{mitola2}. It describes novel paradigm for wireless communication in which a wireless device changes its transmission or reception parameters to communicate efficiently. This alteration of parameters is based on the active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior, and network state. The idea was thought of as an ideal goal towards which a \ac{SDR} platform should evolve.
+
+The cognitive radio is defined as an intelligent wireless communication system that is aware of its environment and uses the methodology of under-
+standing-by-building to learn from the environment and adapt to statistical variations in the input stimuli, with two primary objectives:
+\begin{itemize}
+\item Hihighly reliable communications
+\item Efficient utilization of the radio spectrum
+\end{itemize}
+
+Although the concept of \ac{CR} was defined originally as an extension to \ac{SDR}(MITOLA92), which is able to reason about
+external factors, recently the term is mostly used in a narrower sense. \ac{FCC}(FCC03322) suggests that any radio having the adaptive spectrum awareness should be referred to as "Cognitive Radio":
+
+\emph{"A cognitive radio (CR) is a radio that can change its transmitter parameters based on
+interaction with the environment in which is operates. The majority of cognitive radios will
+probably be SDRs (Software Defined Radios), but neither having software nor being field
+programmable are requirements of a cognitive radio."} 
+
+Attending to some subtle differences between systems we can differenciate two main different types of \ac{CR}:
+
+\begin{itemize}
+\item \emph{Spectrum-Sensing Cognitive Radio}, in which only the radio-frequency spectrum is considered.[3] wikipedia
+\item \emph{Full Cognitive Radio  or Mitola radio}, in which every possible parameter observable by a wireless node is considered.[2] wikipedia
+\end{itemize}    
+
+Although cognitive radio was initially thought of as full cognitive radio, most research work focuses on spectrum-sensing cognitive radio,  particularly in the TV bands. The great problem in spectrum-sensing cognitive radio is designing high-quality spectrum-sensing devices and algorithms for exchanging the so called domain knoledge ****REF EMPOWERED****. It has been shown that a simple energy detector cannot guarantee the accurate detection of signal presence,[8] calling for more sophisticated spectrum sensing techniques and requiring information about spectrum sensing to be
+properly and globally integrated.
+
+The practical implementation of spectrum-management functions is a complex and multifaceted issue, since it must address a variety of technical and legal requirements. ********************************** SACAR DE FER *****************************************************
+The original \ac{CR} model can be referred to the first and second layers of the OSI model, thus the phisical and \ac{MAC} layers. 
+
+The main functions of \ac{CR} devices are:****************************REFS WIKI [10][11]
+
+\begin{itemize}
+
+\item \emph{Spectrum sensing}: Detecting unused spectrum and sharing it, without harmful interference to other users; an important requirement of the cognitive-radio network to sense empty spectrum. Detecting primary users is the most efficient way to detect empty spectrum. Spectrum-sensing techniques may be grouped into three categories:
+
+\item \emph{Transmitter detection}: Cognitive radios must have the capability to determine if a signal from a primary transmitter is locally present in a certain spectrum. There are several proposed approaches to transmitter detection:
+
+            Matched filter detection
+            Energy detection
+            Cyclostationary-feature detection
+
+\item \emph{Cooperative detection}: Refers to spectrum-sensing methods where information from multiple cognitive-radio users is incorporated for primary-user detection[12]
+        Interference-based detection
+
+\item \emph{Power Control}: Power control is used for both opportunistic spectrum access and spectrum sharing CR systems for finding the cut-off level in SNR supporting the channel allocation and imposing interference power constraints for the primary user's protection respectively. In [13] a joint power control and spectrum sensing is proposed for capacity maximization.
+
+\item \emph{Spectrum management}: Capturing the best available spectrum to meet user communication requirements, while not creating undue interference to other (primary) users. Cognitive radios should decide on the best spectrum band (of all bands available) to meet quality of service requirements; therefore, spectrum-management functions are required for cognitive radios. Spectrum-management functions are classified as:
+
+        Spectrum analysis
+        Spectrum decision
+
+\end{itemize}
+
+***************************************** FUTURE PLANS ***************************** WIKIPEDIA
+he success of the unlicensed band in accommodating a range of wireless devices and services has led the FCC to consider opening further bands for unlicensed use. In contrast, the licensed bands are underutilized due to static frequency allocation. Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service.[14] dynamic spectrum allocation (DSA).
+**************************************************************************
+
+
+
+Extending the term of \ac{CR} to an entire data network comes to a new concept in communication networks, the \ac{CN}. 
+
+ 
+
+****************************************** DE THOMAS *****************************************************+
+Current data networking technology limits a network's ability to adapt to changes and in-
+teractions in the network, often resulting in sub-optimal performance. Limited in state,
+scope and response mechanisms, the network elements (consisting of nodes, protocol lay-
+ers, policies and behaviors) are unable to make intelligent adaptations. Communication of
+network state information is stifled by the layered protocol architecture, making individual
+elements unaware of the network conditions experienced by other elements. Any response
+that an element may make to network stimuli can only be made inside of its limited scope.
+The adaptations that are performed are typically reactive, taking place after a problem has
+occurred. In this dissertation, we advance the idea of
+cognitive networks
+, which have the
+promise to remove these limitations by allowing networks to observe, act, and learn in order
+to optimize their performance.
+
+
+1.1 What is a Cognitive Network?
+In recent years, the words
+cognitive
+and
+smart
+have become buzzwords that are applied
+to many different networking and communications systems. At a minimum, in the current
+literature we find mention of cognitive radios [1, 2], smart radios [3], smart antennas [4],
+cognitive packets [5], smart packets [6] and cognitive networks (CNs) [7, 8]. There does
+not seem to be a common, accepted definition of what these terms mean when applied to
+a networking technology, let alone an accepted justification for when to add cognition to a
+network.
+The concept of CNs has been bouncing around the collective psyche of the wireless and
+networking researching world for a while. Mitola [1] makes brief mention of how his cognitive
+radios (CRs) could interact within the system-level scope of a CN. Saracco [9] refers to
+CNs in his investigation into the future of information technology. He postulates that the
+movement of network intelligence from controlling resources to understanding user needs
+will help "flatten" the network by moving network intelligence further out towards the edges
+of the network. Mahonen et al. [7] discuss CNs with respect to future mobile Internet
+Protocol (IP) networks, arguing that the context sensitivity of these networks could have
+as interesting an application to networks as cognitive radios had to software defined radios.
+None of these papers, however, express exactly what a CN is, how it should work and what
+problems it should solve
+
+
+17
+2.2.1 Cognitive Radio
+CNs have been described by some as networks of CRs [32, 33]. Certainly, the 50% correlation
+in nomenclature would of itself imply some degree of commonality. This comes from the role
+that CR (as a model of how to use cognition and adaptation to control the behavior of a
+complex point-to-point communication channel) had in inspiring the formulation of the CN
+concept
+
+
+35
+Recent research can be divided into two categories: Cognitive Radio Networks (CRNs) and
+CNs. In the first category, we begin with work from Mitola and his original thesis on CR.
+Here he mentions how CRs could interact within the system-level scope of a CN [1]. Neel
+continues this line of thinking in [92], where he investigates modeling networks of CRs as a
+large, multiplayer game to determine convergent conditions. This kind of thinking is also
+observed in Haykin's paper on CR [2], where he examines multi-user networks of CRs as a
+game.
+The focus of CRNs, as with CRs, is primarily on MAC and PHY layer issues, but now
+operating with some end-to-end objective. In a CRN, the individual radios still make most of
+the cognitive decisions, although they may act in a cooperative manner. Currently suggested
+applications for CRNs include cooperative spectrum sensing [93, 94] and emergency radio
+networks [95]. From a more general perspective, Raychaudhuri [96] presents an architecture
+for CRNs.
+Perhaps the first mention of a CNs rather than a CRN comes from Clark [97]. Clark proposes
+a network that can
+"assemble itself given high level instructions, reassemble itself as requirements
+change, automatically discover when something goes wrong, and automatically
+fix a detected problem or explain why it cannot do so."
+This would be accomplished with the use of a Knowledge Plane (KP) that transcends layers
+and domains to make cognitive decisions about the network. The KP will add intelligence and
+weight to the edges of the network, and context sensitivity to its core. Saracco also observed
+these trends in his investigation into the future of information technology [9], postulating
+that the change from network intelligence controlling resources to having context sensitivity
+will help "flatten" the network by moving network intelligence into the core and control
+further out to the edges of the network.
+CRNs differ from CNs in that their action space extends beyond the MAC and PHY layers
+36
+and the network may consist of more than just wireless devices. Furthermore, CN nodes may
+be less autonomous than a CRN node, with the network elements cooperating to achieve
+goals, a centralized cognitive process or a parallelized process that runs across several of the
+network elements
+
+
+
+
+EXAMPLE
+
+3.1.2 A Simple Example
+This example and its description are inspired and influenced by Daniel Friend's example in
+our IEEE Communications Magazine article [101].
+41
+
+Figure 3.1: Simple relay network for a wireless network. Vertices represent wireless connec-
+tivity.
+To illustrate the need for end-to-end rather than link adaptations, consider an ad-hoc data
+session between a source node
+S
+1
+and a destination node
+D
+1
+as shown in Figure 3.1. The
+source node does not have enough power to reach
+D
+1
+directly, so it must must route traffic
+through intermediate nodes
+R
+1
+and-or
+R
+2
+. Assume that the end-to-end goal is to have the
+highest probability of successful transmission. The routing layer will determine routes based
+on minimum hop count which, in this case, includes either
+R
+1
+or
+R
+2
+. Node
+S
+1
+will make a
+link-layer adaptation, selecting between
+R
+1
+and
+R
+2
+based on their Signal to Interference and
+Noise Ratio (SINR). From the standpoint of the link layer in node
+S
+1
+, this ratio correlates
+with the probability that the transmitted packets will arrive correctly at the relay node.
+However, without additional information, this selection does not guarantee anything about
+the end-to-end packet delivery probability from
+S
+1
+to
+D
+1
+.
+In contrast to a link adaptation, the CN might use some combination of observations from
+all nodes to compute the total path outage probabilities from
+S
+1
+to
+D
+1
+through
+R
+1
+and
+R
+2
+. This shows the benefit of an end-to-end scope, but there is another advantage to the
+CN, its cognitive capability. To illustrate this, we modify the original scenario to include
+both
+S
+1
+and
+S
+2
+as source nodes, both routing traffic through
+R
+2
+. Suppose that the learning
+mechanism measures outages by determining the fraction of packets successfully delivered
+from the source to its destination
+****************************************************************************
+
+******************************* DE LA WEB *************************+
+Dynamic Spectrum Access (DSA) technique aims to solve spectrum allocation problems. The overall system that learns the operating environment and adapts its operating parameters according to its surrounding and uses DSA technique for efficient spectrum usage is called Cognitive Radio Network (CRN). In the following figure, spectrum holes are employed by CRN in an example scenario. In different areas the usage of the spectrum differs, so spectrum hole locations and their durations vary. CRN uses these spectrum holes for providing service to its users without causing harm to other users. Therefore, the change of parameters are observed by active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior and network state. 
+***********************************************+
+ 
 %-------------------------------------------------------------------
 \section{Wireless Sensor Networks}
 %-------------------------------------------------------------------

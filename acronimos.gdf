@@ -72,7 +72,15 @@
 
 @entry{ETSIT, , \emph{Higher Technical School of Telecommunications Engineering}}
 
-@entry{UPM, , \emph{Technical University of Madrid}}
+@entry{UPM, , \emph{Polytechnic University of Madrid}}
+
+@entry{FCC, , \emph{Federal Communications Commission}}
+
+@entry{OFCOM, Ofcom, \emph{Office of Communications}}
+
+@entry{SDR, , \emph{Software-Defined Radio}}
+
+@entry{MAC, , \emph{Medium Access Control}}
 
 @entry{LoWPAN, , \emph{Low-Rate Wireless Personal Area Network}}
 >>>>>>> a1611710281f8337978a3f73aa4341be414ec914

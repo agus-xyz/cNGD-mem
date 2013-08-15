@@ -33,11 +33,11 @@ this dissertation.
 %-------------------------------------------------------------------
 
 Nowadays, it is widely accepted that the main limitation in next-generation wireless systems is bandwidth scarcity. 
-It is commonly believed that there is a crisis of spectrum availability for wireless communications.***** REF *****.
-However, according to regulatory bodies as the \ac{FCC} ****REF**** or the \ac{OFCOM}, most radio frequency spectrum is under-utilized while some spectrum bands are heavily used. Military, amateur radio or satellital frecuencies, for instance, are insuffiently utilized compared to cellular networks or the overcrowded \ac{ISM} bands\cite{wpanIssues}.
+It is commonly believed that there is a crisis of spectrum availability for wireless communications\cite{corvus}.
+However, according to regulatory bodies as the \ac{FCC}\cite{fcc} or the \ac{OFCOM}, most radio frequency spectrum is under-utilized while some spectrum bands are heavily used. Military, amateur radio or satellital frecuencies, for instance, are insuffiently utilized compared to cellular networks or the overcrowded \ac{ISM} bands\cite{wpanIssues}.
 
 Most of the spectrum is allocated to specific applications and the static assignment of the spectrum 
-results in an inefficient use of it. ******FIGURA ***** shows how the actual utilization in the 3-4 GHz
+results in an inefficient use of it. Figure~\ref{fig:spectrum} shows how the actual utilization in the 3-4 GHz
 frequency band is 0.5\% and drops to 0.3\% in the 4-5 GHz band. This seems totally in contradiction to the concern of spectrum
 shortage.
 
@@ -45,65 +45,65 @@ Spectrum utilization depends strongly on time and place, however, fixed spectrum
 from being used, even when this use would not cause noticeable interference to the assigned service. These facts lead to the current inneficiency situation where the utilization of the total spectrum can be considered around 10\% and more than 95\% of the use is below 3GHz.
 
 %datos triples sacaos de http://www.cmpe.boun.edu.tr/WiCo/doku.php?id=research#cognitive_radio
+%WiMax Networks & Cognitive Radio, namely WiCo, is a research group functioning under Computer Networks Research Laboratory (NetLab) of Computer Engineering Department at bla 
 
-%  IMAGENNNNNNNNNN \cite{seung}
-  
-The concept of \ac{CR} was first published by Joseph Mitola III and Gerald Q. Maguire, Jr. in 1999\cite{mitola1} and later on within Mitola's phD Dissertation in 2000\cite{mitola2}. It describes novel paradigm for wireless communication in which a wireless device changes its transmission or reception parameters to communicate efficiently. This alteration of parameters is based on the active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior, and network state. The idea was thought of as an ideal goal towards which a \ac{SDR} platform should evolve.
+\figuraEx{Vectorial/Todo}{width=.5\textwidth}{fig:spectrum}%
+{A snapshot of the spectrum utilization up to 6 GHz in an urban area: taken at
+mid-day with 20 kHz resolution taken over a time span of 50 microseconds with a 30
+degree directional antenna at Berkeley Wireless Research Center \cite{seung}.}{A snapshot of the spectrum utilization up to 6 GHz in an urban area at BWRC}
+
+The concept of \ac{CR} was first published by Joseph Mitola III and Gerald Q. Maguire, Jr. in 1999\cite{mitola1} and later on within Mitola's phD Dissertation in 2000\cite{mitola2}. It describes a novel paradigm for wireless communication in which a wireless device changes its transmission or reception parameters to communicate efficiently. This alteration of parameters is based on the active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior, and network state. The idea was thought of as an ideal goal towards which a \ac{SDR} platform should evolve.
 
 The cognitive radio is defined as an intelligent wireless communication system that is aware of its environment and uses the methodology of under-
 standing-by-building to learn from the environment and adapt to statistical variations in the input stimuli, with two primary objectives:
 \begin{itemize}
-\item Hihighly reliable communications
-\item Efficient utilization of the radio spectrum
+\item Hihighly reliable communications.
+\item Efficient utilization of the radio spectrum.
 \end{itemize}
 
-Although the concept of \ac{CR} was defined originally as an extension to \ac{SDR}(MITOLA92), which is able to reason about
-external factors, recently the term is mostly used in a narrower sense. \ac{FCC}(FCC03322) suggests that any radio having the adaptive spectrum awareness should be referred to as "Cognitive Radio":
-
-\emph{"A cognitive radio (CR) is a radio that can change its transmitter parameters based on
+Although the concept of \ac{CR} was defined originally as an extension to \ac{SDR}\cite{mitola1}, which is able to reason about
+external factors, recently the term is mostly used in a narrower sense. \ac{FCC} suggests in~\cite{fcc1} that any radio having the adaptive spectrum awareness should be referred to as \ac{CR}:
+\begin{quote}
+``A cognitive radio (CR) is a radio that can change its transmitter parameters based on
 interaction with the environment in which is operates. The majority of cognitive radios will
 probably be SDRs (Software Defined Radios), but neither having software nor being field
-programmable are requirements of a cognitive radio."} 
-
+programmable are requirements of a cognitive radio.'' 
+\end{quote}
 Attending to some subtle differences between systems we can differenciate two main different types of \ac{CR}:
 
 \begin{itemize}
-\item \emph{Spectrum-Sensing Cognitive Radio}, in which only the radio-frequency spectrum is considered.[3] wikipedia
-\item \emph{Full Cognitive Radio  or Mitola radio}, in which every possible parameter observable by a wireless node is considered.[2] wikipedia
+\item \emph{Spectrum-Sensing Cognitive Radio}, in which only the radio-frequency spectrum is considered.\cite{brainempower}
+\item \emph{Full Cognitive Radio  or Mitola radio}, in which every possible parameter observable by a wireless node is considered.\cite{mitola1}
 \end{itemize}    
 
-Although cognitive radio was initially thought of as full cognitive radio, most research work focuses on spectrum-sensing cognitive radio,  particularly in the TV bands. The great problem in spectrum-sensing cognitive radio is designing high-quality spectrum-sensing devices and algorithms for exchanging the so called domain knoledge ****REF EMPOWERED****. It has been shown that a simple energy detector cannot guarantee the accurate detection of signal presence,[8] calling for more sophisticated spectrum sensing techniques and requiring information about spectrum sensing to be
-properly and globally integrated.
+Although cognitive radio was initially thought of as full cognitive radio, most research work focuses on spectrum-sensing cognitive radio,  particularly in the TV bands. The great problem in spectrum-sensing cognitive radio is designing high-quality spectrum-sensing devices and algorithms for exchanging the so called knoledge domain \cite{brainempower}. The practical implementation of spectrum-management functions is a complex and multifaceted issue, since it must address a variety of technical and legal requirements.
 
-The practical implementation of spectrum-management functions is a complex and multifaceted issue, since it must address a variety of technical and legal requirements. ********************************** SACAR DE FER *****************************************************
-The original \ac{CR} model can be referred to the first and second layers of the OSI model, thus the phisical and \ac{MAC} layers. 
+ ********************************** SACAR DE FER *****************************************************
+The original \ac{CR} model can be referred to the first and second layers of the OSI model, thus the \emph{Phisical} and \ac{Link} layers. 
 
 The main functions of \ac{CR} devices are:****************************REFS WIKI [10][11]
 
 \begin{itemize}
 
-\item \emph{Spectrum sensing}: Detecting unused spectrum and sharing it, without harmful interference to other users; an important requirement of the cognitive-radio network to sense empty spectrum. Detecting primary users is the most efficient way to detect empty spectrum. Spectrum-sensing techniques may be grouped into three categories:
+\item \emph{Spectrum sensing}: An important requirement is detecting unused spectrum and sharing it, without causing interferences to other users; Spectrum-sensing techniques may be grouped into three categories:
 
-\item \emph{Transmitter detection}: Cognitive radios must have the capability to determine if a signal from a primary transmitter is locally present in a certain spectrum. There are several proposed approaches to transmitter detection:
+\begin{itemize}
+\item \emph{Transmitter detection}: \ac{CR} must have the capability to determine if a signal from a primary transmitter is locally present in a certain spectrum. There are several proposed approaches to transmitter detection, techniques such as \emph{matched filter detection, energy detection or cyclostationary-feature detection} are common.
 
-            Matched filter detection
-            Energy detection
-            Cyclostationary-feature detection
+\item \emph{Cooperative detection}: Refers to spectrum-sensing methods where information from multiple \ac{CR} users is integrated[12].
 
-\item \emph{Cooperative detection}: Refers to spectrum-sensing methods where information from multiple cognitive-radio users is incorporated for primary-user detection[12]
-        Interference-based detection
+\item \emph{Interference-based detection}.
+\end{itemize}
 
 \item \emph{Power Control}: Power control is used for both opportunistic spectrum access and spectrum sharing CR systems for finding the cut-off level in SNR supporting the channel allocation and imposing interference power constraints for the primary user's protection respectively. In [13] a joint power control and spectrum sensing is proposed for capacity maximization.
 
-\item \emph{Spectrum management}: Capturing the best available spectrum to meet user communication requirements, while not creating undue interference to other (primary) users. Cognitive radios should decide on the best spectrum band (of all bands available) to meet quality of service requirements; therefore, spectrum-management functions are required for cognitive radios. Spectrum-management functions are classified as:
-
-        Spectrum analysis
-        Spectrum decision
+\item \emph{Spectrum management}: Capturing the best available spectrum to meet user communication requirements, while not creating undue interference to other users. \ac{CR} should decide on the best spectrum band (over the available range) to meet \ac{QOS} requirements; therefore, spectrum-management functions are required for \ac{CR}. Spectrum-management functions are classified as \emph{Spectrum analysis} and \emph{
+Spectrum decision}.
 
 \end{itemize}
 
 ***************************************** FUTURE PLANS ***************************** WIKIPEDIA
-he success of the unlicensed band in accommodating a range of wireless devices and services has led the FCC to consider opening further bands for unlicensed use. In contrast, the licensed bands are underutilized due to static frequency allocation. Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service.[14] dynamic spectrum allocation (DSA).
+Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service.[14] dynamic spectrum allocation (DSA).
 **************************************************************************
 
 

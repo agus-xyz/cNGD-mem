@@ -28,7 +28,9 @@
 
 @entry{QOS,QoS,\emph{Quality of Service},}
 
-@entry{WSN, , \emph{Wireless Sensor Network}}
+@entry{WSN, , \emph{Wireless Sensor Network},}
+
+@entry{CWSN, ,\emph{Cognitive Wireless Sensor Network},}
 
 @entry{WPAN, , \emph{Wireless Personal Area Network},}
 

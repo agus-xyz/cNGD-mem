@@ -32,6 +32,47 @@ commercial options and coming into final decissions.
 \label{cap3:sec:nodeModel}
 %-------------------------------------------------------------------
 
+Basically, the \ac{CWSN} node scheme responds to a standard \ac{WSN} model based on a microcontroller,
+radio and sensor interfacing, and power supply. However, a further review shows some general differences:
+
+\begin{itemize}
+
+\item \emph{Multiple Radio Interfacing}: Regarding \ac{CR} capabilities for spectrum management and \ac{DSA}, the node
+	must include multiple radio interfaces enabling different spectrum bands.
+
+
+\item \emph{Multiple Control/Sensor Interfacing}: Since the device will serve as a standard \ac{CWSN} platform, it must
+	embbed different multi-purpose undefinned interfaces. ************* FOOTNOTE
+
+\item \emph{Protocol Stacking}: In order to enable communication over the different interfaces the model,
+	must provide to any included radio interface, proper access to a the lower layers of a communication protocol. ***** FOOTNOTE
+
+\item \emph{Cognitive Layer}: To carry out all the cognition algorithms and computations.
+
+\end{itemize}
+
+Figure \ref{fig:CWSNnodeModel} gives a view about the basic model. It shows together software and hardware modules in a simplified way.
+Additionally, cognition tasks compulsory require of several functions to take into account at the design stage: 
+
+
+
+
+***** DE JUAN Y FER QUE TIENEN MUCHAS *************   
+
+\figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNnodeModel}%
+{CWSN node model}
+%poner una unica pila
+
+\figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNsoftModel}%
+{CWSN protocol model}
+%poner una unica pila
+
+
+All the previous considerations, in addition to the requirements to be defined will come into the model of the 
+final implementation.
+
+
+
 %-------------------------------------------------------------------
 \section{First Cognitive Device Evaluation}
 %-------------------------------------------------------------------

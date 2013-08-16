@@ -58,7 +58,7 @@
 
 @entry{RFD, , \emph{Reduced Function Device}}
 
-@entry{RSSI, , \emph{Received Signal Strength Indication}, Indicador de Potencia de Señal Recibida}
+@entry{RSSI, , \emph{Received Signal Strength Indication}}
 
 @entry{SNR, , \emph{Signal to Noise Ratio}, Relación Señal-Ruido}
 
@@ -83,6 +83,18 @@
 @entry{SDR, , \emph{Software-Defined Radio}}
 
 @entry{MAC, , \emph{Medium Access Control}}
+
+@entry{I2C,$I^{2}$C, \emph{Inter-Integrated Circuit}}
+
+@entry{SPI, , \emph{Serial Peripheral Interface}}
+
+@entry{UART, , \emph{Universal Asynchronous Receiver-Transmitter}}
+
+@entry{USB, , \emph{Universal Serial Bus}}
+
+@entry{OSI, , \emph{Open Systems Interconnection}}
+
+@entry{DSA, , \emph{Dinamic Spectrum Access}}
 
 @entry{LoWPAN, , \emph{Low-Rate Wireless Personal Area Network}}
 >>>>>>> a1611710281f8337978a3f73aa4341be414ec914

@@ -13,9 +13,9 @@ Do It Faster, Makes Us stronger\\
 More Than Ever Hour After\\
 Our Work Is Never Over 
 \end{Frase}
-%\begin{Fuente}
-%Fuente
-%\end{Fuente}
+\begin{Fuente}
+Guy Manuel de Homem-Christo and Thomas Bangalter 
+\end{Fuente}
 \end{FraseCelebre}
 
 \begin{resumen}
@@ -38,52 +38,185 @@ radio and sensor interfacing, and power supply. However, a further review shows 
 \begin{itemize}
 
 \item \emph{Multiple Radio Interfacing}: Regarding \ac{CR} capabilities for spectrum management and \ac{DSA}, the node
-	must include multiple radio interfaces enabling different spectrum bands.
+	must include multiple radio interfaces enabling different spectrum bands instead of a signle one. This capability
+	is referred to the hardware modules. 
 
 
 \item \emph{Multiple Control/Sensor Interfacing}: Since the device will serve as a standard \ac{CWSN} platform, it must
-	embbed different multi-purpose undefinned interfaces. ************* FOOTNOTE
+	embbed different multi-purpose undefinned interfaces\footnote{The interfaces here mentioned cover the usual peripherals
+and buses such as \ac{I2C}, \ac{SPI}, \ac{UART}, \ac{USB}...}. This fact affects the hardware design of the device.
 
 \item \emph{Protocol Stacking}: In order to enable communication over the different interfaces the model,
-	must provide to any included radio interface, proper access to a the lower layers of a communication protocol. ***** FOOTNOTE
+	must provide proper access to a the lower layers of a communication protocol to each radio interface\footnote{As it will be described,
+	the communication protocol stack supposses a great software development in order to maintain a single stack shared by all the interfaces.}.
+	The final implementation firmware will have to take part of this. 
 
-\item \emph{Cognitive Layer}: To carry out all the cognition algorithms and computations.
+\item \emph{Cognitive Layer}: To carry out all the cognition algorithms and computations. Affecting the firmware.
 
 \end{itemize}
 
-Figure \ref{fig:CWSNnodeModel} gives a view about the basic model. It shows together software and hardware modules in a simplified way.
-Additionally, cognition tasks compulsory require of several functions to take into account at the design stage: 
-
-
-
-
-***** DE JUAN Y FER QUE TIENEN MUCHAS *************   
 
 \figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNnodeModel}%
 {CWSN node model}
 %poner una unica pila
 
-\figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNsoftModel}%
-{CWSN protocol model}
-%poner una unica pila
+Figure \ref{fig:CWSNnodeModel} gives a view about the basic model. It shows together software and hardware modules in a simplified way.
+Additionally, cognition tasks compulsory require of several functions to take into account at the design stage: 
 
+\begin{itemize}
 
-All the previous considerations, in addition to the requirements to be defined will come into the model of the 
-final implementation.
+\item \emph{Power consumption}. Efficiency and low-power comsupmtion are crucial following the inherent trend in \ac{WSN}. Once deployed,
+	is common not having or having barely access to the nodes. Replacing batteries to an entire \ac{WSN} comes to be a kafkaesque task.
+	The model should be able to  include an autonomous power supply and other functions:
 
+\begin{itemize}
+\item Transmission/reception power regulation.
+\item Unused modules disconnection.
+\item Power-saving sleeping modes for transceivers and microcontroller\footnote{Very common in \ac{WSN}. Devices remain asleep and wake up just on 	specified time-slots to execute their functions.}.
+\end{itemize}
 
+\item \emph{Spectrum management}. Some of the main functions to carry through:
+
+\begin{itemize}
+\item \ac{RSSI} detection.
+\item Channel switching
+\item Energy scans all over the available frequencies range.
+\end{itemize}
+
+\end{itemize}
+
+All the previous considerations give support to stablish cognitive capabilities to the final application. In addition to the requirements to be defined, they will define the model of the final \ac{CNGD} implementation.
 
 %-------------------------------------------------------------------
-\section{First Cognitive Device Evaluation}
+\section{First Cognitive Device review}
 %-------------------------------------------------------------------
 \label{cap3:sec:fcdEvaluation}
 %-------------------------------------------------------------------
+
+\figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdnode}%
+{Picture of the FCD, developed at LSI in 2011}
+
+The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara \cite{fcd}. 
+It suppossed the first hardware platform oriented to \ac{CWSN} development.
+Integrating hardware and software, it gave the chance to develop and test algorithms,
+strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse 
+suitability for radio interfaces, computating capability, strengths and weaknesses, stablishing
+the fundamentals for future designs.  
+
+The \ac{FCD} included three radio interfaces enabling access to two different spectrum regions. Two of the selected interfaces
+work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in Spain. Each interface uses its own protocol stack (WIFI, MiWi$^{TM}$ and Tulio\footnote{ }.
+
+The device provided possibilities for debugging traces through \ac{USB} or serial port.
+
+
+
+
+******************************************** TRADUCIR BASICAMENTE DE JUAN *******************************************
+
+
+\figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdmodel}%
+{Architecture model of the FCD, developed at LSI in 2011}
 
 %-------------------------------------------------------------------
 \section{System Requirements}
 %-------------------------------------------------------------------
 \label{cap3:sec:systemRequirements}
 %-------------------------------------------------------------------
+
+
+Once described the \ac{CWSN} node model and after evaluating the \ac{FCD} it is time to define the requirements for our \ac{CNGD}.
+Gathered, reserarchers at \ac{LSI} specialiced on \ac{CWSN}, dicussed and shared impressions about the requirements that
+the \ac{CNGD} should meet. These were classified as follows:
+
+\begin{itemize}
+
+\item Essential requirements
+
+\begin{itemize}
+
+\item Work, at least, over two \ac{ISM} bands (868 MHz and 2.4 GHz). Having, as far as possible, fully-configurable transceivers.
+\item \emph{Modularity}.
+\item Posibilidad de conectarse algún nodo con 802.11
+\item External pluggable antenna possibilities.
+\item Development tools (traces)
+\item Working under a single development framework.
+\item Tiene que servir como prueba de concepto de diferentes estrategias de
+
+        Seguridad
+
+        Bajo consumo
+
+        Sincronización
+
+        Calidad de Servicio (fiabilidad)
+
+\end{itemize}
+\item Desirable features
+\begin{itemize}
+
+  \item Posibilidad de conectarse tanto a una fuente de alimentación como a una batería
+
+  \item Remote application-loader.
+
+  \item Reduced size, oriented to development.
+
+  \item Working over three \ac{ISM} bands (433 MHz, 868 MHz, 2.4 GHz).
+
+  \item Monocore-based arquitechture.
+
+  \item Battery charge monitoring.
+
+  \item Posibilidad de conmutación real de cabezales radio -> Un transceiver para distintas frecuencias
+
+
+\end{itemize}
+\end{itemize}
+
+
+Furthermore, it should responds to \ac{WSN} requirements:
+
+\begin{itemize}
+\item \emph{Scalability}. Given the pontentially large amount of nodes compossing a \ac{WSN}, the model call for a easily scalable design.
+
+\item  \emph{Cost}. Due to the same previous reason, low-cost is a requirement. Otherwise their price makes networks non-commercially-viable.
+        Bajo consumo
+
+
+\item \emph{Throughput}. It must be slightly higher than usual. Regarding the generic nature of the platform it should be prepared for the widest
+	possible range of applications. Cognition, on the other hand, increases as well the need for computation capabilities dealing with 
+	several interfaces and increasing the number of data transmissions.
+
+\item \emph{Communication data-rate}.
+
+\item \emph{Security}.
+
+
+
+\item \emph{Ubiquitous computing.}.
+
+\end{itemize}
+
+
+
+    
+
+
+%Decisiones de diseño
+
+ %   Hacer toda la placa con arquitectura PIC (Microchip)
+
+  %  Eliminar Tulios -> Sustituir por transceiver de Microchip
+
+   % Añadir un transceiver a 433MHz
+
+    %Fusionar e integrar lo más posible todas las pilas
+
+    %Analizar la influencia de los distintos tipos de antena
+
+   % Se utilizará el hardware disponible hasta que no se pueda seguir trabajando y se haga una nueva placa
+
+
+
 
 %-------------------------------------------------------------------
 \section{Technology}

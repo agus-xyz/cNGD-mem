@@ -96,5 +96,20 @@
 
 @entry{DSA, , \emph{Dinamic Spectrum Access}}
 
-@entry{LoWPAN, , \emph{Low-Rate Wireless Personal Area Network}}
->>>>>>> a1611710281f8337978a3f73aa4341be414ec914
+@entry{AWD, , \emph{Advanced Wireless Dynamics}} 
+
+@entry{PIC, , \emph{Peripheral Interface Controller}}
+
+@entry{MCU, , \emph{Microcontroller}}
+
+@entry{MIPS, , \emph{Microprocessor without Interlocked Pipeline Stages}}
+
+@entry{RISC, , \emph{Reduced Instruction Set Computer}}
+
+@entry{SRAM, , \emph{Static Random Access Memory}}
+
+@entry{SRAM, , \emph{Random Access Memory}}
+
+@entry{LOWPAN, LoWPAN, \emph{Low-Rate Wireless Personal Area Network}}
+
+@entry{API, , \emph{Application Programming Interface}}

@@ -96,23 +96,48 @@ All the previous considerations give support to stablish cognitive capabilities 
 \figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdnode}%
 {Picture of the FCD, developed at LSI in 2011}
 
-The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara \cite{fcd}. 
+The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara\cite{ferpfc} \cite{fcd}. 
 It suppossed the first hardware platform oriented to \ac{CWSN} development.
 Integrating hardware and software, it gave the chance to develop and test algorithms,
 strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse 
-suitability for radio interfaces, computating capability, strengths and weaknesses, stablishing
-the fundamentals for future designs.  
+suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish
+the fundamentals on future designs. 
+
+
+** HABLAR UN POQUITO DE LAS CARENCIAS GENERALES Y DE LA EVALUACION QUE HACE JUAN EN SU PFC
+ 
+
+The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit developed by MIPS Technologies. It has a 
+Hardvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H******REF, integrates a 512 KB
+ Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz.
+\footnote{}
+This \ac{PIC} was found to offer too high features for our requirements, hence existing a reducible amount of power consumption 
+on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is seen as a positive option.  
 
 The \ac{FCD} included three radio interfaces enabling access to two different spectrum regions. Two of the selected interfaces
-work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in Spain. Each interface uses its own protocol stack (WIFI, MiWi$^{TM}$ and Tulio\footnote{ }.
+work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in Spain. Over the 868 MHz band
+used to operate a Tulio$^{TM}$****REF**** transceivers\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
+oriented on solutions for energy efficiency, industrial control and intelligent environments.} oriented to \ac{LOWPAN} and IEEE 802.15.4
+compatible. For the 2.4 GHz band, two Microchip modules were selected, a MRF24J40*****REF module using Microchip propietary protocols such us 
+MiWi$^{TM}$ P2P, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$*************REFS and a MRF24WB0MA module IEEE 802.11 compatible as WiFi.
+Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and the 
+communications to the main controller take place through an \ac{UART}. Stacks for MiWi and TCP/IP protocols are provided freely by Microchip,
+being the first one significantly lighter and simpler than the second one. Communications to these transceivers use \ac{SPI} interfaces.
 
-The device provided possibilities for debugging traces through \ac{USB} or serial port.
+The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instrumen microcontroller increasing complexity on 
+the PIC to transceiver communications, moreover, this fact raise the global consumption up. Maintaining this interface will be disputed.
+On the other hand, the WiFi interface seems to be inappropiate for \ac{WSN} due to its high power consumption and hibernation-related problems,
+besides its complex, resources-consumming communication stack. Even though this interface acts as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
 
+Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confussing, power and resouces-consumming,
+not suitable to deal with an application layer and a cognitive layer properly. Hence, using the developed \ac{HAL}\cite{juanpfc} integrating
+three stacks and presenting a straightforward \ac{API} for upper layers better operation seems a good choice for this work.
 
+The node comprises two \ac{USB} terminals and a RS232 interface for debugging and interconnection purposes. Power supply system accepts 3.3 V and 5 V options including a voltage regulator and a charge pump.
 
+Maintaining all these interfaces supposes larger device size and greater power consumption. A review about keeping all them as well as all the power supply options will be brought to pass, some of them seemed unuseful and innefficient.
 
-******************************************** TRADUCIR BASICAMENTE DE JUAN *******************************************
-
+Regarding other issues, reducing the general size, making the device more scalable or modular are indeed needed on the \ac{CNGD}.
 
 \figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdmodel}%
 {Architecture model of the FCD, developed at LSI in 2011}
@@ -191,7 +216,6 @@ Furthermore, it should responds to \ac{WSN} requirements:
 \item \emph{Security}.
 
 
-
 \item \emph{Ubiquitous computing.}.
 
 \end{itemize}
@@ -257,6 +281,8 @@ Furthermore, it should responds to \ac{WSN} requirements:
 %-------------------------------------------------------------------
 \label{cap3:sec:conclusions}
 %-------------------------------------------------------------------
+
+Design decisions
 
 %-------------------------------------------------------------------
 %\section*{\NotasBibliograficas}

@@ -65,7 +65,7 @@ Additionally, cognition tasks compulsory require of several functions to take in
 
 \begin{itemize}
 
-\item \emph{Power consumption}. Efficiency and low-power comsupmtion are crucial following the inherent trend in \ac{WSN}. Once deployed,
+\item \emph{Power management}. Efficiency and low-power comsupmtion are crucial following the inherent trend in \ac{WSN}. Once deployed,
 	is common not having or having barely access to the nodes. Replacing batteries to an entire \ac{WSN} comes to be a kafkaesque task.
 	The model should be able to  include an autonomous power supply and other functions:
 
@@ -103,9 +103,11 @@ strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse
 suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish
 the fundamentals on future designs. 
 
-
-** HABLAR UN POQUITO DE LAS CARENCIAS GENERALES Y DE LA EVALUACION QUE HACE JUAN EN SU PFC
- 
+While constituting the first device meeting its features and even being a very complete and close aproach
+to the \ac{CWSN} concept, the \ac{FCD} introduced several improvable issues and troubles found after 
+its implementation and evaluation. Its power consumption, size and cost, together with other desired
+and not achieved requirement, make the device insuitable for \ac{CWSN} testbedding purposes and claim for a new
+design.
 
 The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit developed by MIPS Technologies. It has a 
 Hardvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H******REF, integrates a 512 KB
@@ -143,13 +145,25 @@ Regarding other issues, reducing the general size, making the device more scalab
 {Architecture model of the FCD, developed at LSI in 2011}
 
 %-------------------------------------------------------------------
+\section{Hardware Abstraction Layer review}
+%-------------------------------------------------------------------
+\label{cap3:sec:halreview}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\section{Cognitive Radio Module review}
+%-------------------------------------------------------------------
+\label{cap3:sec:crmodulereview}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
 \section{System Requirements}
 %-------------------------------------------------------------------
 \label{cap3:sec:systemRequirements}
 %-------------------------------------------------------------------
 
 
-Once described the \ac{CWSN} node model and after evaluating the \ac{FCD} it is time to define the requirements for our \ac{CNGD}.
+Once described the \ac{CWSN} node model and after evaluating the main related developments, it is time to define the requirements for our \ac{CNGD}.
 Gathered, reserarchers at \ac{LSI} specialiced on \ac{CWSN}, dicussed and shared impressions about the requirements that
 the \ac{CNGD} should meet. These were classified as follows:
 
@@ -159,53 +173,46 @@ the \ac{CNGD} should meet. These were classified as follows:
 
 \begin{itemize}
 
-\item Work, at least, over two \ac{ISM} bands (868 MHz and 2.4 GHz). Having, as far as possible, fully-configurable transceivers.
+\item Working operation, at least, over two \ac{ISM} bands (868 MHz and 2.4 GHz). Having, as far as possible, fully-configurable transceivers.
 \item \emph{Modularity}.
-\item Posibilidad de conectarse algún nodo con 802.11
+\item IEEE 802.11 standard interoperation possibilities.
 \item External pluggable antenna possibilities.
-\item Development tools (traces)
+\item Development-oriented. Comprising debugging tools.
 \item Working under a single development framework.
-\item Tiene que servir como prueba de concepto de diferentes estrategias de
+\item Useful and powered to try concepts referred to optimization strategies for:
 
-        Seguridad
-
-        Bajo consumo
-
-        Sincronización
-
-        Calidad de Servicio (fiabilidad)
+\begin{itemize}
+	\item Security.
+	\item Power consumption.Bajo consumo
+	\item Syncronization.
+	\item \ac{QOS}.
+\end{itemize}
 
 \end{itemize}
 \item Desirable features
 \begin{itemize}
-
-  \item Posibilidad de conectarse tanto a una fuente de alimentación como a una batería
-
+  \item Portable and autonomous power supply options.
   \item Remote application-loader.
-
-  \item Reduced size, oriented to development.
-
+  \item Reduced size.
   \item Working over three \ac{ISM} bands (433 MHz, 868 MHz, 2.4 GHz).
-
   \item Monocore-based arquitechture.
-
-  \item Battery charge monitoring.
-
-  \item Posibilidad de conmutación real de cabezales radio -> Un transceiver para distintas frecuencias
-
-
+  \item Battery charge-state monitoring.
+  \item Real radio headers switching possibilities so as to use a single transceiver for more than one frequency band.
 \end{itemize}
 \end{itemize}
-
 
 Furthermore, it should responds to \ac{WSN} requirements:
 
 \begin{itemize}
+
 \item \emph{Scalability}. Given the pontentially large amount of nodes compossing a \ac{WSN}, the model call for a easily scalable design.
 
-\item  \emph{Cost}. Due to the same previous reason, low-cost is a requirement. Otherwise their price makes networks non-commercially-viable.
-        Bajo consumo
+\item \emph{Ubiquitous computing.}. Each node hosts some computing capacity, giving to the network the chance for distributed cognition.
+	Thus, robustness and stability is given to the set.
 
+\item  \emph{Cost}. Due to the same previous reason, low-cost is a requirement. Otherwise their price makes networks non-commercially-viable.
+ 
+\item	\emph{Power comsumption.} It must be prepared to  operate with battery and achieve a fairly long autonomy \footnote{}. *****************
 
 \item \emph{Throughput}. It must be slightly higher than usual. Regarding the generic nature of the platform it should be prepared for the widest
 	possible range of applications. Cognition, on the other hand, increases as well the need for computation capabilities dealing with 
@@ -213,34 +220,10 @@ Furthermore, it should responds to \ac{WSN} requirements:
 
 \item \emph{Communication data-rate}.
 
-\item \emph{Security}.
-
-
-\item \emph{Ubiquitous computing.}.
+\item \emph{Security}. Radio Interfaces allowing manageable security mecanisms. Being possible to deal with
+	confidential or private data sufficiently safe. 
 
 \end{itemize}
-
-
-
-    
-
-
-%Decisiones de diseño
-
- %   Hacer toda la placa con arquitectura PIC (Microchip)
-
-  %  Eliminar Tulios -> Sustituir por transceiver de Microchip
-
-   % Añadir un transceiver a 433MHz
-
-    %Fusionar e integrar lo más posible todas las pilas
-
-    %Analizar la influencia de los distintos tipos de antena
-
-   % Se utilizará el hardware disponible hasta que no se pueda seguir trabajando y se haga una nueva placa
-
-
-
 
 %-------------------------------------------------------------------
 \section{Technology}
@@ -248,17 +231,58 @@ Furthermore, it should responds to \ac{WSN} requirements:
 \label{cap3:sec:technology}
 %-------------------------------------------------------------------
 
+¿DECISIONES DISEÑO?
+
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
 
+Based on the requirements described in \ref{cap3:sec:systemRequirements}, it seemed necessary to keep the number of cores reduced to one unit.
+Futhermore, using a 32-bits Microchip \ac{PIC} was an impossed design decision, as it was said. 
+
+The criteria to choose a microcontroller were:
+\begin{itemize}
+\item The less featured and simplest microcontroller that suits our operation memory parameters. \ac{FCD} showed that a Flash memory above 200 KB was 
+enough and a \ac{RAM} memory over 32 KB fits our needs. This helps to keep down the microcontroller power consumption. All 32-bits \ac{PIC}s family have a throughtput high enough.
+
+\item Some peripherals are essential to accomplish required tasks. At least three \ac{SPI}s\footnote{} *********** FOOT would operate to communicate the microcontroller to the radio transceivers. Moreover, peripherals for debugging such as \ac{UART}s or \ac{USB}s must be available simultaneously. Appart from that, it should contain other buses and peripherals accessibles for modularity. Probably a 100-pins microcontroller could satisfy
+the access to multiple peripherals better than smaller scales.
+
+\item Lowest price.        
+\end{itemize}
+
+
+The different options included at Microchip catalog, described and showing their main features, are shown in table \ref{cap3:tab:micros}.
+
+\begin{table}[t]
+\centering
+\scalebox{1.5}{
+\begin{tabular}{||c | c | c | c | c | c ||}
+\hline
+\hline
+Microcontroller & Max. Frequency & Memory (kB) & Peripherals \\
+\hline
+col 1 & col 2 & col 3\\
+\hline
+\end{tabular}
+}
+\caption{Comparative table of 32-bits familly Microchip PICs.%
+         \label{cap3:tab:micros}}
+\end{table} 
+
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
+One of the desired requirements is enabling radio activity over three \ac{ISM} bands (434 MHz, 868 MHz and 2.4 GHz), so in order
+to achieve it, compatible transceivers on these bands must be studied.
+
+TULIO Y WIFI A LA CACA
+
 
 %-------------------------------------------------------------------
 \subsection{Serial Communication}
 %-------------------------------------------------------------------
+
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}

@@ -150,6 +150,9 @@ Regarding other issues, reducing the general size, making the device more scalab
 \label{cap3:sec:halreview}
 %-------------------------------------------------------------------
 
+MUAAJAJAJAJAJJ **********************
+
+
 %-------------------------------------------------------------------
 \section{Cognitive Radio Module review}
 %-------------------------------------------------------------------
@@ -161,7 +164,6 @@ Regarding other issues, reducing the general size, making the device more scalab
 %-------------------------------------------------------------------
 \label{cap3:sec:systemRequirements}
 %-------------------------------------------------------------------
-
 
 Once described the \ac{CWSN} node model and after evaluating the main related developments, it is time to define the requirements for our \ac{CNGD}.
 Gathered, reserarchers at \ac{LSI} specialiced on \ac{CWSN}, dicussed and shared impressions about the requirements that
@@ -201,7 +203,7 @@ the \ac{CNGD} should meet. These were classified as follows:
 \end{itemize}
 \end{itemize}
 
-Furthermore, it should responds to \ac{WSN} requirements:
+Furthermore, it should responds to \ac{WSN} normal requirements:
 
 \begin{itemize}
 
@@ -231,7 +233,9 @@ Furthermore, it should responds to \ac{WSN} requirements:
 \label{cap3:sec:technology}
 %-------------------------------------------------------------------
 
-¿DECISIONES DISEÑO?
+¿DECISIONES DISEÑO PREVIAS?
+- pic32
+- microchip modules
 
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
@@ -256,7 +260,7 @@ The different options included at Microchip catalog, described and showing their
 
 \begin{table}[t]
 \centering
-\scalebox{1.5}{
+\scalebox{1}{
 \begin{tabular}{||c | c | c | c | c | c ||}
 \hline
 \hline
@@ -274,40 +278,113 @@ col 1 & col 2 & col 3\\
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
 One of the desired requirements is enabling radio activity over three \ac{ISM} bands (434 MHz, 868 MHz and 2.4 GHz), so in order
-to achieve it, compatible transceivers on these bands must be studied.
+to achieve it, compatible transceivers on these bands must be studied. We first took two decisions based on the experience
+brought by the \ac{FCD}.
 
-TULIO Y WIFI A LA CACA
+The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a 
+core itself and the communication between cores are driven by the \ac{UART}, the low data-rate communication provided does not seem to support our goals either. To keep the single-core architecture, lowering-down power consumption and meeting the requirements described, this module will be supressed and it will be looked for a replacement.
+
+WiFi transceiver, MRF24WB0MA, embedded by the \ac{FCD} raises up the power consumption to unsuitable levels in \ac{WSN}. The stack to manage the hardware is very heavy computationally and memory-consuming compared other usual protocol stacks in \ac{WSN}. Even being a requirement to stablish
+a gateway to the IEEE 802.11 standard, it cannot be included on the design of a general node. New ways to stablish the gateway will be studied,
+maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme looked in the \ac{CNGD} cannot afford to include this transceiver.
+
+******************* USAR MICROCHIP HABLAR DEL IEEE 802.15.4 - 2 ULTIMOS NIVELES Y COMPATIBLES?
+
+\begin{table}[t]
+\centering
+\scalebox{1}{
+\begin{tabular}{||c | c | c | c | c | c ||}
+\hline
+\hline
+Microcontroller & Max. Frequency & Memory (kB) & Peripherals \\
+\hline
+col 1 & col 2 & col 3\\
+\hline
+\end{tabular}
+}
+\caption{Comparative table of 434 MHz transceivers modules.%
+         \label{cap3:tab:434transceivers}}
+\end{table} 
 
 
 %-------------------------------------------------------------------
 \subsection{Serial Communication}
 %-------------------------------------------------------------------
 
+Serial communication is a feature very important for applications development and debugging, it allows wiring the node 
+and stablishing communication between the \ac{CNGD} and any other device, normally a computer or storaging devices to 
+track data. The usual paths to carry through these communication tasks are peripherals such as the \ac{UART}, by attaching
+a simple circuit and RS232 connector, or more recent implementations enable communications through \ac{USB}.
+
+SI BIEN the \ac{FCD} includes two \ac{USB} connectors, a microUSB and normal one, together with a RS232 communication module,
+three communcation ways to interface the node are too many. These modules are size and power consuming.
+
+microUSB connectors show a reduced size compared to first connectors and they do expand the first connectors capabilities.
+The idea include a normal connector gives some interconnection opportunities with attachable devices like mouses, keyboards,
+or portable memories in which the node addopts a \emph{master} role facing a \emph{slave} device. This feature supposses the inclusion
+of a power consumming circuitry to raise the voltage up to 5 V into the USB, giving some complexity to the design. In order to fit the requirements
+it does not seem to be needed this last capability on each node; a microUSB connector would be enough.
+
+RS232 communication so does needs its own power supply. The size and cost for an RS232 connector and circuitry on each node is too high for
+a serial communication module, needing for a MAX3232 chip; even more, after comparing to a microUSB option. An optional module for RS232 might be a good
+option given its wide acceptance and utility in \ac{WSN} despite the global use of \ac{USB}.
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
 %-------------------------------------------------------------------
+The power supply sytem designed for the \ac{FCD} includes some modules susceptible to be supressed or replaced to keep the simplicity and
+reduce the comsumption. 
 
-%-------------------------------------------------------------------
-\subsubsection{Consumption}
-%-------------------------------------------------------------------
+The MCP1612 DC-DC conversor specifications fit the supply requirements on excess so a less-featured device might be enough in the new design.
+The concrete parameter to reduce at the MCP1612 is the maximum output current, up to 1 A. 
+
+The MCP1253-33X charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design 
+if finally this option is not implemented.
 
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
+Timing options included on the \ac{FCD} supose a low-consumption oscillator for real-timing and a second oscillator for maximum operation frequency. 
+It does not appear any problem related to the timing configuration. The configuration defined fits the requirements and, firstly, seems a good
+option to keep it unchanged.
 
 %-------------------------------------------------------------------
 \subsection{Application Capabilities}
 %-------------------------------------------------------------------
+Application capabilites on board of \ac{FCD} are poor. Appart from interacting with the \ac{RI} and serial communication, the board does not offer
+options for sensing/controlling applications neither other more complex possibilities such as including new communication modules. 
+This is because the \ac{FCD} does not embbed any expansion header or plug where adapting any new design to expand to new features.
+
+The new design calls for expansion options where application capabilities could be widely and easily open attaching modules including
+the required design. A complete expansion header for \ac{WSN} should include access to the following peripherals/buses:
+
+\begin{itemize}
+\item \ac{I2C}. bla bla 
+\item \ac{USB}
+\item \ac{UART}
+\item \ac{SPI}
+\item \emph{Ethernet}
+\item \emph{Interruptions}. Enabling interrupting the micro without employing polling.
+
+BLA
+
+BLA
+\end{itemize}    
 
 %-------------------------------------------------------------------
 \section{Conclusions}
 %-------------------------------------------------------------------
 \label{cap3:sec:conclusions}
 %-------------------------------------------------------------------
+After having a review all over the recent implementations, software and hardware, related to the \ac{CWSN} that might bring some guidances in our design; after evaluating the used technology and analysing the weaknesses and detecting some problems; after defining some minimal requirements
+to fit and apply them to our evaluations, the obtained conclussions to face the design stage are these that follows:
 
-Design decisions
-
+\begin{itemize}
+\item culo
+\item caca
+\item pis
+\item pedo
+\end{itemize}
 %-------------------------------------------------------------------
 %\section*{\NotasBibliograficas}
 %-------------------------------------------------------------------

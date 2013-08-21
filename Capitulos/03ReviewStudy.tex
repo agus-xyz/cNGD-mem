@@ -260,14 +260,30 @@ The different options included at Microchip catalog, described and showing their
 
 \begin{table}[t]
 \centering
-\scalebox{1}{
-\begin{tabular}{||c | c | c | c | c | c ||}
+\scalebox{0.7}{
+\begin{tabular}{||c | c | c | c | c | c | c | c | c | c | c | c | c | c ||}
 \hline
 \hline
-Microcontroller & Max. Frequency & Memory (kB) & Peripherals \\
+\multicolumn{14}{|c|}{32-bits Microchip microcontrollers} \\
 \hline
-col 1 & col 2 & col 3\\
+\multirow{2}{*}{Microcontroller} & \multirow{2}{2cm}{Max. \\Frequency} & \multicolumn{2}{|c|}{Memory (kB)} & \multicolumn{6}{|c|}{Peripherals} & \multirow{2}{*}{ADC} & \multirow{2}{*}{Pins} & \multirow{2}{*}{Consumption} & \multirow{2}{*}{Euros} \\\cline{3-10}
+& & Flash & RAM & SPI & UART & I2C & USB & CAN & ETH  & & & &\\
 \hline
+PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 &&&&&&&&& \\
+PIC32MX664F128L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{5 - 5}
+PIC32MX764F128H & & & & 3 &&&&&&&&& \\
+PIC32MX764F128L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{3 - 5}
+PIC32MX675F256H & & & & 3 &&&&&&&&& \\
+PIC32MX675F256L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{5 - 5}
+PIC32MX775F256H & & & & 3 &&&&&&&&& \\
+PIC32MX775F256L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{3 - 3} \cline{5 - 5}
+PIC32MX775F512H & & & & 3 &&&&&&&&& \\
+PIC32MX775F512L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{5 - 5}
+PIC32MX795F256H & & & & 3 &&&&&&&&& \\
+PIC32MX795F256L & & & & 4 &&&&&&&&& \\
+\hline
+\hline
+
 \end{tabular}
 }
 \caption{Comparative table of 32-bits familly Microchip PICs.%

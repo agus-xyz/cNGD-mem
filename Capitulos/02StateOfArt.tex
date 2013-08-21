@@ -120,83 +120,45 @@ Realizing that CR technology has the potential to exploit the inefficiently util
 \subsection{Cognitive Networks}
 %-------------------------------------------------------------------
 
-
-%its a network's ability to adapt to changes and in-
-%teractions in the network, often resulting in sub-optimal performance. Limited in state,
-%scope and response mechanisms, the network elements (consisting of nodes, protocol lay-
-%ers, policies and behaviors) are unable to make intelligent adaptations. Communication of
-%network state information is stifled by the layered protocol architecture, making individual
-%elements unaware of the network conditions experienced by other elements. Any response
-%that an element may make to network stimuli can only be made inside of its limited scope.
-%The adaptations that are performed are typically reactive, taking place after a problem has
-%occurred. In this dissertation, we advance the idea of
-%cognitive networks
-%, which have the
-%promise to remove these limitations by allowing networks to observe, act, and learn in order
-%to optimize their performance.
-
 On the last years, ``cognitive'' or ``smart'' have become \emph{trending topics} being applied to many fields, included
 to communication technologies. Having a look into the 90s literature, easily at least we find mentions about
 cognitive radios [1, 2] *********** REFS , smart radios [3] ************ REFS, smart antennas [4] ************ REFS,
 cognitive packets [5] *********** REFS , smart packets [6] ************ REFS and cognitive networks (CNs) [7, 8] ******** REFS.
+Nevertheless, there does not seem to exist a commonly accepted definition of what these terms mean when applied to 
+networking technologies.
 
-There does not seem to be a common, accepted definition of what these terms mean when applied to
-a networking technology, let alone an accepted justification for when to add cognition to a
-network.
-The concept of CNs has been bouncing around the collective psyche of the wireless and
-networking researching world for a while. Mitola [1] makes brief mention of how his cognitive
-radios (CRs) could interact within the system-level scope of a CN. Saracco [9] refers to
-CNs in his investigation into the future of information technology. He postulates that the
-movement of network intelligence from controlling resources to understanding user needs
-will help "flatten" the network by moving network intelligence further out towards the edges
-of the network. Mahonen et al. [7] discuss CNs with respect to future mobile Internet
-Protocol (IP) networks, arguing that the context sensitivity of these networks could have
-as interesting an application to networks as cognitive radios had to software defined radios.
-None of these papers, however, express exactly what a CN is, how it should work and what
-problems it should solve
+The concept of \ac{CN} has been hanging out the collective psyche of the networking and wireless researching field for long. 
+The first approach was made by Mitola [1] when briefly describes how the \ac{CR} could interact within the system-level scope 
+of a \ac{CN}. Saracco [9] talks about \ac{CN}s in his investigation into the future information technology. Mahonen et al. [7] discuss 
+\ac{CN}s with respect to future mobile Internet Protocol (IP) networks. None of these previous references, however, express clearly what 
+a \ac{CN} is, how it should work and which problems it should solve.
 
+The role that \ac{CR} had in inspiring the formulation of \ac{CN} concept made, in some cases, \ac{CN}s being described as networks of 
+\ac{CR}s ************** REFS[32,33]. Recent research can be divided into two categories: \ac{CRN}Cognitive Radio Networks (CRNs) and
+CNs. 
 
-17
-2.2.1 Cognitive Radio
-CNs have been described by some as networks of CRs [32, 33]. Certainly, the 50% correlation
-in nomenclature would of itself imply some degree of commonality. This comes from the role
-that CR (as a model of how to use cognition and adaptation to control the behavior of a
-complex point-to-point communication channel) had in inspiring the formulation of the CN
-concept
+For \ac{CRN}, Mitola mentions how \ac{CR}s could interact within the system-level scope of a CN [1]***. Neel [92]
+and Haykin [2] continue this line of thinking, examinating multi-user networks of \ac{CR}s as a game.
+The scope of \ac{CRN}s still remains primarily on \ac{MAC} and \ac{PHY} layers, but now operating with some end-to-end objective. 
+In a \ac{CRN}, the individual radios take most of the cognitive decisions, although they may act in cooperation. Some suggested
+applications for \ac{CRN}s include cooperative spectrum sensing [93, 94]********* and emergency radio
+networks [95]**************. From a more general perspective, Raychaudhuri [96]************ presents an architecture
+for \ac{CRN}s.
 
-
-35
-Recent research can be divided into two categories: Cognitive Radio Networks (CRNs) and
-CNs. In the first category, we begin with work from Mitola and his original thesis on CR.
-Here he mentions how CRs could interact within the system-level scope of a CN [1]. Neel
-continues this line of thinking in [92], where he investigates modeling networks of CRs as a
-large, multiplayer game to determine convergent conditions. This kind of thinking is also
-observed in Haykin's paper on CR [2], where he examines multi-user networks of CRs as a
-game.
-The focus of CRNs, as with CRs, is primarily on MAC and PHY layer issues, but now
-operating with some end-to-end objective. In a CRN, the individual radios still make most of
-the cognitive decisions, although they may act in a cooperative manner. Currently suggested
-applications for CRNs include cooperative spectrum sensing [93, 94] and emergency radio
-networks [95]. From a more general perspective, Raychaudhuri [96] presents an architecture
-for CRNs.
-Perhaps the first mention of a CNs rather than a CRN comes from Clark [97]. Clark proposes
+Regarding \ac{CN}s, Clark proposes, in which was perhaps the first mention of \ac{CN} rather than \ac{CRN},
 a network that can
-"assemble itself given high level instructions, reassemble itself as requirements
-change, automatically discover when something goes wrong, and automatically
-fix a detected problem or explain why it cannot do so."
-This would be accomplished with the use of a Knowledge Plane (KP) that transcends layers
-and domains to make cognitive decisions about the network. The KP will add intelligence and
-weight to the edges of the network, and context sensitivity to its core. Saracco also observed
-these trends in his investigation into the future of information technology [9], postulating
-that the change from network intelligence controlling resources to having context sensitivity
-will help "flatten" the network by moving network intelligence into the core and control
-further out to the edges of the network.
-CRNs differ from CNs in that their action space extends beyond the MAC and PHY layers
-36
-and the network may consist of more than just wireless devices. Furthermore, CN nodes may
-be less autonomous than a CRN node, with the network elements cooperating to achieve
-goals, a centralized cognitive process or a parallelized process that runs across several of the
-network elements
+
+\begin{quotation}
+``assemble itself given high level instructions, reassemble itself as requirements change, automatically discover when 
+something goes wrong, and automatically fix a detected problem or explain why it cannot do so.''
+\end{quotation}
+
+This would be achieved with the use of a \ac{KP} Knowledge Plane (KP) that transcends layersand domains to make global 
+cognitive decisions. The \ac{KP} will add intelligence and weight to the edges of the network, and context sensitivity 
+to its core. Saracco postulated [9]**** that the change from network intelligence controlling resources to having context 
+sensitivity will help "flatten" the network by moving network intelligence into the core and control further out to the 
+edges of the network. CRNs differ from CNs in that their action space extends beyond the MAC and PHY layers and the network may 
+consist of more than just wireless devices. Furthermore, CN nodes may be less autonomous than a CRN node.
 
 EXAMPLE
 
@@ -285,6 +247,22 @@ R
 mechanism measures outages by determining the fraction of packets successfully delivered
 from the source to its destination
 ****************************************************************************
+
+First definition of \ac{CN} was deployed by Thomas  *********** REF.
+
+%its a network's ability to adapt to changes and in-
+%teractions in the network, often resulting in sub-optimal performance. Limited in state,
+%scope and response mechanisms, the network elements (consisting of nodes, protocol lay-
+%ers, policies and behaviors) are unable to make intelligent adaptations. Communication of
+%network state information is stifled by the layered protocol architecture, making individual
+%elements unaware of the network conditions experienced by other elements. Any response
+%that an element may make to network stimuli can only be made inside of its limited scope.
+%The adaptations that are performed are typically reactive, taking place after a problem has
+%occurred. In this dissertation, we advance the idea of
+%cognitive networks
+%, which have the
+%promise to remove these limitations by allowing networks to observe, act, and learn in order
+%to optimize their performance.
 
 ******************************* DE LA WEB *************************+
 Dynamic Spectrum Access (DSA) technique aims to solve spectrum allocation problems. The overall system that learns the operating environment and adapts its operating parameters according to its surrounding and uses DSA technique for efficient spectrum usage is called Cognitive Radio Network (CRN). In the following figure, spectrum holes are employed by CRN in an example scenario. In different areas the usage of the spectrum differs, so spectrum hole locations and their durations vary. CRN uses these spectrum holes for providing service to its users without causing harm to other users. Therefore, the change of parameters are observed by active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior and network state. 

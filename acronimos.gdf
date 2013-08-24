@@ -123,3 +123,7 @@
 @entry{PHY, , \emph{Physical}}
 
 @entry{IP, , \emph{Internet Protocol}}
+
+@entry{RI, , \emph{Radio Interface}}
+
+@entry{SINR, , \emph{Signal to Interference and Noise Ratio}}

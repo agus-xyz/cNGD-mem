@@ -120,7 +120,7 @@ Realizing that CR technology has the potential to exploit the inefficiently util
 
 On the last years, ``cognitive'' or ``smart'' have become \emph{trending topics} being applied to many fields, included
 to communication technologies. Having a look into the 90s literature, easily at least we find mentions about
-smart antennas\cite{smartantenna}, smart radios\cite{smartradio}, smart packets\cite{smartpackets}, \ac{CR} \cite{mitola1}\cite{brainempower}, cognitive packets\cite{cognitivepackets} and \ac{CN} \cite{cn1}\cite{cn2}.
+smart antennas\cite{smartantenna}, smart radios\cite{smartradio}, smart packets\cite{smartpackets}, \ac{CR}\cite{mitola1}\cite{brainempower}, cognitive packets\cite{cognitivepackets} and \ac{CN}\cite{cn1}\cite{cn2}.
 Nevertheless, there does not seem to exist a commonly accepted definition of what these terms mean when applied to 
 networking technologies.
 
@@ -131,15 +131,14 @@ of a \ac{CN}. Saracco\cite{saracco} talks about \ac{CN}s in his investigation in
 a \ac{CN} is, how it should work and which problems it should solve.
 
 The role that \ac{CR} had in inspiring the formulation of \ac{CN} concept, made, in some cases, \ac{CN}s being described as networks of 
-\ac{CR}s \cite{mitola1}\cite{neel}. Recent research can be divided into two categories: \ac{CRN} and \ac{CN}s. 
+\ac{CR}s\cite{mitola1}\cite{neel}. Recent research can be divided into two categories: \ac{CRN} and \ac{CN}s. 
 
-For \ac{CRN}, Mitola mentions how \ac{CR}s could interact within the system-level scope of a \ac{CN}\cite{mitola2}. Neel \cite{gamecr}
-and Haykin \cite{brainempower} continue this line of thinking, examinating multi-user networks of \ac{CR}s as a game.
+For \ac{CRN}, Mitola mentions how \ac{CR}s could interact within the system-level scope of a \ac{CN}\cite{mitola2}. Neel\cite{gamecr}
+and Haykin\cite{brainempower} continue this line of thinking, examinating multi-user networks of \ac{CR}s as a game.
 The scope of \ac{CRN}s still remains primarily on \ac{MAC} and \ac{PHY} layers, but now operating with some end-to-end objective. 
 In a \ac{CRN}, the individual radios take most of the cognitive decisions, although they may act in cooperation. Some suggested
 applications for \ac{CRN}s include cooperative spectrum sensing\cite{coopsensing}\cite{coopsensing1} and emergency radio
-networks \cite{cremergency}. From a more general perspective, Raychaudhuri [96]************ presents an architecture
-for \ac{CRN}s.
+networks \cite{cremergency}. Raychaudhuri presents in\cite{cnrarchitecture} a general architecture for \ac{CRN}s.
 
 Regarding \ac{CN}s, Clark proposes, in which was perhaps the first mention of \ac{CN} rather than \ac{CRN},
 a network that can
@@ -151,119 +150,65 @@ something goes wrong, and automatically fix a detected problem or explain why it
 
 This would be achieved with the use of a \ac{KP} that transcends layers and domains to make global 
 cognitive decisions. The \ac{KP} will add intelligence and weight to the edges of the network, and context sensitivity 
-to its core. Saracco postulated\cite{saracco} that the change from network intelligence controlling resources to having context 
+to its core. Saracco stated\cite{saracco} that the change from network intelligence controlling resources to having context 
 sensitivity will help "flatten" the network by moving network intelligence into the core and control further out to the 
-edges of the network. CRNs differ from CNs in that their action space extends beyond the \ac{MAC} and \ac{PHY} layers and the network may 
+edges of the network. \ac{CRN}s differ from \ac{CN}s in that their action space extends beyond the \ac{MAC} and \ac{PHY} layers and the network may 
 consist of more than just wireless devices. Furthermore, CN nodes may be less autonomous than a CRN node.
 
 
-First definition of \ac{CN} was deployed by Thomas  *********** REF.
+First full definition of \ac{CN} was postulated by Thomas\cite{thomas} in which was his PhD Dissertation. Hi proposed
+the idea of a CN:
 
-%its a network's ability to adapt to changes and in-
-%teractions in the network, often resulting in sub-optimal performance. Limited in state,
-%scope and response mechanisms, the network elements (consisting of nodes, protocol lay-
-%ers, policies and behaviors) are unable to make intelligent adaptations. Communication of
-%network state information is stifled by the layered protocol architecture, making individual
-%elements unaware of the network conditions experienced by other elements. Any response
-%that an element may make to network stimuli can only be made inside of its limited scope.
-%The adaptations that are performed are typically reactive, taking place after a problem has
-%occurred. In this dissertation, we advance the idea of
-%cognitive networks
-%, which have the
-%promise to remove these limitations by allowing networks to observe, act, and learn in order
-%to optimize their performance.
+\begin{quotation}
+\emph{
+a network composed of elements that, through learning and reasoning, dynamically adapt to varying network conditions in 
+order to optimize end-to-end performance. In a CN, decisions are made to meet the requirements of the
+network as a whole, rather than the individual network components. 
+}
+\end{quotation}
 
 
+The adaptations that are performed over usual networks are commonly reactive, taking place after a problem has
+occurred. Thomas advanced a paradigm that had the promise to remove these limitations by allowing networks to observe, act, and 
+learn in order to optimize their performance. \ac{CN}s description in \cite{thomas} talks about intelligently select and adapt radio spectrum, transmission power, antenna parameters and routing tables. By formalizing the design, architecture and tradeoffs of cognition at the network level, Thomas work had a broad impact in advancing the paradigm of intelligent communication devices.
 
-A Simple Example 
-This example and its description are inspired and influenced by Daniel Friend's example in
-our IEEE Communications Magazine article [101].
-41
+%-------------------------------------------------------------------
+\subsection{Example}
+%-------------------------------------------------------------------
+This example was published \cite{thomas} in and it is inspired and influenced by Daniel Friend's example in \cite{example}. It illustrate the need for end-to-end rather than link adaptations.
 
-Figure 3.1: Simple relay network for a wireless network. Vertices represent wireless connec-
-tivity.
-To illustrate the need for end-to-end rather than link adaptations, consider an ad-hoc data
-session between a source node
-S
-1
-and a destination node
-D
-1
-as shown in Figure 3.1. The
-source node does not have enough power to reach
-D
-1
-directly, so it must must route traffic
-through intermediate nodes
-R
-1
-and-or
-R
-2
-. Assume that the end-to-end goal is to have the
+
+\figura{Bitmap/Capitulo2/example}{width=.5\textwidth}{fig:example}%
+{Simple relay network for a wireless network. Vertices represent wireless connec-
+tivity}
+
+
+Consider an ad-hoc data session between a source node $S_{1}$ and a destination node $D_{1}$ as shown in Figure~\ref{fig:example}. The
+source node does not have enough power to reach $D_{1}$ directly, so it must route traffic
+through intermediate nodes $R_{1}$ and-or $R_{2}$. Assume that the end-to-end goal is to have the
 highest probability of successful transmission. The routing layer will determine routes based
-on minimum hop count which, in this case, includes either
-R
-1
-or
-R
-2
-. Node
-S
-1
-will make a
-link-layer adaptation, selecting between
-R
-1
-and
-R
-2
-based on their Signal to Interference and
-Noise Ratio (SINR). From the standpoint of the link layer in node
-S
-1
-, this ratio correlates
-with the probability that the transmitted packets will arrive correctly at the relay node.
-However, without additional information, this selection does not guarantee anything about
-the end-to-end packet delivery probability from
-S
-1
-to
-D
-1
-.
-In contrast to a link adaptation, the CN might use some combination of observations from
-all nodes to compute the total path outage probabilities from
-S
-1
-to
-D
-1
-through
-R
-1
-and
-R
-2
-. This shows the benefit of an end-to-end scope, but there is another advantage to the
-CN, its cognitive capability. To illustrate this, we modify the original scenario to include
-both
-S
-1
-and
-S
-2
-as source nodes, both routing traffic through
-R
-2
-. Suppose that the learning
-mechanism measures outages by determining the fraction of packets successfully delivered
-from the source to its destination
-****************************************************************************
+on minimum hop count which, in this case, includes either $R_{1}$ or $R_{2}$. Node $S_{1}$ will make a
+link-layer adaptation, selecting between $R_{1}$ and $R_{2}$ based on their \ac{SINR}. From the standpoint of the 
+link layer in node $S_{1}$, this ratio correlates with the probability that the transmitted packets will arrive correctly at the relay node.
+However, without additional information, this selection does not guarantee anything about the end-to-end packet delivery probability from $S_{1}$ to $D_{1}$.
+In contrast to a link adaptation, the \ac{CN} might use some combination of observations from
+all nodes to compute the total path outage probabilities from $S_{1}$ to $D_{1}$ through $R_{1}$ and $R_{2}$.
+This shows the benefit of an end-to-end scope, but there is another advantage to the
+\ac{CN}, its cognitive capability. To illustrate this, we modify the original scenario to include
+both $S_{1}$ and $S_{2}$ as source nodes, both routing traffic through $R_{2}$.
+Suppose that the learning mechanism measures outages by determining the fraction of packets successfully delivered
+from the source to its destination.
 
-******************************* DE LA WEB *************************+
-Dynamic Spectrum Access (DSA) technique aims to solve spectrum allocation problems. The overall system that learns the operating environment and adapts its operating parameters according to its surrounding and uses DSA technique for efficient spectrum usage is called Cognitive Radio Network (CRN). In the following figure, spectrum holes are employed by CRN in an example scenario. In different areas the usage of the spectrum differs, so spectrum hole locations and their durations vary. CRN uses these spectrum holes for providing service to its users without causing harm to other users. Therefore, the change of parameters are observed by active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior and network state. 
-***********************************************+
+If $R_{2}$ becomes congested because of a large volume of traffic coming from $S_{2}$ this becomes
+apparent to the cognitive process by the lack of successful packet delivery statistics provided
+to $S_{1}$ and $S_{2}$. The learning mechanism recognizes that the system has changed and that
+routing through $R_{2}$ is not optimal. The cognitive process then directs the traffic toward
+another route. The \ac{CN} does not explicitly know that there is congestion at node $R_{2}$ because
+this information is not included in the \ac{SINR} observations. Nevertheless, it is able to infer
+from the reduced throughput that there may be a problem. It is then able to respond
+to the congestion, perhaps by routing traffic through $R_{1}$ and/or $R_{3}$. This example shows
+the power of \ac{CN}s in optimizing end-to-end performance as well as reacting to unforeseen
+circumstances.
  
 %-------------------------------------------------------------------
 \section{Wireless Sensor Networks}

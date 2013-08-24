@@ -27,13 +27,9 @@ this dissertation.
 
 
 %-------------------------------------------------------------------
-\section{Cognitive Radio and Cognitive Networks}
+\section{Cognitive Radio}
 %-------------------------------------------------------------------
 \label{cap2:sec:cognitiveRadio}
-%-------------------------------------------------------------------
-
-%-------------------------------------------------------------------
-\subsection{Cognitive Radio}
 %-------------------------------------------------------------------
 
 Nowadays, it is widely accepted that the main limitation in next-generation wireless systems is bandwidth scarcity. 
@@ -86,7 +82,7 @@ Attending to some subtle differences between systems we can differenciate two ma
 
 Although cognitive radio was initially thought of as full cognitive radio, most research work focuses on spectrum-sensing cognitive radio,  particularly in the TV bands. The great problem in spectrum-sensing cognitive radio is designing high-quality spectrum-sensing devices and algorithms for exchanging the so called knoledge domain \cite{brainempower}. The practical implementation of spectrum-management functions is a complex and multifaceted issue, since it must address a variety of technical and legal requirements.
 
-Picture \ref{CWSNsoftModel} ilustrates the changes the \ac{OSI} model suffer when affected by cognition. \ac{CR} model can be referred to the first and second layers, thus the \emph{Phisical} and \emph{Link} layers. 
+Picture \ref{fig:CWSNsoftModel} ilustrates the changes the \ac{OSI} model suffer when affected by cognition. \ac{CR} model can be referred to the first and second layers, thus the \emph{Phisical} and \emph{Link} layers. 
 
 \figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNsoftModel}%
 {CWSN protocol model}
@@ -117,32 +113,32 @@ Spectrum decision}.
 Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service \cite{80222}.
 
 %-------------------------------------------------------------------
-\subsection{Cognitive Networks}
+\section{Cognitive Networks and Cognitive Radio Networks}
+%-------------------------------------------------------------------
+\label{cap2:sec:cognitiveNetworks}
 %-------------------------------------------------------------------
 
 On the last years, ``cognitive'' or ``smart'' have become \emph{trending topics} being applied to many fields, included
 to communication technologies. Having a look into the 90s literature, easily at least we find mentions about
-cognitive radios [1, 2] *********** REFS , smart radios [3] ************ REFS, smart antennas [4] ************ REFS,
-cognitive packets [5] *********** REFS , smart packets [6] ************ REFS and cognitive networks (CNs) [7, 8] ******** REFS.
+smart antennas\cite{smartantenna}, smart radios\cite{smartradio}, smart packets\cite{smartpackets}, \ac{CR} \cite{mitola1}\cite{brainempower}, cognitive packets\cite{cognitivepackets} and \ac{CN} \cite{cn1}\cite{cn2}.
 Nevertheless, there does not seem to exist a commonly accepted definition of what these terms mean when applied to 
 networking technologies.
 
 The concept of \ac{CN} has been hanging out the collective psyche of the networking and wireless researching field for long. 
-The first approach was made by Mitola [1] when briefly describes how the \ac{CR} could interact within the system-level scope 
-of a \ac{CN}. Saracco [9] talks about \ac{CN}s in his investigation into the future information technology. Mahonen et al. [7] discuss 
-\ac{CN}s with respect to future mobile Internet Protocol (IP) networks. None of these previous references, however, express clearly what 
+The first approach was made by Mitola\cite{mitola1} when briefly describes how the \ac{CR} could interact within the system-level scope 
+of a \ac{CN}. Saracco\cite{saracco} talks about \ac{CN}s in his investigation into the future information technology. Mahonen et al. \cite{cn1}
+ discuss \ac{CN}s with respect to future mobile \ac{IP} networks. None of these previous references, however, express clearly what 
 a \ac{CN} is, how it should work and which problems it should solve.
 
-The role that \ac{CR} had in inspiring the formulation of \ac{CN} concept made, in some cases, \ac{CN}s being described as networks of 
-\ac{CR}s ************** REFS[32,33]. Recent research can be divided into two categories: \ac{CRN}Cognitive Radio Networks (CRNs) and
-CNs. 
+The role that \ac{CR} had in inspiring the formulation of \ac{CN} concept, made, in some cases, \ac{CN}s being described as networks of 
+\ac{CR}s \cite{mitola1}\cite{neel}. Recent research can be divided into two categories: \ac{CRN} and \ac{CN}s. 
 
-For \ac{CRN}, Mitola mentions how \ac{CR}s could interact within the system-level scope of a CN [1]***. Neel [92]
-and Haykin [2] continue this line of thinking, examinating multi-user networks of \ac{CR}s as a game.
+For \ac{CRN}, Mitola mentions how \ac{CR}s could interact within the system-level scope of a \ac{CN}\cite{mitola2}. Neel \cite{gamecr}
+and Haykin \cite{brainempower} continue this line of thinking, examinating multi-user networks of \ac{CR}s as a game.
 The scope of \ac{CRN}s still remains primarily on \ac{MAC} and \ac{PHY} layers, but now operating with some end-to-end objective. 
 In a \ac{CRN}, the individual radios take most of the cognitive decisions, although they may act in cooperation. Some suggested
-applications for \ac{CRN}s include cooperative spectrum sensing [93, 94]********* and emergency radio
-networks [95]**************. From a more general perspective, Raychaudhuri [96]************ presents an architecture
+applications for \ac{CRN}s include cooperative spectrum sensing\cite{coopsensing}\cite{coopsensing1} and emergency radio
+networks \cite{cremergency}. From a more general perspective, Raychaudhuri [96]************ presents an architecture
 for \ac{CRN}s.
 
 Regarding \ac{CN}s, Clark proposes, in which was perhaps the first mention of \ac{CN} rather than \ac{CRN},
@@ -153,16 +149,33 @@ a network that can
 something goes wrong, and automatically fix a detected problem or explain why it cannot do so.''
 \end{quotation}
 
-This would be achieved with the use of a \ac{KP} Knowledge Plane (KP) that transcends layersand domains to make global 
+This would be achieved with the use of a \ac{KP} that transcends layers and domains to make global 
 cognitive decisions. The \ac{KP} will add intelligence and weight to the edges of the network, and context sensitivity 
-to its core. Saracco postulated [9]**** that the change from network intelligence controlling resources to having context 
+to its core. Saracco postulated\cite{saracco} that the change from network intelligence controlling resources to having context 
 sensitivity will help "flatten" the network by moving network intelligence into the core and control further out to the 
-edges of the network. CRNs differ from CNs in that their action space extends beyond the MAC and PHY layers and the network may 
+edges of the network. CRNs differ from CNs in that their action space extends beyond the \ac{MAC} and \ac{PHY} layers and the network may 
 consist of more than just wireless devices. Furthermore, CN nodes may be less autonomous than a CRN node.
 
-EXAMPLE
 
-3.1.2 A Simple Example
+First definition of \ac{CN} was deployed by Thomas  *********** REF.
+
+%its a network's ability to adapt to changes and in-
+%teractions in the network, often resulting in sub-optimal performance. Limited in state,
+%scope and response mechanisms, the network elements (consisting of nodes, protocol lay-
+%ers, policies and behaviors) are unable to make intelligent adaptations. Communication of
+%network state information is stifled by the layered protocol architecture, making individual
+%elements unaware of the network conditions experienced by other elements. Any response
+%that an element may make to network stimuli can only be made inside of its limited scope.
+%The adaptations that are performed are typically reactive, taking place after a problem has
+%occurred. In this dissertation, we advance the idea of
+%cognitive networks
+%, which have the
+%promise to remove these limitations by allowing networks to observe, act, and learn in order
+%to optimize their performance.
+
+
+
+A Simple Example 
 This example and its description are inspired and influenced by Daniel Friend's example in
 our IEEE Communications Magazine article [101].
 41
@@ -247,22 +260,6 @@ R
 mechanism measures outages by determining the fraction of packets successfully delivered
 from the source to its destination
 ****************************************************************************
-
-First definition of \ac{CN} was deployed by Thomas  *********** REF.
-
-%its a network's ability to adapt to changes and in-
-%teractions in the network, often resulting in sub-optimal performance. Limited in state,
-%scope and response mechanisms, the network elements (consisting of nodes, protocol lay-
-%ers, policies and behaviors) are unable to make intelligent adaptations. Communication of
-%network state information is stifled by the layered protocol architecture, making individual
-%elements unaware of the network conditions experienced by other elements. Any response
-%that an element may make to network stimuli can only be made inside of its limited scope.
-%The adaptations that are performed are typically reactive, taking place after a problem has
-%occurred. In this dissertation, we advance the idea of
-%cognitive networks
-%, which have the
-%promise to remove these limitations by allowing networks to observe, act, and learn in order
-%to optimize their performance.
 
 ******************************* DE LA WEB *************************+
 Dynamic Spectrum Access (DSA) technique aims to solve spectrum allocation problems. The overall system that learns the operating environment and adapts its operating parameters according to its surrounding and uses DSA technique for efficient spectrum usage is called Cognitive Radio Network (CRN). In the following figure, spectrum holes are employed by CRN in an example scenario. In different areas the usage of the spectrum differs, so spectrum hole locations and their durations vary. CRN uses these spectrum holes for providing service to its users without causing harm to other users. Therefore, the change of parameters are observed by active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior and network state. 

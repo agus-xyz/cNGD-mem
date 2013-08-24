@@ -113,3 +113,13 @@
 @entry{LOWPAN, LoWPAN, \emph{Low-Rate Wireless Personal Area Network}}
 
 @entry{API, , \emph{Application Programming Interface}}
+
+@entry{CRN, , \emph{Cognitive Radio Network}}
+
+@entry{RAM, , \emph{Random Access Memory}}
+
+@entry{KP, , \emph{Knoledge Plane}}
+
+@entry{PHY, , \emph{Physical}}
+
+@entry{IP, , \emph{Internet Protocol}}

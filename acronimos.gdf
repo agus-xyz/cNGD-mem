@@ -129,3 +129,5 @@
 @entry{SINR, , \emph{Signal to Interference and Noise Ratio}}
 
 @entry{6LOWPAN,6LoWPAN, \emph{IPv6 Low Power WPAN}}
+
+@entry{VCC, , \emph{Virtual Control Channel}}

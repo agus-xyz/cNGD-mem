@@ -178,9 +178,8 @@ learn in order to optimize their performance. \ac{CN}s description in \cite{thom
 This example was published \cite{thomas} in and it is inspired and influenced by Daniel Friend's example in \cite{example}. It illustrate the need for end-to-end rather than link adaptations.
 
 
-\figura{Bitmap/Capitulo2/example}{width=.5\textwidth}{fig:example}%
-{Simple relay network for a wireless network. Vertices represent wireless connec-
-tivity}
+\figuraEx{Bitmap/Capitulo2/example}{width=.5\textwidth}{fig:example}%
+{Simple relay network for a wireless network. Vertices represent wireless connectivity}{Simple relay network for a wireless network.}
 
 
 Consider an ad-hoc data session between a source node $S_{1}$ and a destination node $D_{1}$ as shown in Figure~\ref{fig:example}. The
@@ -216,12 +215,93 @@ circumstances.
 \label{cap2:sec:wirelessSensorNetworks}
 %-------------------------------------------------------------------
 
-A wireless sensor network (WSN) consists of spatially distributed autonomous sensors to monitor physical or environmental conditions, such as temperature, sound, pressure, etc. and to cooperatively pass their data through the network to a main location. The more modern networks are bi-directional, also enabling control of sensor activity. The development of wireless sensor networks was motivated by military applications such as battlefield surveillance; today such networks are used in many industrial and consumer applications, such as industrial process monitoring and control, machine health monitoring, and so on.
+A \ac{WSN} consists of spatially distributed autonomous ``nodes'' not relying on a pre existing communication infrastructure,  to monitor physical or environmental conditions. Number of nodes vary from a few to several hundreds or even thousands, where each node is connected to one (or sometimes several) sensors. Nodes are generally simple and low-resources embedded system with high cost and size constraints. These constraints result in corresponding constraints on resources such as energy, memory, computational speed and communications bandwidth. Usual architecture of a node is
+divided in:
 
-The WSN is built of ``nodes'' - from a few to several hundreds or even thousands, where each node is connected to one (or sometimes several) sensors. Each such sensor network node has typically several parts: a radio transceiver with an internal antenna or connection to an external antenna, a microcontroller, an electronic circuit for interfacing with the sensors and an energy source, usually a battery or an embedded form of energy harvesting. A sensor node might vary in size from that of a shoebox down to the size of a grain of dust, although functioning ``motes'' of genuine microscopic dimensions have yet to be created. The cost of sensor nodes is similarly variable, ranging from a few to hundreds of dollars, depending on the complexity of the individual sensor nodes. Size and cost constraints on sensor nodes result in corresponding constraints on resources such as energy, memory, computational speed and communications bandwidth. The topology of the WSNs can vary from a simple star network to an advanced multi-hop wireless mesh network. The propagation technique between the hops of the network can be routing or flooding.[1][2]
+\begin{itemize}
+\item \emph{Sensing subsystem}. Responsible for sensing physical parameters of the environment. Typical monitored parameters are temperature,
+	sound, light, humidity, vibrations, pressure, movement, presence, body registers...
+\item \emph{Computational subsystem}. It proccess the information obtained by the sensors and process it. It controls all general operations of the 		node, and runs the desired application.  
+\item \emph{Communication subsystem}. To carry through all the messages transmission and reception with neighbor nodes. Main goal is to make
+	the information gets to some destination, usually a gateway or storaging node.
+\end{itemize}
 
 \figura{Vectorial/Todo}{width=.5\textwidth}{fig:WSNnodeModel}%
 {WSN node model}
+
+The development of wireless sensor networks was motivated by military applications such as battlefield surveillance; today such networks are used in a wide range of applications, considered as the main technology to develop intelligent ambiences:
+
+\begin{itemize}
+ \item	\emph{Industrial Monitoring}. \ac{WSN} are applied mainly for machine health monitoring, water quality or management, and industral sense
+         and control applications avoiding wire deployment.
+
+ \item	\emph{Surveillance}. Distributed sensors over infrastructure as bridges, tunnels or buildings help to collect data to prevent
+	damages or problems derivated from load excesses, weather, vibrations or stress. 
+
+ \item	\emph{e-Health}. Not deeply explored yet. It presents new uses for \ac{WSN} to sense body parameters and observate behavioral patterns.
+	These networks are used to detect or prevent occupational and home accidents, to improve diagnoses, monitoring sick people and other
+	medical uses.
+
+ \item	\emph{Environmental monitoring}. Applications regarding this fiel are diverse. Air quality monitoring, air pollution monitoring, forest fire 		detection, landslide detection, water quality monitoring or natural disaster prevention are some of the common uses.
+
+ \item	\emph{Smart home monitoring}. Monitoring the activities performed in a smart home is achieved using wireless sensors embedded within everyday 		objects. State changes to objects based on human manipulation is captured by the \ac{WSN} enabling activity-support services.
+
+ \item  \emph{Passive localization and tracking}. Applications oriented to detect where something took place or track presences over an area.
+
+ \item  \emph{Agriculture}. Commonly used on greenhouses where irrigation management and ambient control is essential for a proper accurate
+	agriculture.
+\end{itemize}
+
+Some of the main properties affecting \ac{WSN} are: 
+
+\begin{itemize}
+\item \emph{Dinamic topology}. In a \ac{WSN} it is common to suffer drops in the number of nodes or changes over the environment that
+	affects the topology, nodes must be able to adapt themselves to new topologies to enable operative communications. On the same way,
+	topologies must be scalables since a network might have tens of nodes or hundred of them.
+
+\item \emph{Autonomous operation}. There is not need any infrastructure for a \ac{WSN} to operate. Its nodes act as information transmitters, 		receivers or routers. However, it usually exists a gateway which gather all the information over the network and pass it to another 		device. 
+
+\item \emph{Multihop or broadcast communications}. It is common the use of some protocol to enable multihop messaging. Nevertheless, broadcasting
+	 is also very expanded.
+
+\item \emph{Power consumption}. One of the most important factors. Using a very constrained amount of energy, devices must achieve a tradeoff
+	between autonomy and troughput. A \ac{WSN} node must meet a low-consumption microcontroller, as well as radio interfaces and software 
+	equally featured.
+
+\item \emph{Hardware constraints}. In order to achieve a low-power consumption, it is essential for the hardware to be as most straightforward
+	as possible, coming into a limited computing capability.
+
+\item \emph{Production costs}. Since \ac{WSN}s nature implies having a high number of nodes to be trustable, production of large amounts of them must 		provide a cheap unitary price.
+
+\end{itemize}
+
+
+Most important communication techonologies and protocols for \ac{WSN} are based on the IEEE 802.15.4 \cite{wpanieee} standard for \ac{WPAN}s.
+The standard goal is a low-power communication among nearby devices without underlying infrastructure. The standard only defines \ac{MAC} and
+\ac{PHY} layers of the \ac{OSI} model. Some expanded protocols based on the standard are ZigBee$^{TM}$ *****REF, WirelessHART*****REF, ISA100.11*****REF or MiWi$^{TM}$**********REF specifications. Another popular communication standard is IEEE 802.11***** REF, in which is based
+WiFi*****REF. It is a \ac{IP} standard based on the final user and does not meet low-consumption constraints, however, convergence towards
+full \ac{IP} has brought new standards such as \ac{6LOWPAN} *****REF, that enables \ac{IP} packeting over 802.15.4 based-on networks.
+
+
+\begin{figure}[h]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap2:wsn_router}%
+\scriptsize{WSN con utilización de routers para la conexión con el gateway.}}%
+\includegraphics[angle=270,width=0.45\textwidth]%
+{Imagenes/Vectorial/Capitulo2/wsn_router}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap2:wsn_adhoc}%
+\scriptsize{WSN implementada como una red ad hoc.}}%
+\includegraphics[angle=270,width=0.45\textwidth]%
+{Imagenes/Vectorial/Capitulo2/wsn_adhoc}%
+\end{SubFloat}
+\caption{Posibles implementaciones de una red de sensores inalámbrica (WSN).}
+\label{fig:cap2:wsn}
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{Cognitive Wireless Sensor Networks}
@@ -230,7 +310,7 @@ The WSN is built of ``nodes'' - from a few to several hundreds or even thousands
 %-------------------------------------------------------------------
 
 %-------------------------------------------------------------------
-\section{Current Devices}
+\subsection{Current Devices}
 %-------------------------------------------------------------------
 \label{cap2:sec:currentDevices}
 %-------------------------------------------------------------------

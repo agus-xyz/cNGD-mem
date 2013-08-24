@@ -110,7 +110,7 @@ and not achieved requirement, make the device insuitable for \ac{CWSN} testbeddi
 design.
 
 The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit developed by MIPS Technologies. It has a 
-Hardvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H******REF, integrates a 512 KB
+Hardvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H\cite{pic32datasheet}, integrates a 512 KB
  Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz.
 \footnote{}
 This \ac{PIC} was found to offer too high features for our requirements, hence existing a reducible amount of power consumption 
@@ -118,13 +118,12 @@ on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is s
 
 The \ac{FCD} included three radio interfaces enabling access to two different spectrum regions. Two of the selected interfaces
 work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in Spain. Over the 868 MHz band
-used to operate a Tulio$^{TM}$****REF**** transceivers\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
+used to operate a Tulio$^{TM}$\cite{tulio} transceiver\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
 oriented on solutions for energy efficiency, industrial control and intelligent environments.} oriented to \ac{LOWPAN} and IEEE 802.15.4
-compatible. For the 2.4 GHz band, two Microchip modules were selected, a MRF24J40*****REF module using Microchip propietary protocols such us 
-MiWi$^{TM}$ P2P, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$*************REFS and a MRF24WB0MA module IEEE 802.11 compatible as WiFi.
+compatible. For the 2.4 GHz band, two Microchip modules were selected, a MRF24J40\cite{mrf24j40} module using Microchip propietary protocols such us 
+MiWi$^{TM}$ P2P\cite{miwip2p}, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$\cite{miwipro} and a MRF24WB0MA\cite{mrf24wb0} module IEEE 802.11 compatible as WiFi.
 Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and the 
-communications to the main controller take place through an \ac{UART}. Stacks for MiWi and TCP/IP protocols are provided freely by Microchip,
-being the first one significantly lighter and simpler than the second one. Communications to these transceivers use \ac{SPI} interfaces.
+communications to the main controller take place through an \ac{UART}. Stacks for MiWi\cite{miwi} and TCP/IP\cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications to these transceivers use \ac{SPI} interfaces.
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instrumen microcontroller increasing complexity on 
 the PIC to transceiver communications, moreover, this fact raise the global consumption up. Maintaining this interface will be disputed.
@@ -269,18 +268,18 @@ The different options included at Microchip catalog, described and showing their
 \multirow{2}{*}{Microcontroller} & \multirow{2}{2cm}{Max. \\Frequency} & \multicolumn{2}{|c|}{Memory (kB)} & \multicolumn{6}{|c|}{Peripherals} & \multirow{2}{*}{ADC} & \multirow{2}{*}{Pins} & \multirow{2}{*}{Consumption} & \multirow{2}{*}{Euros} \\\cline{3-10}
 & & Flash & RAM & SPI & UART & I2C & USB & CAN & ETH  & & & &\\
 \hline
-PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 &&&&&&&&& \\
-PIC32MX664F128L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{5 - 5}
-PIC32MX764F128H & & & & 3 &&&&&&&&& \\
-PIC32MX764F128L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{3 - 5}
-PIC32MX675F256H & & & & 3 &&&&&&&&& \\
-PIC32MX675F256L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{5 - 5}
-PIC32MX775F256H & & & & 3 &&&&&&&&& \\
-PIC32MX775F256L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{3 - 3} \cline{5 - 5}
-PIC32MX775F512H & & & & 3 &&&&&&&&& \\
-PIC32MX775F512L & & & & 4 &&&&&&&&& \\\cline{1 - 1} \cline{5 - 5}
-PIC32MX795F256H & & & & 3 &&&&&&&&& \\
-PIC32MX795F256L & & & & 4 &&&&&&&&& \\
+PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 & \multirow{12}{*}{6} & 4 & \multirow{12}{1cm}{Full Speed Host Dev. OTG} & \multirow{2}{*}{2} & \multirow{12}{1.1cm}{10/100 BaseT} & \multirow{12}{*}{16} & 64 & \multirow{4}{1.5cm}{bla bla bla bla} & 0 \\
+PIC32MX664F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
+PIC32MX764F128H & & & & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
+PIC32MX764F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{3 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
+PIC32MX675F256H & & \multirow{4}{*}{256} & \multirow{6}{*}{64} & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
+PIC32MX675F256L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
+PIC32MX775F256H & & & & 3 && 4 && \multirow{2}{*}{0} &&& 64 && \\
+PIC32MX775F256L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{3 - 3} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
+PIC32MX775F512H & & \multirow{4}{*}{512} & & 3 && 4 && \multirow{2}{*}{1}&&& 64 && \\
+PIC32MX775F512L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{4 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
+PIC32MX795F256H & & &  \multirow{2}{*}{128} & 3 && 4 && \multirow{2}{*}{0} &&& 64 && \\
+PIC32MX795F256L & & & & 4 && 5 &&&&& 100 && \\
 \hline
 \hline
 

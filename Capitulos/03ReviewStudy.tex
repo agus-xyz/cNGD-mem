@@ -111,8 +111,7 @@ design.
 
 The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit developed by MIPS Technologies. It has a 
 Hardvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H\cite{pic32datasheet}, integrates a 512 KB
- Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz.
-\footnote{}
+ Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz\footnote{\ac{DMIPS} divided by \ac{CPU} frequency. Dhrystone is a synthetic computing benchmark program become representative of general processor performance.}.
 This \ac{PIC} was found to offer too high features for our requirements, hence existing a reducible amount of power consumption 
 on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is seen as a positive option.  
 
@@ -124,6 +123,10 @@ compatible. For the 2.4 GHz band, two Microchip modules were selected, a MRF24J4
 MiWi$^{TM}$ P2P\cite{miwip2p}, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$\cite{miwipro} and a MRF24WB0MA\cite{mrf24wb0} module IEEE 802.11 compatible as WiFi.
 Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and the 
 communications to the main controller take place through an \ac{UART}. Stacks for MiWi\cite{miwi} and TCP/IP\cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications to these transceivers use \ac{SPI} interfaces.
+
+\figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdmodel}%
+{Architecture model of the FCD, developed at LSI in 2011}
+
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instrumen microcontroller increasing complexity on 
 the PIC to transceiver communications, moreover, this fact raise the global consumption up. Maintaining this interface will be disputed.
@@ -140,8 +143,6 @@ Maintaining all these interfaces supposes larger device size and greater power c
 
 Regarding other issues, reducing the general size, making the device more scalable or modular are indeed needed on the \ac{CNGD}.
 
-\figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdmodel}%
-{Architecture model of the FCD, developed at LSI in 2011}
 
 %-------------------------------------------------------------------
 \section{Hardware Abstraction Layer review}
@@ -149,8 +150,29 @@ Regarding other issues, reducing the general size, making the device more scalab
 \label{cap3:sec:halreview}
 %-------------------------------------------------------------------
 
-MUAAJAJAJAJAJJ **********************
+The work in \cite{juanpfc} described an implemented new firmware for the \ac{CNGD}. The firmware runs over PIC32 architectures. It was developed over the \ac{FCD} but slightly adapting the hardware for a more complete development. The firmware offers access to three different regions over the radio spectrum by means of Microchip transceivers and a MiWi$^{TM}$ protocol stack, appropriately modified and adapted to allow using more than one transceiver.
 
+In order to abastract the application from the hardware and software complexity design, the firmware includes a straightforward \ac{HAL} to deal
+easily with the \ac{RI}s within a close set of functions. In this way, node usability improves and applications cost and developing time decrease.
+
+The new firmware suposses several advantages:
+	
+\begin{itemize}
+
+\item Versatility and configurability are given. Hardware modifications and new modules are possible with minimal software adaptation.
+
+\item Firmware takes care of the protocol stack management, being the application just responsible for messages processing. 
+
+\item MiWi$^{TM}$ Protocol stack adaptation makes a better efficient use of resources and removes complexity.
+
+\item Devices fabrication costs are reduced since some modules are not needed anymore and less featured controllers are suitable.
+
+\item Sleeping modes provided by the firmware bring the key for autonomous operation modes. Whenever circumstances permit it, enabling sleeping
+	modes will drop significantly the power consumption.
+\end{itemize}
+
+This software module must be taken into account at the design stage for its inclusion into the \ac{CNGD}. It also might be needed of adaptation
+or debugging tasks due to its short life-time and usage. 
 
 %-------------------------------------------------------------------
 \section{Cognitive Radio Module review}
@@ -175,7 +197,7 @@ the \ac{CNGD} should meet. These were classified as follows:
 \begin{itemize}
 
 \item Working operation, at least, over two \ac{ISM} bands (868 MHz and 2.4 GHz). Having, as far as possible, fully-configurable transceivers.
-\item \emph{Modularity}.
+\item Modularity.
 \item IEEE 802.11 standard interoperation possibilities.
 \item External pluggable antenna possibilities.
 \item Development-oriented. Comprising debugging tools.
@@ -213,13 +235,13 @@ Furthermore, it should responds to \ac{WSN} normal requirements:
 
 \item  \emph{Cost}. Due to the same previous reason, low-cost is a requirement. Otherwise their price makes networks non-commercially-viable.
  
-\item	\emph{Power comsumption.} It must be prepared to  operate with battery and achieve a fairly long autonomy \footnote{}. *****************
+\item	\emph{Power comsumption.} It must be prepared to  operate with battery and achieve a fairly long autonomy \footnote{Common \ac{WSN} 		applications autonomy last for years. The platform must emulate similar conditions.}.
 
 \item \emph{Throughput}. It must be slightly higher than usual. Regarding the generic nature of the platform it should be prepared for the widest
 	possible range of applications. Cognition, on the other hand, increases as well the need for computation capabilities dealing with 
 	several interfaces and increasing the number of data transmissions.
 
-\item \emph{Communication data-rate}.
+\item \emph{Communication data-rate}. Not too high data-rate transmissions are usually needed. A few tens or hundreds of KB/s should work well.
 
 \item \emph{Security}. Radio Interfaces allowing manageable security mecanisms. Being possible to deal with
 	confidential or private data sufficiently safe. 
@@ -232,9 +254,7 @@ Furthermore, it should responds to \ac{WSN} normal requirements:
 \label{cap3:sec:technology}
 %-------------------------------------------------------------------
 
-¿DECISIONES DISEÑO PREVIAS?
-- pic32
-- microchip modules
+Step by step, all the needed technologies for our design will be evaluated and compared to the employed by the \ac{FCD}.
 
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
@@ -248,7 +268,8 @@ The criteria to choose a microcontroller were:
 \item The less featured and simplest microcontroller that suits our operation memory parameters. \ac{FCD} showed that a Flash memory above 200 KB was 
 enough and a \ac{RAM} memory over 32 KB fits our needs. This helps to keep down the microcontroller power consumption. All 32-bits \ac{PIC}s family have a throughtput high enough.
 
-\item Some peripherals are essential to accomplish required tasks. At least three \ac{SPI}s\footnote{} *********** FOOT would operate to communicate the microcontroller to the radio transceivers. Moreover, peripherals for debugging such as \ac{UART}s or \ac{USB}s must be available simultaneously. Appart from that, it should contain other buses and peripherals accessibles for modularity. Probably a 100-pins microcontroller could satisfy
+\item Some peripherals are essential to accomplish required tasks. At least three \ac{SPI}s\footnote{Most of commercial radio transceivers set
+their communication with the \ac{CPU} over \ac{SPI}s} would operate to communicate the microcontroller to the radio transceivers. Moreover, peripherals for debugging such as \ac{UART}s or \ac{USB}s must be available simultaneously. Appart from that, it should contain other buses and peripherals accessibles for modularity. Probably a 100-pins microcontroller could satisfy
 the access to multiple peripherals better than smaller scales.
 
 \item Lowest price.        
@@ -268,17 +289,17 @@ The different options included at Microchip catalog, described and showing their
 \multirow{2}{*}{Microcontroller} & \multirow{2}{2cm}{Max. \\Frequency} & \multicolumn{2}{|c|}{Memory (kB)} & \multicolumn{6}{|c|}{Peripherals} & \multirow{2}{*}{ADC} & \multirow{2}{*}{Pins} & \multirow{2}{*}{Consumption} & \multirow{2}{*}{Euros} \\\cline{3-10}
 & & Flash & RAM & SPI & UART & I2C & USB & CAN & ETH  & & & &\\
 \hline
-PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 & \multirow{12}{*}{6} & 4 & \multirow{12}{1cm}{Full Speed Host Dev. OTG} & \multirow{2}{*}{2} & \multirow{12}{1.1cm}{10/100 BaseT} & \multirow{12}{*}{16} & 64 & \multirow{4}{1.5cm}{bla bla bla bla} & 0 \\
+PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 & \multirow{12}{*}{6} & 4 & \multirow{12}{1cm}{Full Speed Host Dev. OTG} & \multirow{2}{*}{0} & \multirow{12}{1.1cm}{10/100 BaseT} & \multirow{12}{*}{16} & 64 & \multirow{4}{1.5cm}{bla bla bla bla} & 0 \\
 PIC32MX664F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
-PIC32MX764F128H & & & & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
+PIC32MX764F128H & & & & 3 && 4 && \multirow{2}{*}{1} &&& 64 && \\
 PIC32MX764F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{3 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
-PIC32MX675F256H & & \multirow{4}{*}{256} & \multirow{6}{*}{64} & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
+PIC32MX675F256H & & \multirow{4}{*}{256} & \multirow{6}{*}{64} & 3 && 4 && \multirow{2}{*}{0} &&& 64 && \\
 PIC32MX675F256L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
-PIC32MX775F256H & & & & 3 && 4 && \multirow{2}{*}{0} &&& 64 && \\
+PIC32MX775F256H & & & & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
 PIC32MX775F256L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{3 - 3} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
-PIC32MX775F512H & & \multirow{4}{*}{512} & & 3 && 4 && \multirow{2}{*}{1}&&& 64 && \\
+PIC32MX775F512H & & \multirow{4}{*}{512} & & 3 && 4 && \multirow{2}{*}{2}&&& 64 && \\
 PIC32MX775F512L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{4 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
-PIC32MX795F256H & & &  \multirow{2}{*}{128} & 3 && 4 && \multirow{2}{*}{0} &&& 64 && \\
+PIC32MX795F256H & & &  \multirow{2}{*}{128} & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
 PIC32MX795F256L & & & & 4 && 5 &&&&& 100 && \\
 \hline
 \hline
@@ -303,7 +324,8 @@ WiFi transceiver, MRF24WB0MA, embedded by the \ac{FCD} raises up the power consu
 a gateway to the IEEE 802.11 standard, it cannot be included on the design of a general node. New ways to stablish the gateway will be studied,
 maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme looked in the \ac{CNGD} cannot afford to include this transceiver.
 
-******************* USAR MICROCHIP HABLAR DEL IEEE 802.15.4 - 2 ULTIMOS NIVELES Y COMPATIBLES?
+IEEE 802.15.4\cite{wpanieee} standard defines \ac{MAC} and \ac{PHY} levels referred to the \ac{OSI} model for low-consumption \ac{WPAN}s. It is
+a widely used standard on \ac{WSN} and commonly employed protocols are 802.15.4 based-on or compatible. 
 
 \begin{table}[t]
 \centering
@@ -331,8 +353,8 @@ and stablishing communication between the \ac{CNGD} and any other device, normal
 track data. The usual paths to carry through these communication tasks are peripherals such as the \ac{UART}, by attaching
 a simple circuit and RS232 connector, or more recent implementations enable communications through \ac{USB}.
 
-SI BIEN the \ac{FCD} includes two \ac{USB} connectors, a microUSB and normal one, together with a RS232 communication module,
-three communcation ways to interface the node are too many. These modules are size and power consuming.
+While the \ac{FCD} includes two \ac{USB} connectors, a microUSB and normal one, together with a RS232 communication module,
+three communcation ways to interface the node seems too many. These modules are size and power consuming.
 
 microUSB connectors show a reduced size compared to first connectors and they do expand the first connectors capabilities.
 The idea include a normal connector gives some interconnection opportunities with attachable devices like mouses, keyboards,
@@ -341,8 +363,7 @@ of a power consumming circuitry to raise the voltage up to 5 V into the USB, giv
 it does not seem to be needed this last capability on each node; a microUSB connector would be enough.
 
 RS232 communication so does needs its own power supply. The size and cost for an RS232 connector and circuitry on each node is too high for
-a serial communication module, needing for a MAX3232 chip; even more, after comparing to a microUSB option. An optional module for RS232 might be a good
-option given its wide acceptance and utility in \ac{WSN} despite the global use of \ac{USB}.
+a serial communication module, needing for a MAX3232 chip; even more, after comparing to a microUSB option. An optional module for RS232 might be a good option given its wide acceptance and utility in \ac{WSN} despite the global use of \ac{USB}.
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -350,11 +371,9 @@ option given its wide acceptance and utility in \ac{WSN} despite the global use 
 The power supply sytem designed for the \ac{FCD} includes some modules susceptible to be supressed or replaced to keep the simplicity and
 reduce the comsumption. 
 
-The MCP1612 DC-DC conversor specifications fit the supply requirements on excess so a less-featured device might be enough in the new design.
-The concrete parameter to reduce at the MCP1612 is the maximum output current, up to 1 A. 
+The MCP1612\cite{mcp1612} buck regulator specifications fit the supply requirements on excess so a less-featured device might be enough in the new design. The concrete parameter to reduce at the MCP1612 is the maximum output current, up to 1 A. 
 
-The MCP1253-33X charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design 
-if finally this option is not implemented.
+The MCP1253-33X\cite{mcp1252} charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design if finally this option is not implemented.
 
 %-------------------------------------------------------------------
 \subsection{Timing}
@@ -374,16 +393,12 @@ The new design calls for expansion options where application capabilities could 
 the required design. A complete expansion header for \ac{WSN} should include access to the following peripherals/buses:
 
 \begin{itemize}
-\item \ac{I2C}. bla bla 
-\item \ac{USB}
-\item \ac{UART}
-\item \ac{SPI}
-\item \emph{Ethernet}
-\item \emph{Interruptions}. Enabling interrupting the micro without employing polling.
-
-BLA
-
-BLA
+\item \emph{\ac{I2C}}. Being the most common way to interconnect sensors to the controller. 
+\item \emph{\ac{USB}}. For serial communication, mainly to a host device.
+\item \emph{\ac{UART}}. For asyncronous serial communication to devices.
+\item \emph{\ac{SPI}}. As a standard serial communication peripheral.
+\item \emph{Ethernet}. For IEEE 802.11 compatiblity.
+\item \emph{Interruptions}. Enabling interrupting the \ac{CPU} without employing polling.
 \end{itemize}    
 
 %-------------------------------------------------------------------
@@ -395,10 +410,34 @@ After having a review all over the recent implementations, software and hardware
 to fit and apply them to our evaluations, the obtained conclussions to face the design stage are these that follows:
 
 \begin{itemize}
-\item culo
-\item caca
-\item pis
-\item pedo
+\item The model implemented by the \ac{FCD} is quite close to the one pursued. It will serve as guide in our designing process since its
+	review reveals significant technology and behavioral-related information.
+
+\item A new configuration regarding size and cost, facilitating a current very poor scalability.
+
+\item Some other software implementations such as the \ac{HAL} will help us saving time on the software development and it proposses
+	a very complete firmware that fits our requirements. It includes very useful features and, even if needed some slight adaptations,
+	it must be compatible with our \ac{CNGD} design.
+
+\item \ac{FCD} includes a microcontroller too featured, implying higher power consumption and cost, for the set requirements. A new study
+	seems needed.
+\item \ac{RI}s used by the \ac{FCD} open communication on two frequency bands. They show a very inefficient working and high consumption behavior due to:
+	\begin{itemize}
+	\item Coexistance of three eterogenous transceivers and different protocol stacks. Bringing complexity and operation inefficiency.
+	\item Presence of a WiFi transceiver, with consumptions up 160mA at TX.
+	\item A Tulio$^{TM}$ transceiver whose inclusion, hosting a core by itself, suposses a multicore implementation.  	
+	\end{itemize}
+
+A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a standard protocol for \ac{WSN}s such as IEEE 802.15.4 to implement. Besides,
+desirable requirements call for a third frequency band to implement.
+
+\item Serial communication system claims for simplifications, the same as the power supply system.
+
+\item Application capabilities must be expanded to enhance modularity and node capabilities. Expansion pluggable options must be included to the main 		peripherals. Access to 802.11 standard is a requirement.
+
+\item A portable supply system must urgently be completely developed.
+
+
 \end{itemize}
 %-------------------------------------------------------------------
 %\section*{\NotasBibliograficas}

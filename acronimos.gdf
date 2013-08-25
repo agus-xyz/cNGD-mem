@@ -131,3 +131,7 @@
 @entry{6LOWPAN,6LoWPAN, \emph{IPv6 Low Power WPAN}}
 
 @entry{VCC, , \emph{Virtual Control Channel}}
+
+@entry{DMIPS, ,\emph{Dhrystone Million Instructions per Second}}
+
+@entry{CPU, ,\emph{Central Processing Unit}}

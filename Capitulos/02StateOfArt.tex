@@ -310,35 +310,107 @@ full \ac{IP} has brought new standards such as \ac{6LOWPAN} *****REF, that enabl
 %-------------------------------------------------------------------
 
 \ac{CWSN}s arises as a natural evolution of traditional \ac{WSN}s since IEEE standards used in \ac{WSN}s already postulate access to several
-bands of the spectrum. Additionally, \ac{QOS} and low-consumption requirements that \ac{WSN}s state, fits the goals of \ac{CR}. Currently, \ac{ISM} bands, where most of \ac{WSN}s place their communications, show a crowded scene where \ac{CR} techniques might significantly help the newtork operation. Applying cognitive capabilities seeks a more autonomous operation mode able to optimize certain parameters in real time. Thus, these techniques, based on distributed intelligence, contribute to improve operation and general devices efficiency.
+bands of the spectrum. Additionally, \ac{QOS} and low-consumption requirements that \ac{WSN}s state, fits the goals of \ac{CR}. Currently, \ac{ISM} bands, where most of \ac{WSN}s place their radio activity, show an overcrowded scene where \ac{CR} techniques might significantly help the newtork operation. Applying cognitive capabilities seeks intelligent adaptations based on learning, reasoning and information sharing among multiple nodes in the network to achieve end-to-end goals. Thus, these techniques, based on distributed intelligence, contribute to improve performance
+of the network over an extended period of time even in the presence of conflicting goals.
 
-Basically, \ac{CR} and \ac{CN} techniques are included into \ac{WSN}s. This idea suposses an increment of complexity over the executed algorithms
-and overload the control data flow over the network.
+Basically, \ac{CR} and \ac{CN} techniques applied into \ac{WSN}s leads to \ac{CWSN}s. This idea suposses an increment of complexity over the executed algorithms and overload the control data flow over the network. Cognitive agents capable of making proactive decisions based on learning, reasoning and information sharing when interspersed in sensor networks, may help achieve end-to-end goals of the network even in the presence of
+multiple constraints and optimization objectives. Cognitive radio at the physical layer of such agents may enable the opportunistic
+use of the heterogeneous wireless environment. 
+
+Cognitive communication in a sensor network could not only help meet end-to-end goals of the entire network, but also increase reliability of the network, reduce maintenance costs and increase the network lifetime. Research in \cite{gamewsn}[2]\cite{neuralcsn}\cite{crwsn}\cite{crbasedwsn}suggests the growing interest in applying cognitive techniques to \ac{WSN}s. The idea of a holistic approach to introducing cognition in heterogeneous
+sensor networks that combines the advantage of opportunistic spectrum access at the physical layer, with cognitive communication among sensor nodes seamlessly across the network promises to be advantageous over existing design techniques.
+
+However, research efforts have been discrete and cognitive techniques have focused on improving specific aspects of the network or benefiting specific applications.
+
+Vijai contributes\cite{cwsn} to \ac{CWSN} giving the vision and advantage of a holistic approach to cognition in sensor
+networks. It also provides a framework based on knowledge and cognition.
+
 
 In \cite{conbrok} oportunities and trends arising from networks and nodes cooperation are mentioned. It is seen as a chance to improve
-general features and dynamic adaptation capabilities. \cite{conbrok} proposes a model based on agents implementing basic functions 
+general features and dynamic adaptation capabilities. \cite{conbrok} proposes an implementation model based on agents carrying out basic functions 
 and keeping a \ac{VCC}. This \ac{VCC} takes part on the \ac{KP} that agents use to exchange gestion messages.
 
-*************** LAST REFERENCIAS DE JUAN Y PROBLEMS
-   
+On the other hand, applying cognitive techniques involving artificial intelligence and game theoretic approach to increase knowledge
+in the system has several challenges. 
+
+\begin{itemize}
+
+\item As stated in \cite{gtandai}, nodes may be cheating or be constrainned about their valuations, i.e., communicating an agent's valuation for a large subset of the resources might become infeasible. Establishing the feasibility of integrating \ac{CR} into the \ac{DSA}\cite{ngdsa} scheme at the physical layer, along with cognition in upper layers to achieve end-to-end performance goals is an open research problem. 
+
+\item For such networks to be justifiable, the performance improvement must outweigh the cost in terms of overhead, architecture, and operation. An analysis on the amount of energy expended in information sensingn and communicating the same to neighboring nodes is essential in establishing the suitability of this approach. 
+
+\item Since the information available to the network may be partial or incorrect, it may lead to security issues and hence, issues and techniques to 	deal with such issues must also be identified. 
+
+\item The proposed cognitive nodes could be statically distributed in the network or could be mobile, gathering information from remote locations of the sensor nodes. Hence, deciding on the optimal deployment architecture of the cognitive capability is also a challenging problem.
+
+\item Protocols that define how the knowledge plane can be implemented to seamlessly access information from the end user and use it to make decisions at the physical layer, the cognitive specification language, and the tools used in cognitive decision making must all be standardized to make such networks interoperate.
+
+\end{itemize}
+
+All in all, this early-staged technology claims for investigations and research-enabling implementations such as standars, simulators and test-beds
+that allow further studies and conclusive results. 
+ 
 %-------------------------------------------------------------------
 \subsection{Current Devices}
 %-------------------------------------------------------------------
 \label{cap2:sec:currentDevices}
 %-------------------------------------------------------------------
 
-Attending real prototypes for \ac{CWSN} applications, implementations respond to testbed platforms and simulators. However,
-very scarce variety of solutions, very poorly featured yet, exists nowadays.
+Because of the novel stage of this research field, there are not many specific devices to build applications and services over \ac{CWSN}s. Besides, current implementations find themselves very poorly featured yet, not responding researchers' requirements. It is natural that most works are based on \ac{WSN} platforms on one side and \ac{SDR} platforms on the other side.
 
-QUe hacen los simuladores
-que hacen los testbed
+There are many different kinds of devices for WSN platforms with similar characteristics: low power, memory and processing constraints, and ISM bands. Bean, BTnode, MANTIS Nymph, IMote, MicaZ, SenseNode, XYZ, Sentilla Mini, TelosB [11]****REF, ANT [12]****REF, EyesIFX [13]****REf and Iris [14]****REF are some of the most important WSN devices. But none of them have different radio interfaces or radio reconfiguration capabilities.
+
+In order to evaluate models and architectures, great efforts have been carried through developing simulators or adapting traditional simulators
+to new schemes. Nevertheless, test-beds allow to test real systems, obtaining data about consumption, radio transmission ranges, error rates and providing trustable feedbacks to improve simulators performance. Here it is made a review over existing software and hardware platforms.
+
+%-------------------------------------------------------------------
+\subsubsection{Simulators}
+%-------------------------------------------------------------------
+
+Some of the main characters over the existing simulators range are:
+\begin{itemize}
+\item \emph{NS2/NS3}. *****REF From Network Simulator. NS is a discrete-event network simulator primarily used in teaching and research. It supports
+a large variety of multicast and unicast protocols of both wireless and wired networks. Intesively used in wireless mobile Ad-hoc networks.
+
+is a name for series of discrete event network simulators, specifically ns-1, ns-2 and ns-3. All of them are,  ns-3 is free software, publicly available under the GNU GPLv2 license for research, development, and use.
+
+The goal of the ns-3 project is to create an open simulation environment for networking research that will be preferred inside the research community:[citation needed]
+
+    It should be aligned with the simulation needs of modern networking research.
+    It should encourage community contribution, peer review, and validation of the software.
+
+Since the process of creation of a network simulator that contains a sufficient number of high-quality validated, tested and actively maintained models requires a lot of work, ns-3 project spreads this workload over a large community of users and developers.
+
+La versión actual, ns-3, esta diseñada para soportar todo el flujo de trabajo de la simulación desde la configuración hasta la recolección y análisis de tramas.
+
+ns es software libre, se ofrece bajo la versión 2 de la GNU General Public License. Cuenta con dos versiones ns-2 y ns-3 que en general son incompatibles.
+
+\figura{Vectorial/Capitulo2/ns3logo}{width=.3\textwidth}{fig:ns3logo}%
+{NS3 Logo}
 
 
-hablar del FCD como unico dispositivo y aun asi no sirve pa na.
+\item \emph{\ac{SENDORA}}.
 
-simuladores:
 
-testbeds:
+\item \emph{OMNeT++}.
+\item \emph{Castalia}.
+\item \emph{NetSim}.
+\item \emph{OPNET}.
+\end{itemize}
+%-------------------------------------------------------------------
+\subsubsection{Test-bed platforms}
+%-------------------------------------------------------------------
+Focusing on CWSN devices, there are no specific platforms to develop WSN applications and services with cognitive 
+capabilities. There is a commercial product, WaspMote [15], based on an ATMEL microcontroller and an expansion board 
+that makes it possible to use two different radio interfaces.
+
+\begin{itemize}
+\item \emph{FCD}
+\item \emph{TWIST}.
+\item \emph{VT-CRONET}
+\item 
+\end{itemize}
+
 
 standares:
 

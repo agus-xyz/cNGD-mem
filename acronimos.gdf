@@ -135,3 +135,5 @@
 @entry{DMIPS, ,\emph{Dhrystone Million Instructions per Second}}
 
 @entry{CPU, ,\emph{Central Processing Unit}}
+
+@entry{SENDORA, ,Sensor Network for Dynamic and Cognitive Radio Access}

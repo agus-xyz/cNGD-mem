@@ -137,3 +137,7 @@
 @entry{CPU, ,\emph{Central Processing Unit}}
 
 @entry{SENDORA, ,Sensor Network for Dynamic and Cognitive Radio Access}
+
+@entry{FPGA, , \emph{Field Programmable Gate Array}}
+
+@entry{APL, , \emph{Academic Public License}}

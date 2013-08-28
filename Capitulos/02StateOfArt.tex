@@ -112,6 +112,8 @@ Spectrum decision}.
 
 Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service \cite{80222}.
 
+Dynamic spectrum allocation has become a key research activity in wireless communications field and in particular a key technology for ``The Network of the Future'' objective proposed in ICT FP7\footnote{Framework Programmes for Research and Technological Development are funding programmes created by the European Union in order to support and encourage research in the European Research Area (ERA).}.
+
 %-------------------------------------------------------------------
 \section{Cognitive Networks and Cognitive Radio Networks}
 %-------------------------------------------------------------------
@@ -370,33 +372,71 @@ to new schemes. Nevertheless, test-beds allow to test real systems, obtaining da
 Some of the main characters over the existing simulators range are:
 \begin{itemize}
 \item \emph{NS2/NS3}. *****REF From Network Simulator. NS is a discrete-event network simulator primarily used in teaching and research. It supports
-a large variety of multicast and unicast protocols of both wireless and wired networks. Intesively used in wireless mobile Ad-hoc networks.
+a large variety of multicast and unicast protocols of both wireless and wired networks. Intesively used in wireless mobile Ad-hoc networks. NS simulators are developed mainly under C++ and Python languages and they are publicly available under the GNU GPLv2 license for research, development, and use. Last stable version 
 
-is a name for series of discrete event network simulators, specifically ns-1, ns-2 and ns-3. All of them are,  ns-3 is free software, publicly available under the GNU GPLv2 license for research, development, and use.
+Currently, NS2 scource code consists of many forks, both maintained and unmaintained. Last version, from 2009, is partially maintained but not being considered for journal publications. It runs on GNU/Linux, FreeBSD, Solaris, Mac OS X and Windows 95/98/NT/2000/XP. NS3 would be written from scratch, not being compatible with NS2 generally. Development of NS3 began in July 2006. The first release, NS 3.1 was made in June 2008, and afterwards the project continued making quarterly software releases, and more recently has moved to three releases per year. NS3 made its fifteenth release (ns-3.15) in the third quarter of 2012 and it is actively developed.
 
-The goal of the ns-3 project is to create an open simulation environment for networking research that will be preferred inside the research community:[citation needed]
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap2:ns2logo}%
+\scriptsize{NS2 Simulator Logo.}}%
+\includegraphics[angle=0,width=0.3\textwidth]%
+{Imagenes/Vectorial/Capitulo2/ns2logo}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap2:ns3logo}%
+\scriptsize{NS3 Simulator Logo.}}%
+\includegraphics[angle=0,width=0.3\textwidth]%
+{Imagenes/Vectorial/Capitulo2/ns3logo}%
+\end{SubFloat}
+\caption{NS2 and NS3 Simulators Logo.}
+\label{fig:cap2:ns logos}
+\end{figure}
 
-    It should be aligned with the simulation needs of modern networking research.
-    It should encourage community contribution, peer review, and validation of the software.
+Libraries and packages for cognitive simulation and development exist for these simulators, however, models, parameters, and results are still quite poor and inaccurate.  
 
-Since the process of creation of a network simulator that contains a sufficient number of high-quality validated, tested and actively maintained models requires a lot of work, ns-3 project spreads this workload over a large community of users and developers.
+\item \emph{OMNeT++}. /******REF It is not a simulator itself but rather an extensible, modular, multiplatform, component-based C++ simulation library and framework. Instead of containing explicit and hardwired support for computer networks or other areas, it provides the infrastructure for writing such simulations. OMNeT++ provides a component architecture for models. Components (modules) are programmed in C++, then assembled into larger components and models using a high-level language (NED). These models, most of them opensource, are developed completely independently of OMNeT++, and follow their own release cycles. They cater domain-specific functionalities, such as support for sensor networks, wireless ad-hoc networks, Internet protocols, performance modeling, photonic networks. There are extensions for real-time simulation, network emulation, alternative programming languages (Java, C\#), database integration, SystemC integration, and several other functions. 
 
-La versión actual, ns-3, esta diseñada para soportar todo el flujo de trabajo de la simulación desde la configuración hasta la recolección y análisis de tramas.
+\figura{Vectorial/Capitulo2/omnetlogo}{width=.3\textwidth}{fig:omnetlogo}%
+{OMNeT++ Simulator Logo}
 
-ns es software libre, se ofrece bajo la versión 2 de la GNU General Public License. Cuenta con dos versiones ns-2 y ns-3 que en general son incompatibles.
+\ac{CWSN} simulations over OMNeT++ are possible thanks to MiXiM. MiXiM is an OMNeT++ modeling framework created for mobile and fixed wireless networks (wireless sensor networks, body area networks, ad-hoc networks, vehicular networks, etc.). It offers detailed models of radio wave propagation, interference estimation, radio transceiver power consumption and wireless MAC protocols. It is a merger of several OMNeT++ frameworks written to support mobile and wireless simulations. The predecessors of MiXiM are ChSim, Mac Simulator, Mobility Framework and Positif Framework.
 
-\figura{Vectorial/Capitulo2/ns3logo}{width=.3\textwidth}{fig:ns3logo}%
-{NS3 Logo}
-
-
-\item \emph{\ac{SENDORA}}.
+\item \emph{Castalia}. **** REFIt is a \ac{WSN} simulator based on OMNeT++ for early-phase algorithm/protocol testing built at the Networks and Pervasive Computing program of National ICT Australia since 2006. Since 2007 it is made public as an open source project under the \ac{APL} license The current release version is 3.2. It supports realistic channel and radio models, a key element for accurate early-phase \ac{WSN} simulation. It provides support for defining versatile physical processes for specific applications, since it is highly parametric, and can simulate a wide range of platforms. It also supports enhanced modeling of the sensing devices and other often-neglected attributes of a WSN such as node clock drift\footnote{Clock drift refers to several related phenomena where a clock does not run at the exact right speed compared to another clock.}.
 
 
-\item \emph{OMNeT++}.
-\item \emph{Castalia}.
-\item \emph{NetSim}.
-\item \emph{OPNET}.
+\figura{Vectorial/Capitulo2/castalialogo}{width=.3\textwidth}{fig:castalialogo}%
+{Castalia Simulator Logo}
+
+Castalia support for \ac{CWSN} was first proposed by researchers from \ac{LSI} at Plytechnic University of Madrid **** REF in 2012.
+
+\item \emph{NetSim}. NetSim is a stochastic discrete event simulator developed by Tetcos, in association with Indian Institute of Science, with the first release in June 2002. This popular network simulation tool used for network lab experimentation and research. Various technologies such as \ac{WSN}, Wireless LAN, WiMax, TCP, IP are supported. NetSim comes with an in-built development environment, which serves as the interface between User's code and NetSim's protocol libraries and simulation kernel. Protocol libraries are available as open C code for user modification. 
+
+\figura{Vectorial/Capitulo2/netsimlogo}{width=.3\textwidth}{fig:netsimlogo}%
+{NetSim Simulator Logo}
+
+Some libraries available for NetSim enables \ac{CR} capabilities for simulations. However, these cognitive libraries are focused on applications for
+802.22 WRAN based cognitive radio networks, which make this simulator undesirable for \ac{CWSN} scenarios.
+
+\item \emph{\ac{SENDORA}}.****REF SENDORA project developed in 2010 suppossed a new approach of \ac{CR} called Sensor Network aided Cognitive Radio. This project was led by Thales, Eurecom, NTNU, Telenor, KTH, TKK, Universities of Rome, Valencia and Linköping. It was divided into 8 work packages taht covered from to management activities to dissemination passing through definition, integration, implementation and demonstrations activities.
+Software based on the NS simulator was developed and hardware operating over VHDL language.
+
+%http://www.sendora.eu/
+
+\figura{Vectorial/Capitulo2/sendora_logo}{width=.3\textwidth}{fig:sendoralogo}%
+{SENDORA Simulator Logo}
+
+The SENDORA project brought a high amount of papers and literature, nevertheless, the software developed has come shifted to the background because of other simulators. Regarding hardware implementations, carried out over \ac{FPGA}, revealed useful data but not real devices. Hence, simulations deployed do not use real device data for the power model.
+
+
 \end{itemize}
+
+Several other simulators have been developed for \ac{WSN}. TOSSIM based on the TinyOS operative system, COOJA, OPNET, GloMoSim, JSim, NetSIm or QualNet are more \ac{WSN} simulators without cognitive features despite some approaches and efforts to implement them.
+
+
 %-------------------------------------------------------------------
 \subsubsection{Test-bed platforms}
 %-------------------------------------------------------------------

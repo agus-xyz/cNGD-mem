@@ -97,7 +97,7 @@ All the previous considerations give support to stablish cognitive capabilities 
 {Picture of the FCD, developed at LSI in 2011}
 
 The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara\cite{ferpfc} \cite{fcd}. 
-It suppossed the first hardware platform oriented to \ac{CWSN} development.
+It suppossed the first hardware platform fully oriented to \ac{CWSN} development.
 Integrating hardware and software, it gave the chance to develop and test algorithms,
 strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse 
 suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish
@@ -105,8 +105,7 @@ the fundamentals on future designs.
 
 While constituting the first device meeting its features and even being a very complete and close aproach
 to the \ac{CWSN} concept, the \ac{FCD} introduced several improvable issues and troubles found after 
-its implementation and evaluation. Its power consumption, size and cost, together with other desired
-and not achieved requirement, make the device insuitable for \ac{CWSN} testbedding purposes and claim for a new
+its implementation and evaluation. Its power consumption, size and cost, together with other not achieved but desired requirement, make the device insuitable for \ac{CWSN} testbedding purposes and claim for a new
 design.
 
 The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit developed by MIPS Technologies. It has a 
@@ -115,10 +114,9 @@ Hardvard architecture employing a five-stages pipeline and a \ac{RISC}. The chos
 This \ac{PIC} was found to offer too high features for our requirements, hence existing a reducible amount of power consumption 
 on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is seen as a positive option.  
 
-The \ac{FCD} included three radio interfaces enabling access to two different spectrum regions. Two of the selected interfaces
+The \ac{FCD} includes three radio interfaces enabling access to two different spectrum regions. Two of the selected interfaces
 work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in Spain. Over the 868 MHz band
-used to operate a Tulio$^{TM}$\cite{tulio} transceiver\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
-oriented on solutions for energy efficiency, industrial control and intelligent environments.} oriented to \ac{LOWPAN} and IEEE 802.15.4
+used to operate a Tulio$^{TM}$\cite{tulio} transceiver oriented to \ac{LOWPAN} and IEEE 802.15.4
 compatible. For the 2.4 GHz band, two Microchip modules were selected, a MRF24J40\cite{mrf24j40} module using Microchip propietary protocols such us 
 MiWi$^{TM}$ P2P\cite{miwip2p}, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$\cite{miwipro} and a MRF24WB0MA\cite{mrf24wb0} module IEEE 802.11 compatible as WiFi.
 Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and the 

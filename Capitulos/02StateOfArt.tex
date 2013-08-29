@@ -366,7 +366,7 @@ In order to evaluate models and architectures, great efforts have been carried t
 to new schemes. Nevertheless, test-beds allow to test real systems, obtaining data about consumption, radio transmission ranges, error rates and providing trustable feedbacks to improve simulators performance. Here it is made a review over existing software and hardware platforms.
 
 %-------------------------------------------------------------------
-\subsubsection{Simulators}
+\subsubsection{Software platforms - simulators}
 %-------------------------------------------------------------------
 
 Some of the main characters over the existing simulators range are:
@@ -434,23 +434,89 @@ The SENDORA project brought a high amount of papers and literature, nevertheless
 
 \end{itemize}
 
-Several other simulators have been developed for \ac{WSN}. TOSSIM based on the TinyOS operative system, COOJA, OPNET, GloMoSim, JSim, NetSIm or QualNet are more \ac{WSN} simulators without cognitive features despite some approaches and efforts to implement them.
+Several other simulators have been developed for \ac{WSN}. TOSSIM based on the TinyOS\footnote{TinyOS, started as a collaboration between the University of California in co-operation with Intel Research, is a free and open source software component-based operating system and platform targeting \ac{WSN}s).} operative system, COOJA, OPNET, GloMoSim, JSim, NetSIm or QualNet are more \ac{WSN} simulators without cognitive features despite some approaches and efforts to create frameworks enabling them.
 
 
 %-------------------------------------------------------------------
-\subsubsection{Test-bed platforms}
+\subsubsection{Hardware platforms}
 %-------------------------------------------------------------------
-Focusing on CWSN devices, there are no specific platforms to develop WSN applications and services with cognitive 
-capabilities. There is a commercial product, WaspMote [15], based on an ATMEL microcontroller and an expansion board 
-that makes it possible to use two different radio interfaces.
+Nowadays there are not real devices for \ac{CWSN} applications yet. Current implementations respond to development platforms or test-beds and still, 
+variety of platforms is very scarce and poorly featured. Most of them suppose the first approaches on its field, so foundations to build over are still inmature and quickly changing. Hence, efforts focussed on hardware development, usuallyl more costly than software, remain quiet.
+
+The closest existing device to a \ac{CWSN} node is the \ac{FCD}\cite{fcd}\cite{ferpfc} developed at \ac{LSI} in 2011. The \ac{FCD} is based on a Microchip 32-bits \ac{PIC} and includes three radio interfaces enabling access to the 2.4 GHz band and 868 MHz. MiWi and WiFi protocols operate over 2.4 GHz and a propietary protocol provided by \ac{AWD}\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
+oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish the fundamentals on future designs. Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board to try new transceiver options together with an optimized,\ac{CWSN} oriented firmware and a cognitive software module.
+
+All in all, .. BLA BLA BLA  
+
+%paper del labocon carencias
+
+
+
+\figura{Vectorial/Capitulo2/fcdadapted}{width=.5\textwidth}{fig:fcdadapted}%
+{Picture of First Cognitive Device expanded}
+
+Other deployed \ac{CWSN} devolpment networks placed at researching centers, so called test-beds, are employed to obtain data and try algorithms to feedback simulators and node devices themselves. Main current test-beds are: 
 
 \begin{itemize}
-\item \emph{FCD}
 \item \emph{TWIST}.
+
+\figura{Vectorial/Capitulo2/twist}{width=.3\textwidth}{fig:twist}%
+{Twist test-bed logo}
+
+
+The TKN Wireless Indoor Sensor network Testbed (TWIST), developed by the Telecommunication Networks Group (TKN) at the Technische Universität Berlin, is a scalable and flexible testbed architecture for experimenting with wireless sensor network applications in an indoor setting.
+
+It provides basic services like node configuration, network-wide programming, out-of-band extraction of debug data and gathering of application data, as well as several novel features:
+
+    experiments with heterogeneous node platforms
+    support for flat and hierarchical setups
+    active power supply control of the nodes 
+
+The self-configuration capability, the use of hardware with standardized interfaces and open-source software makes the TWIST architecture scalable, affordable, and easily replicable.
+
+More information about the TWIST architecture and features can be found on the TWIST Features page. 
+
+TWIST Instance at TKN
+
+Overview
+
+Our local TWIST instance is one of the largest academic testbeds for indoor deployment scenarios. It spans the three floors of the FT building at the TU Berlin campus, resulting in more than 1500 m2 of instrumented office space. Currently the setup is populated with two node platforms:
+
+    102 TmoteSky nodes
+    102 eyesIFX nodes 
+
+In the small rooms, two nodes of each platform are deployed, while the larger ones have four nodes. The setup results in a fairly regular grid deployment pattern with intra node distance of 3m. 
+
+
+
+
 \item \emph{VT-CRONET}
-\item 
+
+ The VT COgnitive Radio NEtwork Testbed (VTCORNET) is a collection of Cognitive Radio nodes deployed throughout a building on the Virginia Tech main campus. The testbed is openly available for the purposed of performing advanced Cognitive Radio Network.
+
+In the near future, the testbed will consist of a total of 48 Software-Defined Radio nodes, located in the ceiling throughout the newly built ICTAS building. There are to be 12 nodes per floor, each with a varying distance between the neighboring nodes. In addition to the static 48 nodes deployed in the ceiling, low-power mobile nodes will also be available in order provide a research environment that accomodates a wide variety of research topics.
+
+Through a combination of a highly flexible RF front end, and an openly available Cognitive Radio Open Source System framework, VT-CORNET provides a unique collection of resources to researchers who don't have the ability perform advanced experiments due to limited exposure to Software-Defined Radio and Cognitive Radio platforms. 
+
 \end{itemize}
 
+\begin{itemize}
+
+\item \emph{WaspMote}.
+
+NE-ISMTV: VESNA w
+
+
+\figura{Vectorial/Capitulo2/waspmotelogo}{width=.3\textwidth}{fig:waspmotelogo}%
+{WaspMote Logo}
+
+\figura{Vectorial/Capitulo2/waspmote}{width=.5\textwidth}{fig:waspmote}%
+{Picture of Libelium WaspMote}
+
+\end{itemize}
+  Focusing on CWSN devices, there are no specific platforms to develop \ac{WSN} applications and services with cognitive 
+capabilities. There is a commercial product, WaspMote [15], based on an ATMEL microcontroller and an expansion board 
+that makes it possible to use two different radio interfaces.
 
 standares:
 

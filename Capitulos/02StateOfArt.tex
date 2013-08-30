@@ -477,6 +477,11 @@ It spans the three floors, more than 40 rooms, of an office building at the TU B
 
 Remotely accessible, emphasis is on cognitive engine design, self-organizing networking algorithms, and network security. The testbed enables researchers to implement and test their algorithms, protocols, applications, and hardware technologies within a realistic environment.
 
+\item \emph{LOG-a-TEC}. LOG-a-TEC covers a set of diverse testbeds used for research purposes. The testbeds are mostly based on the VESNA****REF hardware platform - developed by SensorLab. The testbeds currently consist of 70-80 sensor nodes installed outdoors, mostly on light poles and rooftops in different regions of Slovenia. They allow remote monitoring, reconfiguration and experimentation. The application area range from environmental monitoring, smarts grids to cognitive radio experimentation. 
+
+% AMPLIAAAAAAAAAAAAAAAAR CON PAAAAAAAAAAAAAAPEEEEEEEEEEEEEEEER
+
+
 \item \emph{FIT/CorteXlab - Cognitive Radio Testbed}. This testbed, still under deployment, will be hosted at INSA-Lyon in France. CorteXlab will suppose one more researching center of the Future Internet of Things project****** REF. CorteXlab will use the network architecture developed in SensLAB and will integrate SDR nodes to offer a remotely accessible development platform for distributed \ac{CR}. Reconfigurability, compatibility, coexistence and even cooperation between \ac{SDR} nodes will be evaluable. A large set of heterogeneous \ac{SDR} nodes (\ac{MIMO} nodes, \ac{SISO} nodes and \ac{WSN} nodes) together with classical sensor nodes will permit a full experimental evaluation.
 
 \figura{Vectorial/Capitulo2/cortexlablogo}{width=.3\textwidth}{fig:cortexlablogo}%
@@ -495,23 +500,94 @@ All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. 
 
 \begin{itemize}
 
-\item \emph{WaspMote}. It is an ultra low-power consumption a sensor node developed and marketed by Libelium\footnote{http://www.libelium.com} based on an ATmega1281 microcontroller. and an expansion board 
-that makes it possible to use two different radio interfaces.
+\item \emph{VESNA}. **** REF WEB It is a modular and fully flexible platform for the development of \ac{WSN} developed at the SensorLab @ Jozef Stefan Institute. Based on the high-performance microcontroller with ARM Cortex-M3 core and radio interface spanning over multiple ISM frequency bands it is designed to meet the requirements of diverse applications. In terms of modularity the platform consists of the VESNA core module and a set of special feature modules (sensor node radio - SNR, sensor node expansion - SNE, sensor node power - SNP) that are used as/if needed. Various peripherals including UART, I2C, SPI, USB, ADC and DAC allow hosting of different sets of sensors and/or actuators.The platform readily supports:
+\begin{itemize}
+    \item Communication standards IEEE 802.15.4, IEEE 802.15.1 and IEEE 802.11. 
+    \item ZigBee, 6LoWPAN, Bluetooth and Wireless M-Bus protocol stacks and technologies. 
+    \item Operating system Contiki\footnote{Contiki is an open source operating system for networked, memory-constrained systems with a particular 		focus on low-power wireless Internet of Things devices.}. 
+    \item Connection to the Internet via Wi-Fi, Ethernet or GSM/GPRS; 
+    \item Arduino integrated development environment.
+    \item A variety of energy supply options including battery, solar panel and external power supply. 
+\end{itemize}
 
-\figura{Vectorial/Capitulo2/waspmotelogo}{width=.3\textwidth}{fig:waspmotelogo}%
-{WaspMote Logo}
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+	{\label{fig:cap2:vesnapic}%
+	\scriptsize{Picture of VESNA.}}%
+	\includegraphics[angle=0,width=0.4\textwidth]%
+	{Imagenes/Vectorial/Capitulo2/vesna}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+	{\label{fig:cap2:sne}%
+	\scriptsize{Picture of SNE-ISMTV module.}}%
+	\includegraphics[angle=0,width=0.4\textwidth]%
+	{Imagenes/Vectorial/Todo}%
+\end{SubFloat}
+\caption{Pictures of SNE-ISMTV: VESNA.}
+\label{fig:cap2:sneismtvvesna}
+\end{figure}
 
-\figura{Vectorial/Capitulo2/waspmote}{width=.4\textwidth}{fig:waspmote}%
-{Picture of Libelium WaspMote}
-\item TmoteSky
-\item SNE-ISMTV: VESNA
+To enable \ac{CR} capabilities on VESNA, a radio front-end was developed, the SNE-ISMTV****REF. Different versions were capable of operating in three frequency bands of interest (TV broadcast part of the UHF band, 868 MHz and 2.4 GHz ISM band) and flexible enough to enable various user scenarios. 
+
+SNE-ISMTV-UHF contains a VHF and UHF TV band receiver based on the NXP TDA18219HN silicon tuner and was designed for spectrum sensing experimentation in TV white spaces. SNE-ISMTV-UHF can receive signals from 470 to 870 MHz with channel filter bandwidths between 1.7 MHz and 10 MHz. Using an analogue detector with a logarithmic response it can be used for energy detection experiments with the resolution bandwidth identical to the channel filter setting and approximately 50 ms per channel sampling. The detector is also coupled with an A/D converter optionally providing 1 Msample/s of the amplitude of the baseband signal. The samples can then be further digitally analyzed in software on the sensor node for more advanced spectrum
+sensing methods.
+
+
+SNE-ISMTV-868 and SNE-ISMTV-2400 are based on the TI CC1101 and TI CC2500 integrated circuits respectively and are identical in design and operation except for the supported frequency band. These transceivers contain software-reconfigurable radio front-ends operating from 780 and 930 MHz and from 2.40 to 2.48 GHz with channel bandwidths from 60 to 800 kHz and frequency-agile local oscillators with 75 ms settling time. They include an ntegrated logarithmic detector for energy detection and several modems that can be either connected to integrated packet handling hardware or provide a raw baseband digital stream to and from the CPU. This makes it possible to support experiments that require packet based as well as continuous transmissions.
+
+\item \emph{WaspMote}. It is an ultra low-power consumption a sensor node developed and marketed by Libelium\footnote{http://www.libelium.com} based on an ATmega1281 microcontroller. It provides a socket for radio interfaces and several standarized input/output options. Libelium offers up to 60 different sensor expansion boards and 6 different radio options. An attachable board enables connection for two radio interfaces. It is thought to be a versatile node valid for a wide range of \ac{WSN} applications.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+	{\label{fig:cap2:waspmotelogo}%
+	\scriptsize{WaspMote Logo.}}%
+	\includegraphics[angle=0,width=0.3\textwidth]%
+	{Imagenes/Vectorial/Capitulo2/waspmotelogo}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+	{\label{fig:cap2:waspmote}%
+	\scriptsize{Picture of Libelium WaspMote.}}%
+	\includegraphics[angle=0,width=0.3\textwidth]%
+	{Imagenes/Vectorial/Capitulo2/waspmote}%
+\end{SubFloat}
+\caption{Libelium WaspMote.}
+\label{fig:cap2:waspmotepics}
+\end{figure}
+
+\item \emph{Meshlium}. Meshlium, also from Libelium, works as the Gateway of the Waspmote \ac{SN}. It reads the sensor frames coming from the nodes and store them in its internal data base and in external cloud systems located on the Internet. The frames coming from Waspmote are normally received by the 802.15.4/ZigBee radio and sent to the Internet using Ethernet, WiFi and 3G interfaces.
+
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+	{\label{fig:cap2:meshliummap}%
+	\scriptsize{Meshlium operation mode.}}%
+	\includegraphics[angle=0,width=0.5\textwidth]%
+	{Imagenes/Bitmap/Capitulo2/meshliummap}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+	{\label{fig:cap2:meshlium}%
+	\scriptsize{Picture of Libelium Meshlium.}}%
+	\includegraphics[angle=0,width=0.4\textwidth]%
+	{Imagenes/Vectorial/Capitulo2/meshlium}%
+\end{SubFloat}
+\caption{Libelium Meshlium.}
+\label{fig:cap2:meshliumpics}
+\end{figure}
 
 \end{itemize}
 
+Standardization is at the core of the current and future success of cognitive radio. The IEEE 802.22***REF WIKIPEDIA working group is developing what will be first cognitive radio-based international standard for \ac{WRAN} with tangible frequency bands for its operation. It will operate on unused television channels. One system such as Unlicensed-Band Cognitive Radio, which can only utilize unlicensed parts of the \ac{RF} spectrum, is described in the IEEE 802.15 Task Group 2 specifications***REF WIKI. This standard focus on the coexistence of IEEE 802.11 and Bluetooth. Many other standards such as WiFi (IEEE 802.11), Zigbee (IEEE 802.15.4), and WiMAX (IEEE 802.16) already include some degree of CR technology today. 
 
-standares:
 
-conclusion  
+  
 
 %-------------------------------------------------------------------
 %\section*{\NotasBibliograficas}

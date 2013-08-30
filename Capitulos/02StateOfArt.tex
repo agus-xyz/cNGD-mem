@@ -449,11 +449,11 @@ Nowadays there are not real devices for \ac{CWSN} applications yet. Current impl
 variety of platforms is very scarce and poorly featured. Most of them suppose the first approaches on its field, so foundations to build over are still inmature and quickly changing. Hence, efforts focussed on hardware development, usuallyl more costly than software, remain quiet.
 
 The closest existing device to a \ac{CWSN} node is the \ac{FCD}\cite{fcd}\cite{ferpfc} developed at \ac{LSI} in 2011. The \ac{FCD} is based on a Microchip 32-bits \ac{PIC} and includes three radio interfaces enabling access to the 2.4 GHz band and 868 MHz. MiWi and WiFi protocols operate over 2.4 GHz and a propietary protocol provided by \ac{AWD}\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
-oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish the fundamentals on future designs. Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board to try new transceiver options together with an optimized,\ac{CWSN} oriented firmware and a cognitive software module.
+oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish the fundamentals on future designs. Nevertheless, the device still but it was just a first approach and it was still far to be a stable commercial testbed platform. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities.
 
-Nevertheless, the device still .. BLA BLA BLA  
+Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board to try new transceiver options together with an optimized,\ac{CWSN} oriented firmware and a cognitive software module. This new modules claim for a new design integrating togethe all of them at one single module, fixing detected weaknesses and adding new or improved features. 
 
-%paper del labocon carencias
+%paper del labocon carenciasSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 
 
 
@@ -522,11 +522,11 @@ All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. 
 \qquad
 \begin{SubFloat}
 	{\label{fig:cap2:sne}%
-	\scriptsize{Picture of SNE-ISMTV module.}}%
+	\scriptsize{Picture of SNE-ISMTV-UHF (top) mounted on a VESNA sensor node (bottom).}}%
 	\includegraphics[angle=0,width=0.4\textwidth]%
-	{Imagenes/Vectorial/Todo}%
+	{Imagenes/Vectorial/Capitulo2/vesnacomp}%
 \end{SubFloat}
-\caption{Pictures of SNE-ISMTV: VESNA.}
+\caption{Pictures of SNE-ISMTV and VESNA modules.}
 \label{fig:cap2:sneismtvvesna}
 \end{figure}
 
@@ -586,7 +586,8 @@ SNE-ISMTV-868 and SNE-ISMTV-2400 are based on the TI CC1101 and TI CC2500 integr
 
 Standardization is at the core of the current and future success of cognitive radio. The IEEE 802.22***REF WIKIPEDIA working group is developing what will be first cognitive radio-based international standard for \ac{WRAN} with tangible frequency bands for its operation. It will operate on unused television channels. One system such as Unlicensed-Band Cognitive Radio, which can only utilize unlicensed parts of the \ac{RF} spectrum, is described in the IEEE 802.15 Task Group 2 specifications***REF WIKI. This standard focus on the coexistence of IEEE 802.11 and Bluetooth. Many other standards such as WiFi (IEEE 802.11), Zigbee (IEEE 802.15.4), and WiMAX (IEEE 802.16) already include some degree of CR technology today. 
 
-
+It has shown how \ac{CWSN} is still an inmature researching field where scarce devices, and all of them incomplete, are found. Real and complete devices to allow developers to try security, energy and spectrum optimization, and \ac{QOS} algorithms and strategies are needed. Facing this need,
+\ac{LSI} proposes the implementation of a complete development platform, hardware and software, fully oriented to \ac{CWSN} investigation able to truly simulate real \ac{WSN} applications. Fulfilling \ac{WSN}, cognition and development requirements. This goal define and frames this Master Thesis.   
   
 
 %-------------------------------------------------------------------

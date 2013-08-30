@@ -322,6 +322,10 @@ use of the heterogeneous wireless environment.
 Cognitive communication in a sensor network could not only help meet end-to-end goals of the entire network, but also increase reliability of the network, reduce maintenance costs and increase the network lifetime. Research in \cite{gamewsn}[2]\cite{neuralcsn}\cite{crwsn}\cite{crbasedwsn}suggests the growing interest in applying cognitive techniques to \ac{WSN}s. The idea of a holistic approach to introducing cognition in heterogeneous
 sensor networks that combines the advantage of opportunistic spectrum access at the physical layer, with cognitive communication among sensor nodes seamlessly across the network promises to be advantageous over existing design techniques.
 
+
+\figura{Vectorial/Capitulo2/comparisonCR}{width=.7\textwidth}{fig:comparisoncr}%
+{Comparison histogram of number of hops per packet in a simulated scenario described in \cite{crbasedwsn}}
+
 However, research efforts have been discrete and cognitive techniques have focused on improving specific aspects of the network or benefiting specific applications.
 
 Vijai contributes\cite{cwsn} to \ac{CWSN} giving the vision and advantage of a holistic approach to cognition in sensor
@@ -446,7 +450,7 @@ variety of platforms is very scarce and poorly featured. Most of them suppose th
 The closest existing device to a \ac{CWSN} node is the \ac{FCD}\cite{fcd}\cite{ferpfc} developed at \ac{LSI} in 2011. The \ac{FCD} is based on a Microchip 32-bits \ac{PIC} and includes three radio interfaces enabling access to the 2.4 GHz band and 868 MHz. MiWi and WiFi protocols operate over 2.4 GHz and a propietary protocol provided by \ac{AWD}\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
 oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyse suitability for radio interfaces, computating capability. It gave the strengths and weaknesses to stablish the fundamentals on future designs. Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board to try new transceiver options together with an optimized,\ac{CWSN} oriented firmware and a cognitive software module.
 
-All in all, .. BLA BLA BLA  
+Nevertheless, the device still .. BLA BLA BLA  
 
 %paper del labocon carencias
 
@@ -455,50 +459,41 @@ All in all, .. BLA BLA BLA
 \figura{Vectorial/Capitulo2/fcdadapted}{width=.5\textwidth}{fig:fcdadapted}%
 {Picture of First Cognitive Device expanded}
 
-Other deployed \ac{CWSN} devolpment networks placed at researching centers, so called test-beds, are employed to obtain data and try algorithms to feedback simulators and node devices themselves. Main current test-beds are: 
+Other deployed \ac{CWSN} devolpment networks placed at researching centers, so called test-beds, are employed to obtain data and try algorithms to feedback simulators and node devices themselves. Here mentioned test-beds do not include nodes with access to several radio bands, but rather several kind of nodes having different interfaces each. Hence, not real \ac{CWSN} nodes are implemented. Main current test-beds are: 
 
 \begin{itemize}
-\item \emph{TWIST}.
+\item \emph{TWIST (TKN Wireless Indoor Sensor network Testbed)}. *****REF Developed by the \ac{TKN} at the \ac{TU} Berlin, is one of the largest academic testbeds for experimenting with wireless sensor network applications at indoor deployment scenarios. It provides basic services like node configuration, network-wide programming, out-of-band extraction of debug data and gathering of application data, as well as several novel features  such as active power supply control of the nodes. The self-configuration capability, the use of hardware with standardized interfaces and open-source software makes the TWIST architecture scalable, affordable, and easily replicable. TWIST can be accessed locally or remotely via web interface.
 
-\figura{Vectorial/Capitulo2/twist}{width=.3\textwidth}{fig:twist}%
-{Twist test-bed logo}
+\figura{Vectorial/Capitulo2/twistmap}{width=.9\textwidth}{fig:twistmap}%
+{1 floor deployment of TWIST test-bed}
 
+It spans the three floors, more than 40 rooms, of an office building at the TU Berlin campus, resulting in more than 1500 m$^{2}$ of instrumented office space. Currently the setup is populated with 102 TmoteSky**** REF nodes operating over 2.4 GHz and 102 eyesIFX**** REF nodes over 868 MHz resulting in a fairly regular grid deployment pattern with intra node distance of 3m. A set of low-cost USB WiSpy Spectrum Analyzers for the 2.4 GHz band dig over data and store it on a repository, this information is used as data-base for the \ac{CR} algorithms and spectrum use optimization.
 
-The TKN Wireless Indoor Sensor network Testbed (TWIST), developed by the Telecommunication Networks Group (TKN) at the Technische Universität Berlin, is a scalable and flexible testbed architecture for experimenting with wireless sensor network applications in an indoor setting.
+\item \emph{VT-CRONET (Virginia Tech COgnitive Radio NEtwork Testbed)} ** REF It is a collection of \ac{CR} nodes deployed throughout a building on the Virginia Tech main campus. The testbed is openly available for the purposed of performing advanced \ac{CRN}. The testbed consists of a total of 48 static \ac{SDR} nodes based on USRP2\footnote{The \ac{USRP} family features a modular architecture with interchangeable daughterboard modules that serve as the RF front end.}, located in the ceiling throughout the ICTAS building, being placed 12 nodes per floor. In addition to the static nodes, low-power mobile nodes will also be available in order provide a research environment that accomodates a wide variety of research topics.
 
-It provides basic services like node configuration, network-wide programming, out-of-band extraction of debug data and gathering of application data, as well as several novel features:
+\figura{Vectorial/Capitulo2/vtcornetmap}{width=.6\textwidth}{fig:vtcornetmap}%
+{Deployment of VT-CORNET test-bed}
 
-    experiments with heterogeneous node platforms
-    support for flat and hierarchical setups
-    active power supply control of the nodes 
+Remotely accessible, emphasis is on cognitive engine design, self-organizing networking algorithms, and network security. The testbed enables researchers to implement and test their algorithms, protocols, applications, and hardware technologies within a realistic environment.
 
-The self-configuration capability, the use of hardware with standardized interfaces and open-source software makes the TWIST architecture scalable, affordable, and easily replicable.
+\item \emph{FIT/CorteXlab - Cognitive Radio Testbed}. This testbed, still under deployment, will be hosted at INSA-Lyon in France. CorteXlab will suppose one more researching center of the Future Internet of Things project****** REF. CorteXlab will use the network architecture developed in SensLAB and will integrate SDR nodes to offer a remotely accessible development platform for distributed \ac{CR}. Reconfigurability, compatibility, coexistence and even cooperation between \ac{SDR} nodes will be evaluable. A large set of heterogeneous \ac{SDR} nodes (\ac{MIMO} nodes, \ac{SISO} nodes and \ac{WSN} nodes) together with classical sensor nodes will permit a full experimental evaluation.
 
-More information about the TWIST architecture and features can be found on the TWIST Features page. 
+\figura{Vectorial/Capitulo2/cortexlablogo}{width=.3\textwidth}{fig:cortexlablogo}%
+{CorteXlab testbed logo}
 
-TWIST Instance at TKN
-
-Overview
-
-Our local TWIST instance is one of the largest academic testbeds for indoor deployment scenarios. It spans the three floors of the FT building at the TU Berlin campus, resulting in more than 1500 m2 of instrumented office space. Currently the setup is populated with two node platforms:
-
-    102 TmoteSky nodes
-    102 eyesIFX nodes 
-
-In the small rooms, two nodes of each platform are deployed, while the larger ones have four nodes. The setup results in a fairly regular grid deployment pattern with intra node distance of 3m. 
+The testbed will be installed in 180 m$^{2}$ shielded room (isolated from any external interference) and also partly covered with \ac{EM} absorbing material. Depending on the set of enabled frequencies, the design of the room will enable to control the radio channel characteristics (number of paths, delays, etc...) and to ensure a high level of reproducibility of experimentations.
 
 
+ \figura{Vectorial/Capitulo2/cortexlabmap}{width=.5\textwidth}{fig:cortexlabmap}%
+{CorteXlab testbed deployment}
 
-
-\item \emph{VT-CRONET}
-
- The VT COgnitive Radio NEtwork Testbed (VTCORNET) is a collection of Cognitive Radio nodes deployed throughout a building on the Virginia Tech main campus. The testbed is openly available for the purposed of performing advanced Cognitive Radio Network.
-
-In the near future, the testbed will consist of a total of 48 Software-Defined Radio nodes, located in the ceiling throughout the newly built ICTAS building. There are to be 12 nodes per floor, each with a varying distance between the neighboring nodes. In addition to the static 48 nodes deployed in the ceiling, low-power mobile nodes will also be available in order provide a research environment that accomodates a wide variety of research topics.
-
-Through a combination of a highly flexible RF front end, and an openly available Cognitive Radio Open Source System framework, VT-CORNET provides a unique collection of resources to researchers who don't have the ability perform advanced experiments due to limited exposure to Software-Defined Radio and Cognitive Radio platforms. 
-
+Nodes will be uniformly distributed. These nodes will be able to accept \ac{PHY} layer implementations on both hardware, i.e. \ac{FPGA}, and software on general purpose CPUs.  Furthermore, they will be capable of outputing performance metrics, such as throughput, \ac{BER} and power consumption. The nodes are interconnected through a high speed ethernet link, in order to allow for cooperation and sharing of information. A unified server will also be available for starting, coordinating and collecting the results of experimentations. The experimentation themselves can be from \ac{PHY} layer up, including the possibility of cross-layer interactions.
 \end{itemize}
+
+
+All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes
+
+
 
 \begin{itemize}
 

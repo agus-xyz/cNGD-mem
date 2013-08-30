@@ -141,3 +141,17 @@
 @entry{FPGA, , \emph{Field Programmable Gate Array}}
 
 @entry{APL, , \emph{Academic Public License}}
+
+@entry{TKN, ,\emph{Telecommunication Networks Group}}
+
+@entry{TU, ,\emph{Technische Universit\"at}}
+
+@entry{USRP, , \emph{Universal Software Radio Perfipheral}}
+
+@entry{SISO, , \emph{Single-Input Single-Output}}
+
+@entry{MIMO, , \emph{Multiple-Input Multiple-Output}}
+
+@entry{EM, , \emph{Electro-Magnetic}}
+
+@entry{BER, , \emph{Bit-Error Rate}}

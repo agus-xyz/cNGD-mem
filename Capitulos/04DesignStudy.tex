@@ -12,23 +12,29 @@ Surf it, scroll it, pause it, click it,\\
 Cross it, crack it, switch - update it\\
 Name it, rate it, tune it, print it,\\
 Scan it, send it, fax - rename it\\
-Touch it, bring it, pay it, watch it
+%Touch it, bring it, pay it, watch it
 \end{Frase}
-%\begin{Fuente}
-%Fuente
-%\end{Fuente}
+\begin{Fuente}
+Thomas \& Guy-Manuel, Daft Punk
+\end{Fuente}
 \end{FraseCelebre}
 
 \begin{resumen}
-Resumen
+In this chapter the platform design is described. Design decisions, specifications, schemes and needed calculations will be exposed.
+Detailled characterstics of any chosen component, including microcontroller, radio interfaces, power-supply options will be provided.
 \end{resumen}
 
 
+
 %-------------------------------------------------------------------
-\section{Global Hardware Description}
+\section{Design decisions}
 %-------------------------------------------------------------------
 \label{cap4:sec:hardwareDescription}
 %-------------------------------------------------------------------
+
+Attending to the already described requirements and the conclusions obtained from the \ac{FCD} review, the following decisions have been taken before proceeding with the design process.
+
+The device can access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frecuencies will be 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firwmware described in \ref{cap3:sec:halreview} cn be done.
 
 
 %-------------------------------------------------------------------
@@ -37,6 +43,36 @@ Resumen
 \label{cap4:sec:altiumDesigner}
 %-------------------------------------------------------------------
 
+
+Altium Designer is an Electronic Design Automation\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software package for printed circuit board, \ac{FPGA} and embedded software design, and associated library and release management automation. It is developed and marketed by Altium Limited of Australia.
+
+Schematic capture
+
+Schematic capture module provides electronics circuit editing functionality, including:
+%seleccionar caracteristicas
+\begin{itemize}
+      \item Component library management
+      \item Integration with several component distributors allows search for components and access to manufacturer's data[2]
+    \item   SPICE mixed-signal circuit simulation
+      \item Netlist export
+      \item Reporting and BoM facilities
+       \item Multi-channel, hierarchical schematics and design re-use
+\end{itemize}
+
+PCB design
+
+Printed circuit board design module of Altium designer allows:
+\begin{itemize}
+   \item Component footprint library management
+   \item Component placement
+   \item Manual trace routing, with support for differential pairs, multi-trace routing, pin-swapping and gate-swaping
+   \item Automated multi-channel layout and routing
+   \item Interactive 3D editing of the board and MCAD export to STEP
+   \item Manufacturing files generation with support for Gerber and ODB++ formats
+\end{itemize}
+
+
+%porque altium. se usa en el labo. version
 %-------------------------------------------------------------------
 \subsection{agus lib}
 %-------------------------------------------------------------------

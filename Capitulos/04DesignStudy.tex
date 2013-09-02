@@ -9,9 +9,9 @@
 \begin{FraseCelebre}
 \begin{Frase}
 Surf it, scroll it, pause it, click it,\\
-Cross it, crack it, switch - update it\\
-Name it, rate it, tune it, print it,\\
-Scan it, send it, fax - rename it\\
+cross it, crack it, switch - update it\\
+name it, rate it, tune it, print it,\\
+scan it, send it, fax - rename it\\
 %Touch it, bring it, pay it, watch it
 \end{Frase}
 \begin{Fuente}
@@ -36,25 +36,24 @@ Attending to the already described requirements and the conclusions obtained fro
 
 Firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an aproach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
 
-Core unit is a PIC32675F256L, a midrange microcontroller from the mentioned family. Being the humblest of the options meeting memory performance requirements and peripherals offer. On the other hand, its 100 pins allow a better use of the peripherals provided.
-  
+Core unit is a PIC32675F256L, a midrange microcontroller from the mentioned family. Being the humblest of the options meeting memory performance and peripherals requirements. On the other hand, its 100 pins allow a better access of the peripherals provided.
 
 The device can access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frecuencies will be 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firwmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}.
 
-The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$/ MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. It is open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$ is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee takes 20-40 KB. MiWi$^{TM}$ is cost free and it does not require for licenses adquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products. 
+The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$ or MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. It is open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$ is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee$^{TM}$ takes 20-40 KB. MiWi$^{TM}$ is cost free and it does not require for licenses adquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products.
 
 
-Power supply and control.
+% DESARROLLO DE TRANSCEIVERS 
 
-
+Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. A software-driven power supply system to the \ac{RI}s allows the application to switch the power supply to these modules. 
 
 Headers and connectivity
 
-
+%********************************************************************************************
 
 
 \figura{Bitmap/Capitulo3/modelcngd}{width=.7\textwidth}{fig:cap3:modelcngd}%
-{Architecture Model of cNGD}
+{Architecture Model of the cNGD}
 
 %-------------------------------------------------------------------
 \section{Altium Designer}
@@ -62,36 +61,33 @@ Headers and connectivity
 \label{cap4:sec:altiumDesigner}
 %-------------------------------------------------------------------
 
+For the whole designing task, a \ac{EDA}\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software will be use. Altium Designer, being one of the most important \ac{EDA} softwares, is commonly used by researchers at \ac{LSI}. All the \ac{CNGD} design process is carried through Altium Designer on its version 
+v.13********************** MIRAR. 
 
-Altium Designer is an Electronic Design Automation\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software package for printed circuit board, \ac{FPGA} and embedded software design, and associated library and release management automation. It is developed and marketed by Altium Limited of Australia.
+Altium Designer is software package for printed circuit board, \ac{FPGA} and embedded software design, and associated library and release management automation. It is developed and marketed by Altium Limited of Australia.
 
-Schematic capture
+Despite the amount of functionalities offered by Altium Designer the two main options needed for this project are schematic capture, for circuit edition, and \ac{PCB} design, for subsequent layout deployment.
 
-Schematic capture module provides electronics circuit editing functionality, including:
-%seleccionar caracteristicas
+Options provided by the schematic capture module, required for the design task, includes:
+%DESARROLLAR CARACTERISTICAS **************************************************************************************
 \begin{itemize}
-      \item Component library management
-      \item Integration with several component distributors allows search for components and access to manufacturer's data[2]
-    \item   SPICE mixed-signal circuit simulation
-      \item Netlist export
-      \item Reporting and BoM facilities
-       \item Multi-channel, hierarchical schematics and design re-use
+	\item Component library management. 
+	\item \ac{SPICE} mixed-signal circuit simulation.
+      	\item Netlist export. 
+     	\item Reporting and BoM facilities.
+	\item Multi-channel, hierarchical schematics and design re-use.
 \end{itemize}
 
-PCB design
-
-Printed circuit board design module of Altium designer allows:
+On the other hand, required option from the \ac{PCB} design module are:
 \begin{itemize}
-   \item Component footprint library management
-   \item Component placement
-   \item Manual trace routing, with support for differential pairs, multi-trace routing, pin-swapping and gate-swaping
-   \item Automated multi-channel layout and routing
-   \item Interactive 3D editing of the board and MCAD export to STEP
-   \item Manufacturing files generation with support for Gerber and ODB++ formats
+	\item Component footprint library management.
+   	\item Component placement.
+   	\item Manual trace routing, with support for multi-trace routing. 
+   	\item Interactive 3D editing of the board and MCAD export to STEP
+   	\item Manufacturing files generation with support for Gerber and ODB++ formats
 \end{itemize}
 
 
-%porque altium. se usa en el labo. version
 %-------------------------------------------------------------------
 \subsection{agus lib}
 %-------------------------------------------------------------------

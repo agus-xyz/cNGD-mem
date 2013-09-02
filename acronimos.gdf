@@ -156,4 +156,9 @@
 
 @entry{BER, , \emph{Bit-Error Rate}}
 
+@entry{EDA, , \emph{Electronic Design Automation}}
+
+@entry{PCB, , \emph{Printed Circuit Board}}
+
+@entry{SPICE, ,\emph{Simulation Program with Integrated Circuits Emphasis}}
 

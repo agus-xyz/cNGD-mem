@@ -34,8 +34,21 @@ Detailled characterstics of any chosen component, including microcontroller, rad
 
 Attending to the already described requirements and the conclusions obtained from the \ac{FCD} review, the following decisions have been taken before proceeding with the design process.
 
-The device can access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frecuencies will be 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firwmware described in \ref{cap3:sec:halreview} cn be done.
+Firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an aproach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip is required as microcontroller.
 
+%microcontroller   
+
+The device can access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frecuencies will be 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firwmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}.
+
+The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$/ MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. It is open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$ is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee takes 20-40 KB. MiWi$^{TM}$ is cost free and it does not require for licenses adquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products. 
+
+
+
+
+
+
+\figura{Bitmap/Capitulo3/modelcngd}{width=.7\textwidth}{fig:cap3:modelcngd}%
+{Architecture Model of cNGD}
 
 %-------------------------------------------------------------------
 \section{Altium Designer}
@@ -111,6 +124,11 @@ Printed circuit board design module of Altium designer allows:
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
 
+The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
+
+
+\figura{Bitmap/Capitulo3/miwistack}{width=.4\textwidth}{fig:cap3:miwistack}%
+{MiWi$^{TM}$ Protocol stack.}
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
 %-------------------------------------------------------------------

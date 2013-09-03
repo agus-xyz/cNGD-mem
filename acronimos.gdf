@@ -28,7 +28,7 @@
 
 @entry{CWSN, ,\emph{Cognitive Wireless Sensor Network}}
 
-@entry{WPAN, , \emph{Wireless Personal Area Network},}
+@entry{WPAN, , \emph{Wireless Personal Area Network}}
 
 @entry{CR, , \emph{Corgnitive Radio}}
 
@@ -162,3 +162,6 @@
 
 @entry{TX, ,\emph{Transmission}}
 
+@entry{GPIO, ,\emph{General Purpose Input-Output}}
+
+@entry{MCLR, ,\emph{Master Clear}}

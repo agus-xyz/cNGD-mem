@@ -17,7 +17,7 @@ Thomas \& Guy-Manuel, Daft Punk
 
 \begin{resumen}
 In this chapter, a global description of the project is shown. This global description covers an introduction to the context,
-the need of this project and a brief description if it. It defines goals and the project organization in time. Besides, it is 
+the need of this project and a brief description of it. It defines goals and the project organization in time. Besides, it is 
 described the structure of this dissertation.  
 \end{resumen}
 
@@ -28,36 +28,27 @@ described the structure of this dissertation.
 \label{cap1:sec:background}
 %-------------------------------------------------------------------
 
-Ubiquitous computing, with a 40-fold increase between 2010 and 2015 according to the CISCO report \cite{cisco}, 
-is nowadays one of the most important trends. Related applications include security and surveillance, industrial control,
-infrastructure maintenance, automatic environmental monitoring, domotics, localization and tracking or health. 
-\ac{WSNS} provide a technological solution to these challenges, so their growth is closely linked to these fields. 
+A \ac{WSN} consists of a number of sensors spread across a geographical area. Each sensor has wireless communication capability and some level of intelligence for signal processing and networking of the data. \ac{WSN}s have recently emerged as a premier research topic since they provide a decentralized technological solution to address applications related to security and surveillance, industrial control, infrastructure maintenance, automatic environmental monitoring, domotics, localization and tracking or health. They have great long-term economic potential and ability to transform our lives.
 
-Together with this significant growth, in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the 
-great demand by users. This fact, in addition to obvious benefits for the public, brought a remarkable radio spectrum saturation.
-This increasing demand for wireless communication presents a challenge to efficient spectrum utilization and spectral 
-coexistence.
+Together with this significant growth, in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the growth in the ``Internet of Things'' connectivity phenomenon\cite{internetofthings}, with wireless \ac{M2M} communications. Being wireless communications nowadays one of the hottest and fastest growing segment of electronics.
 
-Regarding spectrum scarcity, most WSN solutions operate on unlicensed frequency bands. Normally they use \ac{ISM} bands,
-like the 2.4 GHz band, also used by Wi-Fi or IEEE 802.15.4 devices. For this reason, the unlicensed spectrum bands are 
-becoming overcrowded.
+This increasing demand for wireless communication brought a remarkable saturation on certains bands of the radio spectrum. This fact is mainly due to a inneficcient assignment of the spectrum\cite{wpanIssues}. Some of the most heavily used bands are, for instance, unlicesed bands, free of cost, so-called \ac{ISM} bands.
 
-The spectrum saturation is reflected over the increasing interferences and other damages between systems. These troubles find their
-origin in the increasing amount of traffic, the heterogeneous networks and devices, as well as the inefficient use of the spectrum
-they do. Nowadays, techniques focused on expand spectrum efficiency over communications seems totally exploited and new long-term
-solutions are required. 
+\figura{Bitmap/Capitulo1/spectrum}{width=.7\textwidth}{fig:cap1:spectrum}%
+{Electromagnetic frecuency spectrum. Radio spectrum covers under 300 GHz frequencies}
+
+Regarding spectrum scarcity, most \ac{WSN} solutions operate on unlicensed frequency bands. Normally they use \ac{ISM} bands,
+like the 2.4 GHz band, also used by Wi-Fi, Bluetooth or IEEE 802.15.4 devices. 
+
+The spectrum saturation is reflected over the increasing interferences and other undesirable effects as noise, with a consistent impact over \ac{TX} power required, \ac{QOS}, etc. These troubles find their origin in the increasing amount of traffic, the heterogeneous networks and devices, as well as the inefficient use of the spectrum they do. Nowadays, techniques focused on expand spectrum efficiency over communications, such as those related to dynamic channel allocation, power control or link adaptation, seems totally exploited and new long-term solutions are required. 
 
 To address this challenge, new techniques such as \ac{CR} arise. \ac{CR} was introduced by Mitola in 1999 \cite{mitola1}
-and 2000\cite{mitola2} and it integrates into communication networks concepts as self-learning, self-management, context 
-analysis or data sharing. Basically, \ac{CR} enables opportunistic access to the spectrum through cooperation and context
+and 2000\cite{mitola2} and it integrates into communication networks concepts as spectrum sensing, self-learning, self-management 
+or context analysis. Basically, \ac{CR} enables opportunistic access to the spectrum through cooperation and context
 awareness. Spectrum sensing capabilities and cooperation among devices allow for better spectrum utilization and \ac{QOS}.
-The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters,
-thanks to cooperation, in order to achieve more reliable and efficient communications.
+The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters in order to achieve more reliable and efficient communications.
 
-\ac{WSNS} are shown as one of the areas with the highest demand for cognitive networking since the imposed constraints
-and hard operation conditions require efficient wireless communications, collaboration among nodes and self-adaptation
-against possible environmental incidents. However, there are also some challenges to face \cite{challenges}, specifically the study
-of the sensing state, collaboration among devices or decision taking.  
+\ac{WSN}s are shown as one of the areas with the highest demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, specially for their wireless communications, since these are normally the most enery-consumming task. However, there are also some challenges to face\cite{challenges} like opportunistic energy-efficient transport.
 
 Despite the potential of \ac{CWSN}, they are not deeply explored yet. Real or simulated scenarios scarcely exist and 
 realistic platforms are crucial to the improvement and development of this new field. The shortage of \ac{CWSN} devices

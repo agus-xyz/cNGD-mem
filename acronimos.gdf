@@ -20,8 +20,6 @@
 % tienes ninguno  referenciado, basta con que no  definas la constante
 % \acronimosEnRelease en config.tex
 
-@entry{WSNS, WSNs , \emph{Wireless Sensor Networks}}
-
 @entry{CWSNS, CWSNs, \emph{Cognitive Wireless Sensor Networks},}
 
 @entry{IEEE, , \emph{Institute of Electrical and Electronics Engineers},}
@@ -161,4 +159,6 @@
 @entry{PCB, , \emph{Printed Circuit Board}}
 
 @entry{SPICE, ,\emph{Simulation Program with Integrated Circuits Emphasis}}
+
+@entry{M2M, ,\emph{Machine-to-machine}}
 

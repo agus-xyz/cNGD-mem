@@ -20,15 +20,13 @@
 % tienes ninguno  referenciado, basta con que no  definas la constante
 % \acronimosEnRelease en config.tex
 
-@entry{CWSNS, CWSNs, \emph{Cognitive Wireless Sensor Networks},}
+@entry{IEEE, , \emph{Institute of Electrical and Electronics Engineers}}
 
-@entry{IEEE, , \emph{Institute of Electrical and Electronics Engineers},}
+@entry{QOS,QoS,\emph{Quality of Service}}
 
-@entry{QOS,QoS,\emph{Quality of Service},}
+@entry{WSN, , \emph{Wireless Sensor Network}}
 
-@entry{WSN, , \emph{Wireless Sensor Network},}
-
-@entry{CWSN, ,\emph{Cognitive Wireless Sensor Network},}
+@entry{CWSN, ,\emph{Cognitive Wireless Sensor Network}}
 
 @entry{WPAN, , \emph{Wireless Personal Area Network},}
 
@@ -66,13 +64,13 @@
 
 @entry{ACK, , \emph{Acknowledgment}}
 
-@entry{LSI, , \emph{Integrated Systems Laboratory}}
+@entry{LSI, , \emph{Laboratorio de Sistemas Integrados}}
 
-@entry{DIE, , \emph{Electronic Engineering Department}}
+@entry{DIE, , \emph{Departamento de Ingenier\'ia Electr\'onica}}
 
-@entry{ETSIT, , \emph{Higher Technical School of Telecommunications Engineering}}
+@entry{ETSIT, , \emph{Escuela T\'ecnica Superior de Ingenieros en Telecomunicaci\'on}}
 
-@entry{UPM, , \emph{Polytechnic University of Madrid}}
+@entry{UPM, , \emph{Universidad Polit\'ecnica de Madrid}}
 
 @entry{FCC, , \emph{Federal Communications Commission}}
 
@@ -161,4 +159,6 @@
 @entry{SPICE, ,\emph{Simulation Program with Integrated Circuits Emphasis}}
 
 @entry{M2M, ,\emph{Machine-to-machine}}
+
+@entry{TX, ,\emph{Transmission}}
 

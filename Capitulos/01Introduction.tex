@@ -51,28 +51,19 @@ The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to 
 \ac{WSN}s are shown as one of the areas with the highest demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, specially for their wireless communications, since these are normally the most enery-consumming task. However, there are also some challenges to face\cite{challenges} like opportunistic energy-efficient transport.
 
 Despite the potential of \ac{CWSN}, they are not deeply explored yet. Real or simulated scenarios scarcely exist and 
-realistic platforms are crucial to the improvement and development of this new field. The shortage of \ac{CWSN} devices
+realistic platforms are crucial to the improvement and development of this new field. The shortage and undevelopment of \ac{CWSN} devices
 or test-beds contributes to the scarcity of results in this area. 
 
-The first \ac{CWSN} node platform was developed in 2011\cite{fcd} by researchers at the laboratory where this project is framed, the
-\ac{LSI}, belonging to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to security, \ac{WSN},
-and wireless devices. The developed device, the \ac{FCD}, become the first real generic platform to study \ac{CWSNS} but it was just a
-first approach and it was still far to be a stable commercial testbed platform. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities. 
+One of the current \ac{CWSN} node platform is the \ac{FCD}, developed in 2011\cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s and security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a first approach. The \ac{FCD} was still far to be a really valuable researching testbed platform. This platform did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities. 
 
 Continuing with the development of the \ac{FCD}, some software implementation were carried out at \ac{LSI}. A combined protocol stack for
 three different transceivers including a \ac{HAL}, described in \cite{juanpfc}, was created. This firmware offers
 to the application layers ease of use facing communication taks and it brings memory and resources savings compared with
-the previous three stacks based-on protocol scheme. As well, in order to deal with cognitive strategy and agorithmics, a software module
-that runs in parallel with the application layer was launched. This module, called \ac{CRMODULE} include the theoretical model described
-in \cite{conbrok} and it is a crucial achievement for our goals.  
+the previous three stacks based-on protocol scheme. As well, in order to deal with cognitive strategoies and agorithmics, a software module
+that runs together with the application layer was launched. This module, called \ac{CRMODULE} implements the theoretical model described
+in \cite{conbrok} and it is a crucial achievement for \ac{CWSN} development.  
 
-
-This dissertation describes the development and operation of the \ac{CNGD}, a node platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSNS} allowing test strategies and better investigation deployments.
-The final implementation must integrate the developed software modules \ac{HAL} and \ac{CRMODULE} together with a demo application layer that shows the full operation of the device. 
-   
-When designing CWSN devices, the fact that WSN nodes are very limited in terms of memory, computational power or energy consumption is crucial and it must be taken into account in the design process. The aim is a flexible scheme based on three different RF bands. On the one hand, as a \ac{WSN} platform, it must have a downward trend regarding power consumption, cost, size and resources. On the other hand, as development platform, the software and hardware architecture must provide advantages when implementing cognitive strategies as a valuable tool. 
- 
-The design must be modular, so it will not need to be redone entirely with every particular change, and scalable, allowing flexibility in the complexity of applications.
+This dissertation describes the development and operation of the \ac{CNGD}, a node platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSN}s allowing test strategies and better investigation deployments. The final implementation must integrate the developed software modules \ac{HAL} and \ac{CRMODULE} together with a demo application layer that show the full operation of the device. 
 
 %-------------------------------------------------------------------
 \section{Goals}
@@ -80,31 +71,25 @@ The design must be modular, so it will not need to be redone entirely with every
 \label{cap1:sec:goals}
 %-------------------------------------------------------------------
 
-The project main goal is to design and implement, regarding strong 
-efficiency, modularity and scalability constraints, a node for a 
-\ac{CWSN}. Develop a demo application layer and integrate it together with
-the already implemented \ac{HAL} and \ac{CRMODULE}.
+The project main goal is to design and implement a node for a \ac{CWSN}. The implementation must meet, regarding its utility, strong efficiency, modularity and scalability constraints. A demo application layer, also to develop, must integrate the already implemented \ac{HAL} and \ac{CRMODULE}. 
 
-A downtrend regarding cost and power consumption is required, making the device suitable
-for commercial purposes. Besides, it must allow the evaluation
-of different CN-related strategies.  
+\ac{CWSN} nodes are very limited devices in terms of memory, computational power or energy consumption. This fact is crucial and it must be taken into account, making the device valuable and affordable for researching purposes. 
 
-It is important to make clear that the design must fill the gaps
-and deficiencies that current devices show and provide new desirable capabilities.
-Furthermore, a definition of new needs and a researching team sharing,
-together with an important review of the \ac{FCD} is needed. 
+The design must be modular, so it will not need to be redone entirely with every particular change, and scalable, allowing flexibility in the complexity of applications. On the other hand, as development platform, the software and hardware architecture must provide advantages when implementing cognitive strategies as a valuable tool (data extraction, data reliability, portability, versatility...).
+
+It is important to make clear that the design must fill the gaps and deficiencies that current devices show, providing a wider radio access, powering control options or real \ac{WSN} features, for instance. Furthermore, a definition of new needs, together with an important review of the \ac{FCD} is needed. 
 
 Here the main goal is fragmented into shorter subgoals:
 
 \begin{itemize}
 
-\item \emph{Previous conclusions and results analysis}.
+\item \emph{Analysis of previous conclusions and results}.
 Study of already tested aspects. Definition of new tests 
 to provide new data of interest. These data will help
 to take decisions about transceivers, microcontroller,
 power supply...
 
-\item \emph{Definition of the node}. Study of needs and constraints 
+\item \emph{Requirements definition}. Study of needs and constraints 
 (cost, resources, size, consumption...) according to the future running applications.
 Definition of features and requirements. Definition of the demo application.
 
@@ -117,7 +102,7 @@ Components selection and final layout development.
 Component disposition and soldering. PCB design validation.
 
 \item \emph{Application layer development}.
-Adaptation to the \ac{HAL} and \ac{CRMODULE}.
+Integration of the \ac{HAL} and \ac{CRMODULE} into the hardware.
 Development of the demo application layer integrating
 the two already named software modules enabling a 
 full test of the platform. The application will include
@@ -139,43 +124,38 @@ posible improvements. Definition of further studies.
 \label{cap1:sec:projectOrganization}
 %-------------------------------------------------------------------
 
-The project organization is here described:
+The organization this project has folled is here described:
 
 \begin{itemize}
 
-\item \emph{Art state review}.
+\item \emph{State of art review}.
 
-At this first stage, \ac{CWSNS} related information and specific knowledge
+At this first stage, \ac{CWSN}s related information and specific knowledge
 was acquired. Also, it was an approach to the development tools. Goals:  
 
 \begin{itemize}
-\item \ac{SN} and \ac{CR} art state review. Commercial solutions review.
+\item \ac{WSN} and \ac{CR} state of art review. Review of the current commercial solutions.
 
-\item Adaptation to the developement platform as well as other tools (
-documentation, manuals, hardware at the lab...).
+\item Adaptation to the developement platform as well as other tools (workstation, repository, soldering station,
+hardware at the lab...).
 
-\item Absorption of related projects results, either completed or under
-development.
+\item Analisys of related projects results, either completed or under development.
 \end{itemize}
 
 \item \emph{Hardware design and implementation}.
 
-Over this phase covered from the first definitions and specifications
-to the system mounting and implementation. Goals:
-tivos:
+This phase covered from the first definitions and node specifications, to the system mounting and implementation. Goals:
 
 \begin{itemize}
-\item Requirements definition and general node specifications. Constraints and
-design criteria.
+\item Requirements definition and general node specifications. Stablishment of constraints and design criteria.
 
-\item Wireless interfaces and other used devices evaluation.
+\item Radio wireless interfaces and other used components evaluation (microcontroller, serial interfaces...).
 
-\item Design optimizations repect to the \ac{FCD}.
+\item Design optimizations respect to the \ac{FCD}.
 
-\item Hardware full design. Componentes election. Design adjustments and previous
-work verification. Layout design.
+\item Hardware full design. Selection of the components. Design adjustments and previous work verification. Layout design.
 
-\item Platform implementation.
+\item Hardware platform implementation.
 
 \end{itemize}
 
@@ -185,26 +165,31 @@ Once the hardware was operating, the work turned over the software. Goals:
 
 \begin{itemize}
 
-\item Adaptation to the developed \ac{HAL} and \ac{CRMODULE}.
+\item Integration of the developed \ac{HAL} and \ac{CRMODULE} into the hardware.
 
 \item Software implementation of required functions and application. Source code debugging.
 
-\item Generation of documentation about the developed modules.
+\item Generation of first documentation about the developed software modules.
 
 \end{itemize}
 
-\item \emph{Tests and evaluation}. Finally the proper operation of the device was 
-evaluated and its results analysed.
+\item \emph{Tests and evaluation}.
+
+Finally the proper operation of the device was evaluated and its results analysed.
 
 \begin{itemize}
-\item Fully integrated hardware and software test. Spectrum sensing, power consumption and
-autonomy, communication among nodes, connectivity to other devices, protocol stacks, 
-cognitive capabilities...
+\item Fully integrated hardware and software test. Spectrum sensing, power consumption,
+autonomy and control, communication among nodes, connectivity to other devices, protocol stacks...
  
 \item Results interpretation and conclusions review. Statement of further studies 
 and future development lines. Found problems evaluation.
-ados.
+
 \end{itemize}
+
+\item \emph{Documentation generation}.
+
+Dissertation and other required documentation (wiki, papers, manuals...) writing. Review of the software documentation.
+
 \end{itemize}
 %-------------------------------------------------------------------
 \section{Outline}

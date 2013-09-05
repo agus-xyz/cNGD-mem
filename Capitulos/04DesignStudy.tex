@@ -108,16 +108,110 @@ Previous to the \ac{CNGD} designing, which will embbeds the $\mu$Trans 434/868, 
 %-------------------------------------------------------------------
 MRF49XA is a low-power fully integrated Sub-GHz RF transceiver using FSK baseband modulation. An ideal choice for low-cost, high-volume, low data rate (< 256 kbps), two-way, short range wireless applications. It can operate in the unlicensed 433, 868 and 915 MHz frequency bands. The transceiver is integrated with different Sleep modes and an internal wake-up timer to reduce the overall current consumption. The device operates in the low-voltage range of 2.2V to 3.8V, and in Sleep mode, it operates at a very low-current state, typically 0.3 $\mu$A.
 
-% TABLA CON DESCRIPCION********************************
+Further details about consumption on different modes and other features are given at table \ref{}.
+\begin{itemize}
+	\item Frequency bands of operation:
+	\item Temperature range of operation:	
+	\item RF dynamic range:
+	\item Data rate:
+	\item Power consumption: 
+\end{itemize}
 
 This transceiver is not IEEE 802.15.4 compatible since the number of channels it provides depend on the configured bit-rate, whereas the standard sets a fix number of channels. 
-
-
-%PINOUT***********************************************
 
 \figura{Bitmap/Capitulo4/mrf49xapinout}{width=.6\textwidth}{fig:cap4:mrf49xapinout}%
 {MRF49XA pin diagram}
 
+Figure \ref{fig:cap4:mrf49xapinout} shows the MRF49XA pin diagram, a full description of each pin is given here: 
+
+\begin{itemize}
+	\item 1. \emph{SDI}. Digital Input. Serial data input interface to MRF49XA (\ac{SPI} input signal).
+	\item 2. \emph{SCK}. Digital Input. Serial clock interface (\ac{SPI} clock).
+	\item 3. \emph{nCS}. Digital Input. Serial interface chip select (\ac{SPI} chip/device select).
+	\item 4. \emph{SDO}. Digital Output. Serial data output interface from MRF49XA (\ac{SPI} output signal).
+	\item 5. \emph{IRO}. Digital Output. Interrupt Request Output: Receiver generates an active-low interrupt request for the 					microcontroller on the determinated events. Some of this events are:
+	\begin{itemize}
+	\item Dataflow control registers notifications. 
+	\item Negative pulse on interrupt input pin.
+	\item Wake-up timer time-out.
+	\item Supply voltage below the preprogrammed value is detected.
+	\item Power-on Reset.
+	\end{itemize}
+
+	\item 6. \emph{FSK/DATA/FSEL}. Digital Input/Output. Frequency Shift Keying: Transmit FSK data input (with internal pull-up resistor of 133 k$\Omega$).
+Data: When configured as DATA, this pin functions as follows:
+- Data In: Manually modulates the data from the external host microcontroller when the internal TXBREG is disabled. If the TXBREG is enabled, this pin can be tied ``high'' or left unconnected. When reading the internal RXFIFOREG, this pin must be pulled ``low''.
+- Data Out: Receives data in conjunction with RCLKOUT when the internal FIFO is not used.
+FIFO Select: Selects the FIFO and the first bit appears on the next clock when reading the RXFIFOREG. The FSEL pin has an internal pull-up resistor. This pin must be ``high'' when the TX register is enabled. In order to achieve minimum current consumption, keep this pin ``high'' in Sleep mode.
+
+	\item 7. \emph{RCLKOUT/FCAP/FINT}. Digital Input/Output Recovery Clock Output:
+Provides the clock recovered from
+the incoming data if:
+
+- FTYPE bit of BBFCREG (see Ta b l e 2 - 1 0 ) is configured as digital filter and
+- FIFO is disabled by configuring FIFOEN bit of GENCREG (see Ta b l e 2 - 1 0)
+
+Filter Capacitor:
+This pin is a raw baseband data if the
+FTYPE bit of BBFCREG is conf
+igured as a configuration
+filter. The pin can be used by the host microcontroller for data
+recovery.
+
+FIFO Interrupt:
+When the internal FIFO, FIFOEN bit of
+GENCREG is enabled, this pin acts as a FIFO full interrupt,
+indicating that the FIFO has be
+en filled to its preprogrammed
+limit (see FFBC<3:0> bits in FIFORSTREG in Ta b l e 2 - 1 0)
+
+	\item 8. \emph{CLKOUT} Digital Output Clock Output: The transceiver's clock output can be used by the host microcontroller as a clock source. Refer Register 2 for more details
+
+	\item 9. \emph{RFXTL/EXTREF} Analog Input RF Crystal:
+This pin is connected to a 10 MHz series crystal
+or to an external oscillator reference. The crystal is used as a
+reference for the PLL which generates the local oscillator
+frequency. It is possible to ``pull'' the crystal to the accurate
+frequency by changing the load capacitor value.
+External Reference Input:
+An external reference input, such
+as an oscillator, can be connected as a reference source.
+Connect the oscillator through a 0.01 $\mu$F capacitor
+
+	\item 10. \emph{nRESET} Digital Input/Output Active-
+low hardware pin. This pin has an open-drain Reset
+output with internal pull-up and input buffer. Refer to
+Section 3.1, Reset
+for more details
+
+	\item 11. \emph{Vss} Ground Ground reference
+
+	\item 12. \emph{RFP} RF Input/Output Differential RF input/output (+)
+
+	\item 13. \emph{RFN} RF Input/Output Differential RF input/output (-)
+
+	\item 14. \emph{VDD} Power RF power supply. Bypass with a capacitor close to the pin. See Section 2.1, Power and Ground Pins
+for more details.
+
+	\item 15. \emph{RSSIO} Analog Input/Output Received Signal Strength. Indicator Output:
+The analog
+RSSI output is used to determi
+ne the signal strength. The
+response and settling time depends on the external filter
+capacitor. Typically, a 4-10 nF capacitor provides optimum
+response time for most applications.
+
+	\item 16. \emph{nINT/DIO} Digital Input/Output Interrupt:This pin can be configured as an active-low external interrupt to the device. If a logic '0' is applied to this
+pin, it causes the IRO
+pin to toggle, signaling an interrupt to
+the external microcontroller. Th
+e source of interrupt can be
+determined by reading the first four bits of STSREG (see Ta b l e 2 - 4). This pin can be used
+to wake-up the device from Sleep.
+Data Indicator Output:
+This pin can be configured to
+indicate valid data based on the actual internal settings.
+\end{itemize}
 
 The transmitter with a direct conversion architecture has a typical output power of +7 dBm. An internal transmit/receive switch combines the transmitter and receiver circuits into differential RFP and RFN pins. These pins are connected to the impedance matching circuitry (Balun) and to the external antenna connected to the device.
 
@@ -128,10 +222,8 @@ to clock the external controller. The transceiver is controlled via a 4-wire SPI
 \figura{Bitmap/Capitulo4/mrf49xainterface}{width=0.5\textwidth}{fig:cap4:mrf49xainterface}%
 {Microcontroller to MRF49XA interface}
 
-The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet, figure \ref{fig:cap4:transpurposedschematic}. The only difference between 434 Mhz and 868 Mhz version of the $\mu$Trans is impedance matching circuitry facing the external antenna. The components composing it are different for each version, values are specified at Figure \ref{fig:cap4:transpurposedschematic}. 
+The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet. The only difference between 434 Mhz and 868 Mhz version of the $\mu$Trans is the impedance matching circuitry facing the external antenna. The components composing it are different for each frequency band, values are specified at table ************************ \ref{fig:cap4:transpurposedschematic}. 
 
-\figura{Bitmap/Capitulo4/transpurposedschematic}{width=.9\textwidth}{fig:cap4:transpurposedschematic}%
-{MRF49XA Recommended implementation by Microchip}
 
 %-------------------------------------------------------------------
 \subsection{Schematics}
@@ -202,11 +294,85 @@ Power supply will be able to take place through three ways, a $\mu$USB, a block 
 \subsubsection{Pinout}
 %-------------------------------------------------------------------
 
+\begin{table}[htbp]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+PIN & TIPO & TIPO 2PERIFERICO & USO \\ \hline
+1 & RE5 & MiWi & CS* \\ \hline
+2 & RE6 & MiWi & Wake \\ \hline
+3 & RE7 & MiWi & RST* \\ \hline
+4 & SCK2A & U2BTX/RG6WIFI & sck2 \\ \hline
+5 & SDI2A & U2ARX/RG7WIFI & sdo2 \\ \hline
+6 & SDO2A & U2ATX/RG8WIFI & sdi2 \\ \hline
+7 & MCLR* &  & RESET \\ \hline
+8 & SS2A* & U2BRX/RG9 &  \\ \hline
+9 & VSS &  & TIERRA \\ \hline
+10 & VDD &  & ALIMENTACIÓN \\ \hline
+11 & Vbuson & RB5USB otg & Control Bomba de Carga \\ \hline
+12 & RB4 &  & LED \\ \hline
+13 & RB3 &  & LED \\ \hline
+14 & RB2 &  & LED \\ \hline
+15 & PGEC1 & RB1 & Programador \\ \hline
+16 & PGED1 & RB0 & Programador \\ \hline
+17 & RB6/AN6 & PGEC2 & libre \\ \hline
+18 & RB7/AN7 & PGED2 & libre \\ \hline
+19 & AVDD &  & ALIMENTACIÓN \\ \hline
+20 & AVSS &  & TIERRA \\ \hline
+21 & RB8/AN8 & SS3A* & libre \\ \hline
+22 & RB9/AN9 &  & libre \\ \hline
+23 & TMS & RB10 & jtag \\ \hline
+24 & TDO & RB11 & jtag \\ \hline
+25 & VSS &  & TIERRA \\ \hline
+26 & VDD &  & ALIMENTACIÓN \\ \hline
+27 & TCK & RB12 & jtag \\ \hline
+28 & TDI & RB13 & jtag \\ \hline
+29 & SCK3A & RB14MiWi & sck3 \\ \hline
+30 & RB15 & TULIO & RST* \\ \hline
+31 & SDI3A & RF4MiWi & sdo3 \\ \hline
+32 & SDO3A & RF5MiWi & sdi3 \\ \hline
+33 & USBID & RF3USB otg &  \\ \hline
+34 & Vbus & USB otg &  \\ \hline
+35 & Vusb & USB otg & Conexión a VCC con Condensador \\ \hline
+36 & D- & RG3USB otg &  \\ \hline
+37 & D+ & RG2USB otg &  \\ \hline
+38 & VDD &  & ALIMENTACIÓN \\ \hline
+39 & OSC1 & RC12 & Cristal de cuarzo 8mhz \\ \hline
+40 & OSC2 & RC15 & Cristal de cuarzo 8mhz \\ \hline
+41 & VSS &  & TIERRA \\ \hline
+42 & INT1 & RD8/RTCCWiFi & int* \\ \hline
+43 & U1BRX & INT2/SS1A*/RD9RS-232 & UART1B RS-232 RX \\ \hline
+44 & INT3 & RD10MiWi & int \\ \hline
+45 & RD11 & INT4TULIO & interrupción \\ \hline
+46 & INT0 & RD0 &  \\ \hline
+47 & SOSCI & RC13 & Cristal de cuarzo 32kHz \\ \hline
+48 & SOSCO & RC14/T1CK & Cristal de cuarzo 32kHz \\ \hline
+49 & U1BTX & RD1/SCK1ARS-232 & UART1B RS-232 TX \\ \hline
+50 & U1ARX & RD2/SDI1ATULIO & UART1A RX \\ \hline
+51 & U1ATX & RD3/SDO1ATULIO & UART1A TX \\ \hline
+52 & RD4 &  & PULSADOR \\ \hline
+53 & RD5 &  & PULSADOR \\ \hline
+54 & RD6 &  &  \\ \hline
+55 & RD7 &  &  \\ \hline
+56 & VDDcore &  & VCC, con dos condensadores \\ \hline
+57 & VDD &  & ALIMENTACIÓN \\ \hline
+58 & RF0 &  &  \\ \hline
+59 & RF1 &  &  \\ \hline
+60 & RE0 &  & LED \\ \hline
+61 & RE1 & WIFI & CS* \\ \hline
+62 & RE2 & WIFI & Hibernate \\ \hline
+63 & RE3 & WIFI & WP* \\ \hline
+64 & RE4 & WIFI & RST* \\ \hline
+\end{tabular}
+\caption{a
+\label{a}}
+\end{table}
+
+
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo4/434}{width=0.9\textwidth}{fig:cap4:434schematics}%
+\figura{Bitmap/Capitulo4/434}{width=0.7\textwidth}{fig:cap4:434schematics}%
 {Radio Interface system schematic}
 
 

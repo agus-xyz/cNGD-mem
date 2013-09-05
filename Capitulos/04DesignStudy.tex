@@ -34,25 +34,15 @@ Detailled characterstics of any chosen component, including microcontroller, rad
 
 Attending to the already described requirements and the conclusions obtained from the \ac{FCD} review, the following decisions have been taken before proceeding with the design process.
 
-As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an aproach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
+The whole system is thought as teaser. Consisting on different fitteable modules giving flexibility to the scheme. Main module, \ac{CNGD}, is cornerstone. \ac{CNGD} suposes the main platform of the design, hosting the power supply and control system, possibities to embbed up to three \ac{RI}s, a control core unit, and other interfacing possibilites studied further on. As part of this modular design, the interfaces \ac{CNGD} hosts open possibilities to new extension board implementations through a pair of headers. These attachable boards, following the popular way these such of devices are called, will be referred as shields.  
 
-Core unit is a PIC32675F256L, a midrange microcontroller from the mentioned family. Being the humblest of the options meeting memory performance and peripherals requirements. On the other hand, its 100 pins allow a better access of the peripherals provided.
+Offering the chance of embbedding up to three \ac{RI}s, the device could access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frecuencies in our design are 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firwmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}s.
 
-The device can access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frecuencies will be 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firwmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}.
+The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$ or MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. It is open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$\footnote{A very popular wireless IEEE 802.15.4 compatible protocol employed at \ac{WSNs}.} is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee$^{TM}$ takes 20-40 KB. MiWi$^{TM}$ is free of cost and it does not require for licenses adquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products. The global design becomes simpler and more omogeneus sharing a common communication protocol for all the \ac{RI}s.
 
-The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$ or MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. It is open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$ is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee$^{TM}$ takes 20-40 KB. MiWi$^{TM}$ is free of cost and it does not require for licenses adquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products.
+Since there were not found compatible and suitable size commercial options for 868 MHz and 434 MHZ \ac{RI}s, a custom full implementation of these interfaces was required. $\mu$Trans434/868 from now on. These \ac{RI}s are based on the MRF49XA Microchip transceiver and its full description is taken at section \ref{cap4:sec:transceivers}. Option at 2.4 GHz is a MRF24J40MA module.
 
-Since there were not compatible and suitable size commercial options for 868 MHz and 434 MHZ \ac{RI}s, a custom full implementation of these interfaces was required. These \ac{RI} are based on the MRF49XA Microchip transceiver, whereas option at 2.4 GHz is a MRF***************************************************.
-
-Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilites to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to switch the power supply to these modules. 
-  
-The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular aplications. 
-
-For this work it was designed a simple serial communication complement that links one \ac{UART} and a classic rs232 interface over the so-called rs232SHIELD. This interface would facilitate the software development since the firmware just allowed debugging through the \ac{UART} at first. 
-A battery charger Ni-Mh and Ni-Cd was also designed and implemented as a utility for portability options. The device was called as chargerSHIELD. 
-
-\figura{Bitmap/Capitulo4/modelcngd}{width=.7\textwidth}{fig:cap4:modelcngd}%
-{Architecture Model of the cNGD}
+For this work a pair of shields were designed. A simple serial communication complement that links one \ac{UART} and a classic rs232 interface over the so-called rs232SHIELD. This interface would facilitate the software development since the firmware just allowed debugging through the \ac{UART} at first and it is described in section \ref{cap4:sec:rs232shield}. A battery charger Ni-Mh and Ni-Cd was also designed and implemented as a utility for portability options. The device was called as chargerSHIELD. 
 
 %-------------------------------------------------------------------
 \section{Altium Designer}
@@ -60,8 +50,7 @@ A battery charger Ni-Mh and Ni-Cd was also designed and implemented as a utility
 \label{cap4:sec:altiumDesigner}
 %-------------------------------------------------------------------
 
-For the whole designing task, a \ac{EDA}\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software will be use. Altium Designer, being one of the most important \ac{EDA} softwares, is commonly used by researchers at \ac{LSI}. All the \ac{CNGD} design process is carried through Altium Designer on its version 
-v.13********************** MIRAR. 
+For the whole designing task, a \ac{EDA}\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software will be use. Altium Designer, being one of the most important \ac{EDA} softwares, is commonly used by researchers at \ac{LSI}. All the \ac{CNGD} design process is carried through Altium Designer on its version 10. 
 
 Altium Designer is software package for printed circuit board, \ac{FPGA} and embedded software design, and associated library and release management automation. It is developed and marketed by Altium Limited of Australia.
 
@@ -94,16 +83,85 @@ For the accomplish the full design of the platform over Altium Designer, a compo
 As said, the library includes models from all those components needed but not found as well as modifications of existing models in order tu suit the design criteria. Every contained model embbeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and proper hardware fitting checkings purposes.
 
 ANEXAR ¿libreria? **********************************************
+
+
+%-------------------------------------------------------------------
+\section{Transceivers - $\mu$Trans 434/868}
+%-------------------------------------------------------------------
+\label{cap4:sec:transceivers}
+%-------------------------------------------------------------------
+
+The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board**********REF, whose picture is seen in. This board is a demonstration and development daughter board for the MRF49XA ISM Band Sub-GHz RF Transceiver. The board can plug into a fitteable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
+
+\figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap4:pictail}%
+{MRF49XA PICtail$^{TM}$ Daughter Board}
+
+No commercial \ac{RI}s were found for based on the MRF49XA transceiver showing a reduced size. The implementation of a MRF49XA-based \ac{RI} module, suitable on size and features for our desing was required.  
+
+Previous to the \ac{CNGD} designing, which will embbeds the $\mu$Trans 434/868, the design of these \ac{RI}s was needed.
+
+%-------------------------------------------------------------------
+\subsection{Description}
+%-------------------------------------------------------------------
+MRF49XA is a low-power fully integrated Sub-GHz RF transceiver using FSK baseband modulation. An ideal choice for low-cost, high-volume, low data rate (< 256 kbps), two-way, short range wireless applications. It can operate in the unlicensed 433, 868 and 915 MHz frequency bands. The transceiver is integrated with different Sleep modes and an internal wake-up timer to reduce the overall current consumption. The device operates in the low-voltage range of 2.2V to 3.8V, and in Sleep mode, it operates at a very low-current state, typically 0.3 $\mu$A.
+
+% TABLA CON DESCRIPCION********************************
+
+This transceiver is not IEEE 802.15.4 compatible since the number of channels it provides depend on the configured bit-rate, whereas the standard sets a fix number of channels. 
+
+
+%PINOUT***********************************************
+
+\figura{Bitmap/Capitulo4/mrf49xapinout}{width=.6\textwidth}{fig:cap4:mrf49xapinout}%
+{MRF49XA pin diagram}
+
+
+The transmitter with a direct conversion architecture has a typical output power of +7 dBm. An internal transmit/receive switch combines the transmitter and receiver circuits into differential RFP and RFN pins. These pins are connected to the impedance matching circuitry (Balun) and to the external antenna connected to the device.
+
+The quality of the data is checked or validated using the RSSI and DQI blocks built into the transceiver. Data is buffered in transmitter registers and receiver FIFOs. The Automatic Frequency Control feature allows the use of a low-accuracy and low-cost crystal. The CLKOUT is used
+to clock the external controller. The transceiver is controlled via a 4-wire SPI, interrupt (INT/DIO and IRO), FSK/DATA/FSEL, RCLKOUT/FCAP/FINT and RESET pins. The interface between the microcontroller and MRF49XA is shown in Figure \ref{fig:cap4:mrf49xainterface}.
+
+
+\figura{Bitmap/Capitulo4/mrf49xainterface}{width=0.5\textwidth}{fig:cap4:mrf49xainterface}%
+{Microcontroller to MRF49XA interface}
+
+The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet, figure \ref{fig:cap4:transpurposedschematic}. The only difference between 434 Mhz and 868 Mhz version of the $\mu$Trans is impedance matching circuitry facing the external antenna. The components composing it are different for each version, values are specified at Figure \ref{fig:cap4:transpurposedschematic}. 
+
+\figura{Bitmap/Capitulo4/transpurposedschematic}{width=.9\textwidth}{fig:cap4:transpurposedschematic}%
+{MRF49XA Recommended implementation by Microchip}
+
+%-------------------------------------------------------------------
+\subsection{Schematics}
+%-------------------------------------------------------------------
+
+\figura{Vectorial/Todo}{width=.7\textwidth}{fig:cap4:mtransschematic}%
+{$\mu$Trans 434/868 schematic}
+
+\figura{Vectorial/Todo}{width=.4\textwidth}{fig:cap4:mtransmodel}%
+{$\mu$Trans 434/868 component model for use}
+
 %-------------------------------------------------------------------
 \section{Main Board - cognitiveNextGenerationDevice}
 %-------------------------------------------------------------------
 \label{cap4:sec:cNGD}
 %-------------------------------------------------------------------
 
+\figura{Bitmap/Capitulo4/modelcngd}{width=.7\textwidth}{fig:cap4:modelcngd}%
+{Architecture Model of the cNGD}
+
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
 
+As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an aproach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
+
+Core unit is a PIC32675F256L, a midrange microcontroller from the mentioned family. Being the humblest of the options meeting memory performance and peripherals requirements. On the other hand, its 100 pins allow a better access of the peripherals provided.
+
+
+The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular aplications.
+
+Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilites to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to switch the power supply to these modules. 
+   
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
@@ -111,12 +169,20 @@ ANEXAR ¿libreria? **********************************************
 \figura{Bitmap/Capitulo4/schematic}{width=1.1\textwidth}{fig:cap4:gneralschematic}%
 {cNGD general schematic}
 
+\figura{Bitmap/Capitulo4/MCU}{width=1.1\textwidth}{fig:cap4:mcuschematics}%
+{Microcontroller specific schematic}
+
+\figura{Bitmap/Capitulo4/powersupply}{width=1.1\textwidth}{fig:cap4:powersupplyschematic}%
+{Power supply system schematic}
+
+\figura{Bitmap/Capitulo4/headers}{width=1.1\textwidth}{fig:cap4:headerschematic}%
+{Expansion header system schematic}
+
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo4/powersupply}{width=1.1\textwidth}{fig:cap4:powersupplyschematic}%
-{Power supply system schematic}
+
 
 %-------------------------------------------------------------------
 \subsubsection{Battery}
@@ -126,8 +192,6 @@ ANEXAR ¿libreria? **********************************************
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo4/MCU}{width=1.1\textwidth}{fig:cap4:mcuschematics}%
-{Microcontroller specific schematic}
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
@@ -159,8 +223,7 @@ The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topo
 %-------------------------------------------------------------------
 
 
-\figura{Bitmap/Capitulo4/headers}{width=1.1\textwidth}{fig:cap4:headerschematic}%
-{Expansion header system schematic}
+
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
@@ -168,20 +231,6 @@ The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topo
 
 %-------------------------------------------------------------------
 \subsubsection{Considerations}
-%-------------------------------------------------------------------
-
-%-------------------------------------------------------------------
-\section{Transceivers - $\mu$Trans 434/868}
-%-------------------------------------------------------------------
-\label{cap4:sec:transceivers}
-%-------------------------------------------------------------------
-
-%-------------------------------------------------------------------
-\subsection{Description}
-%-------------------------------------------------------------------
-
-%-------------------------------------------------------------------
-\subsection{Schematics}
 %-------------------------------------------------------------------
 
 %-------------------------------------------------------------------

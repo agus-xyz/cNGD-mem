@@ -175,3 +175,5 @@
 @entry{DQI, , \emph{Data Quality Indicator}}
 
 @entry{ED, , \emph{Energy Detect}}
+
+@entry{SPST, , \emph{Single pole, single throw}}

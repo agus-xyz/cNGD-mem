@@ -253,7 +253,11 @@ Power supply will be able to take place through three ways, a $\mu$USB, a block 
 %-------------------------------------------------------------------
 \subsubsection{Battery}
 %-------------------------------------------------------------------
+%PORQUE QUEREMOS QUE CARACTERISTICAS
 
+%COMPARATIVA
+
+%SOLUCION
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
@@ -262,7 +266,6 @@ Power supply will be able to take place through three ways, a $\mu$USB, a block 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
 %-------------------------------------------------------------------
-
 
 {\footnotesize
 \begin{longtable}{l l l l l}
@@ -398,8 +401,10 @@ PIN & TIPO & TIPO 2PERIFERICO & USO \\
 %-------------------------------------------------------------------
 
 \figura{Bitmap/Capitulo4/434}{width=0.7\textwidth}{fig:cap4:434schematics}%
-{Radio Interface system schematic}
+{434/868 MHz Radio Interface systems schematic}
 
+\figura{Vectorial/Todo}{width=0.7\textwidth}{fig:cap4:2.4schematics}%
+{2.4 GHz Radio Interface systems schematic}
 
 The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
@@ -409,40 +414,86 @@ The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topo
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
 %-------------------------------------------------------------------
+The power control to the \ac{RI}s is based on the ADG701**** REF. This is a  CMOS \ac{SPST} switch
+
+The ADG701/ADG702 are monolithic CMOS SPST switches.
+These switches are designed on an advanced submicron process
+that provides low power dissipation yet high switching speed,
+low on resistance, and low leakage currents. In addition, -3 dB
+bandwidths of greater than 200 MHz can be achieved.
+The ADG701/ADG702 can operate from a single 1.8 V to 5.5 V
+supply, making it ideal for use in battery-powered instruments
+and with the new generation of DACs and ADCs from Analog
+
+
+%FEATURES
+
+
+FEATURES
+1.8 V to 5.5 V single supply
+2 ohm (typical) on resistance
+Low on resistance flatness
+-3 dB bandwidth > 200 MHz
+Rail-to-rail operation
+Fast switching times
+t
+ON
+18 ns
+t
+OFF
+12 ns
+Typical power consumption < 0.01 microW 
+
+% PIN DIAGRAM Y DESCRIPCION
+\figura{Bitmap/Capitulo4/adg701}{width=.3\textwidth}{fig:cap4:adg701}%
+{ADG701 pin diagram.}
 
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
+The microcontroller includes possibilities to properlly place quartz crystals in parallel with internal amplifiers and a pair of suitable capacitors in such way they work as oscillators. The oscillator signal is then connected to the internal \ac{PLL} to obtain the desired frequency. Schematic can be seen at Figure \ref{}**********.
 
+\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:oscillators}%
+{PIC32MX675F256L oscillator input.}
+
+Primary oscillator is 8 MHz quartz crystal used as system reference clock. The respective \ac{PLL} is configured to raise this frequency up to 80 MHz. It exists the possibility of replacing the functionality of this clock for a internal one, but stability and accuracy can be affected.
+
+% CAPACITORS (CUADERNITO)
+
+Second oscillator, a 32.728 KHz, supposes a low-power clock for real time clocking. It enables nodes synchronization, which is fundamental for power-saving modes.
+
+% CAPACITORS (CUAD)
 
 %-------------------------------------------------------------------
 \subsection{Expansion Headers}
 %-------------------------------------------------------------------
 
+Figure \ref{fig:cap4:headerschematic} shows the schematic design for this module. Basically, two headers, containing 20 pins each, enable access to unused and useful peripherals the microcontroller includes. This offer possibilities to future implementations and expansions for the node by simply attaching a device through these headers and carryng through the corresponding firmware adaptations.
 
-
+Some of the available peripherals are ***************************. For a pin to pin description of the headers, reffer to Table \ref{tab:cap4:headerspinout}.
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
 %-------------------------------------------------------------------
 
 \begin{center}
-\begin{longtable}{|l|l|l|l|l|}
+{\footnotesize
+\begin{longtable}{l l l l l}
 
 % aquí añadimos el encabezado de la primera hoja.
 \hline
-PIN & TIPO & TIPO 2PERIFERICO & USO \\
+PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \hline \hline
 \endfirsthead
 
 % aquí añadimos el encabezado del resto de hojas.
 \hline
-PIN & TIPO & TIPO 2PERIFERICO & USO \\
+PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \hline \hline
 \endhead
 
 % aquí añadimos el fondo de todas las hojas, excepto de la última.
-\multicolumn{4}{c}{Follows on next page.}
+\multicolumn{5}{c}{Follows on next page.}
 \endfoot
 
 % aquí añadimos el fondo de la última hoja.
@@ -492,7 +543,7 @@ PIN & TIPO & TIPO 2PERIFERICO & USO \\
  % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 \caption{Headers description pins use description.}
 \label{tab:cap4:headerspinout}
-\end{longtable}
+\end{longtable}}
 \end{center}
 
 %-------------------------------------------------------------------

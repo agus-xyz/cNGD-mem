@@ -165,3 +165,13 @@
 @entry{GPIO, ,\emph{General Purpose Input-Output}}
 
 @entry{MCLR, ,\emph{Master Clear}}
+
+@entry{PLL, , \emph{Phase-locked loop}}
+
+@entry{FIFO, , \emph{First-in First-out}}
+
+@entry{FHSS, , \emph{Frequency Hopping Spread Spectrum}}
+
+@entry{DQI, , \emph{Data Quality Indicator}}
+
+@entry{ED, , \emph{Energy Detect}}

@@ -177,3 +177,10 @@
 @entry{ED, , \emph{Energy Detect}}
 
 @entry{SPST, , \emph{Single pole, single throw}}
+
+@entry{CMOS, , \emph{Complementary metal oxide semiconductor}}
+
+@entry{NICD, Ni-Cd, \emph{Nickel-cadmium}}
+
+@entry{NIMH, Ni-Mh, \emph{Nickel-metal hydride}}
+

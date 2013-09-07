@@ -247,15 +247,82 @@ Power supply will be able to take place through three ways, a $\mu$USB, a block 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
 %-------------------------------------------------------------------
+Power supply module is in charge of providing proper voltage anc current to the \ac{CNGD}. Chosen output voltage is 3.3V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic} shows a schematic of this module.
+
+For external wired options, the input voltage is 5V. This value is widely used to supply digital circuits and it is easy to access to 5 V sources. Moreover, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5V to supply the device. This 5V are lowered to 3.3V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just changing a jumper location.
+
+For battery options, the module includes a DC connector. This connector accepts from 3.3V up to 3.6V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or portable.
+
+A green led indicates that power is applied into the circuit, on the other hand, a led red indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their origin input.       
+
+The employed synchronous buck regulator is a MCP1603*****REF chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
+components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
+
+\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap4:mcp1603}%
+{MCP1603 buck regulator configuration}
+
+It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions, Table \ref{tab:cap4:maxconsumption}.
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline \\
+\hline \\
+
+\end{tabular}
+}
+\caption{Maximum estimated power consumption of the platform.%
+         \label{tab:cap4:maxconsumption}}
+\end{table} 
 
 
 
 %-------------------------------------------------------------------
 \subsubsection{Battery}
 %-------------------------------------------------------------------
-%PORQUE QUEREMOS QUE CARACTERISTICAS
+In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer some days autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
 
-%COMPARATIVA
+Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Active and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated in \ref{}****.
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline
+\end{tabular}
+}
+\caption{Estimated currents and timmings for Active and Sleep operation modes.%
+         \label{tab:cap4:powerstimatedvalues}}
+\end{table} 
+
+%Capacidad estimada......................................
+
+Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other options, not described at the table, have been directly discarded for showing unsutiable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or specific high capacity kind of batteries\footnote{For instance, those used in photography} whose price is extremely high. Possible options considered are several \ac{NIMH}-based battery sizes and lithium-based. 
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline
+\end{tabular}
+}
+\caption{.%
+         \label{tab:cap4:batcomparison}}
+\end{table} 
+
+
+Ni-Mh AAA
+Ni-Mh AA
+Ni-Mh specific battery
+LI-ION
+LI-PO
 
 %SOLUCION
 %-------------------------------------------------------------------
@@ -414,53 +481,38 @@ The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topo
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
 %-------------------------------------------------------------------
-The power control to the \ac{RI}s is based on the ADG701**** REF. This is a  CMOS \ac{SPST} switch
+The designed system allows enabling/disabling the power supply to the \ac{RI}s. This way, any \ac{RI} can be completely switched off by the running application. Cutting down all possible power consumption that unused \ac{RI}s could have by, for instance, running clocks.
 
-The ADG701/ADG702 are monolithic CMOS SPST switches.
-These switches are designed on an advanced submicron process
-that provides low power dissipation yet high switching speed,
-low on resistance, and low leakage currents. In addition, -3 dB
-bandwidths of greater than 200 MHz can be achieved.
-The ADG701/ADG702 can operate from a single 1.8 V to 5.5 V
-supply, making it ideal for use in battery-powered instruments
-and with the new generation of DACs and ADCs from Analog
+The power control to the \ac{RI}s is based on the ADG701**** REF. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on resistance and low leakage currents. It can operate from a single 1.8 V to 5.5 V supply, making it ideal for use in battery-powered instruments.
 
+Some of the features of this component are:
+\begin{itemize}
+	\item 2 ohm (typical) on resistance.
+	\item Fast switching times: tON = 18 ns, tOFF 12 ns.
+	\item Typical power consumption < 0.01 $\mu$W. 
+\end{itemize}
 
-%FEATURES
-
-
-FEATURES
-1.8 V to 5.5 V single supply
-2 ohm (typical) on resistance
-Low on resistance flatness
--3 dB bandwidth > 200 MHz
-Rail-to-rail operation
-Fast switching times
-t
-ON
-18 ns
-t
-OFF
-12 ns
-Typical power consumption < 0.01 microW 
-
-% PIN DIAGRAM Y DESCRIPCION
 \figura{Bitmap/Capitulo4/adg701}{width=.3\textwidth}{fig:cap4:adg701}%
 {ADG701 pin diagram.}
+
+Pin 4 (IN) is a digital input where the control logic signal is placed. A logic '1' will make pins 1 (D - drain) and  2 (S - source) shorted, a logic '0' will open the switch. Pins 1 and 2 can be either inputs or outputs. Pin 5 (NC) must not be connected.
 
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
 The microcontroller includes possibilities to properlly place quartz crystals in parallel with internal amplifiers and a pair of suitable capacitors in such way they work as oscillators. The oscillator signal is then connected to the internal \ac{PLL} to obtain the desired frequency. Schematic can be seen at Figure \ref{}**********.
 
-\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:oscillators}%
-{PIC32MX675F256L oscillator input.}
-
 Primary oscillator is 8 MHz quartz crystal used as system reference clock. The respective \ac{PLL} is configured to raise this frequency up to 80 MHz. It exists the possibility of replacing the functionality of this clock for a internal one, but stability and accuracy can be affected.
+
+\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:prioscillators}%
+{PIC32MX675F256L primary oscillator input.}
 
 % CAPACITORS (CUADERNITO)
 
 Second oscillator, a 32.728 KHz, supposes a low-power clock for real time clocking. It enables nodes synchronization, which is fundamental for power-saving modes.
+
+\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:secoscillators}%
+{PIC32MX675F256L second oscillator input.}
 
 % CAPACITORS (CUAD)
 
@@ -471,6 +523,8 @@ Second oscillator, a 32.728 KHz, supposes a low-power clock for real time clocki
 Figure \ref{fig:cap4:headerschematic} shows the schematic design for this module. Basically, two headers, containing 20 pins each, enable access to unused and useful peripherals the microcontroller includes. This offer possibilities to future implementations and expansions for the node by simply attaching a device through these headers and carryng through the corresponding firmware adaptations.
 
 Some of the available peripherals are ***************************. For a pin to pin description of the headers, reffer to Table \ref{tab:cap4:headerspinout}.
+
+Possible attachable implementations are 802.11 interfaces, data adquisition modules, external memories, extra \ac{RI}s...
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
@@ -500,46 +554,46 @@ PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \endlastfoot
 
 % aquí añadimos el cuerpo de la tabla.
-1 & RE5 & MiWi & CS* \\ \hline
-2 & RE6 & MiWi & Wake \\ \hline
-3 & RE7 & MiWi & RST* \\ \hline
-4 & SCK2A & U2BTX/RG6WIFI & sck2 \\ \hline
-5 & SDI2A & U2ARX/RG7WIFI & sdo2 \\ \hline
-6 & SDO2A & U2ATX/RG8WIFI & sdi2 \\ \hline
-7 & MCLR* &  & RESET \\ \hline
-8 & SS2A* & U2BRX/RG9 &  \\ \hline
-9 & VSS &  & TIERRA \\ \hline
-10 & VDD &  & ALIMENTACIÓN \\ \hline
-11 & Vbuson & RB5USB otg & Control Bomba de Carga \\ \hline
-12 & RB4 &  & LED \\ \hline
-13 & RB3 &  & LED \\ \hline
-14 & RB2 &  & LED \\ \hline
-15 & PGEC1 & RB1 & Programador \\ \hline
-16 & PGED1 & RB0 & Programador \\ \hline
-17 & RB6/AN6 & PGEC2 & libre \\ \hline
-18 & RB7/AN7 & PGED2 & libre \\ \hline
-19 & AVDD &  & ALIMENTACIÓN \\ \hline
-20 & AVSS &  & TIERRA \\ \hline
-21 & RB8/AN8 & SS3A* & libre \\ \hline
-22 & RB9/AN9 &  & libre \\ \hline
-23 & TMS & RB10 & jtag \\ \hline
-24 & TDO & RB11 & jtag \\ \hline
-25 & VSS &  & TIERRA \\ \hline
-26 & VDD &  & ALIMENTACIÓN \\ \hline
-27 & TCK & RB12 & jtag \\ \hline
-28 & TDI & RB13 & jtag \\ \hline
-29 & SCK3A & RB14MiWi & sck3 \\ \hline
-30 & RB15 & TULIO & RST* \\ \hline
-31 & SDI3A & RF4MiWi & sdo3 \\ \hline
-32 & SDO3A & RF5MiWi & sdi3 \\ \hline
-33 & USBID & RF3USB otg &  \\ \hline
-34 & Vbus & USB otg &  \\ \hline
-35 & Vusb & USB otg & Conexión a VCC con Condensador \\ \hline
-36 & D- & RG3USB otg &  \\ \hline
-37 & D+ & RG2USB otg &  \\ \hline
-38 & VDD &  & ALIMENTACIÓN \\ \hline
-39 & OSC1 & RC12 & Cristal de cuarzo 8mhz \\ \hline
-40 & OSC2 & RC15 & Cristal de cuarzo 8mhz \\ \hline
+00 &  \\ \hline
+01 &  \\ \hline
+02 & \\ \hline
+03 & & & \\ \hline
+04 &  \\ \hline
+05 &  \\ \hline
+06 &  \\ \hline
+07 & \\ \hline
+08 &   \\ \hline
+09 & \\ \hline
+10 &  \\ \hline
+11 &  \\ \hline
+12 &  \\ \hline
+13 &  \\ \hline
+14 &  & VCC &  \\ \hline
+15 &  & GND &  \\ \hline
+16 &  \\ \hline
+17 & \\ \hline
+18 &  \\ \hline
+19 &  \\ \hline
+20 &  \\ \hline
+21 &  \\ \hline
+22 &  \\ \hline
+23 &  \\ \hline
+24 &  & VCC &\\ \hline
+25 &  \\ \hline
+26 &  \\ \hline
+27 &  \\ \hline
+28 &  & VCC &\\ \hline
+29 &  \\ \hline
+30 &  \\ \hline
+31 &  & GND &\\ \hline
+32 & \\ \hline
+33 &   \\ \hline
+34 &  & GND & \\ \hline
+35 & \\ \hline
+36 &   \\ \hline
+37 &   \\ \hline
+38 & \\ \hline
+39 &  \\ \hline
  % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 \caption{Headers description pins use description.}
 \label{tab:cap4:headerspinout}
@@ -547,8 +601,16 @@ PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \end{center}
 
 %-------------------------------------------------------------------
+\subsection{PGE}
+%-------------------------------------------------------------------
+%-------------------------------------------------------------------
 \subsubsection{Considerations}
 %-------------------------------------------------------------------
+Figure \ref{}******* contains the schematic for the programmer module, PGE. This module allows the programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontoller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal.
+
+\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:pge}%
+{PGE interface.}
+
 
 %-------------------------------------------------------------------
 \section{Serial Communication Board - rs232SHIELD}

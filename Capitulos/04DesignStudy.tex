@@ -218,15 +218,17 @@ Freq & C1 & L1 & L2 & L3 & C5 & C6 & C7 \\ \hline
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
+As it was said, \ac{CNGD} suposes the main part of the design, it hosts main capabilities for computation, power supply, and connectivity for the platform. It has being designed seeking simplicity and functionality.
+
+The computation unit is located at the microcontroller, taking control over the rest of modules and running the software. This microcontroller can be programmed through its PGE port thanks to a PGE module that interfaces it.  
 
 As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an aproach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
 
-Core unit is a PIC32675F256L, a midrange microcontroller from the mentioned family. Being the humblest of the options meeting memory performance and peripherals requirements. On the other hand, its 100 pins allow a better access of the peripherals provided.
+\ac{CNGD} has been designed to attach up to three \ac{RI}s. Communication and control over these \ac{RI}s is made through \ac{SPI}s and a few more control signal described further on. 
 
+Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilites to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to control the power supply to these modules. 
 
-The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular aplications.
-
-Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilites to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to switch the power supply to these modules. 
+The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular aplications. In addition, three leds and two push buttons give chance to the user to, somewhat, interact with the platform if required. 
    
 %-------------------------------------------------------------------
 \subsection{Schematics}
@@ -244,91 +246,37 @@ Power supply will be able to take place through three ways, a $\mu$USB, a block 
 \figura{Bitmap/Capitulo4/headers}{width=1.1\textwidth}{fig:cap4:headerschematic}%
 {Expansion header system schematic}
 
-%-------------------------------------------------------------------
-\subsection{Power Supply System}
-%-------------------------------------------------------------------
-Power supply module is in charge of providing proper voltage anc current to the \ac{CNGD}. Chosen output voltage is 3.3V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic} shows a schematic of this module.
 
-For external wired options, the input voltage is 5V. This value is widely used to supply digital circuits and it is easy to access to 5 V sources. Moreover, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5V to supply the device. This 5V are lowered to 3.3V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just changing a jumper location.
-
-For battery options, the module includes a DC connector. This connector accepts from 3.3V up to 3.6V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or portable.
-
-A green led indicates that power is applied into the circuit, on the other hand, a led red indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their origin input.       
-
-The employed synchronous buck regulator is a MCP1603*****REF chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
-components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
-
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap4:mcp1603}%
-{MCP1603 buck regulator configuration}
-
-It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions, Table \ref{tab:cap4:maxconsumption}.
-
-\begin{table}[h]
-\centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c |||}
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-
-\end{tabular}
-}
-\caption{Maximum estimated power consumption of the platform.%
-         \label{tab:cap4:maxconsumption}}
-\end{table} 
-
-
-
-%-------------------------------------------------------------------
-\subsubsection{Battery}
-%-------------------------------------------------------------------
-In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer some days autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
-
-Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Active and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated in \ref{}****.
-
-\begin{table}[h]
-\centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c |||}
-\hline \\
-\hline \\
-\hline
-\end{tabular}
-}
-\caption{Estimated currents and timmings for Active and Sleep operation modes.%
-         \label{tab:cap4:powerstimatedvalues}}
-\end{table} 
-
-%Capacidad estimada......................................
-
-Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other options, not described at the table, have been directly discarded for showing unsutiable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or specific high capacity kind of batteries\footnote{For instance, those used in photography} whose price is extremely high. Possible options considered are several \ac{NIMH}-based battery sizes and lithium-based. 
-
-\begin{table}[h]
-\centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c |||}
-\hline \\
-\hline \\
-\hline
-\end{tabular}
-}
-\caption{.%
-         \label{tab:cap4:batcomparison}}
-\end{table} 
-
-
-Ni-Mh AAA
-Ni-Mh AA
-Ni-Mh specific battery
-LI-ION
-LI-PO
-
-%SOLUCION
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
+Core unit is a PIC32MX675F256L, a midrange 100-pin microcontroller from the mentioned 32-bit PIC family. Being the simplest of the options meeting memory performance and peripherals minimum requirements (Table \ref{cap3:tab:micros}). On the other hand, its 100 pins allow a better access of the peripherals provided. A larger memory version of this, PIC32MX675F512L, is pin compatible to the firstly mentioned. This fact gives the chance to swap among these two \ac{MCU}s if larger memory was needed. Main thecnical features follow:
 
+\begin{itemize}
+	\item Operating Voltage Range: 2.3V to 3.6V.
+	\item 256/512 KB Flash (PIC32MX675F256L/PIC32MX675F512L). 64KB RAM.
+	\item RUN, IDLE, and SLEEP modes. Multiple switchable clock modes for each power mode. Maximum speed is 80 MHz.
+	\item Serial Communication Modules allow flexible UART/SPI/I2C configuration. X***** \ac{UART}s, 4 \ac{SPI}s, and 5 {I2C}s included.  
+	\item USB 2.0 On-The-Go Peripheral with integrated PHY.
+	\item 10/100 Ethernet MAC with MII/RMII Interfaces. 
+	\item 2 wire programming and debugging interface.
+	\item Five 16-bit Digital Timers embbeded.
+	\item 16 channel 10-bit \ac{ADC}. 
+\end{itemize}
+
+Figure \ref{fig:cap4:pic32blocks} shows a block diagram of the PIC32 family. Distinct 32-bit buses for peripherals and system can be observed. Moreover, \ac{DMA}, \ac{RAM}, and flash controllers, together with external modules take place on it.
+
+\figura{Vectorial/Todo}{width=0.8\textwidth}{fig:cap4:pic32blocks}%
+{PIC32 family block diagram}
+
+The whole microcontroller can be divided into for blocks: core, memory, integration system and peripherals:
+
+\begin{itemize}
+	\item The 
+	\item Memory.
+	\item Integration system.
+	\item Peripherals.  
+\end{itemize}
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
@@ -466,6 +414,16 @@ PIN & TIPO & TIPO 2PERIFERICO & USO \\
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
+%DESCRIPCION GENERAL Y JUSTIFICACION
+%POWER CONTROL
+
+%FURTHER EXPLANATION
+
+%SEÑALES DE COMMUNICATION
+
+% ENTRAMOS A DETALLAR MIWI
+
+
 
 \figura{Bitmap/Capitulo4/434}{width=0.7\textwidth}{fig:cap4:434schematics}%
 {434/868 MHz Radio Interface systems schematic}
@@ -497,6 +455,89 @@ Some of the features of this component are:
 
 Pin 4 (IN) is a digital input where the control logic signal is placed. A logic '1' will make pins 1 (D - drain) and  2 (S - source) shorted, a logic '0' will open the switch. Pins 1 and 2 can be either inputs or outputs. Pin 5 (NC) must not be connected.
 
+% RESISTENCIA OPCIONAL PARA DESACTIVAR MODULO ************************************************************************************************
+
+%-------------------------------------------------------------------
+\subsection{Power Supply System}
+%-------------------------------------------------------------------
+Power supply module is in charge of providing proper voltage anc current to the \ac{CNGD}. Chosen output voltage is 3.3V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic} shows a schematic of this module.
+
+For external wired options, the input voltage is 5V. This value is widely used to supply digital circuits and it is easy to access to 5 V sources. Moreover, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5V to supply the device. This 5V are lowered to 3.3V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just changing a jumper location.
+
+For battery options, the module includes a DC connector. This connector accepts from 3.3V up to 3.6V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or portable.
+
+A green led indicates that power is applied into the circuit, on the other hand, a led red indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their origin input.       
+
+The employed synchronous buck regulator is a MCP1603*****REF chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
+components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
+
+\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap4:mcp1603}%
+{MCP1603 buck regulator configuration}
+
+It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions, Table \ref{tab:cap4:maxconsumption}.
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline \\
+\hline \\
+
+\end{tabular}
+}
+\caption{Maximum estimated power consumption of the platform.%
+         \label{tab:cap4:maxconsumption}}
+\end{table} 
+
+
+
+%-------------------------------------------------------------------
+\subsubsection{Battery}
+%-------------------------------------------------------------------
+In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer some days autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
+
+Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Active and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated in \ref{}****.
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline
+\end{tabular}
+}
+\caption{Estimated currents and timmings for Active and Sleep operation modes.%
+         \label{tab:cap4:powerstimatedvalues}}
+\end{table} 
+
+%Capacidad estimada......................................
+
+Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other options, not described at the table, have been directly discarded for showing unsutiable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or specific high capacity kind of batteries\footnote{For instance, those used in photography.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based battery sizes and lithium-based. 
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline
+\end{tabular}
+}
+\caption{.%
+         \label{tab:cap4:batcomparison}}
+\end{table} 
+
+
+Ni-Mh AAA
+Ni-Mh AA
+Ni-Mh specific battery
+LI-ION
+LI-PO
+
+%SOLUCION
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
@@ -603,14 +644,20 @@ PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 %-------------------------------------------------------------------
 \subsection{PGE}
 %-------------------------------------------------------------------
-%-------------------------------------------------------------------
-\subsubsection{Considerations}
-%-------------------------------------------------------------------
+
 Figure \ref{}******* contains the schematic for the programmer module, PGE. This module allows the programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontoller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal.
 
 \figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:pge}%
 {PGE interface.}
 
+
+% ICD 3*************************************************************
+
+%-------------------------------------------------------------------
+\subsection{Other considerations}
+%-------------------------------------------------------------------
+
+GENERAL PURPOSE LEDS AND PULSADORES
 
 %-------------------------------------------------------------------
 \section{Serial Communication Board - rs232SHIELD}

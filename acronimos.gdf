@@ -184,3 +184,13 @@
 
 @entry{NIMH, Ni-Mh, \emph{Nickel-metal hydride}}
 
+@entry{EEPROM, , \emph{Electrically Erasable Programmable Read-Only Memory}}
+
+@entry{IRDA, IrDA, \emph{Infrared Data Association}}
+
+@entry{OTG, , \emph{On-The-Go}}
+
+@entry{ADC, , \emph{Analog-to-digital converter}}
+
+@entry{RTCC, ,\emph{Real-Time Clock/Calendar}}
+

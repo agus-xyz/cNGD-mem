@@ -234,6 +234,37 @@ The device offers serial communication through the already named $\mu$USB option
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
+\afterpage{%
+\clearpage\clearpage 
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
+\caption{Caption 1
+\label{fig:cap4:prueba}}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
+\caption{Caption 2
+\label{fig:cap4:prueba2}}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
+\caption{Caption 3
+\label{fig:cap4:prueba3}}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
+\caption{Caption 4
+\label{fig:cap4:prueba4}}
+\end{figure}
+
+}
+
+
 \figura{Bitmap/Capitulo4/schematic}{width=1.1\textwidth}{fig:cap4:gneralschematic}%
 {cNGD general schematic}
 
@@ -283,15 +314,46 @@ The whole microcontroller can be divided into for blocks: core, memory, integrat
 	\item Peripherals are a set of independent modules oriented to perform specific tasks. Here it is described a brief description of the 			main peripherals and the use they receive in the system: 
 
 	\begin{itemize}
-		\item \emph{\ac{SPI}}. The SPI module is a synchronous serial interface that is useful for communicating with external 					peripherals and other microcontroller devices. These peripheral devices may be Serial EEPROMs, Shift registers, 				display drivers, Analog-to-Digital Converters, etc. 
-		\item \emph{\ac{UART}}.
-		\item \emph{\ac{USB On-The-Go}}.
-		\item \emph{\ac{I2C}}.
-		\item \emph{TIMERS}.
-		\item \emph{\ac{ADC}}.
-		\item \emph{ETHERNET}.
-		\item \emph{\ac{GPIO}}.
-		\item \emph{\ac{RTCC}}.
+		\item \emph{\ac{SPI}}. The SPI module is a synchronous serial interface that is useful for communicating with external 					peripherals and other microcontroller devices. These peripheral devices may be serial \ac{EEPROM}, shift 					registers, display drivers, etc. 
+
+				At \ac{CNGD}, three \ac{SPI}s are used to set communication with the \ac{RI}s. Another \ac{SPI} is outputed to 					the expansion headers for general purposes.
+
+				
+		\item \emph{\ac{UART}}. This peripheral is a serial I/O module. The \ac{UART} is a full-duplex, asynchronous communication
+				 channel that communicates with peripheral devices and personal computers through protocols, such as RS-232, 					RS-485, LIN 1.2 and \ac{IRDA}.
+
+				Two \ac{UART} modules are available at the expansion headers. RS232Shield described at section \ref{cap4:sec:rs232shield} use one of this modules to set an RS-232 serial interface.
+
+		\item \emph{\ac{USB} \ac{OTG}}. The \ac{USB} module contains analog and digital components to provide a \ac{USB} 2.0
+			full-speed and low-speed embedded Host, full-speed Device or \ac{OTG} implementation with a minimum of external 			components. 				
+			
+			This \ac{USB} peripheral is used to stablish serial communication with other devices, \ac{CNGD} it thought to include 				this serial communication way. Its ease of use, popularity, makes it a good choice for this purpose. Moreover, it is 				interfaced into the expansion headers for other future uses.
+	
+		\item \emph{\ac{I2C}}. The \ac{I2C} module provides complete hardware support for both Slave and Multi-Master modes of the \ac{I2C} serial communication standard. 
+			This module is commonly used to establish communication among sensors and microcontroller. One \ac{I2C} can be accessed 			over the expansion headers.
+
+		\item \emph{TIMERS}. Four synchronous, one asynchronous, 16-bit timers that can operate as a free-running interval timer for 				various timing applications and counting external events.
+
+			This timers, properly configured, will drive in time the firmware operation. This includes, pretty much, all the tasks 				carried out by the node. Timers also must be available to drive in time the application if was required. 
+
+		\item \emph{\ac{ADC}}. It converts a continuous voltage quantity to a digital number that represents the quantity's amplitude. 
+
+			Useful when dealing with sensors offering an analog output signal. The \ac{ADC} included into the microcontroller can be 				accessed from the expansion headers.
+
+		\item \emph{ETHERNET}. The Ethernet controller is a bus master module that interfaces with an off-chip Physical Layer (PHY) to
+			implement a comple te Ethernet node in a system.
+			
+			This module is accessible at the headers. It is essential to stablish 802.11 communications, which is a desirable 				feature for \ac{WSN} coordinator nodes or gateways.
+
+		\item \emph{\ac{GPIO}}. General purpose I/O pins are the simplest of peripherals. They allow the PIC32 MCU to monitor and control
+			other devices. Basically, almost every pin at the \ac{MCU} can act as a \ac{GPIO} if no other peripherals are active and 				multiplexed on such pin.
+
+			Several \ac{GPIO}s can be accessed over the headers for general purposes.
+
+		\item \emph{\ac{RTCC}}. It is intended for applications in which accurate time must be maintained for extended periods of time
+			with minimal or no CPU intervention. Low-power optimization provides extended battery lifetime while keeping track of 				time.
+
+			This module is essential for accurate timming tasks, which are common in \ac{WSN} for syncronous proccesses over the 				network. Syncronisation helps saving energy since it allows better efficient communication and general operation.
 	\end{itemize}  
 \end{itemize}
 
@@ -431,6 +493,8 @@ PIN & TIPO & TIPO 2PERIFERICO & USO \\
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
+
+
 %DESCRIPCION GENERAL Y JUSTIFICACION
 %POWER CONTROL
 
@@ -685,12 +749,22 @@ GENERAL PURPOSE LEDS AND PULSADORES
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
+This extension sets serial communication between the microcontroller and a pc over a RS-232 protocol. It supposses an alternative wired serial communication way for the included \ac{USB} option. This technology has been progresively replaced by the already said \ac{USB} for serial communication purposes, and it supposses an increase of the complexity, size, and consumption. That is why it was chosen not to embbed this module over the \ac{CNGD}, but rather create a expansion module. 
+
+This technology could be useful for old machines, low-resources researches, or for debbuging purposes during the platform development until the \ac{USB} communication is fully operative. This communication way has a simpler operation mode than \ac{USB}.
+
+Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used one of the accessible \ac{UART} at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232********REF transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at pin *************, \ac{RX} is at *************. Since this \ac{UART} does not support hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals appart from the data signals.}, two pins are enough to set proper communication.
+
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
+\figura{Vectorial/Todo}{width=.4\textwidth}{fig:cap4:rs232shieldschematic}%
+{rs232SHIELD schematic.}
+
+
 %-------------------------------------------------------------------
-\section{Transceivers - chargerSHIELD}
+\section{Batteries charger - chargerSHIELD}
 %-------------------------------------------------------------------
 \label{cap4:sec:chargerShield}
 %-------------------------------------------------------------------
@@ -701,6 +775,10 @@ GENERAL PURPOSE LEDS AND PULSADORES
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
+
+\figura{Vectorial/Todo}{width=.4\textwidth}{fig:cap4:chargershematic}%
+{chargerSHIELD schematic.}
+
 %-------------------------------------------------------------------
 \subsection{Simulation}
 %-------------------------------------------------------------------

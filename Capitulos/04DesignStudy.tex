@@ -495,23 +495,39 @@ PIN & TIPO & TIPO 2PERIFERICO & USO \\
 %-------------------------------------------------------------------
 As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, with three consequent frequency band to access. This fact gives a flexibility over radio communictions never offered by other \ac{WSN} device. Frequencies to operate over are 434 MHz, 868 MHz, and 2.4 GHz, meeting desired features. 
 
-For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU} are the same. Figure \ref{fig:cap4:434schematics} shows the schematic for one of them.
+For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU} are the same. Figure \ref{fig:cap4:434schematics} shows the schematic for one of them.
 
-At 2.4 GHz 
+Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA****REF. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposses computation, cost, and power savings. It has access over the 15 5MHz-channels the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
 
+\begin{itemize}
+	\item Operating Voltage: 2.4-3.6V (3.3V typical).
+	\item Up to 120 meters range.
+	\item Differential RF Input/Output:
+	\begin{itemize}
+		\item -94 dBm Typical sensitivity with +5 dBm maximum nnput level.
+		\item +0 dBm Typical putput power.
+	\end{itemize}
+	\item Maximum supportted data rates:
+	\begin{itemize}
+		\item 250 kbps.
+		\item Turbo mode enables up to 625 kbps (not following the standard).
+	\end{itemize}
+	\item Current Consumption:
+	\begin{itemize}
+		\item TX. I = 23 mA (typical).
+		\item RX. 19 mA (typical).
+		\item Sleep. 2$\mu$A (typical).
+	\end{itemize}	
+	\item Integrated crystal, internal voltage regulator, matching circuitry, \ac{PCB} antenna, and \ac{RSSI} detector. 
+\end{itemize}
 
-
-
-%DESCRIPCION GENERAL Y JUSTIFICACION
-%POWER CONTROL
-
-%FURTHER EXPLANATION
 
 %SEÑALES DE COMMUNICATION
 
 % ENTRAMOS A DETALLAR MIWI
 
-
+\figura{Vectorial/Todo}{width=0.7\textwidth}{fig:cap4:mrf24j40mablocks}%
+{MRF24J40MA block diagram}
 
 \figura{Bitmap/Capitulo4/434}{width=0.7\textwidth}{fig:cap4:434schematics}%
 {434/868 MHz Radio Interface systems schematic}
@@ -521,9 +537,9 @@ At 2.4 GHz
 
 The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
-
 \figura{Bitmap/Capitulo4/miwistack}{width=.4\textwidth}{fig:cap4:miwistack}%
 {MiWi$^{TM}$ Protocol stack.}
+
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
 %-------------------------------------------------------------------

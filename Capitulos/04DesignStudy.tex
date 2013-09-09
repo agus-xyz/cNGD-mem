@@ -246,7 +246,6 @@ The device offers serial communication through the already named $\mu$USB option
 \figura{Bitmap/Capitulo4/headers}{width=1.1\textwidth}{fig:cap4:headerschematic}%
 {Expansion header system schematic}
 
-
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
@@ -256,9 +255,9 @@ Core unit is a PIC32MX675F256L, a midrange 100-pin microcontroller from the ment
 	\item Operating Voltage Range: 2.3V to 3.6V.
 	\item 256/512 KB Flash (PIC32MX675F256L/PIC32MX675F512L). 64KB RAM.
 	\item RUN, IDLE, and SLEEP modes. Multiple switchable clock modes for each power mode. Maximum speed is 80 MHz.
-	\item Serial Communication Modules allow flexible UART/SPI/I2C configuration. X***** \ac{UART}s, 4 \ac{SPI}s, and 5 {I2C}s included.  
-	\item USB 2.0 On-The-Go Peripheral with integrated PHY.
-	\item 10/100 Ethernet MAC with MII/RMII Interfaces. 
+	\item Serial Communication Modules allow flexible UART/SPI/I2C configuration. 6 \ac{UART}s, 4 \ac{SPI}s, and 5 {I2C}s included.  
+	\item USB 2.0 On-The-Go peripheral with integrated PHY.
+	\item 10/100 Ethernet MAC with MII/RMII\footnote{Media Independent Interface and Reduced Media Independent Interface are standard 			interfaces used to connect a Fast Ethernet \ac{MAC}-block to a PHY chip.} interfaces. 
 	\item 2 wire programming and debugging interface.
 	\item Five 16-bit Digital Timers embbeded.
 	\item 16 channel 10-bit \ac{ADC}. 
@@ -272,10 +271,28 @@ Figure \ref{fig:cap4:pic32blocks} shows a block diagram of the PIC32 family. Dis
 The whole microcontroller can be divided into for blocks: core, memory, integration system and peripherals:
 
 \begin{itemize}
-	\item The 
-	\item Memory.
-	\item Integration system.
-	\item Peripherals.  
+	\item The main core is based on a \ac{RISC} MIPS M4K. This module takes control over the system. It controls the peripherals and execute 			the programmed code.
+
+	\item A further observation into the memory system allows differenciate among Flash, \ac{RAM}, registers, and boot flash. The system 			load the data on a cache memory and prefetch the instructions. Figure \ref{} shows the block diagram of the prefetch module.
+
+\figura{Vectorial/Todo}{width=0.8\textwidth}{fig:cap4:pic32cachemodule}%
+{Prefetch cache module block diagram.}	
+
+	\item Integration system is compound by the set of modules needed to make work the core and peripherals. These are interrupt control, 			oscillator system, reset, watchdog timer and power-up timer. For detailed explanation of each module consult the microcontroller 			manual \cite{}**********************************.
+
+	\item Peripherals are a set of independent modules oriented to perform specific tasks. Here it is described a brief description of the 			main peripherals and the use they receive in the system: 
+
+	\begin{itemize}
+		\item \emph{\ac{SPI}}. The SPI module is a synchronous serial interface that is useful for communicating with external 					peripherals and other microcontroller devices. These peripheral devices may be Serial EEPROMs, Shift registers, 				display drivers, Analog-to-Digital Converters, etc. 
+		\item \emph{\ac{UART}}.
+		\item \emph{\ac{USB On-The-Go}}.
+		\item \emph{\ac{I2C}}.
+		\item \emph{TIMERS}.
+		\item \emph{\ac{ADC}}.
+		\item \emph{ETHERNET}.
+		\item \emph{\ac{GPIO}}.
+		\item \emph{\ac{RTCC}}.
+	\end{itemize}  
 \end{itemize}
 
 %-------------------------------------------------------------------
@@ -509,7 +526,7 @@ Firstly it is needed an estimation of platform global power consumption. This va
 \hline
 \end{tabular}
 }
-\caption{Estimated currents and timmings for Active and Sleep operation modes.%
+\caption{Estimated values for Active and Sleep operation modes.%
          \label{tab:cap4:powerstimatedvalues}}
 \end{table} 
 

@@ -181,30 +181,14 @@ Current is bypassed through a capacitor and supplies the MRF49XA, a power indica
 
 The designed module allow access to some of the MRF49XA pins, not all of them. The ports accesible at the \ac{RI} are Interrupt (nINT), Interrupt Request Output, \ac{SPI} ports, \ac{FIFO} select, \ac{FIFO} interrupt, and reset. These ports enable full functionality of the MRF49XA and rest of available pins are found dispensable.
 
+\figura{Bitmap/Capitulo4/mtransmodel}{width=.4\textwidth}{fig:cap4:mtransmodel}%
+{$\mu$Trans 434/868 component model for use}
 
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo4/mtransschematic}{width=.8\textwidth}{fig:cap4:mtransschematic}%
-{$\mu$Trans 434/868 schematic}
-
-\begin{table}[!h]
-\centering
-\scalebox{0.8}{
-\begin{tabular}{||c|c|c|c|c|c|c|c||}
-\hline
-Freq & C1 & L1 & L2 & L3 & C5 & C6 & C7 \\ \hline
-434 MHz & 220 pF & 390 nH & 33 nH & 47 nH & 2.7pF & 68 pF & 5.1 pF \\ \hline
-868 MHz & 47 pF & 100 nH & 8.2 nH & 22 nH & 1.2 pF & 27 pF & 2.7 pF \\ \hline
-\end{tabular}}
-\caption{Values for balun components at different frequency bands.
-\label{tab:cap4:balunvalues}}
-\end{table}
-
- 
-\figura{Bitmap/Capitulo4/mtransmodel}{width=.4\textwidth}{fig:cap4:mtransmodel}%
-{$\mu$Trans 434/868 component model for use}
+Schematic of $\mu$Trans 434/868 can be found on Appendix \ref{ap1:schematics} at Figure \ref{ap1:mtransschematic}. Table \ref{tab:cap4:balunvalues} contains de different values for the balun circuit at 434 MHz and 868 MHz.  
 
 %-------------------------------------------------------------------
 \section{Main Board - cognitiveNextGenerationDevice}
@@ -234,48 +218,9 @@ The device offers serial communication through the already named $\mu$USB option
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
-\afterpage{%
-\clearpage\clearpage 
+Schematics can be found all together on Appendix \ref{ap1:schematics} for better convenience. Figure \ref{fig:cap4:gneralschematic} gathers all the modules into one global scheme. Figure \ref{fig:cap4:mcuschematics} shows the \ac{MCU} connections schematic. Figures \ref{fig:cap4:434schematics} and \ref{fig:cap4:2.4schematics} focus on 434/868MHz and 2.4GHz \ac{RI}s, respectively. Figure \ref{fig:cap4:powersupplyschematic} gives the schematic of the power supply system. Expansion headers schematic is on Figure \ref{fig:cap4:headerschematic}.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
-\caption{Caption 1
-\label{fig:cap4:prueba}}
-\end{figure}
-
-\begin{figure}[h]
-\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
-\caption{Caption 2
-\label{fig:cap4:prueba2}}
-\end{figure}
-
-\begin{figure}[h]
-\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
-\caption{Caption 3
-\label{fig:cap4:prueba3}}
-\end{figure}
-
-\begin{figure}[h]
-\includegraphics[width=0.7\textwidth]{Imagenes/Vectorial/Todo.pdf}
-\caption{Caption 4
-\label{fig:cap4:prueba4}}
-\end{figure}
-
-}
-
-
-\figura{Bitmap/Capitulo4/schematic}{width=1.1\textwidth}{fig:cap4:gneralschematic}%
-{cNGD general schematic}
-
-\figura{Bitmap/Capitulo4/MCU}{width=1.1\textwidth}{fig:cap4:mcuschematics}%
-{Microcontroller specific schematic}
-
-\figura{Bitmap/Capitulo4/powersupply}{width=1.1\textwidth}{fig:cap4:powersupplyschematic}%
-{Power supply system schematic}
-
-\figura{Bitmap/Capitulo4/headers}{width=1.1\textwidth}{fig:cap4:headerschematic}%
-{Expansion header system schematic}
+************************************************
 
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
@@ -296,7 +241,7 @@ Core unit is a PIC32MX675F256L, a midrange 100-pin microcontroller from the ment
 
 Figure \ref{fig:cap4:pic32blocks} shows a block diagram of the PIC32 family. Distinct 32-bit buses for peripherals and system can be observed. Moreover, \ac{DMA}, \ac{RAM}, and flash controllers, together with external modules take place on it.
 
-\figura{Vectorial/Todo}{width=0.8\textwidth}{fig:cap4:pic32blocks}%
+\figura{Bitmap/Capitulo4/pic32blocks}{width=0.8\textwidth}{fig:cap4:pic32blocks}%
 {PIC32 family block diagram}
 
 The whole microcontroller can be divided into for blocks: core, memory, integration system and peripherals:
@@ -522,18 +467,12 @@ Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz.
 \end{itemize}
 
 
-%SEÑALES DE COMMUNICATION
+%SEÑALES DE COMMUNICATION**************************************
 
-% ENTRAMOS A DETALLAR MIWI
+% ENTRAMOS A DETALLAR MIWI**************************************
 
-\figura{Vectorial/Todo}{width=0.7\textwidth}{fig:cap4:mrf24j40mablocks}%
+\figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.7\textwidth}{fig:cap4:mrf24j40mablocks}%
 {MRF24J40MA block diagram}
-
-\figura{Bitmap/Capitulo4/434}{width=0.7\textwidth}{fig:cap4:434schematics}%
-{434/868 MHz Radio Interface systems schematic}
-
-\figura{Vectorial/Todo}{width=0.7\textwidth}{fig:cap4:2.4schematics}%
-{2.4 GHz Radio Interface systems schematic}
 
 The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
@@ -554,7 +493,7 @@ Some of the features of this component are:
 	\item Typical power consumption < 0.01 $\mu$W. 
 \end{itemize}
 
-\figura{Bitmap/Capitulo4/adg701}{width=.3\textwidth}{fig:cap4:adg701}%
+\figura{Bitmap/Capitulo4/adg701}{width=.2\textwidth}{fig:cap4:adg701}%
 {ADG701 pin diagram.}
 
 Pin 4 (IN) is a digital input where the control logic signal is placed. A logic '1' will make pins 1 (D - drain) and  2 (S - source) shorted, a logic '0' will open the switch. Pins 1 and 2 can be either inputs or outputs. Pin 5 (NC) must not be connected.
@@ -575,7 +514,7 @@ A green led indicates that power is applied into the circuit, on the other hand,
 The employed synchronous buck regulator is a MCP1603*****REF chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
 components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
 
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap4:mcp1603}%
+\figura{Bitmap/Capitulo4/mcp1603}{width=0.5\textwidth}{fig:cap4:mcp1603}%
 {MCP1603 buck regulator configuration}
 
 It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions, Table \ref{tab:cap4:maxconsumption}.
@@ -649,14 +588,14 @@ The microcontroller includes possibilities to properlly place quartz crystals in
 
 Primary oscillator is 8 MHz quartz crystal used as system reference clock. The respective \ac{PLL} is configured to raise this frequency up to 80 MHz. It exists the possibility of replacing the functionality of this clock for a internal one, but stability and accuracy can be affected.
 
-\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:prioscillators}%
+\figura{Bitmap/Capitulo4/priosc}{width=.3\textwidth}{fig:cap4:prioscillators}%
 {PIC32MX675F256L primary oscillator input.}
 
 % CAPACITORS (CUADERNITO)
 
 Second oscillator, a 32.728 KHz, supposes a low-power clock for real time clocking. It enables nodes synchronization, which is fundamental for power-saving modes.
 
-\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:secoscillators}%
+\figura{Bitmap/Capitulo4/secoscillator}{width=.4\textwidth}{fig:cap4:secoscillators}%
 {PIC32MX675F256L second oscillator input.}
 
 % CAPACITORS (CUAD)
@@ -758,10 +697,19 @@ Figure \ref{}******* contains the schematic for the programmer module, PGE. This
 % ICD 3*************************************************************
 
 %-------------------------------------------------------------------
-\subsection{Other considerations}
+\subsection{Others}
 %-------------------------------------------------------------------
+\ac{CNGD} platform will include a push button to reset the \ac{MCU}. It also includes three \ac{LED}s and two push buttons for general purposes. They allow the user, somewhat, interact with the running application if required. 
 
-GENERAL PURPOSE LEDS AND PULSADORES
+\begin{itemize}
+
+	\item \ac{LED} 1 represents the present signal at pin 91.  
+	\item \ac{LED} 2 represents the present signal at pin 61.  
+	\item \ac{LED} 3 represents the present signal at pin 60.  
+	\item Signal driven by push button 1 is obtained at pin 84.
+	\item Signal driven by push button 2 is obtained at pin 82.
+
+\end{itemize}
 
 %-------------------------------------------------------------------
 \section{Serial Communication Board - rs232SHIELD}
@@ -778,13 +726,15 @@ This technology could be useful for old machines, low-resources researches, or f
 
 Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used one of the accessible \ac{UART} at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232********REF transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at pin *************, \ac{RX} is at *************. Since this \ac{UART} does not support hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals appart from the data signals.}, two pins are enough to set proper communication.
 
+
+\figura{Bitmap/Capitulo4/max3232}{width=.4\textwidth}{fig:cap4:max3232}%
+{MAX3232 basic scheme.}
+
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
-\figura{Vectorial/Todo}{width=.4\textwidth}{fig:cap4:rs232shieldschematic}%
-{rs232SHIELD schematic.}
-
+A schematic view of the rs232SHIELD is shown at Figure \ref{fig:cap4:rs232shieldschematic} on Appendix \ref{ap1:schematics}.
 
 %-------------------------------------------------------------------
 \section{Batteries charger - chargerSHIELD}
@@ -799,8 +749,7 @@ Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. 
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
-\figura{Vectorial/Todo}{width=.4\textwidth}{fig:cap4:chargershematic}%
-{chargerSHIELD schematic.}
+A schematic of charger232SHIELD can be seen at Figure \ref{fig:cap4:chargershematic} on Appendix \ref{ap1:schematics}.
 
 %-------------------------------------------------------------------
 \subsection{Simulation}

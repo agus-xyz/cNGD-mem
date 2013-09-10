@@ -142,11 +142,11 @@
 
 @entry{TU, ,\emph{Technische Universit\"at}}
 
-@entry{USRP, , \emph{Universal Software Radio Perfipheral}}
+@entry{USRP, , \emph{universal software radio peripheral}}
 
-@entry{SISO, , \emph{Single-Input Single-Output}}
+@entry{SISO, , \emph{single-input single-output}}
 
-@entry{MIMO, , \emph{Multiple-Input Multiple-Output}}
+@entry{MIMO, , \emph{multiple-input multiple-output}}
 
 @entry{EM, , \emph{Electro-Magnetic}}
 
@@ -160,11 +160,11 @@
 
 @entry{M2M, ,\emph{Machine-to-machine}}
 
-@entry{TX, ,\emph{Transmission}}
+@entry{TX, ,\emph{transmission}}
 
-@entry{GPIO, ,\emph{General Purpose Input-Output}}
+@entry{GPIO, ,\emph{general purpose input-output}}
 
-@entry{MCLR, ,\emph{Master Clear}}
+@entry{MCLR, ,\emph{master clear}}
 
 @entry{PLL, , \emph{Phase-locked loop}}
 
@@ -172,7 +172,7 @@
 
 @entry{FHSS, , \emph{Frequency Hopping Spread Spectrum}}
 
-@entry{DQI, , \emph{Data Quality Indicator}}
+@entry{DQI, , \emph{data quality indicator}}
 
 @entry{ED, , \emph{Energy Detect}}
 
@@ -184,21 +184,23 @@
 
 @entry{NIMH, Ni-Mh, \emph{Nickel-metal hydride}}
 
-@entry{EEPROM, , \emph{Electrically Erasable Programmable Read-Only Memory}}
+@entry{EEPROM, , \emph{electrically erasable programmable read-only memory}}
 
-@entry{IRDA, IrDA, \emph{Infrared Data Association}}
+@entry{IRDA, IrDA, \emph{infrared data association}}
 
-@entry{OTG, , \emph{On-The-Go}}
+@entry{OTG, , \emph{on-the-go}}
 
-@entry{ADC, , \emph{Analog-to-digital converter}}
+@entry{ADC, , \emph{analog-to-digital converter}}
 
-@entry{RTCC, ,\emph{Real-Time Clock/Calendar}}
+@entry{RTCC, ,\emph{real-time clock/calendar}}
 
-@entry{RX, ,\emph{Reception}}
+@entry{RX, ,\emph{reception}}
 
-@entry{QPSK, , \emph{Quadrature phase-shift keying}}
+@entry{QPSK, , \emph{quadrature phase-shift keying}}
 
-@entry{LED, , \emph{Light-emitting diode}}
+@entry{LED, , \emph{light-emitting diode}}
 
-@entry{SMD, , \emph{Surface-mount devices}}
+@entry{SMD, , \emph{surface-mount devices}}
+
+@entry{PCB, , \emph{printed circuit board}}
 

@@ -32,8 +32,12 @@ Once the system is designed over a logic circuitry level, it is moment to build 
 
 All the implementations share some common features regarding their layout designs. On the one hand, the used components will keep, whenever possible\footnote{Some components do not offer SMD packaging due to their electric properties.}, \ac{SMD} packaging. This technology gives a more reduced size and supports lower power ratings. Precissely, the \ac{SMD} package used for most of two-terminal components is the 0603 (1608 metric) size\footnote{1.6 mm x 0.8 mm (0.063 in x 0.031 in). Typical power rating for resistors are 0.1 watt.} Figure \ref{fig:cap5:smdsizes} shows a classification for two-terminal \ac{SMD} components in metrics and imperial units.
 
-\figura{Vectorial/Capitulo5/smdsizes}{width=0.4\textwidth}{fig:cap5:smdsizes}%
-{Two-terminal SMD packages classification.}
+\begin{figure}
+        \centering
+                \includegraphics{Imagenes/Vectorial/Capitulo5/smdsizes}
+        \caption{Two-terminal SMD packages classification.}
+        \label{fig:cap5:smdsizes}
+\end{figure}
 
 All the created layouts are built over two-layer boards. Two layers are enough for our purposes since they allow to place the components in a sufficiently reduced area and power planes are not required. More layers, in addition, would increase significantly the board costs. 
 
@@ -65,14 +69,26 @@ The secuential mounting, and the existing firmware allow to carry through simple
 \subsection{Description}
 %-------------------------------------------------------------------
 
-
-%minimal spacing, track width, vias under the micro, pad to measure clock, ground plane
+This module was developed because of the non-existance of reduced size \ac{RI}s including the MRF49XA transceiver, so it must have a reduced size by definition. minimal spacing, track width, vias under the micro, pad to measure clock, ground plane
 
 %SIZE, FIGURA
 
 %holes to solder. footprint - porque FIGURA
 
-%tabla de componentes con package, units, value,symbol
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c |||}
+\hline \\
+\hline \\
+\hline \\
+\hline \\
+
+\end{tabular}
+}
+\caption{Component description for $\mu$Trans 434/868.%
+         \label{tab:cap5:mtranscomponents}}
+\end{table} 
 
 
 %-------------------------------------------------------------------

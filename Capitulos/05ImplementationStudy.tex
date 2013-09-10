@@ -17,7 +17,7 @@ Thomas \& Guy-Manuel, Daft Punk
 
 
 \begin{resumen}
-In this chapter, tasks related to the physical implementation of the platform are described. These tasks cover from the layout design, 3D modelling, and GERBER files generation to the final components mounting. Decisions about components or layout designs, and final results are exposed.  
+In this chapter, tasks related to the physical implementation of the platform are described. These tasks cover from the layout design, 3D modelling, and GERBER files generation, to the final components mounting. Decisions about components or layout designs, and final results are exposed.  
 \end{resumen}
 
 
@@ -28,11 +28,20 @@ In this chapter, tasks related to the physical implementation of the platform ar
 \label{cap5:sec:introduction}
 %------------------------------------------------------------------
 
-%double layer, reduce size
-%0603 - measures - tipical consumption
-%3d model
+Once the system is designed over a logic circuitry level, it is moment to build a layout design responsive to the developed schematics. This process includes the phisical boards design, components placement, paths routing, silkscreens, etc. These tasks are achieved over the Altium Designer, same software described in Section \ref{cap4:sec:altiumDesigner}.
 
-%PCBCART - fabricante GERBERS
+All the implementations share some common features regarding their layout designs. On the one hand, the used components will keep, whenever possible\footnote{Some components do not offer SMD packaging due to their electric properties.}, \ac{SMD} packaging. This technology gives a more reduced size and supports lower power ratings. Precissely, the \ac{SMD} package used for most of two-terminal components is the 0603 (1608 metric) size\footnote{1.6 mm × 0.8 mm (0.063 in × 0.031 in). Typical power rating for resistors = 0.1 watt.}. Figure \ref{fig:cap5:smdsizes} shows a classification for two-terminal \ac{SMD} components in metrics and imperial units.
+
+\figura{Vectorial/Capitulo5/smdsizes}{width=0.4\textwidth}{fig:cap5:smdsizes}%
+{Two-terminal SMD packages classification.}
+
+All the created layouts are built over two-layer boards. Two layers are enough for our purposes since they allow to place the components in a sufficiently reduced area and power planes are not required. More layers, in addition, would increase significantly the board costs. 
+
+For the paths routing process, some considerations are taken. Ground planes are placed to face noise reduction, this way a low impedance way is provided for the power signals. Moreover, parasitic \ac{EM} emissions are reduced. Power paths are width enough to support the supplied current flow.
+
+Together with the layout deployment, Altium Designer offers the chance to embbed 3D models of each component, building up eventually a whole 3D model of the complete board. This tool was employed, and 3D models were rendered, obtaining a preview of the modules on advance to their materialization.
+
+%PCBCART - fabricante GERBERS -thickness y copper
 
 %-------------------------------------------------------------------
 \subsection{Mounting}

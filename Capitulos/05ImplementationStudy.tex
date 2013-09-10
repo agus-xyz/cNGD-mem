@@ -69,9 +69,29 @@ The secuential mounting, and the existing firmware allow to carry through simple
 \subsection{Description}
 %-------------------------------------------------------------------
 
-This module was developed because of the non-existance of reduced size \ac{RI}s including the MRF49XA transceiver, so it must have a reduced size by definition. minimal spacing, track width, vias under the micro, pad to measure clock, ground plane
+This module was developed because of the non-existance of reduced size \ac{RI}s including the MRF49XA transceiver, so, by definition, the module must posses a reduced size. Taking advantage of the included MRF24j40MA \ac{RI}, it was decided to design a \ac{PCB} module fitting the footprint of the named \ac{RI}. This way a single footprint is commont to all the included \ac{RI}s. This footprint is defined in Figure \ref{fig:cap5:mtransfootprint}.
 
-%SIZE, FIGURA
+\begin{figure}
+        \centering
+                \includegraphics{Imagenes/Vectorial/Todo}
+        \caption{$\mu$Trans 434/868 and MRF24j40MA shared footprint.}
+        \label{fig:cap5:mtransfootprint}
+\end{figure}
+
+The \ac{PCB} size must be suitable for this footprint, not exceeding its width. $\mu$Trans \ac{PCB} shape is defined as in Figure \ref{fig:cap5:mtransshape}.
+
+\begin{figure}
+        \centering
+                \includegraphics{Imagenes/Vectorial/Todo}
+        \caption{$\mu$Trans 434/868 \ac{PCB} shape.}
+        \label{fig:cap5:mtransshape}
+\end{figure}
+
+Module pads are based vias\footnote{A via is a electrical connection between layers in a physical electronic circuit that goes through the plane of one or more adjacent layers.}, with a ******* mm rad. through hole. These holes are width enouth let the solder tip into them and solder the pads over the footprint. These pads constitute the electrical interface between the $\mu$Trans and \ac{CNGD}.  
+
+
+
+minimal spacing, track width, vias under the micro, pad to measure clock, ground plane
 
 %holes to solder. footprint - porque FIGURA
 
@@ -94,7 +114,7 @@ This module was developed because of the non-existance of reduced size \ac{RI}s 
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-%Referencias a ANEXO
+Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 
 %-------------------------------------------------------------------
 \subsection{Testing}
@@ -109,6 +129,12 @@ This module was developed because of the non-existance of reduced size \ac{RI}s 
 %-------------------------------------------------------------------
 \subsection{Final Result}
 %-------------------------------------------------------------------
+
+\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:mtransfront}%
+{Detailed front view of the $\mu$Trans module.}
+
+\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:mtransback}%
+{Detailed back view of the $\mu$Trans module..}
 
 %FOTOS
 
@@ -128,6 +154,13 @@ This module was developed because of the non-existance of reduced size \ac{RI}s 
 %-------------------------------------------------------------------
 \subsection{Testing}
 %-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{Final result}
+%-------------------------------------------------------------------
+
+
+
 
 %-------------------------------------------------------------------
 \section{Serial Communication Board - rs232SHIELD}

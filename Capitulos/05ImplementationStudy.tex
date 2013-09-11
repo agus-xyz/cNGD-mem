@@ -216,7 +216,34 @@ Last, but not least, modules to try are the \ac{RI}s. One by one, they are added
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
+This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the already described headers. Hence, this module must include the proper interface to fit the design. It has to incrust the footprint defined in Figure \ref{}******* to place correctly the connection headers. Adapting the board to these connections, the resulting board shape is ilustrated in Figure \ref{fig:cap5:rs232shape}.
 
+\begin{figure}
+        \centering
+                \includegraphics{Imagenes/Vectorial/Todo}
+        \caption{rs232SHIELD \ac{PCB} shape.}
+        \label{fig:cap5:rs232shape}
+\end{figure}
+
+
+
+%QUE UART Y ¿EN QUE PINES ESTA?
+%rs-232 conector
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c ||}
+\hline \\
+\hline \\
+\hline \\
+\hline \\
+
+\end{tabular}
+}
+\caption{Component description for rs232SHIELD.%
+         \label{tab:cap5:rs232components}}
+\end{table} 
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
@@ -224,6 +251,11 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 %-------------------------------------------------------------------
 \subsection{Prototype testing}
 %-------------------------------------------------------------------
+This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART numer ************************. 
+
+Connecting the RS-232 connector to a computer and with a suitable software, such as minicom\footnote{Minicom is a text-based modem control and terminal emulation program for Unix-like operating systems. A common use for minicom is when setting up a remote serial console.}, and configuring properly the communication parameters, is enough to receive data from the running application.
+
+Usually, communication parameters are set as follows: ************************* (However these can be change at the firmware configuration).
 
 %-------------------------------------------------------------------
 \subsection{Final results}
@@ -247,7 +279,26 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
+%adaptarse a footprint 
 
+%baterias donde esta
+
+%conector para transformador
+
+\begin{table}[h]
+\centering
+\scalebox{0.7}{
+\begin{tabular}{||c | c ||}
+\hline \\
+\hline \\
+\hline \\
+\hline \\
+
+\end{tabular}
+}
+\caption{Component description for chargerSHIELD.%
+         \label{tab:cap5:chargercomponents}}
+\end{table} 
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------

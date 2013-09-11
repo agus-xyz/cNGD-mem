@@ -112,7 +112,7 @@ MRF49XA datasheet provides hints for the inclussion of the transceiver into a \a
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 
 %-------------------------------------------------------------------
-\subsection{Prototype testing}
+\subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
 
 Basic tests to check proper functionality were made while prototyping the module.
@@ -183,7 +183,7 @@ The minimum spacing among tracks is set to *********, and tracks widths vary on.
 %-------------------------------------------------------------------
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 %-------------------------------------------------------------------
-\subsection{Prototype testing}
+\subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
 When prototyping, first part to test is the right operation of the \ac{MCU}. After solderin R4, C2, the reset circuit, PGE module, and the \ac{MCU} itself, the microcontroller is brought under its first programming. For a right operation, is needed a right software configuration of the \ac{MCU} parameters, choosing the internal clock. 
 
@@ -248,7 +248,7 @@ In addition, the module contains a RS-232 male?********* connector to be connect
 %-------------------------------------------------------------------
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 %-------------------------------------------------------------------
-\subsection{Prototype testing}
+\subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
 This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART numer ************************. 
 
@@ -305,22 +305,15 @@ Minimal track spacing is set to ******* while the tracks width is ******. Vias *
 %-------------------------------------------------------------------
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 %-------------------------------------------------------------------
-\subsection{Prototype testing}
+\subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
+This module required for a lot of initial debugging, it was needed the use of a breadboard to mount parts of the module in parallel to compare behaviors. It is important to notice that some currents on the circuit are up to 250 mA, existing possibilities of malfucntions that make this even higher. It was needed a external power supply with output current indicator and limitation for it. Of course, this module was not initially tested over the \ac{CNGD}, but emulating it just with batteries or a second voltage source.
 
-% caution because of its high current, a lot of debugging needed, first implementations were made over insercion placas.
-%external power supply with current indicator, not in CNGD, 
-% comparador module, try la comparacion
+First part of the chargerSHIELD to try is the ********* amplificator component, led, and surrounding components***************************. This parts constitute the comparator and with this, the comparator operation intends to be tested. Once this is checked, rest of components are soldered.
 
-% fuente de tension luego
+At this point, a lot of tests were carried out using different voltages and number of batteries to calibrate the system. The goal was to adjust the current over the batteries to a proper level, measure charging times and the proper operation of the notification led. RX****, R***, and R*** were finally set to their current value. Having this task was achieved, external controlled source was swaped by a commercial 12V adaptor and its proper operation was proved. 
 
-% probar con varias baterias, para comprobar diferencias de tension. el ajuste del dispositivo fue ardua pues hubo que retocar valores de resistencias, sobre todo calibrando.
-
-% medir tiempos de carga, corrientes durante la carga, alerta de led, sincronizar.
-
-%se prueba sobre cngd. 
-
-%
+Once the chargerSHIELD showed a proper operation it was tested over the \ac{CNGD}.
 %-------------------------------------------------------------------
 \subsection{Final results}
 %-------------------------------------------------------------------
@@ -329,7 +322,6 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 
 \figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:chargerback}%
 {Detailed back view of the chargerSHIELD module.}
-
 
 %-------------------------------------------------------------------
 \section{Conclusions}

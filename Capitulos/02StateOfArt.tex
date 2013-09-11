@@ -217,6 +217,26 @@ circumstances.
 \label{cap2:sec:wirelessSensorNetworks}
 %-------------------------------------------------------------------
 
+\begin{figure}[h]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap2:wsn_router}%
+\scriptsize{WSN con utilización de routers para la conexión con el gateway.}}%
+\includegraphics[angle=270,width=0.45\textwidth]%
+{Imagenes/Vectorial/Capitulo2/wsn_router}%
+\end{SubFloat}
+\qquad
+\begin{SubFloat}
+{\label{fig:cap2:wsn_adhoc}%
+\scriptsize{WSN implementada como una red ad hoc.}}%
+\includegraphics[angle=270,width=0.45\textwidth]%
+{Imagenes/Vectorial/Capitulo2/wsn_adhoc}%
+\end{SubFloat}
+\caption{Possible WSN implementations.}
+\label{fig:cap2:wsn}
+\end{figure}
+
 A \ac{WSN} consists of spatially distributed autonomous ``nodes'' not relying on a pre existing communication infrastructure,  to monitor physical or environmental conditions. Number of nodes vary from a few to several hundreds or even thousands, where each node is connected to one (or sometimes several) sensors. Nodes are generally simple and low-resources embedded system with high cost and size constraints. These constraints result in corresponding constraints on resources such as energy, memory, computational speed and communications bandwidth. Usual architecture of a node is
 divided in:
 
@@ -280,29 +300,21 @@ Some of the main properties affecting \ac{WSN} are:
 
 Most important communication techonologies and protocols for \ac{WSN} are based on the IEEE 802.15.4 \cite{wpanieee} standard for \ac{WPAN}s.
 The standard goal is a low-power communication among nearby devices without underlying infrastructure. The standard only defines \ac{MAC} and
-\ac{PHY} layers of the \ac{OSI} model. Some expanded protocols based on the standard are ZigBee$^{TM}$ *****REF, WirelessHART*****REF, ISA100.11*****REF or MiWi$^{TM}$**********REF specifications. Another popular communication standard is IEEE 802.11***** REF, in which is based
-WiFi*****REF. It is a \ac{IP} standard based on the final user and does not meet low-consumption constraints, however, convergence towards
-full \ac{IP} has brought new standards such as \ac{6LOWPAN} *****REF, that enables \ac{IP} packeting over 802.15.4 based-on networks.
-
+\ac{PHY} layers of the \ac{OSI} model. Some expanded protocols based on the standard are ZigBee$^{TM}$\cite{zigbee}, WirelessHART\cite{hart}, ISA100.11\cite{isa}, or MiWi$^{TM}$\cite{miwi} specifications. Another popular communication standard is IEEE 802.11\cite{802.11}, in which is based WiFi\cite{wifi}. It is a \ac{IP} standard based on the final user and does not meet low-consumption constraints, however, convergence towards full \ac{IP} has brought new standards such as \ac{6LOWPAN}\cite{6lowpan}, that enables \ac{IP} packeting over 802.15.4 based-on networks.
 
 \begin{figure}[h]
 \centering
-%
-\begin{SubFloat}
-{\label{fig:cap2:wsn_router}%
-\scriptsize{WSN con utilización de routers para la conexión con el gateway.}}%
-\includegraphics[angle=270,width=0.45\textwidth]%
-{Imagenes/Vectorial/Capitulo2/wsn_router}%
-\end{SubFloat}
-\qquad
-\begin{SubFloat}
-{\label{fig:cap2:wsn_adhoc}%
-\scriptsize{WSN implementada como una red ad hoc.}}%
-\includegraphics[angle=270,width=0.45\textwidth]%
-{Imagenes/Vectorial/Capitulo2/wsn_adhoc}%
-\end{SubFloat}
-\caption{Possible WSN implementations.}
-\label{fig:cap2:wsn}
+
+\subfloat[WirelessHART protocol logo]{\label{fig:cap2:hart}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Todo}}%
+\quad
+\subfloat[ISA100.11 protocol logo]{\label{fig:cap2:isa100}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Todo}}%
+\quad
+\subfloat[WiFi protocol logo]{\label{fig:cap2:wifi}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Todo}}%
+\quad
+\subfloat[MiWi protocol logo]{\label{fig:cap2:zigbee}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Todo}}%
+
+\caption{Common WSN protocols.}
+\label{fig:cap2:wsnprotocols}
 \end{figure}
 
 %-------------------------------------------------------------------

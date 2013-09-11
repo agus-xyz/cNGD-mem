@@ -112,7 +112,7 @@ MRF49XA datasheet provides hints for the inclussion of the transceiver into a \a
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 
 %-------------------------------------------------------------------
-\subsection{Testing}
+\subsection{Prototype testing}
 %-------------------------------------------------------------------
 
 Basic tests to check proper functionality were made while prototyping the module.
@@ -183,14 +183,17 @@ The minimum spacing among tracks is set to *********, and tracks widths vary on.
 %-------------------------------------------------------------------
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 %-------------------------------------------------------------------
-\subsection{Testing}
+\subsection{Prototype testing}
 %-------------------------------------------------------------------
-%PRIMERO MCU y oscillators y PROGRAMAR
+When prototyping, first part to test is the right operation of the \ac{MCU}. After solderin R4, C2, the reset circuit, PGE module, and the \ac{MCU} itself, the microcontroller is brought under its first programming. For a right operation, is needed a right software configuration of the \ac{MCU} parameters, choosing the internal clock. 
 
-% probar leds y pulsadores
-% POWER SUPPLY
-%USANDO LA SERIAL COMMUNICATION BOARD
-% RIs usando firmware
+Once the right programation of the \ac{MCU} is tested, the external clocks are mounted and tested by changing the software parameters. After this check, it is time for push buttons and leds, which are tested using test software described in Section \ref{cap6:sec:testBenches}. Rest of decoupling capacitors around the \ac{MCU} can be soldered.
+
+For these already described checkings, power supply from the ICD3 is used. Next step is to mount the power supply system and, using external sources, try the right operation of the mounted modules.
+ 
+At this point, the need of debbuging traces arises to keep on mounting the device. A serial communication interface is required, and since the used firmware already supports for RS-232 communication, the rs232SHIELD is mounted and used. To read more details about this mounting, go to Section \ref{cap5:sec:rs232shield}. Headers must be soldered on the board to use this shield.
+
+Last, but not least, modules to try are the \ac{RI}s. One by one, they are added to the \ac{CNGD} and checked. The chosen firmware contains several radio tests for general \ac{TX}/\ac{RX}, handshaking, channel switching. The \ac{RI}s can be tested in conjunction with the equivalent \ac{RI}s at the \ac{FCD}.
 
 %-------------------------------------------------------------------
 \subsection{Final result}
@@ -200,8 +203,6 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 
 \figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:cngdback}%
 {Detailed back view of the cNGD.}
-
-
 
 %-------------------------------------------------------------------
 \section{Serial Communication Board - rs232SHIELD}
@@ -213,11 +214,15 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 {rs232SHIELD 3D model.}
 
 %-------------------------------------------------------------------
+\subsection{Description}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 %-------------------------------------------------------------------
-\subsection{Testing}
+\subsection{Prototype testing}
 %-------------------------------------------------------------------
 
 %-------------------------------------------------------------------
@@ -240,11 +245,15 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 {chargerSHIELD 3D model.}
 
 %-------------------------------------------------------------------
+\subsection{Description}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
 Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
 %-------------------------------------------------------------------
-\subsection{Testing}
+\subsection{Prototype testing}
 %-------------------------------------------------------------------
 
 %-------------------------------------------------------------------

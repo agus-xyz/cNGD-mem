@@ -44,19 +44,23 @@
 
 @entry{CWSN, , \emph{Cognitive Wireless Sensor Network}}
 
+@entry{WRAN, , \emph{wireless reginal area network}}
+
 @entry{WAHSN, , \emph{Wireless Ad-hoc Sensor Network}}
 
 @entry{CNGD,cNGD, \emph{Cognitive Next Generation Device}}
 
 @entry{FCD,, \emph{First Cognitive Device}}
 
-@entry{FFD, , \emph{Full Function Device}}
+@entry{FFD, , \emph{full function device}}
 
-@entry{RFD, , \emph{Reduced Function Device}}
+@entry{RFD, , \emph{reduced function device}}
 
-@entry{RSSI, , \emph{Received Signal Strength Indication}}
+@entry{RF, , \emph{radio frequency}}
 
-@entry{SNR, , \emph{Signal to Noise Ratio}, Relación Señal-Ruido}
+@entry{RSSI, , \emph{received signal strength indication}}
+
+@entry{SNR, , \emph{signal to noise ratio}}
 
 @entry{CRMODULE,CRmodule,\emph{Cognitive Radio Module}}
 

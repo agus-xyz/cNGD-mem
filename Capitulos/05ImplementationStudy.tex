@@ -227,7 +227,7 @@ This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CN
 
 Available \ac{UART}s at the headers are  **** and ****, presenting the first one hardware flow control and not presenting it the second one. \ac{UART} module chosen for serial communication is ************, because the communication does not require hardware flow control. The \ac{RX} signal is shorted to pin ********** and \ac{TX} signal to *************.
 
-In addition, the module contains a RS-232 male?********* connector to be connected to the computer or other device. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
+In addition, the module contains a RS-232 male?********* connector to be connected to the computer or other device. Minimal track spacing is set to ******* while the tracks width is ******. Vias *******************. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
 
 \begin{table}[h]
 \centering
@@ -241,7 +241,7 @@ In addition, the module contains a RS-232 male?********* connector to be connect
 \end{tabular}
 }
 \caption{Component description for rs232SHIELD.%
-         \label{tab:cap5:rs232components}
+         \label{tab:cap5:rs232components}}
 \end{table} 
 %-------------------------------------------------------------------
 \subsection{Layout}
@@ -278,11 +278,13 @@ Usually, communication parameters are set as follows: ************************* 
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-%adaptarse a footprint 
+This module is also a shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the known expansion headers. Hence, this module must include the footprint defined in Figure \ref{}******. Both shields, rs232SHIELD and chargerSHIELD, use the shape ilustrated in Figure \ref{fig:cap5:rs232shape}.
 
-%baterias donde esta
+Battery positive pole is accessible at the header on pin *******, negative pole is at pin ***********. These two pins are shorted to the circuit. Appart from this interface, the charger incrusts a terminal block to connect a external 12V source. This source must be capable to provide up to 500 mA.
 
-%conector para transformador
+Current version of the charger does not include any heat disipator. Tests showed that not heat disipator was required for the current configuration. Any change over the resistors configuration must consider the overheating possibility on ****** component. Thus a heat disipator could be needed.
+
+Minimal track spacing is set to ******* while the tracks width is ******. Vias *******************. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
 
 \begin{table}[h]
 \centering

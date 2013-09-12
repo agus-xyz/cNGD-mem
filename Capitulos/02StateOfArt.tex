@@ -110,7 +110,7 @@ Spectrum decision}.
 
 \end{itemize}
 
-Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service \cite{80222}.
+Realizing that CR technology has the potential to exploit the inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group\cite{80222web}, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service \cite{80222}.
 
 Dynamic spectrum allocation has become a key research activity in wireless communications field and in particular a key technology for ``The Network of the Future'' objective proposed in ICT FP7\footnote{Framework Programmes for Research and Technological Development are funding programmes created by the European Union in order to support and encourage research in the European Research Area (ERA).}.
 
@@ -427,7 +427,7 @@ Libraries and packages for cognitive simulation\cite{ns21} and development exist
 \figura{Vectorial/Capitulo2/castalialogo}{width=.3\textwidth}{fig:castalialogo}%
 {Castalia Simulator Logo}
 
-Castalia support for \ac{CWSN} was first proposed by researchers from \ac{LSI} at Plytechnic University of Madrid **** REF in 2012.
+Castalia support for \ac{CWSN} was first proposed by researchers from \ac{LSI} at Plytechnic University of Madrid in 2012\cite{castaliacwsn}.
 
 \item \emph{NetSim}\cite{netsim}. NetSim is a stochastic discrete event simulator developed by Tetcos, in association with Indian Institute of Science, with the first release in June 2002. This popular network simulation tool used for network lab experimentation and research. Various technologies such as \ac{WSN}, Wireless LAN, WiMax, TCP, IP are supported. NetSim comes with an in-built development environment, which serves as the interface between User's code and NetSim's protocol libraries and simulation kernel. Protocol libraries are available as open C code for user modification. 
 
@@ -474,35 +474,33 @@ Consecutively, new hardware and software modules were incorporated to expand its
 Other deployed \ac{CWSN} devolpment networks placed at researching centers, so called test-beds, are employed to obtain data and try algorithms to feedback simulators and node devices themselves. Here mentioned test-beds do not include nodes with access to several radio bands, but rather several kind of nodes having different interfaces each. Hence, not real \ac{CWSN} nodes are implemented. Main current test-beds are: 
 
 \begin{itemize}
-\item \emph{TWIST (TKN Wireless Indoor Sensor network Test-bed)}. *****REF Developed by the \ac{TKN} at the \ac{TU} Berlin, is one of the largest academic test-beds for experimenting with wireless sensor network applications at indoor deployment scenarios. It provides basic services like node configuration, network-wide programming, out-of-band extraction of debug data and gathering of application data, as well as several novel features  such as active power supply control of the nodes. The self-configuration capability, the use of hardware with standardized interfaces and open-source software makes the TWIST architecture scalable, affordable, and easily replicable. TWIST can be accessed locally or remotely via web interface.
+\item \emph{TWIST (TKN Wireless Indoor Sensor network Test-bed)}\cite{twist}. Developed by the \ac{TKN} at the \ac{TU} Berlin, is one of the largest academic test-beds for experimenting with wireless sensor network applications at indoor deployment scenarios. It provides basic services like node configuration, network-wide programming, out-of-band extraction of debug data and gathering of application data, as well as several novel features  such as active power supply control of the nodes. The self-configuration capability, the use of hardware with standardized interfaces and open-source software makes the TWIST architecture scalable, affordable, and easily replicable. TWIST can be accessed locally or remotely via web interface.
 
 \figura{Vectorial/Capitulo2/twistmap}{width=.9\textwidth}{fig:twistmap}%
 {1 floor deployment of TWIST test-bed}
 
-It spans the three floors, more than 40 rooms, of an office building at the TU Berlin campus, resulting in more than 1500 m$^{2}$ of instrumented office space. Currently the setup is populated with 102 TmoteSky**** REF nodes operating over 2.4 GHz and 102 eyesIFX**** REF nodes over 868 MHz resulting in a fairly regular grid deployment pattern with intra node distance of 3m. A set of low-cost USB WiSpy Spectrum Analyzers for the 2.4 GHz band dig over data and store it on a repository, this information is used as data-base for the \ac{CR} algorithms and spectrum use optimization.
+It spans the three floors, more than 40 rooms, of an office building at the TU Berlin campus, resulting in more than 1500 m$^{2}$ of instrumented office space. Currently the setup is populated with 102 TmoteSky\cite{tmotesky} nodes operating over 2.4 GHz and 102 eyesIFX\cite{eyes} nodes over 868 MHz resulting in a fairly regular grid deployment pattern with intra node distance of 3m. A set of low-cost USB WiSpy Spectrum Analyzers for the 2.4 GHz band dig over data and store it on a repository, this information is used as data-base for the \ac{CR} algorithms and spectrum use optimization.
 
-\item \emph{VT-CRONET (Virginia Tech COgnitive Radio NEtwork Test-bed)} ** REF It is a collection of \ac{CR} nodes deployed throughout a building on the Virginia Tech main campus. The test-bed is openly available for the purposed of performing advanced \ac{CRN}. The test-bed consists of a total of 48 static \ac{SDR} nodes based on USRP2\footnote{The \ac{USRP} family features a modular architecture with interchangeable daughterboard modules that serve as the RF front end.}, located in the ceiling throughout the ICTAS building, being placed 12 nodes per floor. In addition to the static nodes, low-power mobile nodes will also be available in order provide a research environment that accomodates a wide variety of research topics.
+\item \emph{VT-CORNET (Virginia Tech COgnitive Radio NEtwork Test-bed)}\cite{vtcornet}. It is a collection of \ac{CR} nodes deployed throughout a building on the Virginia Tech main campus. The test-bed is openly available for the purposed of performing advanced \ac{CRN}. The test-bed consists of a total of 48 static \ac{SDR} nodes based on USRP2\footnote{The \ac{USRP} family features a modular architecture with interchangeable daughterboard modules that serve as the RF front end.}, located in the ceiling throughout the ICTAS building, being placed 12 nodes per floor. In addition to the static nodes, low-power mobile nodes will also be available in order provide a research environment that accomodates a wide variety of research topics.
 
 \figura{Vectorial/Capitulo2/vtcornetmap}{width=.6\textwidth}{fig:vtcornetmap}%
 {Deployment of VT-CORNET test-bed}
 
 Remotely accessible, emphasis is on cognitive engine design, self-organizing networking algorithms, and network security. The test-bed enables researchers to implement and test their algorithms, protocols, applications, and hardware technologies within a realistic environment.
 
-\item \emph{LOG-a-TEC}. LOG-a-TEC covers a set of diverse test-beds used for research purposes. The test-beds are mostly based on the VESNA****REF hardware platform - developed by SensorLab. The test-beds currently consist of 70-80 sensor nodes installed outdoors, mostly on light poles and rooftops in different regions of Slovenia. They allow remote monitoring, reconfiguration and experimentation. The application area range from environmental monitoring, smarts grids to cognitive radio experimentation. 
+\item \emph{LOG-a-TEC}\cite{logatec}. The Cognitive radio experimentation part of the LOG-a-TEC testbed is located in the municipality of Logatec, Slovenia. LOG-a-TEC is an outdoor experimental facility supporting cognitive radio networking experimentation in ISM and TV bands. It is equipped with 50 VESNA\cite{vesna} platforms and VSE-ISMTV\cite{sneismtv} boards grouped in two clusters: one in city center and one in the industrial zone as displayed in the Figure \ref{fig:cap2:logatec}. The nodes support experimentation in ISM 868 MHz (blue), ISM 2.4 GHz (red) and TV 42 - 870 MHz (green). A small mirror, consisting of 10 nodes, is also available at Institut "Jozef Stefan" campus - this is typically used for testing before upgrading LOG-a-TEC. 
 
-% AMPLIAAAAAAAAAAAAAAAAR CON PAAAAAAAAAAAAAAPEEEEEEEEEEEEEEEER
+\figura{Bitmap/Capitulo2/logatec}{width=.6\textwidth}{fig:cap2:logatec}{LOG-a-TEC nodes clusters deployment}
 
 
-\item \emph{FIT/CorteXlab - Cognitive Radio Test-bed}. This test-bed, still under deployment, will be hosted at INSA-Lyon in France. CorteXlab will suppose one more researching center of the Future Internet of Things project****** REF. CorteXlab will use the network architecture developed in SensLAB and will integrate SDR nodes to offer a remotely accessible development platform for distributed \ac{CR}. Reconfigurability, compatibility, coexistence and even cooperation between \ac{SDR} nodes will be evaluable. A large set of heterogeneous \ac{SDR} nodes (\ac{MIMO} nodes, \ac{SISO} nodes and \ac{WSN} nodes) together with classical sensor nodes will permit a full experimental evaluation.
+\item \emph{FIT/CorteXlab - Cognitive Radio Test-bed}\cite{fitcortex}. This test-bed, still under deployment, will be hosted at INSA-Lyon in France. CorteXlab will suppose one more researching center of the Future Internet of Things project\cite{fit}. CorteXlab will use the network architecture developed in SensLAB and will integrate SDR nodes to offer a remotely accessible development platform for distributed \ac{CR}. Reconfigurability, compatibility, coexistence and even cooperation between \ac{SDR} nodes will be evaluable. A large set of heterogeneous \ac{SDR} nodes (\ac{MIMO} nodes, \ac{SISO} nodes and \ac{WSN} nodes) together with classical sensor nodes will permit a full experimental evaluation.
 
-\figura{Vectorial/Capitulo2/cortexlablogo}{width=.3\textwidth}{fig:cortexlablogo}%
-{CorteXlab tes-tbed logo}
+\figura{Vectorial/Capitulo2/cortexlablogo}{width=.3\textwidth}{fig:cortexlablogo}{CorteXlab tes-tbed logo}
 
 The test-bed will be installed in 180 m$^{2}$ shielded room (isolated from any external interference) and also partly covered with \ac{EM} absorbing material. Depending on the set of enabled frequencies, the design of the room will enable to control the radio channel characteristics (number of paths, delays, etc...) and to ensure a high level of reproducibility of experimentations.
 
 
- \figura{Bitmap/Capitulo2/cortexlabmap}{width=.5\textwidth}{fig:cortexlabmap}%
-{CorteXlab test-bed deployment}
+ \figura{Bitmap/Capitulo2/cortexlabmap}{width=.5\textwidth}{fig:cortexlabmap}{CorteXlab test-bed deployment}
 
 Nodes will be uniformly distributed. These nodes will be able to accept \ac{PHY} layer implementations on both hardware, i.e. \ac{FPGA}, and software on general purpose CPUs.  Furthermore, they will be capable of outputing performance metrics, such as throughput, \ac{BER} and power consumption. The nodes are interconnected through a high speed ethernet link, in order to allow for cooperation and sharing of information. A unified server will also be available for starting, coordinating and collecting the results of experimentations. The experimentation themselves can be from \ac{PHY} layer up, including the possibility of cross-layer interactions.
 \end{itemize}
@@ -511,7 +509,7 @@ All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. 
 
 \begin{itemize}
 
-\item \emph{VESNA}. **** REF WEB It is a modular and fully flexible platform for the development of \ac{WSN} developed by SensorLab @ Jozef Stefan Institute. Based on the high-performance microcontroller with ARM Cortex-M3 core and radio interface spanning over multiple ISM frequency bands it is designed to meet the requirements of diverse applications. In terms of modularity the platform consists of the VESNA core module and a set of special feature modules (sensor node radio - SNR, sensor node expansion - SNE, sensor node power - SNP) that are used as/if needed. Various peripherals including UART, I2C, SPI, USB, ADC and DAC allow hosting of different sets of sensors and/or actuators.The platform readily supports:
+\item \emph{VESNA}\cite{vesna}. It is a modular and fully flexible platform for the development of \ac{WSN} developed by SensorLab @ Jozef Stefan Institute. Based on the high-performance microcontroller with ARM Cortex-M3 core and radio interface spanning over multiple ISM frequency bands it is designed to meet the requirements of diverse applications. In terms of modularity the platform consists of the VESNA core module and a set of special feature modules (sensor node radio - SNR, sensor node expansion - SNE, sensor node power - SNP) that are used as/if needed. Various peripherals including UART, I2C, SPI, USB, ADC and DAC allow hosting of different sets of sensors and/or actuators.The platform readily supports:
 \begin{itemize}
     \item Communication standards IEEE 802.15.4, IEEE 802.15.1 and IEEE 802.11. 
     \item ZigBee, 6LoWPAN, Bluetooth and Wireless M-Bus protocol stacks and technologies. 
@@ -541,7 +539,7 @@ All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. 
 \label{fig:cap2:sneismtvvesna}
 \end{figure}
 
-To enable \ac{CR} capabilities on VESNA, a radio front-end was developed, the SNE-ISMTV****REF. Different versions were capable of operating in three frequency bands of interest (TV broadcast part of the UHF band, 868 MHz and 2.4 GHz ISM band) and flexible enough to enable various user scenarios. 
+To enable \ac{CR} capabilities on VESNA, a radio front-end was developed, the SNE-ISMTV\cite{sneismtv}. Different versions were capable of operating in three frequency bands of interest (TV broadcast part of the UHF band, 868 MHz and 2.4 GHz ISM band) and flexible enough to enable various user scenarios. 
 
 SNE-ISMTV-UHF contains a VHF and UHF TV band receiver based on the NXP TDA18219HN silicon tuner and was designed for spectrum sensing experimentation in TV white spaces. SNE-ISMTV-UHF can receive signals from 470 to 870 MHz with channel filter bandwidths between 1.7 MHz and 10 MHz. Using an analogue detector with a logarithmic response it can be used for energy detection experiments with the resolution bandwidth identical to the channel filter setting and approximately 50 ms per channel sampling. The detector is also coupled with an A/D converter optionally providing 1 Msample/s of the amplitude of the baseband signal. The samples can then be further digitally analyzed in software on the sensor node for more advanced spectrum
 sensing methods.
@@ -595,7 +593,7 @@ SNE-ISMTV-868 and SNE-ISMTV-2400 are based on the TI CC1101 and TI CC2500 integr
 
 \end{itemize}
 
-Standardization is at the core of the current and future success of cognitive radio. The IEEE 802.22***REF WIKIPEDIA working group is developing what will be first cognitive radio-based international standard for \ac{WRAN} with tangible frequency bands for its operation. It will operate on unused television channels. One system such as Unlicensed-Band Cognitive Radio, which can only utilize unlicensed parts of the \ac{RF} spectrum, is described in the IEEE 802.15 Task Group 2 specifications***REF WIKI. This standard focus on the coexistence of IEEE 802.11 and Bluetooth. Many other standards such as WiFi (IEEE 802.11), Zigbee (IEEE 802.15.4), and WiMAX (IEEE 802.16) already include some degree of CR technology today. 
+Standardization is at the core of the current and future success of cognitive radio. The IEEE 802.22\cite{80222web} working group is developing what will be first cognitive radio-based international standard for \ac{WRAN} with tangible frequency bands for its operation. It will operate on unused television channels. One system such as Unlicensed-Band Cognitive Radio, which can only utilize unlicensed parts of the \ac{RF} spectrum, is described in the IEEE 802.15 Task Group 2\cite{802152} specifications. This standard focus on the coexistence of IEEE 802.11 and Bluetooth. Many other standards such as WiFi (IEEE 802.11), Zigbee (IEEE 802.15.4), and WiMAX (IEEE 802.16) already include some degree of CR technology today. 
 
 It has shown how \ac{CWSN} is still an inmature researching field where scarce devices, and all of them incomplete, are found. Real and complete devices to allow developers to try security, energy and spectrum optimization, and \ac{QOS} algorithms and strategies are needed. Facing this need,
 \ac{LSI} proposes the implementation of a complete development platform, hardware and software, fully oriented to \ac{CWSN} investigation able to truly simulate real \ac{WSN} applications. Fulfilling \ac{WSN}, cognition and development requirements. This goal define and frames this Master Thesis.   

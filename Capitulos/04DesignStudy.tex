@@ -762,23 +762,16 @@ To set a fixed current through the batteries, an LM317********** voltage voltage
 
 %FORMULAA
 
-This regulator is configured to an output of 1.25V by chosing an R2? of 0 $\Omega$. Then a fix resistor between its output and ground will fix the output current and therefore, the input current. This fix current will flow through the batteries during the charge. 
-
-The previously *********** output controls the ************* of a ******************** ¿transistor?. It switchs the transistor operation modes, ¿active and cut?, when ****** output is set to high or low, respectively.
-
- 
-%umbral, salida del op cambia
- 
-% afectando al transistor que conduce o no conduce
-
-% further on transistor
+This regulator is configured to an output of 1.25V by chosing an R2? of 0 $\Omega$. Then a fix resistor between its output and ground will fix the output current and therefore, the input current. This fix current will flow through the batteries during the charge. In addition, a ***********transistor? is placed at the regulator output. This means that the operation mode of the transistor affects the flowing current. If the transistor is ¿active?, current flows. The current does not flow if the transistor is ¿closed?.
 
 
-% led se activa avisa de carga lista
+%FIGURE TRANSISTOR Y..... ¿ESQUEMA? 
 
-% diodo precaucion
+The previously mentioned *********** output controls the ************* of the transistor. It switchs the transistor operation modes, ¿active and cut?, when ****** output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the voltage sensed at the batteries.
 
-% se ha realizado simulacion del circuito.
+A green \ac{LED} driven by the ********** output, turns illuminated when this output drops under a threshold. This way, the led indicates when the batteries voltage is over the reference voltage. A precautionary diode preserves the batteries from being reversely charged. 
+
+The whole system was simulated on Alitum Designer and simulation outputs can be observed further on at this same section.
 
 %-------------------------------------------------------------------
 \subsection{Schematics}

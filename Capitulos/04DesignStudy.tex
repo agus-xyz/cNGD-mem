@@ -741,10 +741,45 @@ A schematic view of the rs232SHIELD is shown at Figure \ref{fig:cap4:rs232shield
 %-------------------------------------------------------------------
 \label{cap4:sec:chargerShield}
 %-------------------------------------------------------------------
-
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
+NiMH batteries are amongst the hardest batteries to charge. Whereas with lithium ion and lead acid batteries you can control overcharge by just setting a maximum charge voltage, the nickel based batteries don't have a "float charge" voltage. So the charging is based on forcing current through the battery. What usually is called as linear charger.
+
+Charge rate, usually denoted as C, signifies a charge or discharge rate equal to the capacity of a battery in one hour. For a 1 Ah battery, C is 1A. A charge rate of C/2 (0.5A), would need two hours, whereas a charge rate of 2C (2A), if supported, would need 30 minutes to fully charge the battery. \ac{NIMH} batteries are sensitive to damage on overcharge when the charge rate is over C/10.
+
+Previous statements assumes that the battery has a 100\% coulometric charging efficiency\footnote{Part of the electrical charge stored in a battery by charging that is recoverable during discharging. Usually expressed as a percentage.}. The coulometric charging efficiency of \ac{NIMH} batteries is typically 66\%. However, the faster you charge the worse this parameter gets.
+
+Hence, for our 2.7 Ah batteries, considering a charge rate C/10. A charge current of 270 mA could be accepted, taking from 10 to 14 hours to fully charge the batteries. However, let set the charge current aroun 200 mA as precautionary measure. This way, quality of the batteries is preserved and the charger is suitable for less capacity batteries.
+
+We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial aproximation we could stablish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value*****************. The sensed voltage will be compared with a reference voltage at the input of an ********** operational amplifier. Reference voltage is obtained by a simple voltage divider.
+
+%further view en amp op.
+
+To set a fixed current through the batteries, an LM317********** voltage voltage regulator is used. This is an adjustable 3-terminal positive-voltage regulator designed to supply up to 1.5A of load current with an output voltage adjustable over a 1.2 V to 37 V range. It employs internal current limiting and thermal shutdown.
+
+%FIGURE
+
+%FORMULAA
+
+This regulator is configured to an output of 1.25V by chosing an R2? of 0 $\Omega$. Then a fix resistor between its output and ground will fix the output current and therefore, the input current. This fix current will flow through the batteries during the charge. 
+
+The previously *********** output controls the ************* of a ******************** ¿transistor?. It switchs the transistor operation modes, ¿active and cut?, when ****** output is set to high or low, respectively.
+
+ 
+%umbral, salida del op cambia
+ 
+% afectando al transistor que conduce o no conduce
+
+% further on transistor
+
+
+% led se activa avisa de carga lista
+
+% diodo precaucion
+
+% se ha realizado simulacion del circuito.
+
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
@@ -754,6 +789,14 @@ A schematic of charger232SHIELD can be seen at Figure \ref{fig:cap4:chargershema
 %-------------------------------------------------------------------
 \subsection{Simulation}
 %-------------------------------------------------------------------
+
+%simulacion sobre altium designer. 
+
+%FOTO ESQUEMATICO
+
+% GRAFICA
+
+
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX

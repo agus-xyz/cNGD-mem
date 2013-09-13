@@ -306,6 +306,7 @@ The whole microcontroller can be divided into for blocks: core, memory, integrat
 \subsubsection{Pinout}
 %-------------------------------------------------------------------
 
+explicar un poco tabla ***********************************************
 {\footnotesize
 \begin{longtable}{l l l l l}
 % aquí añadimos el encabezado de la primera hoja.
@@ -345,7 +346,7 @@ PIN & PERIPHERALS & MODULE & USE \\
 15 & VSS &  \multicolumn{2}{l}{Ground} \\ \hline
 16 & VDD &  \multicolumn{2}{l}{Power Supply} \\ \hline
 17 & TMS/RA0 & - & -  \\ \hline
-18 & AERXD0/\textbf{INT1}/RE8 & \ac{RI} 434MHz & Interruption \\ \hline
+18 & AERXD0/\textbf{INT1}/RE8 & \ac{RI} 434MHz & Interrup. \\ \hline
 19 & AERXD1/\textbf{INT2}/RE9 & Header & p00 \\ \hline
 20 & \textbf{AN5}/\textbf{C1IN+}/\textbf{VBUSON}/\textbf{CN7}/\textbf{RB5} & Header & p01 \\ \hline
 21 & \textbf{AN4}/\textbf{C1IN-}/\textbf{CN6}/\textbf{RB4} & Header & p39 \\ \hline
@@ -367,41 +368,41 @@ PIN & PERIPHERALS & MODULE & USE \\
 37 & VDD &  \multicolumn{2}{l}{Power Supply}\\ \hline
 38 & TCK/RA1 & - & - \\ \hline
 39 & \textbf{SCK4}/U5TX/U2nRTS/RF13 & \ac{RI} 2.4GHz & SPI SCK\\ \hline
-40 & nSS3A/U5RX/U2nCTS/\textbf{RF12} & \ac{RI} 868MHz & FIFO Int.\\ \hline
+40 & nSS34/U5RX/U2nCTS/\textbf{RF12} & \ac{RI} 868MHz & FIFO Int.\\ \hline
 41 & \textbf{AN12}/\textbf{ERXD0}/AECRS/PMA11/\textbf{RB12} & Header & p04\\ \hline
 42 & \textbf{AN13}/\textbf{ERXD1}/AECOL/PMA10/\textbf{RB13} & Header & p05 \\ \hline
 43 & \textbf{AN14}/ERXD2/AETXD3/PMALH/PMA1/\textbf{RB14} & Header & p17\\ \hline
-44 &  \\ \hline
+44 & \textbf{AN15}/ERXD3/OCFB/PMALL/PMA0/CN12/\textbf{RB15} & Header & p16\\ \hline
 45 & VSS & \multicolumn{2}{l}{Power Supply}\\ \hline
 46 & VDD & \multicolumn{2}{l}{Power Supply}\\ \hline
-47 &  \\ \hline
-48 &  \\ \hline
-49 &  \\ \hline
-50 &  \\ \hline
-51 &  \\ \hline
-52 &  \\ \hline
-53 &  \\ \hline
-54 &  \\ \hline
-55 &  \\ \hline
-56 &  \\ \hline
-57 &  \\ \hline
-58 &  \\ \hline
-59 &  \\ \hline
-60 &  \\ \hline
-61 &  \\ \hline
+47 & AETXD0/nSS3/U4RX/U1nCTS/CN20/\textbf{RD14} & \ac{RI} 868MHz & FIFO Sel.\\ \hline
+48 & AETXD1/\textbf{SCK3}/U4TX/U1nRTS/CN21/RD15 & \ac{RI} 868MHz  & SPI SCK\\ \hline
+49 & SDA5/\textbf{SDI4}/U2RX/PMA9/CN17/RF4 & \ac{RI} 2.4GHz & SPI SDO \\ \hline
+50 & SCL5/\textbf{SDO4}/U2TX/PMA8/CN18/RF5 & \ac{RI} 2.4GHz & SPI SDI\\ \hline
+51 & \textbf{USBID}/RF3 & USB/Header & USB ID/p06 \\ \hline
+52 & SDA3/\textbf{SDI3}/U1RX/RF2 & \ac{RI} 868MHz & SPI SDO \\ \hline
+53 & SCL3/\textbf{SDO3}/U1TX/RF8 & \ac{RI} 868MHz & SPI SDI \\ \hline
+54 & \textbf{VBUS} & USB/Header & VBUS/p07 \\ \hline
+55 & VUSB & \multicolumn{2}{l}{Power Supply + Cap} \\ \hline
+56 & \textbf{D-}/RG3 & USB & D- \\ \hline
+57 & \textbf{D+}/RG2 & USB & D+ \\ \hline
+58 & \textbf{SCL2}/\textbf{RA2} & Header & p11 \\ \hline
+59 & \textbf{SDA2}/\textbf{RA3} & Header & p10 \\ \hline
+60 & TDI/\textbf{RA4} & LEDS & LED 3 \\ \hline
+61 & TDO/\textbf{RA5} & LEDS & LED 2\\ \hline
 62 & VDD &  \multicolumn{3}{l}{Power Supply} \\ \hline
-63 &  \\ \hline
-64 & \\ \hline
+63 & \textbf{OSC1}/CLKI/RC12 & Oscillators & Prim. Osc. In. \\ \hline
+64 & \textbf{OSC2}/CLKO/RC15 & Oscillators & Prim. Osc. Out. \\ \hline
 65 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
-66 &  \\ \hline
-67 & \\ \hline
-68 & \\ \hline
-69 & \\ \hline
-70 &  \\ \hline
-71 &  \\ \hline
-72 &  \\ \hline
-73 &   \\ \hline
-74 & \\ \hline
+66 & AETXCLK/SCL1/\textbf{INT3}/RA14 & \ac{RI} 868MHz & Interrup. \\ \hline
+67 & AETXEN/SDA1/\textbf{INT4}/RA15 & \ac{RI} 2.4GHz & Interrup. \\ \hline
+68 & RTCC/\textbf{EMDIO}/AEMDIO/\textbf{IC1}/\textbf{RD8} & Header & p09 \\ \hline
+69 & nSS1/\textbf{IC2}/\textbf{RD9} & Header & p39 \\ \hline
+70 & SCK1/IC3/PMCS2/PMA15/RD10 \\ \hline
+71 & EMDC/AEMDC/IC4/PMCS1/PMA14/RD11 \\ \hline
+72 & SDO1/OC1/INT0/RD0 \\ \hline
+73 & SOSCI/CN1/RC13  \\ \hline
+74 & SOSCO/T1CK/CN0/RC14 \\ \hline
 75 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
 76 &  \\ \hline
 77 & \\ \hline
@@ -518,21 +519,22 @@ components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}
 {MCP1603 buck regulator configuration}
 
 It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions, Table \ref{tab:cap4:maxconsumption}.
-
+**********
 \begin{table}[h]
 \centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c |||}
-\hline \\
-\hline \\
-\hline \\
-\hline \\
-
+\scalebox{0.9}{
+\begin{tabular}{||l l||}
+\hline
+MCU & culo  \\ \hline
+MuTrans 434 (TX mode) & 23 mA \\ \hline
+MuTrans 868 (TX mode) & 24 mA \\ \hline
+MRF49j40MA (TX mode) &  23 mA \\ \hline
+LEDS  & 10 mA \\ \hline
 \end{tabular}
 }
-\caption{Maximum estimated power consumption of the platform.%
-         \label{tab:cap4:maxconsumption}}
-\end{table} 
+\caption{Maximum estimated power consumption of the platform.
+	\label{tab:cap4:maxconsumption}}
+\end{table}
 
 
 
@@ -541,18 +543,19 @@ It was estimated that 500 mA was enough to supply the device regarding the descr
 %-------------------------------------------------------------------
 In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer some days autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
 
-Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Active and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated in \ref{}****.
+Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated in \ref{}****.
 
 \begin{table}[h]
 \centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c |||}
-\hline \\
-\hline \\
-\hline
+\scalebox{0.9}{
+\begin{tabular}{||l r r ||}
+\hline 
+Mode & Operation time percentage & Consumption \\ \hline
+Run & 20\% &****\\ \hline
+Sleep & 80\% & **** \\ \hline
 \end{tabular}
 }
-\caption{Estimated values for Active and Sleep operation modes.%
+\caption{Estimated values for Run and Sleep operation modes.%
          \label{tab:cap4:powerstimatedvalues}}
 \end{table} 
 
@@ -724,8 +727,7 @@ This extension sets serial communication between the microcontroller and a pc ov
 
 This technology could be useful for old machines, low-resources researches, or for debbuging purposes during the platform development until the \ac{USB} communication is fully operative. This communication way has a simpler operation mode than \ac{USB}.
 
-Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used one of the accessible \ac{UART} at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232********REF transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at pin *************, \ac{RX} is at *************. Since this \ac{UART} does not support hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals appart from the data signals.}, two pins are enough to set proper communication.
-
+Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used one of the accessible \ac{UART} at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at pin *************, \ac{RX} is at *************. Since this \ac{UART} does not support hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals appart from the data signals.}, two pins are enough to set proper communication.
 
 \figura{Bitmap/Capitulo4/max3232}{width=.4\textwidth}{fig:cap4:max3232}%
 {MAX3232 basic scheme.}

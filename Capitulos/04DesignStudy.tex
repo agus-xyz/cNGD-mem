@@ -60,22 +60,22 @@ Altium Designer is software package for printed circuit board, \ac{FPGA} and emb
 Despite the amount of functionalities offered by Altium Designer the two main options needed for this project are schematic capture, for circuit edition, and \ac{PCB} design, for subsequent layout deployment.
 
 Options provided by the schematic capture module, required for the design task, includes:
-%DESARROLLAR CARACTERISTICAS **************************************************************************************
+
 \begin{itemize}
-	\item Component library management. 
-	\item \ac{SPICE} mixed-signal circuit simulation.
-      	\item Netlist export. 
-     	\item Reporting and BoM facilities.
-	\item Multi-channel, hierarchical schematics and design re-use.
+	\item \emph{Component library management}. Useful to create own components facing the logic design.
+	\item \emph{\ac{SPICE} mixed-signal circuit simulation}. In order to simulate any functionality. Specially useful in analogic modules 			design.
+      	\item \emph{Netlist export}. This way, it is possible to export our designs easily to process under other softwares.
+     	\item \emph{Reporting and \ac{BoM} facilities}. For simple management purposes.
+	\item \emph{Multi-channel, hierarchical schematics and design re-use}. Facilitating the design task.
 \end{itemize}
 
 On the other hand, required option from the \ac{PCB} design module are:
 \begin{itemize}
-	\item Component footprint library management.
-   	\item Component placement.
-   	\item Manual trace routing, with support for multi-trace routing. 
-   	\item Interactive 3D editing of the board and MCAD export to STEP
-   	\item Manufacturing files generation with support for Gerber formats
+	\item \emph{Component footprint library management}. Equally useful to manage new components and embeed them into our \ac{PCB} designs.
+   	\item \emph{Component placement}. In order to freely design our own layouts.
+   	\item \emph{Manual trace routing, with support for multi-trace routing}. Enabling and facilitating the layout design.
+   	\item \emph{Interactive 3D editing of the board and MCAD export to STEP}. To obtain more realistic views and complete idea of our 			implementations on advance to their manufacturing.
+   	\item \emph{Manufacturing files generation with support for Gerber formats}. Essential for manufacturing process.
 \end{itemize}
 
 %-------------------------------------------------------------------
@@ -94,7 +94,7 @@ ANEXAR ¿libreria? **********************************************
 \label{cap4:sec:transceivers}
 %-------------------------------------------------------------------
 
-The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board**********REF, whose picture is seen in. This board is a demonstration and development daughter board for the MRF49XA ISM Band Sub-GHz RF Transceiver. The board can plug into a fitteable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
+The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board\cite{daughterb}, whose picture is seen in. This board is a demonstration and development daughter board for the MRF49XA ISM Band Sub-GHz RF Transceiver. The board can plug into a fitteable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
 
 \figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap4:pictail}%
 {MRF49XA PICtail$^{TM}$ Daughter Board}
@@ -249,12 +249,12 @@ The whole microcontroller can be divided into for blocks: core, memory, integrat
 \begin{itemize}
 	\item The main core is based on a \ac{RISC} MIPS M4K. This module takes control over the system. It controls the peripherals and execute 			the programmed code.
 
-	\item A further observation into the memory system allows differenciate among Flash, \ac{RAM}, registers, and boot flash. The system 			load the data on a cache memory and prefetch the instructions. Figure \ref{} shows the block diagram of the prefetch module.
+	\item A further observation into the memory system allows differenciate among Flash, \ac{RAM}, registers, and boot flash. The system 			load the data on a cache memory and prefetch the instructions. Figure \ref{fig:cap4:pic32cachemodule} shows the block diagram of the prefetch module.
 
-\figura{Vectorial/Todo}{width=0.8\textwidth}{fig:cap4:pic32cachemodule}%
+\figura{Bitmap/Capitulo4/cache}{width=0.7\textwidth}{fig:cap4:pic32cachemodule}%
 {Prefetch cache module block diagram.}	
 
-	\item Integration system is compound by the set of modules needed to make work the core and peripherals. These are interrupt control, 			oscillator system, reset, watchdog timer and power-up timer. For detailed explanation of each module consult the microcontroller 			manual \cite{}**********************************.
+	\item Integration system is compound by the set of modules needed to make work the core and peripherals. These are interrupt control, 			oscillator system, reset, watchdog timer and power-up timer. For detailed explanation of each module consult the microcontroller 			manual \cite{pic32datasheet}.
 
 	\item Peripherals are a set of independent modules oriented to perform specific tasks. Here it is described a brief description of the 			main peripherals and the use they receive in the system: 
 
@@ -310,13 +310,13 @@ The whole microcontroller can be divided into for blocks: core, memory, integrat
 \begin{longtable}{l l l l l}
 % aquí añadimos el encabezado de la primera hoja.
 \hline
-PIN & TIPO & TIPO 2PERIFERICO & USO \\
+PIN & PERIPHERALS &  MODULE & USE \\
 \hline \hline
 \endfirsthead
 
 % aquí añadimos el encabezado del resto de hojas.
 \hline
-PIN & TIPO & TIPO 2PERIFERICO & USO \\
+PIN & PERIPHERALS & MODULE & USE \\
 \hline \hline
 \endhead
 
@@ -328,106 +328,106 @@ PIN & TIPO & TIPO 2PERIFERICO & USO \\
 \endlastfoot
 
 % aquí añadimos el cuerpo de la tabla.
-1 & RE5 & MiWi & CS* \\ \hline
-2 & RE6 & MiWi & Wake \\ \hline
-3 & RE7 & MiWi & RST* \\ \hline
-4 & SCK2A & U2BTX/RG6WIFI & sck2 \\ \hline
-5 & SDI2A & U2ARX/RG7WIFI & sdo2 \\ \hline
-6 & SDO2A & U2ATX/RG8WIFI & sdi2 \\ \hline
-7 & MCLR* &  & RESET \\ \hline
-8 & SS2A* & U2BRX/RG9 &  \\ \hline
-9 & VSS &  & TIERRA \\ \hline
-10 & VDD &  & ALIMENTACIÓN \\ \hline
-11 & Vbuson & RB5USB otg & Control Bomba de Carga \\ \hline
-12 & RB4 &  & LED \\ \hline
-13 & RB3 &  & LED \\ \hline
-14 & RB2 &  & LED \\ \hline
-15 & PGEC1 & RB1 & Programador \\ \hline
-16 & PGED1 & RB0 & Programador \\ \hline
-17 & RB6/AN6 & PGEC2 & libre \\ \hline
-18 & RB7/AN7 & PGED2 & libre \\ \hline
-19 & AVDD &  & ALIMENTACIÓN \\ \hline
-20 & AVSS &  & TIERRA \\ \hline
-21 & RB8/AN8 & SS3A* & libre \\ \hline
-22 & RB9/AN9 &  & libre \\ \hline
-23 & TMS & RB10 & jtag \\ \hline
-24 & TDO & RB11 & jtag \\ \hline
-25 & VSS &  & TIERRA \\ \hline
-26 & VDD &  & ALIMENTACIÓN \\ \hline
-27 & TCK & RB12 & jtag \\ \hline
-28 & TDI & RB13 & jtag \\ \hline
-29 & SCK3A & RB14MiWi & sck3 \\ \hline
-30 & RB15 & TULIO & RST* \\ \hline
-31 & SDI3A & RF4MiWi & sdo3 \\ \hline
-32 & SDO3A & RF5MiWi & sdi3 \\ \hline
-33 & USBID & RF3USB otg &  \\ \hline
-34 & Vbus & USB otg &  \\ \hline
-35 & Vusb & USB otg & Conexión a VCC con Condensador \\ \hline
-36 & D- & RG3USB otg &  \\ \hline
-37 & D+ & RG2USB otg &  \\ \hline
-38 & VDD &  & ALIMENTACIÓN \\ \hline
-39 & OSC1 & RC12 & Cristal de cuarzo 8mhz \\ \hline
-40 & OSC2 & RC15 & Cristal de cuarzo 8mhz \\ \hline
-41 & VSS &  & TIERRA \\ \hline
-42 & INT1 & RD8/RTCCWiFi & int* \\ \hline
-43 & U1BRX & INT2/SS1A*/RD9RS-232 & UART1B RS-232 RX \\ \hline
-44 & INT3 & RD10MiWi & int \\ \hline
-45 & RD11 & INT4TULIO & interrupción \\ \hline
-46 & INT0 & RD0 &  \\ \hline
-47 & SOSCI & RC13 & Cristal de cuarzo 32kHz \\ \hline
-48 & SOSCO & RC14/T1CK & Cristal de cuarzo 32kHz \\ \hline
-49 & U1BTX & RD1/SCK1ARS-232 & UART1B RS-232 TX \\ \hline
-50 & U1ARX & RD2/SDI1ATULIO & UART1A RX \\ \hline
-51 & U1ATX & RD3/SDO1ATULIO & UART1A TX \\ \hline
-52 & RD4 &  & PULSADOR \\ \hline
-53 & RD5 &  & PULSADOR \\ \hline
-54 & RD6 &  &  \\ \hline
-55 & RD7 &  &  \\ \hline
-56 & VDDcore &  & VCC, con dos condensadores \\ \hline
-57 & VDD &  & ALIMENTACIÓN \\ \hline
-58 & RF0 &  &  \\ \hline
-59 & RF1 &  &  \\ \hline
-60 & RE0 &  & LED \\ \hline
-61 & RE1 & WIFI & CS* \\ \hline
-62 & RE2 & WIFI & Hibernate \\ \hline
-63 & RE3 & WIFI & WP* \\ \hline
-64 & RE4 & WIFI & RST* \\ \hline
-65 & INT0 & RD0 &  \\ \hline
-66 & SOSCI & RC13 & Cristal de cuarzo 32kHz \\ \hline
-67 & SOSCO & RC14/T1CK & Cristal de cuarzo 32kHz \\ \hline
-68 & U1BTX & RD1/SCK1ARS-232 & UART1B RS-232 TX \\ \hline
-69 & U1ARX & RD2/SDI1ATULIO & UART1A RX \\ \hline
-70 & U1ATX & RD3/SDO1ATULIO & UART1A TX \\ \hline
-71 & RD4 &  & PULSADOR \\ \hline
-72 & RD5 &  & PULSADOR \\ \hline
-73 & RD6 &  &  \\ \hline
-74 & RD7 &  &  \\ \hline
-75 & VDDcore &  & VCC, con dos condensadores \\ \hline
-76 & VDD &  & ALIMENTACIÓN \\ \hline
-77 & RF0 &  &  \\ \hline
-78 & RF1 &  &  \\ \hline
-79 & RE0 &  & LED \\ \hline
-80 & RE1 & WIFI & CS* \\ \hline
-81 & RE2 & WIFI & Hibernate \\ \hline
-82 & RE3 & WIFI & WP* \\ \hline
-83 & RE4 & WIFI & RST* \\ \hline
-84 & RE4 & WIFI & RST* \\ \hline
-85 & INT0 & RD0 &  \\ \hline
-86 & SOSCI & RC13 & Cristal de cuarzo 32kHz \\ \hline
-87 & SOSCO & RC14/T1CK & Cristal de cuarzo 32kHz \\ \hline
-88 & U1BTX & RD1/SCK1ARS-232 & UART1B RS-232 TX \\ \hline
-89 & U1ARX & RD2/SDI1ATULIO & UART1A RX \\ \hline
-90 & U1ATX & RD3/SDO1ATULIO & UART1A TX \\ \hline
-91 & RD4 &  & PULSADOR \\ \hline
-92 & RD5 &  & PULSADOR \\ \hline
-93 & RD6 &  &  \\ \hline
-94 & RD7 &  &  \\ \hline
-95 & VDDcore &  & VCC, con dos condensadores \\ \hline
-96 & VDD &  & ALIMENTACIÓN \\ \hline
-97 & RF0 &  &  \\ \hline
-98 & RF1 &  &  \\ \hline
-99 & RE0 &  & LED \\ \hline
-100 & RE1 & WIFI & CS*\\ \hline
+1 & AERXARR/RG15 & - & - & - \\ \hline
+2 & VDD & \multicolumn{2}{l}{Power Supply} \\ \hline
+3 & PMD5/\textbf{RE5} & Header & p23 \\ \hline
+4 & PMD6/\textbf{RE6}  & Header & p35 \\ \hline
+5 & PMD7/\textbf{RE7}  & Header & p22 \\ \hline
+6 & T2CK/\textbf{RC1}  & Header & p36\\ \hline
+7 & T3CK/RC2 &  - & - \\ \hline
+8 & T4CK/RC3 &  - & -  \\ \hline
+9 & T5CK/\textbf{SDI1}/RC4 & \ac{RI} 434MHz & SPI SDO\\ \hline
+10 & ECOL/\textbf{SCK2}/\textbf{U6TX}/\textbf{U2nRTS}/PMA5/\textbf{CN8}/\textbf{RG6} & Header & p37  \\ \hline
+11 & ECRS/\textbf{SDA4}/\textbf{SDI2}/\textbf{U3RX}/PMA4/\textbf{CN9}/\textbf{RG7} & Header & p21  \\ \hline
+12 & \textbf{ERXDV}/\textbf{SCL4}/\textbf{SDO2}/\textbf{U3TX}/PMA3/\textbf{CN10}/\textbf{RG8} & Header & p38  \\ \hline
+13 & \textbf{nMCLR} & PGE/Pushbutton & Reset \\ \hline
+14 & \textbf{ERXCLK}/nSS2A/\textbf{U3nCTS}/\textbf{U6RX}/PMA2/\textbf{CN11}/\textbf{RG9} & Header & p20 \\ \hline
+15 & VSS &  \multicolumn{2}{l}{Ground} \\ \hline
+16 & VDD &  \multicolumn{2}{l}{Power Supply} \\ \hline
+17 & TMS/RA0 & - & -  \\ \hline
+18 & AERXD0/\textbf{INT1}/RE8 & \ac{RI} 434MHz & Interruption \\ \hline
+19 & AERXD1/\textbf{INT2}/RE9 & Header & p00 \\ \hline
+20 & \textbf{AN5}/\textbf{C1IN+}/\textbf{VBUSON}/\textbf{CN7}/\textbf{RB5} & Header & p01 \\ \hline
+21 & \textbf{AN4}/\textbf{C1IN-}/\textbf{CN6}/\textbf{RB4} & Header & p39 \\ \hline
+22 & \textbf{AN3}/C2IN+/\textbf{CN4}/\textbf{RB3} & Header & p02 \\ \hline
+23 & AN2/C2IN-/CN3/RB2 & - & - \\ \hline
+24 & \textbf{PGEC1}/AN1/CN2/RB1 & PGE & PGEC \\ \hline
+25 & \textbf{PGED1}/AN0/CN1/RB0 & PGE & PGED \\ \hline
+26 & PGEC2/AN6/OCFA/RB6 & - & - \\ \hline
+27 & PGED2/AN7/\textbf{RB7} & \ac{RI} 434MHz & Reset \\ \hline
+28 & \textbf{VREF-}/\textbf{CVREF-}/AERXD2/PMA7/\textbf{RA9} & Header & p18\\ \hline
+29 & \textbf{VREF+}/\textbf{CVREF+}/AERXD3/PMA6/\textbf{RA10} & Header & p19  \\ \hline
+30 & AVDD & \multicolumn{2}{l}{Power Supply} \\ \hline
+31 & AVSS & \multicolumn{2}{l}{Ground} \\ \hline
+32 & AN8/C1OUT/\textbf{RB8} & \ac{RI} 434MHz & Wake \\ \hline
+33 & AN9/C2OUT/\textbf{RB9} & \ac{RI} 434MHz & Power Switch \\ \hline
+34 & AN10/CVREFOUT/PMA13/\textbf{RB10} & \ac{RI} 434MHz & Chip Select \\ \hline
+35 & AN11/\textbf{ERXERR}/AETXERR/PMA12/RB11 & Header & p03 \\ \hline
+36 & VSS &  \multicolumn{2}{l}{Ground}  \\ \hline
+37 & VDD &  \multicolumn{2}{l}{Power Supply}\\ \hline
+38 & TCK/RA1 & - & - \\ \hline
+39 & \textbf{SCK4}/U5TX/U2nRTS/RF13 & \ac{RI} 2.4GHz & SPI SCK\\ \hline
+40 & nSS3A/U5RX/U2nCTS/\textbf{RF12} & \ac{RI} 868MHz & FIFO Int.\\ \hline
+41 & \textbf{AN12}/\textbf{ERXD0}/AECRS/PMA11/\textbf{RB12} & Header & p04\\ \hline
+42 & \textbf{AN13}/\textbf{ERXD1}/AECOL/PMA10/\textbf{RB13} & Header & p05 \\ \hline
+43 & \textbf{AN14}/ERXD2/AETXD3/PMALH/PMA1/\textbf{RB14} & Header & p17\\ \hline
+44 &  \\ \hline
+45 & VSS & \multicolumn{2}{l}{Power Supply}\\ \hline
+46 & VDD & \multicolumn{2}{l}{Power Supply}\\ \hline
+47 &  \\ \hline
+48 &  \\ \hline
+49 &  \\ \hline
+50 &  \\ \hline
+51 &  \\ \hline
+52 &  \\ \hline
+53 &  \\ \hline
+54 &  \\ \hline
+55 &  \\ \hline
+56 &  \\ \hline
+57 &  \\ \hline
+58 &  \\ \hline
+59 &  \\ \hline
+60 &  \\ \hline
+61 &  \\ \hline
+62 & VDD &  \multicolumn{3}{l}{Power Supply} \\ \hline
+63 &  \\ \hline
+64 & \\ \hline
+65 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
+66 &  \\ \hline
+67 & \\ \hline
+68 & \\ \hline
+69 & \\ \hline
+70 &  \\ \hline
+71 &  \\ \hline
+72 &  \\ \hline
+73 &   \\ \hline
+74 & \\ \hline
+75 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
+76 &  \\ \hline
+77 & \\ \hline
+78 &  \\ \hline
+79 &  \\ \hline
+80 & \\ \hline
+81 &  \\ \hline
+82 & \\ \hline
+83 &  \\ \hline
+84 &  \\ \hline
+85 &  \\ \hline
+86 & VDD &  \multicolumn{3}{l}{Power Supply} \\ \hline
+87 &  \\ \hline
+88 &  \\ \hline
+89 & \\ \hline
+90 & \\ \hline
+91 & \\ \hline
+92 &  \\ \hline
+93 &  \\ \hline
+94 &  \\ \hline
+95 & \\ \hline
+96 &  \\ \hline
+97 &   \\ \hline
+98 &   \\ \hline
+99 &  \\ \hline
+100 & \\ \hline
 \\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 
 \caption{PIC32675F256L pins use description.}
@@ -442,7 +442,7 @@ As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, wit
 
 For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU} are the same. Figure \ref{fig:cap4:434schematics} shows the schematic for one of them.
 
-Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA****REF. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposses computation, cost, and power savings. It has access over the 15 5MHz-channels the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
+Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA\cite{mrf24j40}. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposses computation, cost, and power savings. It has access over the 15 5MHz-channels the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
 
 \begin{itemize}
 	\item Operating Voltage: 2.4-3.6V (3.3V typical).
@@ -471,7 +471,7 @@ Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz.
 
 % ENTRAMOS A DETALLAR MIWI**************************************
 
-\figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.7\textwidth}{fig:cap4:mrf24j40mablocks}%
+\figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.8\textwidth}{fig:cap4:mrf24j40mablocks}%
 {MRF24J40MA block diagram}
 
 The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
@@ -484,7 +484,7 @@ The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topo
 %-------------------------------------------------------------------
 The designed system allows enabling/disabling the power supply to the \ac{RI}s. This way, any \ac{RI} can be completely switched off by the running application. Cutting down all possible power consumption that unused \ac{RI}s could have by, for instance, running clocks.
 
-The power control to the \ac{RI}s is based on the ADG701**** REF. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on resistance and low leakage currents. It can operate from a single 1.8 V to 5.5 V supply, making it ideal for use in battery-powered instruments.
+The power control to the \ac{RI}s is based on the ADG701\cite{adg701}. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on resistance and low leakage currents. It can operate from a single 1.8 V to 5.5 V supply, making it ideal for use in battery-powered instruments.
 
 Some of the features of this component are:
 \begin{itemize}
@@ -498,7 +498,7 @@ Some of the features of this component are:
 
 Pin 4 (IN) is a digital input where the control logic signal is placed. A logic '1' will make pins 1 (D - drain) and  2 (S - source) shorted, a logic '0' will open the switch. Pins 1 and 2 can be either inputs or outputs. Pin 5 (NC) must not be connected.
 
-% RESISTENCIA OPCIONAL PARA DESACTIVAR MODULO ************************************************************************************************
+In case ADG701 switch was not included into the design for any reason, optional 0 $\Omega$ resistors must be used to enable power supply at the \ac{RI}s. These optional resistors are R16 at 434 MHz \ac{RI} module,  *****  
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -511,7 +511,7 @@ For battery options, the module includes a DC connector. This connector accepts 
 
 A green led indicates that power is applied into the circuit, on the other hand, a led red indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their origin input.       
 
-The employed synchronous buck regulator is a MCP1603*****REF chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
+The employed synchronous buck regulator is a MCP1603\cite{mcp160} chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
 components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
 
 \figura{Bitmap/Capitulo4/mcp1603}{width=0.5\textwidth}{fig:cap4:mcp1603}%

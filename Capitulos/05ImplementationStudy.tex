@@ -71,21 +71,20 @@ The secuential mounting, and the existing firmware allow to carry through simple
 
 This module was developed because of the non-existance of reduced size \ac{RI}s including the MRF49XA transceiver, so, by definition, the module must posses a reduced size. Taking advantage of the included MRF24j40MA \ac{RI}, it was decided to design a \ac{PCB} module fitting the footprint of the named \ac{RI}. This way a single footprint is commont to all the included \ac{RI}s. This footprint is defined in Figure \ref{fig:cap5:mtransfootprint}.
 
-\begin{figure}
-        \centering
-                \includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/transfootprint}
-        \caption{$\mu$Trans 434/868 and MRF24j40MA shared footprint.}
-        \label{fig:cap5:mtransfootprint}
+
+\begin{figure}[h]
+\centering
+
+\subfloat[$\mu$Trans 434/868 and MRF24j40MA footprint. 20.5x28.1 mm.]{\label{fig:cap5:mtransfootprint}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/transfootprint}}%
+\qquad
+\subfloat[$\mu$Trans 434/868 PCB shape. ******* mm.]{\label{fig:cap5:mtransshape}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/mtransshape}}%
+
+\caption{Real size footprint and shape for $\mu$Trans module.}
+\label{fig:cap5:realsizemtrans}
+
 \end{figure}
 
 The \ac{PCB} size must be suitable for this footprint, not exceeding its width. $\mu$Trans \ac{PCB} shape is defined as in Figure \ref{fig:cap5:mtransshape}.
-
-\begin{figure}
-        \centering
-                \includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/mtransshape}
-        \caption{$\mu$Trans 434/868 PCB real size shape. ************ mm.}
-        \label{fig:cap5:mtransshape}
-\end{figure}
 
 Module pads are based vias\footnote{A via is a electrical connection between layers in a physical electronic circuit that goes through the plane of one or more adjacent layers.}, with a 1.2 mm diameter through hole. These holes are width enouth let the solder tip into them and solder the pads over the footprint. These pads constitute the electrical interface between the $\mu$Trans and \ac{CNGD} and suppose a low-cost and size solution.  
 

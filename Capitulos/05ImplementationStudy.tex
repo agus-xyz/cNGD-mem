@@ -50,7 +50,7 @@ Together with the layout deployment, Altium Designer offers the chance to embbed
 %-------------------------------------------------------------------
 \subsection{Mounting}
 %-------------------------------------------------------------------
-Small package components, like the employed here, requires for precission tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000 ************REF, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accesories. Binocular loupe ************** WHATEVER ************ is essential for better precission. 
+Small package components, like the employed here, requires for precission tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accesories. Binocular loupe ************** WHATEVER ************ is essential for better precission. 
 
 Components use to include at their datasheets guidelines about their surrounding layout, soldering tips, or mounting processes. They are reviewed and taken into account for the proccess.
 
@@ -83,33 +83,46 @@ The \ac{PCB} size must be suitable for this footprint, not exceeding its width. 
 \begin{figure}
         \centering
                 \includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/mtransshape}
-        \caption{$\mu$Trans 434/868 \ac{PCB} shape.}
+        \caption{$\mu$Trans 434/868 PCB real size shape. ************ mm.}
         \label{fig:cap5:mtransshape}
 \end{figure}
 
-Module pads are based vias\footnote{A via is a electrical connection between layers in a physical electronic circuit that goes through the plane of one or more adjacent layers.}, with a ******* mm rad. through hole. These holes are width enouth let the solder tip into them and solder the pads over the footprint. These pads constitute the electrical interface between the $\mu$Trans and \ac{CNGD} and suppose a low-cost and size solution.  
+Module pads are based vias\footnote{A via is a electrical connection between layers in a physical electronic circuit that goes through the plane of one or more adjacent layers.}, with a 1.2 mm diameter through hole. These holes are width enouth let the solder tip into them and solder the pads over the footprint. These pads constitute the electrical interface between the $\mu$Trans and \ac{CNGD} and suppose a low-cost and size solution.  
 
-MRF49XA datasheet provides hints for the inclussion of the transceiver into a \ac{PCB}. It recommends to fill area underneath the transceiver with ground vias, thereby the module includes such vias. In addition, to have an easily accessible measure of the clock signal, the top layer posses a small pad that provides this signal. Minimal spacing is set to ****************** and the standard track width is *********************** . Power tracks width is set to *********** and ground planes are placed on top and botton layers. Vias through holes minimal radium are ************width. Table \ref{tab:cap5:mtranscomponents} contains the needed components for the $\mu$Trans 434/868 on both versions.
+MRF49XA datasheet provides hints for the inclussion of the transceiver into a \ac{PCB}. It recommends to fill area underneath the transceiver with ground vias, thereby the module includes such vias. In addition, to have an easily accessible measure of the clock signal, the top layer posses a small pad that provides this signal. Minimal clearance among tracks is set to 0.2 mm and the standard track width is 0.2 mm. Power tracks width is set to 0.4 mm and ground planes are placed on top and bottom layers. Vias through holes minimal diameter are 0.4 mm width. Table \ref{tab:cap5:mtranscomponents} contains the needed components for the $\mu$Trans 434/868 on both versions.
 
 \begin{table}[h]
 \centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c ||}
-\hline \\
-\hline \\
-\hline \\
-\hline \\
+\scalebox{0.9}{
+\begin{tabular}{||l l l l||}
+\hline
+\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
+C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
+C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
+X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
+MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
+J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
+D1 &  & Light Emitting Diode & 0603 \\ \hline
+R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
+C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
+C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
+C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
+C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
+L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
+L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
+L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\end{tabular}}
 
-\end{tabular}
-}
 \caption{Component description for $\mu$Trans 434/868.%
          \label{tab:cap5:mtranscomponents}}
-\end{table} 
+\end{table}
+
+
 
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
+Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{ap2:mtranstop} and \ref{ap2:mtransbottom} show the top and botton copper and silkscreen layers respectively.
 
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
@@ -147,9 +160,16 @@ The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \r
 
 \begin{figure}
         \centering
-                \includegraphics{Imagenes/Vectorial/Todo}
-        \caption{cNGD PCB shape.}
+		\includegraphics[height=297px]{Imagenes/Vectorial/Capitulo5/cngdshape}  
+        \caption{cNGD PCB real size shape. 97x84 mm}
         \label{fig:cap5:cngdshape}
+\end{figure}
+
+\begin{figure}
+        \centering
+		\includegraphics{Imagenes/Vectorial/Todo}  
+        \caption{Header detail over cNGD PCB.}
+        \label{fig:cap5:cngdheader}
 \end{figure}
 
 Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngdfront} can give a better view of these ideas.  
@@ -158,30 +178,50 @@ The board includes four holes for the battery to be attached. Figure \ref{}*****
 
 % 2 FIGURAs BATERIAS (2d y 3d)
 
-Headers module has been placed relying on long edges 1 and 2, Figure \ref{}****** shows it. Future expansion modules will be attached to this module through exctly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is ilustrated in Figure \ref{}*************.
+Headers module has been placed relying on the two upper long edges, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exctly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is ilustrated in Figure \ref{fig:cap5:headerfootprint}.
 
-%FIGURAS HEADERSSSSSSSSSSSSSSSSSSSSS
+\begin{figure}
+        \centering
+                \includegraphics[width=225px]{Imagenes/Vectorial/Capitulo5/headerfooprint}
+        \caption{Header system footprint.}
+        \label{fig:cap5:headerfootprint}
+\end{figure}
 
-The minimum spacing among tracks is set to *********, and tracks widths vary on.....*************. Vias through holes are *********. Table \ref{tab:cap5:cngdcomponents} details the needed components for \ac{CNGD} module.
+The minimum spacing among tracks is set to 0.1 mm around the \ac{MCU} and 0.2 mm in the rest of the layout. Tracks widths vary from 0.2 mm up to 1.2 mm in power tracks. Vias through holes have a 0.4 mm width diameter. Table \ref{tab:cap5:cngdcomponents} details the needed components for \ac{CNGD} module.
 
+*******************
 \begin{table}[h]
 \centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c ||}
-\hline \\
-\hline \\
-\hline \\
-\hline \\
+\scalebox{0.9}{
+\begin{tabular}{||l l l l||}
+\hline
+\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
+C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
+C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
+X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
+MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
+J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
+D1 &  & Light Emitting Diode & 0603 \\ \hline
+R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
+C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
+C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
+C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
+C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
+L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
+L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
+L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\end{tabular}}
 
-\end{tabular}
-}
 \caption{Component description for cNGD.%
          \label{tab:cap5:cngdcomponents}}
-\end{table} 
+\end{table}
+
+
+
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
+Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{ap2:cngdtop} and \ref{ap2:cngdbottom} show the top and botton copper and silkscreens layers respectively.
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
@@ -210,47 +250,59 @@ Last, but not least, modules to try are the \ac{RI}s. One by one, they are added
 \label{cap5:sec:rs232shield}
 %-------------------------------------------------------------------
 
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:rs2323dmodel}%
+\figura{Bitmap/Capitulo5/rs2323d}{width=0.6\textwidth}{fig:cap5:rs2323dmodel}%
 {rs232SHIELD 3D model.}
 
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the already described headers. Hence, this module must include the proper interface to fit the design. It has to incrust the footprint defined in Figure \ref{}******* to place correctly the connection headers. Adapting the board to these connections, the resulting board shape is ilustrated in Figure \ref{fig:cap5:rs232shape}.
+This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the already described headers. Hence, this module must include the proper interface to fit the design. It has to incrust the footprint defined in Figure \ref{fig:cap5:headerfootprint} to place correctly the connection headers. Adapting the board to these connections, the resulting board shape is ilustrated in Figure \ref{fig:cap5:rs232shape}.
 
 \begin{figure}
         \centering
-                \includegraphics{Imagenes/Vectorial/Todo}
-        \caption{rs232SHIELD \ac{PCB} shape.}
+                 \includegraphics{Imagenes/Vectorial/Todo}
+        \caption{rs232SHIELD PCB shape.}
         \label{fig:cap5:rs232shape}
 \end{figure}
 
 Available \ac{UART}s at the headers are  **** and ****, presenting the first one hardware flow control and not presenting it the second one. \ac{UART} module chosen for serial communication is ************, because the communication does not require hardware flow control. The \ac{RX} signal is shorted to pin ********** and \ac{TX} signal to *************.
 
-In addition, the module contains a RS-232 male?********* connector to be connected to the computer or other device. Minimal track spacing is set to ******* while the tracks width is ******. Vias *******************. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
+In addition, the module contains a RS-232 male?********* connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
 
 \begin{table}[h]
 \centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c ||}
-\hline \\
-\hline \\
-\hline \\
-\hline \\
+\scalebox{0.9}{
+\begin{tabular}{||l l l l||}
+\hline
+\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
+C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
+C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
+X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
+MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
+J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
+D1 &  & Light Emitting Diode & 0603 \\ \hline
+R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
+C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
+C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
+C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
+C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
+L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
+L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
+L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\end{tabular}}
 
-\end{tabular}
-}
 \caption{Component description for rs232SHIELD.%
          \label{tab:cap5:rs232components}}
-\end{table} 
+\end{table}
+
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and botton copper layers respectively. Figures \ref{} and \ref{} give the view of the top and botton silkscreens respectively.
+Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{ap2:rs232top} and \ref{ap2:rs232bottom} show the top and botton copper and silkscreen layers respectively.
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
-This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART numer ************************. 
+This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART number 6. 
 
 Connecting the RS-232 connector to a computer and with a suitable software, such as minicom\footnote{Minicom is a text-based modem control and terminal emulation program for Unix-like operating systems. A common use for minicom is when setting up a remote serial console.}, and configuring properly the communication parameters, is enough to receive data from the running application.
 
@@ -286,20 +338,34 @@ Current version of the charger does not include any heat disipator. Tests showed
 
 Minimal track spacing is set to ******* while the tracks width is ******. Vias *******************. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
 
+
 \begin{table}[h]
 \centering
-\scalebox{0.7}{
-\begin{tabular}{||c | c ||}
-\hline \\
-\hline \\
-\hline \\
-\hline \\
+\scalebox{0.9}{
+\begin{tabular}{||l l l l||}
+\hline
+\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
+C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
+C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
+X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
+MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
+J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
+D1 &  & Light Emitting Diode & 0603 \\ \hline
+R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
+C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
+C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
+C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
+C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
+L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
+L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
+L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\end{tabular}}
 
-\end{tabular}
-}
-\caption{Component description for chargerSHIELD.%
+caption{Component description for chargerSHIELD.%
          \label{tab:cap5:chargercomponents}}
-\end{table} 
+\end{table}
+
+
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------

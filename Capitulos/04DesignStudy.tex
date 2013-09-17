@@ -79,13 +79,25 @@ On the other hand, required option from the \ac{PCB} design module are:
 \end{itemize}
 
 %-------------------------------------------------------------------
-\subsection{agus lib}
+\subsection{cngd lib}
 %-------------------------------------------------------------------
 For the accomplish the full design of the platform over Altium Designer, a component library with all the requried but not found models was set all along the design proccess.
 
-As said, the library includes models from all those components needed but not found as well as modifications of existing models in order tu suit the design criteria. Every contained model embbeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and proper hardware fitting checkings purposes.
+As said, the library includes models from all those components needed but not found as well as modifications of existing models in order tu suit the design criteria. Every contained model embbeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and proper hardware fitting checkings purposes. Electric models of components are not generally included.
 
-ANEXAR ¿libreria? **********************************************
+Library is available for download at ************************. All the content included into the library is ready to be used under Altium Designed. Any use of the library is free. 
+
+\begin{figure}[h]
+\centering
+
+\subfloat[cNGD logo footprint.]{\label{fig:cap4:cognitivefoot}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Capitulo4/cngdfoot}}%
+\qquad
+\subfloat[LSI logo footprint.]{\label{fig:cap4:lsifoot}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Capitulo4/lsifoot}}%
+
+\caption{Footprints specially designed for the platform.}
+\label{fig:cap5:footprints}
+
+\end{figure}
 
 
 %-------------------------------------------------------------------
@@ -218,9 +230,7 @@ The device offers serial communication through the already named $\mu$USB option
 \subsection{Schematics}
 %-------------------------------------------------------------------
 
-Schematics can be found all together on Appendix \ref{ap1:schematics} for better convenience. Figure \ref{fig:cap4:gneralschematic} gathers all the modules into one global scheme. Figure \ref{fig:cap4:mcuschematics} shows the \ac{MCU} connections schematic. Figures \ref{fig:cap4:434schematics} and \ref{fig:cap4:2.4schematics} focus on 434/868MHz and 2.4GHz \ac{RI}s, respectively. Figure \ref{fig:cap4:powersupplyschematic} gives the schematic of the power supply system. Expansion headers schematic is on Figure \ref{fig:cap4:headerschematic}.
-
-************************************************
+Schematics can be found all together on Appendix \ref{ap1:schematics} for better convenience. Figure \ref{fig:cap4:gneralschematic} gathers all the modules into one global scheme. Figure \ref{fig:cap4:mcuschematics} shows the \ac{MCU} connections schematic. Figures \ref{fig:cap4:434schematics}, \ref{fig:cap4:868schematics}, and \ref{fig:cap4:2.4schematics} focus on 434MHz, 868MHz and 2.4GHz \ac{RI}s, respectively. Figure \ref{fig:cap4:powersupplyschematic} gives the schematic of the power supply system. Expansion headers schematic is on Figure \ref{fig:cap4:headerschematic}, whereas Figure \ref{fig:cap4:oscillatorschematic}, and \ref{fig:cap4:pgeschematic} ilustrate the oscillator and programmer modules.
 
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
@@ -404,31 +414,31 @@ PIN & PERIPHERALS & MODULE & USE \\
 73 & SOSCI/CN1/RC13  \\ \hline
 74 & SOSCO/T1CK/CN0/RC14 \\ \hline
 75 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
-76 &  \\ \hline
+76 & \\ \hline
 77 & \\ \hline
-78 &  \\ \hline
-79 &  \\ \hline
+78 & \\ \hline
+79 & \\ \hline
 80 & \\ \hline
-81 &  \\ \hline
+81 & \\ \hline
 82 & \\ \hline
-83 &  \\ \hline
-84 &  \\ \hline
-85 &  \\ \hline
+83 & \\ \hline
+84 & \\ \hline
+85 & \\ \hline
 86 & VDD &  \multicolumn{3}{l}{Power Supply} \\ \hline
-87 &  \\ \hline
-88 &  \\ \hline
+87 & \\ \hline
+88 & \\ \hline
 89 & \\ \hline
 90 & \\ \hline
 91 & \\ \hline
-92 &  \\ \hline
-93 &  \\ \hline
-94 &  \\ \hline
+92 & \\ \hline
+93 & \\ \hline
+94 & \\ \hline
 95 & \\ \hline
-96 &  \\ \hline
-97 &   \\ \hline
-98 &   \\ \hline
-99 &  \\ \hline
-100 & \\ \hline
+96 & \\ \hline
+97 & \\ \hline
+98 & \\ \hline
+99 & \\ \hline
+100 &\\ \hline
 \\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 
 \caption{PIC32675F256L pins use description.}
@@ -499,7 +509,7 @@ Some of the features of this component are:
 
 Pin 4 (IN) is a digital input where the control logic signal is placed. A logic '1' will make pins 1 (D - drain) and  2 (S - source) shorted, a logic '0' will open the switch. Pins 1 and 2 can be either inputs or outputs. Pin 5 (NC) must not be connected.
 
-In case ADG701 switch was not included into the design for any reason, optional 0 $\Omega$ resistors must be used to enable power supply at the \ac{RI}s. These optional resistors are R16 at 434 MHz \ac{RI} module,  *****  
+In case ADG701 switch was not included into the design for any reason, optional 0 $\Omega$ resistors must be used to enable power supply at the \ac{RI}s. These optional resistors are R16 at 434 MHz \ac{RI} module,  ***********  
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -753,13 +763,13 @@ NiMH batteries are amongst the hardest batteries to charge. Whereas with lithium
 
 Charge rate, usually denoted as C, signifies a charge or discharge rate equal to the capacity of a battery in one hour. For a 1 Ah battery, C is 1A. A charge rate of C/2 (0.5A), would need two hours, whereas a charge rate of 2C (2A), if supported, would need 30 minutes to fully charge the battery. \ac{NIMH} batteries are sensitive to damage on overcharge when the charge rate is over C/10.
 
-Previous statements assumes that the battery has a 100\% coulometric charging efficiency\footnote{Part of the electrical charge stored in a battery by charging that is recoverable during discharging. Usually expressed as a percentage.}. The coulometric charging efficiency of \ac{NIMH} batteries is typically 66\%. However, the faster you charge the worse this parameter gets.
+Previous statements assumes that the battery has a 100\% coulometric charging efficiency\footnote{Part of the electrical charge stored in a battery by charging that is recoverable during discharging. Usually expressed as a percentage.}. The coulometric charging efficiency of \ac{NIMH} batteries is typically 60\%. However, the faster you charge the worse this parameter gets.
 
-Hence, for our 2.7 Ah batteries, considering a charge rate C/10. A charge current of 270 mA could be accepted, taking from 10 to 14 hours to fully charge the batteries. However, let set the charge current aroun 200 mA as precautionary measure. This way, quality of the batteries is preserved and the charger is suitable for less capacity batteries.
+Hence, for our 2.7 Ah batteries, considering a charge rate C/10. A charge current of 270 mA could be accepted, taking from 10 to 15 hours to fully charge the batteries. However, let set the charge current aroun 200 mA as precautionary measure. This way, quality of the batteries is preserved and the charger is suitable for less capacity batteries.
 
-We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial aproximation we could stablish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value*****************. The sensed voltage will be compared with a reference voltage at the input of an ********** operational amplifier. Reference voltage is obtained by a simple voltage divider.
+We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial aproximation we could stablish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value, 3.6 V. The sensed voltage will be compared with a reference voltage at the input of an LM311 operational amplifier. Reference voltage is obtained by a simple voltage divider.
 
-%further view en amp op.
+%further view en amp op***************************.
 
 To set a fixed current through the batteries, an LM317\cite{lm317} voltage voltage regulator is used. This is an adjustable 3-terminal positive-voltage regulator designed to supply up to 1.5A of load current with an output voltage adjustable over a 1.2 V to 37 V range. It employs internal current limiting and thermal shutdown.
 
@@ -772,7 +782,7 @@ This regulator is configured to an output of 1.25V by chosing an R2? of 0 $\Omeg
 
 %FIGURE TRANSISTOR Y..... ¿ESQUEMA? 
 
-The previously mentioned *********** output controls the ************* of the transistor. It switchs the transistor operation modes, ¿active and cut?, when ****** output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the voltage sensed at the batteries.
+The previously mentioned LM311 output controls the ************* of the transistor. It switchs the transistor operation modes, ¿active and cut?, when ****** output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the voltage sensed at the batteries.
 
 A green \ac{LED} driven by the ********** output, turns illuminated when this output drops under a threshold. This way, the led indicates when the batteries voltage is over the reference voltage. A precautionary diode preserves the batteries from being reversely charged. 
 
@@ -789,10 +799,10 @@ A schematic of charger232SHIELD can be seen at Figure \ref{fig:cap4:chargershema
 %-------------------------------------------------------------------
 
 Simulation at Altium Designer showed different behaviours facing different voltage at the batteries. Figure *************************, blab
+****************************************************************
 
-%FOTO ESQUEMATICO
-
-% GRAFICA
+\figura{Bitmap/Capitulo4/simulation}{width=\textwidth}{fig:cap4:simulation}%
+{chargerSHIELD simulation results.}
 
 
 

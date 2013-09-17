@@ -50,7 +50,7 @@ Together with the layout deployment, Altium Designer offers the chance to embbed
 %-------------------------------------------------------------------
 \subsection{Mounting}
 %-------------------------------------------------------------------
-Small package components, like the employed here, requires for precission tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accesories. Microscope is very valuable for better precission, the one used is a Bausch & Lomb StereoZoom 4 Microscope. 
+Small package components, like the employed here, requires for precission tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accesories. Microscope is very valuable for better precission, the one used is a Bausch \& Lomb StereoZoom 4 Microscope. 
 
 Components use to include at their datasheets guidelines about their surrounding layout, soldering tips, or mounting processes. They are reviewed and taken into account for the proccess.
 
@@ -77,7 +77,7 @@ This module was developed because of the non-existance of reduced size \ac{RI}s 
 
 \subfloat[$\mu$Trans 434/868 and MRF24j40MA footprint. 20.5x28.1 mm.]{\label{fig:cap5:mtransfootprint}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/transfootprint}}%
 \qquad
-\subfloat[$\mu$Trans 434/868 PCB shape. 20.8x30 mm.]{\label{fig:cap5:mtransshape}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/mtransshape}}%
+\subfloat[$\mu$Trans 434/868 PCB shape. 20.8x30 mm.]{\label{fig:cap5:mtransshape}\includegraphics[height=115px]{Imagenes/Vectorial/Capitulo5/mtransshape}}%
 
 \caption{Real size footprint and shape for $\mu$Trans module.}
 \label{fig:cap5:realsizemtrans}
@@ -121,7 +121,7 @@ L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figures \ref{ap2:mtranstop} and \ref{ap2:mtransbottom} show the top and botton copper and silkscreen layers respectively.
+Different layers of the layout can be obseved at Appendix \ref{ap2:layouts}. Figures \ref{ap2:mtranstop} and \ref{ap2:mtransbottom} show the top and botton copper and silkscreen layers respectively.
 
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
@@ -129,7 +129,7 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 
 Basic tests to check proper functionality were made while prototyping the module.
 
-Firstly, the modules were tested over the \ac{FCD} platform. For this, the $\mu$Trans pads were wired and connected to header prepared for the MRF49XA PICtail Plus Daughter Board. On this platform and using an multi-probe oscilloscope ********************************, \ac{SPI} communication signals and other were checked, and possible errors debbuged.
+Firstly, the modules were tested over the \ac{FCD} platform. For this, the $\mu$Trans pads were wired and connected to header prepared for the MRF49XA PICtail Plus Daughter Board. Over this platform and making use of a multi-probe oscilloscope, \ac{SPI} communication signals and others were checked, and possible errors debbuged.
 
 After this, and in collaboration with other MRF49XA modules, it was checked that the module properly carried out handshaking, network detection and joining, and data transmission and reception processes.
 

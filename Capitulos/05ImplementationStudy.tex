@@ -17,7 +17,7 @@ Thomas \& Guy-Manuel, Daft Punk
 
 
 \begin{resumen}
-In this chapter, tasks related to the physical implementation of the platform are described. These tasks cover from the layout design, 3D modelling, and GERBER files generation, to the final components mounting on the . Decisions about components or layout designs, and final results are exposed.  
+In this chapter, tasks related to the physical implementation of the platform are described. These tasks cover from the layout design, 3D modelling, and GERBER files generation, to the final components mounting on the PCB. Decisions about components or layout designs, and final results are exposed.  
 \end{resumen}
 
 
@@ -50,7 +50,7 @@ Together with the layout deployment, Altium Designer offers the chance to embbed
 %-------------------------------------------------------------------
 \subsection{Mounting}
 %-------------------------------------------------------------------
-Small package components, like the employed here, requires for precission tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accesories. Binocular loupe ************** WHATEVER ************ is essential for better precission. 
+Small package components, like the employed here, requires for precission tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accesories. Microscope is very valuable for better precission, the one used is a Bausch & Lomb StereoZoom 4 Microscope. 
 
 Components use to include at their datasheets guidelines about their surrounding layout, soldering tips, or mounting processes. They are reviewed and taken into account for the proccess.
 
@@ -77,7 +77,7 @@ This module was developed because of the non-existance of reduced size \ac{RI}s 
 
 \subfloat[$\mu$Trans 434/868 and MRF24j40MA footprint. 20.5x28.1 mm.]{\label{fig:cap5:mtransfootprint}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/transfootprint}}%
 \qquad
-\subfloat[$\mu$Trans 434/868 PCB shape. ******* mm.]{\label{fig:cap5:mtransshape}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/mtransshape}}%
+\subfloat[$\mu$Trans 434/868 PCB shape. 20.8x30 mm.]{\label{fig:cap5:mtransshape}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/mtransshape}}%
 
 \caption{Real size footprint and shape for $\mu$Trans module.}
 \label{fig:cap5:realsizemtrans}
@@ -149,13 +149,12 @@ After this, and in collaboration with other MRF49XA modules, it was checked that
 \label{cap5:sec:currentDevices}
 %-------------------------------------------------------------------
 
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:cngd3dmodel}%
+\figura{Bitmap/Capitulo5/cngd3d}{width=0.6\textwidth}{fig:cap5:cngd3dmodel}%
 {cNGD 3D model.}
 
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \ref{cap4:sec:cNGD} attending to expand functionality and usability, and reducing size and cost. Since this is key board of the whole system, most part of the weight ot the operation requirements relies on it. It must mainly contain the three \ac{RI}s, give support to expansion modules, include the power supply and battery room, programming system, and microcontroller. In addition, it must provide an easy access to the control modules (leds and push buttons) and easy deployment. Regading its test-bed character, the module must include some kind of anchors to fix it anywhere or incrust some feet. All these features must be achieved keeping size and cost limited, so the module become affordable and valuable. Figure \ref{fig:cap5:cngdshape} shows the \ac{PCB} shape.
 
 \begin{figure}
         \centering
@@ -164,26 +163,38 @@ The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \r
         \label{fig:cap5:cngdshape}
 \end{figure}
 
-\begin{figure}
-        \centering
-		\includegraphics{Imagenes/Vectorial/Todo}  
-        \caption{Header detail over cNGD PCB.}
-        \label{fig:cap5:cngdheader}
-\end{figure}
+The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \ref{cap4:sec:cNGD} attending to expand functionality and usability, and reducing size and cost. Since this is key board of the whole system, most part of the weight ot the operation requirements relies on it. It must mainly contain the three \ac{RI}s, give support to expansion modules, include the power supply and battery room, programming system, and microcontroller. In addition, it must provide an easy access to the control modules (leds and push buttons) and easy deployment. Regading its test-bed character, the module must include some kind of anchors to fix it anywhere or incrust some feet. All these features must be achieved keeping size and cost limited, so the module become affordable and valuable. Figure \ref{fig:cap5:cngdshape} shows the \ac{PCB} shape.
+
+
+
+
 
 Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngdfront} can give a better view of these ideas.  
 
-The board includes four holes for the battery to be attached. Figure \ref{}***** ilustrates the way it works, for legs fix together the board and the batteries-holder. Moreover, the \ac{PCB} includes for more holes for general purpose in case of feet or fixing are required.
+The board includes four holes for the battery to be attached. Figure \ref{fig:cap5:headersystem} ilustrates the way it works, for legs fix together the board and the batteries-holder. Moreover, the \ac{PCB} includes more holes for general purpose in case of feet or fixing are required.
 
-% 2 FIGURAs BATERIAS (2d y 3d)
+\begin{figure}[h]
+\centering
+   
+\subfloat[Battery anchorage footprint.]{\label{fig:cap5:bat2d}\includegraphics[width=180px]{Imagenes/Vectorial/Capitulo5/bat2d}}  
+\qquad
+\subfloat[Battery anchorage 3D model.]{\label{fig:cap5:bat3d}\includegraphics[width=225px]{Imagenes/Vectorial/Capitulo5/bat3d}}
+       
+\caption{40-pin Header system.}
+\label{fig:cap5:headersystem}
+\end{figure}
 
 Headers module has been placed relying on the two upper long edges, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exctly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is ilustrated in Figure \ref{fig:cap5:headerfootprint}.
 
-\begin{figure}
-        \centering
-                \includegraphics[width=225px]{Imagenes/Vectorial/Capitulo5/headerfooprint}
-        \caption{Header system footprint.}
-        \label{fig:cap5:headerfootprint}
+\begin{figure}[h]
+\centering
+   
+\subfloat[Header detail over cNGD PCB.]{\label{fig:cap5:cngdheader}\includegraphics[width=240px]{Imagenes/Vectorial/Capitulo5/headerdetail}}  
+\qquad
+\subfloat[Header system footprint.]{\label{fig:cap5:headerfootprint}\includegraphics[width=225px]{Imagenes/Vectorial/Capitulo5/headerfooprint}}
+       
+\caption{40-pin Header system.}
+\label{fig:cap5:headersystem}
 \end{figure}
 
 The minimum spacing among tracks is set to 0.1 mm around the \ac{MCU} and 0.2 mm in the rest of the layout. Tracks widths vary from 0.2 mm up to 1.2 mm in power tracks. Vias through holes have a 0.4 mm width diameter. Table \ref{tab:cap5:cngdcomponents} details the needed components for \ac{CNGD} module.
@@ -259,14 +270,14 @@ This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CN
 
 \begin{figure}
         \centering
-                 \includegraphics{Imagenes/Vectorial/Todo}
-        \caption{rs232SHIELD PCB shape.}
+                 \includegraphics[height=125px]{Imagenes/Vectorial/Capitulo5/shieldshape}
+        \caption{rs232SHIELD PCB real size shape. 67.9x33 mm.}
         \label{fig:cap5:rs232shape}
 \end{figure}
 
-Available \ac{UART}s at the headers are  **** and ****, presenting the first one hardware flow control and not presenting it the second one. \ac{UART} module chosen for serial communication is ************, because the communication does not require hardware flow control. The \ac{RX} signal is shorted to pin ********** and \ac{TX} signal to *************.
+Available \ac{UART}s at the headers are  **** and ****, presenting the first one hardware flow control and not presenting it the second one. \ac{UART} module chosen for serial communication is ************, because the communication does not require hardware flow control. The \ac{RX} signal is shorted to pin 21 and \ac{TX} signal to pin 38.
 
-In addition, the module contains a RS-232 male?********* connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
+In addition, the module contains a RS-232 male connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
 
 \begin{table}[h]
 \centering
@@ -301,7 +312,7 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
-This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART number 6. 
+This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART number 3. 
 
 Connecting the RS-232 connector to a computer and with a suitable software, such as minicom\footnote{Minicom is a text-based modem control and terminal emulation program for Unix-like operating systems. A common use for minicom is when setting up a remote serial console.}, and configuring properly the communication parameters, is enough to receive data from the running application.
 
@@ -323,17 +334,17 @@ Usually, communication parameters are set as follows: ************************* 
 \label{cap5:sec:chargerShield}
 %-------------------------------------------------------------------
 
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:charger3dmodel}%
+\figura{Bitmap/Capitulo5/charger3d}{width=0.6\textwidth}{fig:cap5:charger3dmodel}%
 {chargerSHIELD 3D model.}
 
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-This module is also a shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the known expansion headers. Hence, this module must include the footprint defined in Figure \ref{}******. Both shields, rs232SHIELD and chargerSHIELD, use the shape ilustrated in Figure \ref{fig:cap5:rs232shape}.
+This module is also a shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the known expansion headers. Hence, this module must include the footprint defined in Figure \ref{fig:cap5:headerfootprint}. Both shields, rs232SHIELD and chargerSHIELD, use the shape ilustrated in Figure \ref{fig:cap5:rs232shape}.
 
-Battery positive pole is accessible at the header on pin *******, negative pole is at pin ***********. These two pins are shorted to the circuit. Appart from this interface, the charger incrusts a terminal block to connect a external 12V source. This source must be capable to provide up to 500 mA.
+Battery positive pole is accessible at the header on pin 29, negative pole is at pin 30. These two pins are linked to the circuit. Appart from this interface, the charger incrusts a terminal block to connect a external 12V source. This source must be capable to provide up to 500 mA.
 
-Current version of the charger does not include any heat disipator. Tests showed that not heat disipator was required for the current configuration. Any change over the resistors configuration must consider the overheating possibility on ****** component. Thus a heat disipator could be needed.
+Current version of the charger does not include any heat disipator. Tests showed that not heat disipator was required for the current configuration. Any change over the resistors configuration must consider the overheating possibility on LM317AMDT component. Thus a heat disipator could be needed.
 
 Minimal track spacing is set to ******* while the tracks width is ******. Vias *******************. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
 
@@ -374,9 +385,9 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 %-------------------------------------------------------------------
 This module required for a lot of initial debugging, it was needed the use of a breadboard to mount parts of the module in parallel to compare behaviors. It is important to notice that some currents on the circuit are up to 250 mA, existing possibilities of malfucntions that make this even higher. It was needed a external power supply with output current indicator and limitation for it. Of course, this module was not initially tested over the \ac{CNGD}, but emulating it just with batteries or a second voltage source.
 
-First part of the chargerSHIELD to try is the ********* amplificator component, led, and surrounding components***************************. This parts constitute the comparator and with this, the comparator operation intends to be tested. Once this is checked, rest of components are soldered.
+First part of the chargerSHIELD to try is the LM311 amplificator, led, and surrounding components R1, R2, and R3. These parts constitute the comparator and with this, the comparator operation intends to be tested. Once this is checked, rest of components are soldered.
 
-At this point, a lot of tests were carried out using different voltages and number of batteries to calibrate the system. The goal was to adjust the current over the batteries to a proper level, measure charging times and the proper operation of the notification led. RX****, R***, and R*** were finally set to their current value. Having this task was achieved, external controlled source was swaped by a commercial 12V adaptor and its proper operation was proved. 
+At this point, a lot of tests were carried out using different voltages and number of batteries to calibrate the system. The goal was to adjust the current over the batteries to a proper level, measure charging times and the proper operation of the notification led. R1, R2, R3, and R5 were finally set to their current value. Having this task achieved, external controlled source was swaped by a commercial 12V adaptor and its proper operation was proved. 
 
 Once the chargerSHIELD showed a proper operation it was tested over the \ac{CNGD}.
 %-------------------------------------------------------------------

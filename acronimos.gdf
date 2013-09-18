@@ -184,9 +184,11 @@
 
 @entry{CMOS, , \emph{Complementary metal oxide semiconductor}}
 
-@entry{NICD, Ni-Cd, \emph{Nickel-cadmium}}
+@entry{NICD, Ni-Cd, \emph{nickel-cadmium}}
 
-@entry{NIMH, Ni-Mh, \emph{Nickel-metal hydride}}
+@entry{NIMH, Ni-Mh, \emph{nickel-metal hydride}}
+
+@entry{LIION, Ni-ion, \emph{lithium-ion}}
 
 @entry{EEPROM, , \emph{electrically erasable programmable read-only memory}}
 

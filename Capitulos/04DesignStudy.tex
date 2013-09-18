@@ -12,7 +12,7 @@ Surf it, scroll it, pause it, click it,\\
 cross it, crack it, switch - update it\\
 name it, rate it, tune it, print it,\\
 scan it, send it, fax - rename it\\
-%Touch it, bring it, pay it, watch it
+Touch it, bring it, pay it, watch it.
 \end{Frase}
 \begin{Fuente}
 Thomas \& Guy-Manuel, Daft Punk
@@ -209,7 +209,7 @@ Schematic of $\mu$Trans 434/868 can be found on Appendix \ref{ap1:schematics} at
 %-------------------------------------------------------------------
 
 \figura{Bitmap/Capitulo4/modelcngd}{width=.7\textwidth}{fig:cap4:modelcngd}%
-{Architecture Model of the cNGD}
+{Architecture model of the cNGD.}
 
 %-------------------------------------------------------------------
 \subsection{Description}
@@ -235,7 +235,7 @@ Schematics can be found all together on Appendix \ref{ap1:schematics} for better
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
-Core unit is a PIC32MX675F256L, a midrange 100-pin microcontroller from the mentioned 32-bit PIC family. Being the simplest of the options meeting memory performance and peripherals minimum requirements (Table \ref{cap3:tab:micros}). On the other hand, its 100 pins allow a better access of the peripherals provided. A larger memory version of this, PIC32MX675F512L, is pin compatible to the firstly mentioned. This fact gives the chance to swap among these two \ac{MCU}s if larger memory was needed. Main thecnical features follow:
+Core unit is a PIC32MX675F256L\cite{pic32datasheet}, a midrange 100-pin microcontroller from the mentioned 32-bit PIC family. Being the simplest of the options meeting memory performance and peripherals minimum requirements (Table \ref{cap3:tab:micros}). On the other hand, its 100 pins allow a better access of the peripherals provided. A larger memory version of this, PIC32MX675F512L, is pin compatible to the firstly mentioned. This fact gives the chance to swap among these two \ac{MCU}s if larger memory was needed. Main thecnical features follow:
 
 \begin{itemize}
 	\item Operating Voltage Range: 2.3V to 3.6V.
@@ -315,8 +315,8 @@ The whole microcontroller can be divided into for blocks: core, memory, integrat
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
 %-------------------------------------------------------------------
+Here is described the multiplexed functionalities available on each pin at the \ac{MCU}. Functionalities emphasized in bold are functionalities available for use, not emphasized functionalities are not usable with the current design. In addition, module where the pin is used and linked signal are exposed. For further details about peripherals and pins description see the PIC32 family reference manual\cite{pic32datasheet}.  
 
-explicar un poco tabla ***********************************************
 {\footnotesize
 \begin{longtable}{l l l l l}
 % aquí añadimos el encabezado de la primera hoja.
@@ -400,45 +400,45 @@ PIN & PERIPHERALS & MODULE & USE \\
 59 & \textbf{SDA2}/\textbf{RA3} & Header & p10 \\ \hline
 60 & TDI/\textbf{RA4} & LEDS & LED 3 \\ \hline
 61 & TDO/\textbf{RA5} & LEDS & LED 2\\ \hline
-62 & VDD &  \multicolumn{3}{l}{Power Supply} \\ \hline
+62 & VDD &  \multicolumn{2}{l}{Power Supply} \\ \hline
 63 & \textbf{OSC1}/CLKI/RC12 & Oscillators & Prim. Osc. In. \\ \hline
 64 & \textbf{OSC2}/CLKO/RC15 & Oscillators & Prim. Osc. Out. \\ \hline
-65 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
+65 & VSS &  \multicolumn{2}{l}{Ground}  \\ \hline
 66 & AETXCLK/SCL1/\textbf{INT3}/RA14 & \ac{RI} 868MHz & Interrup. \\ \hline
 67 & AETXEN/SDA1/\textbf{INT4}/RA15 & \ac{RI} 2.4GHz & Interrup. \\ \hline
 68 & RTCC/\textbf{EMDIO}/AEMDIO/\textbf{IC1}/\textbf{RD8} & Header & p09 \\ \hline
 69 & nSS1/\textbf{IC2}/\textbf{RD9} & Header & p39 \\ \hline
-70 & SCK1/IC3/PMCS2/PMA15/RD10 \\ \hline
-71 & EMDC/AEMDC/IC4/PMCS1/PMA14/RD11 \\ \hline
-72 & SDO1/OC1/INT0/RD0 \\ \hline
-73 & SOSCI/CN1/RC13  \\ \hline
-74 & SOSCO/T1CK/CN0/RC14 \\ \hline
-75 & VSS &  \multicolumn{3}{l}{Ground}  \\ \hline
-76 & \\ \hline
-77 & \\ \hline
-78 & \\ \hline
-79 & \\ \hline
-80 & \\ \hline
-81 & \\ \hline
-82 & \\ \hline
-83 & \\ \hline
-84 & \\ \hline
-85 & \\ \hline
-86 & VDD &  \multicolumn{3}{l}{Power Supply} \\ \hline
-87 & \\ \hline
-88 & \\ \hline
-89 & \\ \hline
-90 & \\ \hline
-91 & \\ \hline
-92 & \\ \hline
-93 & \\ \hline
-94 & \\ \hline
-95 & \\ \hline
-96 & \\ \hline
-97 & \\ \hline
-98 & \\ \hline
-99 & \\ \hline
-100 &\\ \hline
+70 & \textbf{SCK1}/IC3/PMCS2/PMA15/RD10 & \ac{RI} 434MHz & SPI SCK\\ \hline
+71 & \textbf{EMDC}/AEMDC/\textbf{IC4}/PMCS1/PMA14/\textbf{RD11} & Header & p27 \\ \hline
+72 & \textbf{SDO1}/OC1/INT0/RD0 & \ac{RI} 434MHz & SPI SDI \\ \hline
+73 & \textbf{SOSCI}/CN1/RC13  & Oscillators & Sec. Osc. In.\\ \hline
+74 & \textbf{SOSCO}/T1CK/CN0/RC14 & Oscillators & Sec. Osc. Out.\\ \hline
+75 & VSS &  \multicolumn{2}{l}{Ground}  \\ \hline
+76 & OC2/\textbf{RD1} & \ac{RI} 868MHz & Reset\\ \hline
+77 & OC3/\textbf{RD2} & \ac{RI} 868MHz & Wake\\ \hline
+78 & OC4/\textbf{RD3} & \ac{RI} 868MHz & Power Switch\\ \hline
+79 & ETXD2/IC5/PMD12/RD12 & - & - \\ \hline
+80 & ETXD3/PMD13/CN19/RD13 & - & - \\ \hline
+81 & OC5/PMWR/CN13/\textbf{RD4} & \ac{RI} 868MHz & Chip Select \\ \hline
+82 & PMRD/\textbf{CN14}/\textbf{RD5} & Push buttons & S2 \\ \hline
+83 & \textbf{ETXEN}/PMD14/\textbf{CN15}/\textbf{RD6} & Header & p33\\ \hline
+84 & ETXCLK/PMD15/\textbf{CN16}/\textbf{RD7} & Push buttons & S3\\ \hline
+85 & VCAP/VDDCORE & \multicolumn{2}{l}{Capacitor} \\ \hline
+86 & VDD &  \multicolumn{2}{l}{Power Supply} \\ \hline
+87 & \textbf{ETXD1}/PMD11/\textbf{RF0} & Header & p26\\ \hline
+88 & \textbf{ETXD0}/PMD10/\textbf{RF1} & Header & p25\\ \hline
+89 & ETXERR/PMD9/RG1 & - & - \\ \hline
+90 & PMD8/RG0 & - & - \\ \hline
+91 & TRCLK/\textbf{RA6} & LEDS & LED1 \\ \hline
+92 & TRD3/RA7 & - & - \\ \hline
+93 & PMD0/\textbf{RE0} & \ac{RI} 2.4GHz & Reset\\ \hline
+94 & PMD1/\textbf{RE1} & \ac{RI} 2.4GHz & Wake\\ \hline
+95 & TRD2/\textbf{RG14} & \ac{RI} 434MHz & FIFO Sel.\\ \hline
+96 & TRD1/RG12 & - & - \\ \hline
+97 & TRD0/\textbf{RG13} & \ac{RI} 434MHz & FIFO Int. \\ \hline
+98 & PMD2/\textbf{RE2} & \ac{RI} 2.4GHz & Power Switch\\ \hline
+99 & PMD3/\textbf{RE3} & \ac{RI} 2.4GHz & Chip Select\\ \hline
+100 & PMD4/RE4 & - & - \\ \hline
 \\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 
 \caption{PIC32675F256L pins use description.}
@@ -449,9 +449,12 @@ PIN & PERIPHERALS & MODULE & USE \\
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
-As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, with three consequent frequency band to access. This fact gives a flexibility over radio communictions never offered by other \ac{WSN} device. Frequencies to operate over are 434 MHz, 868 MHz, and 2.4 GHz, meeting desired features. 
+As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, with three consequent frequency bands to access. This fact gives a flexibility over radio communictions never offered by other \ac{WSN} device. Frequencies to operate over are 434 MHz, 868 MHz, and 2.4 GHz, meeting desired features. 
 
 For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU} are the same. Figure \ref{fig:cap4:434schematics} shows the schematic for one of them.
+
+\figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.8\textwidth}{fig:cap4:mrf24j40mablocks}%
+{MRF24J40MA interface scheme.}
 
 Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA\cite{mrf24j40}. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposses computation, cost, and power savings. It has access over the 15 5MHz-channels the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
 
@@ -477,15 +480,18 @@ Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz.
 	\item Integrated crystal, internal voltage regulator, matching circuitry, \ac{PCB} antenna, and \ac{RSSI} detector. 
 \end{itemize}
 
+Interface between MRF24J40MA \ac{RI} is driven by 7 signals, figure \ref{fig:cap4:mrf24j40mainterface} ilustrates it. Serial communication is carried through a \ac{SPI}, containing 4 signals. Two interruption signals for both senses and a reset signal complete the whole set.
 
-%SEÑALES DE COMMUNICATION**************************************
-
-% ENTRAMOS A DETALLAR MIWI**************************************
-
-\figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.8\textwidth}{fig:cap4:mrf24j40mablocks}%
+\figura{Bitmap/Capitulo4/mrf24j40mainterface}{width=0.5\textwidth}{fig:cap4:mrf24j40mainterface}%
 {MRF24J40MA block diagram}
 
-The MiWi P2P protocol stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
+All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM}$ Mesh or MiWi$^{TM}$ P2P protocols. Figure \ref{fig:cap4:miwiconf} shows how the protocol environment configuration.
+
+\figura{Bitmap/Capitulo4/miwiconf}{width=0.6\textwidth}{fig:cap4:miwiconf}{MiWi$^{TM}$ protocol configuration scheme.}
+
+A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maximum of 1024 nodes on a network. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
+
+The MiWi$^{TM}$ P2P protocol\cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
 \figura{Bitmap/Capitulo4/miwistack}{width=.4\textwidth}{fig:cap4:miwistack}%
 {MiWi$^{TM}$ Protocol stack.}
@@ -509,7 +515,7 @@ Some of the features of this component are:
 
 Pin 4 (IN) is a digital input where the control logic signal is placed. A logic '1' will make pins 1 (D - drain) and  2 (S - source) shorted, a logic '0' will open the switch. Pins 1 and 2 can be either inputs or outputs. Pin 5 (NC) must not be connected.
 
-In case ADG701 switch was not included into the design for any reason, optional 0 $\Omega$ resistors must be used to enable power supply at the \ac{RI}s. These optional resistors are R16 at 434 MHz \ac{RI} module,  ***********  
+In case ADG701 switch was not included into the design for any reason, optional 0 $\Omega$ resistors must be used to enable power supply at the \ac{RI}s. These optional resistors are R16, R17, and R18 for 434 MHz, 868 MHz, and 2.4 GHz \ac{RI}s respectively.  
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -525,79 +531,78 @@ A green led indicates that power is applied into the circuit, on the other hand,
 The employed synchronous buck regulator is a MCP1603\cite{mcp160} chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
 components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
 
-\figura{Bitmap/Capitulo4/mcp1603}{width=0.5\textwidth}{fig:cap4:mcp1603}%
-{MCP1603 buck regulator configuration}
+\figura{Bitmap/Capitulo4/mcp1603}{width=0.5\textwidth}{fig:cap4:mcp1603}{MCP1603 buck regulator configuration.}
 
-It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions, Table \ref{tab:cap4:maxconsumption}.
-**********
+It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions. Table \ref{tab:cap4:maxconsumption} gives 165 mA as maximum current consumption rate. Leaving buffer for current peaks at transmission and possible shields, a maximum current estimation of 500 mA seem reasonable and more than enough.
+
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
-\begin{tabular}{||l l||}
+\begin{tabular}{l r}
 \hline
-MCU & culo  \\ \hline
-MuTrans 434 (TX mode) & 23 mA \\ \hline
-MuTrans 868 (TX mode) & 24 mA \\ \hline
-MRF49j40MA (TX mode) &  23 mA \\ \hline
-LEDS  & 10 mA \\ \hline
+Module & Max. Power \\ \hline \hline
+PIC32MX675F256L (Run mode) & 85 mA  \\ \hline
+$\mu$Trans 434 (TX mode) & 23 mA \\ \hline
+$\mu$Trans 868 (TX mode) & 24 mA \\ \hline
+MRF24j40MA (TX mode) &  23 mA \\ \hline
+LEDS  & 10 mA \\ \hline \hline
+TOTAL MAX CONSUMPTION & 165mA \\ \hline 
 \end{tabular}
 }
 \caption{Maximum estimated power consumption of the platform.
 	\label{tab:cap4:maxconsumption}}
 \end{table}
 
-
-
 %-------------------------------------------------------------------
 \subsubsection{Battery}
 %-------------------------------------------------------------------
 In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer some days autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
 
-Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated in \ref{}****.
+Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assum some overstimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated as $P_{estimated}$.
 
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
-\begin{tabular}{||l r r ||}
+\begin{tabular}{l r r}
 \hline 
-Mode & Operation time percentage & Consumption \\ \hline
-Run & 20\% &****\\ \hline
-Sleep & 80\% & **** \\ \hline
+Mode & Operation time percentage & Consumption \\ \hline \hline
+Run & 10\% & 85 mA \\ \hline
+Sleep & 90\% & 45 $\mu$A \\ \hline
 \end{tabular}
 }
 \caption{Estimated values for Run and Sleep operation modes.%
          \label{tab:cap4:powerstimatedvalues}}
 \end{table} 
 
-%Capacidad estimada......................................
+\[P_{estimated}= 85 \times10^{-3}  \times 0.1 + 45 \times10^{-6}  \times 0.90 = 8.541 \quad mA\]
 
-Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other options, not described at the table, have been directly discarded for showing unsutiable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or specific high capacity kind of batteries\footnote{For instance, those used in photography.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based battery sizes and lithium-based. 
+Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other technologies and sizes, not described at the table, have been directly discarded for showing unsuitable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or special size batteries\footnote{For instance, 2/3 A, L-fat A, or CS sizes.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based and \ac{LIION} based batteries. 
 
 \begin{table}[h]
 \centering
 \scalebox{0.7}{
-\begin{tabular}{||c | c |||}
-\hline \\
-\hline \\
+\begin{tabular}{||c|c|c|c|c|c|c|c||}
 \hline
-\end{tabular}
-}
-\caption{.%
-         \label{tab:cap4:batcomparison}}
-\end{table} 
+\multirow{2}{*}{Technology} & Cell Nominal & Min. Num. & \multirow{2}{*}{Use complexity} & \multirow{2}{*}{Size} & Capacity & Estimated & Aprox. \\ 
+& Voltage & of cells  & & & (mHh) & autonomy (h.) & Cost (\euro)\\ \hline \hline
+\multirow{2}{*}{Ni-Mh} & \multirow{2}{*}{1.2/1.25 V} & \multirow{2}{*}{3} & \multirow{2}{*}{Low} & AAA & 600 - 1250 & 70 - 150 & 1 - 2  \\ \cline{5-8}
+& & & & AA & 1200 - 2900 & 95 - 340 & 1.5 - 3 \\ \hline
+\multirow{ 5}{*}{Li-ion} & \multirow{5}{*}{3.6/3.7 V} & \multirow{5}{*}{1} & \multirow{5}{*}{Medium} & AAA & 500 - 600 & 60 - 70 & 3.5 - 4.5 \\ \cline{5- 8}
+ &  &  &  & AA & 900 &  100  & 4 - 6 \\ \cline{5- 8}
+ &  &  &  & CR123A & 700 - 2000 & 80 - 235 & 3 - 20 \\ \cline{ 5- 8}
+ &  &  &  & CR2 & 600 - 800 & 70 - 90  & 3.5 \\ \cline{ 5- 8}
+ &  &  &  & Other & up to 3000 & up to 350  & 40 - 60 \\ \hline
+\end{tabular}}
+\caption{Comparison among considered batteries.
+\label{tab:cap4:batcomparison}}
+\end{table}
 
+Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more compless as well. A battery consisting on 3 \ac{NIMH} AA cells might provide up to 340 h. autonomy, aproximately 14 days, considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro.
 
-Ni-Mh AAA
-Ni-Mh AA
-Ni-Mh specific battery
-LI-ION
-LI-PO
-
-%SOLUCION
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
-The microcontroller includes possibilities to properlly place quartz crystals in parallel with internal amplifiers and a pair of suitable capacitors in such way they work as oscillators. The oscillator signal is then connected to the internal \ac{PLL} to obtain the desired frequency. Schematic can be seen at Figure \ref{}**********.
+The microcontroller includes possibilities to properlly place quartz crystals in parallel with internal amplifiers and a pair of suitable capacitors in such way they work as oscillators. The oscillator signal is then connected to the internal \ac{PLL} to obtain the desired frequency. Figures \ref{fig:cap4:prioscillators} and \ref{fig:cap4:secoscillators} show the basic input shcheme for primary and secondary oscillators respectively.
 
 Primary oscillator is 8 MHz quartz crystal used as system reference clock. The respective \ac{PLL} is configured to raise this frequency up to 80 MHz. It exists the possibility of replacing the functionality of this clock for a internal one, but stability and accuracy can be affected.
 

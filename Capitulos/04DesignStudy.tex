@@ -339,7 +339,7 @@ PIN & PERIPHERALS & MODULE & USE \\
 \endlastfoot
 
 % aquí añadimos el cuerpo de la tabla.
-1 & AERXARR/RG15 & - & - & - \\ \hline
+1 & AERXARR/RG15 & - & -  \\ \hline
 2 & VDD & \multicolumn{2}{l}{Power Supply} \\ \hline
 3 & PMD5/\textbf{RE5} & Header & p23 \\ \hline
 4 & PMD6/\textbf{RE6}  & Header & p35 \\ \hline
@@ -348,11 +348,11 @@ PIN & PERIPHERALS & MODULE & USE \\
 7 & T3CK/RC2 &  - & - \\ \hline
 8 & T4CK/RC3 &  - & -  \\ \hline
 9 & T5CK/\textbf{SDI1}/RC4 & \ac{RI} 434MHz & SPI SDO\\ \hline
-10 & ECOL/\textbf{SCK2}/\textbf{U6TX}/\textbf{U2nRTS}/PMA5/\textbf{CN8}/\textbf{RG6} & Header & p37  \\ \hline
+10 & ECOL/\textbf{SCK2}/\textbf{U6TX}/\textbf{U3nRTS}/PMA5/\textbf{CN8}/\textbf{RG6} & Header & p37  \\ \hline
 11 & ECRS/\textbf{SDA4}/\textbf{SDI2}/\textbf{U3RX}/PMA4/\textbf{CN9}/\textbf{RG7} & Header & p21  \\ \hline
-12 & \textbf{ERXDV}/\textbf{SCL4}/\textbf{SDO2}/\textbf{U3TX}/PMA3/\textbf{CN10}/\textbf{RG8} & Header & p38  \\ \hline
+12 & \textbf{ECRSDV}/\textbf{SCL4}/\textbf{SDO2}/\textbf{U3TX}/PMA3/\textbf{CN10}/\textbf{RG8} & Header & p38  \\ \hline
 13 & \textbf{nMCLR} & PGE/Pushbutton & Reset \\ \hline
-14 & \textbf{ERXCLK}/nSS2A/\textbf{U3nCTS}/\textbf{U6RX}/PMA2/\textbf{CN11}/\textbf{RG9} & Header & p20 \\ \hline
+14 & \textbf{EREFCLK}/nSS2A/\textbf{U3nCTS}/\textbf{U6RX}/PMA2/\textbf{CN11}/\textbf{RG9} & Header & p20 \\ \hline
 15 & VSS &  \multicolumn{2}{l}{Ground} \\ \hline
 16 & VDD &  \multicolumn{2}{l}{Power Supply} \\ \hline
 17 & TMS/RA0 & - & -  \\ \hline
@@ -373,7 +373,7 @@ PIN & PERIPHERALS & MODULE & USE \\
 32 & AN8/C1OUT/\textbf{RB8} & \ac{RI} 434MHz & Wake \\ \hline
 33 & AN9/C2OUT/\textbf{RB9} & \ac{RI} 434MHz & Power Switch \\ \hline
 34 & AN10/CVREFOUT/PMA13/\textbf{RB10} & \ac{RI} 434MHz & Chip Select \\ \hline
-35 & AN11/\textbf{ERXERR}/AETXERR/PMA12/RB11 & Header & p03 \\ \hline
+35 & \textbf{AN11}/\textbf{ERXERR}/AETXERR/PMA12/\textbf{RB11} & Header & p03 \\ \hline
 36 & VSS &  \multicolumn{2}{l}{Ground}  \\ \hline
 37 & VDD &  \multicolumn{2}{l}{Power Supply}\\ \hline
 38 & TCK/RA1 & - & - \\ \hline
@@ -382,7 +382,7 @@ PIN & PERIPHERALS & MODULE & USE \\
 41 & \textbf{AN12}/\textbf{ERXD0}/AECRS/PMA11/\textbf{RB12} & Header & p04\\ \hline
 42 & \textbf{AN13}/\textbf{ERXD1}/AECOL/PMA10/\textbf{RB13} & Header & p05 \\ \hline
 43 & \textbf{AN14}/ERXD2/AETXD3/PMALH/PMA1/\textbf{RB14} & Header & p17\\ \hline
-44 & \textbf{AN15}/ERXD3/OCFB/PMALL/PMA0/CN12/\textbf{RB15} & Header & p16\\ \hline
+44 & \textbf{AN15}/ERXD3/OCFB/PMALL/PMA0/\textbf{CN12}/\textbf{RB15} & Header & p16\\ \hline
 45 & VSS & \multicolumn{2}{l}{Power Supply}\\ \hline
 46 & VDD & \multicolumn{2}{l}{Power Supply}\\ \hline
 47 & AETXD0/nSS3/U4RX/U1nCTS/CN20/\textbf{RD14} & \ac{RI} 868MHz & FIFO Sel.\\ \hline
@@ -394,8 +394,8 @@ PIN & PERIPHERALS & MODULE & USE \\
 53 & SCL3/\textbf{SDO3}/U1TX/RF8 & \ac{RI} 868MHz & SPI SDI \\ \hline
 54 & \textbf{VBUS} & USB/Header & VBUS/p07 \\ \hline
 55 & VUSB & \multicolumn{2}{l}{Power Supply + Cap} \\ \hline
-56 & \textbf{D-}/RG3 & USB & D- \\ \hline
-57 & \textbf{D+}/RG2 & USB & D+ \\ \hline
+56 & \textbf{D-}/RG3 & USB/Header & D-/p13 \\ \hline
+57 & \textbf{D+}/RG2 & USB/Header & D+/p12 \\ \hline
 58 & \textbf{SCL2}/\textbf{RA2} & Header & p11 \\ \hline
 59 & \textbf{SDA2}/\textbf{RA3} & Header & p10 \\ \hline
 60 & TDI/\textbf{RA4} & LEDS & LED 3 \\ \hline
@@ -407,7 +407,7 @@ PIN & PERIPHERALS & MODULE & USE \\
 66 & AETXCLK/SCL1/\textbf{INT3}/RA14 & \ac{RI} 868MHz & Interrup. \\ \hline
 67 & AETXEN/SDA1/\textbf{INT4}/RA15 & \ac{RI} 2.4GHz & Interrup. \\ \hline
 68 & RTCC/\textbf{EMDIO}/AEMDIO/\textbf{IC1}/\textbf{RD8} & Header & p09 \\ \hline
-69 & nSS1/\textbf{IC2}/\textbf{RD9} & Header & p39 \\ \hline
+69 & nSS1/\textbf{IC2}/\textbf{RD9} & Header & p32 \\ \hline
 70 & \textbf{SCK1}/IC3/PMCS2/PMA15/RD10 & \ac{RI} 434MHz & SPI SCK\\ \hline
 71 & \textbf{EMDC}/AEMDC/\textbf{IC4}/PMCS1/PMA14/\textbf{RD11} & Header & p27 \\ \hline
 72 & \textbf{SDO1}/OC1/INT0/RD0 & \ac{RI} 434MHz & SPI SDI \\ \hline
@@ -487,7 +487,7 @@ Interface between MRF24J40MA \ac{RI} is driven by 7 signals, figure \ref{fig:cap
 
 All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM}$ Mesh or MiWi$^{TM}$ P2P protocols. Figure \ref{fig:cap4:miwiconf} shows how the protocol environment configuration.
 
-\figura{Bitmap/Capitulo4/miwiconf}{width=0.6\textwidth}{fig:cap4:miwiconf}{MiWi$^{TM}$ protocol configuration scheme.}
+\figura{Bitmap/Capitulo4/miwiconf}{width=0.7\textwidth}{fig:cap4:miwiconf}{MiWi$^{TM}$ protocol configuration scheme.}
 
 A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maximum of 1024 nodes on a network. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
 
@@ -566,15 +566,15 @@ Firstly it is needed an estimation of platform global power consumption. This va
 \begin{tabular}{l r r}
 \hline 
 Mode & Operation time percentage & Consumption \\ \hline \hline
-Run & 10\% & 85 mA \\ \hline
-Sleep & 90\% & 45 $\mu$A \\ \hline
+Run & 10\% & 120 mA \\ \hline
+Sleep & 90\% & 100 $\mu$A \\ \hline
 \end{tabular}
 }
 \caption{Estimated values for Run and Sleep operation modes.%
          \label{tab:cap4:powerstimatedvalues}}
 \end{table} 
 
-\[P_{estimated}= 85 \times10^{-3}  \times 0.1 + 45 \times10^{-6}  \times 0.90 = 8.541 \quad mA\]
+\[P_{estimated}= 100 \times10^{-3}  \times 0.1 + 100 \times10^{-6}  \times 0.90 = 12.1 ~ mA\]
 
 Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other technologies and sizes, not described at the table, have been directly discarded for showing unsuitable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or special size batteries\footnote{For instance, 2/3 A, L-fat A, or CS sizes.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based and \ac{LIION} based batteries. 
 
@@ -584,20 +584,20 @@ Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery
 \begin{tabular}{||c|c|c|c|c|c|c|c||}
 \hline
 \multirow{2}{*}{Technology} & Cell Nominal & Min. Num. & \multirow{2}{*}{Use complexity} & \multirow{2}{*}{Size} & Capacity & Estimated & Aprox. \\ 
-& Voltage & of cells  & & & (mHh) & autonomy (h.) & Cost (\euro)\\ \hline \hline
-\multirow{2}{*}{Ni-Mh} & \multirow{2}{*}{1.2/1.25 V} & \multirow{2}{*}{3} & \multirow{2}{*}{Low} & AAA & 600 - 1250 & 70 - 150 & 1 - 2  \\ \cline{5-8}
-& & & & AA & 1200 - 2900 & 95 - 340 & 1.5 - 3 \\ \hline
-\multirow{ 5}{*}{Li-ion} & \multirow{5}{*}{3.6/3.7 V} & \multirow{5}{*}{1} & \multirow{5}{*}{Medium} & AAA & 500 - 600 & 60 - 70 & 3.5 - 4.5 \\ \cline{5- 8}
- &  &  &  & AA & 900 &  100  & 4 - 6 \\ \cline{5- 8}
- &  &  &  & CR123A & 700 - 2000 & 80 - 235 & 3 - 20 \\ \cline{ 5- 8}
- &  &  &  & CR2 & 600 - 800 & 70 - 90  & 3.5 \\ \cline{ 5- 8}
- &  &  &  & Other & up to 3000 & up to 350  & 40 - 60 \\ \hline
+& Voltage & of cells  & & & (mHh) & autonomy (h.) & Unit. Cost (\euro)\\ \hline \hline
+\multirow{2}{*}{Ni-Mh} & \multirow{2}{*}{1.2/1.25 V} & \multirow{2}{*}{3} & \multirow{2}{*}{Low} & AAA & 600 - 1250 & 50 - 100 & 1 - 2  \\ \cline{5-8}
+& & & & AA & 1200 - 2900 & 100 - 240 & 1.5 - 3 \\ \hline
+\multirow{ 5}{*}{Li-ion} & \multirow{5}{*}{3.6/3.7 V} & \multirow{5}{*}{1} & \multirow{5}{*}{Medium} & AAA & 500 - 600 & 40 - 50 & 3.5 - 4.5 \\ \cline{5- 8}
+ &  &  &  & AA & 900 &  75  & 4 - 6 \\ \cline{5- 8}
+ &  &  &  & CR123A & 700 - 2000 & 60 - 165 & 3 - 20 \\ \cline{ 5- 8}
+ &  &  &  & CR2 & 600 - 800 & 50 - 65  & 3.5 \\ \cline{ 5- 8}
+ &  &  &  & Other & up to 3000 & up to 250  & 40 - 60 \\ \hline
 \end{tabular}}
 \caption{Comparison among considered batteries.
 \label{tab:cap4:batcomparison}}
 \end{table}
 
-Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more compless as well. A battery consisting on 3 \ac{NIMH} AA cells might provide up to 340 h. autonomy, aproximately 14 days, considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro.
+Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more compless as well. A battery consisting on 3 \ac{NIMH} AA cells might provide up to 240 h. autonomy, aproximately 10 days, considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro.
 
 %-------------------------------------------------------------------
 \subsection{Timing}
@@ -609,24 +609,94 @@ Primary oscillator is 8 MHz quartz crystal used as system reference clock. The r
 \figura{Bitmap/Capitulo4/priosc}{width=.3\textwidth}{fig:cap4:prioscillators}%
 {PIC32MX675F256L primary oscillator input.}
 
-% CAPACITORS (CUADERNITO)
+In order to calculate the values for $C_{1}$ and $C_{2}$ capacitors, we will use a common formula used for crystal-based oscillator design.
 
+\[ 
+C_{L} = \frac{C_{1}C_{2}}{C_{1}+C_{2}} + C_{P} + C_{I}
+\]
+
+Where $C_{1}$ and $C_{2}$ have an equal value, $C_{L}$ is the load capacitance required for the crystal, $C_{P}$ is the circuit parasitic capacitance and $C_{I}$ is the chip input capacitance. Typically $C_{P} + C_{I}$ is set to 5 pF. For the 8 MHz crystal, load capacitance specified by the manufacturer is 20 pF\cite{8mdatasheet}. The resulting equation remains like follows:
+
+\[ 
+20~ pF = \frac{C_{1}C_{2}}{C_{1}+C_{2}} + 5 ~ pF
+\]
+
+Resolving the equation, it results that $ C_{1} = C_{2} = 15 \quad pF$.
+\\
 Second oscillator, a 32.728 KHz, supposes a low-power clock for real time clocking. It enables nodes synchronization, which is fundamental for power-saving modes.
 
 \figura{Bitmap/Capitulo4/secoscillator}{width=.4\textwidth}{fig:cap4:secoscillators}%
 {PIC32MX675F256L second oscillator input.}
 
-% CAPACITORS (CUAD)
+For this second clock, load capacitance comes to be 12.5 pF\cite{32kdatasheet}. Hence the corresponding equation results as follows:
+
+\[ 
+12.5~ pF = \frac{C_{1}C_{2}}{C_{1}+C_{2}} + 5 ~ pF
+\]
+
+Resulting capacitors value are $ C_{1} = C_{2} = 15 \quad pF$
 
 %-------------------------------------------------------------------
 \subsection{Expansion Headers}
 %-------------------------------------------------------------------
 
-Figure \ref{fig:cap4:headerschematic} shows the schematic design for this module. Basically, two headers, containing 20 pins each, enable access to unused and useful peripherals the microcontroller includes. This offer possibilities to future implementations and expansions for the node by simply attaching a device through these headers and carryng through the corresponding firmware adaptations.
+Figure \ref{fig:cap4:headerschematic} shows the schematic design for this module. Basically, two headers, containing 20 pins each, enable access to unused and useful peripherals the microcontroller includes. This offers possibilities to future implementations and expansions for the node by simply attaching a device through these headers and carryng through the corresponding firmware adaptations. Possible attachable implementations are 802.11 interfaces, data adquisition modules, external memories, extra \ac{RI}s, etc.
 
-Some of the available peripherals are ***************************. For a pin to pin description of the headers, reffer to Table \ref{tab:cap4:headerspinout}.
+Here it is made a comprehensive description of the available peripherals and functionalities at the headers:
 
-Possible attachable implementations are 802.11 interfaces, data adquisition modules, external memories, extra \ac{RI}s...
+\begin{itemize}
+	\item \emph{Power Supply}. Several pins offer power supply options:
+		\begin{itemize}
+		\item VCC. Shorted to the \ac{CNGD} supply system available at the platform, usually 3.3V. Pins 14, 24, and 28.
+		\item GND. Shorted to \ac{CNGD} ground. Pins 15, 31, and 34.	
+		\item BAT+. Directly linked to the positive pole of the battery, thought for charging purposes. Pin 29.
+		\item BAT-. Directly linked to the negative pole of the battery, thought for charging purposes. Pin 30.	
+		\end{itemize}
+	\item \emph{nMCLR}. Allows shields to reset the platform. Pin 08.
+	\item \emph{\ac{SPI}}. \ac{SPI} 2 is available. SDI signal at pin 21, SDO at 38 and SCK at 37.
+	\item \emph{\ac{UART}}. \ac{UART}S 3 and 6 are available.
+		\begin{itemize}
+		\item \ac{UART} 3. This UART supports hardware flow control. \ac{RX} signal is at pin 21, \ac{TX} at 38, nRTS at 					37, and nCTS is at pin 20.
+		\item \ac{UART} 6. Does not support hardware flow control. \ac{RX} is at pin 20, \ac{TX} at pin 37.	
+		\end{itemize}				
+	\item \emph{\ac{I2C}}. Two \ac{I2C} peripherals are accesible, \ac{I2C} number 2 and 4. 
+		\begin{itemize}
+		\item \ac{I2C} 2. SCL signal is at pin 38, and SDA signal is at pin 21.	
+		\item \ac{I2C} 4. SCL signal is at pin 11, and SDA signal is at pin 10.	
+		\end{itemize}
+	\item \emph{\ac{USB}}. Fully accessible. Notice the \ac{USB} can not operate over the terminal at the \ac{CNGD} and the headers at once. For further information consult the manual\cite{pic32datasheet}. USB ID signal is placed at pin 06, VBUS at pin 07, D+ is available at pin 12, and D- is at 13. 
+	\item \emph{Ethernet}. It is a bus master module that interfaces with an off-chip Physical layer to implement a complete Ethernet node. Headers signals provides an \ac{RMII} mode interface. Signals placement follows:
+		\begin{itemize}
+		\item EMDC. (Management Clock). Pin 27.
+		\item EMDIO. (Management I/O). Pin 09.	
+		\item ETXEN. (Transmit Enable). Pin 33.
+		\item ETXD0. (Transmit Data). Pin 25.
+		\item ETXD1. (Transmit Data). Pin 26.
+		\item EREFCLK. (Reference Clock). Pin 20.	
+		\item ECRSDV. (Carrier Sense - Receive Data Valid). Pin 38.
+		\item ERXD0. (Receive Data). Pin 04.
+		\item ERXD1. (Receive Data). Pin 05.
+		\item ERXERR. (Receive Error). Pin 03.
+		\end{itemize} 
+	\item \emph{\ac{ADC}}. 9 out of 16 available \ac{ADC} channels are accesible at the headers. In addition, Vref+ is at pin 19 and Vref- is at 18, these pins have optional functionalities for the \ac{ADC} peripheral.
+		\begin{itemize}
+		\item Channel 05. Pin 01.
+		\item Channel 04. Pin 39.	
+		\item Channel 03. Pin 02.
+		\item Channel 11. Pin 03.	
+		\item Channel 12. Pin 04.	
+		\item Channel 13. Pin 05.	
+		\item Channel 14. Pin 17.	
+		\item Channel 15. Pin 16.	
+		\end{itemize} 
+	\item \emph{\ac{GPIO}}.
+	\item \emph{Change Notification}.
+	\item \emph{Input Capture}
+	\item \emph{Interruption}.
+
+\end{itemize}
+
+For a pin to pin description of the headers, reffer to Table \ref{tab:cap4:headerspinout}.
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
@@ -638,13 +708,13 @@ Possible attachable implementations are 802.11 interfaces, data adquisition modu
 
 % aquí añadimos el encabezado de la primera hoja.
 \hline
-PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
+PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \hline \hline
 \endfirsthead
 
 % aquí añadimos el encabezado del resto de hojas.
 \hline
-PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
+PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \hline \hline
 \endhead
 
@@ -656,47 +726,47 @@ PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \endlastfoot
 
 % aquí añadimos el cuerpo de la tabla.
-00 &  \\ \hline
-01 &  \\ \hline
-02 & \\ \hline
-03 & & & \\ \hline
-04 &  \\ \hline
-05 &  \\ \hline
-06 &  \\ \hline
-07 & \\ \hline
-08 &   \\ \hline
-09 & \\ \hline
-10 &  \\ \hline
-11 &  \\ \hline
-12 &  \\ \hline
-13 &  \\ \hline
-14 &  & VCC &  \\ \hline
-15 &  & GND &  \\ \hline
-16 &  \\ \hline
-17 & \\ \hline
-18 &  \\ \hline
-19 &  \\ \hline
-20 &  \\ \hline
-21 &  \\ \hline
-22 &  \\ \hline
-23 &  \\ \hline
-24 &  & VCC &\\ \hline
-25 &  \\ \hline
-26 &  \\ \hline
-27 &  \\ \hline
-28 &  & VCC &\\ \hline
-29 &  \\ \hline
-30 &  \\ \hline
-31 &  & GND &\\ \hline
-32 & \\ \hline
-33 &   \\ \hline
-34 &  & GND & \\ \hline
-35 & \\ \hline
-36 &   \\ \hline
-37 &   \\ \hline
-38 & \\ \hline
-39 &  \\ \hline
- % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
+00 & 19 & \\ \hline
+01 & 20 &\\ \hline
+02 & 22 &\\ \hline
+03 & 35 & & \\ \hline
+04 & 41 & \\ \hline
+05 & 42 & \\ \hline
+06 & 51 &  \\ \hline
+07 & 54 & \\ \hline
+08 & 13 &  \\ \hline
+09 & 68 &\\ \hline
+10 & 59 & \\ \hline
+11 & 58 & \\ \hline
+12 & 57 &  \\ \hline
+13 & 56 &\\ \hline
+14 & - & VCC &  \\ \hline
+15 & - & GND &  \\ \hline
+16 & 44 & \\ \hline
+17 & 43 &\\ \hline
+18 & 28 & \\ \hline
+19 & 29 & \\ \hline
+20 & 14 & \\ \hline
+21 & 11 & \\ \hline
+22 & 5 & \\ \hline
+23 & 3 & \\ \hline
+24 & - & VCC &\\ \hline
+25 & 88 & \\ \hline
+26 & 87 & \\ \hline
+27 & 71 & \\ \hline
+28 & - & VCC &\\ \hline
+29 & - & BAT+\\ \hline
+30 & - & BAT- \\ \hline
+31 & - & GND &\\ \hline
+32 & 69 &\\ \hline
+33 & 83 &  \\ \hline
+34 & - & GND & \\ \hline
+35 & 4 &\\ \hline
+36 & 6 &  \\ \hline
+37 & 10 &  \\ \hline
+38 & 12 &\\ \hline
+39 & 21 & \\ \hline
+\\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
 \caption{Headers description pins use description.}
 \label{tab:cap4:headerspinout}
 \end{longtable}}
@@ -706,7 +776,7 @@ PIN & MICROCONTROLLER PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \subsection{PGE}
 %-------------------------------------------------------------------
 
-Figure \ref{}******* contains the schematic for the programmer module, PGE. This module allows the programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontoller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal.
+Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer module, PGE. This module allows the programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontoller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal.
 
 \figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:pge}%
 {PGE interface.}

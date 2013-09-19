@@ -214,3 +214,8 @@
 
 @entry{DMA, , \emph{direct memory access}}
 
+@entry{CN, , \emph{change notification}}
+
+@entry{RMII, , \emph{Reduced Media Independent Interface}}
+
+

@@ -597,7 +597,9 @@ Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery
 \label{tab:cap4:batcomparison}}
 \end{table}
 
-Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more compless as well. A battery consisting on 3 \ac{NIMH} AA cells might provide up to 240 h. autonomy, aproximately 10 days, considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro.
+Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more compless as well. 
+
+The solution proposed consist of a battery consisting on 3 2900 mAh \ac{NIMH} AA cells. This might provide up to 240 h. of autonomy, aproximately 10 days, considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro. 
 
 %-------------------------------------------------------------------
 \subsection{Timing}
@@ -821,7 +823,7 @@ This extension sets serial communication between the microcontroller and a pc ov
 
 This technology could be useful for old machines, low-resources researches, or for debbuging purposes during the platform development until the \ac{USB} communication is fully operative. This communication way has a simpler operation mode than \ac{USB}.
 
-Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used one of the accessible \ac{UART} at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at pin *************, \ac{RX} is at *************. Since this \ac{UART} does not support hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals appart from the data signals.}, two pins are enough to set proper communication.
+Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used \ac{UART} 3, accessible  at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at header pin 38, \ac{RX} is at 21. Since the communication does not require for hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals appart from the data signals.}, two pins are enough to set proper communication.
 
 \figura{Bitmap/Capitulo4/max3232}{width=.4\textwidth}{fig:cap4:max3232}%
 {MAX3232 basic scheme.}
@@ -829,7 +831,6 @@ Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. 
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
-
 A schematic view of the rs232SHIELD is shown at Figure \ref{fig:cap4:rs232shieldschematic} on Appendix \ref{ap1:schematics}.
 
 %-------------------------------------------------------------------
@@ -846,46 +847,55 @@ Charge rate, usually denoted as C, signifies a charge or discharge rate equal to
 
 Previous statements assumes that the battery has a 100\% coulometric charging efficiency\footnote{Part of the electrical charge stored in a battery by charging that is recoverable during discharging. Usually expressed as a percentage.}. The coulometric charging efficiency of \ac{NIMH} batteries is typically 60\%. However, the faster you charge the worse this parameter gets.
 
-Hence, for our 2.7 Ah batteries, considering a charge rate C/10. A charge current of 270 mA could be accepted, taking from 10 to 15 hours to fully charge the batteries. However, let set the charge current aroun 200 mA as precautionary measure. This way, quality of the batteries is preserved and the charger is suitable for less capacity batteries.
+Hence, for our 2.9 Ah batteries, considering a charge rate C/10. A charge current of 290 mA could be accepted, taking from 10 to 15 hours to fully charge the batteries. However, let set the charge current around 200 mA as precautionary measure. This way, quality of the batteries is preserved and the charger is suitable for less capacity batteries.
 
-We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial aproximation we could stablish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value, 3.6 V. The sensed voltage will be compared with a reference voltage at the input of an LM311 operational amplifier. Reference voltage is obtained by a simple voltage divider.
+We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial aproximation we could stablish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value, 3.6 V. The sensed voltage will be compared with a reference voltage at the input of an LM311\cite{lm311} comparator. Reference voltage is obtained by a simple voltage divider.
 
-%further view en amp op***************************.
+The LM311 is a single high-speed voltage comparator. These devices are designed to operate from a wide range of power-supply voltages, including
+$\pm$ 15 V supplies for operational amplifiers and 5 V supplies for logic systems. The output levels are compatible with most TTL and MOS circuits. These comparators are capable of driving lamps or relays and switching voltages up to 50 V at 50 mA. Figure \ref{fig:cap4:ampconf} gives the recommended configuration provided by the manufacturer.
 
-To set a fixed current through the batteries, an LM317\cite{lm317} voltage voltage regulator is used. This is an adjustable 3-terminal positive-voltage regulator designed to supply up to 1.5A of load current with an output voltage adjustable over a 1.2 V to 37 V range. It employs internal current limiting and thermal shutdown.
+\figura{Bitmap/Capitulo4/ampconf}{width=.5\textwidth}{fig:cap4:ampconf}{Collector output LM311 configuration.}
 
-%FIGURE
+To set a fixed current through the batteries, an LM317\cite{lm317} voltage voltage regulator is used. This is an adjustable 3-terminal positive-voltage regulator designed to supply up to 1.5A of load current with an output voltage adjustable over a 1.2 V to 37 V range. It employs internal current limiting and thermal shutdown. Figure \ref{fig:cap4:lm317conf} ilustrates the configuration required for the LM317. Formula below describes the relation among components and $V_{out}$.
 
-%FORMULAA
+\figura{Bitmap/Capitulo4/lm317conf}{width=.6\textwidth}{fig:cap4:lm317conf}{Configuration scheme for the LM317 provided by the manufacturer.}
 
-This regulator is configured to an output of 1.25V by chosing an R2? of 0 $\Omega$. Then a fix resistor between its output and ground will fix the output current and therefore, the input current. This fix current will flow through the batteries during the charge. In addition, a ***********transistor? is placed at the regulator output. This means that the operation mode of the transistor affects the flowing current. If the transistor is ¿active?, current flows. The current does not flow if the transistor is ¿closed?.
+\[
+V_{out} = 1.25V(1+ \frac{R_{2}}{R_{1}}) + I_{Adj}R_{2}
+\]
 
+This regulator is configured to an output of 1.25V by chosing an R2 of 0 $\Omega$. Then a fix resistor between its output and ground will limit the output current and therefore, the input current. This fix current will flow through the batteries during the charge. In addition, the drain of an IRF5802\cite{irf5801} nMOSFET power transistor is placed at the regulator output. This means that the operation mode of the transistor affects the flowing current. If the transistor is in ohmic mode or saturation, current flows. The current does not flow if the transistor is cutoff.
 
-%FIGURE TRANSISTOR Y..... ¿ESQUEMA? 
+IRF5802 presents a maximum drain-source on-resistance $R_{DS(on)}$ of 2.2 $\Omega$. Gate to source voltage $V_{GS}$ can cary from -30 V to +30 V, and gate thresold voltage $V_{GS(th)}$ is around 4 $\Omega$. Maximum drain current $I_{D}$ goes up to 600 mA. Figure \ref{fig:cap4:irf5801} shows the symbol or the nMOSFET.
 
-The previously mentioned LM311 output controls the ************* of the transistor. It switchs the transistor operation modes, ¿active and cut?, when ****** output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the voltage sensed at the batteries.
+\figura{Bitmap/Capitulo4/irf5801}{width=.2\textwidth}{fig:cap4:irf5801}{Power transistor nMOSFET symbol.}
 
-A green \ac{LED} driven by the ********** output, turns illuminated when this output drops under a threshold. This way, the led indicates when the batteries voltage is over the reference voltage. A precautionary diode preserves the batteries from being reversely charged. 
+The previously mentioned LM311 output controls the gate of the transistor. It switchs the transistor operation modes, from ohmic to cutoff, when LM311 output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the voltage sensed at the batteries.
+
+A green \ac{LED} driven by the comparator output, turns illuminated when this output drops enough to make current flows through the \ac{LED}. This way, the led indicates when the batteries voltage is over the reference voltage. A precautionary diode preserves the batteries from being reversely charged. 
 
 The whole system was simulated on Alitum Designer and simulation outputs can be observed further on at this same section.
 
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
-
 A schematic of charger232SHIELD can be seen at Figure \ref{fig:cap4:chargershematic} on Appendix \ref{ap1:schematics}.
 
 %-------------------------------------------------------------------
 \subsection{Simulation}
 %-------------------------------------------------------------------
+Simulation at Altium Designer showed different behaviours facing different voltage at the batteries. It was needed to simulate models for LM311 operational amplifier, IRF5801 nMOSFET transistor. LM317AMDT was emulated composing simpler components. Figure \ref{fig:cap5:simulation1} ilustrates the output voltage at the LM311 comparator depending on the voltage at the battery. Figure \ref{fig:cap5:simulation2} directly relates current flow over the battery with the voltage its presents. Graphics show the right behaviour, changing properly the desired voltage and current values at certain battery value.
 
-Simulation at Altium Designer showed different behaviours facing different voltage at the batteries. Figure *************************, blab
-****************************************************************
+\begin{figure}[h]
+\centering
+   
+\subfloat[Output voltage at the comparator depending on the present voltage at the battery.]{\label{fig:cap5:simulation1}\includegraphics[width=\textwidth]{Imagenes/Bitmap/Capitulo4/simulation1}}  
 
-\figura{Bitmap/Capitulo4/simulation}{width=\textwidth}{fig:cap4:simulation}%
-{chargerSHIELD simulation results.}
-
-
+\subfloat[Current flowing through the battery depending on the its voltage.]{\label{fig:cap5:simulation2}\includegraphics[width=\textwidth]{Imagenes/Bitmap/Capitulo4/simulation2}}
+       
+\caption{chargerSHIELD simulation results.}
+\label{fig:cap4:simulation}
+\end{figure}
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX

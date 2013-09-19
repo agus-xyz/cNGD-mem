@@ -357,7 +357,7 @@ PIN & PERIPHERALS & MODULE & USE \\
 16 & VDD &  \multicolumn{2}{l}{Power Supply} \\ \hline
 17 & TMS/RA0 & - & -  \\ \hline
 18 & AERXD0/\textbf{INT1}/RE8 & \ac{RI} 434MHz & Interrup. \\ \hline
-19 & AERXD1/\textbf{INT2}/RE9 & Header & p00 \\ \hline
+19 & AERXD1/\textbf{INT2}/\textbf{RE9} & Header & p00 \\ \hline
 20 & \textbf{AN5}/\textbf{C1IN+}/\textbf{VBUSON}/\textbf{CN7}/\textbf{RB5} & Header & p01 \\ \hline
 21 & \textbf{AN4}/\textbf{C1IN-}/\textbf{CN6}/\textbf{RB4} & Header & p39 \\ \hline
 22 & \textbf{AN3}/C2IN+/\textbf{CN4}/\textbf{RB3} & Header & p02 \\ \hline
@@ -389,13 +389,13 @@ PIN & PERIPHERALS & MODULE & USE \\
 48 & AETXD1/\textbf{SCK3}/U4TX/U1nRTS/CN21/RD15 & \ac{RI} 868MHz  & SPI SCK\\ \hline
 49 & SDA5/\textbf{SDI4}/U2RX/PMA9/CN17/RF4 & \ac{RI} 2.4GHz & SPI SDO \\ \hline
 50 & SCL5/\textbf{SDO4}/U2TX/PMA8/CN18/RF5 & \ac{RI} 2.4GHz & SPI SDI\\ \hline
-51 & \textbf{USBID}/RF3 & USB/Header & USB ID/p06 \\ \hline
+51 & \textbf{USBID}/\textbf{RF3} & USB/Header & USB ID/p06 \\ \hline
 52 & SDA3/\textbf{SDI3}/U1RX/RF2 & \ac{RI} 868MHz & SPI SDO \\ \hline
 53 & SCL3/\textbf{SDO3}/U1TX/RF8 & \ac{RI} 868MHz & SPI SDI \\ \hline
 54 & \textbf{VBUS} & USB/Header & VBUS/p07 \\ \hline
 55 & VUSB & \multicolumn{2}{l}{Power Supply + Cap} \\ \hline
-56 & \textbf{D-}/RG3 & USB/Header & D-/p13 \\ \hline
-57 & \textbf{D+}/RG2 & USB/Header & D+/p12 \\ \hline
+56 & \textbf{D-}/\textbf{RG3} & USB/Header & D-/p13 \\ \hline
+57 & \textbf{D+}/\textbf{RG2} & USB/Header & D+/p12 \\ \hline
 58 & \textbf{SCL2}/\textbf{RA2} & Header & p11 \\ \hline
 59 & \textbf{SDA2}/\textbf{RA3} & Header & p10 \\ \hline
 60 & TDI/\textbf{RA4} & LEDS & LED 3 \\ \hline
@@ -664,7 +664,7 @@ Here it is made a comprehensive description of the available peripherals and fun
 		\item \ac{I2C} 2. SCL signal is at pin 38, and SDA signal is at pin 21.	
 		\item \ac{I2C} 4. SCL signal is at pin 11, and SDA signal is at pin 10.	
 		\end{itemize}
-	\item \emph{\ac{USB}}. Fully accessible. Notice the \ac{USB} can not operate over the terminal at the \ac{CNGD} and the headers at once. For further information consult the manual\cite{pic32datasheet}. USB ID signal is placed at pin 06, VBUS at pin 07, D+ is available at pin 12, and D- is at 13. 
+	\item \emph{\ac{USB}}. Fully accessible. Notice the \ac{USB} can not operate over the terminal at the \ac{CNGD} and the headers at once. For further information consult the manual\cite{pic32datasheet}. USBID signal is placed at pin 06, VBUSON at pin 07, D+ is available at pin 12, and D- is at 13. 
 	\item \emph{Ethernet}. It is a bus master module that interfaces with an off-chip Physical layer to implement a complete Ethernet node. Headers signals provides an \ac{RMII} mode interface. Signals placement follows:
 		\begin{itemize}
 		\item EMDC. (Management Clock). Pin 27.
@@ -678,7 +678,7 @@ Here it is made a comprehensive description of the available peripherals and fun
 		\item ERXD1. (Receive Data). Pin 05.
 		\item ERXERR. (Receive Error). Pin 03.
 		\end{itemize} 
-	\item \emph{\ac{ADC}}. 9 out of 16 available \ac{ADC} channels are accesible at the headers. In addition, Vref+ is at pin 19 and Vref- is at 18, these pins have optional functionalities for the \ac{ADC} peripheral.
+	\item \emph{\ac{ADC}}. 9 out of 16 available \ac{ADC} channels are accesible at the headers. In addition, VREF+ is at pin 19 and VREF- is at 18, these pins have optional functionalities for the \ac{ADC} peripheral.
 		\begin{itemize}
 		\item Channel 05. Pin 01.
 		\item Channel 04. Pin 39.	
@@ -689,14 +689,25 @@ Here it is made a comprehensive description of the available peripherals and fun
 		\item Channel 14. Pin 17.	
 		\item Channel 15. Pin 16.	
 		\end{itemize} 
-	\item \emph{\ac{GPIO}}.
-	\item \emph{Change Notification}.
-	\item \emph{Input Capture}
-	\item \emph{Interruption}.
+	\item \emph{\ac{GPIO}}. A total of 30 \ac{GPIO}s are available.
+		\begin{itemize}
+		\item Ports A2, A3, A9, and A10 pins 11, 10, 18, and 19.
+		\item Ports B3, B4, B5, B11, B12, B13, B14, B15 at pins 02, 39, 01, 03, 04, 05, 17, and 16.
+		\item Port C1 at pin 36.
+		\item Ports D6, D8, D9, and D11 at pins 33, 09, 32, and 27.
+		\item Ports E5, E6, E7, and E9 at pins 23, 35, 22, and 00.
+		\item Ports F0, F1, and F3 at pins 26, 25, and 51.
+		\item Ports G2, G3, G6, G7, G8, and G9 at pins 56, 57, 37, 21, 38, and 20.			
+		\end{itemize} 
+	\item \emph{Change Notification}. A total of change notification pins can be accessed. These are  CN4 at pin 02, CN6 at pin 39, CN7 at pin 01, CN8 at pin 37, CN9 at pin 21, CN11 at pin 20, CN12 at pin 16, CN13 at pin 38, and CN15 at pin 33.   
+		
+	\item \emph{Input Capture}. Useful in applications requiring frequency and pulse measurement. Input Capture modules 1, 2 and 4 are 			placed at positions 09, 32 and 27.
+	\item \emph{Interruption}. External interruption 2 is available at pin 00.
+	\item \emph{Comparator}. A comparator is also available through C1IN+ at pin 01, and C1IN- at pin 39. CVREF+ and CVREF-, optional pins for the comparator, can be found at pins 18 and 19.
 
 \end{itemize}
 
-For a pin to pin description of the headers, reffer to Table \ref{tab:cap4:headerspinout}.
+Notice that some of the peripherals described could be pin multiplexed and thereby, they can not be used simultaneously. For a header pin to pin description, reffer to Table \ref{tab:cap4:headerspinout}.
 
 %-------------------------------------------------------------------
 \subsubsection{Pinout}
@@ -704,17 +715,17 @@ For a pin to pin description of the headers, reffer to Table \ref{tab:cap4:heade
 
 \begin{center}
 {\footnotesize
-\begin{longtable}{l l l l l}
+\begin{longtable}{l l l l l l l}
 
 % aquí añadimos el encabezado de la primera hoja.
 \hline
-PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
+PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE & 4th TYPE & 5TH TYPE \\
 \hline \hline
 \endfirsthead
 
 % aquí añadimos el encabezado del resto de hojas.
 \hline
-PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
+PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE & 4th TYPE & 5TH TYPE \\
 \hline \hline
 \endhead
 
@@ -726,48 +737,48 @@ PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \endlastfoot
 
 % aquí añadimos el cuerpo de la tabla.
-00 & 19 & \\ \hline
-01 & 20 &\\ \hline
-02 & 22 &\\ \hline
-03 & 35 & & \\ \hline
-04 & 41 & \\ \hline
-05 & 42 & \\ \hline
-06 & 51 &  \\ \hline
-07 & 54 & \\ \hline
-08 & 13 &  \\ \hline
-09 & 68 &\\ \hline
-10 & 59 & \\ \hline
-11 & 58 & \\ \hline
-12 & 57 &  \\ \hline
-13 & 56 &\\ \hline
-14 & - & VCC &  \\ \hline
-15 & - & GND &  \\ \hline
-16 & 44 & \\ \hline
-17 & 43 &\\ \hline
-18 & 28 & \\ \hline
-19 & 29 & \\ \hline
-20 & 14 & \\ \hline
-21 & 11 & \\ \hline
-22 & 5 & \\ \hline
-23 & 3 & \\ \hline
-24 & - & VCC &\\ \hline
-25 & 88 & \\ \hline
-26 & 87 & \\ \hline
-27 & 71 & \\ \hline
-28 & - & VCC &\\ \hline
-29 & - & BAT+\\ \hline
-30 & - & BAT- \\ \hline
-31 & - & GND &\\ \hline
-32 & 69 &\\ \hline
-33 & 83 &  \\ \hline
-34 & - & GND & \\ \hline
-35 & 4 &\\ \hline
-36 & 6 &  \\ \hline
-37 & 10 &  \\ \hline
-38 & 12 &\\ \hline
-39 & 21 & \\ \hline
+00 & 19 & INT2 & RE9 & - & - & - \\ \hline
+01 & 20 & VBUSON & AN5 & C1IN+ & CN7 & RB5\\ \hline
+02 & 22 & AN3 & CN4 & RB3 & - & -\\ \hline
+03 & 35 & AN11 & ERXERR & RB11 & - & - \\ \hline
+04 & 41 & AN12 & ERXD0 & RB12 & - & - \\ \hline
+05 & 42 & AN13 & ERXD1 & RB13 & - & - \\ \hline
+06 & 51 & USBID & RF3 & - & - & - \\ \hline
+07 & 54 & VBUS & - & - & - & - \\ \hline
+08 & 13 & nMCLR & - & - & - & - \\ \hline
+09 & 68 & EMDIO & IC1 & RD8 & - & - \\ \hline
+10 & 59 & SDA2 & RA3 & - & - & - \\ \hline
+11 & 58 & SCL2 & RA2 & - & - & - \\ \hline
+12 & 57 & D+ & RG2 & - & - & - \\ \hline
+13 & 56 & D- & RG3 & - & - & - \\ \hline
+14 & - & VCC & - & - & - & - \\ \hline
+15 & - & GND & - & - & - & - \\ \hline
+16 & 44 & AN15 & CN12 & RB15 & - & -\\ \hline
+17 & 43 & AN14 & RB14 & - & - & - \\ \hline
+18 & 28 & VREF- & CVREF- & RA9 & - & - \\ \hline
+19 & 29 & VREF+ & CVREF+ & RA10 & - & - \\ \hline
+20 & 14 & REFCLK & U3nCTS & U6RX & CN11 & RG9 \\ \hline
+21 & 11 & SDA4 & SDI2 & U3RX & CN9 & RG7 \\ \hline
+22 & 5 & RE7 & - & - & - & -\\ \hline
+23 & 3 & RE5 & - & - & - & -\\ \hline
+24 & - & VCC & - & - & - & -\\ \hline
+25 & 88 & ETXD0 & RF1 & - & - & -\\ \hline
+26 & 87 & ETXD1 & RF0 & - & - & -\\ \hline
+27 & 71 & EMDC & IC4 & RD11 & -& - \\ \hline
+28 & - & VCC & - & - & - & -\\ \hline
+29 & - & BAT+ & - & - & - & -\\ \hline
+30 & - & BAT- & - & - & - & - \\ \hline
+31 & - & GND & - & - & - & -\\ \hline
+32 & 69 & IC2 & RD9 & - & - & - \\ \hline
+33 & 83 & ETXEN & CN15 & RD6 & - & -\\ \hline
+34 & - & GND & - & - & - & - \\ \hline
+35 & 4 & RE6 & - & - & - & - \\ \hline
+36 & 6 & RC1 & - & - & - & - \\ \hline
+37 & 10 & SCK2 & U6TX & U3nRTS &CN8 & RG6\\ \hline
+38 & 12 & ECRSDV & SCL4 & SDO2 & U3TX & CN10/RG8 \\ \hline
+39 & 21 & AN4 & C1IN- & CN6 & RB4 & - \\ \hline
 \\ % esta línea es importante para que deje un espacio entre la tabla y el nombre de la tabla.
-\caption{Headers description pins use description.}
+\caption{Headers pins use description.}
 \label{tab:cap4:headerspinout}
 \end{longtable}}
 \end{center}
@@ -776,17 +787,12 @@ PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE \\
 \subsection{PGE}
 %-------------------------------------------------------------------
 
-Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer module, PGE. This module allows the programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontoller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal.
-
-\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap4:pge}%
-{PGE interface.}
-
-
-% ICD 3*************************************************************
+Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer module, PGE. This module allows In-Circuit Serial Programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontoller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal. Figure \ref{fig:cap4:icd3} ilustrates it.
 
 \figura{Bitmap/Capitulo4/icd3}{width=.8\textwidth}{fig:cap4:icd3}%
 {ICD3 programmer configuration.}
 
+\ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the plataform has a development character. Further information can be consulted at the manual\cite{icd3}.
 %-------------------------------------------------------------------
 \subsection{Others}
 %-------------------------------------------------------------------

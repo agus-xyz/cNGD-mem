@@ -218,4 +218,8 @@
 
 @entry{RMII, , \emph{Reduced Media Independent Interface}}
 
+@entry{ICD, , \emph{In-Circuit Debugger}}
+
+@entry{IDE, , \emph{Integrated development environment}}
+
 

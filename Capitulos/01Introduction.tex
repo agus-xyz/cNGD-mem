@@ -26,19 +26,16 @@ In this chapter, a global description of the project is given. This global descr
 \label{cap1:sec:background}
 %-------------------------------------------------------------------
 
-A \ac{WSN} consists of a number of sensors spread across a geographical area. Each sensor has wireless communication capability and some level of intelligence for signal processing and data networking. \ac{WSN}s have recently emerged as a premier research topic since they provide a decentralized technological solution to address applications related to security and surveillance, industrial control, infrastructure maintenance, automatic environmental monitoring, domotics, localization, and tracking or health. They possess great long-term economic potential and ability to transform our lives.
+A \ac{WSN} consists of a number of sensors spread across a geographical area. Each sensor has wireless communication capability and some level of intelligence for signal processing and data networking. \ac{WSN}s provide a decentralized technological solution to address applications related to security and surveillance, industrial control, infrastructure maintenance, automatic environmental monitoring, domotics, localization, and tracking or health. They have recently emerged as a premier research topic due to their great long-term economic potential and ability to transform our lives.
 
 Together with this significant growth in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the growth in the ``Internet of Things'' connectivity phenomenon\cite{internetofthings}. Wireless communications, specially due to wireless \ac{M2M} connections, is currently one of the hottest and fastest growing segments of electronics. 
 
-The increasing demand for wireless communication has caused saturation on certains bands of the radio spectrum. This fact is mainly due to an inefficient assignment of the spectrum\cite{wpanIssues}. Some of the most heavily used bands are, for instance, unlicensed bands, free of cost \ac{ISM} bands.
+The increasing demand for wireless communication, in addition to an inefficient assignment of the spectrum\cite{wpanIssues}, has caused saturation on certains bands of the radio spectrum. Some of the most heavily used bands are \ac{ISM} bands which are unlincesed, free of cost frequencies. Most \ac{WSN} solutions operate over these \ac{ISM} bands, like the 2.4 GHz band, also used by Wi-Fi, Bluetooth, or IEEE 802.15.4 devices. 
 
 \figura{Bitmap/Capitulo1/spectrum}{width=.7\textwidth}{fig:cap1:spectrum}%
 {Electromagnetic frequency spectrum. Radio spectrum covers under 300 GHz frequencies}
 
-Regarding spectrum scarcity, most \ac{WSN} solutions operate on unlicensed frequency bands. Normally they use \ac{ISM} bands,
-like the 2.4 GHz band, also used by Wi-Fi, Bluetooth, or IEEE 802.15.4 devices. 
-
-Spectrum saturation is reflected over the increasing \ac{RF} interferences and other undesirable effects like noise, with a consistent impact over the \ac{TX} power required, \ac{QOS}, etc. These troubles find their origin in the increasing amount of traffic, the heterogeneous networks and devices, and the inefficient use of the spectrum. Nowadays, techniques focused on expanding spectrum efficiency over communications, such as those related to dynamic channel allocation, power control or link adaptation, seem exhausted, and new long-term solutions are required. 
+Spectrum saturation is reflected over the increasing \ac{RF} interferences and other undesirable effects like noise, with a consistent impact over the \ac{TX} power required, \ac{QOS}, etc. Nowadays, techniques focused on expanding spectrum efficiency over communications, such as those related to modulation, power control or link adaptation, seem exhausted, and new long-term solutions are required****\cite{}. 
 
 To address this challenge, new techniques such as \ac{CR} arise. \ac{CR} was introduced by Mitola in 1999 \cite{mitola1}
 and 2000\cite{mitola2}. It integrates into communication networks concepts such as spectrum sensing, self-learning, self-management, 
@@ -46,22 +43,18 @@ or context analysis. Basically, \ac{CR} enables opportunistic access to the spec
 awareness. Spectrum sensing capabilities and cooperation among devices allow for better spectrum utilization and \ac{QOS}.
 The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters in order to achieve more reliable and efficient communications.
 
-\ac{WSN}s, among other technologies, maintain a high demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, especially for their wireless communications, since these normally constitute the most energy-consumming task. However, there are also challenges to face\cite{challenges}, such as opportunistic energy-efficient transport.
+\ac{WSN}s, among other technologies, maintain a high demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, especially for their wireless communications, since these normally constitute the most energy-consumming task. However, there are also challenges to face\cite{challenges}, such as an adaptive and \ac{QOS}-aware routing, or the distribution of control data.
 
-Despite the potential of \ac{CWSN}, they are not deeply explored yet. Real or simulated scenarios scarcely exist, but 
+*********Despite the potential of \ac{CWSN}, they are not deeply explored yet. Real or simulated scenarios scarcely exist, but 
 realistic platforms are crucial to the improvement and development of this new field. The shortage and undevelopment of \ac{CWSN} devices
 or test-beds contributes to the scarcity of results in this area. 
 
-One of the current \ac{CWSN} node platforms is the \ac{FCD}, developed in 2011\cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s, and security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a initial approach. The \ac{FCD} was still far from being a very valuable researching test-bed platform. This platform did not fully satisfy requirements in terms of low power consumption, functionality, cost and size, and communication capabilities. 
+One of the current \ac{CWSN} node platforms is the \ac{FCD}, developed in 2011\cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s, \ac{CWSN}s, or security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a initial approach. The \ac{FCD} was still far from being a very valuable researching test-bed platform. This platform did not fully satisfy requirements in terms of low power consumption, functionality, cost and size, and communication capabilities. 
 
 Continuing with the development of the \ac{FCD}, some software implementations were carried out at \ac{LSI}. A combined protocol stack for
-three different transceivers, including a \ac{HAL}, described in \cite{juanpfc}, was created. This firmware offers
-to the application layers ease of use facing communication tasks and it supposes memory and resources savings compared with
-the previous scheme, based on three protocol stacks. As well, in order to deal with cognitive strategies and algorithmics, a software module
-that runs together with the application layer was launched. This module, called \ac{CRMODULE} implements the theoretical model described
-in \cite{conbrok} and is a crucial achievement for \ac{CWSN} development.  
+three different transceivers \cite{juanpfc}, including a \ac{HAL}, was created. This firmware offers ease of use to the researchers facing communication tasks. It also supposes memory and resources savings compared with the previous scheme, based on three protocol stacks. In order to deal with cognitive strategies and algorithmics, in addition, a software module that runs over the firmware was launched. This module, called \ac{CRMODULE}\cite{}************ implements the theoretical model described in \cite{conbrok} and is a crucial achievement for \ac{CWSN} development.  
 
-This dissertation describes the development and operation of the \ac{CNGD}, a node platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSN}s, allowing test strategies and better investigation deployments. The final implementation must integrate the developed software modules \ac{HAL} and \ac{CRMODULE} together with a demo application layer that show the full operation of the device. 
+This dissertation describes the development and operation of the \ac{CNGD}, a platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSN}s, allowing test strategies and better investigation deployments.
 
 %-------------------------------------------------------------------
 \section{Goals}
@@ -69,11 +62,13 @@ This dissertation describes the development and operation of the \ac{CNGD}, a no
 \label{cap1:sec:goals}
 %-------------------------------------------------------------------
 
-The main goal of the project is to design and implement a node for a \ac{CWSN}. The implementation must meet strong efficiency, functionality, modularity and scalability requirements. A demo application layer, also to be developed, must integrate the already implemented \ac{HAL} and \ac{CRMODULE}. 
+The main goal of the project is to design and implement a node for a \ac{CWSN}. The implementation must meet strong efficiency, functionality, modularity and scalability requirements. A demo application layer, also to be developed, must work integrated with the already implemented firmware. 
 
 \ac{CWSN} nodes are very limited devices in terms of memory, computational power, or energy consumption. This fact is crucial and it must be taken into account in order to make the device valuable and affordable for researching purposes. 
 
-The design must be modular, so it will not need to be entirely redone  with every particular change, and scalable, to allow flexibility in the complexity and character of applications. On the other hand, as a development platform, the software and hardware architecture must provide advantages when implementing cognitive strategies as a valuable tool (data extraction, data reliability, portability, versatility, etc.).
+The design must be modular, so it will not need to be entirely redone  with every particular change, and adaptable, to allow flexibility in the complexity and character of applications. On the other hand, as a development platform, the software and hardware architecture must provide advantages when implementing cognitive strategies as a valuable tool (data extraction, data reliability, portability, versatility, etc.). 
+
+Hence, it is needed to reach a complete solution covering all these features.
 
 It is important to make clear that the design must fill the gaps and deficiencies that current devices show, for example, providing a wider radio access, powering control options, or real \ac{WSN} features. Furthermore, a definition of new needs, together with an important review of the \ac{FCD}, are needed. 
 
@@ -89,20 +84,17 @@ to provide new data of interest. These data will help in making decisions about 
 (cost, resources, size, consumption, etc.) according to the future running applications.
 Definition of features and requirements. Definition of the demo application.
 
-\item \emph{Hardware design}. Pursuit of deficiencies in 
-the \ac{FCD} design and possible beneficial potentialities 
-to achieve the new defined requirements. Design optimization.
-Components selection and final layout development. 
+\item \emph{Hardware design}. Global design of the platform and new envolved. Development of schematics. Design optimization.
+Components selection and final layout deployment. 
 
 \item \emph{Hardware debugging and implementation}.
 Component disposition and soldering. PCB design validation.
 
 \item \emph{Application layer development}.
-Integration of the \ac{HAL} and \ac{CRMODULE} into the hardware.
-Development of the demo application layer integrating
-the two already named software modules enabling a 
-full test of the platform. The application will include
-typical \ac{WSN} functionalities.
+Full adaptation of the firmware to the hardware.
+Development of the demo application layer that uses the firmware and
+allows a full test of the platform. The demo will be a
+typical \ac{WSN} application.
 
 \item \emph{General purpose tests}. 
 Tests oriented to prove the proper operation and verify
@@ -146,8 +138,6 @@ This phase covered from the first definitions and node specifications, to the sy
 
 \item Radio wireless interfaces and other used components evaluation (microcontroller, serial interfaces...).
 
-\item Design optimizations respect to the \ac{FCD}.
-
 \item Hardware full design. Selection of the components. Design adjustments and previous work verification. Layout design.
 
 \item Hardware platform implementation.
@@ -160,7 +150,7 @@ Once the hardware was operating, the work turned over the software. Goals:
 
 \begin{itemize}
 
-\item Integration of the developed \ac{HAL} and \ac{CRMODULE} into the hardware.
+\item Full adaptation of the developed firmware to the hardware.
 
 \item Software implementation of required functions and application. Source code debugging.
 
@@ -183,7 +173,7 @@ and future development lines. Found problems evaluation.
 
 \item \emph{Documentation generation}.
 
-Dissertation and other required documentation (wiki, papers, manuals,etc.) writing. Dissertation will be ellaborated under \LaTeX\cite{latex}. Review of the software documentation.
+Dissertation and other required documentation (wiki, papers, manuals, etc.) writing. Dissertation will be ellaborated under \LaTeX\cite{latex}. Review of the software documentation.
 
 \end{itemize}
 %-------------------------------------------------------------------

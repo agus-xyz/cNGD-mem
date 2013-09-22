@@ -93,23 +93,24 @@ MRF49XA datasheet provides hints for the inclussion of the transceiver into a \a
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
-\begin{tabular}{||l l l l||}
+\begin{tabular}{||l l l l c||}
 \hline
-\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
-C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
-C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
-X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
-MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
-J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
-D1 &  & Light Emitting Diode & 0603 \\ \hline
-R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
-C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
-C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
-C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
-C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
-L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
-L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
-L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\multirow{2}{*}{\textbf{Symbol}} & \textbf{Nominal Value}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & \multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{(434/868)} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 & 1\\ \hline
+C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 & 1 \\ \hline
+X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD & 1\\ \hline
+MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP & 1 \\ \hline
+J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole & 1\\ \hline
+D1 &  & Light Emitting Diode & 0603 & 1\\ \hline
+R1 & 300 $\Omega$ & Resistor & 0603 & 1\\ \hline \hline 
+C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+L1 & 390 nH/100 nH & Inductor & 0603 & 1\\ \hline
+L2 & 33 nH/8.2 nH & Inductor & 0603 & 1\\ \hline
+L3 & 47 nH/22N nH & Inductor & 0603 & 1\\ \hline
 \end{tabular}}
 
 \caption{Component description for $\mu$Trans 434/868.%
@@ -126,7 +127,6 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layouts}. Fig
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
-
 Basic tests to check proper functionality were made while prototyping the module.
 
 Firstly, the modules were tested over the \ac{FCD} platform. For this, the $\mu$Trans pads were wired and connected to header prepared for the MRF49XA PICtail Plus Daughter Board. Over this platform and making use of a multi-probe oscilloscope, \ac{SPI} communication signals and others were checked, and possible errors debbuged.
@@ -158,7 +158,7 @@ After this, and in collaboration with other MRF49XA modules, it was checked that
 
 \begin{figure}
         \centering
-		\includegraphics[height=297px]{Imagenes/Vectorial/Capitulo5/cngdshape}  
+		\includegraphics[height=320px]{Imagenes/Vectorial/Capitulo5/cngdshape}  
         \caption{cNGD PCB real size shape. 97x84 mm}
         \label{fig:cap5:cngdshape}
 \end{figure}
@@ -166,10 +166,7 @@ After this, and in collaboration with other MRF49XA modules, it was checked that
 The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \ref{cap4:sec:cNGD} attending to expand functionality and usability, and reducing size and cost. Since this is key board of the whole system, most part of the weight ot the operation requirements relies on it. It must mainly contain the three \ac{RI}s, give support to expansion modules, include the power supply and battery room, programming system, and microcontroller. In addition, it must provide an easy access to the control modules (leds and push buttons) and easy deployment. Regading its test-bed character, the module must include some kind of anchors to fix it anywhere or incrust some feet. All these features must be achieved keeping size and cost limited, so the module become affordable and valuable. Figure \ref{fig:cap5:cngdshape} shows the \ac{PCB} shape.
 
 
-
-
-
-Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngdfront} can give a better view of these ideas.  
+Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at the large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngdfront} can give a better view of these ideas.  
 
 The board includes four holes for the battery to be attached. Figure \ref{fig:cap5:headersystem} ilustrates the way it works, for legs fix together the board and the batteries-holder. Moreover, the \ac{PCB} includes more holes for general purpose in case of feet or fixing are required.
 
@@ -184,7 +181,7 @@ The board includes four holes for the battery to be attached. Figure \ref{fig:ca
 \label{fig:cap5:headersystem}
 \end{figure}
 
-Headers module has been placed relying on the two upper long edges, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exctly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is ilustrated in Figure \ref{fig:cap5:headerfootprint}.
+Headers module has been placed relying on the large edges 1 and 3, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exctly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is ilustrated in Figure \ref{fig:cap5:headerfootprint}.
 
 \begin{figure}[h]
 \centering
@@ -203,23 +200,24 @@ The minimum spacing among tracks is set to 0.1 mm around the \ac{MCU} and 0.2 mm
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
-\begin{tabular}{||l l l l||}
+\begin{tabular}{||l l l l c||}
 \hline
-\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
-C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
-C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
-X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
-MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
-J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
-D1 &  & Light Emitting Diode & 0603 \\ \hline
-R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
-C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
-C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
-C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
-C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
-L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
-L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
-L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\multirow{2}{*}{\textbf{Symbol}} & \textbf{Nominal Value}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & \multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{(434/868)} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+J1 &  & MICRO USB A/B  & SMD & 1\\ \hline
+C1,3-9 & 100 nF & Ceramic Capacitor & 0603 & 8 \\ \hline
+C2 & 10 $\mu$F & Pol. Capacitor & 1206 & 1\\ \hline
+C10,11 & 4.7 $\mu$F & Ceramic Capacitor & 0603 & 2 \\ \hline
+C12-14 & 1 $\mu$F & Ceramic Capacitor &  0603 & 3\\ \hline
+C15,16 & 15 pF  & Ceramic Capacitor & 0603 & 2\\ \hline
+C17,18 & 30 pF  & Ceramic Capacitor & 0603 & 2\\ \hline
+R1,8,9,12,13 & 10 K$\Omega$ & Resistor  & 0603 & 1\\ \hline
+R4 & 10 $\Omega$ & Resistor  & 0603 & 1\\ \hline
+R2,5-7,15 & 330 $\Omega$ & Resistor  & 0603 & 5\\ \hline
+R15 & 510 $\Omega$ & Resistor  & 0603 & 1\\ \hline
+Y1 & 32.768 KHz & 12.5pF Load capacitance crystal & Through hole & 1\\ \hline
+Y2 & 8 MHz & 20 pF Load capacitance crystal  & SMD & 1\\ \hline
+PGE &  & RJ-11 Connector & & 1\\ \hline
 \end{tabular}}
 
 \caption{Component description for cNGD.%
@@ -274,8 +272,8 @@ This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CN
         \caption{rs232SHIELD PCB real size shape. 67.9x33 mm.}
         \label{fig:cap5:rs232shape}
 \end{figure}
-
-Available \ac{UART}s at the headers are  **** and ****, presenting the first one hardware flow control and not presenting it the second one. \ac{UART} module chosen for serial communication is ************, because the communication does not require hardware flow control. The \ac{RX} signal is shorted to pin 21 and \ac{TX} signal to pin 38.
+% HABLAR DEL ENCAPSULADO DEL MAX3232 y de los headers que incluye
+The \ac{RX} signal is shorted to pin 21 and \ac{TX} signal to pin 38.
 
 In addition, the module contains a RS-232 male connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
 
@@ -314,6 +312,8 @@ Different layers of the layout can be obseved at Appendix \ref{ap2:layout}. Figu
 %-------------------------------------------------------------------
 This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART number 3. 
 
+
+
 Connecting the RS-232 connector to a computer and with a suitable software, such as minicom\footnote{Minicom is a text-based modem control and terminal emulation program for Unix-like operating systems. A common use for minicom is when setting up a remote serial console.}, and configuring properly the communication parameters, is enough to receive data from the running application.
 
 Usually, communication parameters are set as follows: ************************* (However these can be change at the firmware configuration).
@@ -346,7 +346,7 @@ Battery positive pole is accessible at the header on pin 29, negative pole is at
 
 Current version of the charger does not include any heat disipator. Tests showed that not heat disipator was required for the current configuration. Any change over the resistors configuration must consider the overheating possibility on LM317AMDT component. Thus a heat disipator could be needed.
 
-Minimal track spacing is set to ******* while the tracks width is ******. Vias *******************. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
+Minimal track spacing is set to 0.2 mm while the tracks width is is from 0.2 mm to 1.2 mm on power tracks. Vias posses a minimum through hole of 0.4 mm diameter. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
 
 
 \begin{table}[h]

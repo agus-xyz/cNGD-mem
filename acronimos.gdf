@@ -184,9 +184,9 @@
 
 @entry{CMOS, , \emph{Complementary metal oxide semiconductor}}
 
-@entry{NICD, Ni-Cd, \emph{nickel-cadmium}}
+@entry{NICD, Ni-Cd, \emph{Nickel-Cadmium}}
 
-@entry{NIMH, Ni-Mh, \emph{nickel-metal hydride}}
+@entry{NIMH, Ni-MH, \emph{Nickel-Metal Hydride}}
 
 @entry{LIION, Ni-ion, \emph{lithium-ion}}
 
@@ -204,7 +204,9 @@
 
 @entry{QPSK, , \emph{quadrature phase-shift keying}}
 
-@entry{LED, , \emph{light-emitting diode}}
+@enrty{FSK, , \emph{Frequency-shift Keying}}
+
+@entry{LED, , \emph{Light-emitting Diode}}
 
 @entry{SMD, , \emph{surface-mount devices}}
 
@@ -222,4 +224,11 @@
 
 @entry{IDE, , \emph{Integrated development environment}}
 
+@enrty{TTL, , \emph{Transistor-Transistor Logic}}
+
+@enrty{MOS, , \emph{Metal-Oxide-Semiconductor}}
+
+@entry{MII, , \emph{Media Independent Interface}}
+
+@entry{RMII, , \emph{Reduced Media Independent Interface}}
 

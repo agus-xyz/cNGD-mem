@@ -21,7 +21,7 @@ Thomas \& Guy-Manuel, Daft Punk
 \begin{resumen}
 This chapter shows an approach to the fundamentals of Wireless Sensor Networks and
 the current development state of new paradigms such as Cognitive Radio, Cognitive Networks or Cognitive 
-Wireless Sensor Networks. It describes current related applications and implementations, and introduce terms used all along
+Wireless Sensor Networks. It describes current related devices, applications and implementations, and introduce terms used all along
 this dissertation.
 \end{resumen}
 
@@ -32,8 +32,7 @@ this dissertation.
 \label{cap2:sec:cognitiveRadio}
 %-------------------------------------------------------------------
 
-Nowadays, it is widely accepted that the main limitation in next-generation wireless systems is bandwidth scarcity. 
-It is commonly believed that there is a crisis of spectrum availability for wireless communications\cite{corvus}.
+Nowadays, it is commonly believed that there is a crisis of spectrum availability for wireless communications\cite{corvus}.
 However, according to regulatory bodies as the \ac{FCC}\cite{fcc} or the \ac{OFCOM}, most radio frequency spectrum is under-utilized while some spectrum bands are heavily used. Military, amateur radio or satellital frecuencies, for instance, are insuffiently utilized compared to cellular networks or the overcrowded \ac{ISM} bands\cite{wpanIssues}.
 
 Most of the spectrum is allocated to specific applications and the static assignment of the spectrum 
@@ -47,15 +46,14 @@ from being used, even when this use would not cause noticeable interference to t
 %datos triples sacaos de http://www.cmpe.boun.edu.tr/WiCo/doku.php?id=research#cognitive_radio
 %WiMax Networks & Cognitive Radio, namely WiCo, is a research group functioning under Computer Networks Research Laboratory (NetLab) of Computer Engineering Department at bla 
 
-\figuraEx{Vectorial/Todo}{width=.5\textwidth}{fig:spectrum}%
+\figuraEx{Vectorial/Capitulo2/spectrumuse}{width=.7\textwidth}{fig:spectrum}%
 {A snapshot of the spectrum utilization up to 6 GHz in an urban area: taken at
 mid-day with 20 kHz resolution taken over a time span of 50 microseconds with a 30
 degree directional antenna at Berkeley Wireless Research Center \cite{seung}.}{A snapshot of the spectrum utilization up to 6 GHz in an urban area at BWRC}
 
-The concept of \ac{CR} was first published by Joseph Mitola III and Gerald Q. Maguire, Jr. in 1999\cite{mitola1} and later on within Mitola's phD Dissertation in 2000\cite{mitola2}. It describes a novel paradigm for wireless communication in which a wireless device changes its transmission or reception parameters to communicate efficiently. This alteration of parameters is based on the active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, user behavior, and network state. The idea was thought of as an ideal goal towards which a \ac{SDR} platform should evolve.
+The concept of \ac{CR} was first published by Joseph Mitola III and Gerald Q. Maguire, Jr. in 1999\cite{mitola1} and later on within Mitola's phD Dissertation in 2000\cite{mitola2}. It describes a novel paradigm for wireless communication in which a wireless device changes its transmission or reception parameters to communicate efficiently. This alteration of parameters is based on the active monitoring of several factors in the external and internal radio environment, such as radio frequency spectrum, application behavior, and network state. The idea was thought of as an ideal goal towards which a \ac{SDR} platform should evolve.
 
-The cognitive radio is defined as an intelligent wireless communication system that is aware of its environment and uses the methodology of under-
-standing-by-building to learn from the environment and adapt to statistical variations in the input stimuli, with two primary objectives:
+The \ac{CR} is defined as an intelligent wireless communication system that is aware of its environment and uses the methodology of understanding-by-building\cite{brainempower} to learn from the environment and adapt to statistical variations in the input stimuli, with two primary objectives:
 \begin{itemize}
 \item Hihighly reliable communications.
 \item Efficient utilization of the radio spectrum.
@@ -88,7 +86,12 @@ Picture \ref{fig:CWSNsoftModel} ilustrates the changes the \ac{OSI} model suffer
 {CWSN protocol model}
 %poner una unica pila
 
+Depending on parts of the spectrum used, \ac{CR} can be:
+\begin{itemize}
+    \item \emph{Licensed-Band Cognitive Radio}, capable of using bands assigned to licensed users. This licensed users are known as primary users. 
+    \item \emph{Unlicensed-Band Cognitive Radio}, which can only utilize unlicensed parts of the \ac{RF} spectrum. One such system is described in the IEEE 802.15 Task Group 2 specifications\cite{802152}.
 
+\end{itemize}
 The main functions of \ac{CR} devices are:\cite{dsa}\cite{CRfunctionality}
 
 \begin{itemize}
@@ -100,13 +103,12 @@ The main functions of \ac{CR} devices are:\cite{dsa}\cite{CRfunctionality}
 
 \item \emph{Cooperative detection}: Refers to spectrum-sensing methods where information from multiple \ac{CR} users is integrated\cite{sensing}.
 
-\item \emph{Interference-based detection}. This technique is not so commonly used. 
+\item \emph{Interference-based detection}. It tries to take advantage of the difference between the detected noise level and the maximum noise level the primary users can afford. In this way, if there is enough difference, the nodes might stablish \ac{RF} activity considered by primary users as just noise. This technique is not so common because of disagreements with primary users. 
 \end{itemize}
 
-\item \emph{Power Control}: Power control is used for both opportunistic spectrum access and spectrum sharing CR systems for finding the cut-off level in SNR supporting the channel allocation and imposing interference power constraints for the primary user's protection respectively. In~\cite{threshold} a joint power control and spectrum sensing is proposed for capacity maximization.
+\item \emph{Power Control}: Power control is used for both, opportunistic spectrum access, and spectrum sharing \ac{CR} systems. On the one hand, opportunistic spectrum access techniques aim to find the cut-off level in \ac{SNR} supporting the channel allocation. On the other hand, \ac{CR} systems find imposing interference power constraints for the primary user's protection. In~\cite{threshold} a joint power control and spectrum sensing is proposed for capacity maximization.
 
-\item \emph{Spectrum management}: Capturing the best available spectrum to meet user communication requirements, while not creating undue interference to other users. \ac{CR} should decide on the best spectrum band (over the available range) to meet \ac{QOS} requirements; therefore, spectrum-management functions are required for \ac{CR}. Spectrum-management functions are classified as \emph{Spectrum analysis} and \emph{
-Spectrum decision}.
+\item \emph{Spectrum management}: Capturing the best available spectrum to meet user communication requirements, while not creating undue interference to other users. \ac{CR} should decide on the best spectrum band (over the available range) to meet \ac{QOS} requirements; therefore, spectrum-management functions are required for \ac{CR}. Spectrum-management functions are classified as \emph{Spectrum analysis} and \emph{Spectrum decision}.
 
 \end{itemize}
 
@@ -177,7 +179,7 @@ learn in order to optimize their performance. \ac{CN}s description in \cite{thom
 %-------------------------------------------------------------------
 \subsection{Example}
 %-------------------------------------------------------------------
-This example was published \cite{thomas} in and it is inspired and influenced by Daniel Friend's example in \cite{example}. It illustrate the need for end-to-end rather than link adaptations.
+This example was published in \cite{thomas} and it is inspired and influenced by Daniel Friend's example in \cite{example}. It illustrate the need for end-to-end rather than link adaptations.
 
 
 \figuraEx{Bitmap/Capitulo2/example}{width=.5\textwidth}{fig:example}%
@@ -222,15 +224,15 @@ circumstances.
 %
 \begin{SubFloat}
 {\label{fig:cap2:wsn_router}%
-\scriptsize{WSN con utilización de routers para la conexión con el gateway.}}%
-\includegraphics[angle=270,width=0.45\textwidth]%
+\scriptsize{WSN using routers to link the gateway.}}%
+\includegraphics[width=0.45\textwidth]%
 {Imagenes/Vectorial/Capitulo2/wsn_router}%
 \end{SubFloat}
 \qquad
 \begin{SubFloat}
 {\label{fig:cap2:wsn_adhoc}%
-\scriptsize{WSN implementada como una red ad hoc.}}%
-\includegraphics[angle=270,width=0.45\textwidth]%
+\scriptsize{Ad-hoc WSN implementation.}}%
+\includegraphics[width=0.45\textwidth]%
 {Imagenes/Vectorial/Capitulo2/wsn_adhoc}%
 \end{SubFloat}
 \caption{Possible WSN implementations.}

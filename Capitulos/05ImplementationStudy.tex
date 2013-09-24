@@ -173,12 +173,12 @@ The board includes four holes for the battery to be attached. Figure \ref{fig:ca
 \begin{figure}[h]
 \centering
    
-\subfloat[Battery anchorage footprint.]{\label{fig:cap5:bat2d}\includegraphics[width=180px]{Imagenes/Vectorial/Capitulo5/bat2d}}  
+\subfloat[Footprint.]{\label{fig:cap5:bat2d}\includegraphics[width=180px]{Imagenes/Vectorial/Capitulo5/bat2d}}  
 \qquad
-\subfloat[Battery anchorage 3D model.]{\label{fig:cap5:bat3d}\includegraphics[width=225px]{Imagenes/Vectorial/Capitulo5/bat3d}}
+\subfloat[3D model.]{\label{fig:cap5:bat3d}\includegraphics[width=225px]{Imagenes/Vectorial/Capitulo5/bat3d}}
        
-\caption{40-pin Header system.}
-\label{fig:cap5:headersystem}
+\caption{Battery anchorage system.}
+\label{fig:cap5:batterysystem}
 \end{figure}
 
 Headers module has been placed relying on the large edges 1 and 3, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exactly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is illustrated in Figure \ref{fig:cap5:headerfootprint}.
@@ -196,14 +196,13 @@ Headers module has been placed relying on the large edges 1 and 3, Figure \ref{f
 
 The minimum spacing among tracks is set to 0.1 mm around the \ac{MCU} and 0.2 mm in the rest of the layout. Tracks widths vary from 0.2 mm up to 1.2 mm in power tracks. Vias through holes have a 0.4 mm width diameter. Table \ref{tab:cap5:cngdcomponents} details the needed components for \ac{CNGD} module.
 
-*******************
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
 \begin{tabular}{||l l l l c||}
 \hline
-\multirow{2}{*}{\textbf{Symbol}} & \textbf{Nominal Value}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & \multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
- & \multicolumn{1}{c}{(434/868)} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 				\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{\textbf{Value}} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
 J1 &  & MICRO USB A/B  & SMD & 1\\ \hline
 C1,3-9 & 100 nF & Ceramic Capacitor & 0603 & 8 \\ \hline
 C2 & 10 $\mu$F & Pol. Capacitor & 1206 & 1\\ \hline
@@ -218,18 +217,29 @@ R15 & 510 $\Omega$ & Resistor  & 0603 & 1\\ \hline
 Y1 & 32.768 KHz & 12.5pF Load capacitance crystal & Through hole & 1\\ \hline
 Y2 & 8 MHz & 20 pF Load capacitance crystal  & SMD & 1\\ \hline
 PGE &  & RJ-11 Connector & & 1\\ \hline
+LED1-5 & & LED & 0603 & 5\\ \hline
+U1 &  & PIC32MX675F256L-80I/PT & TQFP & 1\\ \hline
+hd40 &  & 10-pin Stackable Header & & 4\\ \hline
+L1 & 4.7mH & Inductance & 1210 & 1\\ \hline
+PC\_434, & & \multirow{2}{*}{ADG701LBRTZ - SWITCH }& \multirow{2}{*}{SOT-23} & \multirow{2}{*}{3} \\
+868, 240 & & & &\\ \hline
+conv3.3 &  & MCP1603T-330I/OS & TSOT & 1\\ \hline
+J2 &  & Terminal Block  &  & 1\\ \hline
+J3 &  & DC Female Connector & Through hole & 1\\ \hline
+S1-3 &  & Tactile Switch STSP  & 60x60 mm & 3\\ \hline
+sw1 &  & Slide Switch, SPDT & Through Hole & 1\\ \hline \hline
 \end{tabular}}
 
 \caption{Component description for cNGD.%
          \label{tab:cap5:cngdcomponents}}
 \end{table}
 
-
+%*****package in metrics
 
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be observed at Appendix \ref{ap2:layout}. Figures \ref{ap2:cngdtop} and \ref{ap2:cngdbottom} show the top and bottom copper and silkscreens layers respectively.
+Different layers of the layout can be observed at Appendix \ref{ap2:layouts}. Figures \ref{ap2:cngdtop} and \ref{ap2:cngdbottom} show the top and bottom copper and silkscreens layers respectively.
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
@@ -280,39 +290,31 @@ In addition, the module contains a RS-232 male connector to be connected to the 
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
-\begin{tabular}{||l l l l||}
+\begin{tabular}{||l l l l c||}
 \hline
-\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
-C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
-C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
-X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
-MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
-J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
-D1 &  & Light Emitting Diode & 0603 \\ \hline
-R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
-C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
-C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
-C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
-C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
-L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
-L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
-L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 
+			\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+C1,2,3,4,5 & 1 $\mu$F & Pol. Capacitor  & 0603 & 5\\ \hline
+C6 & 100 nF & Ceramic Capacitor & 0603 & 1 \\ \hline
+C7 & 22 pF  & Ceramic Capacitor & 0603 & 1\\ \hline
+J1 & & DB9 female header - right angle & PCB mount & 1\\ \hline
+U1 &  & MAX3232CD - RS232 TXRX & SOIC & 1\\ \hline
+hd40 &  & 10-pin Stackable Header & & 4\\ \hline
 \end{tabular}}
 
-\caption{Component description for rs232SHIELD.%
+\caption{Components description for rs232SHIELD.%
          \label{tab:cap5:rs232components}}
 \end{table}
 
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be observed at Appendix \ref{ap2:layout}. Figures \ref{ap2:rs232top} and \ref{ap2:rs232bottom} show the top and bottom copper and silkscreen layers respectively.
+Different layers of the layout can be observed at Appendix \ref{ap2:layouts}. Figures \ref{ap2:rs232top} and \ref{ap2:rs232bottom} show the top and bottom copper and silkscreen layers respectively.
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------
 This module offers simplicity and does not require for much testing. Basically, the whole module is properly soldered and plugged into the \ac{CNGD} headers. Firmware must be configured to debug over the UART number 3. 
-
-
 
 Connecting the RS-232 connector to a computer and with a suitable software, such as minicom\footnote{Minicom is a text-based modem control and terminal emulation program for Unix-like operating systems. A common use for minicom is when setting up a remote serial console.}, and configuring properly the communication parameters, is enough to receive data from the running application.
 
@@ -348,30 +350,28 @@ Current version of the charger does not include any heat dissipater. Tests showe
 
 Minimal track spacing is set to 0.2 mm while the tracks width is is from 0.2 mm to 1.2 mm on power tracks. Vias posses a minimum through hole of 0.4 mm diameter. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
 
-
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
-\begin{tabular}{||l l l l||}
+\begin{tabular}{||l l l l c||}
 \hline
-\textbf{Symbol} & \textbf{Nominal Value} (434/868) & \textbf{Description} & \textbf{Package Type} \\ \hline
-C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 \\ \hline
-C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 \\ \hline
-X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD \\ \hline
-MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP \\ \hline
-J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole \\ \hline
-D1 &  & Light Emitting Diode & 0603 \\ \hline
-R1 & 300 $\Omega$ & Resistor & 0603 \\ \hline \hline 
-C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 \\ \hline
-C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 \\ \hline
-C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 \\ \hline
-C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 \\ \hline
-L1 & 390 nH/100 nH & Inductor & 0603 \\ \hline
-L2 & 33 nH/8.2 nH & Inductor & 0603 \\ \hline
-L3 & 47 nH/22N nH & Inductor & 0603 \\ \hline
+\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 
+			\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+J1 &  & Terminal Block  &  & 1\\ \hline
+R3 & 5K & Resistor & 0603 & 1 \\ \hline
+R4 ** & ** & 1W Resistor & Axial & 1\\ \hline
+C1 & 10 $\mu$F & Terminal Block &  & 1\\ \hline
+U1 &  & LM317AMDT - IC, V. REG.  & TO-220 & 1\\ \hline
+hd40 &  & 10-pin Stackable Header & & 4\\ \hline
+Q1 &  &  MOSFET IRF5801 & TSOP & 1\\ \hline
+R1 & 4.6 K$\Omega$  & Resistor  & 0603 & 1\\ \hline
+R2 & 9.8 K$\Omega$ & Resistor & 0603 & 1\\ \hline
+U2 &  & LM311D - IC, COMPARATOR & SOIC8 & 1\\ \hline
+D1 &  & DIODE, STANDARD, 0.5A & Axial Leaded & 1\\ \hline \hline
 \end{tabular}}
 
-caption{Component description for chargerSHIELD.%
+\caption{Components description for chargerSHIELD.%
          \label{tab:cap5:chargercomponents}}
 \end{table}
 
@@ -379,7 +379,7 @@ caption{Component description for chargerSHIELD.%
 %-------------------------------------------------------------------
 \subsection{Layout}
 %-------------------------------------------------------------------
-Different layers of the layout can be observed at Appendix \ref{ap2:layout}. Figures \ref{} and \ref{} show the top and bottom copper layers respectively. Figures \ref{} and \ref{} give the view of the top and bottom silkscreens respectively.
+Different layers of the layout can be observed at Appendix \ref{ap2:layouts}. Figures \ref{ap2:chargertop} and \ref{ap2:chargerbottom} show the copper and silkscreen layers top and bottom respectively.
 %-------------------------------------------------------------------
 \subsection{Prototype mounting and testing}
 %-------------------------------------------------------------------

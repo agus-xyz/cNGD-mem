@@ -22,6 +22,8 @@
 
 @entry{IEEE, , \emph{Institute of Electrical and Electronics Engineers}}
 
+@entry{ITU, , \emph{International Telecommunication Union}} 
+
 @entry{QOS,QoS,\emph{Quality of Service}}
 
 @entry{WSN, , \emph{Wireless Sensor Network}}
@@ -51,6 +53,8 @@
 @entry{CNGD,cNGD, \emph{Cognitive Next Generation Device}}
 
 @entry{FCD, , \emph{First Cognitive Device}}
+
+@entry{FP7, , \emph{7th Framework Programme for Research and Technological Development}}
 
 @entry{FFD, , \emph{full function device}}
 

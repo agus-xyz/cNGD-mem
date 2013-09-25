@@ -222,7 +222,7 @@ U1 &  & PIC32MX675F256L-80I/PT & TQFP & 1\\ \hline
 hd40 &  & 10-pin Stackable Header & & 4\\ \hline
 L1 & 4.7mH & Inductance & 1210 & 1\\ \hline
 PC\_434, & & \multirow{2}{*}{ADG701LBRTZ - SWITCH }& \multirow{2}{*}{SOT-23} & \multirow{2}{*}{3} \\
-868, 240 & & & &\\ \hline
+868, 2400 & & & &\\ \hline
 conv3.3 &  & MCP1603T-330I/OS & TSOT & 1\\ \hline
 J2 &  & Terminal Block  &  & 1\\ \hline
 J3 &  & DC Female Connector & Through hole & 1\\ \hline
@@ -318,7 +318,13 @@ This module offers simplicity and does not require for much testing. Basically, 
 
 Connecting the RS-232 connector to a computer and with a suitable software, such as minicom\footnote{Minicom is a text-based modem control and terminal emulation program for Unix-like operating systems. A common use for minicom is when setting up a remote serial console.}, and configuring properly the communication parameters, is enough to receive data from the running application.
 
-Usually, communication parameters are set as follows: ************************* (However these can be change at the firmware configuration).
+Serial communication parameters can be changed at the firmware configuration. However, a standard configuration is as follows: 
+\begin{itemize}
+\item Bit rate: 115200 bits/s
+\item Bits per framing: 8 bits
+\item Parity: No
+\item Stop bits: 1 bit
+\end{itemize}
 
 %-------------------------------------------------------------------
 \subsection{Final results}
@@ -360,7 +366,7 @@ Minimal track spacing is set to 0.2 mm while the tracks width is is from 0.2 mm 
  & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
 J1 &  & Terminal Block  &  & 1\\ \hline
 R3 & 5K & Resistor & 0603 & 1 \\ \hline
-R4 ** & ** & 1W Resistor & Axial & 1\\ \hline
+R4 & 3.9 $\Omega$ & 1W Resistor & Axial & 1\\ \hline
 C1 & 10 $\mu$F & Terminal Block &  & 1\\ \hline
 U1 &  & LM317AMDT - IC, V. REG.  & TO-220 & 1\\ \hline
 hd40 &  & 10-pin Stackable Header & & 4\\ \hline

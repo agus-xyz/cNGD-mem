@@ -43,15 +43,14 @@ radio and sensor interfacing, and power supply. However, a further review shows 
 
 
 \item \emph{Multiple Control/Sensor Interfacing}: Since the device will serve as a standard \ac{CWSN} platform, it must
-	embed different multi-purpose undefined interfaces\footnote{The interfaces here mentioned cover the usual peripherals
-and buses such as \ac{I2C}, \ac{SPI}, \ac{UART}, \ac{USB}...}. This fact affects the hardware design of the device.
+	embed different multi-purpose generic interfaces\footnote{The interfaces here mentioned cover the usual peripherals
+and buses such as \ac{I2C}, \ac{SPI}, \ac{UART}, \ac{USB}, etc.}. This fact affects the hardware design of the device.
 
-\item \emph{Protocol Stacking}: In order to enable communication over the different interfaces the model,
-	must provide proper access to a the lower layers of a communication protocol to each radio interface\footnote{As it will be described,
-	the communication protocol stack supposes a great software development in order to maintain a single stack shared by all the interfaces.}.
-	The final implementation firmware will have to take part of this. 
+\item \emph{Protocol Stacking}: In order to enable communication over the different interfaces, the model
+	must provide proper access to the lower layers of a communication protocol for each \ac{RI}\footnote{As it will be described,
+	the communication protocol stack supposes a great software development in order to maintain a single stack shared by all the 		interfaces.}. The final implementation firmware will have to take part of this. 
 
-\item \emph{Cognitive Layer}: To carry out all the cognition algorithms and computations. Affecting the firmware.
+\item \emph{Cognitive Layer}: Software implementations responsible to carry out all the cognition algorithms and computations. \ac{KP} and data flow management. Extra compute capabilities might be needed to give support to this layer. The already named \ac{CRMODULE} must carry out functions belonging to this domain.
 
 \end{itemize}
 
@@ -61,18 +60,18 @@ and buses such as \ac{I2C}, \ac{SPI}, \ac{UART}, \ac{USB}...}. This fact affects
 %poner una unica pila
 
 Figure \ref{fig:CWSNnodeModel} gives a view about the basic model. It shows together software and hardware modules in a simplified way.
-Additionally, cognition tasks compulsory require of several functions to take into account at the design stage: 
+Additionally, cognition tasks compulsory require several functions to take into account at the design stage: 
 
 \begin{itemize}
 
 \item \emph{Power management}. Efficiency and low-power consumption are crucial following the inherent trend in \ac{WSN}. Once deployed,
-	is common not having or having barely access to the nodes. Replacing batteries to an entire \ac{WSN} comes to be a Kafkaesque task.
+	is common not having or having barely access to the nodes. Replacing batteries to an entire \ac{WSN} might become an infeasible task.
 	The model should be able to  include an autonomous power supply and other functions:
 
 \begin{itemize}
 \item Transmission/reception power regulation.
 \item Unused modules disconnection.
-\item Power-saving sleeping modes for transceivers and microcontroller\footnote{Very common in \ac{WSN}. Devices remain asleep and wake up just on 	specified time-slots to execute their functions.}.
+\item Power-saving sleeping modes for transceivers and microcontroller.
 \end{itemize}
 
 \item \emph{Spectrum management}. Some of the main functions to carry through:
@@ -85,7 +84,7 @@ Additionally, cognition tasks compulsory require of several functions to take in
 
 \end{itemize}
 
-All the previous considerations give support to establish cognitive capabilities to the final application. In addition to the requirements to be defined, they will define the model of the final \ac{CNGD} implementation.
+All the previous considerations give support to establish cognitive capabilities to the final application. These considerations, along with the requirements to be defined, will body the model of the final \ac{CNGD} implementation.
 
 %-------------------------------------------------------------------
 \section{First Cognitive Device review}
@@ -96,26 +95,17 @@ All the previous considerations give support to establish cognitive capabilities
 \figura{Bitmap/Capitulo3/placaFer}{width=.8\textwidth}{fig:fcdnode}%
 {Picture of the FCD, developed at LSI in 2011}
 
-The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara\cite{ferpfc} \cite{fcd}. 
-It supposed the first hardware platform fully oriented to \ac{CWSN} development.
-Integrating hardware and software, it gave the chance to develop and test algorithms,
-strategies and and applications for \ac{CWSN}. Moreover, it allowed to analyze 
-suitability for radio interfaces, computation capability. It gave the strengths and weaknesses to establish
-the fundamentals on future designs. 
+The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara\cite{ferpfc}. It supposed the first hardware platform fully oriented to \ac{CWSN} development. Integrating hardware and software, it gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}. Moreover, it allowed to analyze suitability for radio interfaces, compute capability, and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. 
 
 While constituting the first device meeting its features and even being a very complete and close approach
-to the \ac{CWSN} concept, the \ac{FCD} introduced several improvable issues and troubles found after 
-its implementation and evaluation. Its power consumption, size and cost, together with other not achieved but desired requirement, make the device unsuitable for \ac{CWSN} test-bedding purposes and claim for a new
-design.
+to the \ac{CWSN} concept, the \ac{FCD} introduced several improvable issues found after its implementation and evaluation. Its power consumption, size and cost, together with other not achieved but desired requirement, make the device unsuitable for \ac{CWSN} test-bedding purposes and claim for a new design\cite{juanpfc}.
 
-The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit developed by MIPS Technologies. It has a 
-Harvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H\cite{pic32datasheet}, integrates a 512 KB
- Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz\footnote{\ac{DMIPS} divided by \ac{CPU} frequency. Dhrystone is a synthetic computing benchmark program become representative of general processor performance.}.
+The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit. It has a Harvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H\cite{pic32datasheet}, integrates a 512 KB  Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz\footnote{\ac{DMIPS} divided by \ac{CPU} frequency. Dhrystone is a synthetic computing benchmark program become representative of general processor performance.}.
 This \ac{PIC} was found to offer too high features for our requirements, hence existing a reducible amount of power consumption 
 on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is seen as a positive option.  
 
 The \ac{FCD} includes three radio interfaces enabling access to two different spectrum regions. Two of the selected interfaces
-work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in Spain. Over the 868 MHz band
+work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in most part of Region 1. Over the 868 MHz band
 used to operate a Tulio$^{TM}$\cite{tulio} transceiver oriented to \ac{LOWPAN} and IEEE 802.15.4
 compatible. For the 2.4 GHz band, two Microchip modules were selected, a MRF24J40\cite{mrf24j40} module using Microchip proprietary protocols such us 
 MiWi$^{TM}$ P2P\cite{miwip2p}, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$\cite{miwipro} and a MRF24WB0MA\cite{mrf24wb0} module IEEE 802.11 compatible as WiFi.
@@ -127,13 +117,11 @@ communications to the main controller take place through an \ac{UART}. Stacks fo
 
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instruments microcontroller increasing complexity on 
-the PIC to transceiver communications, moreover, this fact raise the global consumption up. Maintaining this interface will be disputed.
+the global structure, moreover, this fact raise the global consumption up. Maintaining this interface will be disputed.
 On the other hand, the WiFi interface seems to be inappropriate for \ac{WSN} due to its high power consumption and hibernation-related problems,
 besides its complex, resources-consuming communication stack. Even though this interface acts as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
 
-Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming,
-not suitable to deal with an application layer and a cognitive layer properly. Hence, using the developed \ac{HAL}\cite{juanpfc} integrating
-three stacks and presenting a straightforward \ac{API} for upper layers better operation seems a good choice for this work.
+Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming, not suitable to deal with an application layer and a cognitive layer properly. Hence, using the developed \ac{HAL}\cite{juanpfc} that integrates three stacks and presents a straightforward \ac{API} for upper layers, seems a good choice for this work.
 
 The node comprises two \ac{USB} terminals and a RS232 interface for debugging and interconnection purposes. Power supply system accepts 3.3 V and 5 V options including a voltage regulator and a charge pump.
 
@@ -143,7 +131,7 @@ Regarding other issues, reducing the general size, making the device more scalab
 
 
 %-------------------------------------------------------------------
-\section{Hardware Abstraction Layer review}
+\section{Firmware review}
 %-------------------------------------------------------------------
 \label{cap3:sec:halreview}
 %-------------------------------------------------------------------
@@ -158,7 +146,7 @@ The new firmware supposes several advantages:
 
 \item Versatility and adaptability are given. Hardware modifications and new modules are possible with minimal software adaptation.
 
-\item Firmware takes care of the protocol stack management, being the application just responsible for messages processing. 
+\item Firmware takes care of the protocol stack management. 
 
 \item MiWi$^{TM}$ Protocol stack adaptation makes a better efficient use of resources and removes complexity.
 
@@ -175,6 +163,15 @@ This software module must be taken into account at the design stage for its incl
 %-------------------------------------------------------------------
 \label{cap3:sec:crmodulereview}
 %-------------------------------------------------------------------
+
+This module is designed to operate under PIC32 architectures. It was thought to run over the previous described firmware. Its development took place over the \ac{FCD} and all the implementation proccess is set out on \cite{guillepfc}.
+
+This software module represents an actual realization of the architecture described in \cite{conbrok} and, somewhat, enhances it by introducing sligth improvements. 
+
+An overview to the general performance shows an scheme based on different modules such as Repository, Discovery, Optimization, Execution, Access Control, Policy, Messenger and Virtual Control Channel. Each module performs a defined tasks and connect each other attending to defined policies. Figure \ref{fig:crmodel} illustrates the general scheme, for a further view consult the given references.
+
+\figura{Vectorial/Todo}{width=.8\textwidth}{fig:crmodel}%
+{Overview of CRmodule general scheme}
 
 %-------------------------------------------------------------------
 \section{System Requirements}
@@ -282,9 +279,9 @@ The different options included at Microchip catalog, described and showing their
 \hline
 \multicolumn{14}{|c|}{32-bits Microchip microcontrollers} \\
 \hline
-\multirow{2}{*}{Microcontroller} & \multirow{2}{2cm}{Max. \\Frequency} & \multicolumn{2}{|c|}{Memory (KB)} & \multicolumn{6}{|c|}{Peripherals} & \multirow{2}{*}{ADC} & \multirow{2}{*}{Pins} & \multirow{2}{*}{Consumption} & \multirow{2}{*}{Euros} \\\cline{3-10}
-& & Flash & RAM & SPI & UART & I2C & USB & CAN & ETH  & & & &\\
-\hline
+\multirow{2}{*}{Microcontroller} & \multirow{2}{2cm}{Max. \\Frequency} & \multicolumn{2}{|c|}{Memory (KB)} & \multicolumn{6}{|c|}{Peripherals} & \multirow{2}{*}{ADC} & \multirow{2}{*}{Pins} & \multirow{2}{*}{Consumption} & Price \\\cline{3-10}
+& & Flash & RAM & SPI & UART & I2C & USB & CAN & ETH  & & & & (\euro)\\
+\hline \hline
 PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 & \multirow{12}{*}{6} & 4 & \multirow{12}{1cm}{Full Speed Host Dev. OTG} & \multirow{2}{*}{0} & \multirow{12}{1.1cm}{10/100 BaseT} & \multirow{12}{*}{16} & 64 & \multirow{4}{1.5cm}{bla bla bla bla} & 0 \\
 PIC32MX664F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
 PIC32MX764F128H & & & & 3 && 4 && \multirow{2}{*}{1} &&& 64 && \\
@@ -320,24 +317,30 @@ WiFi transceiver, MRF24WB0MA, embedded by the \ac{FCD} raises up the power consu
 a gateway to the IEEE 802.11 standard, it cannot be included on the design of a general node. New ways to establish the gateway will be studied,
 maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme looked in the \ac{CNGD} cannot afford to include this transceiver.
 
-IEEE 802.15.4\cite{wpanieee} standard defines \ac{MAC} and \ac{PHY} levels referred to the \ac{OSI} model for low-consumption \ac{WPAN}s. It is
-a widely used standard on \ac{WSN} and commonly employed protocols are 802.15.4 based-on or compatible. 
 
-\begin{table}[t]
+Table whatever shows Microchip sub-GHz transceivers and modules supported by the firmware that enables communication at the seeked bands.*****
+
+\begin{table}[h]
 \centering
-\scalebox{1}{
-\begin{tabular}{||c | c | c | c | c | c ||}
+\scalebox{0.7}{
+
+\begin{tabular}{||c|c|c|c|c|c|c|c|c|c||}
 \hline
 \hline
-Microcontroller & Max. Frequency & Memory (KB) & Peripherals \\
-\hline
-col 1 & col 2 & col 3\\
-\hline
-\end{tabular}
-}
-\caption{Comparative table of 434 MHz transceivers modules.%
-         \label{cap3:tab:434transceivers}}
-\end{table} 
+\multirow{2}{*}{Model} & Freq. & Compliant & Data Rate & Sensing & \multicolumn{4}{c|}{Consumption} & Price \\ \cline{6-9}
+& (MHz) & Technologies & (kbps) & options & Tx & Rx & Sleep & Idle & (\euro) \\ \hline \hline
+
+MRF49XA & 434/ & \multirow{6}{*}{MiWi$^{TM}$} &\multirow{2}{*}{250} & \multirow{6}{*}{RSSI} & I433=26 mA @ 7 dBm  & I433=13 mA. & \multirow{2}{*}{0.3 $\mu$A} & \multirow{2}{*}{1.2 mA} & \multirow{2}{*}{2.84} \\
+(transceiver) & 868/915 & & & & I868=27 mA @ 5 dBm  & I868=14 mA & & & \\  \cline{1-2} \cline{4-4} \cline{6-10}
+MRF89XA & 868/ & & \multirow{2}{*}{200} & & & \multirow{4}{*}{3.5 mA} & \multirow{4}{*}{0.1 $\mu$A} & \multirow{4}{*}{60 $\mu$A} &\multirow{2}{*}{3.86} \\ 
+(transceiver) & 915/955 & & & & 25 mA @ +10 dBm  & & & & \\ \cline{1-2} \cline{4-4} \cline{10-10}
+MRF89XAM8A & \multirow{2}{*}{868} & & FSK: 40 & & 16 mA  @ +1 dBm &  & & & \multirow{2}{*}{8.26} \\ 
+(module) & & & OOK: 16 & &   & & & & \\ \hline \hline
+\end{tabular}}
+
+\caption{Comparative table of sub-GHz Microchip solutions\label{tab:cap3:ri}}
+
+\end{table}
 
 \figura{Bitmap/Capitulo3/wirelesscomparison}{width=.55\textwidth}{fig:cap2:wirelesscomparison}%
 {Main wireless networking options comparison}
@@ -411,7 +414,7 @@ to fit and apply them to our evaluations, the obtained conclusions to face the d
 \item The model implemented by the \ac{FCD} is quite close to the one pursued. It will serve as guide in our designing process since its
 	review reveals significant technology and behavioral-related information.
 
-\item A new configuration regarding size and cost, facilitating a current very poor scalability.
+\item A new configuration regarding size and cost, allowing flexibility and modularity.
 
 \item Some other software implementations such as the \ac{HAL} will help us saving time on the software development and it proposes
 	a very complete firmware that fits our requirements. It includes very useful features and, even if needed some slight adaptations,

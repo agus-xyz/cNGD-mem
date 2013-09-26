@@ -56,15 +56,15 @@
 
 @entry{FP7, , \emph{7th Framework Programme for Research and Technological Development}}
 
-@entry{FFD, , \emph{full function device}}
+@entry{FFD, , \emph{Full Function Device}}
 
-@entry{RFD, , \emph{reduced function device}}
+@entry{RFD, , \emph{Reduced Function Device}}
 
-@entry{RF, , \emph{radio frequency}}
+@entry{RF, , \emph{Radio Frequency}}
 
-@entry{RSSI, , \emph{received signal strength indication}}
+@entry{RSSI, , \emph{Received Signal Strength Indication}}
 
-@entry{SNR, , \emph{signal to noise ratio}}
+@entry{SNR, , \emph{Signal to Noise Ratio}}
 
 @entry{CRMODULE,CRmodule,\emph{Cognitive Radio Module}}
 
@@ -95,6 +95,8 @@
 @entry{UART, , \emph{Universal Asynchronous Receiver-Transmitter}}
 
 @entry{USB, , \emph{Universal Serial Bus}}
+
+@entry{DAC, , \emph{Digital-to-Analog Converter}}
 
 @entry{OSI, , \emph{Open Systems Interconnection}}
 
@@ -144,6 +146,8 @@
 
 @entry{FPGA, , \emph{Field Programmable Gate Array}}
 
+@entry{VGA, , \emph{Video Graphics Array}}
+
 @entry{APL, , \emph{Academic Public License}}
 
 @entry{TKN, ,\emph{Telecommunication Networks Group}}
@@ -174,47 +178,47 @@
 
 @entry{MCLR, ,\emph{master clear}}
 
-@entry{PLL, , \emph{Phase-locked loop}}
+@entry{PLL, ,\emph{Phase-locked loop}}
 
-@entry{FIFO, , \emph{First-in First-out}}
+@entry{FIFO, ,\emph{First-in First-out}}
 
-@entry{FHSS, , \emph{Frequency Hopping Spread Spectrum}}
+@entry{FHSS, ,\emph{Frequency Hopping Spread Spectrum}}
 
-@entry{DQI, , \emph{data quality indicator}}
+@entry{DQI, ,\emph{data quality indicator}}
 
-@entry{ED, , \emph{Energy Detect}}
+@entry{ED, ,\emph{Energy Detect}}
 
-@entry{SPST, , \emph{Single pole, single throw}}
+@entry{SPST, ,\emph{Single pole, single throw}}
 
-@entry{CMOS, , \emph{Complementary metal oxide semiconductor}}
+@entry{CMOS, ,\emph{Complementary metal oxide semiconductor}}
 
-@entry{NICD, Ni-Cd, \emph{Nickel-Cadmium}}
+@entry{NICD, Ni-Cd,\emph{Nickel-Cadmium}}
 
-@entry{NIMH, Ni-MH, \emph{Nickel-Metal Hydride}}
+@entry{NIMH, Ni-MH,\emph{Nickel-Metal Hydride}}
 
-@entry{LIION, Ni-ion, \emph{lithium-ion}}
+@entry{LIION, Ni-ion,\emph{lithium-ion}}
 
-@entry{EEPROM, , \emph{electrically erasable programmable read-only memory}}
+@entry{EEPROM, ,\emph{electrically erasable programmable read-only memory}}
 
 @entry{IRDA, IrDA, \emph{infrared data association}}
 
 @entry{OTG, , \emph{on-the-go}}
 
-@entry{ADC, , \emph{analog-to-digital converter}}
+@entry{ADC, ,\emph{analog-to-digital converter}}
 
 @entry{RTCC, ,\emph{real-time clock/calendar}}
 
 @entry{RX, ,\emph{reception}}
 
-@entry{QPSK, , \emph{quadrature phase-shift keying}}
+@entry{QPSK, ,\emph{quadrature phase-shift keying}}
 
-@enrty{FSK, , \emph{Frequency-shift Keying}}
+@entry{FSK, ,\emph{Frequency-shift Keying}}
 
-@entry{LED, , \emph{Light-emitting Diode}}
+@entry{LED, ,\emph{Light-emitting Diode}}
 
-@entry{SMD, , \emph{surface-mount devices}}
+@entry{SMD, ,\emph{surface-mount devices}}
 
-@entry{PCB, , \emph{printed circuit board}}
+@entry{PCB, ,\emph{printed circuit board}}
 
 @entry{BoM, , \emph{bill of materials}}
 
@@ -226,11 +230,11 @@
 
 @entry{ICD, , \emph{In-Circuit Debugger}}
 
-@entry{IDE, , \emph{Integrated development environment}}
+@entry{IDE, ,\emph{Integrated development environment}}
 
-@enrty{TTL, , \emph{Transistor-Transistor Logic}}
+@entry{TTL, , \emph{Transistor-Transistor Logic}}
 
-@enrty{MOS, , \emph{Metal-Oxide-Semiconductor}}
+@entry{MOS, , \emph{Metal-Oxide-Semiconductor}}
 
 @entry{MII, , \emph{Media Independent Interface}}
 

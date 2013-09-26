@@ -34,20 +34,31 @@ Detailed characteristics of any chosen component, including microcontroller, rad
 
 Attending to the already described requirements and the conclusions obtained from the \ac{FCD} review, the following decisions have been taken before proceeding with the design process.
 
-The whole system is thought as teaser. Consisting on different fittable modules giving flexibility to the scheme. Main module, \ac{CNGD}, is cornerstone. \ac{CNGD} supposes the main platform of the design, hosting the power supply and control system, possibilities to embed up to three \ac{RI}s, a control core unit, and other interfacing possibilities studied further on. As part of this modular design, the interfaces \ac{CNGD} hosts open possibilities to new extension board implementations through a pair of headers. These attachable boards, following the popular way these such of devices are called, will be referred as shields.  
+The whole system is thought as a teaser. Consisting on different fittable modules giving flexibility to the scheme. Main module, \ac{CNGD}, is the cornerstone. \ac{CNGD} supposes the main platform of the design, hosting the power supply system, possibilities to embed up to three \ac{RI}s, a control core unit, and other interfacing possibilities studied further on. As part of this modular design, the interfaces \ac{CNGD} hosts open possibilities to new extension board implementations through a pair of headers. These attachable boards, following the popular way these such of devices are called, will be referred as shields.  
 
-Offering the chance of embedding up to three \ac{RI}s, the device could access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frequencies in our design are 434 MHz, 868 MHz and 2.4 GHz. Coupling the \ac{ISM} bands in most part of Europe. This bands are preferred for \ac{WSN} due to the data-rate, transmission power and transmission range parameters they offer. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}s.
+Offering the chance of embedding up to three \ac{RI}s, the device could access three different frequency bands over the spectrum, fulfilling one of the desired requirements described in section \ref{cap3:sec:systemRequirements}. The chosen operation frequencies in our design are 434 MHz, 868 MHz, and 2.4 GHz, coupling the \ac{ISM} bands in most part of Europe. These bands are preferred for \ac{WSN} due to the data-rate, transmission power, and transmission range parameters they offer for a free cost. This configuration places the device on the bound of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}s.
 
-The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$ or MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. It is open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$\footnote{A very popular wireless IEEE 802.15.4 compatible protocol employed at \ac{WSNs}.} is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee$^{TM}$ takes 20-40 KB. MiWi$^{TM}$ is free of cost and it does not require for licenses acquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products. The global design becomes simpler and more homogeneous sharing a common communication protocol for all the \ac{RI}s.
+The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$ or MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. They are open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$\footnote{A very popular wireless IEEE 802.15.4 compatible protocol employed at \ac{WSNs}.} is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee$^{TM}$ takes 20-40 KB. MiWi$^{TM}$ is free of cost and it does not require for licenses acquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products. The global design becomes simpler and more homogeneous sharing a common communication protocol for all the \ac{RI}s.
 
+********************* revisar parrafo
 Since there were not found compatible and suitable size commercial options for 868 MHz and 434 MHZ \ac{RI}s, a custom full implementation of these interfaces was required. $\mu$Trans434/868 from now on. These \ac{RI}s are based on the MRF49XA Microchip transceiver and its full description is taken at section \ref{cap4:sec:transceivers}. Option at 2.4 GHz is a MRF24J40MA module.
 
 For this work a pair of shields were designed. A simple serial communication complement that links one \ac{UART} and a classic rs232 interface over the so-called rs232SHIELD. This interface would facilitate the software development since the firmware just allowed debugging through the \ac{UART} at first and it is described in section \ref{cap4:sec:rs232shield}. A battery charger Ni-Mh and Ni-Cd was also designed and implemented as a utility for portability options. The device was called as chargerSHIELD. 
 
+\figura{Vectorial/Todo}{width=.8\textwidth}{fig:cap4:globalhw}%
+{Global hardware scheme of the platform.}
+
 %-------------------------------------------------------------------
-\section{Altium Designer}
+\section{Tools}
 %-------------------------------------------------------------------
-\label{cap4:sec:altiumDesigner}
+\label{cap4:sec:tools}
+%-------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------
+\subsection{Altium Designer}
+%-------------------------------------------------------------------
+\label{cap4:sub:altiumDesigner}
 %-------------------------------------------------------------------
 
 For the whole designing task, a \ac{EDA}\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software will be use. Altium Designer, being one of the most important \ac{EDA} softwares, is commonly used by researchers at \ac{LSI}. All the \ac{CNGD} design process is carried through Altium Designer on its version 10. 
@@ -79,7 +90,18 @@ On the other hand, required option from the \ac{PCB} design module are:
 \end{itemize}
 
 %-------------------------------------------------------------------
-\subsection{cngd lib}
+\subsection{Programmer: ICD 3}
+%-------------------------------------------------------------------
+\label{cap4:sub:icd3}
+%-------------------------------------------------------------------
+
+
+
+
+%-------------------------------------------------------------------
+\section{Components Library: cngd lib}
+%-------------------------------------------------------------------
+\label{cap4:sec:cngdlib}
 %-------------------------------------------------------------------
 For the accomplish the full design of the platform over Altium Designer, a component library with all the required but not found models was set all along the design process.
 
@@ -111,6 +133,7 @@ The chosen firmware for our platform gives support for MRF49XA modules over 434 
 \figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap4:pictail}%
 {MRF49XA PICtail$^{TM}$ Daughter Board}
 
+********** VER QUE HACER CON ESTE PARRAFO
 No commercial \ac{RI}s were found based on the MRF49XA transceiver showing a reduced size. The implementation of a MRF49XA-based \ac{RI} module, suitable on size and features for our design was required.  
 
 Previous to the \ac{CNGD} designing, which will embeds the $\mu$Trans 434/868, the design of these \ac{RI}s was needed.
@@ -118,9 +141,9 @@ Previous to the \ac{CNGD} designing, which will embeds the $\mu$Trans 434/868, t
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-MRF49XA is a low-power fully integrated Sub-GHz RF transceiver. An ideal choice for low-cost, high-volume, low data rate (< 256 Kbps), two-way, short range wireless applications. It can operate in the unlicensed 434, 868 and 915 MHz frequency bands. The transceiver is integrated with different Sleep modes and an internal wake-up timer to reduce the overall current consumption. The device operates in the low-voltage range of 2.2V to 3.8V, and in Sleep mode, it operates at a very low-current state, typically 0.3 $\mu$A.
+MRF49XA is a low-power fully integrated Sub-GHz RF transceiver. An ideal choice for low-cost, high-volume, low data rate (< 256 Kbps), two-way, short range wireless applications. It can operate in the unlicensed 434, 868 and 915 MHz frequency bands. The transceiver is integrated with different sleep modes and an internal wake-up timer to reduce the overall current consumption. The device operates in the low-voltage range of 2.2V to 3.8V, and in Sleep mode, it operates at a very low-current state, typically 0.3 $\mu$A.
 
-Further details about consumption on different modes and other features are given below.
+Further details are given below:
 \begin{itemize}
 	\item Modulation Technique: \ac{FSK} with \ac{FHSS} capability. 
 	\item Differential RF Input/Output:
@@ -182,12 +205,9 @@ Figure \ref{fig:cap4:mrf49xapinout} shows the MRF49XA pin diagram, a full descri
 
 An internal transmit/receive switch combines the transmitter and receiver circuits into differential RFP and RFN pins. These pins are connected to the impedance matching circuitry (balun) and to the external antenna connected to the device.
 
-The quality of the data is checked or validated using the RSSI and DQI blocks built into the transceiver. Data is buffered in transmitter registers and receiver \ac{FIFO}s. The Automatic Frequency Control feature allows the use of a low-accuracy and low-cost crystal. The transceiver is controlled via a 4-wire SPI, interrupt (INT and IRO), FSEL, FINT and RESET pins. The interface between the microcontroller and MRF49XA is shown in Figure \ref{fig:cap4:mrf49xainterface}.
+The quality of the data is checked or validated using the RSSI and DQI blocks built into the transceiver. Data is buffered in transmitter registers and receiver \ac{FIFO}s. The Automatic Frequency Control feature allows the use of a low-accuracy and low-cost crystal. The transceiver is controlled via a 4-wire SPI, interrupt (INT and IRO), FSEL, FINT and RESET pins. 
 
-\figura{Bitmap/Capitulo4/mrf49xainterface}{width=0.5\textwidth}{fig:cap4:mrf49xainterface}%
-{Microcontroller to MRF49XA interface}
-
-The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet. The only difference between 434 MHz and 868 MHz version of the $\mu$Trans is the impedance matching circuitry facing the external antenna. The components composing it are different for each frequency band, values are specified at table \ref{tab:cap4:balunvalues}. 
+The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet. The only difference between 434 MHz and 868 MHz version of the $\mu$Trans is the impedance matching circuitry facing the external antenna. The components composing it are different for each frequency band, values are specified at table \ref{tab:cap4:balunvalues} placed at appendix \ref{ap1:schematics}. 
 
 Current is bypassed through a capacitor and supplies the MRF49XA, a power indication \ac{LED} is included in the design. A 10 MHz clock carries out the timing tasks. An impedance matching circuitry composed by inductors and capacitors interfaces the MRF49XA and the antenna. The \ac{RI} hosts a 50$\Omega$ connector to which connect the corresponding antenna.
 
@@ -220,11 +240,11 @@ The computation unit is located at the microcontroller, taking control over the 
 
 As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an approach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
 
-\ac{CNGD} has been designed to attach up to three \ac{RI}s. Communication and control over these \ac{RI}s is made through \ac{SPI}s and a few more control signal described further on. 
+Communication and control over the \ac{RI}s is made through \ac{SPI}s and a few more control signal described further on. 
 
 Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilities to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to control the power supply to these modules. 
 
-The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular applications. In addition, three \ac{LED}s and two push buttons give chance to the user to, somewhat, interact with the platform if required. 
+The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular applications. In addition, three \ac{LED}s and two push buttons give chance to the user to control the application if required. 
    
 %-------------------------------------------------------------------
 \subsection{Schematics}
@@ -451,12 +471,15 @@ PIN & PERIPHERALS & MODULE & USE \\
 %-------------------------------------------------------------------
 As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, with three consequent frequency bands to access. This fact gives a flexibility over radio communications never offered by other \ac{WSN} device. Frequencies to operate over are 434 MHz, 868 MHz, and 2.4 GHz, meeting desired features. 
 
-For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU} are the same. Figure \ref{fig:cap4:434schematics} shows the schematic for one of them.
+For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU}, illustrated at Figure \ref{fig:cap4:mrf49xainterface}, are the same. 
+
+\figura{Bitmap/Capitulo4/mrf49xainterface}{width=0.5\textwidth}{fig:cap4:mrf49xainterface}%
+{Microcontroller to MRF49XA interface}
+
+Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA\cite{mrf24j40}. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposes computation, cost, and power savings. It has access over the 15 5MHz-channels, the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
 
 \figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.8\textwidth}{fig:cap4:mrf24j40mablocks}%
-{MRF24J40MA interface scheme.}
-
-Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA\cite{mrf24j40}. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposes computation, cost, and power savings. It has access over the 15 5MHz-channels the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
+{MRF24J40MA block diagram.}
 
 \begin{itemize}
 	\item Operating Voltage: 2.4-3.6V (3.3V typical).
@@ -483,7 +506,7 @@ Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz.
 Interface between MRF24J40MA \ac{RI} is driven by 7 signals, figure \ref{fig:cap4:mrf24j40mainterface} illustrates it. Serial communication is carried through a \ac{SPI}, containing 4 signals. Two interruption signals for both senses and a reset signal complete the whole set.
 
 \figura{Bitmap/Capitulo4/mrf24j40mainterface}{width=0.5\textwidth}{fig:cap4:mrf24j40mainterface}%
-{MRF24J40MA block diagram}
+{MRF24J40MA interface scheme}
 
 All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM}$ Mesh or MiWi$^{TM}$ P2P protocols. Figure \ref{fig:cap4:miwiconf} shows how the protocol environment configuration.
 
@@ -699,7 +722,7 @@ Here it is made a comprehensive description of the available peripherals and fun
 		\item Ports D6, D8, D9, and D11 at pins 33, 09, 32, and 27.
 		\item Ports E5, E6, E7, and E9 at pins 23, 35, 22, and 00.
 		\item Ports F0, F1, and F3 at pins 26, 25, and 51.
-		\item Ports G2, G3, G6, G7, G8, and G9 at pins 56, 57, 37, 21, 38, and 20.			
+		\item Ports G2, G3, G6, G7, G8, and G9 at pins 56, 57, 37, 21, 38, and 20. ***************** MAL			
 		\end{itemize} 
 	\item \emph{Change Notification}. A total of change notification pins can be accessed. These are  CN4 at pin 02, CN6 at pin 39, CN7 at pin 01, CN8 at pin 37, CN9 at pin 21, CN11 at pin 20, CN12 at pin 16, CN13 at pin 38, and CN15 at pin 33.   
 		

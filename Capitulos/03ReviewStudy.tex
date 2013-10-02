@@ -112,8 +112,8 @@ MiWi$^{TM}$ P2P\cite{miwip2p}, MiWi$^{TM}$ Mesh, MiWiPRO$^{TM}$\cite{miwipro} an
 Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and the 
 communications to the main controller take place through an \ac{UART}. Stacks for MiWi\cite{miwi} and TCP/IP\cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications to these transceivers use \ac{SPI} interfaces.
 
-\figura{Vectorial/Todo}{width=.8\textwidth}{fig:fcdmodel}%
-{Architecture model of the FCD, developed at LSI in 2011}
+\figuraEx{Bitmap/Capitulo3/fcdmodel}{width=0.9\textwidth}{fig:fcdmodel}%
+{Architecture model of the FCD, developed at LSI in 2011. Obtained from \cite{ferpfc}.}{Architecture model of the FCD.}
 
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instruments microcontroller increasing complexity on 
@@ -168,10 +168,27 @@ This module is designed to operate under PIC32 architectures. It was thought to 
 
 This software module represents an actual realization of the architecture described in \cite{conbrok} and, somewhat, enhances it by introducing sligth improvements. 
 
-An overview to the general performance shows an scheme based on different modules such as Repository, Discovery, Optimization, Execution, Access Control, Policy, Messenger and Virtual Control Channel. Each module performs a defined tasks and connect each other attending to defined policies. Figure \ref{fig:crmodel} illustrates the general scheme, for a further view consult the given references.
+An overview to the general performance shows an scheme based on different modules such as Repository, Discovery, Optimization, Execution, Access Control, Policy, Messenger and Virtual Control Channel. Each module performs a defined tasks and connect each other attending to defined policies. Figure \ref{fig:cap3:crmodel} illustrates the general scheme, for a further view consult the given references.
 
-\figura{Vectorial/Todo}{width=.8\textwidth}{fig:crmodel}%
-{Overview of CRmodule general scheme}
+\begin{figure}[h!]
+\centering
+%
+\begin{SubFloat}
+{\label{fig:cap2:crmodulecomponents}%
+\scriptsize{Components.}}%
+\includegraphics[width=0.6\textwidth]%
+{Imagenes/Vectorial/Capitulo3/crmodule1}%
+\end{SubFloat}
+
+\begin{SubFloat}
+{\label{fig:cap2:crmodulearchitecture}%
+\scriptsize{Architecture.}}%
+\includegraphics[width=0.6\textwidth]%
+{Imagenes/Vectorial/Capitulo3/crmodule2}%
+\end{SubFloat}
+\caption{Overview of CRmodule.}
+\label{fig:cap3:crmodel}
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{System Requirements}
@@ -282,18 +299,18 @@ The different options included at Microchip catalog, described and showing their
 \multirow{2}{*}{Microcontroller} & \multirow{2}{2cm}{Max. \\Frequency} & \multicolumn{2}{|c|}{Memory (KB)} & \multicolumn{6}{|c|}{Peripherals} & \multirow{2}{*}{ADC} & \multirow{2}{*}{Pins} & \multirow{2}{*}{Consumption} & Price \\\cline{3-10}
 & & Flash & RAM & SPI & UART & I2C & USB & CAN & ETH  & & & & (\euro)\\
 \hline \hline
-PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 & \multirow{12}{*}{6} & 4 & \multirow{12}{1cm}{Full Speed Host Dev. OTG} & \multirow{2}{*}{0} & \multirow{12}{1.1cm}{10/100 BaseT} & \multirow{12}{*}{16} & 64 & \multirow{4}{1.5cm}{bla bla bla bla} & 0 \\
-PIC32MX664F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
-PIC32MX764F128H & & & & 3 && 4 && \multirow{2}{*}{1} &&& 64 && \\
-PIC32MX764F128L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{3 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
-PIC32MX675F256H & & \multirow{4}{*}{256} & \multirow{6}{*}{64} & 3 && 4 && \multirow{2}{*}{0} &&& 64 && \\
-PIC32MX675F256L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
-PIC32MX775F256H & & & & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
-PIC32MX775F256L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{3 - 3} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
-PIC32MX775F512H & & \multirow{4}{*}{512} & & 3 && 4 && \multirow{2}{*}{2}&&& 64 && \\
-PIC32MX775F512L & & & & 4 && 5 &&&&& 100 && \\\cline{1 - 1} \cline{4 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
-PIC32MX795F256H & & &  \multirow{2}{*}{128} & 3 && 4 && \multirow{2}{*}{2} &&& 64 && \\
-PIC32MX795F256L & & & & 4 && 5 &&&&& 100 && \\
+PIC32MX664F128H & \multirow{12}{*}{80} &  \multirow{4}{*}{128} & \multirow{4}{*}{32} & 3 & \multirow{12}{*}{6} & 4 & \multirow{12}{1cm}{Full Speed Host Dev. OTG} & \multirow{2}{*}{0} & \multirow{12}{1.1cm}{10/100 BaseT} & \multirow{12}{*}{16} & 64 & \multirow{4}{2.2cm}{Run: 39 mA   Idle: 17 mA  Sleep: 20 $\mu$A} & 5.80 \\
+PIC32MX664F128L & & & & 4 && 5 &&&&& 100 && 6.41 \\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
+PIC32MX764F128H & & & & 3 && 4 && \multirow{2}{*}{1} &&& 64 && 5.95 \\
+PIC32MX764F128L & & & & 4 && 5 &&&&& 100 && 6.54 \\\cline{1 - 1} \cline{3 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
+PIC32MX675F256H & & \multirow{4}{*}{256} & \multirow{6}{*}{64} & 3 && 4 && \multirow{2}{*}{0} &&& 64 &\multirow{6}{2.2cm}{ Run: 85 mA Idle: 36 mA  Sleep: 41 $\mu$A} & 7.11\\
+PIC32MX675F256L & & & & 4 && 5 &&&&& 100 &&  8.35\\\cline{1 - 1} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
+PIC32MX775F256H & & & & 3 && 4 && \multirow{2}{*}{2} &&& 64 && 8.07\\
+PIC32MX775F256L & & & & 4 && 5 &&&&& 100 && 8.79 \\\cline{1 - 1} \cline{3 - 3} \cline{5 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{14 - 14}
+PIC32MX775F512H & & \multirow{4}{*}{512} & & 3 && 4 && \multirow{2}{*}{2}&&& 64 && 8.75 \\
+PIC32MX775F512L & & & & 4 && 5 &&&&& 100 && 9.47 \\\cline{1 - 1} \cline{4 - 5}\cline{7 - 7}\cline{9 - 9}\cline{12 - 12}\cline{13 - 14}
+PIC32MX795F256H & & &  \multirow{2}{*}{128} & 3 && 4 && \multirow{2}{*}{2} &&& 64 & Not & 9.47\\
+PIC32MX795F256L & & & & 4 && 5 &&&&& 100 & Specified & 9.57\\
 \hline
 \hline
 

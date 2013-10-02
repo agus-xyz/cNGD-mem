@@ -80,11 +80,9 @@ Considering some subtle differences between systems we can differentiate two mai
 
 Although cognitive radio was initially thought of as full cognitive radio, most research work focuses on spectrum-sensing cognitive radio,  particularly in the TV bands. The great problem in spectrum-sensing cognitive radio is designing high-quality spectrum-sensing devices and algorithms for exchanging the so-called knowledge domain \cite{brainempower}. The practical implementation of spectrum-management functions is a complex and multifaceted issue, since it must address a variety of technical and legal requirements.
 
-Picture \ref{fig:CWSNsoftModel} illustrates the changes the \ac{OSI} model suffers when affected by cognition. The \ac{CR} model can be referred to as the first and second layers, thus the \emph{Physical} and \emph{Link} layers. 
-
-\figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNsoftModel}%
-{CWSN protocol model}
-%poner una unica pila********************
+Picture \ref{fig:crmodel} illustrates the key functions of the \ac{PHY}, \ac{MAC}, and network layers in a \ac{CR}. This model, described in \cite{crnetandcom}, supposes a functional architecture that is by no means the only architecture that can be designed for \ac{CR}s.
+\figuraEx{Bitmap/Capitulo2/crmodel}{width=.7\textwidth}{fig:crmodel}%
+{Main functions of the PHY, MAC, and network layers in a CR. Obtained from \cite{crnetandcom}}{Main functions of the PHY, MAC, and network layers in a CR}
 
 Depending on the parts of the spectrum used, \ac{CR} can be:
 \begin{itemize}
@@ -142,7 +140,7 @@ and Haykin\cite{brainempower} continue this line of thinking, examining multi-us
 The scope of \ac{CRN}s still remains primarily on \ac{MAC} and \ac{PHY} layers, but now operating with some end-to-end objective. 
 In a \ac{CRN}, the individual radios take most of the cognitive decisions, although they may act in cooperation. Some suggested
 applications for \ac{CRN}s include cooperative spectrum sensing\cite{coopsensing}\cite{coopsensing1} and emergency radio
-networks \cite{cremergency}. Raychaudhuri presents in\cite{cnrarchitecture} a general architecture for \ac{CRN}s.
+networks \cite{cremergency}. Raychaudhuri presents in \cite{cnrarchitecture} a general architecture for \ac{CRN}s.
 
 Regarding \ac{CN}s, Clark proposes, in which was perhaps the first mention of \ac{CN} rather than \ac{CRN},
 a network that can
@@ -251,8 +249,8 @@ divided in:
 \item \emph{Power source}. It supplies the energy needed by the device to perform the programmed task. 
 \end{itemize}
 
-\figura{Vectorial/Todo}{width=.5\textwidth}{fig:WSNnodeModel}%
-{WSN node model}
+\figura{Vectorial/Capitulo2/wsnmodel}{width=.45\textwidth}{fig:WSNnodeModel}%
+{WSN node general model}
 
 The development of wireless sensor networks was motivated by military applications such as battlefield surveillance; today such networks are used in a wide range of applications, considered as the main technology to develop intelligent ambiences:
 
@@ -373,8 +371,7 @@ in the system has several challenges.
 
 \end{itemize}
 
-All in all, this early-staged technology claims for investigations and research-enabling implementations such as standards, simulators and test-beds
-that allow further studies and conclusive results. 
+All in all, this early-staged technology claims for investigations and research-enabling implementations such as standards, simulators and test-beds that allow further studies and conclusive results. 
  
 %-------------------------------------------------------------------
 \subsection{Current Implementations}
@@ -399,20 +396,20 @@ Some of the main characters over the existing simulators range are:
 \begin{itemize}
 \item \emph{NS2/NS3}\cite{ns2}. NS (\emph{Network Simulator}) is a discrete-event network simulator primarily used in teaching and research. It supports a large variety of multicast and unicast protocols of both wireless and wired networks. Intensively used in wireless mobile Ad-hoc networks. NS simulators are developed mainly under C++ and Python languages and they are publicly available under the GNU GPLv2 license for research, development, and use.
 
-\begin{figure}[h!]
+\begin{figure}[!h]
 \centering
 %
 \begin{SubFloat}
 {\label{fig:cap2:ns2logo}%
 \scriptsize{NS2 Simulator Logo.}}%
-\includegraphics[angle=0,width=0.3\textwidth]%
+\includegraphics[width=0.3\textwidth]%
 {Imagenes/Vectorial/Capitulo2/ns2logo}%
 \end{SubFloat}
 \qquad
 \begin{SubFloat}
 {\label{fig:cap2:ns3logo}%
 \scriptsize{NS3 Simulator Logo.}}%
-\includegraphics[angle=0,width=0.3\textwidth]%
+\includegraphics[width=0.3\textwidth]%
 {Imagenes/Vectorial/Capitulo2/ns3logo}%
 \end{SubFloat}
 \caption{NS2 and NS3 Simulators Logo.}
@@ -470,7 +467,7 @@ Several other simulators have been developed for \ac{WSN}. TOSSIM based on the T
 Nowadays there are not real devices for \ac{CWSN} applications yet. Current implementations respond to development platforms or test-beds, and still, variety of platforms is very scarce and poorly featured. Most of them suppose the first approaches on its field, so foundations to build over are still immature and quickly changing. Hence, efforts focused on hardware development, usually more costly than software, remain quiet.
 
 The closest existing device to a \ac{CWSN} node is the \ac{FCD}\cite{fcd}\cite{ferpfc}, Figure \ref{fig:fcdadapted}, developed at \ac{LSI} in 2011. The \ac{FCD} is based on a Microchip 32-bits \ac{PIC} and includes three radio interfaces enabling access to the 2.4 GHz band and 868 MHz. MiWi and WiFi protocols operate over 2.4 GHz and a proprietary protocol provided by \ac{AWD}\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, 
-oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}. Moreover, it allowed to analyze suitability for radio interfaces, compute capability and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. Nevertheless, the device was just a first approach and it was still far to be a stable valuable test-bed platform\cite{juapfc}. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities.
+oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}. Moreover, it allowed to analyze suitability for radio interfaces, compute capability and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. Nevertheless, the device was just a first approach and it was still far to be a stable valuable test-bed platform\cite{juanpfc}. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities.
 
 Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board\cite{guillepfc} to try new transceiver options together with an optimized, \ac{CWSN} oriented firmware and a cognitive software module. This new modules claim for a new design integrating together all of them at one single module, fixing detected weaknesses and adding new or improved features. 
 

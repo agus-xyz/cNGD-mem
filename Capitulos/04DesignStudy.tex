@@ -89,18 +89,6 @@ On the other hand, required option from the \ac{PCB} design module are:
 \end{itemize}
 
 %-------------------------------------------------------------------
-\subsection{Programmer: ICD 3}
-%-------------------------------------------------------------------
-\label{cap4:sub:icd3}
-%-------------------------------------------------------------------
-
-\figura{Bitmap/Capitulo4/icd3}{width=.8\textwidth}{fig:cap4:icd3}%
-{ICD3 programmer configuration.}
-
-\ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the platform has a development character. Further information can be consulted at the manual\cite{icd3}.
-
-
-%-------------------------------------------------------------------
 \section{Components Library: cngd lib}
 %-------------------------------------------------------------------
 \label{cap4:sec:cngdlib}
@@ -566,7 +554,7 @@ components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}
 
 \figura{Bitmap/Capitulo4/mcp1603}{width=0.5\textwidth}{fig:cap4:mcp1603}{MCP1603 buck regulator configuration.}
 
-It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions. Table \ref{tab:cap4:maxconsumption} gives 165 mA as maximum current consumption rate. Leaving buffer for current peaks at transmission and possible shields, a maximum current estimation of 500 mA seem reasonable and more than enough.
+It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions. Table \ref{tab:cap4:maxconsumption} gives 165 mA as maximum current consumption rate. Leaving buffer for current peaks at transmission and possible shields, a maximum current estimation of 500 mA seem reasonable and enough for the whole platform.
 
 \begin{table}[h]
 \centering
@@ -589,9 +577,9 @@ TOTAL MAX CONSUMPTION & 165mA \\ \hline
 %-------------------------------------------------------------------
 \subsubsection{Battery}
 %-------------------------------------------------------------------
-In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer some days autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
+In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
 
-Firstly it is needed an estimation of platform global power consumption. This value will depends, relying strongly on the running application. However, we can assume some overestimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global power consumption calculated as $P_{estimated}$.
+Firstly it is needed an estimation of platform global current consumption. This value will depends, relying strongly on the running application. However, we can assume some overestimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global current consumption calculated as $C_{estimated}$.
 
 \begin{table}[h]
 \centering
@@ -607,7 +595,7 @@ Sleep & 90\% & 100 $\mu$A \\ \hline
          \label{tab:cap4:powerstimatedvalues}}
 \end{table} 
 
-\[P_{estimated}= 100 \times10^{-3}  \times 0.1 + 100 \times10^{-6}  \times 0.90 = 12.1 ~ mA\]
+\[C_{estimated}= 100 \times10^{-3}  \times 0.1 + 100 \times10^{-6}  \times 0.90 = 12.1 ~ mA\]
 
 Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other technologies and sizes, not described at the table, have been directly discarded for showing unsuitable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or special size batteries\footnote{For instance, 2/3 A, L-fat A, or CS sizes.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based and \ac{LIION} based batteries. 
 

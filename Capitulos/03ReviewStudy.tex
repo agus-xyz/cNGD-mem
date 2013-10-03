@@ -55,11 +55,11 @@ and buses such as \ac{I2C}, \ac{SPI}, \ac{UART}, \ac{USB}, etc.}. This fact affe
 \end{itemize}
 
 
-\figura{Vectorial/Todo}{width=.5\textwidth}{fig:CWSNnodeModel}%
+\figura{Bitmap/Capitulo3/CWSNmodel}{width=.9\textwidth}{fig:CWSNnodeModel}%
 {CWSN node model}
 %poner una unica pila
 
-Figure \ref{fig:CWSNnodeModel} gives a view about the basic model. It shows together software and hardware modules in a simplified way.
+Figure \ref{fig:CWSNnodeModel} gives a view about the basic seeked model. It shows together software and hardware modules in a simplified way.
 Additionally, cognition tasks compulsory require several functions to take into account at the design stage: 
 
 \begin{itemize}
@@ -335,7 +335,7 @@ a gateway to the IEEE 802.11 standard, it cannot be included on the design of a 
 maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme looked in the \ac{CNGD} cannot afford to include this transceiver.
 
 
-Table whatever shows Microchip sub-GHz transceivers and modules supported by the firmware that enables communication at the seeked bands.*****
+Table \ref{tab:cap3:ri} shows transceivers and modules supported by the firmware that enables communication at the seeked bands. Modules such as the MRF49XA PICtail$^{TM}$ Daughter Board, Figure \ref{fig:cap3:pictail}, whose size does not suit our requirements, have not been considered.
 
 \begin{table}[h]
 \centering
@@ -358,6 +358,11 @@ MRF89XAM8A & \multirow{2}{*}{868} & & FSK: 40 & & 16 mA  @ +1 dBm &  & & & \mult
 \caption{Comparative table of sub-GHz Microchip solutions\label{tab:cap3:ri}}
 
 \end{table}
+
+\figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap3:pictail}%
+{MRF49XA PICtail$^{TM}$ Daughter Board}
+
+No complete modules are available for 434 MHz band. For 868 MHz, module MRF89XAM8A is available. However, MRF49XA transceiver, which provies communications at these two bands, is susceptible to be included into an ad-hoc designed \ac{RI} board. Figure \ref{fig:cap2:wirelesscomparison} gives a comparison among wireless networking protocols.
 
 \figura{Bitmap/Capitulo3/wirelesscomparison}{width=.55\textwidth}{fig:cap2:wirelesscomparison}%
 {Main wireless networking options comparison}
@@ -446,8 +451,7 @@ to fit and apply them to our evaluations, the obtained conclusions to face the d
 	\item A Tulio$^{TM}$ transceiver whose inclusion, hosting a core by itself, supposes a multi-core implementation.  	
 	\end{itemize}
 
-A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a standard protocol for \ac{WSN}s such as IEEE 802.15.4 to implement. Besides,
-desirable requirements call for a third frequency band to implement.
+A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a standard protocol for \ac{WSN}s such as IEEE 802.15.4 to implement. Besides, desirable requirements call for a third frequency band to implement. The lack of fittable modules over 434 MHz band claims for a custom design.
 
 \item Serial communication system claims for simplifications, the same as the power supply system.
 

@@ -40,13 +40,12 @@ Offering the chance of embedding up to three \ac{RI}s, the device could access t
 
 The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, commonly used in \ac{WSN}. Specifically, the set of interfaces will operate under MiWi$^{TM}$ or MiWi$^{TM}$P2P protocol. They both are proprietary protocols designed by Microchip Technology that uses small, low-power digital radios. They are open source option designed for low data transmission rates (up to 250Kbit/s) and short distance (up to 100 without obstacles), cost constrained networks. Main difference between MiWi$^{TM}$ and ZigBee$^{TM}$\footnote{A very popular wireless IEEE 802.15.4 compatible protocol employed at \ac{WSN}s.} is complexity. MiWi$^{TM}$ offers a much more simple operation, resulting in a lighter implementation. The size required for the MiWi$^{TM}$ stack is  3-10 KB on the ROM depending on the node role while ZigBee$^{TM}$ takes 20-40 KB. MiWi$^{TM}$ is free of cost and it does not require for licenses acquisition as long as Microchip components are used, in fact Microchip requires the use of MiWi$^{TM}$ for its products. The global design becomes simpler and more homogeneous sharing a common communication protocol for all the \ac{RI}s.
 
-********************* revisar parrafo
-Since there were not found compatible and suitable size commercial options for 868 MHz and 434 MHZ \ac{RI}s, a custom full implementation of these interfaces was required. $\mu$Trans434/868 from now on. These \ac{RI}s are based on the MRF49XA Microchip transceiver and its full description is taken at section \ref{cap4:sec:transceivers}. Option at 2.4 GHz is a MRF24J40MA module.
+Since there were not found compatible and suitable size commercial options for 434 MHz band, a custom full implementation of this interface was required. This implementation is based on MRF49XA transceiver, which can operate also at 868 MHz. In order to provide homogeneity, and since it does not suppose a great extra effort, the new \ac{RI} design will be used for both 434 and 868 MHz bands. These \ac{RI} will be called $\mu$Trans434/868 from now on. $\mu$Trans434/868 full description is taken at section \ref{cap4:sec:transceivers}. Option at 2.4 GHz is a MRF24J40MA module.
 
 For this work a pair of shields were designed. A simple serial communication complement that links one \ac{UART} and a classic rs232 interface over the so-called rs232SHIELD. This interface would facilitate the software development since the firmware just allowed debugging through the \ac{UART} at first and it is described in section \ref{cap4:sec:rs232shield}. A battery charger Ni-Mh and Ni-Cd was also designed and implemented as a utility for portability options. The device was called as chargerSHIELD. 
 
-\figura{Vectorial/Todo}{width=.8\textwidth}{fig:cap4:globalhw}%
-{Global hardware scheme of the platform.}
+\figura{Vectorial/Capitulo4/modules2develop}{width=.8\textwidth}{fig:cap4:globalhw}%
+{Global hardware modules of the platform to develop.}
 
 %-------------------------------------------------------------------
 \section{Tools}
@@ -95,7 +94,10 @@ On the other hand, required option from the \ac{PCB} design module are:
 \label{cap4:sub:icd3}
 %-------------------------------------------------------------------
 
+\figura{Bitmap/Capitulo4/icd3}{width=.8\textwidth}{fig:cap4:icd3}%
+{ICD3 programmer configuration.}
 
+\ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the platform has a development character. Further information can be consulted at the manual\cite{icd3}.
 
 
 %-------------------------------------------------------------------
@@ -128,19 +130,15 @@ Library is available for download at ************************. All the content i
 \label{cap4:sec:transceivers}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo4/mtransblocks}{width=.7\textwidth}{fig:cap4:mtransblocks}%
-{$\mu$Trans 434/868 blocks diagram}
+\figura{Vectorial/Capitulo4/mtrans2develop}{width=.7\textwidth}{fig:cap4:mtranshw}
+{$\mu$Trans detail over global hardware modules to develop.}
 
-
-The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board\cite{daughterb}, whose picture is seen in. This board is a demonstration and development daughter board for the MRF49XA ISM Band Sub-GHz RF Transceiver. The board can plug into a fittable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
-
-\figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap4:pictail}%
-{MRF49XA PICtail$^{TM}$ Daughter Board}
-
-********** VER QUE HACER CON ESTE PARRAFO
-No commercial \ac{RI}s were found based on the MRF49XA transceiver showing a reduced size. The implementation of a MRF49XA-based \ac{RI} module, suitable on size and features for our design was required.  
+The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board\cite{daughterb}. This board is a demonstration and development daughter board for the MRF49XA ISM Band Sub-GHz RF Transceiver. The board can plug into a fittable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
 
 Previous to the \ac{CNGD} designing, which will embeds the $\mu$Trans 434/868, the design of these \ac{RI}s was needed.
+
+\figura{Bitmap/Capitulo4/mtransblocks}{width=.8\textwidth}{fig:cap4:mtransblocks}%
+{$\mu$Trans 434/868 blocks diagram}
 
 %-------------------------------------------------------------------
 \subsection{Description}
@@ -231,9 +229,8 @@ Schematic of $\mu$Trans 434/868 can be found on Appendix \ref{ap1:schematics} at
 %-------------------------------------------------------------------
 \label{cap4:sec:cNGD}
 %-------------------------------------------------------------------
-
-\figura{Bitmap/Capitulo4/modelcngd}{width=.7\textwidth}{fig:cap4:modelcngd}%
-{Architecture model of the cNGD.}
+\figura{Vectorial/Capitulo4/cngd2develop}{width=.4\textwidth}{fig:cap4:cngdhw}
+{cNGD detail over global hardware modules to develop.}
 
 %-------------------------------------------------------------------
 \subsection{Description}
@@ -249,7 +246,9 @@ Communication and control over the \ac{RI}s is made through \ac{SPI}s and a few 
 Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilities to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to control the power supply to these modules. 
 
 The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular applications. In addition, three \ac{LED}s and two push buttons give chance to the user to control the application if required. 
-   
+
+\figura{Vectorial/Capitulo4/cngdblocks}{width=.8\textwidth}{fig:cap4:modelcngd}%
+{Architecture model of the cNGD.}
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
@@ -514,14 +513,21 @@ Interface between MRF24J40MA \ac{RI} is driven by 7 signals, figure \ref{fig:cap
 
 All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM}$ Mesh or MiWi$^{TM}$ P2P protocols. Figure \ref{fig:cap4:miwiconf} shows how the protocol environment configuration.
 
-\figura{Bitmap/Capitulo4/miwiconf}{width=0.7\textwidth}{fig:cap4:miwiconf}{MiWi$^{TM}$ protocol configuration scheme.}
+\figura{Bitmap/Capitulo4/miwiconf}{width=0.8\textwidth}{fig:cap4:miwiconf}{MiWi$^{TM}$ protocol configuration scheme.}
 
 A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maximum of 1024 nodes on a network. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
 
 The MiWi$^{TM}$ P2P protocol\cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
-\figura{Bitmap/Capitulo4/miwistack}{width=.4\textwidth}{fig:cap4:miwistack}%
-{MiWi$^{TM}$ Protocol stack.}
+\begin{figure}[h]
+\centering
+   
+\subfloat[Standard stack.]{\label{fig:cap4:normalmiwistack}\includegraphics[width=.4\textwidth]{Imagenes/Bitmap/Capitulo4/miwistack}}  
+\subfloat[Adapted stack for three RIs, available at the firmware.]{\label{fig:cap4:adaptedmiwistack}\includegraphics[width=.4\textwidth]{Imagenes/Bitmap/Capitulo4/adaptedmiwistack}}
+       
+\caption{MiWi$^{TM}$ Protocol.}
+\label{fig:cap4:miwistack}
+\end{figure}
 
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
@@ -610,6 +616,7 @@ Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery
 \scalebox{0.7}{
 \begin{tabular}{||c|c|c|c|c|c|c|c||}
 \hline
+\hline
 \multirow{2}{*}{Technology} & Cell Nominal & Min. Num. & \multirow{2}{*}{Use complexity} & \multirow{2}{*}{Size} & Capacity & Estimated & Aprox. \\ 
 & Voltage & of cells  & & & (mHh) & autonomy (h.) & Unit. Cost (\euro)\\ \hline \hline
 \multirow{2}{*}{Ni-MH} & \multirow{2}{*}{1.2/1.25 V} & \multirow{2}{*}{3} & \multirow{2}{*}{Low} & AAA & 600 - 1250 & 50 - 100 & 1 - 2  \\ \cline{5-8}
@@ -618,7 +625,7 @@ Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery
  &  &  &  & AA & 900 &  75  & 4 - 6 \\ \cline{5- 8}
  &  &  &  & CR123A & 700 - 2000 & 60 - 165 & 3 - 20 \\ \cline{ 5- 8}
  &  &  &  & CR2 & 600 - 800 & 50 - 65  & 3.5 \\ \cline{ 5- 8}
- &  &  &  & Other & up to 3000 & up to 250  & 40 - 60 \\ \hline
+ &  &  &  & Other & up to 3000 & up to 250  & 40 - 60 \\ \hline \hline
 \end{tabular}}
 \caption{Comparison among considered batteries.
 \label{tab:cap4:batcomparison}}
@@ -626,7 +633,7 @@ Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery
 
 Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more complex as well. 
 
-The solution proposed consist of a battery consisting on 3 2900 mAh \ac{NIMH} AA cells. This might provide up to 240 h. of autonomy, approximately 10 days, considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro. 
+The solution proposed consist of a battery consisting on 3 2900 mAh \ac{NIMH} AA cells. This might provide up to 240 h. of autonomy considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro. 
 
 %-------------------------------------------------------------------
 \subsection{Timing}
@@ -726,7 +733,7 @@ Here it is made a comprehensive description of the available peripherals and fun
 		\item Ports D6, D8, D9, and D11 at pins 33, 09, 32, and 27.
 		\item Ports E5, E6, E7, and E9 at pins 23, 35, 22, and 00.
 		\item Ports F0, F1, and F3 at pins 26, 25, and 51.
-		\item Ports G2, G3, G6, G7, G8, and G9 at pins 56, 57, 37, 21, 38, and 20. ***************** MAL			
+		\item Ports G2, G3, G6, G7, G8, and G9 at pins 12, 13, 37, 21, 38, and 20.			
 		\end{itemize} 
 	\item \emph{Change Notification}. A total of change notification pins can be accessed. These are  CN4 at pin 02, CN6 at pin 39, CN7 at pin 01, CN8 at pin 37, CN9 at pin 21, CN11 at pin 20, CN12 at pin 16, CN13 at pin 38, and CN15 at pin 33.   
 		
@@ -816,12 +823,8 @@ PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE & 4th TYPE & 5TH TYPE \\
 \subsection{PGE}
 %-------------------------------------------------------------------
 
-Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer module, PGE. This module allows In-Circuit Serial Programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontroller ports are interfaced through a RJ-12 connector together with power supply pins and reset signal. Figure \ref{fig:cap4:icd3} illustrates it.
+Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer module, PGE. This module allows In-Circuit Serial Programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontroller ports at pins 24 and 25 interfaced through an RJ-11 connector together with power supply pins and reset signal. Figure \ref{fig:cap4:icd3} illustrates it.
 
-\figura{Bitmap/Capitulo4/icd3}{width=.8\textwidth}{fig:cap4:icd3}%
-{ICD3 programmer configuration.}
-
-\ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the platform has a development character. Further information can be consulted at the manual\cite{icd3}.
 %-------------------------------------------------------------------
 \subsection{Others}
 %-------------------------------------------------------------------
@@ -842,6 +845,8 @@ Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer mod
 %-------------------------------------------------------------------
 \label{cap4:sec:rs232shield}
 %-------------------------------------------------------------------
+\figura{Vectorial/Capitulo4/rs2322develop}{width=.6\textwidth}{fig:cap4:rs232hw}
+{rs232SHIELD detail over global hardware modules to develop.}
 
 %-------------------------------------------------------------------
 \subsection{Description}
@@ -865,6 +870,8 @@ A schematic view of the rs232SHIELD is shown at Figure \ref{fig:cap4:rs232shield
 %-------------------------------------------------------------------
 \label{cap4:sec:chargerShield}
 %-------------------------------------------------------------------
+\figura{Vectorial/Capitulo4/charger2develop}{width=.6\textwidth}{fig:cap4:chargerhw}
+{chargerSHIELD detail over global hardware modules to develop.}
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
@@ -909,14 +916,14 @@ A schematic of charger232SHIELD can be seen at Figure \ref{fig:cap4:chargershema
 %-------------------------------------------------------------------
 \subsection{Simulation}
 %-------------------------------------------------------------------
-Simulation at Altium Designer showed different behaviors facing different voltage at the batteries. It was needed to simulate models for LM311 operational amplifier, IRF5801 nMOSFET transistor. LM317AMDT was emulated composing simpler components. Figure \ref{fig:cap5:simulation1} illustrates the output voltage at the LM311 comparator depending on the voltage at the battery. Figure \ref{fig:cap5:simulation2} directly relates current flow over the battery with the voltage its presents. Graphics show the right behavior, changing properly the desired voltage and current values at certain battery value.
+Simulation at Altium Designer showed different behaviors facing different voltage at the batteries. It was needed to simulate models for LM311 operational amplifier, IRF5801 nMOSFET transistor. LM317AMDT was emulated composing simpler components. Figure \ref{fig:cap4:simulation1} illustrates the output voltage at the LM311 comparator depending on the voltage at the battery. Figure \ref{fig:cap4:simulation2} directly relates current flow over the battery with the voltage its presents. Graphics show the right behavior, changing properly the desired voltage and current values at certain battery value.
 
 \begin{figure}[h]
 \centering
    
-\subfloat[Output voltage at the comparator depending on the present voltage at the battery.]{\label{fig:cap5:simulation1}\includegraphics[width=\textwidth]{Imagenes/Bitmap/Capitulo4/simulation1}}  
+\subfloat[Output voltage at the comparator depending on the present voltage at the battery.]{\label{fig:cap4:simulation1}\includegraphics[width=\textwidth]{Imagenes/Bitmap/Capitulo4/simulation1}}  
 
-\subfloat[Current flowing through the battery depending on the its voltage.]{\label{fig:cap5:simulation2}\includegraphics[width=\textwidth]{Imagenes/Bitmap/Capitulo4/simulation2}}
+\subfloat[Current flowing through the battery depending on the its voltage.]{\label{fig:cap4:simulation2}\includegraphics[width=\textwidth]{Imagenes/Bitmap/Capitulo4/simulation2}}
        
 \caption{chargerSHIELD simulation results.}
 \label{fig:cap4:simulation}

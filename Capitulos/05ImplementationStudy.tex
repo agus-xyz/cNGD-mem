@@ -28,16 +28,9 @@ In this chapter, tasks related to the physical implementation of the platform ar
 \label{cap5:sec:introduction}
 %------------------------------------------------------------------
 
-Once the system is designed over a logic circuitry level, it is moment to build a \ac{PCB} design responsive to the developed schematics. This process includes the PCB dimensions, components placement, tracks routing, silkscreens, etc. These tasks are achieved over the Altium Designer, same software described in Section \ref{cap4:sec:altiumDesigner}.
+Once the system is designed over a logic circuitry level, it is moment to build a \ac{PCB} design responsive to the developed schematics. This process includes the PCB dimensions, components placement, tracks routing, silkscreens, etc. These tasks are achieved over the Altium Designer, same software described in Section \ref{cap4:sub:altiumDesigner}.
 
-All the implementations share some common features regarding their layout designs. On the one hand, the used components will keep, whenever possible\footnote{Some components do not offer \ac{SMD} packaging due to their electric properties.}, \ac{SMD} packaging. This technology gives a more reduced size and supports lower power ratings. Precisely, the \ac{SMD} package used for most of two-terminal components is the 0603 (1608 metric) size\footnote{1.6 mm x 0.8 mm (0.063 in x 0.031 in). Typical power rating for resistors are 0.1 watt.} Figure \ref{fig:cap5:smdsizes} shows a classification for two-terminal \ac{SMD} components in metrics and imperial units.
-
-\begin{figure}
-        \centering
-                \includegraphics{Imagenes/Vectorial/Capitulo5/smdsizes}
-        \caption{Two-terminal SMD packages classification.}
-        \label{fig:cap5:smdsizes}
-\end{figure}
+All the implementations share some common features regarding their layout designs. On the one hand, the used components will keep, whenever possible\footnote{Some components do not offer \ac{SMD} packaging due to their electric properties.}, \ac{SMD} packaging. This technology gives a more reduced size and supports lower power ratings. Precisely, the \ac{SMD} package used for most of two-terminal components is the 0603 size\footnote{1.6 mm x 0.8 mm (0.063 in x 0.031 in). Typical power rating for resistors are 0.1 watt.}
 
 All the created layouts are built over two-layer boards. Two layers are enough for our purposes since they allow to place the components in a sufficiently reduced area and power planes are not required. More layers, in addition, would increase significantly the board costs. 
 
@@ -47,14 +40,14 @@ Together with the layout deployment, Altium Designer offers the chance to embed 
 
 \ac{PCB} manufacturer, PCBCART\footnote{www.pcbcart.com} will produce the \ac{PCB}s from the outputted fabrication files. Final \ac{PCB} posses a 1.6 mm thickness, and copper layers are 35 $\mu$m thick. 
 
+Sequential mounting, and the existing firmware allow to carry through simple tests to check proper functionality and detect errors. Actually, several corrections and adjustments were made during the mounting task.  
+
 %-------------------------------------------------------------------
-\subsection{Mounting}
+\subsection{Tools}
 %-------------------------------------------------------------------
-Small package components, like the employed here, requires for precision tools to be mounted. Proper tweezers are helpful dealing with components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accessories. Microscope is very valuable for better precision, the one used is a Bausch \& Lomb StereoZoom 4 Microscope. 
+Small package components, like the employed here, requires for precision tools to be mounted. Proper tweezers are helpful dealing with tiny components. The soldering station used is a JBC AM 6000\cite{jbc}, offering several soldering tips on the 1-4 mm diameter and useful tools as hot tweezers or desoldering accessories. Microscope is very valuable for better precision, the one used is a Bausch \& Lomb StereoZoom 4 Microscope. 
 
 Components use to include at their datasheets guidelines about their surrounding layout, soldering tips, or mounting processes. They are reviewed and taken into account for the process.
-
-The sequential mounting, and the existing firmware allow to carry through simple tests to check proper functionality and detect errors. Actually, several corrections and adjustments were made during the mounting task.  
 
 %-------------------------------------------------------------------
 \section{Transceivers - $\mu$Trans 434/868}
@@ -62,17 +55,21 @@ The sequential mounting, and the existing firmware allow to carry through simple
 \label{cap5:sec:transceivers}
 %------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo5/mtrans3d}{width=0.4\textwidth}{fig:cap5:mtrans3dmodel}%
-{$\mu$Trans 434/868 3D model.}
+\begin{figure}[!h]
+        \centering
+		\includegraphics[width=0.3\textwidth]{Imagenes/Bitmap/Capitulo5/mtrans3d}  
+        \caption{$\mu$Trans 434/868 3D model.}
+        \label{fig:cap5:mtrans3dmodel}
+\end{figure}
 
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
 
-This module was developed because of the non-existence of reduced size \ac{RI}s including the MRF49XA transceiver, so, by definition, the module must posses a reduced size. Taking advantage of the included MRF24j40MA \ac{RI}, it was decided to design a \ac{PCB} module fitting the footprint of the named \ac{RI}. This way a single footprint is common to all the included \ac{RI}s. This footprint is defined in Figure \ref{fig:cap5:mtransfootprint}.
+As it was viewed, this module was developed because of the non-existence of reduced size \ac{RI}s including the MRF49XA transceiver. Therefore, by definition, the module must posses a reduced size. Taking advantage of the included MRF24j40MA \ac{RI}, it was decided to design a \ac{PCB} module fitting the footprint of the named \ac{RI}. This way a single footprint is common to all the included \ac{RI}s. This footprint is defined in Figure \ref{fig:cap5:realsizemtrans}.
 
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
 
 \subfloat[$\mu$Trans 434/868 and MRF24j40MA footprint. 20.5x28.1 mm.]{\label{fig:cap5:mtransfootprint}\includegraphics[height=107px]{Imagenes/Vectorial/Capitulo5/transfootprint}}%
@@ -84,39 +81,11 @@ This module was developed because of the non-existence of reduced size \ac{RI}s 
 
 \end{figure}
 
-The \ac{PCB} size must be suitable for this footprint, not exceeding its width. $\mu$Trans \ac{PCB} shape is defined as in Figure \ref{fig:cap5:mtransshape}.
+The \ac{PCB} size must be suitable for this footprint, not exceeding its width. $\mu$Trans \ac{PCB} shape is defined as in Figure \ref{fig:cap5:realsizemtrans}.
 
-Module pads are based vias\footnote{A via is a electrical connection between layers in a physical electronic circuit that goes through the plane of one or more adjacent layers.}, with a 1.2 mm diameter through hole. These holes are width enough let the solder tip into them and solder the pads over the footprint. These pads constitute the electrical interface between the $\mu$Trans and \ac{CNGD} and suppose a low-cost and size solution.  
+Module pads are based vias\footnote{A via is a electrical connection between layers in a physical electronic circuit that goes through the plane of one or more adjacent layers.}, with a 1.2 mm diameter through hole. These holes are width enough to let the solder tip into them and solder the pads over the footprint. These pads constitute the electrical interface between the $\mu$Trans and \ac{CNGD} and suppose a low-cost and size solution.  
 
-MRF49XA datasheet provides hints for the inclusion of the transceiver into a \ac{PCB}. It recommends to fill area underneath the transceiver with ground vias, thereby the module includes such vias. In addition, to have an easily accessible measure of the clock signal, the top layer posses a small pad that provides this signal. Minimal clearance among tracks is set to 0.2 mm and the standard track width is 0.2 mm. Power tracks width is set to 0.4 mm and ground planes are placed on top and bottom layers. Vias through holes minimal diameter are 0.4 mm width. Table \ref{tab:cap5:mtranscomponents} contains the needed components for the $\mu$Trans 434/868 on both versions.
-
-\begin{table}[h]
-\centering
-\scalebox{0.9}{
-\begin{tabular}{||l l l l c||}
-\hline
-\hline
-\multirow{2}{*}{\textbf{Symbol}} & \textbf{Nominal Value}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & \multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
- & \multicolumn{1}{c}{(434/868)} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
-C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 & 1\\ \hline
-C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 & 1 \\ \hline
-X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD & 1\\ \hline
-MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP & 1 \\ \hline
-J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole & 1\\ \hline
-D1 &  & Light Emitting Diode & 0603 & 1\\ \hline
-R1 & 300 $\Omega$ & Resistor & 0603 & 1\\ \hline \hline 
-C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
-C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
-C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
-C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
-L1 & 390 nH/100 nH & Inductor & 0603 & 1\\ \hline
-L2 & 33 nH/8.2 nH & Inductor & 0603 & 1\\ \hline
-L3 & 47 nH/22N nH & Inductor & 0603 & 1\\ \hline \hline
-\end{tabular}}
-
-\caption{Component description for $\mu$Trans 434/868.%
-         \label{tab:cap5:mtranscomponents}}
-\end{table}
+MRF49XA datasheet provides hints for the inclusion of the transceiver into a \ac{PCB}. It recommends to fill with ground vias the area underneath the transceiver. In addition, to have an easily accessible measure of the clock signal, the top layer posses a small pad that provides this signal. Minimal clearance among tracks is set to 0.2 mm and the standard track width is 0.2 mm. Power tracks width is set to 0.4 mm and ground planes are placed on top and bottom layers. Vias through holes minimal diameter are 0.4 mm width. Table \ref{tab:ap2:mtranscomponents} at the Appendix \ref{ap2:layouts} contains the needed components for the $\mu$Trans 434/868 on both versions.
 
 %-------------------------------------------------------------------
 \subsection{Layout}
@@ -128,7 +97,7 @@ Different layers of the layout can be observed at Appendix \ref{ap2:layouts}. Fi
 %-------------------------------------------------------------------
 Basic tests to check proper functionality were made while prototyping the module.
 
-Firstly, the modules were tested over the \ac{FCD} platform. For this, the $\mu$Trans pads were wired and connected to header prepared for the MRF49XA PICtail Plus Daughter Board. Over this platform and making use of a multi-probe oscilloscope, \ac{SPI} communication signals and others were checked, and possible errors debugged.
+Firstly, the modules were tested over the \ac{FCD} platform. For this, the $\mu$Trans pads were wired and connected to header prepared for the MRF49XA PICtail Plus Daughter Board. Over this platform and making use of a multi-probe oscilloscope, \ac{SPI} and other interface signals were checked, and possible errors debugged.
 
 After this, and in collaboration with other MRF49XA modules, it was checked that the module properly carried out handshaking, network detection and joining, and data transmission and reception processes.
 
@@ -136,11 +105,16 @@ After this, and in collaboration with other MRF49XA modules, it was checked that
 \subsection{Final Result}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo5/mtranstop}{width=0.15\textwidth}{fig:cap5:mtransfront}%
-{Detailed front view of the $\mu$Trans module.}
-
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:mtransback}%
-{Detailed back view of the $\mu$Trans module.}
+\begin{figure}[!h]
+\centering
+   
+\subfloat[Top view.]{\label{fig:cap5:mtransfront}\includegraphics[width=0.15\textwidth]{Imagenes/Bitmap/Capitulo5/mtranstop}}  
+\qquad
+\subfloat[Bottom view.]{\label{fig:cap5:mtransback}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Todo}}
+       
+\caption{Detailed view of the $\mu$Trans module.}
+\label{fig:cap5:mtrans}
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{Main Board - cognitiveNextGenerationDevice}
@@ -155,7 +129,7 @@ After this, and in collaboration with other MRF49XA modules, it was checked that
 \subsection{Description}
 %-------------------------------------------------------------------
 
-\begin{figure}
+\begin{figure}[!h]
         \centering
 		\includegraphics[height=320px]{Imagenes/Vectorial/Capitulo5/cngdshape}  
         \caption{cNGD PCB real size shape. 97x84 mm}
@@ -164,12 +138,11 @@ After this, and in collaboration with other MRF49XA modules, it was checked that
 
 The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \ref{cap4:sec:cNGD} attending to expand functionality and usability, and reducing size and cost. Since this is key board of the whole system, most part of the weight of the operation requirements relies on it. It must mainly contain the three \ac{RI}s, give support to expansion modules, include the power supply and battery room, programming system, and microcontroller. In addition, it must provide an easy access to the control modules (\ac{LED}s and push buttons) and easy deployment. Regarding its test-bed character, the module must include some kind of anchors to fix it anywhere or encrust some feet. All these features must be achieved keeping size and cost limited, so the module become affordable and valuable. Figure \ref{fig:cap5:cngdshape} shows the \ac{PCB} shape.
 
-
 Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at the large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngdfront} can give a better view of these ideas.  
 
-The board includes four holes for the battery to be attached. Figure \ref{fig:cap5:headersystem} illustrates the way it works, for legs fix together the board and the batteries-holder. Moreover, the \ac{PCB} includes more holes for general purpose in case of feet or fixing are required.
+The board includes four holes for the battery to be attached. Figure \ref{fig:cap5:headersystem} illustrates the way it works, four legs fix together the board and the batteries-holder.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
    
 \subfloat[Footprint.]{\label{fig:cap5:bat2d}\includegraphics[width=180px]{Imagenes/Vectorial/Capitulo5/bat2d}}  
@@ -180,9 +153,9 @@ The board includes four holes for the battery to be attached. Figure \ref{fig:ca
 \label{fig:cap5:batterysystem}
 \end{figure}
 
-Headers module has been placed relying on the large edges 1 and 3, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exactly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is illustrated in Figure \ref{fig:cap5:headerfootprint}.
+Headers module has been placed relying on the large edges 1 and 3, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exactly equal headers on them, this way it will be possible to stack several expansion modules ones above others. The headers footprint to include in future expansion modules to fit the design is illustrated in Figure \ref{fig:cap5:headersystem}.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
    
 \subfloat[Header detail over cNGD PCB.]{\label{fig:cap5:cngdheader}\includegraphics[width=200px]{Imagenes/Vectorial/Capitulo5/headerdetail}}  
@@ -193,48 +166,7 @@ Headers module has been placed relying on the large edges 1 and 3, Figure \ref{f
 \label{fig:cap5:headersystem}
 \end{figure}
 
-The minimum spacing among tracks is set to 0.1 mm around the \ac{MCU} and 0.2 mm in the rest of the layout. Tracks widths vary from 0.2 mm up to 1.2 mm in power tracks. Vias through holes have a 0.4 mm width diameter. Table \ref{tab:cap5:cngdcomponents} details the needed components for \ac{CNGD} module.
-
-\begin{table}[h]
-\centering
-\scalebox{0.9}{
-\begin{tabular}{||l l l l c||}
-\hline
-\hline
-\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 				\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
- & \multicolumn{1}{c}{\textbf{Value}} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
-J1 &  & MICRO USB A/B  & SMD & 1\\ \hline
-C1,3-9 & 100 nF & Ceramic Capacitor & 0603 & 8 \\ \hline
-C2 & 10 $\mu$F & Pol. Capacitor & 1206 & 1\\ \hline
-C10,11 & 4.7 $\mu$F & Ceramic Capacitor & 0603 & 2 \\ \hline
-C12-14 & 1 $\mu$F & Ceramic Capacitor &  0603 & 3\\ \hline
-C15,16 & 15 pF  & Ceramic Capacitor & 0603 & 2\\ \hline
-C17,18 & 30 pF  & Ceramic Capacitor & 0603 & 2\\ \hline
-R1,8,9,12,13 & 10 K$\Omega$ & Resistor  & 0603 & 1\\ \hline
-R4 & 10 $\Omega$ & Resistor  & 0603 & 1\\ \hline
-R2,5-7,15 & 330 $\Omega$ & Resistor  & 0603 & 5\\ \hline
-R15 & 510 $\Omega$ & Resistor  & 0603 & 1\\ \hline
-Y1 & 32.768 KHz & 12.5pF Load capacitance crystal & Through hole & 1\\ \hline
-Y2 & 8 MHz & 20 pF Load capacitance crystal  & SMD & 1\\ \hline
-PGE &  & RJ-11 Connector & & 1\\ \hline
-LED1-5 & & LED & 0603 & 5\\ \hline
-U1 &  & PIC32MX675F256L-80I/PT & TQFP & 1\\ \hline
-hd40 &  & 10-pin Stackable Header & & 4\\ \hline
-L1 & 4.7mH & Inductance & 1210 & 1\\ \hline
-PC\_434, & & \multirow{2}{*}{ADG701LBRTZ - SWITCH }& \multirow{2}{*}{SOT-23} & \multirow{2}{*}{3} \\
-868, 2400 & & & &\\ \hline
-conv3.3 &  & MCP1603T-330I/OS & TSOT & 1\\ \hline
-J2 &  & Terminal Block  &  & 1\\ \hline
-J3 &  & DC Female Connector & Through hole & 1\\ \hline
-S1-3 &  & Tactile Switch STSP  & 60x60 mm & 3\\ \hline
-sw1 &  & Slide Switch, SPDT & Through Hole & 1\\ \hline \hline
-\end{tabular}}
-
-\caption{Component description for cNGD.%
-         \label{tab:cap5:cngdcomponents}}
-\end{table}
-
-%*****package in metrics
+The minimum spacing among tracks is set to 0.1 mm around the \ac{MCU} and 0.2 mm in the rest of the layout. Tracks widths vary from 0.2 mm up to 1.2 mm in power tracks. Vias through holes have a 0.4 mm width diameter. Table \ref{tab:ap2:cngdcomponents} at Appendix \ref{ap2:layouts} details the needed components for \ac{CNGD} module.
 
 %-------------------------------------------------------------------
 \subsection{Layout}
@@ -247,20 +179,25 @@ When prototyping, first part to test is the right operation of the \ac{MCU}. Aft
 
 Once the right programming of the \ac{MCU} is tested, the external clocks are mounted and tested by changing the software parameters. After this check, it is time for push buttons and \ac{LED}s, which are tested using test software described in Section \ref{cap6:sec:testBenches}. Rest of decoupling capacitors around the \ac{MCU} can be soldered.
 
-For these already described checkings, power supply from the \ac{ICD} 3 is used. Next step is to mount the power supply system and, using external sources, try the right operation of the mounted modules.
+For these already described checkings, power supply from the \ac{ICD} 3 is used. Next step is to mount the power supply system and, using external sources, try the right operation of the mounted modules. Since $\mu$USB takes part of the power supply system, it was checked at this stage. A basic test for the \ac{USB} was included at the firmware.  
  
 At this point, the need of debugging traces arises to keep on mounting the device. A serial communication interface is required, and since the used firmware already supports for RS-232 communication, the rs232SHIELD is mounted and used. To read more details about this mounting, go to Section \ref{cap5:sec:rs232shield}. Headers must be soldered on the board to use this shield.
 
-Last, but not least, modules to try are the \ac{RI}s. One by one, they are added to the \ac{CNGD} and checked. The chosen firmware contains several radio tests for general \ac{TX}/\ac{RX}, handshaking, channel switching. The \ac{RI}s can be tested in conjunction with the equivalent \ac{RI}s at the \ac{FCD}.
+Last modules to try are the \ac{RI}s. One by one, they are added to the \ac{CNGD} and checked. The chosen firmware offers several radio tests for general \ac{TX}/\ac{RX}, handshaking, channel switching. The \ac{RI}s can be tested in conjunction with the equivalent \ac{RI}s at the \ac{FCD}. At this point, it is possible to check the proper operation for the software controlled switches that enable power to the \ac{RI}s. Basic tests have been specifically developed to check this function.
 
 %-------------------------------------------------------------------
 \subsection{Final result}
 %-------------------------------------------------------------------
-\figura{Bitmap/Capitulo5/cngdtop}{width=0.6\textwidth}{fig:cap5:cngdfront}%
-{Detailed front view of the cNGD.}
-
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:cngdback}%
-{Detailed back view of the cNGD.}
+\begin{figure}[!h]
+\centering
+   
+\subfloat[Top view.]{\label{fig:cap5:cngdfront}\includegraphics[width=0.6\textwidth]{Imagenes/Bitmap/Capitulo5/cngdtop}}  
+\qquad
+\subfloat[Bottom view.]{\label{fig:cap5:cngdback}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Todo}}
+       
+\caption{Detailed view of the cNGD module.}
+\label{fig:cap5:cngd}
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{Serial Communication Board - rs232SHIELD}
@@ -268,45 +205,22 @@ Last, but not least, modules to try are the \ac{RI}s. One by one, they are added
 \label{cap5:sec:rs232shield}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo5/rs2323d}{width=0.6\textwidth}{fig:cap5:rs2323dmodel}%
-{rs232SHIELD 3D model.}
+\begin{figure}[!h]
+        \centering
+		\includegraphics[width=0.6\textwidth]{Imagenes/Bitmap/Capitulo5/rs2323d}  
+        \caption{rs232SHIELD 3D model.}
+        \label{fig:cap5:rs2323dmodel}
+\end{figure}
 
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the already described headers. Hence, this module must include the proper interface to fit the design. It has to encrust the footprint defined in Figure \ref{fig:cap5:headerfootprint} to place correctly the connection headers. Adapting the board to these connections, the resulting board shape is illustrated in Figure \ref{fig:cap5:rs232shape}.
+This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the already described headers. The board shape posses a total size of 67.9x33 mm.
 
-\begin{figure}
-        \centering
-                 \includegraphics[height=125px]{Imagenes/Vectorial/Capitulo5/shieldshape}
-        \caption{rs232SHIELD PCB real size shape. 67.9x33 mm.}
-        \label{fig:cap5:rs232shape}
-\end{figure}
 % HABLAR DEL ENCAPSULADO DEL MAX3232 y de los headers que incluye
 The \ac{RX} signal is shorted to pin 21 and \ac{TX} signal to pin 38.
 
-In addition, the module contains a RS-232 male connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} details the components needed for this module. 
-
-\begin{table}[h]
-\centering
-\scalebox{0.9}{
-\begin{tabular}{||l l l l c||}
-\hline
-\hline
-\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 
-			\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
- & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
-C1,2,3,4,5 & 1 $\mu$F & Pol. Capacitor  & 0603 & 5\\ \hline
-C6 & 100 nF & Ceramic Capacitor & 0603 & 1 \\ \hline
-C7 & 22 pF  & Ceramic Capacitor & 0603 & 1\\ \hline
-J1 & & DB9 female header - right angle & PCB mount & 1\\ \hline
-U1 &  & MAX3232CD - RS232 TXRX & SOIC & 1\\ \hline
-hd40 &  & 10-pin Stackable Header & & 4\\ \hline \hline
-\end{tabular}}
-
-\caption{Components description for rs232SHIELD.%
-         \label{tab:cap5:rs232components}}
-\end{table}
+In addition, the module contains a RS-232 female connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} at Appendix \ref{ap2:layouts} details the components needed for this module. 
 
 %-------------------------------------------------------------------
 \subsection{Layout}
@@ -331,11 +245,16 @@ Serial communication parameters can be changed at the firmware configuration. Ho
 \subsection{Final results}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo5/rs232top}{width=0.4\textwidth}{fig:cap5:rs232front}%
-{Detailed front view of the rs232SHIELD module.}
-
-\figura{Bitmap/Capitulo5/rs232bottom}{width=0.4\textwidth}{fig:cap5:rs232back}%
-{Detailed back view of the rs232SHIELD module.}
+\begin{figure}[!h]
+\centering
+   
+\subfloat[Top view.]{\label{fig:cap5:rs232front}\includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/Capitulo5/rs232top}}  
+\qquad
+\subfloat[Bottom view.]{\label{fig:cap5:rs232back}\includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/Capitulo5/rs232bottom}}
+       
+\caption{Detailed view of the rs232SHIELD module.}
+\label{fig:cap5:rs232}
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{Battery charger - chargerSHIELD}
@@ -349,40 +268,13 @@ Serial communication parameters can be changed at the firmware configuration. Ho
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-This module is also a shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the known expansion headers. Hence, this module must include the footprint defined in Figure \ref{fig:cap5:headerfootprint}. Both shields, rs232SHIELD and chargerSHIELD, use the shape illustrated in Figure \ref{fig:cap5:rs232shape}.
+This module is also a shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the known expansion headers. This sield shares the same shape than rs232SHIELD.
 
 Battery positive pole is accessible at the header on pin 29, negative pole is at pin 30. These two pins are linked to the circuit. Apart from this interface, the charger encrusts a terminal block to connect a external 12V source. This source must be capable to provide up to 500 mA.
 
 Current version of the charger does not include any heat dissipater. Tests showed that not heat dissipater was required for the current configuration. Any change over the resistors configuration must consider the overheating possibility on LM317AMDT component. Thus a heat dissipater could be needed.
 
-Minimal track spacing is set to 0.2 mm while the tracks width is is from 0.2 mm to 1.2 mm on power tracks. Vias posses a minimum through hole of 0.4 mm diameter. Table \ref{tab:cap5:chargercomponents} details the components needed for this module. 
-
-\begin{table}[h]
-\centering
-\scalebox{0.9}{
-\begin{tabular}{||l l l l c||}
-\hline
-\hline
-\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 
-			\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
- & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
-J1 &  & Terminal Block  &  & 1\\ \hline
-R3 & 5K & Resistor & 0603 & 1 \\ \hline
-R4 & 3.9 $\Omega$ & 1W Resistor & Axial & 1\\ \hline
-C1 & 10 $\mu$F & Terminal Block &  & 1\\ \hline
-U1 &  & LM317AMDT - IC, V. REG.  & TO-220 & 1\\ \hline
-hd40 &  & 10-pin Stackable Header & & 4\\ \hline
-Q1 &  &  MOSFET IRF5801 & TSOP & 1\\ \hline
-R1 & 4.6 K$\Omega$  & Resistor  & 0603 & 1\\ \hline
-R2 & 9.8 K$\Omega$ & Resistor & 0603 & 1\\ \hline
-U2 &  & LM311D - IC, COMPARATOR & SOIC8 & 1\\ \hline
-D1 &  & DIODE, STANDARD, 0.5A & Axial Leaded & 1\\ \hline \hline
-\end{tabular}}
-
-\caption{Components description for chargerSHIELD.%
-         \label{tab:cap5:chargercomponents}}
-\end{table}
-
+Minimal track spacing is set to 0.2 mm while the tracks width is is from 0.2 mm to 1.2 mm on power tracks. Vias posses a minimum through hole of 0.4 mm diameter. Table \ref{tab:ap2:chargercomponents} at Appendix \ref{ap2:layouts} details the components needed for this module. 
 
 %-------------------------------------------------------------------
 \subsection{Layout}
@@ -401,11 +293,17 @@ Once the chargerSHIELD showed a proper operation it was tested over the \ac{CNGD
 %-------------------------------------------------------------------
 \subsection{Final results}
 %-------------------------------------------------------------------
-\figura{Bitmap/Capitulo5/chargertop}{width=0.4\textwidth}{fig:cap5:chargerfront}%
-{Detailed front view of the chargerSHIELD module.}
 
-\figura{Vectorial/Todo}{width=0.4\textwidth}{fig:cap5:chargerback}%
-{Detailed back view of the chargerSHIELD module.}
+\begin{figure}[!h]
+\centering
+   
+\subfloat[Top view.]{\label{fig:cap5:chargerfront}\includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/Capitulo5/chargertop}}  
+\qquad
+\subfloat[Bottom view.]{\label{fig:cap5:chargerback}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Todo}}
+       
+\caption{Detailed view of the chargerSHIELD module.}
+\label{fig:cap5:charger}
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{Conclusions}
@@ -413,9 +311,9 @@ Once the chargerSHIELD showed a proper operation it was tested over the \ac{CNGD
 \label{cap5:sec:conclusions}
 %-------------------------------------------------------------------
 
-The whole implementation supposes a modular, versatile, functional, and flexible platform for \ac{CWSN} development. \ac{CNGD} module is the main piece, containing the essential functionalities for a \ac{WSN} node. This main part is able to host up to three \ac{RI}s, becoming the only \ac{WSN} platform together with the \ac{FCD} meeting this feature, and the only platform capable to access three different different frequency bands. In addition, the \ac{CNGD} accepts attachable modules that brings up new functionalities without requiring a new complete design. An existing, ad-hoc developed, firmware has been used to drive the platform as a design requirement. 
+The whole implementation supposes a modular, versatile, functional, and flexible platform for \ac{CWSN} development. \ac{CNGD} module is the main piece, containing the essential functionalities for a \ac{WSN} node. This main part is able to host up to three \ac{RI}s, becoming the only \ac{WSN} platform together with the \ac{FCD} meeting this feature, and the only platform for \ac{WSN}s capable to access three different frequency bands. In addition, the \ac{CNGD} accepts attachable modules that brings up new functionalities without requiring a new complete design. An existing, ad-hoc developed, firmware has been used to drive the platform as a design requirement. 
 
-Since there were not commercial \ac{RI}s based on the MRF49XA transceiver presenting a suitable size, it was needed the development of ad-hoc \ac{RI}s based on this transceiver. These developed \ac{RI}s, called $\mu$Trans, operate over the 434 MHz and 868 MHz depending on the impedance matching circuitry and antenna they contain. They employ MiWi protocol and support sleep modes. The firmware employed is already prepared to fully drive these \ac{RI}s. It even includes a single MiWi stack shared by the three possible \ac{RI}s. $\mu$Trans are designed to be soldered into the \ac{CNGD} board and they accept external antennas over a coaxial connector.
+It was needed the development of ad-hoc \ac{RI}s based on MRF49XA transceiver. These developed \ac{RI}s, called $\mu$Trans, operate over the 434 MHz and 868 MHz depending on the impedance matching circuitry and antenna they contain. They employ MiWi protocol and support sleep modes. The firmware employed is already prepared to fully drive these \ac{RI}s. It even includes a single MiWi stack shared by the three possible \ac{RI}s. $\mu$Trans are designed to be soldered into the \ac{CNGD} board and they accept external antennas over a coaxial connector.
 
 Third \ac{RI}, a MRF49J40MA, consist of a commercial option that  operates over 2.4 GHz. It is also MiWi compliant, accepts sleep modes and it is supported by the named firmware. This \ac{RI} is also attached to the \ac{CNGD} by soldering and it contains a \ac{PCB} antenna.
 

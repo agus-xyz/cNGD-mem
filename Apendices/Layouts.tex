@@ -4,24 +4,142 @@
 %
 %---------------------------------------------------------------------
 
-\chapter{Layouts}
+\chapter{Layouts \& components}
 \label{ap2:layouts}
 
 \figura{Vectorial/Capitulo5/mtranstop}{width=.5\textwidth}{ap2:mtranstop}{$\mu$Trans Top layers.}
 
 \figura{Vectorial/Capitulo5/mtransbottom}{width=0.5\textwidth}{ap2:mtransbottom}{$\mu$Trans Bottom layers.}
 
+\begin{table}[!h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{||l l l l c||}
+\hline
+\hline
+\multirow{2}{*}{\textbf{Symbol}} & \textbf{Nominal Value}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & \multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{(434/868)} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+C2 & 0.01$\mu$F & Ceramic Capacitor  & 0603 & 1\\ \hline
+C3 & 2.2$\mu$F & Tantalum Capacitor & 1206 & 1 \\ \hline
+X1 & 10MHZ & QUARTZ CRYSTAL & 5 x 3.2 mm SMD & 1\\ \hline
+MRF49XA &  & MRF49XA-I/ST - TRANSCEIVER, RF & 16-TSSOP & 1 \\ \hline
+J1 &  & 50 $\Omega$ Coaxial SMA Jack  &  Through Hole & 1\\ \hline
+D1 &  & Light Emitting Diode & 0603 & 1\\ \hline
+R1 & 300 $\Omega$ & Resistor & 0603 & 1\\ \hline \hline 
+C1 & 220 pF/47 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+C5 & 2,7 pF/1,2 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+C6 & 68 pF/27 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+C7 & 5.1 pF/2,7 pF & Ceramic Capacitor  & 0603 & 1\\ \hline
+L1 & 390 nH/100 nH & Inductor & 0603 & 1\\ \hline
+L2 & 33 nH/8.2 nH & Inductor & 0603 & 1\\ \hline
+L3 & 47 nH/22N nH & Inductor & 0603 & 1\\ \hline \hline
+\end{tabular}}
+
+\caption{Component description for $\mu$Trans 434/868.%
+         \label{tab:ap2:mtranscomponents}}
+\end{table}
+
 \figura{Vectorial/Capitulo5/cngdtop}{width=0.9\textwidth}{ap2:cngdtop}{cNGD Top layers.}
 
 \figura{Vectorial/Capitulo5/cngdbottom}{width=.9\textwidth}{ap2:cngdbottom}{cNGD Bottom layers.}
+
+
+\begin{table}[!h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{||l l l l c||}
+\hline
+\hline
+\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 				\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{\textbf{Value}} & & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+J1 &  & MICRO USB A/B  & SMD & 1\\ \hline
+C1,3-9 & 100 nF & Ceramic Capacitor & 0603 & 8 \\ \hline
+C2 & 10 $\mu$F & Pol. Capacitor & 1206 & 1\\ \hline
+C10,11 & 4.7 $\mu$F & Ceramic Capacitor & 0603 & 2 \\ \hline
+C12-14 & 1 $\mu$F & Ceramic Capacitor &  0603 & 3\\ \hline
+C15,16 & 15 pF  & Ceramic Capacitor & 0603 & 2\\ \hline
+C17,18 & 30 pF  & Ceramic Capacitor & 0603 & 2\\ \hline
+R1,8,9,12,13 & 10 K$\Omega$ & Resistor  & 0603 & 1\\ \hline
+R4 & 10 $\Omega$ & Resistor  & 0603 & 1\\ \hline
+R2,5-7,15 & 330 $\Omega$ & Resistor  & 0603 & 5\\ \hline
+R15 & 510 $\Omega$ & Resistor  & 0603 & 1\\ \hline
+Y1 & 32.768 KHz & 12.5pF Load capacitance crystal & Through hole & 1\\ \hline
+Y2 & 8 MHz & 20 pF Load capacitance crystal  & SMD & 1\\ \hline
+PGE &  & RJ-11 Connector & & 1\\ \hline
+LED1-5 & & LED & 0603 & 5\\ \hline
+U1 &  & PIC32MX675F256L-80I/PT & TQFP & 1\\ \hline
+hd40 &  & 10-pin Stackable Header & & 4\\ \hline
+L1 & 4.7mH & Inductance & 1210 & 1\\ \hline
+PC\_434, & & \multirow{2}{*}{ADG701LBRTZ - SWITCH }& \multirow{2}{*}{SOT-23} & \multirow{2}{*}{3} \\
+868, 2400 & & & &\\ \hline
+conv3.3 &  & MCP1603T-330I/OS & TSOT & 1\\ \hline
+J2 &  & Terminal Block  &  & 1\\ \hline
+J3 &  & DC Female Connector & Through hole & 1\\ \hline
+S1-3 &  & Tactile Switch STSP  & 60x60 mm & 3\\ \hline
+sw1 &  & Slide Switch, SPDT & Through Hole & 1\\ \hline \hline
+\end{tabular}}
+
+\caption{Component description for cNGD.%
+         \label{tab:ap2:cngdcomponents}}
+\end{table}
+
 
 \figura{Vectorial/Capitulo5/rs232top}{width=0.7\textwidth}{ap2:rs232top}{rs232SHIELD Top layers.}
 
 \figura{Vectorial/Capitulo5/rs232bottom}{width=0.7\textwidth}{ap2:rs232bottom}{rs232SHIELD Top layers.}
 
+\begin{table}[!h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{||l l l l c||}
+\hline
+\hline
+\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 
+			\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+C1,2,3,4,5 & 1 $\mu$F & Pol. Capacitor  & 0603 & 5\\ \hline
+C6 & 100 nF & Ceramic Capacitor & 0603 & 1 \\ \hline
+C7 & 22 pF  & Ceramic Capacitor & 0603 & 1\\ \hline
+J1 & & DB9 female header - right angle & PCB mount & 1\\ \hline
+U1 &  & MAX3232CD - RS232 TXRX & SOIC & 1\\ \hline
+hd40 &  & 10-pin Stackable Header & & 4\\ \hline \hline
+\end{tabular}}
+
+\caption{Components description for rs232SHIELD.%
+         \label{tab:cap5:rs232components}}
+\end{table}
+
 \figura{Vectorial/Capitulo5/chargertop}{width=0.7\textwidth}{ap2:chargertop}{chargerSHIELD Top layers.}
 
 \figura{Vectorial/Capitulo5/chargerbottom}{width=0.7\textwidth}{ap2:chargerbottom}{chargerSHIELD Top layers.}
+
+
+\begin{table}[h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{||l l l l c||}
+\hline
+\hline
+\multirow{2}{*}{\textbf{Symbol}} & \multicolumn{1}{c}{\textbf{Nominal}}  & \multicolumn{1}{c}{\multirow{2}{*}{\textbf{Description}}} & 
+			\multicolumn{1}{c}{\textbf{Package}} & \multirow{2}{1cm}{\textbf{Quant.}}. \\
+ & \multicolumn{1}{c}{\textbf{Value}}& & \multicolumn{1}{c}{\textbf{Type}} & \\ \hline \hline
+J1 &  & Terminal Block  &  & 1\\ \hline
+R3 & 5K & Resistor & 0603 & 1 \\ \hline
+R4 & 3.9 $\Omega$ & 1W Resistor & Axial & 1\\ \hline
+C1 & 10 $\mu$F & Terminal Block &  & 1\\ \hline
+U1 &  & LM317AMDT - IC, V. REG.  & TO-220 & 1\\ \hline
+hd40 &  & 10-pin Stackable Header & & 4\\ \hline
+Q1 &  &  MOSFET IRF5801 & TSOP & 1\\ \hline
+R1 & 4.6 K$\Omega$  & Resistor  & 0603 & 1\\ \hline
+R2 & 9.8 K$\Omega$ & Resistor & 0603 & 1\\ \hline
+U2 &  & LM311D - IC, COMPARATOR & SOIC8 & 1\\ \hline
+D1 &  & DIODE, STANDARD, 0.5A & Axial Leaded & 1\\ \hline \hline
+\end{tabular}}
+
+\caption{Components description for chargerSHIELD.%
+         \label{tab:ap2:chargercomponents}}
+\end{table}
+
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX

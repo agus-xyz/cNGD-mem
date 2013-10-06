@@ -17,7 +17,7 @@ Thomas \& Guy-Manuel, Daft Punk
 
 
 \begin{resumen}
-This chapter covers a full review about the project. Most important conclusions are summarized and future lines are set.
+This chapter covers a full review about the project. It is shown a general view of the implemented system together with the main taken decisions and carried out tasks. Most important conclusions are summarized and future lines are set.
 \end{resumen}
 
 The main goal of the project is to design and implement a node for the study of \ac{CWSN}s. A demo application layer, also to be developed, must work integrated with an already implemented firmware. This employed firmware is able to give support to up to three transceivers sharing a single MiWi$^{TM}$stack. It focus on abstracting the developer and the application from the cognitive model and the direct hardware management.
@@ -29,33 +29,64 @@ The whole system respond to a modular design widely adaptable over the range of 
 
 The sort of device shown at this project features some novel properties with respect to other \ac{CWSN} devices, such as its capability to communicate over three different ISM RF bands. The hardware fits the conditions and requirements of \ac{WSN} environments. Low power consumption, size and cost limitations are taken into account in order to achieve real test-benching purposes, application development or even possible complete implementations.
 
+In Section \ref{cap1:sec:goals} takes place a fragmented set of subgoals is described, here they follos some conclusions obtenied throughout the achievement of these subgoals:
 
+\begin{itemize}
 
+\item A review all over the recent implementations related to the \ac{CWSN} is made in Chapter 3. The \ac{FCD} architecture is quite close to the one pursued so is taken as guide for the designing process. Used technology is evaluated and weaknesses detected, also minimal requirements are stated. Many decisions, such as a reconfiguration of the \ac{RI}s or the need for expansion options, were taken to face the design.
+
+\item The whole design is covered in Chapter 4. Conclusions exracted during the previous review were attended and the whole system was designed at a logic level. Components were chosen and required functionalities assigned to different modules.
+
+\item At Chapter 5 is covered the hardware implementation. The \ac{PCB} layouts were deployed and prototypes mounted. Node functionalities were checked and design validation with consequent corrections.
+
+\item Software developed for hardware checkings, firmware adaptations, and final demo application is described in Chapter 6. Firmware has been slighly modified to be fully adapted to the hardware features. Final demo application proves right operation of \ac{CR} functions applied to \ac{WSN} communications. 
+
+\end{itemize}
+
+After carrying out the previously defined tasks, conclusions about viability, valuability and utility about the implemented idea came out. Most important points are:
+
+\begin{itemize}
+
+\item
+
+\item
+
+\item
+
+\item
+
+\item
+
+\end{itemize}
 %-------------------------------------------------------------------
 \section{Further Studies}
 %-------------------------------------------------------------------
 \label{cap8:sec:furtherStudies}
 %-------------------------------------------------------------------
 
-test bed
+Facing the future of the platform, it is important to pay attention to some points. These points have been considered as highly convenient in order to increase performance and obtaining a better utilization of the system.
 
-crear funciones en hal para perifericos en headers
+\begin{itemize} 
+\item \ac{CNGD}-based complete test-bed design.
 
-trabajar con transceptores a fin de crear un unico transceptor con 2 bandas e incluso añadir posibilidad de wake-on radio.
+\item \ac{RI} research. a fin de crear un unico transceptor con 2 bandas e incluso añadir posibilidad de wake-on radio.
 
-desarrollar shields de funcionalidades utiles tales como un acceso ethernet, 3g, gsm, otra de proposito general con puntos de soldadura, 
 
-cambiar el conector programador PGE por una versión simplificada mas barata y que ocupe menos espacio, incluso a traves de los headers. Ademas seria imprescindible de cara a un testbed el desarrollo de un sistema programador sin cablear.
+\item Shields development.  utiles tales como un acceso ethernet, 3g, gsm, otra de proposito general con puntos de soldadura, 
 
-cambio de arquitectura -> cambio de firmware 
+\item Architecture review. cambio de arquitectura -> cambio de firmware. desarrollar firmware y protocolo desde 0.
 
-desarrollar firmware y protocolo desde 0
+\item Over the air programming (OTAP).
 
-Over the air programming (OTAP)
+\item Design optimizations. cambiar el conector programador PGE por una versión simplificada mas barata y que ocupe menos espacio, incluso a traves de los headers. unified clock for all transceivers.
 
-wireless traces
+\item Wireless console system for tracing and general debugging.
 
-unified clock for all transceivers
+
+\item Firmware adaptations to make more easy access to peripherals at headers.
+
+
+\end{itemize}
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX

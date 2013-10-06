@@ -16,6 +16,21 @@ Thomas \& Guy-Manuel, Daft Punk
 \end{FraseCelebre}
 
 
+\begin{resumen}
+This chapter covers a full review about the project. Most important conclusions are summarized and future lines are set.
+\end{resumen}
+
+The main goal of the project is to design and implement a node for the study of \ac{CWSN}s. A demo application layer, also to be developed, must work integrated with an already implemented firmware. This employed firmware is able to give support to up to three transceivers sharing a single MiWi$^{TM}$stack. It focus on abstracting the developer and the application from the cognitive model and the direct hardware management.
+
+The platform was developed responding to the requirements and a final demo let prove the right operation of the whole system. 
+The whole system respond to a modular design widely adaptable over the range of WAHSNs applications. Main module is called \ac{CNGD}. This main module suposes the node itself, it posses different functionalities such as power supply, power control over modules, battery, expansion headers, \ac{RI}s, serial interface, and a control \ac{MCU} unit that enhances a node platform. \ac{RI}s on board of \ac{CNGD} offer communication over 434, 868, and 2400 MHz. \ac{RI}s used for 434 and 868 MHz are ad-hoc designed \ac{RI}s due to the lack of suitable size modules. This ad-hoc designed \ac{RI}s are called $\mu$Trans 434/868 for 434/868 Mhz respectively. 
+
+\ac{CNGD} main module accepts expansion options over its headers, so-called shields, and for this project two shields were implemented. First shield gives chance to serial communication through an \ac{RS232} port. Second one is a suitable charger for the batteries. Shields allow developers to create new attachable functionalities and possibilities or give different capabilities to distinct reduced node groups of the total network. This helps to keep the downtrend on complexity, consumption, size and cost but not on performance.
+
+The sort of device shown at this project features some novel properties with respect to other \ac{CWSN} devices, such as its capability to communicate over three different ISM RF bands. The hardware fits the conditions and requirements of \ac{WSN} environments. Low power consumption, size and cost limitations are taken into account in order to achieve real test-benching purposes, application development or even possible complete implementations.
+
+
+
 %-------------------------------------------------------------------
 \section{Further Studies}
 %-------------------------------------------------------------------

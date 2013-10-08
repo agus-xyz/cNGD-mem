@@ -124,7 +124,7 @@
 
 @entry{RAM, , \emph{Random Access Memory}}
 
-@entry{KP, , \emph{Knoledge Plane}}
+@entry{KP, , \emph{Knowledge Plane}}
 
 @entry{PHY, , \emph{Physical}}
 
@@ -239,4 +239,10 @@
 @entry{MII, , \emph{Media Independent Interface}}
 
 @entry{RMII, , \emph{Reduced Media Independent Interface}}
+
+@entry{OTAP, , \emph{Over The Air Programming}}
+
+@entry{GSM,,\emph{Global System for Mobile}}
+
+@entry{GPRS,,\emph{General Packet Radio Service}}
 

@@ -1,0 +1,107 @@
+%---------------------------------------------------------------------
+%
+%                          Capítulo 7
+%
+%---------------------------------------------------------------------
+
+\chapter{Software}
+
+\begin{FraseCelebre}
+\begin{Frase}
+Too long, can you feel it? \\
+Too long, oh can you feel it ?
+\end{Frase}
+\begin{Fuente}
+Thomas \& Guy-Manuel, Daft Punk
+\end{Fuente}
+\end{FraseCelebre}
+
+\begin{resumen}
+This chapter gives a vision about the main adaptations required for the firmware to be adapted to the platform, new software implementations and behaviour of the final demo application.
+\end{resumen}
+
+%-------------------------------------------------------------------
+\section{Tools}
+%-------------------------------------------------------------------
+\label{cap7:sec:tools}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{MPLAB X}
+%-------------------------------------------------------------------
+\label{cap7:sub:mplabx}
+%-------------------------------------------------------------------
+MPLAB X \ac{IDE} is a multiplatform software program to develop applications for Microchip microcontrollers and digital signal controllers. It is called an Integrated Development Environment  because it provides a single integrated ``environment'' to develop code for embedded microcontrollers.
+
+MPLAB X is based on the open source NetBeans IDE from Oracle. Some of its main features are:
+
+\begin{itemize}
+    \item Supports Multiple Configurations within your projects.
+    \item Support for multiple Debug Tools of the same type.
+    \item Supports Live Parsing.
+    \item Supports hyperlinks for fast navigation to declarations and includes.
+    \item MPLAB X can Track Changes within your own system using local history.
+\end{itemize}
+
+\figura{Vectorial/Todo}{width=.5\textwidth}{fig:cap7:mplabx}%
+{MPLAB X IDE logo.}
+
+%-------------------------------------------------------------------
+\subsection{Programmer: ICD 3}
+%-------------------------------------------------------------------
+\label{cap7:sub:icd3}
+%-------------------------------------------------------------------
+
+\figura{Bitmap/Capitulo4/icd3}{width=.8\textwidth}{fig:cap4:icd3}%
+{ICD3 programmer configuration.}
+
+\ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the platform has a development character. Further information can be consulted at the manual\cite{icd3}.
+
+%-------------------------------------------------------------------
+\section{Hardware Abstraction Layer}
+%-------------------------------------------------------------------
+\label{cap7:sec:hal}
+%-------------------------------------------------------------------
+%DEPURACION
+
+%ALGUNOS CAMBIOS Y DESCRIBIR POR ENCIMA
+
+%-------------------------------------------------------------------
+\subsection{Platform options}
+%-------------------------------------------------------------------
+\label{cap7:subsec:usbtraces}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{USB tracing}
+%-------------------------------------------------------------------
+\label{cap7:subsec:usbtraces}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{Radio Interfaces Power Control Functions}
+%-------------------------------------------------------------------
+\label{cap7:subsec:usbtraces}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{Headers and other new definitions}
+%-------------------------------------------------------------------
+\label{cap7:subsec:usbtraces}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\section{Demo Application Layer}
+%-------------------------------------------------------------------
+\label{cap7:sec:applicationLayer}
+%-------------------------------------------------------------------
+
+
+
+% Variable local para emacs, para  que encuentre el fichero maestro de
+% compilación y funcionen mejor algunas teclas rápidas de AucTeX
+%%%
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../Tesis.tex"
+%%% End:

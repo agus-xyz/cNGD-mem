@@ -38,21 +38,22 @@ Tests are simple and check bounded functions. Aspects to check are related to sl
 This test tries to bring the \ac{CNGD} under different operation modes. On the one hand, different sleeping modes and energy options for \ac{RI}s and \ac{MCU} are achieved consecutively. On the other hand, consumed current by the platform is measured at each situation. 
 This test was already included at the firmware and just few changes were needed to fully carry it out. These changes suppose the functions to control the power at the \ac{RI}s and they are described at Section \ref{cap7:subsec:usbtraces}.  
 
-Seven different situations are configured and are stated as follows:
+8 Different situations are configured. Following description covers the initial state and sequential events happening:
 
 \begin{itemize}
-\item A situation:
-\item B situation:
-\item C situation:
-\item D situation:
-\item E situation:
-\item F situation:
-\item G situation:
+\item A situation: Initial situation. The three \ac{RI}s and the \ac{MCU} are in run mode.
+\item B situation: 434 MHz \ac{RI} goes to sleep mode. 
+\item C situation: Power supply at 434 MHz \ac{RI} is switch off.  
+\item D situation: 868 MHz \ac{RI} goes to sleep mode.
+\item E situation: Power supply at 868 MHz \ac{RI} is switch off.
+\item F situation: 2.4 GHz \ac{RI} goes to sleep mode.
+\item G situation: Power supply 2.4 GHz \ac{RI} is switch off.
+\item H situation: \ac{MCU} goes to sleep mode.
 \end{itemize} 
 
 Consumption measures are reflected at Figure \ref{fig:cap6:energymodes}, where a graph shows how the current consumption goes down throughout the different set situations.
 
-\figura{Vectorial/Todo}{width=.9\textwidth}{fig:cap6:energymodes}%
+\figura{Bitmap/Capitulo6/consumption}{width=\textwidth}{fig:cap6:energymodes}%
 {cNGD consumption at different energy modes.}
 
 %-------------------------------------------------------------------
@@ -69,24 +70,44 @@ Table ****** shows separately the measured time for \ac{RI}s and different proto
 %-------------------------------------------------------------------
 \label{cap6:sec:spectrum}
 %-------------------------------------------------------------------
-This test tries to show the right spectrum sensing capability of the platform since it supposes a key point for its purposes. Using two \ac{CNGD} prototypes and making use of the functions provided by the \ac{HAL}, three simple scenarios show sensing features at the three different frequency bands. All the scenarios host a device transmitting continously unicast packets. This \ac{RF} activity is detected by the platform at different spectrum energy scans. 
+This test tries to show the right spectrum sensing capability of the platform since it supposes a key point for its purposes. Using two \ac{CNGD} prototypes and making use of the functions provided by the \ac{HAL}, three simple scenarios show sensing features at the three different frequency bands. All the scenarios host a device transmitting continously unicast packets at determined channels. This \ac{RF} activity is detected by the platform at different spectrum energy scans. 
 
-First scenario is conducted over 434 MHz band. This band posses two available channels when using a bitrate of *******. Transmitting device is making use of channel 1. Figure ******* shows the energy scan traces deployed by the firmware.
+First scenario is conducted over 434 MHz band. This band posses 2 available channels when using a bitrate of 119,2 kbps. Transmitting device is making use of channel 1. Figure \ref{fig:cap6:434sensing} shows the energy scan traces deployed by the firmware.
+\begin{figure}[!h]
+\centering
+\subfloat[Before start transmitting packets.]{\label{fig:cap6:434sensingpre}\includegraphics[height=25px]{Imagenes/Bitmap/Capitulo6/434sensingpre}}%
+~
+\subfloat[After start transmitting packets.]{\label{fig:cap6:434sensingpost}\includegraphics[height=25px]{Imagenes/Bitmap/Capitulo6/434sensingpost}}%
+
+\caption{Spectrum sensgin at 434 MHz.}
+\label{fig:cap6:434sensing}
+\end{figure}
 
 
-
-******************************************
-
-
-First scenario is conducted over 868 MHz band. This band posses **** available channels when using a bitrate of *******. Transmitting device is making use of channel 4. Figure ******* shows the energy scan traces deployed by the firmware.
+First scenario is conducted over 868 MHz band. This band posses 7 available channels when using a bitrate of 119,2 kbps. Transmitting device is making use of channel 4. Figure \ref{fig:cap6:868sensing} shows the energy scan traces deployed by the firmware.
 
 
-************************************************
+\begin{figure}[!h]
+\centering
+\subfloat[Before start transmitting packets.]{\label{fig:cap6:868sensingpre}\includegraphics[height=70px]{Imagenes/Bitmap/Capitulo6/868sensingpre}}%
+\qquad
+\subfloat[After start transmitting packets.]{\label{fig:cap6:868sensingpost}\includegraphics[height=70px]{Imagenes/Bitmap/Capitulo6/868sensingpost}}%
 
-First scenario is conducted over 2.4 GHz band. This band posses ********** available channels when using a bitrate of *******. Transmitting device is making use of channel 4. Figure ******* shows the energy scan traces deployed by the firmware.
+\caption{Spectrum sensgin at 868 MHz.}
+\label{fig:cap6:868sensing}
+\end{figure}
 
-*********************************************
+First scenario is conducted over 2.4 GHz band. This band posses 16 available channels. Transmitting device is making use of channel 4. Figure \ref{fig:cap6:2400sensing} shows the energy scan traces deployed by the firmware.
 
+\begin{figure}[!h]
+\centering
+\subfloat[Before start transmitting packets.]{\label{fig:cap6:868sensingpre}\includegraphics[height=130px]{Imagenes/Bitmap/Capitulo6/2400sensingpre}}%
+~
+\subfloat[After start transmitting packets.]{\label{fig:cap6:868sensingpost}\includegraphics[height=130px]{Imagenes/Bitmap/Capitulo6/2400sensingpost}}%
+\caption{Spectrum sensgin at 2.4 GHz.}
+\label{fig:cap6:2400sensing}
+
+\end{figure}
 
 %-------------------------------------------------------------------
 \section{Radio interfaces agility test}

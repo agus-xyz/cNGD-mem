@@ -134,7 +134,7 @@ First scenario is conducted over 2.4 GHz band. This band posses 16 available cha
 %-------------------------------------------------------------------
 \label{cap6:sec:radioagility}
 %-------------------------------------------------------------------
-This test evaluates how long changes over the \ac{RI}s take to be done. Parameters to change are \ac{TX} power, operation channel and energy modes. This test was fully available at the firmware. Table *********** ilustrates the results.
+This test evaluates how long changes over the \ac{RI}s take to be done. Parameters to change are \ac{TX} power, operation channel and energy modes. This test was fully available at the firmware. Table \ref{tab:cap6:radioagility} ilustrates the results.
 
 \begin{table}[h]
 \centering
@@ -210,8 +210,7 @@ Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
 \end{table}
 
 
-Conc.**********************
-
+It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. The reduced effective rate might be due to prototyping bad conditions, such as used corrections made with wires and raugh connections that should be better at consecutive mountings. \ac{RF} devices are very sensitive to these imperfections. On the other hand, \ac{TX} power and antenna conditions must be review, since these suposse a change with respect to previous tests.
 
 Table \ref{cap6:tab:effectiverate2.4} ilustrates the results for MRF24J40 transceiver as 2.4 GHz \ac{RI} using a P2P protocol. 
 
@@ -233,7 +232,9 @@ Unicast & 140 (56 \%) & 100800 & 3.54 & 28.474 \\ \hline \hline
          \label{cap6:tab:effectiverate2.4}}
 \end{table} 
 
-Conc. ******************
+A worrying issue, already described in \cite{juanpfc}, is the packet loss even transmitting at unicast mode. The reason for this fact still remains unknown but there are some possible explanations. Most feasible option at the current moment is that \ac{ACK} packets are misinterpreted by the receiver and it considers a single \ac{ACK} response for more than one packet. This is possible due to the unsequenced character of \ac{ACK} packets at MiWi protocol. 
+
+In order to solve this issue, Jara, G. presents in \cite{guillepfc} a flow control mechanism at MiWi \ac{MAC} layer that apparently avoid packet loss at unicast mode.
 
 %-------------------------------------------------------------------
 \section{chargerSHIELD performance test}
@@ -242,13 +243,12 @@ Conc. ******************
 %-------------------------------------------------------------------
 As it was mantioned, small checkings were made during the mounting process. Nevertheless, this test shows the chargerSHIELD performance test facing a battery full charge operation.
 
+When testing the chargerSHIELD proper operation, few charging sequences were carried out. Taking measures every 2 hours of battery voltage conditions and the current flowing through it. Figure \ref{fig:cap6:chargergraph} shows the average results.
+
 \figura{Bitmap/Capitulo6/charger}{width=\textwidth}{fig:cap6:chargergraph}%
 {Batteries and parameters evolution during charging process at chargerSHIELD.}
 
-%batteries
-%charge
-%c
-
+Charging time for the defined batteries can be estimated around 12-16 hours. The ready battery led notifies the battery is ready when approximately 60\% of the total charge is available. It might be extrange to observe so high voltage values at the batteries when they are supposed to provide 3.6 V, nevertheless, it is a normal behaviour. The charger properly switchs off the charging current when voltage at the battery reveals a complete charge.
 
 
 % Variable local para emacs, para  que encuentre el fichero maestro de

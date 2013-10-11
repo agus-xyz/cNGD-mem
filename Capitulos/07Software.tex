@@ -60,25 +60,44 @@ MPLAB X is based on the open source NetBeans IDE from Oracle. Some of its main f
 \ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the platform has a development character. Further information can be consulted at the manual\cite{icd3}.
 
 %-------------------------------------------------------------------
-\section{Hardware Abstraction Layer}
+\section{Firmware and Hardware Abstraction Layer}
 %-------------------------------------------------------------------
 \label{cap7:sec:hal}
 %-------------------------------------------------------------------
-%DEPURACION
 
-%ALGUNOS CAMBIOS Y DESCRIBIR POR ENCIMA
+When adapting the firmware to the developed hardware platform, it was needed to deal with minor changes resulting from its novelty and also because of required hardware adaptations.
+
+Some minor bugs that impeded the right sleeping modes operation or the spectrum sensing were fixed. As well, due to lack of tests when using three \ac{RI}s at once, some software configurations were not properly set. Current firmware version corrects these issues and it is fully operative over the hardware.
+
+Other adaptations taken when developing software aim at stablish better ease of use. An easier configuration scheme, \ac{USB} tracing modes, \ac{RI} power control functions, and new modules definition are the developed functionalities.
 
 %-------------------------------------------------------------------
 \subsection{Platform options}
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
+When configuring the firmware to operate over different hardware platforms such as the \ac{FCD}, the \ac{FCD} on its expanded version, or the \ac{CNG}, it was needed to carry out several changes at the configuration firmware files.
+
+With the changes that the current firmware implements, adapting the firmware to any of these platforms is done by changing a single option at \emph{HardwareConfig.h} file.
+
+***************************
+\begin{itemize}
+\item
+\item
+\item
+\end{itemize}
+
+
+
+Basically, the old macros that used to be changed manually for each platform are now atomatically configured when set on of the previous options. Main changes take place over \ac{RI} configurations and pinouts.
 
 %-------------------------------------------------------------------
 \subsection{USB tracing}
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
+
+%
 
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces Power Control Functions}
@@ -98,8 +117,12 @@ MPLAB X is based on the open source NetBeans IDE from Oracle. Some of its main f
 \label{cap7:sec:applicationLayer}
 %-------------------------------------------------------------------
 
+Demo application layer was thought to be showed during these Master thesis presentation. It implements a \ac{WSN} application in which a transmitter and receiver module set communication and exhibit some platform communication capabilities. 
 
 
+
+
+%
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX
 %%%

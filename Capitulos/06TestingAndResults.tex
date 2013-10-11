@@ -61,9 +61,29 @@ Consumption measures are reflected at Figure \ref{fig:cap6:energymodes}, where a
 %-------------------------------------------------------------------
 \label{cap6:sec:computing}
 %-------------------------------------------------------------------
-This test intends to measure the computational cost for the management of the communication protocol stack. This could help to make a good software planification and avoid troubles interfering the application proper running. For this, it will be determined how long takes the management task to be accomplished. Nominal clock frequency is set to 80 MHz and no network activity is considered. This test is fully extracted from the firmware. 
+This test intends to measure the computational cost for the management of the communication protocol stack. This could help to make a good software planification and avoid troubles interfering the application proper running. Moreover, it is important to adjust the management tasks period carefully for a good performance over communications.
 
-Table ****** shows separately the measured time for \ac{RI}s and different protocol versions, Mesh and P2P. 
+For this, it will be determined how long takes the management task to be accomplished in a \ac{FFD}. Nominal clock frequency is set to 80 MHz and no network activity is considered. Management tasks are taken every 25 ms. This test is fully provided at the firmware. 
+
+Table \ref{tab:cap6:tasktime} shows separately the measured time for \ac{RI}s and different protocol versions, Mesh and P2P. 
+
+\begin{table}[h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{l r r}
+\hline
+\hline
+Management part & P2P Protocol & MiWi Protocol \\ \hline \hline
+Common management &  & \\ \hline
+434 MHz RI management &  & \\ \hline
+868 MHz RI management &  & \\ \hline
+2.4 GHz RI management &  & \\ \hline\hline
+Total time & & \\ \hline \hline
+\end{tabular}}
+
+\caption{Time costs on the communication protocol management tasks.%
+         \label{tab:cap6:tasktime}}
+\end{table}
 
 %-------------------------------------------------------------------
 \section{Spectrum sensing test}
@@ -116,9 +136,21 @@ First scenario is conducted over 2.4 GHz band. This band posses 16 available cha
 %-------------------------------------------------------------------
 This test evaluates how long changes over the \ac{RI}s take to be done. Parameters to change are \ac{TX} power, operation channel and energy modes. This test was fully available at the firmware. Table *********** ilustrates the results.
 
+\begin{table}[h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{l r r r}
+\hline
+\hline
+Operation & 434 MHz RI & 868 MHz RI & 2.4 GHz RI\\ \hline \hline
+Switch transmission channel & 30.45 ms  &  30.4 ms & 0.151 ms \\ \hline
+Change  transmission power & 55.8 $\mu$s & 55.8 $\mu$s & 70.1 $\mu$s \\ \hline
+Sleep and wake up & 15.4 ms & 15.4 ms & 0.364 ms\\ \hline \hline
+\end{tabular}}
 
-
-***************************************************
+\caption{Time costs on the communication protocol management tasks.%
+         \label{tab:cap6:radioagility}}
+\end{table}
 
 %-------------------------------------------------------------------
 \section{Effective rate test}
@@ -127,33 +159,81 @@ This test evaluates how long changes over the \ac{RI}s take to be done. Paramete
 %-------------------------------------------------------------------
 Effective rate provided by the MRF49XA and MRF24J40 transceivers driven by the firmware was already described in \cite{juanpfc}. The obtained performance must match performance achieved at the \ac{CNGD}. That is why this checking supposes a partial test compared to the full previous characterization. However, it tries new unchecked aspects of the \ac{RI}s management and proves functionality. 
 
-Most part of this test is obtained from the firmware, so the description is covered at its literature. Employed protocol at the test-bench, for simplicity, is MiWi$^{TM}$ P2P. The three \ac{RI}s are checked and different maintenance task periods for the protocol stack are tried. Main parameters set for the test follow:
+Most part of this test is obtained from the firmware, so the description is covered at its literature. Employed protocol at the test-bench, for simplicity, is MiWi$^{TM}$ P2P. The three \ac{RI}s are checked and different maintenance task periods for the protocol stack are tried. In total, periods of 1 ms, 25 ms and 500 ms were tested, not obtaining performance differences among them. To avoid redundancy, shown results correspond to 25 ms period.
+
+Two \ac{TX} modes are broadcast and unicast (long address). Main communication parameters set for the test follow:
 
 \begin{itemize}
-\item Payload
-\item banksize
-\item 255 Paquetes
-\item VERIFY\_TRANSMIT 
+\item Payload size is set to 90 Bytes.
+\item TX and RX buffer is configured as 10 packets for each \ac{RI}.
+\item Total number of sent packets is 250.
+\item VERIFY\_TRANSMIT option is enabled for MRF24J40 module.
 \end{itemize}
 
-Table ********** ilustrates the results for 434 MHz \ac{RI}.
+Tables \ref{cap6:tab:effectiverate434868fast} and \ref{cap6:tab:effectiverate434868slow} ilustrate the results at two different bit-rates for $\mu$Trans module at 434 MHz and 868 MHz. Both versions, sharing the same transceiver, posses similar performance. Used protocol is P2P.  
 
-************************************************************************
+\begin{table}[h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{ c  c  c  c  c }
+\hline
+\hline
+\multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
+  &  Packets & bits & (s) & rate (kpbs)\\ \hline \hline
 
-Conclusions
+Broadcast & 125 (50 \%) & 90000 & 2.88 & 31.250    \\ \hline
+Unicast & 250 (100 \%) & 180000 & 7.34 & 24.511 \\ \hline \hline
 
-Table ********** ilustrates the results for 868 MHZ \ac{RI}.
+\end{tabular}
+}
+\caption{Effective rate, received packets comparison for 434/868 RI using P2P protocol at 115200 bps .%
+         \label{cap6:tab:effectiverate434868fast}}
+\end{table} 
 
-***********************************
 
-Conc.
+\begin{table}[h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{ c  c  c  c  c }
+\hline
+\hline
+\multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
+  &  Packets & bits & (s) & rate (kpbs)\\ \hline \hline
+
+Broadcast & 250 (100 \%) & 180000 & 6.22 & 28.938   \\ \hline
+Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
+
+\end{tabular}
+}
+\caption{Effective rate, received packets comparison for 434/868 RI using P2P protocol at 38400 bps .%
+         \label{cap6:tab:effectiverate434868slow}}
+\end{table}
 
 
-Table ********** ilustrates the results for 2.4 GHz \ac{RI}.
+Conc.**********************
 
-***********************************
 
-Conc.
+Table \ref{cap6:tab:effectiverate2.4} ilustrates the results for MRF24J40 transceiver as 2.4 GHz \ac{RI} using a P2P protocol. 
+
+\begin{table}[h]
+\centering
+\scalebox{0.9}{
+\begin{tabular}{ c  c  c  c  c }
+\hline
+\hline
+\multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
+  &  Packets & bits & (s) & rate (kpbs)\\ \hline \hline
+
+Broadcast & 130 (52 \%) & 93600 & 3.25 & 28.8    \\ \hline
+Unicast & 140 (56 \%) & 100800 & 3.54 & 28.474 \\ \hline \hline
+
+\end{tabular}
+}
+\caption{Effective rate, received packets comparison for 2.4 GHZ RI using P2P protocol.%
+         \label{cap6:tab:effectiverate2.4}}
+\end{table} 
+
+Conc. ******************
 
 %-------------------------------------------------------------------
 \section{chargerSHIELD performance test}
@@ -161,6 +241,9 @@ Conc.
 \label{cap6:sec:charger}
 %-------------------------------------------------------------------
 As it was mantioned, small checkings were made during the mounting process. Nevertheless, this test shows the chargerSHIELD performance test facing a battery full charge operation.
+
+\figura{Bitmap/Capitulo6/charger}{width=\textwidth}{fig:cap6:chargergraph}%
+{Batteries and parameters evolution during charging process at chargerSHIELD.}
 
 %batteries
 %charge

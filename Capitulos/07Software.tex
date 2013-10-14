@@ -107,9 +107,9 @@ Other configurable option at this very same file is the possibility for debuggin
 %-------------------------------------------------------------------
 Regarding the wide acceptation that \ac{USB} protocol has achieved and how common has this protocol become, it was interesting to offer possibility to an \ac{USB} console. This way, it took advantage of the included $\mu$USB connector. In this case, the implementation consisted on an adaptation of a Microchip \ac{USB}-\ac{CDC} example. Stack used version is 2.9.
 
-Adaptated example used polling to deal with the connection management, instead of interruptions. A circular buffer whould have been useful facing large volume of outputting data. So at the current state, the \ac{USB} tracing supposes an ideal choice for controlled environments where tracing tasks are taken carefully and localized. Otherwise data losses or even interferences with the communication protocol management migh arise. 
+Adaptated example offered possibilities for either polling or interruption methods, interruption management was chosen. A circular buffer whould have been useful facing large volume of outputting data. So at the current state, the \ac{USB} tracing supposes an ideal choice for controlled environments where tracing tasks are taken carefully and localized. Otherwise data losses or even interferences with the communication protocol management migh arise. 
 
-To configure the firmware for \ac{USB} traces, firstly it is needed to set the \\\emph{ENABLE\_CONSOLE} option. Then, the console must be stablished as \emph{DEBUG\_USB}. ****************** REQUIERE TECLA PARA EMPEZAR???
+To configure the firmware for \ac{USB} traces, firstly it is needed to set the \\\emph{ENABLE\_CONSOLE} option. Then, the console must be stablished as \emph{DEBUG\_USB}. Configuration file for \ac{USB} stack is \emph{include/USB/usb\_config.h}
 
 In case of need for further information about \ac{USB} stack working, the framework \cite{usbfram} or stack\cite{usbstack} manual can be consulted. For information related to \ac{USB}-\ac{CDC}, manual \cite{usbcdc} might be useful.
 
@@ -131,11 +131,11 @@ These functions set to high or low the signal that drives the power switch at ea
 %-------------------------------------------------------------------
 For an easy use and programmation of pins at the headers and useful components as leds or buttons, some global definitions at the firmware provide access to them.
 
-To access pins at the headers, applications can make use of the \emph{HEADERS\_XX} label definition and respective \emph{HEADERS\_XX\_TRIS} to configure the sort of pin. \emph{XX} notation must be replaced with the desired pin number. For instance, in order to access pin 6, the right pin definition would be \emph{HEADERS\_06}.************************
+To access pins at the headers, applications can make use of the \emph{HEADERS\_XX} label definition and respective \emph{HEADER\_XX\_TRIS} to configure the sort of pin. \emph{XX} parameter must be replaced with the desired pin number. For instance, \emph{HEADER\_06\_TRIS} must be set as \emph{OUTPUT\_PIN} in order to make it a digital output. To access signal at header pin number six, the pin definition would be \emph{HEADER\_06}.
 
 Leds label definitions are \emph{LED1}, \emph{LED2}, and \emph{LED3} respectively. These pins are configured as output when doing node initialization.
 
-BOTONES *************************
+Push buttons 1 and 2 are defined as \emph{BUTTON\_1} and \emph{BUTTON\_2} respectively. The firmware includes as well a pair of masks \emph{BUTTON\_X\_PORT\_MASK} in case of these masks were required when reading whole port.
 
 %-------------------------------------------------------------------
 \section{Demo Application Layer}
@@ -147,11 +147,10 @@ Demo application layer was thought to be showed during these Master thesis prese
 
 Main goals for the software are to show some of the most valuable features such as spectrum sensing and \ac{RI} agility on communications. Two devices take a role on the demo. One device will be the transmitter, configured at \emph{include/MiApp.h} as \emph{NODE\_1}, and the other device will be the receiver, \emph{NODE\_2}. The application is prepared to output traces to a computer using the rs232SHIELD while running. Significant established parameters for the application are:  
 
-%parametros
 \begin{itemize}
 
 \item P2P protocol is used for communications. The showed operation does not require routing modes offered by the MiWi protocol.
-\item Bitrate for 434 MHz \ac{RI} is ********* bps, and 119.2 kbps for 868 MHz \ac{RI}.
+\item Bitrate for 434 MHz \ac{RI} is 19.2 kbps, and 119.2 kbps for 868 MHz \ac{RI}.
 \item Unicast communication mode, to make sure of the right messages dispacthing.
 \item The two devices posses different addresses and a common \ac{PAN} id. 
 \item Sleeping modes are disabled for proper \ac{PAN} management.
@@ -164,10 +163,10 @@ The normal operation of the application responds to a sequential set of steps. B
 \item \ac{RX} device is shwitched on. It initalises the stacks, senses the spectrum and create \ac{PAN}s at the most suitable channel for each 	\ac{RI}.
 \item \ac{TX} device is switched on. It senses the spectrum, detects active \ac{PAN}s and joins them. 
 \item \ac{TX} starts to send packets at 434 MHz frequency band every 2 seconds. When 
-\item At this point, antennas at 434 MHz \ac{RI}s are removed. 
+\item At this point, antennas at 434 MHz \ac{RI}s are manually removed. 
 \item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz and 868 MHz. It detects the most suitable channel over 868 MHz and request the \ac{RX} to set communication over that channel.
 \item When \ac{RX} device asserts, \ac{TX} starts sending packets at 868 MHz band.
-\item At this point, antennas at 868 MHz \ac{RI}s are removed.
+\item At this point, antennas at 868 MHz \ac{RI}s are manually removed.
 \item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz, 868 MHz and 2.4 GHz. It detects the most suitable channel over 2.4 GHz and request the \ac{RX} to set communication over that channel.
 \item When \ac{RX} device asserts, \ac{TX} starts sending packets at 2.4 GHz band.
 \item After 5 successfull packets the communication ends.

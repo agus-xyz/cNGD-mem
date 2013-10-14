@@ -196,13 +196,13 @@
 
 @entry{NIMH, Ni-MH,\emph{Nickel-Metal Hydride}}
 
-@entry{LIION, Li-ion,\emph{lithium-ion}}
+@entry{LIION, Li-ion,\emph{Lithium-Ion}}
 
-@entry{EEPROM, ,\emph{electrically erasable programmable read-only memory}}
+@entry{EEPROM, ,\emph{Electrically Erasable Programmable Read-Only Memory}}
 
-@entry{IRDA, IrDA, \emph{infrared data association}}
+@entry{IRDA, IrDA, \emph{Infrared Data Association}}
 
-@entry{OTG, , \emph{on-the-go}}
+@entry{OTG, , \emph{On-The-Go}}
 
 @entry{ADC, ,\emph{analog-to-digital converter}}
 
@@ -245,4 +245,10 @@
 @entry{GSM,,\emph{Global System for Mobile}}
 
 @entry{GPRS,,\emph{General Packet Radio Service}}
+
+@entry{QR, , \emph{Quick Response}}
+
+@entry{SOIC, , \emph{Small Outline Integrated Circuit}}
+
+@entry{CDC, ,\emph{Communications Device Class}}
 

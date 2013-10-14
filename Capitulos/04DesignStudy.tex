@@ -205,6 +205,8 @@ Current is bypassed through a capacitor and supplies the MRF49XA, a power indica
 
 The designed module allow access to some of the MRF49XA pins, not all of them. The ports accessible at the \ac{RI} are Interrupt (nINT), Interrupt Request Output, \ac{SPI} ports, \ac{FIFO} select, \ac{FIFO} interrupt, and reset. These ports enable full functionality of the MRF49XA and rest of available pins are found dispensable.
 
+***** ANTENA
+
 \figura{Bitmap/Capitulo4/mtransmodel}{width=.4\textwidth}{fig:cap4:mtransmodel}%
 {$\mu$Trans 434/868 component model for use}
 
@@ -507,17 +509,16 @@ All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM
 
 A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maximum of 1024 nodes on a network. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
 
-The MiWi$^{TM}$ P2P protocol\cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
-
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
-   
 \subfloat[Standard stack.]{\label{fig:cap4:normalmiwistack}\includegraphics[width=.4\textwidth]{Imagenes/Bitmap/Capitulo4/miwistack}}  
 \subfloat[Adapted stack for three RIs, available at the firmware.]{\label{fig:cap4:adaptedmiwistack}\includegraphics[width=.4\textwidth]{Imagenes/Bitmap/Capitulo4/adaptedmiwistack}}
-       
 \caption{MiWi$^{TM}$ Protocol.}
 \label{fig:cap4:miwistack}
 \end{figure}
+
+The MiWi$^{TM}$ P2P protocol\cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
+
 
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}

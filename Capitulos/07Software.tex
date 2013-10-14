@@ -60,37 +60,82 @@ MPLAB X is based on the open source NetBeans IDE from Oracle. Some of its main f
 \ac{ICD} 3 is a device belonging to Microchip products that allows to get the microcontroller programmed. In addition, it enables run-time debugging using the \ac{IDE}. Up to 6 breakpoints can be enabled. This feature is quite valuable regarding the platform has a development character. Further information can be consulted at the manual\cite{icd3}.
 
 %-------------------------------------------------------------------
-\section{Hardware Abstraction Layer}
+\section{Firmware and Hardware Abstraction Layer}
 %-------------------------------------------------------------------
 \label{cap7:sec:hal}
 %-------------------------------------------------------------------
-%DEPURACION
 
-%ALGUNOS CAMBIOS Y DESCRIBIR POR ENCIMA
+When adapting the firmware to the developed hardware platform, it was needed to deal with minor changes resulting from its novelty and also because of required hardware adaptations.
+
+Some minor bugs that impeded the right sleeping modes operation or the spectrum sensing were fixed. As well, due to lack of tests when using three \ac{RI}s at once, some software configurations were not properly set. Current firmware version corrects these issues and it is fully operative over the hardware.
+
+Other adaptations taken when developing software aim at stablish better ease of use. An easier configuration scheme, \ac{USB} tracing modes, \ac{RI} power control functions, and new modules definition are the developed functionalities.
+
+Current and older versions of the firmware, along with small software related tests, can be found in a public GitHub\footnote{Web-based hosting service for software development projects that use the Git revision control system} repository:\\ \emph{https://github.com/agus-xyz/cognitiveNGD}. Figure \ref{fig:cap7:repoqr} provides a \ac{QR} code to instantly access the repository.
+
+\figura{Bitmap/Capitulo7/repoqr}{width=.3\textwidth}{fig:cap7:repoqr}%
+{cNGD software repository.}
 
 %-------------------------------------------------------------------
 \subsection{Platform options}
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
+When configuring the firmware to operate over different hardware platforms such as the \ac{FCD} expanded version, the \ac{CNGD}, or a manually  configurable platform, several changes at the configuration firmware files were needed.
+
+With the changes that the current firmware implements, adapting the firmware to any of these platforms is done by changing a single option at \emph{Include/HardwareConfig.h} file.
+
+\begin{itemize}
+\item \emph{cNGD\_PLATFORM}. Automatically sets a suitable configuration for the \ac{CNGD}. \emph{MIWI\_0434\_RI} is stablished over \emph{MRF49XA\_1} transceiver, \emph{MIWI\_0868\_RI} is built over \emph{MRF49XA\_2}, and \emph{MIWI\_2400\_RI} does it on \emph{MRF24J40} transceiver. Remaining configurations to adequately take this options are automatically changed. 
+
+\item \emph{FCD\_Exp\_PLATFORM}. This possibility enables the configuration to employ the \ac{FCD} adapted to the lately developed expansion board. It adapts the \emph{MIWI\_0434\_RI} over \emph{MRF49XA\_1} transceiver, and \emph{MIWI\_2400\_RI} at \\ \emph{MRF24J40}.
+
+\item \emph{MANUAL\_PLATFORM}. This option gives freedom to the user to full configure the employed hardware. Any of the possible MIWI and WIFI   
+\ac{RI}s can be chosen over different transceivers such as \emph{MRF49XA\_X, MRF89XA, MRF24J40, or MRF24WB0M}. Moreover, the used \ac{SPI} for interfacing the \ac{RI} is also configurable together with the external interruption line.
+
+\end{itemize}
+
+
+Basically, the old macros that used to be changed manually for each platform are now atomatically configured when set on of the previous options. Main changes take place over \ac{RI} configurations and pinouts.
+
+Other configurable option at this very same file is the possibility for debugging traces. This option is controlled enabling or disabling the \emph{ENABLE\_CONSOLE} option. Then, within each platform independent configuration, it is possible to select the module to output traces.
 
 %-------------------------------------------------------------------
 \subsection{USB tracing}
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
+Regarding the wide acceptation that \ac{USB} protocol has achieved and how common has this protocol become, it was interesting to offer possibility to an \ac{USB} console. This way, it took advantage of the included $\mu$USB connector. In this case, the implementation consisted on an adaptation of a Microchip \ac{USB}-\ac{CDC} example. Stack used version is 2.9.
+
+Adaptated example used polling to deal with the connection management, instead of interruptions. A circular buffer whould have been useful facing large volume of outputting data. So at the current state, the \ac{USB} tracing supposes an ideal choice for controlled environments where tracing tasks are taken carefully and localized. Otherwise data losses or even interferences with the communication protocol management migh arise. 
+
+To configure the firmware for \ac{USB} traces, firstly it is needed to set the \\\emph{ENABLE\_CONSOLE} option. Then, the console must be stablished as \emph{DEBUG\_USB}. ****************** REQUIERE TECLA PARA EMPEZAR???
+
+In case of need for further information about \ac{USB} stack working, the framework \cite{usbfram} or stack\cite{usbstack} manual can be consulted. For information related to \ac{USB}-\ac{CDC}, manual \cite{usbcdc} might be useful.
+
+  
 
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces Power Control Functions}
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
+After including power control modules for each \ac{RI} at the \ac{CNGD}, it was needed some software adaptations to fully make them operate. For this, a pair of functions have been included at the firmware \ac{HAL}, \emph{SwitchRIOn(radioInterface ri)} and \emph{SwitchRIOff(radioInterface ri)}.
+
+These functions set to high or low the signal that drives the power switch at each \ac{RI}. Received parameter is the chosen \ac{RI}. Return value might be \emph{NO\_ERROR} or an error code.
 
 %-------------------------------------------------------------------
 \subsection{Headers and other new definitions}
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
+For an easy use and programmation of pins at the headers and useful components as leds or buttons, some global definitions at the firmware provide access to them.
+
+To access pins at the headers, applications can make use of the \emph{HEADERS\_XX} label definition and respective \emph{HEADERS\_XX\_TRIS} to configure the sort of pin. \emph{XX} notation must be replaced with the desired pin number. For instance, in order to access pin 6, the right pin definition would be \emph{HEADERS\_06}.************************
+
+Leds label definitions are \emph{LED1}, \emph{LED2}, and \emph{LED3} respectively. These pins are configured as output when doing node initialization.
+
+BOTONES *************************
 
 %-------------------------------------------------------------------
 \section{Demo Application Layer}
@@ -98,8 +143,45 @@ MPLAB X is based on the open source NetBeans IDE from Oracle. Some of its main f
 \label{cap7:sec:applicationLayer}
 %-------------------------------------------------------------------
 
+Demo application layer was thought to be showed during these Master thesis presentation. It implements a \ac{WSN} application in which a transmitter and receiver module set communication and exhibit some platform communication capabilities. 
+
+Main goals for the software are to show some of the most valuable features such as spectrum sensing and \ac{RI} agility on communications. Two devices take a role on the demo. One device will be the transmitter, configured at \emph{include/MiApp.h} as \emph{NODE\_1}, and the other device will be the receiver, \emph{NODE\_2}. The application is prepared to output traces to a computer using the rs232SHIELD while running. Significant established parameters for the application are:  
+
+%parametros
+\begin{itemize}
+
+\item P2P protocol is used for communications. The showed operation does not require routing modes offered by the MiWi protocol.
+\item Bitrate for 434 MHz \ac{RI} is ********* bps, and 119.2 kbps for 868 MHz \ac{RI}.
+\item Unicast communication mode, to make sure of the right messages dispacthing.
+\item The two devices posses different addresses and a common \ac{PAN} id. 
+\item Sleeping modes are disabled for proper \ac{PAN} management.
+\end{itemize}
+
+The normal operation of the application responds to a sequential set of steps. Below, are shown the different behaviours and tasks throughout the execution.
+
+\begin{itemize}
+
+\item \ac{RX} device is shwitched on. It initalises the stacks, senses the spectrum and create \ac{PAN}s at the most suitable channel for each 	\ac{RI}.
+\item \ac{TX} device is switched on. It senses the spectrum, detects active \ac{PAN}s and joins them. 
+\item \ac{TX} starts to send packets at 434 MHz frequency band every 2 seconds. When 
+\item At this point, antennas at 434 MHz \ac{RI}s are removed. 
+\item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz and 868 MHz. It detects the most suitable channel over 868 MHz and request the \ac{RX} to set communication over that channel.
+\item When \ac{RX} device asserts, \ac{TX} starts sending packets at 868 MHz band.
+\item At this point, antennas at 868 MHz \ac{RI}s are removed.
+\item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz, 868 MHz and 2.4 GHz. It detects the most suitable channel over 2.4 GHz and request the \ac{RX} to set communication over that channel.
+\item When \ac{RX} device asserts, \ac{TX} starts sending packets at 2.4 GHz band.
+\item After 5 successfull packets the communication ends.
+\end{itemize}
+
+The demo lets show how antennas affect the sensing capabilities of the platform and the different spectrum scan results all over the time. It shows how the platform is able to swap communications over 3 different frequency bands using 3 different \ac{RI}. All the sent packets are proved to be received when showed at the traces. The application also proves the right operation of the rs232SHIELD.
+
+A video showing the demo application working can be accessed at ***********************. For better comfort, Figure \ref{fig:cap7:demovideo} provides access to the video.
+
+\figura{Vectorial/Todo}{width=.3\textwidth}{fig:cap7:demovideo}%
+{Demo application video.}
 
 
+%
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX
 %%%

@@ -19,10 +19,10 @@ Thomas \& Guy-Manuel, Daft Punk
 \end{FraseCelebre}
 
 \begin{resumen}
-In this chapter it is defined a model for our cognitive node. Firstly, the First Cognitive Device is evaluated
-to obtain some guidelines and potential improvements in our design. The final device implementation requirements and
-constraints are defined. Finally, it is carried out a discussion and evaluation about different modules, exposing different 
-commercial options and coming into final decisions.
+A model for our cognitive node is defined in this chapter. Initially, the First Cognitive Device is evaluated
+to obtain some guidelines and potential improvements for our design. The final device implementation requirements and
+constraints are defined. Finally, a discussion and evaluation over different modules is carried out, exposing different 
+commercial options and concluding with some final decisions.
 \end{resumen}
 
 
@@ -38,7 +38,7 @@ radio and sensor interfacing, and power supply. However, a further review shows 
 \begin{itemize}
 
 \item \emph{Multiple Radio Interfacing}: Regarding \ac{CR} capabilities for spectrum management and \ac{DSA}, the node
-	must include multiple radio interfaces enabling different spectrum bands instead of a single one. This capability
+	must include multiple \ac{RI}s enabling different spectrum bands instead of a single one. This capability
 	is referred to the hardware modules. 
 
 
@@ -69,7 +69,7 @@ Additionally, cognition tasks compulsory require several functions to take into 
 	The model should be able to  include an autonomous power supply and other functions:
 
 \begin{itemize}
-\item Transmission/reception power regulation.
+\item \ac{TX} and \ac{RX} power regulation.
 \item Unused modules disconnection.
 \item Power-saving sleeping modes for transceivers and microcontroller.
 \end{itemize}
@@ -186,7 +186,7 @@ An overview to the general performance shows an scheme based on different module
 \includegraphics[width=0.6\textwidth]%
 {Imagenes/Bitmap/Capitulo3/crmodule2}%
 \end{SubFloat}
-\caption{Overview of CRmodule. Obtained from \cite{guillepfc}.}
+\caption[Overview of CRmodule.]{Overview of CRmodule. Obtained from \cite{guillepfc}.}
 \label{fig:cap3:crmodel}
 \end{figure}
 

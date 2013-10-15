@@ -17,7 +17,7 @@ Thomas \& Guy-Manuel, Daft Punk
 \end{FraseCelebre}
 
 \begin{resumen}
-This chapter gives a vision about the main adaptations required for the firmware to be adapted to the platform, new software implementations and behaviour of the final demo application.
+This chapter gives a vision about the main adaptations required for the firmware to be adapted to the platform, new software implementations and behavior of the final demo application.
 \end{resumen}
 
 %-------------------------------------------------------------------
@@ -31,7 +31,7 @@ This chapter gives a vision about the main adaptations required for the firmware
 %-------------------------------------------------------------------
 \label{cap7:sub:mplabx}
 %-------------------------------------------------------------------
-MPLAB X \ac{IDE} is a multiplatform software program to develop applications for Microchip microcontrollers and digital signal controllers. It is called an Integrated Development Environment  because it provides a single integrated ``environment'' to develop code for embedded microcontrollers.
+MPLAB X \ac{IDE} is a multi-platform software program to develop applications for Microchip microcontrollers and digital signal controllers. It is called an Integrated Development Environment  because it provides a single integrated ``environment'' to develop code for embedded microcontrollers.
 
 \figura{Bitmap/Capitulo7/mplabx}{width=.5\textwidth}{fig:cap7:mplabx}%
 {MPLAB X IDE logo.}
@@ -67,9 +67,9 @@ MPLAB X is based on the open source NetBeans IDE from Oracle. Some of its main f
 
 When adapting the firmware to the developed hardware platform, it was needed to deal with minor changes resulting from its novelty and also because of required hardware adaptations.
 
-Some minor bugs that impeded the right sleeping modes operation or the spectrum sensing were fixed. As well, due to lack of tests when using three \ac{RI}s at once, some software configurations were not properly set. Current firmware version corrects these issues and it is fully operative over the hardware. For the right initiallization of the MRF49XA transceivers, a 50 ms delay after setting the reset signal was included. 
+Some minor bugs that impeded the right sleeping modes operation or the spectrum sensing were fixed. As well, due to lack of tests when using three \ac{RI}s at once, some software configurations were not properly set. Current firmware version corrects these issues and it is fully operative over the hardware. For the right initialization of the MRF49XA transceivers, a 50 ms delay after setting the reset signal was included. 
 
-Other adaptations taken when developing software aim at stablish better ease of use. An easier configuration scheme, \ac{USB} tracing modes, \ac{RI} power control functions, and new modules definition are the developed functionalities.
+Other adaptations taken when developing software aim at establish better ease of use. An easier configuration scheme, \ac{USB} tracing modes, \ac{RI} power control functions, and new modules definition are the developed functionalities.
 
 Current and older versions of the firmware, along with small software related tests, can be found in a public GitHub\footnote{Web-based hosting service for software development projects that use the Git revision control system} repository:\\ \emph{https://github.com/agus-xyz/cognitiveNGD}. Figure \ref{fig:cap7:repoqr} provides a \ac{QR} code to instantly access the repository.
 
@@ -86,7 +86,7 @@ When configuring the firmware to operate over different hardware platforms such 
 With the changes that the current firmware implements, adapting the firmware to any of these platforms is done by changing a single option at \emph{Include/HardwareConfig.h} file.
 
 \begin{itemize}
-\item \emph{cNGD\_PLATFORM}. Automatically sets a suitable configuration for the \ac{CNGD}. \emph{MIWI\_0434\_RI} is stablished over \emph{MRF49XA\_1} transceiver, \emph{MIWI\_0868\_RI} is built over \emph{MRF49XA\_2}, and \emph{MIWI\_2400\_RI} does it on \emph{MRF24J40} transceiver. Remaining configurations to adequately take this options are automatically changed. 
+\item \emph{cNGD\_PLATFORM}. Automatically sets a suitable configuration for the \ac{CNGD}. \emph{MIWI\_0434\_RI} is established over \emph{MRF49XA\_1} transceiver, \emph{MIWI\_0868\_RI} is built over \emph{MRF49XA\_2}, and \emph{MIWI\_2400\_RI} does it on \emph{MRF24J40} transceiver. Remaining configurations to adequately take this options are automatically changed. 
 
 \item \emph{FCD\_Exp\_PLATFORM}. This possibility enables the configuration to employ the \ac{FCD} adapted to the lately developed expansion board. It adapts the \emph{MIWI\_0434\_RI} over \emph{MRF49XA\_1} transceiver, and \emph{MIWI\_2400\_RI} at \\ \emph{MRF24J40}.
 
@@ -96,7 +96,7 @@ With the changes that the current firmware implements, adapting the firmware to 
 \end{itemize}
 
 
-Basically, the old macros that used to be changed manually for each platform are now atomatically configured when set on of the previous options. Main changes take place over \ac{RI} configurations and pinouts.
+Basically, the old macros that used to be changed manually for each platform are now automatically configured when set on of the previous options. Main changes take place over \ac{RI} configurations and pin-outs.
 
 Other configurable option at this very same file is the possibility for debugging traces. This option is controlled enabling or disabling the \emph{ENABLE\_CONSOLE} option. Then, within each platform independent configuration, it is possible to select the module to output traces.
 
@@ -107,9 +107,9 @@ Other configurable option at this very same file is the possibility for debuggin
 %-------------------------------------------------------------------
 Regarding the wide acceptation that \ac{USB} protocol has achieved and how common has this protocol become, it was interesting to offer possibility to an \ac{USB} console. This way, it took advantage of the included $\mu$USB connector. In this case, the implementation consisted on an adaptation of a Microchip \ac{USB}-\ac{CDC} example. Stack used version is 2.9.
 
-Adaptated example offered possibilities for either polling or interruption methods, interruption management was chosen. A circular buffer whould have been useful facing large volume of outputting data. So at the current state, the \ac{USB} tracing supposes an ideal choice for controlled environments where tracing tasks are taken carefully and localized. Otherwise data losses or even interferences with the communication protocol management migh arise. 
+Adapted example offered possibilities for either polling or interruption methods, interruption management was chosen. A circular buffer would have been useful facing large volume of outputting data. So at the current state, the \ac{USB} tracing supposes an ideal choice for controlled environments where tracing tasks are taken carefully and localized. Otherwise data losses or even interferences with the communication protocol management might arise. 
 
-To configure the firmware for \ac{USB} traces, firstly it is needed to set the \\\emph{ENABLE\_CONSOLE} option. Then, the console must be stablished as \emph{DEBUG\_USB}. Configuration file for \ac{USB} stack is \emph{include/USB/usb\_config.h}
+To configure the firmware for \ac{USB} traces, firstly it is needed to set the \\\emph{ENABLE\_CONSOLE} option. Then, the console must be established as \emph{DEBUG\_USB}. Configuration file for \ac{USB} stack is \emph{include/USB/usb\_config.h}
 
 In case of need for further information about \ac{USB} stack working, the framework \cite{usbfram} or stack\cite{usbstack} manual can be consulted. For information related to \ac{USB}-\ac{CDC}, manual \cite{usbcdc} might be useful.
 
@@ -129,11 +129,11 @@ These functions set to high or low the signal that drives the power switch at ea
 %-------------------------------------------------------------------
 \label{cap7:subsec:usbtraces}
 %-------------------------------------------------------------------
-For an easy use and programmation of pins at the headers and useful components as leds or buttons, some global definitions at the firmware provide access to them.
+For an easy use and programming of pins at the headers and useful components as LEDs or buttons, some global definitions at the firmware provide access to them.
 
 To access pins at the headers, applications can make use of the \emph{HEADERS\_XX} label definition and respective \emph{HEADER\_XX\_TRIS} to configure the sort of pin. \emph{XX} parameter must be replaced with the desired pin number. For instance, \emph{HEADER\_06\_TRIS} must be set as \emph{OUTPUT\_PIN} in order to make it a digital output. To access signal at header pin number six, the pin definition would be \emph{HEADER\_06}.
 
-Leds label definitions are \emph{LED1}, \emph{LED2}, and \emph{LED3} respectively. These pins are configured as output when doing node initialization.
+LEDs label definitions are \emph{LED1}, \emph{LED2}, and \emph{LED3} respectively. These pins are configured as output when doing node initialization.
 
 Push buttons 1 and 2 are defined as \emph{BUTTON\_1} and \emph{BUTTON\_2} respectively. The firmware includes as well a pair of masks \emph{BUTTON\_X\_PORT\_MASK} in case of these masks were required when reading whole port.
 
@@ -150,17 +150,17 @@ Main goals for the software are to show some of the most valuable features such 
 \begin{itemize}
 
 \item P2P protocol is used for communications. The showed operation does not require routing modes offered by the MiWi protocol.
-\item Bitrate for 434 MHz \ac{RI} is 19.2 kbps, and 119.2 kbps for 868 MHz \ac{RI}.
-\item Unicast communication mode, to make sure of the right messages dispacthing.
+\item Bit-rate for 434 MHz \ac{RI} is 19.2 kbps, and 119.2 kbps for 868 MHz \ac{RI}.
+\item Unicast communication mode, to make sure of the right messages dispatching.
 \item The two devices posses different addresses and a common \ac{PAN} id. 
 \item Sleeping modes are disabled for proper \ac{PAN} management.
 \end{itemize}
 
-The normal operation of the application responds to a sequential set of steps. Below, are shown the different behaviours and tasks throughout the execution.
+The normal operation of the application responds to a sequential set of steps. Below, are shown the different behaviors and tasks throughout the execution.
 
 \begin{itemize}
 
-\item \ac{RX} device is shwitched on. It initalises the stacks, senses the spectrum and create \ac{PAN}s at the most suitable channel for each 	\ac{RI}.
+\item \ac{RX} device is switched on. It initializes the stacks, senses the spectrum and create \ac{PAN}s at the most suitable channel for each 	\ac{RI}.
 \item \ac{TX} device is switched on. It senses the spectrum, detects active \ac{PAN}s and joins them. 
 \item \ac{TX} starts to send packets at 434 MHz frequency band every 2 seconds. When 
 \item At this point, antennas at 434 MHz \ac{RI}s are manually removed. 
@@ -169,7 +169,7 @@ The normal operation of the application responds to a sequential set of steps. B
 \item At this point, antennas at 868 MHz \ac{RI}s are manually removed.
 \item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz, 868 MHz and 2.4 GHz. It detects the most suitable channel over 2.4 GHz and request the \ac{RX} to set communication over that channel.
 \item When \ac{RX} device asserts, \ac{TX} starts sending packets at 2.4 GHz band.
-\item After 5 successfull packets the communication ends.
+\item After 5 successful packets the communication ends.
 \end{itemize}
 
 The demo lets show how antennas affect the sensing capabilities of the platform and the different spectrum scan results all over the time. It shows how the platform is able to swap communications over 3 different frequency bands using 3 different \ac{RI}. All the sent packets are proved to be received when showed at the traces. The application also proves the right operation of the rs232SHIELD.

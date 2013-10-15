@@ -23,7 +23,7 @@ This chapter covers a full review about the project. It is shown a general view 
 The main goal of the project is to design and implement a node for the study of \ac{CWSN}s. A demo application layer, also to be developed, must work integrated with an already implemented firmware. This employed firmware is able to give support to up to three transceivers sharing a single MiWi$^{TM}$stack. It focus on abstracting the developer and the application from the cognitive model and the direct hardware management.
 
 The platform was developed responding to the requirements and a final demo let prove the right operation of the whole system. 
-The whole system respond to a modular design widely adaptable over the range of WAHSNs applications. Main module is called \ac{CNGD}. This main module posses different functionalities  that enhances a node platform, such as power supply, power control over modules, battery, expansion headers, \ac{RI}s, serial interface, and a control \ac{MCU} unit. \ac{RI}s on board of \ac{CNGD} offer communication over 434, 868, and 2400 MHz. \ac{RI}s used for 434 and 868 MHz are ad-hoc designed \ac{RI}s due to the lack of suitable size modules. This ad-hoc designed \ac{RI}s are called $\mu$Trans 434/868 for 434/868 Mhz respectively. 
+The whole system respond to a modular design widely adaptable over the range of WAHSNs applications. Main module is called \ac{CNGD}. This main module posses different functionalities  that enhances a node platform, such as power supply, power control over modules, battery, expansion headers, \ac{RI}s, serial interface, and a control \ac{MCU} unit. \ac{RI}s on board of \ac{CNGD} offer communication over 434, 868, and 2400 MHz. \ac{RI}s used for 434 and 868 MHz are ad-hoc designed \ac{RI}s due to the lack of suitable size modules. This ad-hoc designed \ac{RI}s are called $\mu$Trans 434/868 for 434/868 MHz respectively. 
 
 \ac{CNGD} main module accepts expansion options over its headers, so-called shields, and for this project two shields were implemented. First shield gives chance to serial communication through an RS232 port. Second one is a suitable charger for the batteries. Shields allow developers to create new attachable functionalities and possibilities or give different capabilities to distinct reduced node groups of the total network. This helps to keep the downtrend on complexity, consumption, size and cost but not on performance.
 
@@ -43,21 +43,21 @@ The sort of device shown at this project features some novel properties with res
 
 %\end{itemize}
 
-After carrying out all the exposed tasks, conclusions about viability, valuability and utility about the implemented device came out. Most important points are:
+After carrying out all the exposed tasks, conclusions about viability, value and utility about the implemented device came out. Most important points are:
 
 \begin{itemize}
 
 \item Modularity achieved with the \ac{CNGD} enables robust foundations to build over new designs easily. This makes wider the possibilities  for platform applications and facilitates \ac{CWSN} research.  
 
-\item Flexibility is an important concept affecting both communications and applications. Three \ac{RI}s make the \ac{CNGD} the only \ac{WSN} platform capable to access three different frequency bands. Applications might implement a great range of functionalities making use of the expansion slots that \ac{CNGD} incrusts.   
+\item Flexibility is an important concept affecting both communications and applications. Three \ac{RI}s make the \ac{CNGD} the only \ac{WSN} platform capable to access three different frequency bands. Applications might implement a great range of functionalities making use of the expansion slots that \ac{CNGD} encrusts.   
 
 \item Scalability is a fact since the used MiWi$^{TM}$ protocol provides support for variable network sizes up to 8000 nodes at its PRO version. Moreover, the employed protocol gives support for both P2P and mesh topologies.
 
 \item Firmware employed supposes an efficient way to deal with multiple interfaces. A common MiWi$^{TM}$ protocol stack is shared among \ac{RI}s and this supposes computational and memory savings. The firmware also provides a \ac{HAL} to deal easily with the hardware features.
 
-\item The \ac{MCU} is a Microchip PIC32 due to firmware requirements. The model chosen supposes the less featured \ac{MCU} fulfilling minimal peripherals needed and offering a wider pinout to avoid pin-multiplexing incompatibilities. 
+\item The \ac{MCU} is a Microchip PIC32 due to firmware requirements. The model chosen supposes the less featured \ac{MCU} fulfilling minimal peripherals needed and offering a wider pin-out to avoid pin-multiplexing incompatibilities. 
 
-\item Power switches driven by the \ac{MCU} control the power supply at the \ac{RI}s. These have been shown as a really valuable function at energy saving modes. Sleeping modes are succesfully implemented and allow a great autonomy using the provided batery. On the other hand, \ac{RI}s have shown a very low power consumption behaviour, what also helps to extend the autonomy.
+\item Power switches driven by the \ac{MCU} control the power supply at the \ac{RI}s. These have been shown as a really valuable function at energy saving modes. Sleeping modes are successfully implemented and allow a great autonomy using the provided battery. On the other hand, \ac{RI}s have shown a very low power consumption behavior, what also helps to extend the autonomy.
 
 \item Size achieved at the platform, together with anchorage options reveals a great usability and provide easiness facing application developments.
 
@@ -72,15 +72,15 @@ Facing the future of the platform, it is important to pay attention to some poin
 
 \begin{itemize}
  
-\item To exploit the real possibilities that \ac{CNGD} platform offers, a real test-bed deployment is required. Real cognitive strategies and performance must be evaluated in realistic scenarios. An implementation consisting in a standard sized \ac{WSN} using \ac{CNGD} nodes would be the next step to recreate a realistic \ac{CWSN}. A test-bed deployment brings some neccessities that are exposed throughout these future lines.
+\item To exploit the real possibilities that \ac{CNGD} platform offers, a real test-bed deployment is required. Real cognitive strategies and performance must be evaluated in realistic scenarios. An implementation consisting in a standard sized \ac{WSN} using \ac{CNGD} nodes would be the next step to recreate a realistic \ac{CWSN}. A test-bed deployment brings some necessities that are exposed throughout these future lines.
 
-\item It is important, specially when facing a test-bed deployment, to stablish an \ac{OTAP} system. This would facilitate the task of getting all the test-bed nodes programmed. In addition, \ac{CNGD} is hardware-capable to host an \ac{OTAP} system. Just proper software is required. 
+\item It is important, specially when facing a test-bed deployment, to establish an \ac{OTAP} system. This would facilitate the task of getting all the test-bed nodes programmed. In addition, \ac{CNGD} is hardware-capable to host an \ac{OTAP} system. Just proper software is required. 
 
-\item Since keeping an 802.11 interface is desirable in a \ac{WSN}, a custom shield could give this possibility to the \ac{CNGD}. Expansion options on board the \ac{CNGD} gives chances for ethernet connections. Moreover, facing the test-bed deployment, an 801.11 gateway becomes essential for some kind of \ac{IP} access, control and storage.
+\item Since keeping an 802.11 interface is desirable in a \ac{WSN}, a custom shield could give this possibility to the \ac{CNGD}. Expansion options on board the \ac{CNGD} gives chances for Ethernet connections. Moreover, facing the test-bed deployment, an 801.11 gateway becomes essential for some kind of \ac{IP} access, control and storage.
 
 \item \ac{CRMODULE} integration at the current firmware version is essential for a test-bed implementation. This module is responsible to manage all the cognition related data-flow and control. It supposes an indispensable portion to make create a real \ac{CWSN}. 
 
-\item Some firmware modifications claims to be done. A firmware adaptation to notify low-battery state might be an easy, valuable and useful implementation. On the other hand, a complete function to change \ac{RI} bit-rates while operating would a powerful tool for \ac{CWSN} investigation and would provide extra flexibility. On the other hand, functions to search for \ac{PAN}s and stablish connection to them is still needed. \ac{USB} tracing modes still need for a further work.
+\item Some firmware modifications claims to be done. A firmware adaptation to notify low-battery state might be an easy, valuable and useful implementation. On the other hand, a complete function to change \ac{RI} bit-rates while operating would a powerful tool for \ac{CWSN} investigation and would provide extra flexibility. On the other hand, functions to search for \ac{PAN}s and establish connection to them is still needed. \ac{USB} tracing modes still need for a further work.
 
 \item Once the line of \ac{RI} designing was started, there is room to keep improving the design. Giving to the current design the chance to swap its antenna impedance matching circuitry, would enable the transceiver to operate over 434 and 868 MHz. Currently there are not commercial tuneable transceivers for \ac{WSN}. It even might include a wake-on radio system like the one proposed in \cite{roberpfc}.
 
@@ -94,7 +94,7 @@ Facing the future of the platform, it is important to pay attention to some poin
 
 \item Optimization of the design. Current design is susceptible to suffer design optimizations. RJ-11 PGE programmer could be replaced by a simpler, smaller and cheaper option, or even be included at the header. Creating an unified clock signal for \ac{MCU} and transceivers is possible and it would save energy on clock signals generation.
 
-\item A good complemen for the \ac{OTAP} system could be a wireless console system. This wireless console could provide wireless tracing of the platform or even debugging. This tool would be valuable facing application developments.
+\item A good complement for the \ac{OTAP} system could be a wireless console system. This wireless console could provide wireless tracing of the platform or even debugging. This tool would be valuable facing application developments.
 
 \item It still exists possibilities for firmware improvements. An easier access to available peripherals at the headers might be carried out, 
 	or expand options through \ac{USB} interface. 

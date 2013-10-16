@@ -8,8 +8,9 @@
 
 \begin{FraseCelebre}
 \begin{Frase}
-Too long, can you feel it? \\
-Too long, oh can you feel it ?
+At last the long wait is over \\
+The weight is off my shoulders \\
+I'm taking all control, yeah
 \end{Frase}
 \begin{Fuente}
 Thomas \& Guy-Manuel, Daft Punk
@@ -162,19 +163,19 @@ The normal operation of the application responds to a sequential set of steps. B
 
 \item \ac{RX} device is switched on. It initializes the stacks, senses the spectrum and create \ac{PAN}s at the most suitable channel for each 	\ac{RI}.
 \item \ac{TX} device is switched on. It senses the spectrum, detects active \ac{PAN}s and joins them. 
-\item \ac{TX} starts to send packets at 434 MHz frequency band every 2 seconds. When 
+\item \ac{TX} starts to send packets at 434 MHz frequency band every 2 seconds. 
 \item At this point, antennas at 434 MHz \ac{RI}s are manually removed. 
 \item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz and 868 MHz. It detects the most suitable channel over 868 MHz and request the \ac{RX} to set communication over that channel.
 \item When \ac{RX} device asserts, \ac{TX} starts sending packets at 868 MHz band.
 \item At this point, antennas at 868 MHz \ac{RI}s are manually removed.
 \item After 5 failed sending attempts, the application makes a spectrum scan over 434 MHz, 868 MHz and 2.4 GHz. It detects the most suitable channel over 2.4 GHz and request the \ac{RX} to set communication over that channel.
 \item When \ac{RX} device asserts, \ac{TX} starts sending packets at 2.4 GHz band.
-\item After 5 successful packets the communication ends.
+\item After 5 successful packets, the communication ends.
 \end{itemize}
 
 The demo lets show how antennas affect the sensing capabilities of the platform and the different spectrum scan results all over the time. It shows how the platform is able to swap communications over 3 different frequency bands using 3 different \ac{RI}. All the sent packets are proved to be received when showed at the traces. The application also proves the right operation of the rs232SHIELD.
 
-A video showing the demo application working can be accessed at \\ \emph{http://www.youtube.com/watch?v=-OZgtnSqlAM}. For better comfort, Figure \ref{fig:cap7:demovideo} provides access to the video.
+A video showing the demo application working can be accessed at \\ \emph{http://tiny.cc/r5p14w}. For better comfort, Figure \ref{fig:cap7:demovideo} provides access to the video.
 
 \figura{Bitmap/Capitulo7/demoqr}{width=.4\textwidth}{fig:cap7:demovideo}{Demo application video.}
 

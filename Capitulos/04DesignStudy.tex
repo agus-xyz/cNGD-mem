@@ -201,11 +201,9 @@ The quality of the data is checked or validated using the RSSI and DQI blocks bu
 
 The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet. The only difference between 434 MHz and 868 MHz version of the $\mu$Trans is the impedance matching circuitry facing the external antenna. The components composing it are different for each frequency band, values are specified at table \ref{tab:cap4:balunvalues} placed at appendix \ref{ap1:schematics}. 
 
-Current is bypassed through a capacitor and supplies the MRF49XA, a power indication \ac{LED} is included in the design. A 10 MHz clock carries out the timing tasks. An impedance matching circuitry composed by inductors and capacitors interfaces the MRF49XA and the antenna. The \ac{RI} hosts a 50$\Omega$ connector to which connect the corresponding antenna.
+Current is bypassed through a capacitor and supplies the MRF49XA, a power indication \ac{LED} is included in the design. A 10 MHz clock carries out the timing tasks. An impedance matching circuitry composed by inductors and capacitors interfaces the MRF49XA and the antenna. The \ac{RI} hosts a 50$\Omega$ connector to which connect the corresponding antenna. 434 and 868 versions of the $\mu$Trans are design to attach 434 MHz and 868 MHz external monopole antennas respectively.
 
 The designed module allow access to some of the MRF49XA pins, not all of them. The ports accessible at the \ac{RI} are Interrupt (nINT), Interrupt Request Output, \ac{SPI} ports, \ac{FIFO} select, \ac{FIFO} interrupt, and reset. These ports enable full functionality of the MRF49XA and rest of available pins are found dispensable.
-
-***** ANTENA
 
 \figura{Bitmap/Capitulo4/mtransmodel}{width=.4\textwidth}{fig:cap4:mtransmodel}%
 {$\mu$Trans 434/868 component model for use}
@@ -846,7 +844,7 @@ This extension sets serial communication between the microcontroller and a PC ov
 
 This technology could be useful for old machines, low-resources researches, or for debugging purposes during the platform development until the \ac{USB} communication is fully operative. This communication way has a simpler operation mode than \ac{USB}.
 
-Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. It is used \ac{UART} 3, accessible  at the headers. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at header pin 38, \ac{RX} is at 21. Since the communication does not require for hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals Apart from the data signals.}, two pins are enough to set proper communication.
+Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. \ac{UART} 6 is used, accessible  at the headers and not requiring hardware flow control. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at header pin 37, \ac{RX} is at 20. Since the communication does not require for hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals Apart from the data signals.}, two pins are enough to set proper communication.
 
 \figura{Bitmap/Capitulo4/max3232}{width=.5\textwidth}{fig:cap4:max3232}%
 {MAX3232 basic scheme.}

@@ -87,9 +87,19 @@ Module pads are based vias\footnote{A via is a electrical connection between lay
 
 MRF49XA datasheet provides hints for the inclusion of the transceiver into a \ac{PCB}. It recommends to fill with ground vias the area underneath the transceiver. In addition, to have an easily accessible measure of the clock signal, the top layer posses a small pad that provides this signal. Minimal clearance among tracks is set to 0.2 mm and the standard track width is 0.2 mm. Power tracks width is set to 0.4 mm and ground planes are placed on top and bottom layers. Vias through holes minimal diameter are 0.4 mm width. Table \ref{tab:ap2:mtranscomponents} at the Appendix \ref{ap2:layouts} contains the needed components for the $\mu$Trans 434/868 on both versions.
 
-The 
-**** COAXIAL
-****************** ANTENA
+The $\mu$Trans \ac{RI} accepts external monopole antennas through a coaxial \ac{SMA} female connector. Hence, antennas must posses an \ac{SMA} male connector kind to be attached to the modules. Figre \ref{fig:cap5:smaconnectors} ilustrates the connectors kind.
+
+\begin{figure}[!h]
+\centering
+
+\subfloat[$\mu$Trans antenna receptacle, female SMA.]{\label{fig:cap5:smafemale}\includegraphics[height=0.20\textwidth]{Imagenes/Bitmap/Capitulo5/smafemale}}%
+\qquad
+\subfloat[Suitable antenna connector, male SMA.]{\label{fig:cap5:smamale}\includegraphics[height=0.15\textwidth]{Imagenes/Bitmap/Capitulo5/smamale}}%
+
+\caption{$\mu$Trans antenna connectors.}
+\label{fig:cap5:smaconnectors}
+
+\end{figure}
 
 %-------------------------------------------------------------------
 \subsection{Layout}
@@ -116,7 +126,7 @@ Figure \ref{fig:cap5:mtrans} shows a commented top and bottom photography of the
    
 \subfloat[Top view.]{\label{fig:cap5:mtransfront}\includegraphics[width=0.75\textwidth]{Imagenes/Bitmap/Capitulo5/mtranstop}}  
 \qquad
-\subfloat[Bottom view.]{\label{fig:cap5:mtransback}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Todo}}
+\subfloat[Bottom view.]{\label{fig:cap5:mtransback}\includegraphics[width=0.55\textwidth]{Imagenes/Bitmap/Capitulo5/mtransbottom}}
        
 \caption{Detailed view of the $\mu$Trans module.}
 \label{fig:cap5:mtrans}

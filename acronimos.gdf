@@ -204,27 +204,27 @@
 
 @entry{OTG, , \emph{On-The-Go}}
 
-@entry{ADC, ,\emph{analog-to-digital converter}}
+@entry{ADC, ,\emph{Analog-to-Digital Converter}}
 
-@entry{RTCC, ,\emph{real-time clock/calendar}}
+@entry{RTCC, ,\emph{Real-Time Clock/Calendar}}
 
 @entry{RX, ,\emph{Reception}}
 
 @entry{QPSK, ,\emph{Quadrature Phase-Shift Keying}}
 
-@entry{FSK, ,\emph{Frequency-shift Keying}}
+@entry{FSK, ,\emph{Frequency-Shift Keying}}
 
-@entry{LED, ,\emph{Light-emitting Diode}}
+@entry{LED, ,\emph{Light-Emitting Diode}}
 
-@entry{SMD, ,\emph{surface-mount devices}}
+@entry{SMD, ,\emph{Surface-Mount Devices}}
 
-@entry{PCB, ,\emph{printed circuit board}}
+@entry{PCB, ,\emph{Printed Circuit Board}}
 
-@entry{BoM, , \emph{bill of materials}}
+@entry{BoM, , \emph{Bill of Materials}}
 
-@entry{DMA, , \emph{direct memory access}}
+@entry{DMA, , \emph{Direct Memory Access}}
 
-@entry{CN, , \emph{change notification}}
+@entry{CN, , \emph{Change Notification}}
 
 @entry{RMII, , \emph{Reduced Media Independent Interface}}
 
@@ -251,4 +251,7 @@
 @entry{SOIC, , \emph{Small Outline Integrated Circuit}}
 
 @entry{CDC, ,\emph{Communications Device Class}}
+
+@entry{SMA, ,\emph{SubMiniature version A}}
+
 

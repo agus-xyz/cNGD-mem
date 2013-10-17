@@ -8,9 +8,10 @@
 
 \begin{FraseCelebre}
 \begin{Frase}
-At last the long wait is over \\
-The weight is off my shoulders \\
-I'm taking all control, yeah
+She's up all night to the sun\\
+I'm up all night to get some\\
+She's up all night for good fun\\
+I'm up all night to get lucky 
 \end{Frase}
 \begin{Fuente}
 Thomas \& Guy-Manuel, Daft Punk
@@ -26,9 +27,9 @@ Some tests were applied to main platform modules for the purpose of proving thei
 %-------------------------------------------------------------------
 \label{cap6:sec:testModel}
 %-------------------------------------------------------------------
-The purposes of testing functionalities of the platform are to prove valuable capabilities and proper functionality of modules. Characterization is not expressely required and modules must respond to operation parameters provided by manufacturers. The already described  used firmware includes several test-benches to apply. Most of the software tools employed to test the platform are extracted, at least partially, from them. For a further description on the provided tests design, cosult \ref{juanpfc}. 
+The purposes of testing some of the platform functions are to prove valuable capabilities and proper functionality of modules. Characterization is not expressly required and modules must respond to operation parameters provided by manufacturers. The already described  used firmware includes several test-benches to apply. Most of the software tools employed to test the platform are extracted, at least partially, from them. For a further description on the provided tests design, consult \ref{juanpfc}. 
 
-Tests are simple and check bounded functions. Aspects to check are related to sleeping modes operation and current consumption, microcontroller computing capabilities, spectrum sensing features and radio interfaces, or battery charger behaviour.   
+Tests are simple and check bounded functions. Aspects to check are related to sleeping modes operation and current consumption, microcontroller computing capabilities, spectrum sensing features and radio interfaces, or battery charger behavior.   
 
 %-------------------------------------------------------------------
 \section{Energy management test}
@@ -61,7 +62,7 @@ Consumption measures are reflected at Figure \ref{fig:cap6:energymodes}, where a
 %-------------------------------------------------------------------
 \label{cap6:sec:computing}
 %-------------------------------------------------------------------
-This test intends to measure the computational cost for the management of the communication protocol stack. This could help to make a good software planification and avoid troubles interfering the application proper running. Moreover, it is important to adjust the management tasks period carefully for a good performance over communications.
+This test intends to measure the computational cost for the management of the communication protocol stack. This could help to make a good software planning and avoid troubles interfering the application proper running. Moreover, it is important to adjust the management tasks period carefully for a good performance over communications.
 
 For this, it will be determined how long takes the management task to be accomplished in a \ac{FFD}. Nominal clock frequency is set to 80 MHz and no network activity is considered. Management tasks are taken every 25 ms. This test is fully provided at the firmware. 
 
@@ -90,21 +91,21 @@ Total time & & \\ \hline \hline
 %-------------------------------------------------------------------
 \label{cap6:sec:spectrum}
 %-------------------------------------------------------------------
-This test tries to show the right spectrum sensing capability of the platform since it supposes a key point for its purposes. Using two \ac{CNGD} prototypes and making use of the functions provided by the \ac{HAL}, three simple scenarios show sensing features at the three different frequency bands. All the scenarios host a device transmitting continously unicast packets at determined channels. This \ac{RF} activity is detected by the platform at different spectrum energy scans. 
+This test tries to show the right spectrum sensing capability of the platform since it supposes a key point for its purposes. Using two \ac{CNGD} prototypes and making use of the functions provided by the \ac{HAL}, three simple scenarios show sensing features at the three different frequency bands. All the scenarios host a device continuously transmitting unicast packets at determined channels. This \ac{RF} activity is detected by the platform at different spectrum energy scans. 
 
-First scenario is conducted over 434 MHz band. This band posses 2 available channels when using a bitrate of 119,2 kbps. Transmitting device is making use of channel 1. Figure \ref{fig:cap6:434sensing} shows the energy scan traces deployed by the firmware.
+First scenario is conducted over 434 MHz band. This band posses 2 available channels when using a bit-rate of 119,2 kbps. Transmitting device is making use of channel 1. Figure \ref{fig:cap6:434sensing} shows the energy scan traces deployed by the firmware.
 \begin{figure}[!h]
 \centering
 \subfloat[Before start transmitting packets.]{\label{fig:cap6:434sensingpre}\includegraphics[height=25px]{Imagenes/Bitmap/Capitulo6/434sensingpre}}%
 ~
 \subfloat[After start transmitting packets.]{\label{fig:cap6:434sensingpost}\includegraphics[height=25px]{Imagenes/Bitmap/Capitulo6/434sensingpost}}%
 
-\caption{Spectrum sensgin at 434 MHz.}
+\caption{Spectrum sensing at 434 MHz.}
 \label{fig:cap6:434sensing}
 \end{figure}
 
 
-First scenario is conducted over 868 MHz band. This band posses 7 available channels when using a bitrate of 119,2 kbps. Transmitting device is making use of channel 4. Figure \ref{fig:cap6:868sensing} shows the energy scan traces deployed by the firmware.
+First scenario is conducted over 868 MHz band. This band posses 7 available channels when using a bit-rate of 119,2 kbps. Transmitting device is making use of channel 4. Figure \ref{fig:cap6:868sensing} shows the energy scan traces deployed by the firmware.
 
 
 \begin{figure}[!h]
@@ -113,7 +114,7 @@ First scenario is conducted over 868 MHz band. This band posses 7 available chan
 \qquad
 \subfloat[After start transmitting packets.]{\label{fig:cap6:868sensingpost}\includegraphics[height=70px]{Imagenes/Bitmap/Capitulo6/868sensingpost}}%
 
-\caption{Spectrum sensgin at 868 MHz.}
+\caption{Spectrum sensing at 868 MHz.}
 \label{fig:cap6:868sensing}
 \end{figure}
 
@@ -124,7 +125,7 @@ First scenario is conducted over 2.4 GHz band. This band posses 16 available cha
 \subfloat[Before start transmitting packets.]{\label{fig:cap6:868sensingpre}\includegraphics[height=130px]{Imagenes/Bitmap/Capitulo6/2400sensingpre}}%
 ~
 \subfloat[After start transmitting packets.]{\label{fig:cap6:868sensingpost}\includegraphics[height=130px]{Imagenes/Bitmap/Capitulo6/2400sensingpost}}%
-\caption{Spectrum sensgin at 2.4 GHz.}
+\caption{Spectrum sensing at 2.4 GHz.}
 \label{fig:cap6:2400sensing}
 
 \end{figure}
@@ -134,7 +135,7 @@ First scenario is conducted over 2.4 GHz band. This band posses 16 available cha
 %-------------------------------------------------------------------
 \label{cap6:sec:radioagility}
 %-------------------------------------------------------------------
-This test evaluates how long changes over the \ac{RI}s take to be done. Parameters to change are \ac{TX} power, operation channel and energy modes. This test was fully available at the firmware. Table \ref{tab:cap6:radioagility} ilustrates the results.
+This test evaluates how long changes over the \ac{RI}s take to be done. Parameters to change are \ac{TX} power, operation channel and energy modes. This test was fully available at the firmware. Table \ref{tab:cap6:radioagility} illustrates the results.
 
 \begin{table}[h]
 \centering
@@ -168,9 +169,10 @@ Two \ac{TX} modes are broadcast and unicast (long address). Main communication p
 \item TX and RX buffer is configured as 10 packets for each \ac{RI}.
 \item Total number of sent packets is 250.
 \item VERIFY\_TRANSMIT option is enabled for MRF24J40 module.
+\item \emph{ENABLE\_SECURITY} option is active.
 \end{itemize}
 
-Tables \ref{cap6:tab:effectiverate434868fast} and \ref{cap6:tab:effectiverate434868slow} ilustrate the results at two different bit-rates for $\mu$Trans module at 434 MHz and 868 MHz. Both versions, sharing the same transceiver, posses similar performance. Used protocol is P2P.  
+Tables \ref{cap6:tab:effectiverate434868fast} and \ref{cap6:tab:effectiverate434868slow} illustrate the results at two different bit-rates for $\mu$Trans module at 434 MHz and 868 MHz. Both versions, sharing the same transceiver, posses similar performance. Used protocol is P2P.  
 
 \begin{table}[h]
 \centering
@@ -210,9 +212,9 @@ Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
 \end{table}
 
 
-It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. The reduced effective rate might be due to prototyping bad conditions, such as used corrections made with wires and raugh connections that should be better at consecutive mountings. \ac{RF} devices are very sensitive to these imperfections. On the other hand, \ac{TX} power and antenna conditions must be review, since these suposse a change with respect to previous tests.
+It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. The reduced effective rate might be due to prototyping bad conditions, such as used corrections made with wires and rough connections that should be better at consecutive mountings. \ac{RF} devices are very sensitive to these imperfections. On the other hand, \ac{TX} power and antenna conditions must be review, since these suppose a change with respect to previous tests.
 
-Table \ref{cap6:tab:effectiverate2.4} ilustrates the results for MRF24J40 transceiver as 2.4 GHz \ac{RI} using a P2P protocol. 
+Table \ref{cap6:tab:effectiverate2.4} illustrates the results for MRF24J40 transceiver as 2.4 GHz \ac{RI} using a P2P protocol. 
 
 \begin{table}[h]
 \centering
@@ -232,7 +234,7 @@ Unicast & 140 (56 \%) & 100800 & 3.54 & 28.474 \\ \hline \hline
          \label{cap6:tab:effectiverate2.4}}
 \end{table} 
 
-A worrying issue, already described in \cite{juanpfc}, is the packet loss even transmitting at unicast mode. The reason for this fact still remains unknown but there are some possible explanations. Most feasible option at the current moment is that \ac{ACK} packets are misinterpreted by the receiver and it considers a single \ac{ACK} response for more than one packet. This is possible due to the unsequenced character of \ac{ACK} packets at MiWi protocol. 
+A worrying issue, already described in \cite{juanpfc}, is the packet loss even transmitting at unicast mode. The reason for this fact still remains unknown but there are some possible explanations. Most feasible option at the current moment is that \ac{ACK} packets are misinterpreted by the receiver and it considers a single \ac{ACK} response for more than one packet. This is possible because \ac{ACK} packets are not numerically sequenced at MiWi protocol. 
 
 In order to solve this issue, Jara, G. presents in \cite{guillepfc} a flow control mechanism at MiWi \ac{MAC} layer that apparently avoid packet loss at unicast mode.
 
@@ -241,14 +243,14 @@ In order to solve this issue, Jara, G. presents in \cite{guillepfc} a flow contr
 %-------------------------------------------------------------------
 \label{cap6:sec:charger}
 %-------------------------------------------------------------------
-As it was mantioned, small checkings were made during the mounting process. Nevertheless, this test shows the chargerSHIELD performance test facing a battery full charge operation.
+As it was mentioned, small testings were made during the mounting process. Nevertheless, this test shows the chargerSHIELD performance test facing a battery full charge operation.
 
-When testing the chargerSHIELD proper operation, few charging sequences were carried out. Taking measures every 2 hours of battery voltage conditions and the current flowing through it. Figure \ref{fig:cap6:chargergraph} shows the average results, battery voltages are view as blue bars referened on the left side while current flow is expressed with an orange line respect to values at the right side.
+When testing the chargerSHIELD proper operation, few charging sequences were carried out. Taking measures every 2 hours of battery voltage conditions and the current flowing through it. Figure \ref{fig:cap6:chargergraph} shows the average results, battery voltages are view as blue bars referenced on the left side while current flow is expressed with an orange line respect to values at the right side.
 
 \figura{Bitmap/Capitulo6/charger}{width=\textwidth}{fig:cap6:chargergraph}%
 {Batteries and parameters evolution during charging process at chargerSHIELD.}
 
-Charging time for the defined batteries can be estimated around 12-16 hours. The ready battery led notifies the battery is ready when approximately 60\% of the total charge is available. It might be extrange to observe so high voltage values at the batteries when they are supposed to provide 3.6 V, nevertheless, it is a normal behaviour. The charger properly switchs off the charging current when voltage at the battery reveals a complete charge.
+Charging time for the defined batteries can be estimated around 12-16 hours. The ready battery led notifies the battery is ready when approximately 60\% of the total charge is available. It might be estrange to observe so high voltage values at the batteries when they are supposed to provide 3.6 V, nevertheless, it is a normal behavior. The charger properly switches off the charging current when voltage at the battery reveals a complete charge.
 
 
 % Variable local para emacs, para  que encuentre el fichero maestro de

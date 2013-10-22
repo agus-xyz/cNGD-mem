@@ -8,16 +8,15 @@
 
 \begin{FraseCelebre}
 \begin{Frase}
-Like the legend of the phoenix \\
-All ends with beginnings \\
-What keeps the planet spinning \\
-The force from the beginning  \\
+Like the legend of the phoenix\\
+All ends with beginnings\\
+What keeps the planet spinning\\
+The force from the beginning\\
 \end{Frase}
 \begin{Fuente}
 Thomas \& Guy-Manuel, Daft Punk
 \end{Fuente}
 \end{FraseCelebre}
-
 
 \begin{resumen}
 This chapter covers a full review about the project. It is shown a general view of the implemented system together with the main taken decisions and carried out tasks. Most important conclusions are summarized and future lines are set.
@@ -26,33 +25,35 @@ This chapter covers a full review about the project. It is shown a general view 
 The main goal of the project is to design and implement a node for the study of \ac{CWSN}s. A demo application layer, also to be developed, must work integrated with an already implemented firmware. This employed firmware is able to give support to up to three transceivers sharing a single MiWi$^{TM}$stack. It focus on abstracting the developer and the application from the cognitive model and the direct hardware management.
 
 The platform was developed responding to the requirements and a final demo let prove the right operation of the whole system. 
-The whole system respond to a modular design widely adaptable over the range of WAHSNs applications. Main module is called \ac{CNGD}. This main module posses different functionalities  that enhances a node platform, such as power supply, power control over modules, battery, expansion headers, \ac{RI}s, serial interface, and a control \ac{MCU} unit. \ac{RI}s on board of \ac{CNGD} offer communication over 434, 868, and 2400 MHz. \ac{RI}s used for 434 and 868 MHz are ad-hoc designed \ac{RI}s due to the lack of suitable size modules. This ad-hoc designed \ac{RI}s are called $\mu$Trans 434/868 for 434/868 MHz respectively. 
+The whole system respond to a modular design widely adaptable over the range of \ac{WSN}s applications. Main module is called \ac{CNGD}. This main module posses different functionalities  that implements a node platform, such as power supply, power control over modules, battery, expansion headers, \ac{RI}s, serial interface, and a control \ac{MCU} unit. \ac{RI}s on board of \ac{CNGD} offer communication over 434, 868, and 2400 MHz. \ac{RI}s used for 434 and 868 MHz are ad-hoc designed \ac{RI}s due to the lack of suitable size modules. This ad-hoc designed \ac{RI}s are called $\mu$Trans 434/868 for 434/868 MHz respectively. 
 
 \ac{CNGD} main module accepts expansion options over its headers, so-called shields, and for this project two shields were implemented. First shield gives chance to serial communication through an RS232 port. Second one is a suitable charger for the batteries. Shields allow developers to create new attachable functionalities and possibilities or give different capabilities to distinct reduced node groups of the total network. This helps to keep the downtrend on complexity, consumption, size and cost but not on performance.
 
 The sort of device shown at this project features some novel properties with respect to other \ac{CWSN} devices, such as its capability to communicate over three different ISM RF bands. The hardware fits the conditions and requirements of \ac{WSN} environments. Low power consumption, size and cost limitations are taken into account in order to achieve real test-benching purposes, application development or even possible complete implementations.
 
-%In Section \ref{cap1:sec:goals} takes place a fragmented set of subgoals is described, here they follow some conclusions obtenied throughout the achievement of these subgoals:
+In Section \ref{cap1:sec:goals} takes place a fragmented set of subgoals is described, here they follow some conclusions obtenied throughout the achievement of these subgoals:
 
-%\begin{itemize}
+\begin{itemize}
 
-%\item A review all over the recent implementations related to the \ac{CWSN} is made in Chapter 3. The \ac{FCD} architecture is quite close to the one pursued so is taken as guide for the designing process. Used technology is evaluated and weaknesses detected, also minimal requirements are stated. Many decisions, such as a reconfiguration of the \ac{RI}s, the design of suitable size \ac{RI}s or the need for expansion options, were taken to face the design.
+\item A review all over the recent implementations related to the \ac{CWSN} was made at Chapter 3. The \ac{FCD} architecture is quite close to the one pursued so is taken as guide for the designing process. Used technology is evaluated and weaknesses detected, also minimal requirements are stated. Many decisions, such as a reconfiguration of the \ac{RI}s, the design of suitable size \ac{RI}s or the need for expansion options, were taken in order to face the design.
 
-%\item The whole design is covered in Chapter 4. A modular design builds up the whole system. A total of three modules were designed. In general, less featured components compose the new system. Battery options were studied resulting in a final option of 3-cells \ac{NIMH} battery. Components were chosen and required functionalities assigned to different modules.
+\item The whole design is covered in Chapter 4. A modular design builds up the whole system. A total of three modules were designed, a main module, an ad-hoc \ac{RI} and two expansion shields that provide extra functionalities. Battery options were studied resulting in a final option of 3-cells \ac{NIMH} battery. Components were chosen and required functionalities assigned to different modules.
 
-%\item At Chapter 5 is covered the hardware implementation. Size achieved is The \ac{PCB} layouts were deployed and prototypes mounted. Node functionalities were checked and design validation with consequent corrections.
+\item At Chapter 5 is covered the hardware implementation. The \ac{PCB} layouts were deployed and prototypes mounted. Size achieved is fair for research purposes. Node functionalities were checked and design validation with consequent corrections, these task were carried out during mounting making use of small pieces of software.
 
-%\item Software developed for hardware checkings, firmware adaptations, and final demo application is described in Chapter 6. Firmware has been slighly modified to exploit the hardware features. Final demo application proves right operation of \ac{CR} functions applied to \ac{WSN} communications. 
+\item Developed hardware have been submitted to several tests to check right performance of main capabilities. Hence, \ac{MCU} capabilities, \ac{RI} features, sleeping modes and current consumption have been proven. For this, tests included at the software have been generally used. In some cases the suffered slight adaptations.  
 
-%\end{itemize}
+\item Software developed for hardware checkings, firmware adaptations, and final demo application is described in Chapter 6. Firmware has been slighly modified to exploit the hardware features. Final demo application proves right operation of \ac{CR} functions applied to \ac{WSN} communications. 
+
+\end{itemize}
 
 After carrying out all the exposed tasks, conclusions about viability, value and utility about the implemented device came out. Most important points are:
 
 \begin{itemize}
 
-\item Modularity achieved with the \ac{CNGD} enables robust foundations to build over new designs easily. This makes wider the possibilities  for platform applications and facilitates \ac{CWSN} research.  
+\item Modularity achieved with the \ac{CNGD} enables robust foundations to build over new designs easily. This makes wider the possibilities  for test-bed platform applications and facilitates \ac{CWSN} research.  
 
-\item Flexibility is an important concept affecting both communications and applications. Three \ac{RI}s make the \ac{CNGD} the only \ac{WSN} platform capable to access three different frequency bands. Applications might implement a great range of functionalities making use of the expansion slots that \ac{CNGD} encrusts.   
+\item Flexibility is an important concept affecting both communications and applications. Three \ac{RI}s make the \ac{CNGD} the only \ac{WSN} test-bed platform capable to access three different frequency bands. Applications might implement a great range of functionalities making use of the expansion slots that \ac{CNGD} encrusts.   
 
 \item Scalability is a fact since the used MiWi$^{TM}$ protocol provides support for variable network sizes up to 8000 nodes at its PRO version. Moreover, the employed protocol gives support for both P2P and mesh topologies.
 
@@ -93,7 +94,7 @@ Facing the future of the platform, it is important to pay attention to some poin
 
 \item Many possible implementations are possible for the expansion options at the \ac{CNGD}. Typical sensor modules on \ac{WSN} applications could be embedded into a shield. Different gateways or communication options such as 3G, \ac{GSM} or \ac{GPRS} could be of interest for certain applications. Even developing a generic empty board with soldering slots could be a cheap way to prototype shields. 
 
-\item A review over advantages and disadvantages of changing the used architecture might set some guidances for future improvements on the platform. Even designing a customized protocol from the scratch should be discussed.
+\item A review over the obtained performance and possibilities of less featured \ac{MCU}, even changing the used architecture might set some guidances for future improvements on the platform, despite this supposes a firmware redesign.
 
 \item Optimization of the design. Current design is susceptible to suffer design optimizations. RJ-11 PGE programmer could be replaced by a simpler, smaller and cheaper option, or even be included at the header. Creating an unified clock signal for \ac{MCU} and transceivers is possible and it would save energy on clock signals generation.
 

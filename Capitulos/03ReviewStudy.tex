@@ -200,27 +200,24 @@ Once described the \ac{CWSN} node model and after evaluating the main related de
 \end{itemize}
 \end{itemize}
 
-In addition, it should respond to standard requirements for \ac{WSN}: %*************** POR AQUI VOY ********
+In addition, it should respond to standard requirements for \ac{WSN}s: 
 
 \begin{itemize}
 
-\item \emph{Scalability}. Given the potentially large amount of nodes composing a \ac{WSN}, the model call for a easily scalable design.
+\item \emph{Scalability}. Given the potentially large amount of nodes composing a \ac{WSN}, the model claims for a easily scalable design.
 
-\item \emph{Ubiquitous computing.}. Each node hosts some computing capacity, giving to the network the chance for distributed cognition.
-	Thus, robustness and stability is given to the set.
+\item  \emph{Cost}. Due to the same previous reason, low-cost is a requirement. Otherwise their price make networks unrealizable.
 
-\item  \emph{Cost}. Due to the same previous reason, low-cost is a requirement. Otherwise their price makes networks non-commercially-viable.
- 
-\item	\emph{Power consumption.} It must be prepared to  operate with battery and achieve a fairly long autonomy \footnote{Common \ac{WSN} 		applications autonomy last for years. The platform must emulate similar conditions.}.
+\item \emph{Ubiquitous computing}. Each node hosts some computing capacity, this gives to the network the chance for distributed cognition.
+	Hence, robustness and stability is given to the set.
 
-\item \emph{Throughput}. It must be slightly higher than usual. Regarding the generic nature of the platform it should be prepared for the widest
-	possible range of applications. Cognition, on the other hand, increases as well the need for computation capabilities dealing with 
-	several interfaces and increasing the number of data transmissions.
+\item  \emph{Power consumption}. It must be prepared to  operate supplied by a battery and achieve a certain autonomy.
 
-\item \emph{Communication data-rate}. Not too high data-rate transmissions are usually needed. A few tens or hundreds of KB/s should work well.
+\item \emph{Throughput}. Performance must be high enough for a test-bed platform. Regarding the generic nature of the platform, it should be prepared for a wide range of applications. Cognition, on the other hand, increases as well the need for computation capabilities.
 
-\item \emph{Security}. Radio Interfaces allowing manageable security mechanisms. Being possible to deal with
-	confidential or private data sufficiently safe. 
+\item \emph{Communication data-rate}. Not too high data-rate transmissions are usually needed. Few tens or hundreds of kbps are enough.
+
+\item \emph{Security}. Radio Interfaces allowing manageable security mechanisms. Being possible to safely deal with confidential or private data. 
 
 \end{itemize}
 
@@ -234,22 +231,18 @@ Step by step, all the needed technologies for our design will be evaluated and c
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
-
 Based on the requirements described in \ref{cap3:sec:systemRequirements}, it seemed necessary to keep the number of cores reduced to one unit.
 Furthermore, using a 32-bits Microchip \ac{PIC} was an imposed design decision, as it was said. 
 
 The criteria to choose a microcontroller were:
 \begin{itemize}
-\item The less featured and simplest microcontroller that suits our operation memory parameters. \ac{FCD} showed that a Flash memory above 200 KB was 
-enough and a \ac{RAM} memory over 32 KB fits our needs. This helps to keep down the microcontroller power consumption. All 32-bits \ac{PIC}s family have a throughput high enough.
+\item The less featured and simplest microcontroller that suits our operation memory parameters. \ac{FCD} showed that a Flash memory above 200 KB was enough and a \ac{RAM} memory over 32 KB fits our needs. This helps to keep down the microcontroller power consumption. All 32-bits \ac{PIC}s family posses a high enough throughput.
 
 \item Some peripherals are essential to accomplish required tasks. At least three \ac{SPI}s\footnote{Most of commercial radio transceivers set
-their communication with the \ac{CPU} over \ac{SPI}s} would operate to communicate the microcontroller to the radio transceivers. Moreover, peripherals for debugging such as \ac{UART}s or \ac{USB}s must be available simultaneously. Apart from that, it should contain other buses and peripherals accessible for modularity. Probably a 100-pins microcontroller could satisfy
-the access to multiple peripherals better than smaller scales.
+their communication with the \ac{MCU} over \ac{SPI}s} would be needed to interface the microcontroller and the radio transceivers. In addition, peripherals for debugging such as \ac{UART}s or \ac{USB}s must be simultaneously available. Apart from that, it should contain other buses and accessible peripherals for modularity. Probably a 100-pins microcontroller could provide better access to multiple peripherals than smaller sizes.
 
 \item Lowest price.        
 \end{itemize}
-
 
 The different options included at Microchip catalog, described and showing their main features, are shown in table \ref{cap3:tab:micros}.
 
@@ -288,19 +281,13 @@ PIC32MX795F256L & & & & 4 && 5 &&&&& 100 & Specified & 9.57\\
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
-One of the desired requirements is enabling radio activity over three \ac{ISM} bands (434 MHz, 868 MHz and 2.4 GHz), so in order
-to achieve it, compatible transceivers on these bands must be studied. We first took two decisions based on the experience
-brought by the \ac{FCD}.
+One of the desired requirements is enabling radio activity over three \ac{ISM} bands (434 MHz, 868 MHz and 2.4 GHz), so in order to achieve it, compatible transceivers on these bands must be studied. We first took two decisions based on the experience brought by the \ac{FCD}.
 
-The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a 
-core itself and the communication between cores are driven by the \ac{UART}, the low data-rate communication provided does not seem to support our goals either. To keep the single-core architecture, lowering-down power consumption and meeting the requirements described, this module will be suppressed and it will be looked for a replacement.
+The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a core itself and the communication between cores are driven by the \ac{UART}, the low data-rate communication provided does not seem to support our goals either. To keep the single-core architecture, lowering-down power consumption and meeting the described requirements, this module will be suppressed and it will be looked for a replacement.
 
-WiFi transceiver, MRF24WB0MA, embedded by the \ac{FCD} raises up the power consumption to unsuitable levels in \ac{WSN}. The stack to manage the hardware is very heavy computationally and memory-consuming compared other usual protocol stacks in \ac{WSN}. Even being a requirement to establish
-a gateway to the IEEE 802.11 standard, it cannot be included on the design of a general node. New ways to establish the gateway will be studied,
-maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme looked in the \ac{CNGD} cannot afford to include this transceiver.
+MRF24WB0MA WiFi transceiver, embedded by the \ac{FCD}, raises up the power consumption to unsuitable levels in a \ac{WSN}. The protocol stack is very computationally heavy and memory-consuming compared other usual protocol stacks in \ac{WSN}s. New ways to establish a IEEE 802.11 gateway will be studied, maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme seeked in the \ac{CNGD} cannot afford to include this transceiver.
 
-
-Table \ref{tab:cap3:ri} shows transceivers and modules supported by the firmware that enables communication at the seeked bands. Modules such as the MRF49XA PICtail$^{TM}$ Daughter Board, Figure \ref{fig:cap3:pictail}, whose size does not suit our requirements, have not been considered.
+Table \ref{tab:cap3:ri} shows transceivers and modules supported by the chosen firmware that enables communication at the desired bands. Modules such as the MRF49XA PICtail$^{TM}$ Daughter Board, Figure \ref{fig:cap3:pictail}, whose size does not suit our requirements, have not been considered.
 
 \begin{table}[h]
 \centering
@@ -327,7 +314,7 @@ MRF89XAM8A & \multirow{2}{*}{868} & & FSK: 40 & & 16 mA  @ +1 dBm &  & & & \mult
 \figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap3:pictail}%
 {MRF49XA PICtail$^{TM}$ Daughter Board}
 
-No complete modules are available for 434 MHz band. For 868 MHz, module MRF89XAM8A is available. However, MRF49XA transceiver, which provies communications at these two bands, is susceptible to be included into an ad-hoc designed \ac{RI} board. Figure \ref{fig:cap2:wirelesscomparison} gives a comparison among wireless networking protocols.
+There are not complete modules available for 434 MHz band. For 868 MHz, module MRF89XAM8A is available. However, MRF49XA transceiver, which provies communications at these two bands, is susceptible to be included into an ad-hoc designed \ac{RI} board. Figure \ref{fig:cap2:wirelesscomparison} gives a comparison among wireless networking protocols.
 
 \figura{Bitmap/Capitulo3/wirelesscomparison}{width=.55\textwidth}{fig:cap2:wirelesscomparison}%
 {Main wireless networking options comparison}
@@ -335,23 +322,15 @@ No complete modules are available for 434 MHz band. For 868 MHz, module MRF89XAM
 %-------------------------------------------------------------------
 \subsection{Serial Communication}
 %-------------------------------------------------------------------
+Serial communication is a very important feature for applications development and debugging. It allows wiring the node and establishing communication between the \ac{CNGD} and any other device, normally a computer or storing devices to track data. Peripherals such as the \ac{UART} is commonly used to stablish these communication tasks. More recent implementations enable communications through \ac{USB}.
 
-Serial communication is a feature very important for applications development and debugging, it allows wiring the node 
-and establishing communication between the \ac{CNGD} and any other device, normally a computer or storing devices to 
-track data. The usual paths to carry through these communication tasks are peripherals such as the \ac{UART}, by attaching
-a simple circuit and RS232 connector, or more recent implementations enable communications through \ac{USB}.
+While the \ac{FCD} includes two \ac{USB} connectors, a $\mu$USB and normal one, together with an RS232 communication module, three communication ways to interface the node seems too many. These modules are size and power consuming.
 
-While the \ac{FCD} includes two \ac{USB} connectors, a micro-USB and normal one, together with a RS232 communication module,
-three communication ways to interface the node seems too many. These modules are size and power consuming.
+$\mu$USB connectors show a reduced size compared to first connectors and they do expand the first connectors capabilities.
 
-micro-USB connectors show a reduced size compared to first connectors and they do expand the first connectors capabilities.
-The idea include a normal connector gives some interconnection opportunities with attachable devices like mouses, keyboards,
-or portable memories in which the node adopts a \emph{master} role facing a \emph{slave} device. This feature supposes the inclusion
-of a power consuming circuitry to raise the voltage up to 5 V into the USB, giving some complexity to the design. In order to fit the requirements
-it does not seem to be needed this last capability on each node; a micro-USB connector would be enough.
+The idea of including a normal connector gives some interconnection opportunities with attachable devices like mouses, keyboards, or portable memories in which the node adopts a \emph{master} role facing a \emph{slave} device. This feature supposes the inclusion of a power consuming circuitry to raise the voltage up to 5 V into the USB, subtracting simplicity to the design. In order to fit the requirements, it does not seem to be needed this last capability on each node. A $\mu$USB connector would be enough.
 
-RS232 communication so does needs its own power supply. The size and cost for an RS232 connector and circuitry on each node is too high for
-a serial communication module, needing for a MAX3232 chip; even more, after comparing to a micro-USB option. An optional module for RS232 might be a good option given its wide acceptance and utility in \ac{WSN} despite the global use of \ac{USB}.
+RS232 communication so does needs its own power supply. The size and cost for an RS232 connector and circuitry, which requires a MAX3232 chip, is too high for a default serial communication module within each node. An optional module for RS232 might be a good option given its wide acceptance and utility in embbeded systems despite the global use of \ac{USB}.
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -359,34 +338,33 @@ a serial communication module, needing for a MAX3232 chip; even more, after comp
 The power supply system designed for the \ac{FCD} includes some modules susceptible to be suppressed or replaced to keep the simplicity and
 reduce the consumption. 
 
-The MCP1612\cite{mcp1612} buck regulator specifications fit the supply requirements on excess so a less-featured device might be enough in the new design. The concrete parameter to reduce at the MCP1612 is the maximum output current, up to 1 A. 
+The MCP1612\cite{mcp1612} buck regulator specifications fit the supply requirements on excess, so a less-featured component might be enough at the new design. The maximum output current for the MCP1612, up to 1 A, could be significantly reduced. 
 
-The MCP1253-33X\cite{mcp1252} charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design if finally this option is not implemented.
+The MCP1253-33X\cite{mcp1252} charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design if this option is not finally implemented.
 
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
 Timing options included on the \ac{FCD} suppose a low-consumption oscillator for real-timing and a second oscillator for maximum operation frequency. 
-It does not appear any problem related to the timing configuration. The configuration defined fits the requirements and, firstly, seems a good
+It does not appear any problem related to the timing configuration. The defined configuration fits the requirements and, firstly, seems a good
 option to keep it unchanged.
 
 %-------------------------------------------------------------------
 \subsection{Application Capabilities}
 %-------------------------------------------------------------------
-Application capabilities on board of \ac{FCD} are poor. Apart from interacting with the \ac{RI} and serial communication, the board does not offer
+Application capabilities over the \ac{FCD} are poor. Apart from interacting with the \ac{RI} and serial communication, the board does not offer
 options for sensing/controlling applications neither other more complex possibilities such as including new communication modules. 
-This is because the \ac{FCD} does not embed any expansion header or plug where adapting any new design to expand to new features.
+This is because the \ac{FCD} does not embed any expansion header or slot where adapting any new design to expand to new features.
 
-The new design calls for expansion options where application capabilities could be widely and easily open attaching modules including
-the required design. A complete expansion header for \ac{WSN} should include access to the following peripherals/buses:
+The new design calls for expansion options where application capabilities could be widely and easily opened by attaching modules including an ad-hoc design. A complete expansion header for a \ac{WSN} node should include access to the following peripherals/buses:
 
 \begin{itemize}
-\item \emph{\ac{I2C}}. Being the most common way to interconnect sensors to the controller. 
-\item \emph{\ac{USB}}. For serial communication, mainly to a host device.
-\item \emph{\ac{UART}}. For asynchronous serial communication to devices.
-\item \emph{\ac{SPI}}. As a standard serial communication peripheral.
+\item \emph{\ac{I2C}}. Being the most common bus to interface sensors to the \ac{MCU}. 
+\item \emph{\ac{USB}}. For serial communication, mainly with a host device.
+\item \emph{\ac{UART}}. For asynchronous serial communication with devices.
+\item \emph{\ac{SPI}}. As a usual serial communication peripheral.
 \item \emph{Ethernet}. For IEEE 802.11 compatibility.
-\item \emph{Interruptions}. Enabling interrupting the \ac{CPU} without employing polling.
+\item \emph{Interruptions}. Enabling interrupting the \ac{MCU} without employing polling.
 \end{itemize}    
 
 %-------------------------------------------------------------------
@@ -394,7 +372,7 @@ the required design. A complete expansion header for \ac{WSN} should include acc
 %-------------------------------------------------------------------
 \label{cap3:sec:conclusions}
 %-------------------------------------------------------------------
-After having a review all over the recent implementations, software and hardware, related to the \ac{CWSN} that might bring some guidances in our design; after evaluating the used technology and analyzing the weaknesses and detecting some problems; after defining some minimal requirements to fit, and apply them to our evaluations, the obtained conclusions to face the design stage are these that follows:
+After having a review all over the, hardware and software, recent implementations related to \ac{CWSN}s that might bring some guidances in our design; after evaluating the used technology and analyzing the weaknesses; after defining some minimal requirements to fit, and applying them to our evaluations, the obtained conclusions to face the design stage follow:
 
 \begin{itemize}
 \item The model implemented by the \ac{FCD} is quite close to the one pursued. It will serve as guide in our designing process since its
@@ -402,24 +380,23 @@ After having a review all over the recent implementations, software and hardware
 
 \item A new configuration regarding size and cost, allowing flexibility and modularity.
 
-\item Some other software implementations such as the \ac{HAL} will help us saving time on the software development and it proposes
-	a very complete firmware that fits our requirements. It includes very useful features and, even if needed some slight adaptations,
+\item Implemented software such as the described firmware will help us saving time on the software development and it proposes a very complete solution that fits our requirements. It provides a shared protocol stack and a very useful \ac{HAL}. Even if needed some slight adaptations,
 	it must be compatible with our \ac{CNGD} design.
 
-\item \ac{FCD} includes a microcontroller too featured, implying higher power consumption and cost, for the set requirements. A new study
+\item \ac{FCD} includes a too featured microcontroller for our requirements, implying higher power consumption and cost. A new \ac{MCU}
 	seems needed.
-\item \ac{RI}s used by the \ac{FCD} open communication on two frequency bands. They show a very inefficient working and high consumption behavior due to:
+\item \ac{RI}s used by the \ac{FCD} open communication on two frequency bands. They show a very inefficient performance and high consumption behavior due to:
 	\begin{itemize}
 	\item Coexistence of three heterogeneous transceivers and different protocol stacks. Bringing complexity and operation inefficiency.
-	\item Presence of a WiFi transceiver, with consumptions up 160mA at TX.
+	\item Presence of a WiFi transceiver, with consumptions up 160mA at \ac{TX}.
 	\item A Tulio$^{TM}$ transceiver whose inclusion, hosting a core by itself, supposes a multi-core implementation.  	
 	\end{itemize}
 
-A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a standard protocol for \ac{WSN}s such as IEEE 802.15.4 to implement. Besides, desirable requirements call for a third frequency band to implement. The lack of fittable modules over 434 MHz band claims for a custom design.
+A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a \ac{WSN} standard protocol such as IEEE 802.15.4. In addition, desirable requirements call for a third frequency band to implement. The lack of fittable modules over 434 MHz band claims for a custom \ac{RI} design.
 
 \item Serial communication system claims for simplifications, the same as the power supply system.
 
-\item Application capabilities must be expanded to enhance modularity and node capabilities. Expansion pluggable options must be included to the main 		peripherals. Access to 802.11 standard is a requirement.
+\item Application capabilities must be expanded to enhance modularity and node capabilities. Expansion pluggable options must access the main 		peripherals. Enabling the 802.11 standard is a requirement.
 
 \item A portable supply system must urgently be completely developed.
 

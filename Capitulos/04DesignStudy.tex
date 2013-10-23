@@ -67,7 +67,7 @@ For the designing task, an \ac{EDA}\footnote{Electronic design automation is a c
 %\figura{Bitmap/Capitulo4/altium}{width=.3\textwidth}{fig:cap4:altium}%
 %{Altium Designer logo} ******************** POR AQUI
 
-Despite the amount of functions offered by Altium Designer the two main options needed for this project are schematic capture, for circuit edition, and \ac{PCB} design, for subsequent layout deployment.
+Despite the amount of functions offered by Altium Designer, the two main options needed for this project are schematic capture, for circuit edition, and \ac{PCB} design, for subsequent layout deployment.
 
 Options provided by the schematic capture module, required for the design task, includes:
 
@@ -79,7 +79,7 @@ Options provided by the schematic capture module, required for the design task, 
 	\item \emph{Multi-channel, hierarchical schematics and design re-use}. Facilitating the design task.
 \end{itemize}
 
-On the other hand, required option from the \ac{PCB} design module are:
+On the other hand, required options from the \ac{PCB} design module are:
 \begin{itemize}
 	\item \emph{Component footprint library management}. Equally useful to manage new components and embed them into our \ac{PCB} designs.
    	\item \emph{Component placement}. In order to freely design our own layouts.
@@ -93,11 +93,11 @@ On the other hand, required option from the \ac{PCB} design module are:
 %-------------------------------------------------------------------
 \label{cap4:sec:cngdlib}
 %-------------------------------------------------------------------
-For the accomplish the full design of the platform over Altium Designer, a component library with all the required but not found models was set all along the design process.
+For the accomplishment of the full design of the platform over Altium Designer, a component library with all the required but not found component models was set throughout the design process.
 
-As said, the library includes models from all those components needed but not found as well as modifications of existing models in order to suit the design criteria. Every contained model embeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and proper hardware fitting checking purposes. Electric models of components are not generally included.
+As it was said, the library includes models from all those components needed but not found as well as modifications of existing models in order to suit the design criteria. Every contained model embeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and  checking proper hardware deployment. Electric models of components are not generally included.
 
-Library is available at the mentioned repository hosting the hardware design files. All the content included into the library is ready to be used under Altium Designed. Any use of the library is free. 
+Library is available at the mentioned repository that hosts the hardware design files. All the content included into the library is ready to be used under Altium Designer. Any use of the library is free. 
 
 \begin{figure}[h]
 \centering
@@ -106,7 +106,7 @@ Library is available at the mentioned repository hosting the hardware design fil
 \qquad
 \subfloat[LSI logo footprint.]{\label{fig:cap4:lsifoot}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Capitulo4/lsifoot}}%
 
-\caption{Footprints specially designed for the platform.}
+\caption{Specially designed footprints for the platform.}
 \label{fig:cap5:footprints}
 
 \end{figure}
@@ -121,7 +121,7 @@ Library is available at the mentioned repository hosting the hardware design fil
 \figura{Vectorial/Capitulo4/mtrans2develop}{width=.7\textwidth}{fig:cap4:mtranshw}
 {$\mu$Trans detail over global hardware modules to develop.}
 
-The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board\cite{daughterb}. This board is a demonstration and development daughter board for the MRF49XA ISM Band Sub-GHz RF Transceiver. The board can plug into a fittable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
+The chosen firmware for our platform gives support for MRF49XA modules over 434 MHz and 868 MHz bands. Specifically, the modules used during the firmware development were the MRF49XA PICtail$^{TM}$ Daughter Board\cite{daughterb}. This board is a demonstration and development daughter board for the MRF49XA ISM band sub-GHz RF transceiver. The board can be plugged into a fittable header, which makes it unsuitable for a reduced size and robust \ac{WSN} design. It either accepts connection to external antennas, which is a desirable requirement.
 
 Previous to the \ac{CNGD} designing, which will embeds the $\mu$Trans 434/868, the design of these \ac{RI}s was needed.
 
@@ -193,15 +193,15 @@ Figure \ref{fig:cap4:mrf49xapinout} shows the MRF49XA pin diagram, a full descri
 	\item 16. \emph{nINT}. Digital Input/Output. Interrupt: This pin can be configured as an active-low external interrupt to the device. 			If a logic '0' is applied to this pin, it causes the IRO pin to toggle, signaling an interrupt to the external microcontroller. 		The source of interrupt can be determined by reading the first four bits of STSREG. This pin can be used to wake-up the device 			from Sleep. This pin could provide other functionalities not used for our design.
 \end{itemize}
 
-An internal transmit/receive switch combines the transmitter and receiver circuits into differential RFP and RFN pins. These pins are connected to the impedance matching circuitry (balun) and to the external antenna connected to the device.
+An internal transmit/receive switch combines the transmitter and receiver circuits into differential RFP and RFN pins. These pins are connected to the impedance matching circuitry (balun), and this is linked to the external attached antenna.
 
-The quality of the data is checked or validated using the RSSI and DQI blocks built into the transceiver. Data is buffered in transmitter registers and receiver \ac{FIFO}s. The Automatic Frequency Control feature allows the use of a low-accuracy and low-cost crystal. The transceiver is controlled via a 4-wire SPI, interrupt (INT and IRO), FSEL, FINT and RESET pins. 
+The data quality is checked or validated using the \ac{RSSI} and \ac{DQI} blocks built into the transceiver. Data is buffered in transmitter registers and receiver \ac{FIFO}s. The Automatic Frequency Control feature allows the use of a low-accuracy and low-cost crystal. The transceiver is controlled via a 4-wire \ac{SPI}, interrupt (INT and IRO), FSEL, FINT and RESET pins. 
 
-The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet. The only difference between 434 MHz and 868 MHz version of the $\mu$Trans is the impedance matching circuitry facing the external antenna. The components composing it are different for each frequency band, values are specified at table \ref{tab:cap4:balunvalues} placed at appendix \ref{ap1:schematics}. 
+The complete design of the $\mu$Trans 434/868 is based on the implementation guidelines provided my Microchip at MRF49XA datasheet. The only difference between 434 MHz and 868 MHz version of the $\mu$Trans is the impedance matching circuitry facing the external antenna. The components that compose it are different for each frequency band, values are specified at table \ref{tab:cap4:balunvalues} placed at Appendix \ref{ap1:schematics}. 
 
-Current is bypassed through a capacitor and supplies the MRF49XA, a power indication \ac{LED} is included in the design. A 10 MHz clock carries out the timing tasks. An impedance matching circuitry composed by inductors and capacitors interfaces the MRF49XA and the antenna. The \ac{RI} hosts a 50$\Omega$ connector to which connect the corresponding antenna. 434 and 868 versions of the $\mu$Trans are design to attach 434 MHz and 868 MHz external monopole antennas respectively.
+Current is bypassed through a capacitor and supplies the MRF49XA, a power indication \ac{LED} is included in the design. A 10 MHz clock carries out the timing tasks. The \ac{RI} hosts a 50$\Omega$ connector to which connect the corresponding antenna. 434 and 868 versions of the $\mu$Trans are designed to attach 434 MHz and 868 MHz external monopole antennas respectively.
 
-The designed module allow access to some of the MRF49XA pins, not all of them. The ports accessible at the \ac{RI} are Interrupt (nINT), Interrupt Request Output, \ac{SPI} ports, \ac{FIFO} select, \ac{FIFO} interrupt, and reset. These ports enable full functionality of the MRF49XA and rest of available pins are found dispensable.
+The designed module allows access to some of the MRF49XA pins, not all of them. The ports accessible at the \ac{RI} are Interrupt (nINT), Interrupt Request Output, \ac{SPI} ports, \ac{FIFO} select, \ac{FIFO} interrupt, and reset. These ports enable full functionality of the MRF49XA and the remaining available pins are found dispensable.
 
 \figura{Bitmap/Capitulo4/mtransmodel}{width=.4\textwidth}{fig:cap4:mtransmodel}%
 {$\mu$Trans 434/868 component model for use}
@@ -209,7 +209,6 @@ The designed module allow access to some of the MRF49XA pins, not all of them. T
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
-
 Schematic of $\mu$Trans 434/868 can be found on Appendix \ref{ap1:schematics} at Figure \ref{ap1:mtransschematic}. Table \ref{tab:cap4:balunvalues} contains the different values for the balun circuit at 434 MHz and 868 MHz.  
 
 %-------------------------------------------------------------------
@@ -223,30 +222,29 @@ Schematic of $\mu$Trans 434/868 can be found on Appendix \ref{ap1:schematics} at
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-As it was said, \ac{CNGD} supposes the main part of the design, it hosts main capabilities for computation, power supply, and connectivity for the platform. It has being designed seeking simplicity and functionality.
+As it was said, \ac{CNGD} forms the main part of the design. It hosts main capabilities for computation, power supply, and connectivity for the platform. It has being designed seeking simplicity and functionality.
 
-The computation unit is located at the microcontroller, taking control over the rest of modules and running the software. This microcontroller can be programmed through its PGE port thanks to a PGE module that interfaces it.  
+The computation unit is located at the \ac{MCU}, taking control over the other modules and running the software. This \ac{MCU} can be programmed through its PGE port thanks to a PGE module that interfaces it.  
 
-As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an approach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
+As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halreview} will be used. It supposes an approach to the requirements achievement since it gives support for three interfaces, it supposes a reduction on the computation load and therefore, on the needed resources and power consumption. Moreover, it will facilitate the development, offering a stable firmware version to work over and avoiding software development tasks. This fact will force the design to keep one architecture compatible with the firmware, hence a 32-bit Microchip PIC is required as microcontroller.
 
-Communication and control over the \ac{RI}s is made through \ac{SPI}s and a few more control signal described further on. 
+Communication and control over the \ac{RI}s is made through \ac{SPI}s and a few more control signal later described. 
 
-Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC terminal. Two first options will take a 5V supply, whereas the third one will take 3.3V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilities to not compulsory use\ac{USB}. A software-driven power supply system to the \ac{RI}s allows the application to control the power supply to these modules. 
+Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC connector. The two first options will accept a 5V supply, whereas the third one will take 3.3-3.6V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilities to any external power supply source. A software-driven power supply system to the \ac{RI}s allows the application to control the power supplied to these modules. 
 
-The device offers serial communication through the already named $\mu$USB options. Moreover, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, I2C bus, \ac{UART}s and \ac{SPI}. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and open the design to new implementations and extensions for a particular applications. In addition, three \ac{LED}s and two push buttons give chance to the user to control the application if required. 
+The device offers serial communication through the already named $\mu$USB options. On the other hand, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, \ac{I2C} bus, \ac{UART}s and \ac{SPI}s. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and opens the design to new implementations and extensions for particular applications. In addition, three \ac{LED}s and two push buttons give chance to the user to control the application if required. 
 
 \figura{Vectorial/Capitulo4/cngdblocks}{width=.8\textwidth}{fig:cap4:modelcngd}%
 {Architecture model of the cNGD.}
 %-------------------------------------------------------------------
 \subsection{Schematics}
 %-------------------------------------------------------------------
-
-Schematics can be found all together on Appendix \ref{ap1:schematics} for better convenience. Figure \ref{fig:cap4:gneralschematic} gathers all the modules into one global scheme. Figure \ref{fig:cap4:mcuschematics} shows the \ac{MCU} connections schematic. Figures \ref{fig:cap4:434schematics}, \ref{fig:cap4:868schematics}, and \ref{fig:cap4:2.4schematics} focus on 434MHz, 868MHz and 2.4GHz \ac{RI}s, respectively. Figure \ref{fig:cap4:powersupplyschematic} gives the schematic of the power supply system. Expansion headers schematic is on Figure \ref{fig:cap4:headerschematic}, whereas Figure \ref{fig:cap4:oscillatorschematic}, and \ref{fig:cap4:pgeschematic} illustrate the oscillator and programmer modules.
+Schematics can be found all together on Appendix \ref{ap1:schematics} for better convenience. Figure \ref{fig:cap4:gneralschematic} gathers all the modules into one global scheme. Figure \ref{fig:cap4:mcuschematics} shows the \ac{MCU} connections schematic. Figures \ref{fig:cap4:434schematics}, \ref{fig:cap4:868schematics}, and \ref{fig:cap4:2.4schematics} focus on 434MHz, 868MHz and 2.4GHz \ac{RI}s interfaces, respectively. Figure \ref{fig:cap4:powersupplyschematic} gives the schematic for the power supply system. Expansion headers schematic is on Figure \ref{fig:cap4:headerschematic}, whereas Figure \ref{fig:cap4:oscillatorschematic}, and \ref{fig:cap4:pgeschematic} illustrate the oscillator and programmer modules.
 
 %-------------------------------------------------------------------
 \subsection{Microcontroller}
 %-------------------------------------------------------------------
-Core unit is a PIC32MX675F256L\cite{pic32datasheet}, a mid-range 100-pin microcontroller from the mentioned 32-bit PIC family. Being the simplest of the options meeting memory performance and peripherals minimum requirements (Table \ref{cap3:tab:micros}). On the other hand, its 100 pins allow a better access of the peripherals provided. A larger memory version of this, PIC32MX675F512L, is pin compatible to the firstly mentioned. This fact gives the chance to swap among these two \ac{MCU}s if larger memory was needed. Main technical features follow:
+Core unit is a PIC32MX675F256L\cite{pic32datasheet}, a mid-range 100-pin microcontroller from the mentioned 32-bit PIC family. Being the simplest of the options that meets memory performance and peripherals minimum requirements (Table \ref{cap3:tab:micros}). On the other hand, its 100 pins allow a better access to the included peripherals. A larger memory version of this, PIC32MX675F512L, is pin-compatible to the firstly mentioned. This fact gives the chance to swap among these two \ac{MCU}s if larger memory was needed. Main technical features follow:
 
 \begin{itemize}
 	\item Operating Voltage Range: 2.3V to 3.6V.
@@ -260,59 +258,58 @@ Core unit is a PIC32MX675F256L\cite{pic32datasheet}, a mid-range 100-pin microco
 	\item 16 channel 10-bit \ac{ADC}. 
 \end{itemize}
 
-Figure \ref{fig:cap4:pic32blocks} shows a block diagram of the PIC32 family. Distinct 32-bit buses for peripherals and system can be observed. Moreover, \ac{DMA}, \ac{RAM}, and flash controllers, together with external modules take place on it.
+Figure \ref{fig:cap4:pic32blocks} shows a block diagram of the PIC32 family. Distinct 32-bit buses for peripherals and system can be observed. Moreover, \ac{DMA}, \ac{RAM}, and flash controllers, together with external modules, take place on it.
 
 \figura{Bitmap/Capitulo4/pic32blocks}{width=0.8\textwidth}{fig:cap4:pic32blocks}%
 {PIC32 family block diagram}
 
-The whole microcontroller can be divided into for blocks: core, memory, integration system and peripherals:
+The whole \ac{MCU} can be divided into four blocks: core, memory, integration system, and peripherals:
 
 \begin{itemize}
-	\item The main core is based on a \ac{RISC} MIPS M4K. This module takes control over the system. It controls the peripherals and execute 			the programmed code.
+	\item The main core is based on a \ac{RISC} MIPS M4K. This module takes control over the system. It controls the peripherals and executes the programmed code.
 
-	\item A further observation into the memory system allows differentiate among Flash, \ac{RAM}, registers, and boot flash. The system 			load the data on a cache memory and prefetch the instructions. Figure \ref{fig:cap4:pic32cachemodule} shows the block diagram of the prefetch module.
+	\item A further observation into the memory system allows differentiate among Flash, \ac{RAM}, registers, and boot flash. The system 			loads the data on a cache memory and prefetches the instructions. Figure \ref{fig:cap4:pic32cachemodule} shows the block diagram of the prefetch module.
 
 \figura{Bitmap/Capitulo4/cache}{width=0.7\textwidth}{fig:cap4:pic32cachemodule}%
 {Prefetch cache module block diagram.}	
 
-	\item Integration system is compound by the set of modules needed to make work the core and peripherals. These are interrupt control, 			oscillator system, reset, watchdog timer and power-up timer. For detailed explanation of each module consult the microcontroller 			manual \cite{pic32datasheet}.
+	\item Integration system is compound by the set of modules needed to make work the core and peripherals. These are interrupt control, 			oscillator system, reset, watchdog timer, and power-up timer. For detailed explanation of each module consult the microcontroller manual \cite{pic32datasheet}.
 
-	\item Peripherals are a set of independent modules oriented to perform specific tasks. Here it is described a brief description of the 			main peripherals and the use they receive in the system: 
+	\item Peripherals are a set of independent modules oriented to perform specific tasks. Here, it is provided a brief description of the 			main peripherals and the use they receive in the system: 
 
 	\begin{itemize}
-		\item \emph{\ac{SPI}}. The SPI module is a synchronous serial interface that is useful for communicating with external 					peripherals and other microcontroller devices. These peripheral devices may be serial \ac{EEPROM}, shift 					registers, display drivers, etc. 
+		\item \emph{\ac{SPI}}. The SPI module is a synchronous serial interface that is useful for communication with external 					peripherals and other microcontroller devices. These external devices may be serial \ac{EEPROM}, shift 					registers, display drivers, etc. 
 
-				At \ac{CNGD}, three \ac{SPI}s are used to set communication with the \ac{RI}s. Another \ac{SPI} is outputted to 					the expansion headers for general purposes.
+				At \ac{CNGD}, three \ac{SPI}s are used to set communication with the \ac{RI}s. Another \ac{SPI} is linked to 					the expansion headers for general purposes.
 
 				
 		\item \emph{\ac{UART}}. This peripheral is a serial I/O module. The \ac{UART} is a full-duplex, asynchronous communication
-				 channel that communicates with peripheral devices and personal computers through protocols, such as RS-232, 					RS-485, LIN 1.2 and \ac{IRDA}.
+				 channel that communicates with peripheral devices and personal computers through protocols, such as RS232, 					RS485, LIN 1.2 and \ac{IRDA}.
 
-				Two \ac{UART} modules are available at the expansion headers. RS232Shield described at section \ref{cap4:sec:rs232shield} use one of this modules to set an RS-232 serial interface.
+				Two \ac{UART} modules are available at the expansion headers. RS232Shield described at section \ref{cap4:sec:rs232shield} uses one of this modules to set an RS232 serial interface.
 
 		\item \emph{\ac{USB} \ac{OTG}}. The \ac{USB} module contains analog and digital components to provide a \ac{USB} 2.0
-			full-speed and low-speed embedded Host, full-speed Device or \ac{OTG} implementation with a minimum of external 			components. 				
+			full-speed and low-speed embedded host, full-speed device or \ac{OTG} implementation with a minimum of external 			components. 				
 			
-			This \ac{USB} peripheral is used to establish serial communication with other devices, \ac{CNGD} it thought to include 				this serial communication way. Its ease of use, popularity, makes it a good choice for this purpose. Moreover, it is 				interfaced into the expansion headers for other future uses.
+			This \ac{USB} peripheral is used to establish serial communication with other devices, \ac{CNGD} it thought to include 				this serial communication way. Its ease of use, popularity, makes it a good choice for this purpose. On the other hand, it is interfaced into the expansion headers for generic future uses.
 	
 		\item \emph{\ac{I2C}}. The \ac{I2C} module provides complete hardware support for both Slave and Multi-Master modes of the \ac{I2C} serial communication standard. 
-			This module is commonly used to establish communication among sensors and microcontroller. One \ac{I2C} can be accessed 			over the expansion headers.
+			This module is commonly used to establish communication among sensors and microcontroller. One \ac{I2C} bus can be accessed 			over the expansion headers.
 
-		\item \emph{TIMERS}. Four synchronous, one asynchronous, 16-bit timers that can operate as a free-running interval timer for 				various timing applications and counting external events.
+		\item \emph{TIMERS}. Four synchronous, one asynchronous, 16-bit timers that can operate as a free-running interval timer for 				various timing applications and external events counting.
 
-			This timers, properly configured, will drive in time the firmware operation. This includes, pretty much, all the tasks 				carried out by the node. Timers also must be available to drive in time the application if was required. 
+			These timers, properly configured, will drive in time the firmware operation. This affects, pretty much, all the tasks 				carried out by the node. Timers also must be available to drive in time the application if was required. 
 
 		\item \emph{\ac{ADC}}. It converts a continuous voltage quantity to a digital number that represents the quantity's amplitude. 
 
-			Useful when dealing with sensors offering an analog output signal. The \ac{ADC} included into the microcontroller can be 				accessed from the expansion headers.
+			Useful when dealing with sensors offering an analog output signal. The \ac{ADC} included into the \ac{MCU} can be 				accessed from the expansion headers.
 
-		\item \emph{ETHERNET}. The Ethernet controller is a bus master module that interfaces with an off-chip Physical Layer (PHY) to
+		\item \emph{ETHERNET}. The Ethernet controller is a bus master module that interfaces with an off-chip Physical layer to
 			implement a complete Ethernet node in a system.
 			
 			This module is accessible at the headers. It is essential to establish 802.11 communications, which is a desirable 				feature for \ac{WSN} coordinator nodes or gateways.
 
-		\item \emph{\ac{GPIO}}. General purpose I/O pins are the simplest of peripherals. They allow the PIC32 MCU to monitor and control
-			other devices. Basically, almost every pin at the \ac{MCU} can act as a \ac{GPIO} if no other peripherals are active and 				multiplexed on such pin.
+		\item \emph{\ac{GPIO}}. General purpose I/O pins are the simplest of the peripherals. They allow the \ac{MCU} to monitor and control other devices. Basically, almost every pin at the \ac{MCU} can act as a \ac{GPIO} if no other peripherals are active and 				multiplexed on such pin.
 
 			Several \ac{GPIO}s can be accessed over the headers for general purposes.
 
@@ -326,7 +323,7 @@ The whole microcontroller can be divided into for blocks: core, memory, integrat
 %-------------------------------------------------------------------
 \subsubsection{Pin-out}
 %-------------------------------------------------------------------
-Here is described the multiplexed functionalities available on each pin at the \ac{MCU}. Functionalities emphasized in bold are functionalities available for use, not emphasized functionalities are not usable with the current design. In addition, module where the pin is used and linked signal are exposed. For further details about peripherals and pins description see the PIC32 family reference manual\cite{pic32datasheet}.  
+Here, multiplexed functionalities available on each pin at the \ac{MCU} are described. Bold functionalities are functionalities available for use, not bold functionalities are not usable at the current design. In addition, the module where the pin is used and the linked signal are also described. For further details about peripherals and pin descriptions see the PIC32 family reference manual\cite{pic32datasheet}.  
 
 {\footnotesize
 \begin{longtable}{l l l l l}
@@ -462,12 +459,12 @@ PIN & PERIPHERALS & MODULE & USE \\
 %-------------------------------------------------------------------
 As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, with three consequent frequency bands to access. This fact gives a flexibility over radio communications never offered by other \ac{WSN} device. Frequencies to operate over are 434 MHz, 868 MHz, and 2.4 GHz, meeting desired features. 
 
-For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU}, illustrated at Figure \ref{fig:cap4:mrf49xainterface}, are the same. 
+For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU}, illustrated at Figure \ref{fig:cap4:mrf49xainterface}, are equal. 
 
 \figura{Bitmap/Capitulo4/mrf49xainterface}{width=0.5\textwidth}{fig:cap4:mrf49xainterface}%
 {Microcontroller to MRF49XA interface}
 
-Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA\cite{mrf24j40}. This \ac{RI} was already used at the \ac{FCD} and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposes computation, cost, and power savings. It has access over the 15 5MHz-channels, the protocol enables and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
+Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz. This is based on a MRF24J40MA\cite{mrf24j40}. This \ac{RI} was already used at the \ac{FCD}, and it is supported by the firmware. It is a MiWi$^{TM}$ transceiver also compatible with the IEEE 802.15.4 standard, this homogeneity with the other two \ac{RI}s supposes computation, cost, and power savings. It has access over the 15 5MHz-channels the protocol enables, and employs a \ac{QPSK} modulation. Figure \ref{fig:cap4:mrf24j40mablocks} shows the MRF24J40MA block diagram. Further details about the MRF24J40MA \ac{RI} follow:
 
 \figura{Bitmap/Capitulo4/mrf24j40mablocks}{width=0.8\textwidth}{fig:cap4:mrf24j40mablocks}%
 {MRF24J40MA block diagram.}
@@ -485,7 +482,7 @@ Figure \ref{fig:cap4:2.4schematics} shows the scheme for the \ac{RI} at 2.4 GHz.
 		\item 250 Kbps.
 		\item Turbo mode enables up to 625 Kbps (not following the standard).
 	\end{itemize}
-	\item Current Consumption:
+	\item Current consumption:
 	\begin{itemize}
 		\item TX. I = 23 mA (typical).
 		\item RX. 19 mA (typical).
@@ -499,11 +496,11 @@ Interface between MRF24J40MA \ac{RI} is driven by 7 signals, figure \ref{fig:cap
 \figura{Bitmap/Capitulo4/mrf24j40mainterface}{width=0.5\textwidth}{fig:cap4:mrf24j40mainterface}%
 {MRF24J40MA interface scheme}
 
-All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM}$ Mesh or MiWi$^{TM}$ P2P protocols. Figure \ref{fig:cap4:miwiconf} shows how the protocol environment configuration.
+All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM}$ Mesh or MiWi$^{TM}$ P2P protocols. Figure \ref{fig:cap4:miwiconf} shows the protocol environment configuration.
 
 \figura{Bitmap/Capitulo4/miwiconf}{width=0.8\textwidth}{fig:cap4:miwiconf}{MiWi$^{TM}$ protocol configuration scheme.}
 
-A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maximum of 1024 nodes on a network. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
+A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maximum of 1024 nodes. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
 
 \begin{figure}[!h]
 \centering
@@ -515,17 +512,16 @@ A network using the MiWi$^{TM}$ protocol\cite{miwi} is capable of having a maxim
 
 The MiWi$^{TM}$ P2P protocol\cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
-
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
 %-------------------------------------------------------------------
 The designed system allows enabling/disabling the power supply to the \ac{RI}s. This way, any \ac{RI} can be completely switched off by the running application. Cutting down all possible power consumption that unused \ac{RI}s could have by, for instance, running clocks.
 
-The power control to the \ac{RI}s is based on the ADG701\cite{adg701}. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on resistance and low leakage currents. It can operate from a single 1.8 V to 5.5 V supply, making it ideal for use in battery-powered instruments.
+The power control to the \ac{RI}s is based on the ADG701\cite{adg701}. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on-resistance and low leakage currents. It can operate from a single 1.8V to 5.5V supply, which makes it ideal for use in battery-powered instruments.
 
 Some of the features of this component are:
 \begin{itemize}
-	\item 2 ohm (typical) on resistance.
+	\item 2 ohm (typical) on-resistance.
 	\item Fast switching times: tON = 18 ns, tOFF 12 ns.
 	\item Typical power consumption < 0.01 $\mu$W. 
 \end{itemize}
@@ -540,20 +536,20 @@ In case ADG701 switch was not included into the design for any reason, optional 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
 %-------------------------------------------------------------------
-Power supply module is in charge of providing proper voltage and current to the \ac{CNGD}. Chosen output voltage is 3.3V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic} shows a schematic of this module.
+Power supply module is in charge of providing proper voltage and current to the \ac{CNGD}. Chosen output voltage is 3.3V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic}, at Appendix \ref{ap1:schematics}, shows a schematic of this module.
 
-For external wired options, the input voltage is 5V. This value is widely used to supply digital circuits and it is easy to access to 5 V sources. Moreover, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5V to supply the device. This 5V are lowered to 3.3V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just changing a jumper location.
+For external wired options, the input voltage is 5V. This value is widely used to supply digital circuits and it is easy to find 5V sources. Furthermore, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5V to supply the device. This 5V are lowered to 3.3V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just switching a jumper position.
 
-For battery options, the module includes a DC connector. This connector accepts from 3.3V up to 3.6V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or portable.
+For battery options, the module includes a DC connector. This connector accepts from 3.3V up to 3.6V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or battery.
 
-A green \ac{LED} indicates that power is applied into the circuit, on the other hand, a red \ac{LED} indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their origin input.       
+A green \ac{LED} indicates that power is applied into the circuit, on the other hand, a red \ac{LED} indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their input origin.       
 
-The employed synchronous buck regulator is a MCP1603\cite{mcp160} chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options, the chosen option here is 3.3V. When a fixed option is used, only three additional small external
+The employed synchronous buck regulator is a MCP1603\cite{mcp160} chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options. Here, the chosen option is 3.3V. When a fixed option is used, only three additional small external
 components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
 
 \figura{Bitmap/Capitulo4/mcp1603}{width=0.5\textwidth}{fig:cap4:mcp1603}{MCP1603 buck regulator configuration.}
 
-It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions. Table \ref{tab:cap4:maxconsumption} gives 165 mA as maximum current consumption rate. Leaving buffer for current peaks at transmission and possible shields, a maximum current estimation of 500 mA seem reasonable and enough for the whole platform.
+It was estimated that 500 mA was enough to supply the device regarding the described maximum consumptions. Table \ref{tab:cap4:maxconsumption} gives 165 mA as maximum current consumption rate. Considering a margin for current peaks at transmission and possible shields attachment, a maximum current estimation of 500 mA seems reasonable and enough for the whole platform.
 
 \begin{table}[h]
 \centering
@@ -578,14 +574,14 @@ TOTAL MAX CONSUMPTION & 165mA \\ \hline
 %-------------------------------------------------------------------
 In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
 
-Firstly it is needed an estimation of platform global current consumption. This value will depends, relying strongly on the running application. However, we can assume some overestimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global current consumption calculated as $C_{estimated}$.
+Firstly, it is needed an estimation of platform global current consumption. This value will depends, relying strongly on the running application. However, we can assume some overestimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global current consumption calculated as $C_{estimated}$.
 
 \begin{table}[h]
 \centering
 \scalebox{0.9}{
 \begin{tabular}{l r r}
 \hline 
-Mode & Operation time percentage & Consumption \\ \hline \hline
+Mode & Operation time percentage & Current consumption \\ \hline \hline
 Run & 10\% & 120 mA \\ \hline
 Sleep & 90\% & 100 $\mu$A \\ \hline
 \end{tabular}
@@ -593,10 +589,10 @@ Sleep & 90\% & 100 $\mu$A \\ \hline
 \caption{Estimated values for Run and Sleep operation modes.%
          \label{tab:cap4:powerstimatedvalues}}
 \end{table} 
+letras en negrita
+\[C_{estimated}= 120 \times10^{-3}  \times 0.1 + 100 \times10^{-6}  \times 0.90 = 12.1 ~ mA\]
 
-\[C_{estimated}= 100 \times10^{-3}  \times 0.1 + 100 \times10^{-6}  \times 0.90 = 12.1 ~ mA\]
-
-Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery possibilities. Other technologies and sizes, not described at the table, have been directly discarded for showing unsuitable features. An example are \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or special size batteries\footnote{For instance, 2/3 A, L-fat A, or CS sizes.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based and \ac{LIION} based batteries. 
+Table \ref{tab:cap4:batcomparison} shows a comparison among considered battery possibilities. Other technologies and sizes, not described at the table, have been directly discarded for showing unsuitable features. An example is \ac{NICD} technology batteries, which may suffer ``memory effect''\footnote{It is an effect observed in some kind of rechargeable batteries that causes them to hold less charge.}, or special size batteries\footnote{For instance, 2/3 A, L-fat A, or CS sizes.} whose price is extremely high. Possible options considered are some \ac{NIMH}-based and \ac{LIION} based batteries. 
 
 \begin{table}[h]
 \centering
@@ -618,16 +614,16 @@ Table \ref{tab:cap4:batcomparison} shows a comparison between considered battery
 \label{tab:cap4:batcomparison}}
 \end{table}
 
-Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. Charging process is more complex as well. 
+Facing similar capacities, \ac{LIION} options show a higher cost than \ac{NIMH} even considering that 3 \ac{NIMH} cells are needed. In addition, \ac{LIION} show difficulties for its use since \ac{LIION} batteries must include circuitry to control discharge cycles and other security issues. The charging cycle is more complex as well. 
 
-The solution proposed consist of a battery consisting on 3 2900 mAh \ac{NIMH} AA cells. This might provide up to 240 h. of autonomy considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro. 
+The proposed solution consists of a battery consisting on 3 2900 mAh \ac{NIMH} AA cells. This might provide up to 240 h. of autonomy considering our estimations. No more circuitry is needed for the battery except for a 3-AA battery-holder. The total cost for a complete battery pack is under 10 \euro. 
 
 %-------------------------------------------------------------------
 \subsection{Timing}
 %-------------------------------------------------------------------
 The microcontroller includes possibilities to properly place quartz crystals in parallel with internal amplifiers and a pair of suitable capacitors in such way they work as oscillators. The oscillator signal is then connected to the internal \ac{PLL} to obtain the desired frequency. Figures \ref{fig:cap4:prioscillators} and \ref{fig:cap4:secoscillators} show the basic input scheme for primary and secondary oscillators respectively.
 
-Primary oscillator is 8 MHz quartz crystal used as system reference clock. The respective \ac{PLL} is configured to raise this frequency up to 80 MHz. It exists the possibility of replacing the functionality of this clock for a internal one, but stability and accuracy can be affected.
+Primary oscillator is an 8 MHz quartz crystal used as system reference clock. The respective \ac{PLL} is configured to raise this frequency up to 80 MHz. The possibility of replacing the functionality of this clock for a internal one exists, but stability and accuracy can be affected.
 
 \figura{Bitmap/Capitulo4/priosc}{width=.3\textwidth}{fig:cap4:prioscillators}%
 {PIC32MX675F256L primary oscillator input.}
@@ -638,20 +634,20 @@ In order to calculate the values for $C_{1}$ and $C_{2}$ capacitors, we will use
 C_{L} = \frac{C_{1}C_{2}}{C_{1}+C_{2}} + C_{P} + C_{I}
 \]
 
-Where $C_{1}$ and $C_{2}$ have an equal value, $C_{L}$ is the load capacitance required for the crystal, $C_{P}$ is the circuit parasitic capacitance and $C_{I}$ is the chip input capacitance. Typically $C_{P} + C_{I}$ is set to 5 pF. For the 8 MHz crystal, load capacitance specified by the manufacturer is 20 pF\cite{8mdatasheet}. The resulting equation remains like follows:
+Where $C_{1}$ and $C_{2}$ have an equal value, $C_{L}$ is the load capacitance required for the crystal, $C_{P}$ is the circuit parasitic capacitance, and $C_{I}$ is the chip input capacitance. Typically $C_{P} + C_{I}$ is set to 5 pF. For the 8 MHz crystal, load capacitance specified by the manufacturer is 20 pF\cite{8mdatasheet}. The resulting equation remains like follows:
 
 \[ 
 20~ pF = \frac{C_{1}C_{2}}{C_{1}+C_{2}} + 5 ~ pF
 \]
 
-Resolving the equation, it results that $ C_{1} = C_{2} = 15 \quad pF$.
+Solving the equation, it results that $ C_{1} = C_{2} = 15 \quad pF$.
 \\
-Second oscillator, a 32.728 KHz, supposes a low-power clock for real time clocking. It enables nodes synchronization, which is fundamental for power-saving modes.
+Second oscillator, a 32.728 KHz crystal, supposes a low-power clock for real time clocking. It enables nodes synchronization, which is fundamental for power-saving modes.
 
 \figura{Bitmap/Capitulo4/secoscillator}{width=.4\textwidth}{fig:cap4:secoscillators}%
 {PIC32MX675F256L second oscillator input.}
 
-For this second clock, load capacitance comes to be 12.5 pF\cite{32kdatasheet}. Hence the corresponding equation results as follows:
+For this second clock, load capacitance comes to be 12.5 pF\cite{32kdatasheet}. Hence, the corresponding equation results as follows:
 
 \[ 
 12.5~ pF = \frac{C_{1}C_{2}}{C_{1}+C_{2}} + 5 ~ pF
@@ -662,10 +658,9 @@ Resulting capacitors value are $ C_{1} = C_{2} = 15 \quad pF$
 %-------------------------------------------------------------------
 \subsection{Expansion Headers}
 %-------------------------------------------------------------------
+Figure \ref{fig:cap4:headerschematic}, at Appendix \ref{ap1:schematics}, shows the schematic design for this module. Basically, two headers that contain 20 pins each, enable access to unused and useful peripherals the microcontroller includes. This offers possibilities to future implementations and expansions for the node by simply attaching a device through these headers and implementing the corresponding application. Possible attachable implementations are 802.11 interfaces, data acquisition modules, external memories, extra \ac{RI}s, etc.
 
-Figure \ref{fig:cap4:headerschematic} shows the schematic design for this module. Basically, two headers, containing 20 pins each, enable access to unused and useful peripherals the microcontroller includes. This offers possibilities to future implementations and expansions for the node by simply attaching a device through these headers and carrying through the corresponding firmware adaptations. Possible attachable implementations are 802.11 interfaces, data acquisition modules, external memories, extra \ac{RI}s, etc.
-
-Here it is made a comprehensive description of the available peripherals and functionalities at the headers:
+Here, a comprehensive description of the available peripherals and functionalities at the headers is made:
 
 \begin{itemize}
 	\item \emph{Power Supply}. Several pins offer power supply options:
@@ -730,7 +725,7 @@ Here it is made a comprehensive description of the available peripherals and fun
 
 \end{itemize}
 
-Notice that some of the peripherals described could be pin multiplexed and thereby, they can not be used simultaneously. For a header pin to pin description, refer to Table \ref{tab:cap4:headerspinout}.
+Notice that some of the described peripherals could be pin multiplexed and thereby, they can not be used simultaneously. For a header pin to pin description, refer to Table \ref{tab:cap4:headerspinout}.
 
 %-------------------------------------------------------------------
 \subsubsection{Pin-out}
@@ -809,21 +804,19 @@ PIN & MCU PIN & 1st TYPE & 2nd TYPE & 3rd TYPE & 4th TYPE & 5TH TYPE \\
 %-------------------------------------------------------------------
 \subsection{PGE}
 %-------------------------------------------------------------------
-
-Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer module, PGE. This module allows In-Circuit Serial Programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontroller ports at pins 24 and 25 interfaced through an RJ-11 connector together with power supply pins and reset signal. Figure \ref{fig:cap4:icd3} illustrates it.
-
+Figure \ref{fig:cap4:pgeschematic}, at Appendix \ref{ap1:schematics}, contains the schematic for the programmer module, PGE. This module allows In-Circuit Serial programming and debugging tasks over the microcontroller making use of the tools provided my Microchip. For this, PGE microcontroller ports at pins 24 and 25 are interfaced through an RJ-11 connector together with power supply pins and reset signal. 
 %-------------------------------------------------------------------
 \subsection{Others}
 %-------------------------------------------------------------------
-\ac{CNGD} platform will include a push button to reset the \ac{MCU}. It also includes three \ac{LED}s and two push buttons for general purposes. They allow the user, somewhat, interact with the running application if required. 
+\ac{CNGD} platform will include a push button to reset the \ac{MCU}. It also includes three \ac{LED}s and two general purpose push buttons. They allow the user to interact with the running application if required. 
 
 \begin{itemize}
 
-	\item \ac{LED} 1 represents the present signal at pin 91.  
-	\item \ac{LED} 2 represents the present signal at pin 61.  
-	\item \ac{LED} 3 represents the present signal at pin 60.  
-	\item Signal driven by push button 1 is obtained at pin 84.
-	\item Signal driven by push button 2 is obtained at pin 82.
+	\item \ac{LED} 1 is leaded by the signal at pin 91.  
+	\item \ac{LED} 2 is leaded by the signal at pin 61.  
+	\item \ac{LED} 3 is leaded by the signal at pin 60.  
+	\item Push button 1 signal is linked to pin 84.
+	\item Push button 2 signal is linked to pin 82.
 
 \end{itemize}
 
@@ -838,11 +831,11 @@ Figure \ref{fig:cap4:pgeschematic} contains the schematic for the programmer mod
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-This extension sets serial communication between the microcontroller and a PC over a RS-232 protocol. It supposes an alternative wired serial communication way for the included \ac{USB} option. This technology has been progressively replaced by the already said \ac{USB} for serial communication purposes, and it supposes an increase of the complexity, size, and consumption. That is why it was chosen not to embed this module over the \ac{CNGD}, but rather create a expansion module. 
+This extension sets serial communication between the \ac{MCU} and a PC over a RS232 protocol. It supposes an alternative wired serial communication way for the included \ac{USB} option, which progressively has become more popular. Including RS232 serial communication produces an increase of the cost, size, and power consumption. For this reason, it was chosen not to embed this module over the \ac{CNGD}, but rather create a expansion module. 
 
-This technology could be useful for old machines, low-resources researches, or for debugging purposes during the platform development until the \ac{USB} communication is fully operative. This communication way has a simpler operation mode than \ac{USB}.
+This technology could be useful for old machines, low-resources researches, or for debugging purposes during the platform development until the \ac{USB} communication is fully operative. This communication way posses a simpler operation mode than \ac{USB}.
 
-Figure \ref{fig:cap4:rs232shieldschematic} shows the schematic for this shield. \ac{UART} 6 is used, accessible  at the headers and not requiring hardware flow control. Since RS-232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} pin of the \ac{UART} is accessed at header pin 37, \ac{RX} is at 20. Since the communication does not require for hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals Apart from the data signals.}, two pins are enough to set proper communication.
+\ac{UART} 6 is used, accessible  at the headers and not requiring hardware flow control. Since RS232 standard operates on voltage values from -12V to 12V, a level conversion is needed. This conversion takes place at the MAX3232\cite{max3232} transceiver. Figure \ref{fig:cap4:max3232} shows the MAX3232 scheme. \ac{TX} \ac{UART} signal is accessed at header pin 37, \ac{RX} is at 20. Since the communication does not require for hardware flow control\footnote{Hardware flow control allows to control the serial data flow by using extra signals apart from the data signals.}, two pins are enough to set proper communication.
 
 \figura{Bitmap/Capitulo4/max3232}{width=.5\textwidth}{fig:cap4:max3232}%
 {MAX3232 basic scheme.}
@@ -862,22 +855,22 @@ A schematic view of the rs232SHIELD is shown at Figure \ref{fig:cap4:rs232shield
 %-------------------------------------------------------------------
 \subsection{Description}
 %-------------------------------------------------------------------
-\ac{NIMH} batteries are amongst the hardest batteries to charge. Whereas with lithium ion and lead acid batteries you can control overcharge by just setting a maximum charge voltage, the nickel based batteries don't have a "float charge" voltage. So the charging is based on forcing current through the battery. What usually is called as linear charger.
+\ac{NIMH} batteries are amongst the hardest batteries to charge. Whereas with lithium ion and lead acid batteries you can control overcharge by just setting a maximum charge voltage, nickel based batteries do not have a ``float charge'' voltage. So the charging is based on forcing current through the battery. What is usually called as linear charger.
 
 Charge rate, usually denoted as C, signifies a charge or discharge rate equal to the capacity of a battery in one hour. For a 1 Ah battery, C is 1A. A charge rate of C/2 (0.5A), would need two hours, whereas a charge rate of 2C (2A), if supported, would need 30 minutes to fully charge the battery. \ac{NIMH} batteries are sensitive to damage on overcharge when the charge rate is over C/10.
 
-Previous statements assumes that the battery has a 100\% coulometric charging efficiency\footnote{Part of the electrical charge stored in a battery by charging that is recoverable during discharging. Usually expressed as a percentage.}. The coulometric charging efficiency of \ac{NIMH} batteries is typically 60\%. However, the faster you charge the worse this parameter gets.
+Previous statements assumes that the battery has a 100\% coulometric charging efficiency\footnote{Part of the electrical charge stored in a battery by charging that is recoverable during discharging. Usually expressed as a percentage.}. The coulometric charging efficiency of \ac{NIMH} batteries is typically 60\%. However, the faster you charge, the worse this parameter gets.
 
 Hence, for our 2.9 Ah batteries, considering a charge rate C/10. A charge current of 290 mA could be accepted, taking from 10 to 15 hours to fully charge the batteries. However, let set the charge current around 200 mA as precautionary measure. This way, quality of the batteries is preserved and the charger is suitable for less capacity batteries.
 
-We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial approximation we could establish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value, 3.6 V. The sensed voltage will be compared with a reference voltage at the input of an LM311\cite{lm311} comparator. Reference voltage is obtained by a simple voltage divider.
+We also want our charger to automatically switch-off once the batteries are full. We will keep sensed the voltage at the batteries poles to detect the end-of-charge moment. As initial approximation, we could establish the end-of-charge when voltage at the batteries is around 10\% higher than their nominal value, 3.6 V. The sensed voltage will be compared with a reference voltage at the input of an LM311\cite{lm311} comparator. Reference voltage is obtained by a simple voltage divider.
 
 The LM311 is a single high-speed voltage comparator. These devices are designed to operate from a wide range of power-supply voltages, including
 $\pm$ 15 V supplies for operational amplifiers and 5 V supplies for logic systems. The output levels are compatible with most \ac{TTL} and \ac{MOS} circuits. These comparators are capable of driving lamps or relays and switching voltages up to 50 V at 50 mA. Figure \ref{fig:cap4:ampconf} gives the recommended configuration provided by the manufacturer.
 
 \figura{Bitmap/Capitulo4/ampconf}{width=.5\textwidth}{fig:cap4:ampconf}{Collector output LM311 configuration.}
 
-To set a fixed current through the batteries, an LM317\cite{lm317} voltage voltage regulator is used. This is an adjustable 3-terminal positive-voltage regulator designed to supply up to 1.5A of load current with an output voltage adjustable over a 1.2 V to 37 V range. It employs internal current limiting and thermal shutdown. Figure \ref{fig:cap4:lm317conf} illustrates the configuration required for the LM317. Formula below describes the relation among components and $V_{out}$.
+To set a fixed current through the batteries, an LM317\cite{lm317} voltage regulator is used. This is an adjustable 3-terminal positive-voltage regulator designed to supply up to 1.5 A of load current with an output voltage adjustable over a 1.2 V to 37 V range. It employs internal current limiting and thermal shutdown. Figure \ref{fig:cap4:lm317conf} illustrates the configuration required for the LM317. The formula below describes the relation among components and $V_{out}$.
 
 \figura{Bitmap/Capitulo4/lm317conf}{width=.6\textwidth}{fig:cap4:lm317conf}{Configuration scheme for the LM317 provided by the manufacturer.}
 
@@ -885,15 +878,15 @@ To set a fixed current through the batteries, an LM317\cite{lm317} voltage volta
 V_{out} = 1.25V(1+ \frac{R_{2}}{R_{1}}) + I_{Adj}R_{2}
 \]
 
-This regulator is configured to an output of 1.25V by choosing an R2 of 0 $\Omega$. Then a fix resistor between its output and ground will limit the output current and therefore, the input current. This fix current will flow through the batteries during the charge. In addition, the drain of an IRF5802\cite{irf5801} nMOSFET power transistor is placed at the regulator output. This means that the operation mode of the transistor affects the flowing current. If the transistor is in ohmic mode or saturation, current flows. The current does not flow if the transistor is cutoff.
+This regulator is configured to a 1.25 V output by choosing an R2 of 0 $\Omega$. Then a fix resistor between its output and ground will limit the output current and therefore, the input current. This fixed current will flow through the batteries during the charge. In addition, the drain of an IRF5802\cite{irf5801} nMOSFET power transistor is placed at the regulator output. This means that the operation mode of the transistor affects the flowing current. If the transistor is under ohmic or saturation modes, current flows. The current does not flow if the transistor is cutoff.
 
-IRF5802 presents a maximum drain-source on-resistance $R_{DS(on)}$ of 2.2 $\Omega$. Gate to source voltage $V_{GS}$ can vary from -30 V to +30 V, and gate threshold voltage $V_{GS(th)}$ is around 4 $\Omega$. Maximum drain current $I_{D}$ goes up to 600 mA.
+IRF5802 presents a maximum drain-source on-resistance $R_{DS(on)}$ of 2.2 $\Omega$. Gate to source voltage $V_{GS}$ can vary from -30 V to +30 V, and gate threshold voltage $V_{GS(th)}$ is around 4 V. Maximum drain current $I_{D}$ goes up to 600 mA.
 
-The previously mentioned LM311 output controls the gate of the transistor. It switches the transistor operation modes, from ohmic to cutoff, when LM311 output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the voltage sensed at the batteries.
+The previously mentioned LM311 output controls the gate of the transistor. It switches the transistor operation modes, from ohmic to cutoff, when LM311 output is set to high or low, respectively. And the output of this operational amplifier, in turn, relies on the sensed voltage at the batteries.
 
 A green \ac{LED} driven by the comparator output, turns illuminated when this output drops enough to make current flows through the \ac{LED}. This way, the \ac{LED} indicates when the batteries voltage is over the reference voltage. A precautionary diode preserves the batteries from being reversely charged. 
 
-The whole system was simulated on Alitum Designer and simulation outputs can be observed further on at this same section.
+The whole system was simulated on Alitum Designer and simulation traces can be observed later at this same section.
 
 %-------------------------------------------------------------------
 \subsection{Schematics}
@@ -903,7 +896,7 @@ A schematic of charger232SHIELD can be seen at Figure \ref{fig:cap4:chargershema
 %-------------------------------------------------------------------
 \subsection{Simulation}
 %-------------------------------------------------------------------
-Simulation at Altium Designer showed different behaviors facing different voltage at the batteries. It was needed to simulate models for LM311 operational amplifier, IRF5801 nMOSFET transistor. LM317AMDT was emulated composing simpler components. Figure \ref{fig:cap4:simulation1} illustrates the output voltage at the LM311 comparator depending on the voltage at the battery. Figure \ref{fig:cap4:simulation2} directly relates current flow over the battery with the voltage its presents. Graphics show the right behavior, changing properly the desired voltage and current values at certain battery value.
+Simulation at Altium Designer showed different behaviors facing different voltage at the batteries. It was needed to simulate models for LM311 operational amplifier and IRF5801 nMOSFET transistor. LM317AMDT was emulated composing simpler components. Figure \ref{fig:cap4:simulation1} illustrates the output voltage at the LM311 comparator depending on the voltage at the battery. Figure \ref{fig:cap4:simulation2} directly relates current flow over the battery with the voltage it posses. Graphics show the right behavior, changing properly the desired voltage and current values at certain battery charge.
 
 \begin{figure}[h]
 \centering

@@ -27,9 +27,9 @@ Some tests were applied to the main platform modules for the purpose of proving 
 %-------------------------------------------------------------------
 \label{cap6:sec:testModel}
 %-------------------------------------------------------------------
-The purposes of testing some of the platform functions are to prove valuable capabilities and proper modules functionality. Characterization is not expressly required and modules must respond to operation parameters provided by manufacturers. The already used firmware includes several test-benches to apply. Most of the software tools employed to test the platform are extracted, at least partially, from them. For a further description on the carried out tests, consult \ref{juanpfc}. 
+The purposes of testing some of the platform functions are to prove valuable capabilities and proper modules functionality. Characterization is not expressly required and modules must respond to operation parameters provided by manufacturers. The already used firmware includes several test-benches to apply. Most of the software tools employed to test the platform are extracted, at least partially, from them. For a further description on the carried out tests, consult \cite{juanpfc}. 
 
-Tests are simple and they check bounded functions related to the platform main capabilities. Sleeping modes operation and corresponding current consumption at different modes was measured. Microcontroller computing capabilities, through some task attending times, and radio interfaces features, such as spectrum sensing or agility, have been also tested. On the other hand, battery charger behavior was characterized.   
+Tests are simple and they check bounded functions related to the platform main capabilities and features. Sleeping modes operation and corresponding current consumption at different modes was measured. Microcontroller computing capabilities and \ac{RI}s performance, regarding agility or when sensing the spectrum, also have been tested. On the other hand, chargerSHIELD behavior was characterized.   
 
 %-------------------------------------------------------------------
 \section{Energy management test}
@@ -76,9 +76,9 @@ Table \ref{tab:cap6:tasktime} shows separately the measured time for \ac{RI}s an
 \hline
 Management part & P2P Protocol & MiWi Protocol \\ \hline \hline
 Common management & 134.1 $\mu$s &  150.6 $\mu$s \\ \hline
-434 MHz RI management & 1.3 $\mu$s & 1.3 $\mu$s\\ \hline
-868 MHz RI management & 1.2 $\mu$s & 1.2 $\mu$s\\ \hline
-2.4 GHz RI management & 1.2 $\mu$s & 1.2 $\mu$s\\ \hline\hline
+434 MHz RI  & 1.3 $\mu$s & 1.3 $\mu$s\\ \hline
+868 MHz RI  & 1.2 $\mu$s & 1.2 $\mu$s\\ \hline
+2.4 GHz RI  & 1.2 $\mu$s & 1.2 $\mu$s\\ \hline\hline
 Total time & 137.8 $\mu$s & 154.3 $\mu$s \\ \hline \hline
 \end{tabular}}
 
@@ -139,12 +139,12 @@ This test evaluates how long changes take to be accomplished changes over the \a
 \hline
 \hline
 Operation & 434 MHz RI & 868 MHz RI & 2.4 GHz RI\\ \hline \hline
-Switch transmission channel & 30.45 ms  &  30.4 ms & 0.151 ms \\ \hline
-Change  transmission power & 55.8 $\mu$s & 55.8 $\mu$s & 70.1 $\mu$s \\ \hline
+TX channel switch & 30.45 ms  &  30.4 ms & 0.151 ms \\ \hline
+TX power change & 55.8 $\mu$s & 55.8 $\mu$s & 70.1 $\mu$s \\ \hline
 Sleep and wake up & 15.4 ms & 15.4 ms & 0.364 ms\\ \hline \hline
 \end{tabular}}
 
-\caption{Time costs on the communication protocol management tasks.%
+\caption{Time costs on the RIs management tasks.%
          \label{tab:cap6:radioagility}}
 \end{table}
 
@@ -176,7 +176,7 @@ Both versions, $\mu$Trans module at 434 MHz and 868 MHz, posses similar performa
 \hline
 \hline
 \multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
-  &  Packets & bits & (s) & rate (kpbs)\\ \hline \hline
+  &  packets & bits & (s) & rate (kpbs)\\ \hline \hline
 
 Broadcast & 125 (50 \%) & 90000 & 2.88 & 31.250    \\ \hline
 Unicast & 250 (100 \%) & 180000 & 7.34 & 24.511 \\ \hline \hline
@@ -194,7 +194,7 @@ Unicast & 250 (100 \%) & 180000 & 7.34 & 24.511 \\ \hline \hline
 \hline
 \hline
 \multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
-  &  Packets & bits & (s) & rate (kpbs)\\ \hline \hline
+  &  packets & bits & (s) & rate (kpbs)\\ \hline \hline
 
 Broadcast & 250 (100 \%) & 180000 & 6.22 & 28.938   \\ \hline
 Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
@@ -205,7 +205,7 @@ Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
          \label{cap6:tab:effectiverate434868slow}}
 \end{table}
 
-It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. The reduced effective rate might be due to prototyping bad conditions, such as wiring corrections and rough connections that should be better at consecutive mountings. \ac{RF} devices are very sensitive to these imperfections. On the other hand, \ac{TX} power and antenna conditions must be review, since these suppose a change with respect to previous tests.
+It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. The reduced effective rate might be due to prototyping bad conditions, such as wiring corrections and rough connections that should be better at consecutive mountings. \ac{RF} devices are very sensitive to these imperfections. On the other hand, \ac{TX} power and antenna conditions must be reviewed, since these suppose a change with respect to previous tests.
 
 Table \ref{cap6:tab:effectiverate2.4} illustrates the results for MRF24J40 transceiver as 2.4 GHz \ac{RI} using a P2P protocol. 
 
@@ -216,7 +216,7 @@ Table \ref{cap6:tab:effectiverate2.4} illustrates the results for MRF24J40 trans
 \hline
 \hline
 \multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
-  &  Packets & bits & (s) & rate (kpbs)\\ \hline \hline
+  &  packets & bits & (s) & rate (kpbs)\\ \hline \hline
 
 Broadcast & 130 (52 \%) & 93600 & 3.25 & 28.8    \\ \hline
 Unicast & 140 (56 \%) & 100800 & 3.54 & 28.474 \\ \hline \hline

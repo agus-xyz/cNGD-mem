@@ -46,7 +46,7 @@
 
 @entry{CWSN, , \emph{Cognitive Wireless Sensor Network}}
 
-@entry{WRAN, , \emph{wireless reginal area network}}
+@entry{WRAN, , \emph{Wireless Reginal Area Network}}
 
 @entry{WAHSN, , \emph{Wireless Ad-hoc Sensor Network}}
 
@@ -154,11 +154,11 @@
 
 @entry{TU, ,\emph{Technische Universit\"at}}
 
-@entry{USRP, , \emph{universal software radio peripheral}}
+@entry{USRP, , \emph{Universal Software Radio Peripheral}}
 
-@entry{SISO, , \emph{single-input single-output}}
+@entry{SISO, , \emph{Single-Input Single-Output}}
 
-@entry{MIMO, , \emph{multiple-input multiple-output}}
+@entry{MIMO, , \emph{Multiple-Input Multiple-Output}}
 
 @entry{EM, , \emph{Electro-Magnetic}}
 
@@ -172,11 +172,11 @@
 
 @entry{M2M, ,\emph{Machine-to-machine}}
 
-@entry{TX, ,\emph{transmission}}
+@entry{TX, ,\emph{Transmission}}
 
-@entry{GPIO, ,\emph{general purpose input-output}}
+@entry{GPIO, ,\emph{General Purpose Input-Output}}
 
-@entry{MCLR, ,\emph{master clear}}
+@entry{MCLR, ,\emph{Master Clear}}
 
 @entry{PLL, ,\emph{Phase-locked loop}}
 

@@ -1,0 +1,47 @@
+
+% Página que en la cara de detrás del folio de la portada.
+% Ponemos que el documento esta maquetado con TeXiS y la
+% aclaración de que debe imprimirse a doble cara.
+\newpage
+\thispagestyle{empty}
+\mbox{ }
+
+\begin{center}
+\includegraphics[width=0.4\textwidth]{Imagenes/Bitmap/Otras/memoriaonline}
+\end{center}
+
+\begin{small}
+\begin{center}
+Online version. \emph{http://goo.gl/mQ3Mez}.
+\end{center}
+\end{small}
+
+
+\vfill%space*{4cm}
+\begin{small} 
+\begin{center}
+\ifx\noTeXiSCreditsVal\undefined
+  Document formatted with \texis\ v.\texisVer.
+\else
+\mbox{ }
+\fi
+\end{center}
+\end{small}
+\vspace*{1cm}
+\begin{small} 
+\begin{center}
+\ifx\explicacionDobleCaraVal\undefined
+\mbox{ }
+\else
+\noindent This document is prepared for duplex printing.
+\fi
+\end{center}
+\end{small}
+
+\begin{small}
+\begin{center}
+\vspace*{1cm}
+All the source files used to generate this document can be accessed at the public repository: \emph{https://github.com/agus-xyz/cNGD-mem}.
+\end{center}
+\end{small}
+

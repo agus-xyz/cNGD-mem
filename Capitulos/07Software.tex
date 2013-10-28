@@ -125,7 +125,7 @@ These functions set to high or low the signal that drives the power switch at ea
 %-------------------------------------------------------------------
 Some global definitions at the firmware provide access to the pins at the headers and useful components as LEDs or buttons.
 
-To access pins at the headers, applications can make use of the \emph{HEADERS\_XX} label definition and respective \emph{HEADERS\_XX\_TRIS} to configure the sort of pin. \emph{XX} parameter must be replaced with the desired pin number. For instance, \emph{HEADERS\_06\_TRIS} must be set as \emph{OUTPUT\_PIN} in order to make it a digital output. To access signal at header pin number six, the pin definition would be \emph{HEADERS\_06}.
+To access pins at the headers, applications can make use of the \emph{HEADER\_XX} label definition and respective \emph{HEADER\_XX\_TRIS} to configure the sort of pin. \emph{XX} parameter must be replaced with the desired pin number. For instance, \emph{HEADER\_06\_TRIS} must be set as \emph{OUTPUT\_PIN} in order to make it a digital output. To access signal at header pin number six, the pin definition would be \emph{HEADER\_06}.
 
 LEDs label definitions are \emph{LED1}, \emph{LED2}, and \emph{LED3} respectively. These pins are configured as output when running the node initialization.
 

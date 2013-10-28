@@ -130,7 +130,7 @@ Third scenario is conducted over the 2.4 GHz band. This band posses 16 available
 %-------------------------------------------------------------------
 \label{cap6:sec:radioagility}
 %-------------------------------------------------------------------
-This test evaluates how long changes take to be accomplished changes over the \ac{RI}s. Parameters to change are \ac{TX} power, operation channel and energy modes. This test was fully available at the firmware. Table \ref{tab:cap6:radioagility} illustrates the results.
+This test evaluates how long take different management tasks over the \ac{RI}s to be accomplished. These management tasks cover spectrum energy scans and changes over \ac{TX} power, operation channel, and energy modes. This test was fully available at the firmware. Table \ref{tab:cap6:radioagility} illustrates the results.
 
 \begin{table}[h]
 \centering
@@ -141,7 +141,8 @@ This test evaluates how long changes take to be accomplished changes over the \a
 Operation & 434 MHz RI & 868 MHz RI & 2.4 GHz RI\\ \hline \hline
 TX channel switch & 30.45 ms  &  30.4 ms & 0.151 ms \\ \hline
 TX power change & 55.8 $\mu$s & 55.8 $\mu$s & 70.1 $\mu$s \\ \hline
-Sleep and wake up & 15.4 ms & 15.4 ms & 0.364 ms\\ \hline \hline
+Sleep and wake up & 15.4 ms & 15.4 ms & 0.364 ms\\ \hline
+Spectrum energy scan & 194.48 ms & 908 ms & 410.13 ms\\ \hline \hline
 \end{tabular}}
 
 \caption{Time costs on the RIs management tasks.%
@@ -155,9 +156,9 @@ Sleep and wake up & 15.4 ms & 15.4 ms & 0.364 ms\\ \hline \hline
 %-------------------------------------------------------------------
 Effective rate provided by the MRF49XA and MRF24J40 transceivers when driven by the firmware was already described in \cite{juanpfc}. The obtained performance must match performance achieved at the \ac{CNGD}. Hence, this checking supposes a partial test compared to the full previous characterization. However, it tries new unchecked aspects of the \ac{RI}s management and proves functionality. 
 
-Most part of this test is obtained from the firmware, so the description is covered at the referred literature. Employed protocol at the test-bench, for simplicity, is MiWi$^{TM}$ P2P. The three \ac{RI}s are checked and different maintenance task periods for the protocol stack are tried. In total, periods of 1 ms, 25 ms and 500 ms were tested, not obtaining performance differences among them. To avoid redundancy, shown results correspond to 25 ms period.
+This test is mostly obtained from the firmware, so the description is covered at the referred literature. Employed protocol at the test-bench, for simplicity, is MiWi$^{TM}$ P2P. The three \ac{RI}s are checked and different maintenance task periods for the protocol stack are tried. In total, periods of 1 ms, 25 ms and 500 ms were tested, not obtaining performance differences among them. To avoid redundancy, shown results correspond to 25 ms period.
 
-The two tried \ac{TX} modes are broadcast and unicast (long address). Main communication parameters set for the test follow:
+The two tried \ac{TX} modes are broadcast and unicast (8 Bytes address). Main communication parameters set for the test follow:
 
 \begin{itemize}
 \item Payload size is set to 90 Bytes.
@@ -180,7 +181,6 @@ Both versions, $\mu$Trans module at 434 MHz and 868 MHz, posses similar performa
 
 Broadcast & 125 (50 \%) & 90000 & 2.88 & 31.250    \\ \hline
 Unicast & 250 (100 \%) & 180000 & 7.34 & 24.511 \\ \hline \hline
-
 \end{tabular}
 }
 \caption{Effective rate, received packets comparison for 434/868 RI using P2P protocol at 115200 bps.%
@@ -195,7 +195,6 @@ Unicast & 250 (100 \%) & 180000 & 7.34 & 24.511 \\ \hline \hline
 \hline
 \multirow{2}{*}{TX mode} & Received  & Total & TX Time & Effective\\
   &  packets & bits & (s) & rate (kpbs)\\ \hline \hline
-
 Broadcast & 250 (100 \%) & 180000 & 6.22 & 28.938   \\ \hline
 Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
 
@@ -205,7 +204,7 @@ Unicast & 250 (100 \%) & 180000 & 8.7 & 20.669 \\ \hline \hline
          \label{cap6:tab:effectiverate434868slow}}
 \end{table}
 
-It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. The reduced effective rate might be due to prototyping bad conditions, such as wiring corrections and rough connections that should be better at consecutive mountings. \ac{RF} devices are very sensitive to these imperfections. On the other hand, \ac{TX} power and antenna conditions must be reviewed, since these suppose a change with respect to previous tests.
+It is important to observe how there are not packet losses at unicast mode, and for 38400 bps there are not lost packets either when broadcasting. On the other hand, \ac{TX} power and antenna conditions must be reviewed, since these suppose a change with respect to previous tests.
 
 Table \ref{cap6:tab:effectiverate2.4} illustrates the results for MRF24J40 transceiver as 2.4 GHz \ac{RI} using a P2P protocol. 
 
@@ -227,9 +226,9 @@ Unicast & 140 (56 \%) & 100800 & 3.54 & 28.474 \\ \hline \hline
          \label{cap6:tab:effectiverate2.4}}
 \end{table} 
 
-A worrying issue, already described in \cite{juanpfc}, is the packet loss even transmitting at unicast mode. The reason for this fact still remains certainly unknown, but there are some possible explanations. Most feasible option at the current moment is that \ac{ACK} packets are misinterpreted by the receiver and it considers a single \ac{ACK} response for more than one packet. This is possible because \ac{ACK} packets are not numerically sequenced at MiWi$^{TM}$ protocol. 
+A worrying issue, already described in \cite{juanpfc}, is the packet loss even transmitting at unicast mode. The reason for this fact still remains certainly unknown, but there are some possible explanations. Most feasible option at the current moment is that \ac{ACK} packets are misinterpreted by the receiver and it considers a single \ac{ACK} response for more than one packet. This is possible because \ac{ACK} packets are not numerically sequenced at MiWi$^{TM}$ protocol. In order to solve this issue, a work at the \ac{LSI} presented in \cite{guillepfc} shows a flow control mechanism at MiWi$^{TM}$ \ac{MAC} layer that apparently avoid packet losses at unicast mode.
 
-In order to solve this issue, a work at the \ac{LSI} presented in \cite{guillepfc} shows a flow control mechanism at MiWi$^{TM}$ \ac{MAC} layer that apparently avoid packet loss at unicast mode.
+The results show how the bottleneck is placed at \ac{RX} rate, which sets the maximum communication bit-rate between two devices around 25-30 kbps for all the \ac{RI}s.
 
 %-------------------------------------------------------------------
 \section{chargerSHIELD performance test}

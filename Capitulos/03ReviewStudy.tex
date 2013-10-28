@@ -85,26 +85,26 @@ All the previous considerations give support to establish cognitive capabilities
 \figuraEx{Bitmap/Capitulo3/placaFer}{width=.8\textwidth}{fig:fcdnode}%
 {Picture of the FCD, developed at LSI in 2011, obtained from \cite{juanpfc}.}{Picture of the FCD, developed at LSI in 2011.}
 
-The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara\cite{ferpfc}. It supposed the first hardware platform fully oriented to \ac{CWSN} development that included three \ac{RI}s. Integrating hardware and software, it gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}. Moreover, it allowed to analyze suitability for radio interfaces, compute capability, and other components. It gave the strengths and weaknesses to establish the fundamentals for future designs. 
+The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara \cite{ferpfc}. It supposed the first hardware platform fully oriented to \ac{CWSN} development that included three \ac{RI}s. Integrating hardware and software, it gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}. Moreover, it allowed to analyze suitability for radio interfaces, compute capability, and other components. It gave the strengths and weaknesses to establish the fundamentals for future designs. 
 
-While constituting the first device meeting its features, the \ac{FCD} introduced several improvable issues found after its implementation and evaluation. Its power consumption, size and cost, together with other not achieved but desired requirement, make the device unsuitable for \ac{CWSN} test-bedding purposes and claim for a new design\cite{juanpfc}.
+While constituting the first device meeting its features, the \ac{FCD} introduced several improvable issues found after its implementation and evaluation. Its power consumption, size and cost, together with other not achieved but desired requirement, make the device unsuitable for \ac{CWSN} test-bedding purposes and claim for a new design \cite{juanpfc}.
 
-The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit. It has a Harvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H\cite{pic32datasheet}, integrates a 512 KB Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz\footnote{\ac{DMIPS} divided by \ac{CPU} frequency. Dhrystone is a synthetic computing benchmark program become representative of general processor performance.}.
+The \ac{FCD} has a Microchip \ac{PIC} hosting a \ac{MIPS} M4K, a 32-bits \ac{MCU} unit. It has a Harvard architecture employing a five-stages pipeline and a \ac{RISC}. The chosen model, a PIC32MX795F512H \cite{pic32datasheet}, integrates a 512 KB Flash Memory and a 128 KB general purpose \ac{SRAM}. It allows a maximum 80 MHz clock frequency and it achieves a throughput as high as 1.65 DMIPS/MHz\footnote{\ac{DMIPS} divided by \ac{CPU} frequency. Dhrystone is a synthetic computing benchmark program become representative of general processor performance.}.
 This \ac{PIC} was found to offer too high features for our requirements, hence existing a reducible amount of power consumption 
 on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is seen as a positive option.  
 
 The \ac{FCD} includes three \ac{RI}s enabling access to two different spectrum regions. Two of the selected interfaces
-work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in most part of Region 1. To operate over the 868 MHz band it used a Tulio$^{TM}$\cite{tulio} transceiver oriented to \ac{LOWPAN} and IEEE 802.15.4
-compatible. For the 2.4 GHz band, two Microchip modules were selected. A MRF24J40\cite{mrf24j40} module using Microchip proprietary protocols such us MiWi$^{TM}$ P2P\cite{miwip2p}, MiWi$^{TM}$ Mesh, or MiWiPRO$^{TM}$\cite{miwipro} and a MRF24WB0MA\cite{mrf24wb0} module, IEEE 802.11 compatible, as WiFi.
-Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and communications with the \ac{MCU} take place through an \ac{UART}. Stacks for MiWi\cite{miwi} and TCP/IP\cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications with these transceivers use \ac{SPI} interfaces.
+work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in most part of Region 1. To operate over the 868 MHz band it used a Tulio$^{TM}$ \cite{tulio} transceiver oriented to \ac{LOWPAN} and IEEE 802.15.4
+compatible. For the 2.4 GHz band, two Microchip modules were selected. A MRF24J40 \cite{mrf24j40} module using Microchip proprietary protocols such us MiWi$^{TM}$ P2P \cite{miwip2p}, MiWi$^{TM}$ Mesh, or MiWiPRO$^{TM}$ \cite{miwipro} and a MRF24WB0MA \cite{mrf24wb0} module, IEEE 802.11 compatible, as WiFi.
+Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and communications with the \ac{MCU} take place through an \ac{UART}. Stacks for MiWi \cite{miwi} and TCP/IP \cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications with these transceivers use \ac{SPI} interfaces.
 
 \figuraEx{Bitmap/Capitulo3/fcdmodel}{width=0.9\textwidth}{fig:fcdmodel}%
-{Architecture model of the FCD, developed at LSI in 2011, obtained from \cite{ferpfc}.}{Architecture model of the FCD.}
+{Architecture model of the FCD, developed at LSI in 2011, obtained from \cite{juanpfc}.}{Architecture model of the FCD.}
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instruments microcontroller increasing complexity on the global structure, moreover, this fact raises the global consumption up. Maintaining this interface will be disputed.
 On the other hand, the WiFi interface seems to be inappropriate for \ac{WSN} due to its high power consumption, hibernation-related problems, and its complex, resources-consuming communication stack. Even though this interface is thought as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
 
-Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming, not suitable to deal properly with an application and a cognitive layer. Hence, using the developed \ac{HAL}\cite{juanpfc} that integrates three stacks and presents a straightforward \ac{API} for upper layers, seems a good choice for this work.
+Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming, not suitable to deal properly with an application and a cognitive layer. Hence, using the developed \ac{HAL} \cite{juanpfc} that integrates three stacks and presents a straightforward \ac{API} for upper layers, seems a good choice for this work.
 
 The node comprises two \ac{USB} terminals and an RS232 interface for debugging and interconnection purposes. Power supply system accepts 3.3 V and 5 V options including a voltage regulator and a charge pump.
 
@@ -334,9 +334,9 @@ RS232 communication so does needs its own power supply. The size and cost for an
 The power supply system designed for the \ac{FCD} includes some modules susceptible to be suppressed or replaced to keep the simplicity and
 reduce the consumption. 
 
-The MCP1612\cite{mcp1612} buck regulator specifications fit the supply requirements on excess, so a less-featured component might be enough at the new design. The maximum output current for the MCP1612, up to 1 A, could be significantly reduced. 
+The MCP1612 \cite{mcp1612} buck regulator specifications fit the supply requirements on excess, so a less-featured component might be enough at the new design. The maximum output current for the MCP1612, up to 1 A, could be significantly reduced. 
 
-The MCP1253-33X\cite{mcp1252} charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design if this option is not finally implemented.
+The MCP1253-33X \cite{mcp1252} charge-pump, responsible for raising the voltage up to 5V to operate over \ac{USB} as master, could be removed in the new design if this option is not finally implemented.
 
 %-------------------------------------------------------------------
 \subsection{Timing}

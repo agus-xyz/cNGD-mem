@@ -29,12 +29,12 @@ In this chapter, a global description of the project is given. This global descr
 
 A \ac{WSN} consists of a number of sensors spread across a geographical area. Each sensor has wireless communication capability and some level of intelligence for signal processing and data networking. \ac{WSN}s provide a decentralized technological solution to address applications related to security and surveillance, industrial control, infrastructure maintenance, automatic environmental monitoring, domotics, localization, and tracking or health. They have recently emerged as a premier research topic due to their great long-term economic potential and ability to transform our lives.
 
-Together with this significant growth in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the growth in the ``Internet of Things'' connectivity phenomenon\cite{internetofthings}. Wireless communications, specially due to wireless \ac{M2M} connections, is currently one of the hottest and fastest growing segments of electronics. 
+Together with this significant growth in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the growth in the ``Internet of Things'' connectivity phenomenon \cite{internetofthings}. Wireless communications, specially due to wireless \ac{M2M} connections, is currently one of the hottest and fastest growing segments of electronics. 
 
-The increasing demand for wireless communication, in addition to an inefficient assignment of the spectrum\cite{wpanIssues}, has caused saturation on certains bands of the radio spectrum\footnote{Radio spectrum refers to the part of the electromagnetic spectrum corresponding to radio frequencies - that is, frequencies lower than around 300 GHz.}. Some of the most heavily used bands are \ac{ISM} bands which are unlincesed, free of cost frequencies. Most \ac{WSN} solutions operate over these \ac{ISM} bands, like the 2.4 GHz band, also used by Wi-Fi, Bluetooth, or IEEE 802.15.4 devices. \ac{ISM} bands are defined by region by the \ac{ITU} and local goverments ultimately. Figure \ref{fig:cap1:ituregions} illustrates the different defined regions and Figure \ref{fig:cap1:spectrum} gives a general view of the spectrum and \ac{ISM} bands over region 1.
+The increasing demand for wireless communication, in addition to an inefficient assignment of the spectrum \cite{wpanIssues}, has caused saturation on certains bands of the radio spectrum\footnote{Radio spectrum refers to the part of the electromagnetic spectrum corresponding to radio frequencies - that is, frequencies lower than around 300 GHz.}. Some of the most heavily used bands are \ac{ISM} bands which are unlincesed, free of cost frequencies. Most \ac{WSN} solutions operate over these \ac{ISM} bands, like the 2.4 GHz band, also used by Wi-Fi, Bluetooth, or IEEE 802.15.4 devices. \ac{ISM} bands are defined by region by the \ac{ITU} and local goverments ultimately. Figure \ref{fig:cap1:ituregions} illustrates the different defined regions and Figure \ref{fig:cap1:spectrum} gives a general view of the spectrum and \ac{ISM} bands over region 1.
 
-\figura{Bitmap/Capitulo1/regions}{width=.7\textwidth}{fig:cap1:ituregions}%
-{World different regions defined by the International Telecommunication Union}
+\figuraEx{Bitmap/Capitulo1/regions}{width=.7\textwidth}{fig:cap1:ituregions}%
+{World different regions defined by the ITU, obtained from \cite{mapability}.}{World different regions defined by the ITU.}
 
 \figura{Bitmap/Capitulo1/spectrum}{width=.9\textwidth}{fig:cap1:spectrum}%
 {Electromagnetic frequency spectrum. Radio spectrum covers under 300 GHz frequencies}
@@ -42,21 +42,21 @@ The increasing demand for wireless communication, in addition to an inefficient 
 Spectrum saturation is reflected over the increasing \ac{RF} interferences and other undesirable effects like noise, with a consistent impact over the \ac{TX} power required, \ac{QOS}, etc. Nowadays, techniques focused on expanding spectrum efficiency over communications, such as those related to modulation, power control or link adaptation, seem exhausted, and new long-term solutions are required. 
 
 To address this challenge, new techniques such as \ac{CR} arise. \ac{CR} was introduced by Mitola in 1999 \cite{mitola1}
-and 2000\cite{mitola2}. It integrates into communication networks concepts such as spectrum sensing, self-learning, self-management, 
+and 2000 \cite{mitola2}. It integrates into communication networks concepts such as spectrum sensing, self-learning, self-management, 
 or context analysis. Basically, \ac{CR} enables opportunistic access to the spectrum through cooperation and context
 awareness. Spectrum sensing capabilities and cooperation among devices allow for better spectrum utilization and \ac{QOS}.
 The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters in order to achieve more reliable and efficient communications.
 
-\ac{WSN}s, among other technologies, maintain a high demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, especially for their wireless communications, since these normally constitute the most energy-consumming task. However, there are also challenges to face\cite{challenges}, such as an adaptive and \ac{QOS}-aware routing, or the distribution of control data.
+\ac{WSN}s, among other technologies, maintain a high demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, especially for their wireless communications, since these normally constitute the most energy-consumming task. However, there are also challenges to face \cite{challenges}, such as an adaptive and \ac{QOS}-aware routing, or the distribution of control data.
 
-Despite the potential of \ac{CWSN}\cite{cwsn}, they are not deeply explored yet. Real or simulated scenarios scarcely exist, but 
+Despite the potential of \ac{CWSN} \cite{cwsn}, they are not deeply explored yet. Real or simulated scenarios scarcely exist, but 
 realistic platforms are crucial to the improvement and development of this new field. The shortage and undevelopment of \ac{CWSN} devices
 or test-beds contributes to the scarcity of results in this area. 
 
-One of the current \ac{CWSN} node platforms is the \ac{FCD}, developed in 2011\cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s, \ac{CWSN}s, or security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a initial approach. The \ac{FCD} was still far from being a very valuable researching test-bed platform. This platform did not fully satisfy requirements in terms of low power consumption, functionality, cost and size, and communication capabilities. 
+One of the current \ac{CWSN} node platforms is the \ac{FCD}, developed in 2011 \cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s, \ac{CWSN}s, or security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a initial approach. The \ac{FCD} was still far from being a very valuable researching test-bed platform. This platform did not fully satisfy requirements in terms of low power consumption, functionality, cost and size, and communication capabilities. 
 
 Continuing with the development of the \ac{FCD}, some software implementations were carried out at \ac{LSI}. A combined protocol stack for
-three different transceivers \cite{juanpfc}, including a \ac{HAL}, was created. This firmware offers ease of use to the researchers facing communication tasks. It also supposes memory and resources savings compared with the previous scheme, based on three protocol stacks. In order to deal with cognitive strategies and algorithmics, in addition, a software module that runs over the firmware was launched. This module, called \ac{CRMODULE}\cite{guillepfc} implements the theoretical model described in \cite{conbrok} and is a crucial achievement for \ac{CWSN} development.  
+three different transceivers \cite{juanpfc}, including a \ac{HAL}, was created. This firmware offers ease of use to the researchers facing communication tasks. It also supposes memory and resources savings compared with the previous scheme, based on three protocol stacks. In order to deal with cognitive strategies and algorithmics, in addition, a software module that runs over the firmware was launched. This module, called \ac{CRMODULE} \cite{guillepfc} implements the theoretical model described in \cite{conbrok} and is a crucial achievement for \ac{CWSN} development.  
 
 This dissertation describes the development and operation of the \ac{CNGD}, a platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSN}s, allowing test strategies and better investigation deployments.
 
@@ -176,7 +176,7 @@ and future development lines. Found problems evaluation.
 
 \item \emph{Documentation generation}.
 
-Dissertation and other required documentation (wiki, papers, manuals, etc.) writing. Dissertation will be ellaborated under \LaTeX\cite{latex}. Review of the software documentation.
+Dissertation and other required documentation (wiki, papers, manuals, etc.) writing. Dissertation will be ellaborated under \LaTeX \cite{latex}. Review of the software documentation.
 
 \end{itemize}
 %-------------------------------------------------------------------

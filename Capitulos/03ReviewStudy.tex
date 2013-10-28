@@ -48,7 +48,7 @@ Basically, the \ac{CWSN} node scheme responds to a standard \ac{WSN} model based
 \end{itemize}
 
 \figura{Bitmap/Capitulo3/CWSNmodel}{width=.9\textwidth}{fig:CWSNnodeModel}%
-{CWSN node model}
+{CWSN node model.}
 %poner una unica pila
 
 Figure \ref{fig:CWSNnodeModel} gives a view about the basic seeked model. It shows together software and hardware modules in a simplified way.
@@ -82,8 +82,8 @@ All the previous considerations give support to establish cognitive capabilities
 \label{cap3:sec:fcdEvaluation}
 %-------------------------------------------------------------------
 
-\figura{Bitmap/Capitulo3/placaFer}{width=.8\textwidth}{fig:fcdnode}%
-{Picture of the FCD, developed at LSI in 2011}
+\figuraEx{Bitmap/Capitulo3/placaFer}{width=.8\textwidth}{fig:fcdnode}%
+{Picture of the FCD, developed at LSI in 2011, obtained from \cite{juanpfc}.}{Picture of the FCD, developed at LSI in 2011.}
 
 The \ac{FCD} was developed in 2011 at the \ac{LSI} by Fernando Lopez Lara\cite{ferpfc}. It supposed the first hardware platform fully oriented to \ac{CWSN} development that included three \ac{RI}s. Integrating hardware and software, it gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}. Moreover, it allowed to analyze suitability for radio interfaces, compute capability, and other components. It gave the strengths and weaknesses to establish the fundamentals for future designs. 
 
@@ -99,7 +99,7 @@ compatible. For the 2.4 GHz band, two Microchip modules were selected. A MRF24J4
 Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and communications with the \ac{MCU} take place through an \ac{UART}. Stacks for MiWi\cite{miwi} and TCP/IP\cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications with these transceivers use \ac{SPI} interfaces.
 
 \figuraEx{Bitmap/Capitulo3/fcdmodel}{width=0.9\textwidth}{fig:fcdmodel}%
-{Architecture model of the FCD, developed at LSI in 2011. Obtained from \cite{ferpfc}.}{Architecture model of the FCD.}
+{Architecture model of the FCD, developed at LSI in 2011, obtained from \cite{ferpfc}.}{Architecture model of the FCD.}
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instruments microcontroller increasing complexity on the global structure, moreover, this fact raises the global consumption up. Maintaining this interface will be disputed.
 On the other hand, the WiFi interface seems to be inappropriate for \ac{WSN} due to its high power consumption, hibernation-related problems, and its complex, resources-consuming communication stack. Even though this interface is thought as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
@@ -127,13 +127,9 @@ The new firmware supposes several advantages:
 \begin{itemize}
 
 \item Versatility and adaptability are given. Hardware modifications and new modules are possible with minimal software adaptation.
-
 \item Firmware takes care of the protocol stack management. 
-
 \item MiWi$^{TM}$ protocol stack adaptation makes a better efficient use of resources and removes complexity.
-
 \item Devices fabrication costs are reduced since some modules are not needed anymore and less featured controllers are suitable.
-
 \item Sleeping modes provided by the firmware bring the key for autonomous operation modes. Whenever circumstances permit it, enabling sleeping modes will drop significantly the power consumption.
 \end{itemize}
 
@@ -316,7 +312,7 @@ MRF89XAM8A & \multirow{2}{*}{868} & & FSK: 40 & & 16 mA  @ +1 dBm &  & & & \mult
 
 There are not complete modules available for 434 MHz band. For 868 MHz, module MRF89XAM8A is available. However, MRF49XA transceiver, which provies communications at these two bands, is susceptible to be included into an ad-hoc designed \ac{RI} board. Figure \ref{fig:cap2:wirelesscomparison} gives a comparison among wireless networking protocols.
 
-\figura{Bitmap/Capitulo3/wirelesscomparison}{width=.55\textwidth}{fig:cap2:wirelesscomparison}%
+\figura{Bitmap/Capitulo3/wirelesscomparison}{width=.7\textwidth}{fig:cap2:wirelesscomparison}%
 {Main wireless networking options comparison}
 
 %-------------------------------------------------------------------

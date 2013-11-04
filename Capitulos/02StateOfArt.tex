@@ -57,14 +57,11 @@ The concept of \ac{CR} was first published by Joseph Mitola III and Gerald Q. Ma
 \end{itemize}
 
 Although the concept of \ac{CR} was defined originally as an extension to \ac{SDR} \cite{mitola1}, which is able to reason about
-external factors, recently the term has mostly been used in a narrower sense. \ac{FCC} suggests in \cite{fcc1} that any radio having adaptive spectrum awareness should be referred to as \ac{CR}:
+external factors, afterwards, the term has mostly been used in a narrower sense. \ac{FCC} suggests in \cite{fcc1} that any radio having adaptive spectrum awareness should be referred to as \ac{CR}:
 \begin{quote}
 
 \emph{
-``A cognitive radio (CR) is a radio that can change its transmitter parameters based on
-interaction with the environment in which it operates. The majority of cognitive radios will
-probably be SDRs (Software Defined Radios), but neither having software nor being field
-programmable are requirements of a cognitive radio.'' 
+``A \ac{CR} is a radio that can change its transmitter parameters based on interaction with the environment in which it operates...The majority of cognitive radios will probably be \ac{SDR}s, but neither having software nor being field programmable are requirements of a cognitive radio.'' 
 }
 
 \end{quote}
@@ -78,23 +75,24 @@ Considering some subtle differences between systems we can differentiate two mai
 Although cognitive radio was initially thought of as full cognitive radio, most research work focuses on spectrum-sensing cognitive radio,  particularly in the TV bands. The great problem in spectrum-sensing cognitive radio is designing high-quality spectrum-sensing devices and algorithms for exchanging the so-called knowledge domain \cite{brainempower}. The practical implementation of spectrum-management functions is a complex and multifaceted issue, since it must address a variety of technical and legal requirements.
 
 Picture \ref{fig:crmodel} illustrates the key functions of the \ac{PHY}, \ac{MAC}, and network layers in a \ac{CR}. This model, described in \cite{crnetandcom}, supposes a functional architecture that is by no means the only architecture that can be designed for \ac{CR}s.
+
 \figuraEx{Bitmap/Capitulo2/crmodel}{width=.7\textwidth}{fig:crmodel}%
-{Main functions of the PHY, MAC, and network layers in a CR, obtained from \cite{crnetandcom}}{Main functions of the PHY, MAC, and network layers in a CR}
+{Main functions of the PHY, MAC, and network layers in a CR, obtained from \cite{crnetandcom}.}{Main functions of the PHY, MAC, and network layers in a CR}
 
 Depending on the parts of the spectrum used, \ac{CR} can be:
 \begin{itemize}
     \item \emph{Licensed-Band Cognitive Radio}, capable of using bands assigned to licensed users. These licensed users are known as primary users. 
-    \item \emph{Unlicensed-Band Cognitive Radio}, which can only utilize unlicensed parts of the \ac{RF} spectrum. One such system is described in the IEEE 802.15 Task Group 2 specifications \cite{802152}.
+    \item \emph{Unlicensed-Band Cognitive Radio}, which can only utilize unlicensed parts of the \ac{RF} spectrum. One such system is described in the \ac{IEEE} 802.15 Task Group 2 specifications \cite{802152}.
 
 \end{itemize}
 The main functions of \ac{CR} devices are: \cite{dsa}\cite{CRfunctionality}
 
 \begin{itemize}
 
-\item \emph{Spectrum sensing}: An important requirement is detecting unused spectrum and sharing it, without causing interferences to other users; Spectrum-sensing techniques may be grouped into three categories:
+\item \emph{Spectrum sensing}: An important requirement is detecting unused spectrum and sharing it, without causing interferences to other users; spectrum-sensing techniques may be grouped into three categories:
 
 \begin{itemize}
-\item \emph{Transmitter detection}: \ac{CR} must have the capability to determine if a signal from a primary transmitter is locally present in a certain spectrum. Enclosed here we can find that approaches such as \emph{matched filter detection, energy detection or cyclostationary-feature detection} are common.
+\item \emph{Transmitter detection}: \ac{CR} must have the capability to determine if a signal from a primary user is locally present in a certain spectrum. Enclosed here we can find that approaches such as \emph{matched filter detection, energy detection or cyclostationary-feature detection} are common.
 
 \item \emph{Cooperative detection}: Refers to spectrum-sensing methods where information from multiple \ac{CR} users is integrated \cite{sensing}.
 
@@ -107,7 +105,7 @@ The main functions of \ac{CR} devices are: \cite{dsa}\cite{CRfunctionality}
 
 \end{itemize}
 
-Realizing that CR technology has the potential to exploit inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The IEEE 802.22 working group \cite{80222web}, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service \cite{80222}.
+Realizing that CR technology has the potential to exploit inefficiently utilized licensed bands without causing interference to incumbent users, the FCC released a Notice of Proposed Rule Making which would allow unlicensed radios to operate in the TV-broadcast bands. The \ac{IEEE} 802.22 working group \cite{80222web}, formed in November 2004, is tasked with defining the air-interface standard for wireless regional area networks (based on CR sensing) for the operation of unlicensed devices in the spectrum allocated to TV service \cite{80222}.
 
 Dynamic spectrum allocation has become a key research activity in the wireless communications field and in particular a key technology for ``The Network of the Future'', objective proposed in ICT \ac{FP7}\footnote{Funding programmes created by the European Union in order to support and encourage research in the European Research Area.}.
 
@@ -117,9 +115,7 @@ Dynamic spectrum allocation has become a key research activity in the wireless c
 \label{cap2:sec:cognitiveNetworks}
 %-------------------------------------------------------------------
 
-Over recent years, ``cognitive'' or ``smart'' have become \emph{trending topics} being applied to many fields, including communication technologies. Looking at some 90s literature, it is easy to find mentions of
-smart antennas \cite{smartantenna}, smart radios \cite{smartradio}, smart packets \cite{smartpackets}, \ac{CR} \cite{mitola1}\cite{brainempower}, cognitive packets \cite{cognitivepackets} and \ac{CN} \cite{cn1}\cite{cn2}.
-Nevertheless, there does not seem to be a commonly accepted definition of what these terms mean when applied to 
+Over recent years, ``cognitive'' or ``smart'' have become \emph{trending topics} being applied to many fields, including communication technologies. Looking at some recent literature, it is easy to find mentions of smart antennas \cite{smartantenna}, smart radios \cite{smartradio}, smart packets \cite{smartpackets}, \ac{CR} \cite{mitola1}\cite{brainempower}, cognitive packets \cite{cognitivepackets} and \ac{CN} \cite{cn1}\cite{cn2}. Nevertheless, there does not seem to be a commonly accepted definition of what these terms mean when applied to 
 networking technologies.
 
 The concept of \ac{CN} has been in the collective psyche of the networking and wireless research field for long. 
@@ -127,7 +123,7 @@ The first approach was made by Mitola \cite{mitola1}, who briefly described how 
 of a \ac{CN}. Saracco \cite{saracco} talked about \ac{CN}s in his investigation into the future information technology. M\"ah\"onen et al. \cite{cn1} discussed \ac{CN}s with respect to future mobile \ac{IP} networks. None of these previous references, however, expressed clearly what 
 a \ac{CN} is, how it should work and which problems it should solve.
 
-The role that \ac{CR} had in inspiring the formulation of \ac{CN} concept, caused, in some cases, \ac{CN}s to be described as networks of 
+The role that \ac{CR} had in inspiring the formulation of \ac{CN} concept caused, in some cases, \ac{CN}s to be described as networks of 
 \ac{CR}s \cite{mitola1}\cite{neel}. Recent research could be divided into two categories: \ac{CRN} and \ac{CN}s. 
 
 For \ac{CRN}, Mitola mentions how \ac{CR}s could interact within the system-level scope of a \ac{CN} \cite{mitola2}. Neel \cite{gamecr}
@@ -137,7 +133,7 @@ In a \ac{CRN}, the individual radios take most of the cognitive decisions, altho
 applications for \ac{CRN}s include cooperative spectrum sensing \cite{coopsensing}\cite{coopsensing1} and emergency radio
 networks \cite{cremergency}. Raychaudhuri presents in \cite{cnrarchitecture} a general architecture for \ac{CRN}s.
 
-Regarding \ac{CN}s, Clark proposes, in what was perhaps the first mention of \ac{CN} rather than \ac{CRN},
+Regarding \ac{CN}s, Clark proposes \cite{knowledgeplane}, in what was perhaps the first mention of \ac{CN} rather than \ac{CRN},
 a network that can
 
 \begin{quotation}
@@ -145,25 +141,18 @@ a network that can
 something goes wrong, and automatically fix a detected problem or explain why it cannot do so.''
 \end{quotation}
 
-This would be achieved with the use of a \ac{KP} that transcends layers and domains to make global 
-cognitive decisions. The \ac{KP} would add intelligence and weight to the edges of the network, and context sensitivity 
-to its core. Saracco stated \cite{saracco} that the change from network intelligence controlling resources to having context 
-sensitivity would help ``flatten'' the network by moving network intelligence into the core and control further out to the 
-edges of the network. \ac{CRN}s differ from \ac{CN}s in that their action space extends beyond the \ac{MAC} and \ac{PHY} layers and the network may 
-consist of more than just wireless devices. Furthermore, CN nodes may be less autonomous than a CRN node.
-
+This would be achieved with the use of a \ac{KP} that transcends layers and domains to make global cognitive decisions. The \ac{KP} would add intelligence and weight to the edges of the network, and context sensitivity to its core. Saracco stated \cite{saracco} that the change from network intelligence controlling resources to having context sensitivity would help \emph{flatten} the network by moving network intelligence into the core and control further out to the edges of the network. \ac{CN}s differ from \ac{CRN}s in that their action space extends beyond the \ac{MAC} and \ac{PHY} layers and the network may consist of more than just wireless devices. Furthermore, CN nodes may be less autonomous than a CRN node.
 
 The first full definition of \ac{CN} was postulated by Thomas \cite{thomas} in his PhD thesis. He proposed
 the idea of a CN:
 
 \begin{quotation}
 \emph{
-a network composed of elements that, through learning and reasoning, dynamically adapt to varying network conditions in 
+``a network composed of elements that, through learning and reasoning, dynamically adapt to varying network conditions in 
 order to optimize end-to-end performance. In a CN, decisions are made to meet the requirements of the
-network as a whole, rather than the individual network components. 
+network as a whole, rather than the individual network components.'' 
 }
 \end{quotation}
-
 
 The adaptations that are performed over usual networks are commonly reactive, taking place after a problem has
 occurred. Thomas advanced a paradigm that had the promise to remove these limitations by allowing networks to observe, act, and 
@@ -174,37 +163,13 @@ learn in order to optimize their performance. The description of \ac{CN}s in \ci
 %-------------------------------------------------------------------
 This example was published in \cite{thomas} and it is inspired and influenced by Daniel Friend's example in \cite{example}. It illustrate the need for end-to-end rather than link adaptations.
 
-
 \figuraEx{Bitmap/Capitulo2/example}{width=.5\textwidth}{fig:example}%
-{Simple relay network for a wireless network, vertices represent wireless connectivity, obtained from \cite{thomas}.}{Simple relay network for a wireless network.}
+{Simple relay network for a wireless network, vertex represent wireless connectivity, obtained from \cite{thomas}.}{Simple relay network for a wireless network.}
 
+Consider an ad-hoc data session between a source node $S_{1}$ and a destination node $D_{1}$ as shown in Figure~\ref{fig:example}. The source node does not have enough power to reach $D_{1}$ directly, so it must route traffic through intermediate nodes $R_{1}$ and-or $R_{2}$. Assume that the end-to-end goal is to have the highest probability of successful transmission. The routing layer will determine routes based on minimum hop count which, in this case, includes either $R_{1}$ or $R_{2}$. Node $S_{1}$ will make a link-layer adaptation, selecting between $R_{1}$ and $R_{2}$ based on their \ac{SINR}. From the standpoint of the link layer in node $S_{1}$, this ratio correlates with the probability that the transmitted packets will arrive correctly at the relay node. However, without additional information, this selection does not guarantee anything about the end-to-end packet delivery probability from $S_{1}$ to $D_{1}$. In contrast to a link adaptation, the \ac{CN} might use some combination of observations from all nodes to compute the total path outage probabilities from $S_{1}$ to $D_{1}$ through $R_{1}$ and $R_{2}$.
+This shows the benefit of an end-to-end scope, but there is another advantage for the \ac{CN}, its cognitive capability. To illustrate this, we modify the original scenario to include both $S_{1}$ and $S_{2}$ as source nodes, both routing traffic through $R_{2}$. Suppose that the learning mechanism measures outages by determining the fraction of packets successfully delivered from the source to its destination.
 
-Consider an ad-hoc data session between a source node $S_{1}$ and a destination node $D_{1}$ as shown in Figure~\ref{fig:example}. The
-source node does not have enough power to reach $D_{1}$ directly, so it must route traffic
-through intermediate nodes $R_{1}$ and-or $R_{2}$. Assume that the end-to-end goal is to have the
-highest probability of successful transmission. The routing layer will determine routes based
-on minimum hop count which, in this case, includes either $R_{1}$ or $R_{2}$. Node $S_{1}$ will make a
-link-layer adaptation, selecting between $R_{1}$ and $R_{2}$ based on their \ac{SINR}. From the standpoint of the 
-link layer in node $S_{1}$, this ratio correlates with the probability that the transmitted packets will arrive correctly at the relay node.
-However, without additional information, this selection does not guarantee anything about the end-to-end packet delivery probability from $S_{1}$ to $D_{1}$.
-In contrast to a link adaptation, the \ac{CN} might use some combination of observations from
-all nodes to compute the total path outage probabilities from $S_{1}$ to $D_{1}$ through $R_{1}$ and $R_{2}$.
-This shows the benefit of an end-to-end scope, but there is another advantage for the
-\ac{CN}, its cognitive capability. To illustrate this, we modify the original scenario to include
-both $S_{1}$ and $S_{2}$ as source nodes, both routing traffic through $R_{2}$.
-Suppose that the learning mechanism measures outages by determining the fraction of packets successfully delivered
-from the source to its destination.
-
-If $R_{2}$ becomes congested because of a large volume of traffic coming from $S_{2}$ this becomes
-apparent to the cognitive process by the lack of successful packet delivery statistics provided
-to $S_{1}$ and $S_{2}$. The learning mechanism recognizes that the system has changed and that
-routing through $R_{2}$ is not optimal. The cognitive process then directs the traffic toward
-another route. The \ac{CN} does not explicitly know that there is congestion at node $R_{2}$ because
-this information is not included in the \ac{SINR} observations. Nevertheless, it is able to infer
-from the reduced throughput that there may be a problem. It is then able to respond
-to the congestion, perhaps by routing traffic through $R_{1}$ and/or $R_{3}$. This example shows
-the power of \ac{CN}s in optimizing end-to-end performance as well as reacting to unforeseen
-circumstances.
+If $R_{2}$ becomes congested because of a large volume of traffic coming from $S_{2}$, this becomes apparent to the cognitive process by the lack of successful packet delivery statistics provided to $S_{1}$ and $S_{2}$. The learning mechanism recognizes that the system has changed and that routing through $R_{2}$ is not optimal. The cognitive process then directs the traffic toward another route. The \ac{CN} does not explicitly know that there is congestion at node $R_{2}$ because this information is not included in the \ac{SINR} observations. Nevertheless, it is able to infer from the reduced throughput that there may be a problem. It is then able to respond to the congestion, perhaps by routing traffic through $R_{1}$ and/or $R_{3}$. This example shows the power of \ac{CN}s in optimizing end-to-end performance as well as reacting to unforeseen circumstances.
  
 %-------------------------------------------------------------------
 \section{Wireless Sensor Networks}
@@ -263,7 +228,7 @@ The development of wireless sensor networks was motivated by military applicatio
 
  \item	\emph{Smart home monitoring}. Monitoring the activities performed in a smart home is achieved using wireless sensors embedded within 		everyday objects. State changes are captured by the \ac{WSN} enabling activity-support services.
 
- \item  \emph{Passive localization and tracking}. Applications oriented to detect where something took place or track presences over an area.
+ \item  \emph{Passive localization and tracking}. Applications oriented to detect where some\-thing took place or track presences over an area.
 
  \item  \emph{Agriculture}. Commonly used on greenhouses where irrigation management and ambient control is essential for a proper accurate
 	agriculture.
@@ -278,15 +243,14 @@ Some of the main properties affecting \ac{WSN} are:
 \begin{itemize}
 \item \emph{Dynamic topology}. In a \ac{WSN} it is common to suffer drops or rises in the number of nodes, or changes over the environment that affects the topology. Nodes must be able to adapt themselves to new topologies to enable operative communications. On the same way, topologies must be scalable since a network might have tens of nodes or hundred of them.
 
-\item \emph{Autonomous operation}. There is not need any infrastructure for a \ac{WSN} to operate. Its nodes act as information transmitters, receivers or routers. However, it usually exists a gateway which gathers all the information over the network and passes it to another device. 
+\item \emph{Autonomous operation}. A \ac{WSN} does not need any infrastructure to operate. Its nodes act as information transmitters, receivers or routers. However, it usually exists a gateway which gathers all the information over the network and passes it to another device. 
 
 \item \emph{Multihop or broadcast communications}. It is common the use of some protocol to enable multi hop messaging. Nevertheless, broadcasting
 	 is also very expanded.
 
-\item \emph{Power consumption}. One of the most important factors. Using a very constrained amount of energy, devices must achieve a tradeoff between autonomy and throughput. Normally, nodes are supplied with batteries which allow their autonomy. Hence, a \ac{WSN} node must meet a low-consumption microcontroller, as well as equally featured \ac{RI}s and software. 
+\item \emph{Power consumption}. One of the most important factors. Using a very constrained amount of energy, devices must achieve a tradeoff between autonomy and throughput. Normally, nodes are supplied with batteries which allow their autonomy. Hence, a \ac{WSN} node must meet a low-consumption microcontroller, as well as an equally featured \ac{RI} and software. 
 
-\item \emph{Hardware constraints}. In order to achieve a low-power consumption, it is essential for the hardware to be as straightforward
-	as possible, resulting in a limited computing capability.
+\item \emph{Hardware constraints}. In order to achieve a low power consumption and cost, it is essential for the hardware to be as straightforward as possible, resulting in a very constrained functionality.
 
 \item \emph{Size}. Nodes tend to be small in size since it is used to be needed a large amount of them. Most of the time, they are intended to be encrusted into the environment and to be transparent to the users. 
 
@@ -295,16 +259,16 @@ Some of the main properties affecting \ac{WSN} are:
 \end{itemize}
 
 
-Most important communication technologies and protocols for \ac{WSN} are based on the IEEE 802.15.4 \cite{wpanieee} standard for \ac{WPAN}s.
+Most important communication technologies and protocols for \ac{WSN} are based on the \ac{IEEE} 802.15.4 \cite{wpanieee} standard for \ac{WPAN}.
 The standard goal is a low-power communication among nearby devices without underlying infrastructure. The standard only defines \ac{MAC} and
-\ac{PHY} layers of the \ac{OSI} model. Some expanded protocols based on the standard are ZigBee$^{TM}$ \cite{zigbee}, WirelessHART \cite{hart}, ISA100.11 \cite{isa}, or MiWi$^{TM}$ \cite{miwi} specifications. Another popular communication standard is IEEE 802.11 \cite{802.11}, in which is based WiFi \cite{wifi}. It is a \ac{IP} standard based on the final user and does not meet low-consumption constraints, however, convergence towards full \ac{IP} has brought new standards such as \ac{6LOWPAN} \cite{6lowpan}, that enables \ac{IP} packeting over 802.15.4 based-on networks.
+\ac{PHY} layers of the \ac{OSI} model. Some expanded protocols based on the standard are ZigBee$^{TM}$ \cite{zigbee}, WirelessHART \cite{hart}, ISA100.11 \cite{isa}, or MiWi$^{TM}$ \cite{miwi} specifications. Another popular communication standard is \ac{IEEE} 802.11 \cite{802.11}, in which is based Wi-Fi \cite{wifi}. It is a \ac{IP} standard based on the final user and does not meet low-consumption constraints, however, convergence towards full \ac{IP} has brought new standards such as \ac{6LOWPAN} \cite{6lowpan}, that enables \ac{IP} packeting over 802.15.4 based-on networks.
 
 \begin{figure}[h]
 \centering
 
 \subfloat[ISA100.11 logo.]{\label{fig:cap2:isa100}\includegraphics[width=0.18\textwidth]{Imagenes/Vectorial/Capitulo2/isalogo}}%
 \quad
-\subfloat[WiFi logo.]{\label{fig:cap2:wifi}\includegraphics[width=0.18\textwidth]{Imagenes/Vectorial/Capitulo2/wifi}}%
+\subfloat[Wi-Fi logo.]{\label{fig:cap2:wifi}\includegraphics[width=0.18\textwidth]{Imagenes/Vectorial/Capitulo2/wifi}}%
 \quad
 \subfloat[ZigBee logo.]{\label{fig:cap2:zigbee}\includegraphics[width=0.18\textwidth]{Imagenes/Vectorial/Capitulo2/zigbee}}%
 \\
@@ -324,11 +288,11 @@ The standard goal is a low-power communication among nearby devices without unde
 
 Basically, \ac{CR} and \ac{CN} techniques applied into \ac{WSN}s leads to \ac{CWSN}s. This idea supposes an increment of complexity over the executed algorithms and it overloads the control data flow over the network. Cognitive agents capable of making proactive decisions may help achieve end-to-end goals, while \ac{CR} at the physical layer of such agents may enable the opportunistic use of the heterogeneous wireless environment.
 
-\ac{CWSN}s arise as a natural evolution of traditional \ac{WSN}s since IEEE standards used in \ac{WSN}s already postulate access to several spectrum bands. Additionally, \ac{QOS} and low-consumption requirements that \ac{WSN}s state, fits the goals of \ac{CR}.
+\ac{CWSN}s arise as a natural evolution of traditional \ac{WSN}s since \ac{IEEE} standards used in \ac{WSN}s already postulate access to several spectrum bands. Additionally, \ac{QOS} and low-consumption requirements that \ac{WSN}s state, fits the goals of \ac{CR}.
 
-Currently, most of \ac{WSN} use the IEEE 802.15.4 standard for their communications, thereby their \ac{RF} activity takes place over \ac{ISM} bands. These bands show an overcrowded scene where \ac{CR} techniques might significantly help the network operation. Applying cognitive capabilities seeks intelligent adaptations based on learning, reasoning and information sharing among multiple nodes within the network.
+Currently, most of \ac{WSN} use the \ac{IEEE} 802.15.4 standard for their communications, thereby their \ac{RF} activity takes place over \ac{ISM} bands. These bands, as introduced in Section \cite{cap1:sec:background}, show an overcrowded scene where \ac{CR} techniques might significantly help the network operation. Applying cognitive capabilities seeks intelligent adaptations based on learning, reasoning and information sharing among multiple nodes within the network.
 
-Cognitive communication in a sensor network could not only help meet end-to-end goals of the entire network, but also increase reliability of the network, reduce maintenance costs and increase the network lifetime. Research in \cite{gamewsn}\cite{neuralcsn}\cite{crwsn}\cite{crbasedwsn}suggests the growing interest in applying cognitive techniques to \ac{WSN}s. The idea of a holistic approach to introducing cognition in heterogeneous sensor networks that combines the advantage of opportunistic spectrum access at the physical layer, with cognitive communication among sensor nodes seamlessly across the network promises to be advantageous over existing design techniques. Figure \ref{fig:comparisoncr} shows a performance comparison between a standard \ac{WSN} communicating over 2.4 GHz and a \ac{CR}-based one over a simulated scenario. 
+Cognitive communication in a sensor network could not only help meet end-to-end goals of the entire network, but also increase reliability of the network, reduce maintenance costs and increase the network lifetime. Research in \cite{gamewsn}\cite{neuralcsn}\cite{crwsn}\cite{crbasedwsn} suggests the growing interest in applying cognitive techniques to \ac{WSN}s. The idea of a holistic approach to introducing cognition in heterogeneous sensor networks that combines the advantage of opportunistic spectrum access at the physical layer, with cognitive communication among sensor nodes seamlessly across the network promises to be advantageous over existing design techniques. Figure \ref{fig:comparisoncr} shows a performance comparison between a standard \ac{WSN} communicating over 2.4 GHz and a \ac{CR}-based one over a simulated scenario. 
 
 \figuraEx{Bitmap/Capitulo2/comparisonCR}{width=.7\textwidth}{fig:comparisoncr}%
 {Comparison of the number of hops per packet in a CWSN simulated scenario, described in \cite{crbasedwsn}.}{Comparison of the number of hops per packet in a CWSN simulated scenario.}
@@ -352,7 +316,7 @@ On the other hand, applying cognitive techniques involving artificial intelligen
 
 \item Since the available information to the network may be partial or incorrect, it may lead to security issues and hence, methods and techniques to deal with such issues must be also identified. 
 
-\item The proposed cognitive nodes could be statically distributed in the network, or dynamically, gathering information from remote locations of the sensor nodes. Hence, deciding on the optimal deployment architecture of the cognitive capability is also a challenging problem.
+\item The proposed cognitive nodes could be distributed in a fix or mobile way in the network, gathering information from remote locations of the sensor nodes. Hence, deciding on the optimal deployment architecture of the cognitive capability is also a challenging problem.
 
 \item Protocols that define how the knowledge plane can be implemented, how to use it to make decisions at the physical layer, the cognitive specification language, and the tools used in cognitive decision making must all be standardized to make such networks interoperate.
 \end{itemize}
@@ -394,7 +358,7 @@ Some of the main characters over the existing simulators range are:
 \qquad
 \begin{SubFloat}
 {\label{fig:cap2:ns3logo}%
-\scriptsize{NS3 Simulator Logo.}}%
+\scriptsize{NS3 simulator logo.}}%
 \includegraphics[width=0.3\textwidth]%
 {Imagenes/Vectorial/Capitulo2/ns3logo}%
 \end{SubFloat}
@@ -449,7 +413,7 @@ Several other simulators have been developed for \ac{WSN}. TOSSIM based on the T
 %-------------------------------------------------------------------
 Nowadays there are not real devices for \ac{CWSN} applications yet. Current implementations respond to development platforms or test-beds, and still, variety of platforms is very scarce and poorly featured. Most of them suppose first approaches, so foundations to build over are still immature and quickly changing. Hence, efforts focused on hardware development, usually more costly than software, remain quiet.
 
-The closest existing device to a \ac{CWSN} node is the \ac{FCD} \cite{fcd}\cite{ferpfc}, Figure \ref{fig:fcdadapted}, developed at \ac{LSI} in 2011. The \ac{FCD} is based on a PIC32 Microchip \ac{MCU} and includes three \ac{RI}s enabling access to the 2.4 GHz and 868 MHz bands. MiWi and WiFi protocols operate over 2.4 GHz and a proprietary protocol provided by \ac{AWD}\footnote{A radio interface developed by \ac{AWD}, a spin-off originated at \ac{LSI}, oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}s. Moreover, it allowed to analyze suitability for \ac{RI}s, compute capability and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. Nevertheless, the device was just a first approach and it was still far to be a stable valuable test-bed platform \cite{juanpfc}. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities.
+The closest existing device to a \ac{CWSN} node is the \ac{FCD} \cite{fcd}\cite{ferpfc}, Figure \ref{fig:fcdadapted}, developed at \ac{LSI} in 2011. The \ac{FCD} is based on a PIC32 Microchip \ac{MCU} and includes three \ac{RI}s enabling access to the 2.4 GHz and 868 MHz bands. MiWi and Wi-Fi protocols operate over 2.4 GHz and a proprietary protocol provided by \ac{AWD}\footnote{A spin-off originated at \ac{LSI}, oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}s. Moreover, it allowed to analyze suitability for \ac{RI}s, compute capability and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. Nevertheless, the device was just a first approach and it was still far to be a stable valuable test-bed platform \cite{juanpfc}. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities.
 
 Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board \cite{guillepfc} to try new transceivers together with an optimized \ac{CWSN} oriented firmware and a cognitive software module. This new modules claim for a new design integrating together all of them at one single module, fixing detected weaknesses and adding new or improved features. 
 
@@ -462,10 +426,10 @@ All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. 
 
 \item \emph{VESNA} \cite{vesna}. It is a modular and fully flexible platform, implemented by SensorLab at Jozef Stefan Institute \cite{sensorlab}, for \ac{WSN} development. Based on a high-performance microcontroller with ARM Cortex-M3 core and \ac{RI} spanning over multiple ISM frequency bands, it is designed to meet the requirements of diverse applications. In terms of modularity, the platform consists of the VESNA core module and a set of special feature modules (sensor node radio - SNR, sensor node expansion - SNE, sensor node power - SNP) that are used as/if needed. Various peripherals including \ac{UART}, \ac{I2C}, \ac{SPI}, \ac{USB}, \ac{ADC} and \ac{DAC} allow hosting of different sets of sensors and/or actuators.The platform readily supports:
 \begin{itemize}
-    \item Communication standards IEEE 802.15.4, IEEE 802.15.1 and IEEE 802.11. 
+    \item Communication standards \ac{IEEE} 802.15.4, \ac{IEEE} 802.15.1 and \ac{IEEE} 802.11. 
     \item ZigBee, 6LoWPAN, Bluetooth and Wireless M-Bus protocol stacks and technologies. 
     \item Operating system Contiki\footnote{Contiki is an open source operating system for networked, memory-constrained systems with a particular focus on low-power wireless Internet of Things devices.}. 
-    \item Connection to the Internet via WiFi, Ethernet or GSM/GPRS; 
+    \item Connection to the Internet via Wi-Fi, Ethernet or GSM/GPRS; 
     \item Arduino integrated development environment.
     \item A variety of energy supply options including battery, solar panel and external power supply. 
 \end{itemize}
@@ -521,7 +485,7 @@ WaspMote, however, does not give chances for more than two \ac{RI}s. Frequency a
 \label{fig:cap2:waspmotepics}
 \end{figure}
 
-\item \emph{Meshlium}. Meshlium, also from Libelium, works as the gateway of the Waspmote \ac{SN}. It reads the sensor frames coming from the nodes and store them within its internal data base or external cloud systems on the Internet. The frames coming from Waspmote are normally received by the 802.15.4/ZigBee radio and sent to the Internet using Ethernet, WiFi and 3G interfaces.
+\item \emph{Meshlium}. Meshlium, also from Libelium, works as the gateway of the Waspmote \ac{SN}. It reads the sensor frames coming from the nodes and store them within its internal data base or external cloud systems on the Internet. The frames coming from Waspmote are normally received by the 802.15.4/ZigBee radio and sent to the Internet using Ethernet, Wi-Fi and 3G interfaces.
 
 Even though Meshlium posses several interfaces, it can not be considered a \ac{WSN}. This platform is strictly thought as a gateway, so it is not a valid \ac{CWSN} solution.
 
@@ -576,7 +540,7 @@ The w-iLab.t test-bed is deployed within an office building of 18 x 90 m and it 
 
 \figuraEx{Bitmap/Capitulo2/wilab}{width=.6\textwidth}{fig:wilab}{Node locations of the w-iLab.t test-bed, obtained from \cite{crew}.}{Node locations of the w-iLab.t test-bed.}
 
-Every w-iLab.t node is generic and is equipped with one or more TmoteSky \cite{tmotesky} nodes, an iNode with 2 WiFi 802.11 radios, the environment emulator and a Bluetooth interface. iNodes are Alix 3C3 \cite{alix} devices running Linux. These are mini PC's equipped with Ethernet, \ac{USB}, serial, \ac{VGA}, audio and two IEEE 802.11 a/b/g interfaces. Finally, the EE is located in between the iNode and the TmoteSky. 
+Every w-iLab.t node is generic and is equipped with one or more TmoteSky \cite{tmotesky} nodes, an iNode with 2 Wi-Fi 802.11 radios, the environment emulator and a Bluetooth interface. iNodes are Alix 3C3 \cite{alix} devices running Linux. These are mini PC's equipped with Ethernet, \ac{USB}, serial, \ac{VGA}, audio and two \ac{IEEE} 802.11 a/b/g interfaces. Finally, the EE is located in between the iNode and the TmoteSky. 
 
 Together with the previous mentioned test-beds, devices used for w-iLab do not meet \ac{CWSN} features since they are either standard \ac{WSN} nodes or complete mini PC modules.
 
@@ -603,7 +567,7 @@ Despite the large amount of devices employed at this test-bed platform that comb
 
 \end{itemize}
 
-Standardization is at the core of the current and future success of cognitive radio. The IEEE 802.22 \cite{80222web} working group is developing what will be the first cognitive radio-based international standard for \ac{WRAN} with tangible frequency bands for its operation. It will operate over unused television channels. One system such as Unlicensed-Band Cognitive Radio, which can only utilize unlicensed parts of the \ac{RF} spectrum, is described in the IEEE 802.15 Task Group 2 \cite{802152} specifications. This standard focus on the coexistence of IEEE 802.11 and Bluetooth. Many other standards such as WiFi (IEEE 802.11), Zigbee (IEEE 802.15.4), and WiMAX (IEEE 802.16) already include some degree of \ac{CR} technology today. 
+Standardization is at the core of the current and future success of cognitive radio. The \ac{IEEE} 802.22 \cite{80222web} working group is developing what will be the first cognitive radio-based international standard for \ac{WRAN} with tangible frequency bands for its operation. It will operate over unused television channels. One system such as Unlicensed-Band Cognitive Radio, which can only utilize unlicensed parts of the \ac{RF} spectrum, is described in the \ac{IEEE} 802.15 Task Group 2 \cite{802152} specifications. This standard focus on the coexistence of \ac{IEEE} 802.11 and Bluetooth. Many other standards such as Wi-Fi (\ac{IEEE} 802.11), Zigbee (\ac{IEEE} 802.15.4), and WiMAX (\ac{IEEE} 802.16) already include some degree of \ac{CR} technology today. 
 
 It has shown how \ac{CWSN} is still an immature researching field where scarce devices are found, and all of them incomplete. Real and complete devices to allow developers to try security, energy, \ac{QOS}, and spectrum optimization through new algorithms and strategies, are needed. Facing this need, the \ac{LSI} proposes the implementation of a complete development platform, hardware and software, fully oriented to \ac{CWSN} investigation, able to truly implement real \ac{WSN} applications. This goal defines and frames this Master Thesis.   
   

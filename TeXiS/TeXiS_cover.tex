@@ -317,21 +317,13 @@
 \vspace{0.8cm}
 
 % Cuidado: Ajustarlo si el título cambia...
-%\newlength{\longTitulo}
-%\settowidth{\longTitulo}{%
-%\textbf{Arquitectura y metodología para el}}
 \begin{center}
-%\rule{\longTitulo}{.5mm}\\
 \vskip 1.7cm
 \huge{\textbf{\textsc{\tituloPortadaVal}}}
 \vskip 0.5cm
-%\rule{\longTitulo}{.5mm}\\
 \end{center}
-%\end{huge}
 
 \vfill
-
-
 
 \vspace{2.5cm}
 
@@ -411,59 +403,92 @@
 
 %\newpage
 
+
+\begin{cambiamargen}{-\cambioIzquierdo}{-\cambioDerecho}
+\setlength{\evensidemargin}{0cm}
+\setlength{\oddsidemargin}{0cm}
+
+% En la primera hoja no se entiende de páginas pares e impares
 \thispagestyle{empty}
 
 \mbox{ }
-\vspace{1cm}
+\vspace{0.5cm}
 
-\begin{huge}
+% Affiliation
 \begin{center}
-\textsc{\tituloPortadaVal}
+{\setlength{\parindent}{0cm} \huge \textbf{\textsc{\universidad\\[10mm]}}}
+{\setlength{\parindent}{0cm} \LARGE \textbf{\textsc{\centroEducacion\\[12mm]}}}
 \end{center}
-\end{huge}
 
-\vspace{1.2cm}
+% Logo
+\begin{center}
+  \includegraphics[width=0.75\textwidth]{\imagenContraportadaVal}
+\end{center}
+
+\vspace{1.3cm}
 %\vfill
 
-\begin{Large}
 \begin{center}
-AUTHOR: \autor\\[0.3cm]
-ADVISOR: \tutor\\[0.3cm]
-INSPECTOR: \ponente\\
-%\textoPrimerSubtituloPortadaVal
-%\mbox{ } \\ \mbox{ } \\
-%\textoSegundoSubtituloPortadaVal
+  {\LARGE \textbf{\tipoDocumentoVal}}\\[5mm]
+  {\Large \textbf{\titulacion}}
 \end{center}
-\end{Large}
 
-\vspace{1.7cm}
+\vspace{0.8cm}
+
+% Cuidado: Ajustarlo si el título cambia...
+\begin{center}
+\vskip 1.7cm
+\huge{\textbf{\textsc{\tituloPortadaVal}}}
+\vskip 0.5cm
+\end{center}
+
+\vfill
+
+\vspace{2.5cm}
+
+\begin{LARGE}
+
+\begin{center}
+\textbf{\autorPortadaVal}\\[0.3cm]
+%\textbf{\institucionVal}\\[1em]
+\textbf{\fechaPublicacionVal}
+
+\end{center}
+
+\end{LARGE}
+
+\vfill
+
+\end{cambiamargen}
+
+%\vspace{1.7cm}
 
 % Logo del grupo y del departamento
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.33\textwidth]{\logoGrupo}
-\qquad
-\centering
-\includegraphics[width=0.35\textwidth]{\logoDepartamento}
-\end{figure}
+%\begin{figure}[h!]
+%\centering
+%\includegraphics[width=0.33\textwidth]{\logoGrupo}
+%\qquad
+%\centering
+%\includegraphics[width=0.35\textwidth]{\logoDepartamento}
+%\end{figure}
 
-\vspace{0.9cm}
+%\vspace{0.9cm}
 
-\begin{center}
-  \includegraphics[scale=\escalaImagenContraportadaVal]{\imagenContraportadaVal}
-\end{center}
+%\begin{center}
+%  \includegraphics[scale=\escalaImagenContraportadaVal]{\imagenContraportadaVal}
+%\end{center}
 
-\vspace{1.8cm}
+%\vspace{1.8cm}
 %\vfill
 
-\begin{large}
-\begin{center}
-\textbf{\institucionVal}\\[0.2em]
-    \mbox{ }  \\
-\textbf{\fechaPublicacionVal}
-\end{center}
-\end{large}
-\vspace{2cm}
+%\begin{large}
+%\begin{center}
+%\textbf{\institucionVal}\\[0.2em]
+%    \mbox{ }  \\
+%\textbf{\fechaPublicacionVal}
+%\end{center}
+%\end{large}
+%\vspace{2cm}
 
 \newpage
 \thispagestyle{empty}

@@ -17,7 +17,7 @@ Thomas \& Guy-Manuel, Daft Punk
 \end{FraseCelebre}
 
 \begin{resumen}
-In this chapter, a global description of the project is given. This global description covers an introduction to the context as well as the need for and a brief description of the project. It defines goals and the project organization over time. In addition, the structure of this dissertation is also described.  
+In this chapter, a global description of the project is given. This global description covers an introduction to the context as well as the need for, and a brief description of the work. It defines goals and the project organization over time. In addition, the structure of this dissertation is described.  
 \end{resumen}
 
 
@@ -27,17 +27,19 @@ In this chapter, a global description of the project is given. This global descr
 \label{cap1:sec:background}
 %-------------------------------------------------------------------
 
-A \ac{WSN} consists of a number of sensors spread across a geographical area. Each sensor has wireless communication capability and some level of intelligence for signal processing and data networking. \ac{WSN}s provide a decentralized technological solution to address applications related to security and surveillance, industrial control, infrastructure maintenance, automatic environmental monitoring, domotics, localization, and tracking or health. They have recently emerged as a premier research topic due to their great long-term economic potential and ability to transform our lives.
+A \ac{WSN} consists of a spatially distributed number of sensors spread across a geographical area. Each sensor has wireless communication capability and some level of intelligence for signal processing and communication. \ac{WSN}s provide a decentralized technological solution to address applications related to security and surveillance, industrial control, infrastructure maintenance, automatic environmental monitoring, domotics, localization, tracking, or health. They have recently emerged as a premier research topic due to their great long-term economic potential and ability to transform our lives.
 
-Together with this significant growth in the last years, it was a huge and yet increasing wireless networks and sevices deployment caused by the growth in the ``Internet of Things'' connectivity phenomenon \cite{internetofthings}. Wireless communications, specially due to wireless \ac{M2M} connections, is currently one of the hottest and fastest growing segments of electronics. 
+Since in many applications the number of used sensor nodes will be really high or they will be placed in a remote location, service of the nodes might not be possible.  In this case, the minimization of energy expenditure and cost is a requirement. This constraints affect the whole node operating mode, forcing the system to keep a low cost and resources (memory, computing capability, etc.) nature.
 
-The increasing demand for wireless communication, in addition to an inefficient assignment of the spectrum \cite{wpanIssues}, has caused saturation on certains bands of the radio spectrum\footnote{Radio spectrum refers to the part of the electromagnetic spectrum corresponding to radio frequencies - that is, frequencies lower than around 300 GHz.}. Some of the most heavily used bands are \ac{ISM} bands which are unlincesed, free of cost frequencies. Most \ac{WSN} solutions operate over these \ac{ISM} bands, like the 2.4 GHz band, also used by Wi-Fi, Bluetooth, or IEEE 802.15.4 devices. \ac{ISM} bands are defined by region by the \ac{ITU} and local goverments ultimately. Figure \ref{fig:cap1:ituregions} illustrates the different defined regions and Figure \ref{fig:cap1:spectrum} gives a general view of the spectrum and \ac{ISM} bands over region 1.
+Together with the significant growth of \ac{WSN}s in the last years, it was a huge and yet increasing wireless networks and sevices deployment \cite{internetofthings}. Wireless communications, specially due to wireless \ac{M2M} connections, is currently one of the hottest and fastest growing segments of electronics. 
+
+The increasing demand for wireless communication, in addition to an inefficient assignment of the spectrum \cite{wpanIssues}, has caused saturation on certains bands of the radio spectrum\footnote{Radio spectrum refers to the part of the electromagnetic spectrum corresponding to radio frequencies lower than around 300 GHz.}. Some of the most heavily used bands are \ac{ISM} bands, which are unlicesed frequencies. Most \ac{WSN} solutions operate over these frequencies, like the 2.4 GHz, shared by different technologies such as Wi-Fi or Bluetooth. \ac{ISM} bands are defined by region by the \ac{ITU} and local goverments ultimately. Figure \ref{fig:cap1:ituregions} illustrates the different defined regions and Figure \ref{fig:cap1:spectrum} gives a general view of the spectrum and \ac{ISM} bands over region 1.
 
 \figuraEx{Bitmap/Capitulo1/regions}{width=.7\textwidth}{fig:cap1:ituregions}%
 {World different regions defined by the ITU, obtained from \cite{mapability}.}{World different regions defined by the ITU.}
 
 \figura{Bitmap/Capitulo1/spectrum}{width=.9\textwidth}{fig:cap1:spectrum}%
-{Electromagnetic frequency spectrum. Radio spectrum covers under 300 GHz frequencies}
+{Electromagnetic frequency spectrum.}
 
 Spectrum saturation is reflected over the increasing \ac{RF} interferences and other undesirable effects like noise, with a consistent impact over the \ac{TX} power required, \ac{QOS}, etc. Nowadays, techniques focused on expanding spectrum efficiency over communications, such as those related to modulation, power control or link adaptation, seem exhausted, and new long-term solutions are required. 
 
@@ -47,18 +49,18 @@ or context analysis. Basically, \ac{CR} enables opportunistic access to the spec
 awareness. Spectrum sensing capabilities and cooperation among devices allow for better spectrum utilization and \ac{QOS}.
 The concept of \ac{CN} describes a \ac{WN} aware of its environment and able to adapt its communication parameters in order to achieve more reliable and efficient communications.
 
-\ac{WSN}s, among other technologies, maintain a high demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, especially for their wireless communications, since these normally constitute the most energy-consumming task. However, there are also challenges to face \cite{challenges}, such as an adaptive and \ac{QOS}-aware routing, or the distribution of control data.
+\ac{WSN}s, among other technologies, maintain a high demand for cognitive networking. Their imposed power consumption constraints and hard operation conditions require an efficient operation mode, especially for their wireless communications, since these normally constitute the most energy-consumming task. However, there are also challenges to face \cite{challenges}, such as an adaptive and \ac{QOS}-aware routing, or the management of control data.
 
 Despite the potential of \ac{CWSN} \cite{cwsn}, they are not deeply explored yet. Real or simulated scenarios scarcely exist, but 
 realistic platforms are crucial to the improvement and development of this new field. The shortage and undevelopment of \ac{CWSN} devices
 or test-beds contributes to the scarcity of results in this area. 
 
-One of the current \ac{CWSN} node platforms is the \ac{FCD}, developed in 2011 \cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s, \ac{CWSN}s, or security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a initial approach. The \ac{FCD} was still far from being a very valuable researching test-bed platform. This platform did not fully satisfy requirements in terms of low power consumption, functionality, cost and size, and communication capabilities. 
+One of the current \ac{CWSN} node platforms is the \ac{FCD}, developed in 2011 \cite{fcd} by researchers at the laboratory where this project is framed, the \ac{LSI}. The \ac{LSI} belongs to the \ac{DIE} within the \ac{ETSIT} at \ac{UPM}. This laboratory hosts researching lines related to embedded systems, \ac{WSN}s, \ac{CWSN}s, or security. The implemented device become the first real generic platform to study \ac{CWSN}s hosting three radio transceivers, but it was just a initial approach. The \ac{FCD} was still far from being a very valuable researching test-bed platform. This platform did not fully satisfy requirements in terms of low power consumption, functionality, cost, size, and communication capabilities. 
 
 Continuing with the development of the \ac{FCD}, some software implementations were carried out at \ac{LSI}. A combined protocol stack for
-three different transceivers \cite{juanpfc}, including a \ac{HAL}, was created. This firmware offers ease of use to the researchers facing communication tasks. It also supposes memory and resources savings compared with the previous scheme, based on three protocol stacks. In order to deal with cognitive strategies and algorithmics, in addition, a software module that runs over the firmware was launched. This module, called \ac{CRMODULE} \cite{guillepfc} implements the theoretical model described in \cite{conbrok} and is a crucial achievement for \ac{CWSN} development.  
+three different transceivers \cite{juanpfc} that includes a \ac{HAL} was created. This firmware offers ease of use to the researchers facing communication tasks. It also supposes memory and resources savings compared with the previous scheme, based on three protocol stacks. In order to deal with cognitive strategies and algorithmics, in addition, a software module that runs over the firmware was launched. This module, called \ac{CRMODULE} \cite{guillepfc} implements the theoretical model described in \cite{conbrok} and is a crucial achievement for \ac{CWSN} development.  
 
-This dissertation describes the development and operation of the \ac{CNGD}, a platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} must enable and promote \ac{CWSN}s, allowing test strategies and better investigation deployments.
+Attending the need for devices that enable and promote \ac{CWSN}s investigation, this dissertation describes the implementation and operation of the \ac{CNGD}, a platform for \ac{CWSN} development. It includes features and capabilities not found on current devices. \ac{CNGD} arises as a testbed platform for \ac{CWSN}s that allows to test strategies and deploy better investigations.
 
 %-------------------------------------------------------------------
 \section{Goals}
@@ -66,7 +68,7 @@ This dissertation describes the development and operation of the \ac{CNGD}, a pl
 \label{cap1:sec:goals}
 %-------------------------------------------------------------------
 
-The main goal of the project is to design and implement a node for a \ac{CWSN}. The implementation must meet strong efficiency, functionality, modularity and scalability requirements. A demo application layer, also to be developed, must work integrated with the already implemented firmware. 
+The main goal of the project is to design and implement a node for \ac{CWSN}s. The implementation must meet strong efficiency, functionality, modularity and scalability requirements. A demo application layer, also to be developed, must work integrated with the already implemented firmware. 
 
 \ac{CWSN} nodes are very limited devices in terms of memory, computational power, or energy consumption. This fact is crucial and it must be taken into account in order to make the device valuable and affordable for researching purposes. 
 
@@ -74,38 +76,27 @@ The design must be modular, so it will not need to be entirely redone  with ever
 
 Hence, it is needed to reach a complete solution covering all these features.
 
-It is important to make clear that the design must fill the gaps and deficiencies that current devices show, for example, providing a wider radio access, powering control options, or real \ac{WSN} features. Furthermore, a definition of new needs, together with an important review of the \ac{FCD}, are needed. 
+It is important to make clear that the design must fill the gaps and deficiencies that current devices show, for example, providing a wider radio access, powering control options, or real \ac{WSN} features. Furthermore, a definition of new needs, together with an important review of the \ac{FCD}, are required. 
 
-Here, the main goal is fragmented into shorter subgoals:
+Here, the main goal is fragmented into more specific subgoals:
 
 \begin{itemize}
 
 \item \emph{Analysis of previous conclusions and results}.
 Study of already tested aspects. Definition of new tests to provide new data of interest. These data will help in making decisions about transceivers, microcontrollers, power supply, etc.
 
-\item \emph{Requirements definition}. Study of needs and constraints 
-(cost, resources, size, consumption, etc.) according to the future running applications.
-Definition of features and requirements. Definition of the demo application.
+\item \emph{Requirements definition}. Study of needs and constraints (cost, resources, size, consumption, etc.) according to the future running applications. Definition of features and requirements. Definition of the demo application.
 
-\item \emph{Hardware design}. Global design of the platform and new envolved. Development of schematics. Design optimization.
+\item \emph{Hardware design}. Global design of the platform and new involved hardware. Development of schematics. Design optimization.
 Components selection and final layout deployment. 
 
-\item \emph{Hardware debugging and implementation}.
-Component disposition and soldering. PCB design validation.
+\item \emph{Hardware implementation and debugging}. Component disposition and soldering. PCB design validation.
 
-\item \emph{Application layer development}.
-Full adaptation of the firmware to the hardware.
-Development of the demo application layer that uses the firmware and
-allows a full test of the platform. The demo will be a
-typical \ac{WSN} application.
+\item \emph{Application layer development}. Full adaptation of the firmware to the hardware. Development of the demo application layer that uses the firmware and allows a full test of the platform. The demo must be a typical \ac{WSN} application.
 
-\item \emph{General purpose tests}. 
-Tests oriented to prove the proper operation and verify
-the achievement of the requirements and constraints compliance.
+\item \emph{General purpose tests}. Tests oriented to prove the proper operation and verify the achievement of the requirements and constraints compliance.
 
-\item \emph{Results analysis and conclusions}.
-Evaluation of capabilities. Study of weaknesses or 
-possible improvements. Definition of further studies.
+\item \emph{Results analysis and conclusions}. Evaluation of capabilities. Study of weaknesses or possible improvements. Definition of further studies.
 
 \end{itemize}
 
@@ -118,13 +109,12 @@ possible improvements. Definition of further studies.
 The organization of this project is described as follows:
 
 \begin{itemize}
-
-\item \emph{State-of-art review}.
+\item \emph{State-of-the-art review}.
 
 At this first stage, \ac{CWSN}-related information and specific knowledge was acquired. An approach to the development tools was also outlined. Goals:  
 
 \begin{itemize}
-\item \ac{WSN} and \ac{CR} state-of-art review. Review of the current commercial solutions.
+\item \ac{WSN} and \ac{CR} state-of-the-art review. Review of the current commercial solutions.
 
 \item Adaptation to the developement platform as well as other tools (workstation, repository, soldering station,
 hardware at the lab, etc.).
@@ -139,12 +129,11 @@ This phase covered from the first definitions and node specifications, to the sy
 \begin{itemize}
 \item Requirements definition and general node specifications. Stablishment of constraints and design criteria.
 
-\item Radio wireless interfaces and other used components evaluation (microcontroller, serial interfaces...).
+\item Radio wireless interfaces and other used components evaluation (microcontroller, serial interfaces, etc.).
 
 \item Hardware full design. Selection of the components. Design adjustments and previous work verification. Layout design.
 
 \item Hardware platform implementation.
-
 \end{itemize}
 
 \item \emph{Software design.}
@@ -152,26 +141,23 @@ This phase covered from the first definitions and node specifications, to the sy
 Once the hardware started functioning, the development of software design had been undertaken. Goals:
 
 \begin{itemize}
-
 \item Full adaptation of the developed firmware to the hardware.
 
 \item Software implementation of required functions and application. Source code debugging.
 
 \item Generation of first documentation about the developed software modules.
-
 \end{itemize}
 
 \item \emph{Tests and evaluation}.
 
-Finally the proper operation of the device was evaluated and the results were analyzed.
+Finally the proper operation of the device was evaluated and the results were analyzed. Goals:
 
 \begin{itemize}
 \item Fully integrated hardware and software test. Spectrum sensing, power consumption,
-autonomy and control, communication among nodes, connectivity to other devices, protocol stacks...
+autonomy and control, communication among nodes, connectivity to other devices, protocol stacks, etc.
  
 \item Results interpretation and conclusions review. Statement of further studies 
 and future development lines. Found problems evaluation.
-
 \end{itemize}
 
 \item \emph{Documentation generation}.
@@ -185,7 +171,7 @@ Dissertation and other required documentation (wiki, papers, manuals, etc.) writ
 \label{cap1:sec:outline}
 %-------------------------------------------------------------------
 
-In Chapter 2 takes place a whole State-of-the-art review that introduces to terms as \ac{CR}, \ac{CN}, \ac{WSN}, or \ac{CWSN}. Current hardware and software implementations are studied and main features exposed. In Chapter 3 is made a review of the necessities and gaps unattended by current devices. Requirements and first conclusions to face the design are obtained. Chapter 4 covers the design proccess. Schematics, used components and design decissions are covered in detail. Hardware implementation, \ac{PCB} making and mounting are described at Chapter 5. Some carried out tests and results are exposed at Chapter 6, whereas the Chapter 7 covers all the software developments. Chapter 8 resume some conclusions and future lines, and Chapter 9 provides the project estimated costs.  
+In Chapter 2 takes place a whole State-of-the-art review that introduces to terms as \ac{CR}, \ac{CN}, \ac{WSN}, or \ac{CWSN}. Current hardware and software implementations are studied and main features exposed. In Chapter 3 is made a review of the necessities and gaps unattended by current devices. Requirements and first conclusions to face the design are obtained. Chapter 4 covers the design proccess. Schematics, used components and design decissions are covered in detail. Hardware implementation, \ac{PCB} making and mounting are described at Chapter 5. Carried out tests and results are exposed at Chapter 6, whereas the Chapter 7 covers all the software developments. Chapter 8 resume some conclusions and future lines, and Chapter 9 provides the project estimated costs.  
 
 
 

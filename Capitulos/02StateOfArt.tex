@@ -331,7 +331,7 @@ All in all, this early-staged technology claims for investigations and research-
 
 Because of the novel stage of this research field, there are not many specific devices to build applications and services over \ac{CWSN}s. Besides, current implementations find themselves very poorly featured yet, not responding researchers' requirements. It is natural that most works are based on \ac{WSN} platforms on one side and \ac{SDR} platforms on the other side.
 
-There are many different types of devices for \ac{WSN} platforms that share similar characteristics: low power, memory and processing constraints, and ISM bands. Bean, BTnode, MANTIS Nymph, IMote, MicaZ, SenseNode, XYZ, Sentilla Mini, TelosB \cite{telosb}, ANT \cite{ant}, and EyesIFX \cite{eyes} are some of the most important WSN devices. But none of them have different \ac{RI}s and their radio reconfiguration capabilities are very limited.
+There are many different types of devices for \ac{WSN} platforms that share similar characteristics: low power, memory and processing constraints, and operation over ISM bands. Bean, BTnode, MANTIS Nymph, IMote, MicaZ, SenseNode, XYZ, Sentilla Mini, TelosB \cite{telosb}, ANT \cite{ant}, and EyesIFX \cite{eyes} are some of the most important WSN devices. But none of them have different \ac{RI}s and their radio reconfiguration capabilities are very limited.
 
 There are many \ac{SDR} platforms that have been developed to support individual research projects. Berkeley Cognitive Radio Platform \cite{bee2} (based around the BEE2\footnote{Berkeley Emulation Engine system is designed to be a modular, scalable FPGA-based computing platform}), OpenAirInterface \cite{openair} (proposed by the mobile communications department at EURECOM), NICT\footnote{Japanese National Institute of Information and Communications Technology} SDR platform \cite{nict}, the Kansas University Agile Radio (KUAR) \cite{kuar}, or the \ac{USRP} \cite{usrp2} are the most important ones.
 
@@ -341,7 +341,7 @@ In order to evaluate \ac{CWSN} models and architectures, great efforts developin
 \subsubsection{Software platforms - simulators}
 %-------------------------------------------------------------------
 
-Some of the main characters over the existing simulators range are:
+Some of the most representative simulators are:
 
 \begin{itemize}
 \item \emph{NS2/NS3} \cite{ns2}. NS (\emph{Network Simulator}) is a discrete-event network simulator primarily used in teaching and research. It supports a large variety of multicast and unicast protocols for both wireless and wired networks. Intensively used in wireless mobile ad-hoc networks. NS simulators are developed mainly under C++ and Python languages and they are publicly available under the GNU GPLv2 license for research, development, and use.
@@ -366,8 +366,8 @@ Some of the main characters over the existing simulators range are:
 \label{fig:cap2:nslogos}
 \end{figure}
 
-Currently, NS2 source code consists of many forks. Last version, from 2009, is partially maintained but not being considered for journal publications. It runs on GNU/Linux, FreeBSD, Solaris, Mac OS X and Windows 95/98/NT/2000/XP. 
-NS3 would be written from scratch, not being compatible with NS2 generally. Development of NS3 began in July 2006. The first release, NS 3.1, was made in June 200. Afterwards, the project continued making quarterly software releases, and more recently has moved to three releases per year. NS3 made its fifteenth release (ns-3.15) during the third quarter of 2012 and it is actively developed.
+Currently, NS2 source code consists of many forks. Last version, from 2009, is partially maintained. It runs on GNU/Linux, FreeBSD, Solaris, Mac OS X and Windows 95/98/NT/2000/XP. 
+NS3 would be written from scratch, not being compatible with NS2 generally. Development of NS3 began in July 2006. The first release, NS 3.1, was made in June 2008. Afterwards, the project continued making quarterly software releases, and more recently has moved to three releases per year. NS3 made its fifteenth release (ns-3.15) during the third quarter of 2012 and it is actively developed.
 
 Libraries and packages for cognitive simulation \cite{ns21} exist for these simulators, however, models, parameters, and results are still quite poor and inaccurate.  
 
@@ -376,7 +376,7 @@ Libraries and packages for cognitive simulation \cite{ns21} exist for these simu
 \figura{Vectorial/Capitulo2/omnetlogo}{width=.3\textwidth}{fig:omnetlogo}%
 {OMNeT++ simulator logo.}
 
-These models, most of them open source, are developed completely independently of OMNeT++, and follow their own release cycles. They cater domain-specific functionalities, such as support for sensor networks, wireless ad-hoc networks, Internet protocols, performance modeling, photonic networks. There are extensions for real-time simulation, network emulation, alternative programming languages (Java, C\#), database integration, SystemC integration, and several other functions. \ac{CWSN} simulations over OMNeT++ are possible thanks to MiXiM\cite{mixim}.
+These models, most of them open source, are developed completely independently of OMNeT++, and follow their own release cycles. They cater for domain-specific functionalities, such as support for sensor networks, wireless ad-hoc networks, Internet protocols, performance modeling, photonic networks. There are extensions for real-time simulation, network emulation, alternative programming languages (Java, C\#), database integration, SystemC integration, and several other functions.
 
 \item \emph{MiXiM} \cite{mixim}. It is an OMNeT++ modeling framework created for mobile and fixed wireless networks (\ac{WSN}s, body area networks, ad-hoc networks, vehicular networks, etc.). It offers detailed models of radio wave propagation, interference estimation, radio transceiver power consumption, and wireless MAC protocols. It is a merger of several OMNeT++ frameworks written to support mobile and wireless simulations. The predecessors of MiXiM are ChSim \cite{chsim}, Mobility Framework \cite{mobilityf}, Mac Simulator and Positif Framework \cite{macsim}.
 
@@ -413,15 +413,14 @@ Several other simulators have been developed for \ac{WSN}. TOSSIM based on the T
 %-------------------------------------------------------------------
 Nowadays there are not real devices for \ac{CWSN} applications yet. Current implementations respond to development platforms or test-beds, and still, variety of platforms is very scarce and poorly featured. Most of them suppose first approaches, so foundations to build over are still immature and quickly changing. Hence, efforts focused on hardware development, usually more costly than software, remain quiet.
 
-The closest existing device to a \ac{CWSN} node is the \ac{FCD} \cite{fcd}\cite{ferpfc}, Figure \ref{fig:fcdadapted}, developed at \ac{LSI} in 2011. The \ac{FCD} is based on a PIC32 Microchip \ac{MCU} and includes three \ac{RI}s enabling access to the 2.4 GHz and 868 MHz bands. MiWi and Wi-Fi protocols operate over 2.4 GHz and a proprietary protocol provided by \ac{AWD}\footnote{A spin-off originated at \ac{LSI}, oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}s. Moreover, it allowed to analyze suitability for \ac{RI}s, compute capability and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. Nevertheless, the device was just a first approach and it was still far to be a stable valuable test-bed platform \cite{juanpfc}. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities.
+The closest existing device to a \ac{CWSN} node is the \ac{FCD} \cite{fcd}\cite{ferpfc}, illustrated at Figure \ref{fig:fcdadapted}, developed at \ac{LSI} in 2011. The \ac{FCD} is based on a PIC32 Microchip \ac{MCU} and includes three \ac{RI}s enabling access to the 2.4 GHz and 868 MHz bands. MiWi and Wi-Fi protocols operate over 2.4 GHz and a proprietary protocol provided by \ac{AWD}\footnote{A spin-off originated at \ac{LSI}, oriented on solutions for energy efficiency, industrial control and intelligent environments.} operates over 868 MHz. The device gave the chance to develop and test algorithms, strategies and applications for \ac{CWSN}s. Moreover, it allowed to analyze suitability for \ac{RI}s, computing capability and other components. It gave the strengths and weaknesses to establish the fundamentals on future designs. Nevertheless, the device was just a first approach and it was still far to be a stable valuable test-bed platform. The node did not fully satisfy requirements in terms of low power consumption, cost and size, and communication capabilities \cite{juanpfc}.
 
 Consecutively, new hardware and software modules were incorporated to expand its features. These modules included a expansion board \cite{guillepfc} to try new transceivers together with an optimized \ac{CWSN} oriented firmware and a cognitive software module. This new modules claim for a new design integrating together all of them at one single module, fixing detected weaknesses and adding new or improved features. 
 
 \figuraEx{Bitmap/Capitulo2/fcdadapted}{width=.5\textwidth}{fig:fcdadapted}%
 {Picture of the expanded First Cognitive Device, obtained from \cite{juanpfc}}{Picture of the expanded First Cognitive Device.}
 
-All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. Particularly, \ac{CWSN} nodes must offer additional capabilities such as certain frequency agility. The most important devices, whose features frame them into the \ac{CWSN} nodes are:
-
+On the other hand, some other existing devices that share common features with standard \ac{WSN} nodes have supposed an approach to \ac{CWSN}s. The most important devices whose features frame them into the \ac{CWSN}s are here described:
 \begin{itemize}
 
 \item \emph{VESNA} \cite{vesna}. It is a modular and fully flexible platform, implemented by SensorLab at Jozef Stefan Institute \cite{sensorlab}, for \ac{WSN} development. Based on a high-performance microcontroller with ARM Cortex-M3 core and \ac{RI} spanning over multiple ISM frequency bands, it is designed to meet the requirements of diverse applications. In terms of modularity, the platform consists of the VESNA core module and a set of special feature modules (sensor node radio - SNR, sensor node expansion - SNE, sensor node power - SNP) that are used as/if needed. Various peripherals including \ac{UART}, \ac{I2C}, \ac{SPI}, \ac{USB}, \ac{ADC} and \ac{DAC} allow hosting of different sets of sensors and/or actuators.The platform readily supports:
@@ -449,15 +448,15 @@ All in all, \ac{CWSN} nodes share common features with standard \ac{WSN} nodes. 
 	\includegraphics[angle=0,width=0.4\textwidth]%
 	{Imagenes/Bitmap/Capitulo2/vesnacomp}%
 \end{SubFloat}
-\caption{Pictures of SNE-ISMTV and VESNA modules.}
+\caption{Pictures of VESNA and SNE-ISMTV modules.}
 \label{fig:cap2:sneismtvvesna}
 \end{figure}
 
 To enable \ac{CR} capabilities on VESNA, a radio front-end was developed, the SNE-ISMTV \cite{sneismtv}. Different versions were capable of operating at three frequency bands of interest (TV broadcast part of the UHF band, 868 MHz and 2.4 GHz ISM band) and flexible enough to enable various user scenarios. 
 
-SNE-ISMTV-UHF contains a VHF and UHF TV band receiver based on the NXP TDA18219HN silicon tuner and was designed for spectrum sensing experimentation in TV white spaces. SNE-ISMTV-UHF can receive signals from 470 to 870 MHz with channel filter bandwidths between 1.7 MHz and 10 MHz. Using an analogue detector with a logarithmic response it can be used for energy detection experiments with the resolution bandwidth identical to the channel filter setting and approximately 50 ms per channel sampling. The detector is also coupled with an \ac{ADC} optionally providing 1 Msample/s of the amplitude of the baseband signal. The samples can then be further digitally analyzed in software on the sensor node for more advanced spectrum sensing methods.
+SNE-ISMTV-UHF contains a VHF and UHF TV band receiver based on the NXP TDA18219HN silicon tuner and was designed for spectrum sensing experimentation in TV white spaces. SNE-ISMTV-UHF can receive signals from 470 to 870 MHz with tunable channel filters. Using an analogue detector it can be used for energy detection experiments. The detector is also coupled with an \ac{ADC} optionally providing digital signal processing.
 
-SNE-ISMTV-868 and SNE-ISMTV-2400 are based on the TI CC1101 and TI CC2500 integrated circuits respectively and are identical in design and operation except for the supported frequency band. These transceivers contain software-reconfigurable radio front-ends operating from 780 and 930 MHz and from 2.40 to 2.48 GHz with channel bandwidths from 60 to 800 kHz and frequency-agile local oscillators with 75 ms settling time. They include an integrated logarithmic detector for energy detection and several modems that can be either connected to integrated packet handling hardware or provide a raw baseband digital stream to and from the CPU. This makes it possible to support experiments that require packet based as well as continuous transmissions.
+SNE-ISMTV-868 and SNE-ISMTV-2400 are based on the TI CC1101 and TI CC2500 integrated circuits respectively and are identical in design and operation except for the supported frequency band. These transceivers contain software-reconfigurable radio front-ends. They include an integrated energy detector and several modems that enable different signal processing modes.
 
 This platform does not offer frequency agility over several frequency bands since it just hosts possibilities for a single \ac{RF} front-end and this front-end supports fixed bands. It does not suppose a complete \ac{CWSN} solution.
 
@@ -485,7 +484,7 @@ WaspMote, however, does not give chances for more than two \ac{RI}s. Frequency a
 \label{fig:cap2:waspmotepics}
 \end{figure}
 
-\item \emph{Meshlium}. Meshlium, also from Libelium, works as the gateway of the Waspmote \ac{SN}. It reads the sensor frames coming from the nodes and store them within its internal data base or external cloud systems on the Internet. The frames coming from Waspmote are normally received by the 802.15.4/ZigBee radio and sent to the Internet using Ethernet, Wi-Fi and 3G interfaces.
+\item \emph{Meshlium}. Meshlium, also from Libelium, works as the gateway for WaspMote \ac{SN}. It reads the sensor frames coming from the nodes and store them within its internal data base or external cloud systems on the Internet. The frames coming from WaspMote are normally received by the 802.15.4/ZigBee radio and sent to the Internet using Ethernet, Wi-Fi and 3G interfaces.
 
 Even though Meshlium posses several interfaces, it can not be considered a \ac{WSN}. This platform is strictly thought as a gateway, so it is not a valid \ac{CWSN} solution.
 
@@ -515,9 +514,9 @@ European Commission \ac{FP7} \cite{fp7} includes two major projects involving \a
 
 \figuraEx{Bitmap/Capitulo2/crew}{width=.7\textwidth}{fig:cap2:crew}{CREW Project scheme overview, obtained from \cite{crew}.}{CREW Project scheme overview.}
 
-The CREW platform incorporates 5 individual wireless test-beds\footnote{Development platforms consisting on a set of interacting devices placed at researching centers employed to obtain data and try algorithms to feedback simulators and node devices themselves.}, Figure \ref{fig:cap2:crew}, incorporating diverse wireless technologies (heterogeneous \ac{ISM}, heterogeneous licensed, cellular, wireless sensor, heterogeneous outdoor) augmented with State-of-the-Art cognitive sensing platforms. Three out of these five test-beds are involved in \ac{WSN} technologies: w-iLab.t, TWIST, and LOG-a-TEC test-beds. These three platforms are explained further on together with the remaining test-bed platforms.
+The CREW platform incorporates 5 individual wireless test-beds\footnote{Development platforms consisting on a set of interacting devices placed at researching centers employed to obtain data and try algorithms to feedback simulators and node devices themselves.}, as viewed at Figure \ref{fig:cap2:crew}, that incorporate diverse wireless technologies (heterogeneous \ac{ISM}, heterogeneous licensed, cellular, wireless sensor, heterogeneous outdoor) augmented with State-of-the-art cognitive sensing platforms. Three out of these five test-beds are involved in \ac{WSN} technologies: w-iLab.t, TWIST, and LOG-a-TEC test-beds. These three platforms are explained further on together with the remaining test-bed platforms.
 
-Main current \ac{CWSN} test-beds are described below. Most of the here mentioned test-beds do not include real \ac{WSN} nodes. If they do, these nodes still do not posses access to several radio bands, but rather several kind of nodes posses different single interfaces each:  
+Main current \ac{CWSN} test-beds are described below. Most of the existing, and here mentioned, test-beds do not include real \ac{WSN} nodes, but emulating devices. If they host real \ac{WSN} nodes, these nodes still do not meet cognitive features such as radio agility:  
 
 \begin{itemize}
 \item \emph{TWIST (TKN Wireless Indoor Sensor network Test-bed)} \cite{twist}. Developed by the \ac{TKN} at the \ac{TU} Berlin, is one of the largest academic test-beds for experimenting with \ac{WSN} applications at indoor deployment scenarios. It provides basic services like node configuration, network-wide programming, out-of-band extraction of debug data and gathering of application data, as well as several novel features such as active power supply control of the nodes. The self-configuration capability, the use of hardware with standardized interfaces and open-source software makes the TWIST architecture scalable, affordable, and easily replicable. TWIST can be accessed locally or remotely via web interface.
@@ -529,14 +528,14 @@ It spans the three floors, more than 40 rooms, of an office building at the TU B
 
 It must be clarified that nodes employed at TWIST do not posses frequency agility beyond their single frequency band. Hence, none of them can be considered \ac{CWSN} nodes. Even though the test-bed supposes an approach, it is not yet a completely valid and trustable \ac{CWSN} platform.  
 
-\item \emph{LOG-a-TEC} \cite{logatec}. The \ac{CR} experimentation part of the LOG-a-TEC test-bed is located in the municipality of Logatec, Slovenia. LOG-a-TEC is an outdoor experimental facility supporting cognitive radio networking experimentation in ISM and TV bands. It is equipped with 50 VESNA \cite{vesna} platforms and VSE-ISMTV \cite{sneismtv} boards grouped in two clusters displayed at Figure \ref{fig:cap2:logatec}: one in the city center and one in the industrial zone. The nodes support experimentation in ISM 868 MHz (blue), ISM 2.4 GHz (red) and TV 42 - 870 MHz (green). A small mirror, consisting of 10 nodes, is also available at Institut "Jozef Stefan" campus.
+\item \emph{LOG-a-TEC} \cite{logatec}. The \ac{CR} experimentation part of the LOG-a-TEC test-bed is located in the municipality of Logatec, Slovenia. LOG-a-TEC is an outdoor experimental facility supporting cognitive radio networking experimentation in ISM and TV bands. It is equipped with 50 VESNA \cite{vesna} platforms and VSE-ISMTV \cite{sneismtv} boards grouped in two clusters displayed at Figure \ref{fig:cap2:logatec}: one in the city center and one in the industrial zone. The nodes support experimentation in ISM 868 MHz (blue), ISM 2.4 GHz (red) and TV 42 - 870 MHz (green). A small mirror, consisting of 10 nodes, is also available at Jozef Stefan Institute campus.
 
 Same with TWIST tes-tbed, nodes employed here lack of frequency agility beyond their single frequency band. Hence, none of them can be considered \ac{CWSN} nodes.
  
 \figuraEx{Bitmap/Capitulo2/logatec}{width=.6\textwidth}{fig:cap2:logatec}{LOG-a-TEC nodes clusters deployment, obtained from \cite{logatec}.}{LOG-a-TEC nodes clusters deployment.}
 
 \item \emph{w-iLab.t}. It includes both a wireless mesh and sensor network infrastructure. These networks can interact with each other, making possible to test advanced scenarios. The test-bed is equipped with a custom designed hardware solutions, called EE (Environment Emulator). Using the EE, it is possible to emulate the behavior of any type of sensor or actuator without the need for real sensor/actuator hardware. 
-The w-iLab.t test-bed is deployed within an office building of 18 x 90 m and it is spread out over three floors. It consists out of 200 node locations, Figure \ref{fig:wilab}, at fixed locations within the iMinds \cite{iminds} office premises. 
+The w-iLab.t test-bed is deployed within an office building of 18 x 90 m and it is spread out over three floors. Figure \ref{fig:wilab} shows some of the 200 node locations located within the iMinds \cite{iminds} office premises. 
 
 \figuraEx{Bitmap/Capitulo2/wilab}{width=.6\textwidth}{fig:wilab}{Node locations of the w-iLab.t test-bed, obtained from \cite{crew}.}{Node locations of the w-iLab.t test-bed.}
 

@@ -228,7 +228,7 @@ As part of the main goal, the firmware reviewed in section \ref{cap3:sec:halrevi
 
 Communication and control over the \ac{RI}s is made through \ac{SPI}s and a few more control signal later described. 
 
-Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC connector. The two first options will accept a 5V supply, whereas the third one will take 3.3-3.6 V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5V power supply, this is employed. A second 5V supplying connector opens possibilities to any external power supply source. A software-driven power supply system to the \ac{RI}s allows the application to control the power supplied to these modules. 
+Power supply will be able to take place through three ways, a $\mu$USB, a block terminal and a DC connector. The two first options will accept a 5 V supply, whereas the third one will take 3.3-3.6 V. This last option is thought to be supplied by a battery. $\mu$USB option serves as serial communication chance, and since \ac{USB} provides 5 V power supply, this is employed. A second 5 V supplying connector opens possibilities to any external power supply source. A software-driven power supply system to the \ac{RI}s allows the application to control the power supplied to these modules. 
 
 The device offers serial communication through the already named $\mu$USB options. On the other hand, it gives access to to different peripherals through a pair of 20-pin headers. The list of approachable peripherals and pins covers battery connection (for charging purposes), \ac{GPIO}s, \ac{MCLR} pin, external interruptions, analogue inputs, \ac{USB}, Ethernet module, \ac{I2C} bus, \ac{UART}s and \ac{SPI}s. These option gives flexibility, modularity and versatility to the device. It provides possibilities for multiple kind of applications and opens the design to new implementations and extensions for particular applications. In addition, three \ac{LED}s and two push buttons give chance to the user to control the application if required. 
 
@@ -514,7 +514,7 @@ The MiWi$^{TM}$ P2P protocol \cite{miwip2p} stack supports star and peer-to-peer
 %-------------------------------------------------------------------
 The designed system allows enabling/disabling the power supply to the \ac{RI}s. This way, any \ac{RI} can be completely switched off by the running application. Cutting down all possible power consumption that unused \ac{RI}s could have by, for instance, running clocks.
 
-The power control to the \ac{RI}s is based on the ADG701 \cite{adg701}. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on-resistance and low leakage currents. It can operate from a single 1.8V to 5.5V supply, which makes it ideal for use in battery-powered instruments.
+The power control to the \ac{RI}s is based on the ADG701 \cite{adg701}. This is a  \ac{CMOS} \ac{SPST} switch. This switch is designed to provide low power dissipation, low on-resistance and low leakage currents. It can operate from a single 1.8 to 5.5 V supply, which makes it ideal for use in battery-powered instruments.
 
 Some of the features of this component are:
 \begin{itemize}
@@ -533,15 +533,15 @@ In case ADG701 switch was not included into the design for any reason, optional 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
 %-------------------------------------------------------------------
-Power supply module is in charge of providing proper voltage and current to the \ac{CNGD}. Chosen output voltage is 3.3V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic}, at Appendix \ref{ap1:schematics}, shows a schematic of this module.
+Power supply module is in charge of providing proper voltage and current to the \ac{CNGD}. Chosen output voltage is 3.3 V, being this a normal value for \ac{CMOS} family chips. The power supply system must be able to support either wired-fixed or battery options. Figure \ref{fig:cap4:powersupplyschematic}, at Appendix \ref{ap1:schematics}, shows a schematic of this module.
 
-For external wired options, the input voltage is 5V. This value is widely used to supply digital circuits and it is easy to find 5V sources. Furthermore, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5V to supply the device. This 5V are lowered to 3.3V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just switching a jumper position.
+For external wired options, the input voltage is 5 V. This value is widely used to supply digital circuits and it is easy to find 5 V sources. Furthermore, it couples with the \ac{USB} voltage rate, being possible to supply the \ac{CNGD} through a $\mu$USB terminal that this module includes. Apart from this \ac{USB} terminal, a standard screw terminal block accepts 5 V to supply the device. This 5 V are lowered to 3.3 V by a synchronous buck regulator. This buck regulator can be deactivated for power saving when unused just switching a jumper position.
 
-For battery options, the module includes a DC connector. This connector accepts from 3.3V up to 3.6V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or battery.
+For battery options, the module includes a DC connector. This connector accepts from 3.3 up to 3.6 V. Higher voltages could damage the components since this voltage is directly injected into the circuitry to achieve higher efficiency. An included switch lets choosing the supply mode, either wired or battery.
 
 A green \ac{LED} indicates that power is applied into the circuit, on the other hand, a red \ac{LED} indicates if power is supplied into the block terminal or the $\mu$USB terminal. This way, is easily noticeable the presence of voltage and current on the \ac{CNGD} and their input origin.       
 
-The employed synchronous buck regulator is a MCP1603 \cite{mcp1603} chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7V to 5.5V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options. Here, the chosen option is 3.3V. When a fixed option is used, only three additional small external
+The employed synchronous buck regulator is a MCP1603 \cite{mcp1603} chip. This is a high-efficiency, fully-integrated 500 mA synchronous buck regulator with a 2.7 to 5.5 V input voltage range. The MCP1603 is available with either an adjustable or fixed output voltage. The are several available fixed output voltage options. Here, the chosen option is 3.3 V. When a fixed option is used, only three additional small external
 components are needed to form a complete solution, Figure \ref{fig:cap4:mcp1603}.
 
 \figuraEx{Bitmap/Capitulo4/mcp1603}{width=0.6\textwidth}{fig:cap4:mcp1603}{MCP1603 buck regulator configuration, obtained from \cite{mcp1603}.}{MCP1603 buck regulator configuration.}
@@ -569,7 +569,7 @@ TOTAL MAX CONSUMPTION & 165mA \\ \hline
 %-------------------------------------------------------------------
 \subsubsection{Battery}
 %-------------------------------------------------------------------
-In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6V range. 
+In order to give autonomy and portability to the device, a rechargeable battery system will be included. This system must keep down the global cost and size. At the same time it must offer autonomy to the device. Voltage offered by the battery system must be on the 3.3-3.6 V range. 
 
 Firstly, it is needed an estimation of platform global current consumption. This value will depends, relying strongly on the running application. However, we can assume some overestimated common values for our study. Considering two operation modes, Run and Sleep, and using values of current and operation times at Table \ref{tab:cap4:powerstimatedvalues}, it results in an approximated global current consumption calculated as $C_{estimated}$.
 
@@ -662,7 +662,7 @@ Here, a comprehensive description of the available peripherals and functionaliti
 \begin{itemize}
 	\item \emph{Power Supply}. Several pins offer power supply options:
 		\begin{itemize}
-		\item VCC. Shorted to the \ac{CNGD} supply system available at the platform, usually 3.3V. Pins 14, 24, and 28.
+		\item VCC. Shorted to the \ac{CNGD} supply system available at the platform, usually 3.3 V. Pins 14, 24, and 28.
 		\item GND. Shorted to \ac{CNGD} ground. Pins 15, 31, and 34.	
 		\item BAT+. Directly linked to the positive pole of the battery, thought for charging purposes. Pin 29.
 		\item BAT-. Directly linked to the negative pole of the battery, thought for charging purposes. Pin 30.	
@@ -872,7 +872,7 @@ To set a fixed current through the batteries, an LM317 \cite{lm317} voltage regu
 \figuraEx{Bitmap/Capitulo4/lm317conf}{width=.6\textwidth}{fig:cap4:lm317conf}{Configuration scheme for the LM317 provided by the manufacturer, obtained from \cite{lm317}.}{Configuration scheme for the LM317 provided by the manufacturer.}
 
 \[
-V_{out} = 1.25V(1+ \frac{R_{2}}{R_{1}}) + I_{Adj}R_{2}
+V_{out} = 1.25 V(1+ \frac{R_{2}}{R_{1}}) + I_{Adj}R_{2}
 \]
 
 This regulator is configured to a 1.25 V output by choosing an R2 of 0 $\Omega$. Then a fix resistor between its output and ground will limit the output current and therefore, the input current. This fixed current will flow through the batteries during the charge. In addition, the drain of an IRF5802 \cite{irf5801} nMOSFET power transistor is placed at the regulator output. This means that the operation mode of the transistor affects the flowing current. If the transistor is under ohmic or saturation modes, current flows. The current does not flow if the transistor is cutoff.

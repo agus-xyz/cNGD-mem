@@ -95,14 +95,14 @@ on this module. Reducing capacity with regards to Flash and \ac{RAM} memory is s
 
 The \ac{FCD} includes three \ac{RI}s enabling access to two different spectrum regions. Two of the selected interfaces
 work on the 2.4 GHz band and the third one over the 868 MHz, corresponding to the \ac{ISM} bands in most part of Region 1. To operate over the 868 MHz band it used a Tulio$^{TM}$ \cite{tulio} transceiver oriented to \ac{LOWPAN} and IEEE 802.15.4
-compatible. For the 2.4 GHz band, two Microchip modules were selected. A MRF24J40 \cite{mrf24j40} module using Microchip proprietary protocols such us MiWi$^{TM}$ P2P \cite{miwip2p}, MiWi$^{TM}$ Mesh, or MiWiPRO$^{TM}$ \cite{miwipro} and a MRF24WB0MA \cite{mrf24wb0} module, IEEE 802.11 compatible, as WiFi.
+compatible. For the 2.4 GHz band, two Microchip modules were selected. A MRF24J40 \cite{mrf24j40} module using Microchip proprietary protocols such us MiWi$^{TM}$ P2P \cite{miwip2p}, MiWi$^{TM}$ Mesh, or MiWiPRO$^{TM}$ \cite{miwipro} and a MRF24WB0MA \cite{mrf24wb0} module, IEEE 802.11 compatible, as Wi-Fi.
 Firmware running on the \ac{FCD} operated by using three different protocol stacks. Tulio$^{TM}$ firmware was provided by \ac{AWD} and communications with the \ac{MCU} take place through an \ac{UART}. Stacks for MiWi \cite{miwi} and TCP/IP \cite{tcpip} protocols are provided freely by Microchip, being the first one significantly lighter and simpler than the second one. Communications with these transceivers use \ac{SPI} interfaces.
 
 \figuraEx{Bitmap/Capitulo3/fcdmodel}{width=0.9\textwidth}{fig:fcdmodel}%
 {Architecture model of the FCD, developed at LSI in 2011, obtained from \cite{juanpfc}.}{Architecture model of the FCD.}
 
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instruments microcontroller increasing complexity on the global structure, moreover, this fact raises the global consumption up. Maintaining this interface will be disputed.
-On the other hand, the WiFi interface seems to be inappropriate for \ac{WSN} due to its high power consumption, hibernation-related problems, and its complex, resources-consuming communication stack. Even though this interface is thought as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
+On the other hand, the Wi-Fi interface seems to be inappropriate for \ac{WSN} due to its high power consumption, hibernation-related problems, and its complex, resources-consuming communication stack. Even though this interface is thought as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
 
 Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming, not suitable to deal properly with an application and a cognitive layer. Hence, using the developed \ac{HAL} \cite{juanpfc} that integrates three stacks and presents a straightforward \ac{API} for upper layers, seems a good choice for this work.
 
@@ -281,7 +281,7 @@ One of the desired requirements is enabling radio activity over three \ac{ISM} b
 
 The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a core itself and the communication between cores are driven by the \ac{UART}, the low data-rate communication provided does not seem to support our goals either. To keep the single-core architecture, lowering-down power consumption and meeting the described requirements, this module will be suppressed and it will be looked for a replacement.
 
-MRF24WB0MA WiFi transceiver, embedded by the \ac{FCD}, raises up the power consumption to unsuitable levels in a \ac{WSN}. The protocol stack is very computationally heavy and memory-consuming compared other usual protocol stacks in \ac{WSN}s. New ways to establish a IEEE 802.11 gateway will be studied, maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme seeked in the \ac{CNGD} cannot afford to include this transceiver.
+MRF24WB0MA Wi-Fi transceiver, embedded by the \ac{FCD}, raises up the power consumption to unsuitable levels in a \ac{WSN}. The protocol stack is very computationally heavy and memory-consuming compared other usual protocol stacks in \ac{WSN}s. New ways to establish a IEEE 802.11 gateway will be studied, maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme seeked in the \ac{CNGD} cannot afford to include this transceiver.
 
 Table \ref{tab:cap3:ri} shows transceivers and modules supported by the chosen firmware that enables communication at the desired bands. Modules such as the MRF49XA PICtail$^{TM}$ Daughter Board, Figure \ref{fig:cap3:pictail}, whose size does not suit our requirements, have not been considered.
 
@@ -384,7 +384,7 @@ After having a review all over the, hardware and software, recent implementation
 \item \ac{RI}s used by the \ac{FCD} open communication on two frequency bands. They show a very inefficient performance and high consumption behavior due to:
 	\begin{itemize}
 	\item Coexistence of three heterogeneous transceivers and different protocol stacks. Bringing complexity and operation inefficiency.
-	\item Presence of a WiFi transceiver, with consumptions up 160mA at \ac{TX}.
+	\item Presence of a Wi-Fi transceiver, with consumptions up 160mA at \ac{TX}.
 	\item A Tulio$^{TM}$ transceiver whose inclusion, hosting a core by itself, supposes a multi-core implementation.  	
 	\end{itemize}
 

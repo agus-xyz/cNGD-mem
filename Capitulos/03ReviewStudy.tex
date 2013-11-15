@@ -8,10 +8,10 @@
 
 \begin{FraseCelebre}
 \begin{Frase}
-Work It Harder Make It Better\\
-Do It Faster, Makes Us stronger\\
-More Than Ever Hour After\\
-Our Work Is Never Over 
+Work it harder, make it better,\\
+do it faster, makes us stronger,\\
+more than ever hour after,\\
+our work is never over 
 \end{Frase}
 \begin{Fuente}
 Thomas \& Guy-Manuel, Daft Punk
@@ -22,7 +22,7 @@ Thomas \& Guy-Manuel, Daft Punk
 A model for our cognitive node is defined in this chapter. Initially, the First Cognitive Device is evaluated
 to obtain some guidelines and potential improvements facing our design. The final device implementation requirements and
 constraints are defined. Finally, a discussion and evaluation over different modules is carried out, exposing different 
-commercial options and concluding with some final decisions.
+commercial options and some final conclusions.
 \end{resumen}
 
 %-------------------------------------------------------------------
@@ -74,7 +74,7 @@ Additionally, cognition tasks compulsory require several functions to take into 
 
 \end{itemize}
 
-All the previous considerations give support to establish cognitive capabilities to the final application. These considerations, along with the requirements to be defined, will body the model of the final \ac{CNGD} implementation.
+All the previous considerations give support to establish cognitive capabilities to the final application. These considerations, along with the requirements to be defined, will shape the model of the final \ac{CNGD} implementation.
 
 %-------------------------------------------------------------------
 \section{First Cognitive Device review}
@@ -104,7 +104,7 @@ Firmware running on the \ac{FCD} operated by using three different protocol stac
 The Tulio$^{TM}$ module offers a very low-consumption but it contains a Texas Instruments microcontroller increasing complexity on the global structure, moreover, this fact raises the global consumption up. Maintaining this interface will be disputed.
 On the other hand, the Wi-Fi interface seems to be inappropriate for \ac{WSN} due to its high power consumption, hibernation-related problems, and its complex, resources-consuming communication stack. Even though this interface is thought as a gateway, new options are highly needed. MRF24J40 gives a throughput suitable for the already described requirements, thus it could be a good candidate for the new design.
 
-Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming, not suitable to deal properly with an application and a cognitive layer. Hence, using the developed \ac{HAL} \cite{juanpfc} that integrates three stacks and presents a straightforward \ac{API} for upper layers, seems a good choice for this work.
+Regarding firmware options, the situation resulting from combining three different stacks becomes messy, confusing, power and resources-consuming, not suitable to deal properly with an application and a cognitive layer. Hence, using the developed firmware and \ac{HAL} \cite{juanpfc} that integrates three stacks and presents a straightforward \ac{API} for upper layers, seems a good choice for this work.
 
 The node comprises two \ac{USB} terminals and an RS232 interface for debugging and interconnection purposes. Power supply system accepts 3.3 V and 5 V options including a voltage regulator and a charge pump.
 
@@ -279,7 +279,7 @@ PIC32MX795F256L & & & & 4 && 5 &&&&& 100 & Specified & 9.57\\
 %-------------------------------------------------------------------
 One of the desired requirements is enabling radio activity over three \ac{ISM} bands (434 MHz, 868 MHz and 2.4 GHz), so in order to achieve it, compatible transceivers on these bands must be studied. We first took two decisions based on the experience brought by the \ac{FCD}.
 
-The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a core itself and the communication between cores are driven by the \ac{UART}, the low data-rate communication provided does not seem to support our goals either. To keep the single-core architecture, lowering-down power consumption and meeting the described requirements, this module will be suppressed and it will be looked for a replacement.
+The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a core itself and the communication between cores are driven by the \ac{UART}. To keep the single-core architecture, lowering-down power consumption and meeting the described requirements, this module will be suppressed and it will be looked for a replacement.
 
 MRF24WB0MA Wi-Fi transceiver, embedded by the \ac{FCD}, raises up the power consumption to unsuitable levels in a \ac{WSN}. The protocol stack is very computationally heavy and memory-consuming compared other usual protocol stacks in \ac{WSN}s. New ways to establish a IEEE 802.11 gateway will be studied, maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme seeked in the \ac{CNGD} cannot afford to include this transceiver.
 
@@ -320,13 +320,13 @@ There are not complete modules available for 434 MHz band. For 868 MHz, module M
 %-------------------------------------------------------------------
 Serial communication is a very important feature for applications development and debugging. It allows wiring the node and establishing communication between the \ac{CNGD} and any other device, normally a computer or storing devices to track data. Peripherals such as the \ac{UART} is commonly used to stablish these communication tasks. More recent implementations enable communications through \ac{USB}.
 
-While the \ac{FCD} includes two \ac{USB} connectors, a $\mu$USB and normal one, together with an RS232 communication module, three communication ways to interface the node seems too many. These modules are size and power consuming.
+While the \ac{FCD} includes two \ac{USB} connectors, a $\mu$USB and an A-type, together with an RS232 communication module, three communication ways to interface the node seems too many. These modules are size and power consuming.
 
 $\mu$USB connectors show a reduced size compared to first connectors and they do expand the first connectors capabilities.
 
-The idea of including a normal connector gives some interconnection opportunities with attachable devices like mouses, keyboards, or portable memories in which the node adopts a \emph{master} role facing a \emph{slave} device. This feature supposes the inclusion of a power consuming circuitry to raise the voltage up to 5 V into the USB, subtracting simplicity to the design. In order to fit the requirements, it does not seem to be needed this last capability on each node. A $\mu$USB connector would be enough.
+The idea of including an A-type \ac{USB} connector gives some interconnection opportunities with attachable devices like mouses, keyboards, or portable memories in which the node adopts a \emph{master} role facing a \emph{slave} device. This feature supposes the inclusion of a power consuming circuitry to raise the voltage up to 5 V into the USB, subtracting simplicity to the design. In order to fit the requirements, it does not seem to be needed this last capability on each node. A $\mu$USB connector would be enough.
 
-RS232 communication so does needs its own power supply. The size and cost for an RS232 connector and circuitry, which requires a MAX3232 chip, is too high for a default serial communication module within each node. An optional module for RS232 might be a good option given its wide acceptance and utility in embbeded systems despite the global use of \ac{USB}.
+RS232 communication so does need its own power supply. The size and cost for an RS232 connector and circuitry, which requires a MAX3232 chip, is too high for a default serial communication module within each node. An optional module for RS232 might be a good option given its wide acceptance and utility in embbeded systems despite the global use of \ac{USB}.
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -346,11 +346,10 @@ It does not appear any problem related to the timing configuration. The defined 
 option to keep it unchanged.
 
 %-------------------------------------------------------------------
-\subsection{Application Capabilities}
+\subsection{Expansion Capabilities}
 %-------------------------------------------------------------------
 Application capabilities over the \ac{FCD} are poor. Apart from interacting with the \ac{RI} and serial communication, the board does not offer
-options for sensing/controlling applications neither other more complex possibilities such as including new communication modules. 
-This is because the \ac{FCD} does not embed any expansion header or slot where adapting any new design to expand to new features.
+options for sensing/controlling applications neither other more complex possibilities such as including new communication modules. This is because the \ac{FCD} does not embed any expansion header or slot where adapting any new design to expand to new features.
 
 The new design calls for expansion options where application capabilities could be widely and easily opened by attaching modules including an ad-hoc design. A complete expansion header for a \ac{WSN} node should include access to the following peripherals/buses:
 
@@ -368,13 +367,13 @@ The new design calls for expansion options where application capabilities could 
 %-------------------------------------------------------------------
 \label{cap3:sec:conclusions}
 %-------------------------------------------------------------------
-After having a review all over the, hardware and software, recent implementations related to \ac{CWSN}s that might bring some guidances in our design; after evaluating the used technology and analyzing the weaknesses; after defining some minimal requirements to fit, and applying them to our evaluations, the obtained conclusions to face the design stage follow:
+After having a review all over the, hardware and software, recent implementations related to \ac{CWSN}s that might bring some guidances in our design; once evaluated the used technology and analyzed the weaknesses; having defined some minimal requirements to fit, and being them applied to our evaluations, the obtained conclusions to face the design stage follow:
 
 \begin{itemize}
 \item The model implemented by the \ac{FCD} is quite close to the one pursued. It will serve as guide in our designing process since its
 	review reveals significant technology and behavioral-related information.
 
-\item A new configuration regarding size and cost, allowing flexibility and modularity.
+\item A new configuration regarding size and cost that allows flexibility and modularity is essential.
 
 \item Implemented software such as the described firmware will help us saving time on the software development and it proposes a very complete solution that fits our requirements. It provides a shared protocol stack and a very useful \ac{HAL}. Even if needed some slight adaptations,
 	it must be compatible with our \ac{CNGD} design.
@@ -384,7 +383,7 @@ After having a review all over the, hardware and software, recent implementation
 \item \ac{RI}s used by the \ac{FCD} open communication on two frequency bands. They show a very inefficient performance and high consumption behavior due to:
 	\begin{itemize}
 	\item Coexistence of three heterogeneous transceivers and different protocol stacks. Bringing complexity and operation inefficiency.
-	\item Presence of a Wi-Fi transceiver, with consumptions up 160mA at \ac{TX}.
+	\item Presence of a Wi-Fi transceiver, whose consumptions goes up to 160mA at \ac{TX}.
 	\item A Tulio$^{TM}$ transceiver whose inclusion, hosting a core by itself, supposes a multi-core implementation.  	
 	\end{itemize}
 
@@ -392,7 +391,7 @@ A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a \ac{WSN}
 
 \item Serial communication system claims for simplifications, the same as the power supply system.
 
-\item Application capabilities must be expanded to enhance modularity and node capabilities. Expansion pluggable options must access the main 		peripherals. Enabling the 802.11 standard is a requirement.
+\item Expansion capabilities enhance modularity and node versatility. Expansion pluggable options must access the main peripherals. Enabling the 802.11 standard is a requirement.
 
 \item A portable supply system must urgently be completely developed.
 

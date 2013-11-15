@@ -34,7 +34,7 @@ The detailed characteristics of any chosen component, (including microcontroller
 
 Attending to the already described requirements and the conclusions obtained from the \ac{FCD} review, the following decisions have been taken before proceeding with the design process.
 
-The whole system is thought as a teaser consisting of different fittable modules that give flexibility to the scheme. The main module, \ac{CNGD}, is the cornerstone. \ac{CNGD} composes the main platform of the design. It hosts the power supply system, provides the possibility to embed up to three \ac{RI}s, posses a control core unit, and offers other interfacing possibilities that are discussed later in this thesis. As part of this modular design, the interfaces \ac{CNGD} hosts open possibilities to new extension board implementations through a pair of headers. Following popular terminology, these attachable boards will be referred to as shields.  
+The whole system is thought as a teaser consisting of different fittable modules that give flexibility to the scheme. The main module, \ac{CNGD}, is the cornerstone. \ac{CNGD} composes the main platform of the design. It hosts the power supply system, provides the possibility to embed up to three \ac{RI}s, posses a control core unit, and offers other interfacing possibilities that are discussed later in this thesis. As part of this modular design, the interfaces that \ac{CNGD} hosts open possibilities to new extension board implementations through a pair of headers. Following popular terminology, these attachable boards will be referred to as shields.  
 
 Offering the chance of embedding up to three \ac{RI}s, the device could access three different frequency bands over the spectrum, and fulfills one of the desired requirements described in Section \ref{cap3:sec:systemRequirements}. The chosen operation frequencies in our design are 434 MHz, 868 MHz, and 2.4 GHz, coupling the \ac{ISM} bands in most part of Europe. These bands are preferred for \ac{WSN} due to the data-rate, transmission power, and transmission range parameters they offer for no cost. This configuration places the device in the bounds of complexity and cost. At the same time, this feature is essential for a \ac{CWSN} proper investigation, giving radio communication opportunities not provided by any other similar device so far. Moreover, a full exploitation of the firmware described in \ref{cap3:sec:halreview} can be done, since it offers an integrated MiWi$^{TM}$ stack for three \ac{RI}s.
 
@@ -42,74 +42,12 @@ The three \ac{RI} are based on the IEEE 802.15.4 standard for \ac{WPAN}s, common
 
 Since compatible and suitable size commercial options for the 434 MHz band were not found, a custom full implementation of this interface was required. This implementation is based on the MRF49XA transceiver, which can operate also at 868 MHz. In order to provide homogeneity, (and since it does not suppose a great extra effort), the new \ac{RI} design will be used for both 434 and 868 MHz bands. These \ac{RI} will be called $\mu$Trans 434/868 from now on. Full description of $\mu$Trans 434/868 is given in Section \ref{cap4:sec:transceivers}. The option at 2.4 GHz is a MRF24J40MA module.
 
-For this work, a pair of shields was designed. A simple serial communication complement links one \ac{UART} and a classic RS232 interface over the so-called rs232SHIELD. This interface would facilitate the software development since the firmware just allowed debugging through the \ac{UART} at first. It is described in Section \ref{cap4:sec:rs232shield}. A Ni-Mh and Ni-Cd battery charger was also designed and implemented as a utility for portability options. The device was called chargerSHIELD. 
-
-Therefore, the set of designs to carry out, showed at Figure \ref{fig:cap4:globalhw}, includes $\mu$Trans 434 and 868, \ac{CNGD}, rs232SHIELD and chargerSHIELD. All hardware design files can be accessed freely at the public GitHub\footnote{Web-based hosting service for software development projects that use the Git revision control system} repository at \\ \emph{https://github.com/agus-xyz/cNGD-hard}.
-
 \figura{Vectorial/Capitulo4/modules2develop}{width=.8\textwidth}{fig:cap4:globalhw}%
 {Global hardware modules of the platform to develop.}
 
-%-------------------------------------------------------------------
-\section{Tools}
-%-------------------------------------------------------------------
-\label{cap4:sec:tools}
-%-------------------------------------------------------------------
+For this work, a pair of shields was designed. A simple serial communication complement links one \ac{UART} and a classic RS232 interface over the so-called rs232SHIELD. This interface would facilitate the software development since the firmware just allowed debugging through the \ac{UART} at first. It is described in Section \ref{cap4:sec:rs232shield}. A Ni-Mh and Ni-Cd battery charger was also designed and implemented as a utility for portability options. The device was called chargerSHIELD. 
 
-%-------------------------------------------------------------------
-\subsection{Altium Designer}
-%-------------------------------------------------------------------
-\label{cap4:sub:altiumDesigner}
-%-------------------------------------------------------------------
-
-For the designing task, an \ac{EDA}\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software called Altium Designer will be used. Altium Designer is a software package for printed circuit board, FPGA, embedded software design, and associated library and release management automation. It is developed and marketed by Altium Limited of Australia, and is commonly used by researchers at \ac{LSI}. All of the \ac{CNGD} design process is carried through Altium Designer (on its Version 10). 
-
-%\figura{Bitmap/Capitulo4/altium}{width=.3\textwidth}{fig:cap4:altium}%
-%{Altium Designer logo} ******************** POR AQUI
-
-Despite the amount of functions offered by Altium Designer, the two main options needed for this project are schematic capture, for circuit edition, and \ac{PCB} design, for subsequent layout deployment.
-
-Options provided by the schematic capture module, required for the design task, includes:
-
-\begin{itemize}
-	\item \emph{Component library management}. Useful to create own components facing the logic design.
-	\item \emph{\ac{SPICE} mixed-signal circuit simulation}. In order to simulate any functionality. Specially useful in analog modules 			design.
-      	\item \emph{Netlist export}. This way, it is possible to export our designs easily to process under other softwares.
-     	\item \emph{Reporting and \ac{BoM} facilities}. For simple management purposes.
-	\item \emph{Multi-channel, hierarchical schematics and design re-use}. Facilitating the design task.
-\end{itemize}
-
-On the other hand, required options from the \ac{PCB} design module are:
-\begin{itemize}
-	\item \emph{Component footprint library management}. Equally useful to manage new components and embed them into our \ac{PCB} designs.
-   	\item \emph{Component placement}. In order to freely design our own layouts.
-   	\item \emph{Manual trace routing, with support for multi-trace routing}. Enabling and facilitating the layout design.
-   	\item \emph{Interactive 3D editing of the board and MCAD export to STEP}. To obtain more realistic views and complete idea of our 			implementations on advance to their manufacturing.
-   	\item \emph{Manufacturing files generation with support for Gerber formats}. Essential for manufacturing process.
-\end{itemize}
-
-%-------------------------------------------------------------------
-\section{Components Library: cngd lib}
-%-------------------------------------------------------------------
-\label{cap4:sec:cngdlib}
-%-------------------------------------------------------------------
-For the accomplishment of the full design of the platform over Altium Designer, a component library with all the required but not found component models was set throughout the design process.
-
-As it was said, the library includes models from all those components needed but not found as well as modifications of existing models in order to suit the design criteria. Every contained model embeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and  checking proper hardware deployment. Electric models of components are not generally included.
-
-Library is available at the mentioned repository that hosts the hardware design files. All the content included into the library is ready to be used under Altium Designer. Any use of the library is free. 
-
-\begin{figure}[h]
-\centering
-
-\subfloat[cNGD logo footprint.]{\label{fig:cap4:cognitivefoot}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Capitulo4/cngdfoot}}%
-\qquad
-\subfloat[LSI logo footprint.]{\label{fig:cap4:lsifoot}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Capitulo4/lsifoot}}%
-
-\caption{Specially designed footprints for the platform.}
-\label{fig:cap5:footprints}
-
-\end{figure}
-
+Therefore, the set of designs to carry out, showed at Figure \ref{fig:cap4:globalhw}, includes $\mu$Trans 434 and 868, \ac{CNGD}, rs232SHIELD and chargerSHIELD. All hardware design files can be accessed freely at the public GitHub\footnote{Web-based hosting service for software development projects that use the Git revision control system} repository at \\ \emph{https://github.com/agus-xyz/cNGD-hard}.
 
 %-------------------------------------------------------------------
 \section{Transceivers - $\mu$Trans 434/868}
@@ -454,6 +392,10 @@ PIN & PERIPHERALS & MODULE & USE \\
 %-------------------------------------------------------------------
 \subsection{Radio Interfaces}
 %-------------------------------------------------------------------
+
+\figura{Vectorial/Capitulo4/ridiagram}{width=0.7\textwidth}{fig:cap4:ridiagram}%
+{Global RIs diagram.}
+
 As it was mentioned, \ac{CNGD} will be able to include up to three \ac{RI}s, with three consequent frequency bands to access. This fact gives a flexibility over radio communications never offered by other \ac{WSN} device. Frequencies to operate over are 434 MHz, 868 MHz, and 2.4 GHz, meeting desired features. 
 
 For communication on 434 MHz and 868 MHz, ad-hoc designed \ac{RI}s described in Section \ref{cap4:sec:transceivers} are used. These \ac{RI}s are based on the MRFX49XA radio transceiver and a full description of them can be found at such section. These \ac{RI}s share common features since the radio transceiver module is identical for both. This brings simplicity to the system. Interface between these \ac{RI}s and \ac{MCU}, illustrated at Figure \ref{fig:cap4:mrf49xainterface}, are equal. 
@@ -499,6 +441,10 @@ All the described \ac{RI}s are based on transceivers supporting either MiWi$^{TM
 
 A network that uses the MiWi$^{TM}$ protocol \cite{miwi} is capable of having a maximum of 1024 nodes. Each coordinator is only capable of having 127 children, with a maximum of 8 coordinators in a network. Packets can travel a maximum of 4 hops in the network and 2 hops maximum from the PAN coordinator. 
 
+The MiWi$^{TM}$ P2P protocol \cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
+
+As it was mentioned, the implemented firmware offers a modification of the original MiWi$^{TM}$ stack that is illustrated in Figure \ref{fig:cap4:miwistack}. This adaptation of the stack is able to deal with up to three \ac{RI}s.
+
 \begin{figure}[!h]
 \centering
 \subfloat[Standard stack.]{\label{fig:cap4:normalmiwistack}\includegraphics[width=.4\textwidth]{Imagenes/Bitmap/Capitulo4/miwistack}}  
@@ -506,8 +452,6 @@ A network that uses the MiWi$^{TM}$ protocol \cite{miwi} is capable of having a 
 \caption{MiWi$^{TM}$ Protocol.}
 \label{fig:cap4:miwistack}
 \end{figure}
-
-The MiWi$^{TM}$ P2P protocol \cite{miwip2p} stack supports star and peer-to-peer wireless-network topologies, useful for simple, short-range, wireless node-to-node communication. Additionally, the stack provides sleeping-node, active-scan and energy-detect features while supporting the low-power requirements of battery-operated devices.
 
 %-------------------------------------------------------------------
 \subsubsection{Software Controlled Power Supply}
@@ -714,7 +658,7 @@ Here, a comprehensive description of the available peripherals and functionaliti
 		\item Ports F0, F1, and F3 at pins 26, 25, and 51.
 		\item Ports G2, G3, G6, G7, G8, and G9 at pins 12, 13, 37, 21, 38, and 20.			
 		\end{itemize} 
-	\item \emph{Change Notification}. A total of change notification pins can be accessed. These are  CN4 at pin 02, CN6 at pin 39, CN7 at pin 01, CN8 at pin 37, CN9 at pin 21, CN11 at pin 20, CN12 at pin 16, CN13 at pin 38, and CN15 at pin 33.   
+	\item \emph{Change Notification}. A total of 9 change notification pins can be accessed. These are  CN4 at pin 02, CN6 at pin 39, CN7 at pin 01, CN8 at pin 37, CN9 at pin 21, CN11 at pin 20, CN12 at pin 16, CN13 at pin 38, and CN15 at pin 33.   
 		
 	\item \emph{Input Capture}. Useful in applications requiring frequency and pulse measurement. Input Capture modules 1, 2 and 4 are 			placed at positions 09, 32 and 27.
 	\item \emph{Interruption}. External interruption 2 is available at pin 00.
@@ -905,6 +849,70 @@ Simulation at Altium Designer showed different behaviors facing different voltag
 \caption{chargerSHIELD simulation results.}
 \label{fig:cap4:simulation}
 \end{figure}
+
+%-------------------------------------------------------------------
+\section{Tools}
+%-------------------------------------------------------------------
+\label{cap4:sec:tools}
+%-------------------------------------------------------------------
+
+%-------------------------------------------------------------------
+\subsection{Altium Designer}
+%-------------------------------------------------------------------
+\label{cap4:sub:altiumDesigner}
+%-------------------------------------------------------------------
+
+For the designing task, an \ac{EDA}\footnote{Electronic design automation is a category of software tools for designing electronic systems such as printed circuit boards and integrated circuits.} software called Altium Designer will be used. Altium Designer is a software package for printed circuit board, FPGA, embedded software design, and associated library and release management automation. It is developed and marketed by Altium Limited of Australia, and is commonly used by researchers at \ac{LSI}. All of the \ac{CNGD} design process is carried through Altium Designer (on its Version 10). 
+
+%\figura{Bitmap/Capitulo4/altium}{width=.3\textwidth}{fig:cap4:altium}%
+%{Altium Designer logo} ******************** POR AQUI
+
+Despite the amount of functions offered by Altium Designer, the two main options needed for this project are schematic capture, for circuit edition, and \ac{PCB} design, for subsequent layout deployment.
+
+Options provided by the schematic capture module, required for the design task, includes:
+
+\begin{itemize}
+	\item \emph{Component library management}. Useful to create own components facing the logic design.
+	\item \emph{\ac{SPICE} mixed-signal circuit simulation}. In order to simulate any functionality. Specially useful in analog modules 			design.
+      	\item \emph{Netlist export}. This way, it is possible to export our designs easily to process under other softwares.
+     	\item \emph{Reporting and \ac{BoM} facilities}. For simple management purposes.
+	\item \emph{Multi-channel, hierarchical schematics and design re-use}. Facilitating the design task.
+\end{itemize}
+
+On the other hand, required options from the \ac{PCB} design module are:
+\begin{itemize}
+	\item \emph{Component footprint library management}. Equally useful to manage new components and embed them into our \ac{PCB} designs.
+   	\item \emph{Component placement}. In order to freely design our own layouts.
+   	\item \emph{Manual trace routing, with support for multi-trace routing}. Enabling and facilitating the layout design.
+   	\item \emph{Interactive 3D editing of the board and MCAD export to STEP}. To obtain more realistic views and complete idea of our 			implementations on advance to their manufacturing.
+   	\item \emph{Manufacturing files generation with support for Gerber formats}. Essential for manufacturing process.
+\end{itemize}
+
+%-------------------------------------------------------------------
+\section{Components Library: cngd lib}
+%-------------------------------------------------------------------
+\label{cap4:sec:cngdlib}
+%-------------------------------------------------------------------
+For the accomplishment of the full design of the platform over Altium Designer, a component library with all the required but not found component models was set throughout the design process.
+
+As it was said, the library includes models from all those components needed but not found as well as modifications of existing models in order to suit the design criteria. Every contained model embeds schematic, footprint and 3D model. 3D models are useful for 3D rendering and  checking proper hardware deployment. Electric models of components are not generally included.
+
+Library is available at the mentioned repository that hosts the hardware design files. All the content included into the library is ready to be used under Altium Designer. Any use of the library is free. 
+
+\begin{figure}[h]
+\centering
+
+\subfloat[cNGD logo footprint.]{\label{fig:cap4:cognitivefoot}\includegraphics[width=0.4\textwidth]{Imagenes/Vectorial/Capitulo4/cngdfoot}}%
+\qquad
+\subfloat[LSI logo footprint.]{\label{fig:cap4:lsifoot}\includegraphics[width=0.2\textwidth]{Imagenes/Vectorial/Capitulo4/lsifoot}}%
+\qquad
+\subfloat[SOT23-5 package footprint.]{\label{fig:cap4:sot235}\includegraphics[width=0.2\textwidth]{Imagenes/Bitmap/Capitulo4/sot235}}%
+
+\caption{Specially designed footprints for the platform.}
+\label{fig:cap5:footprints}
+
+\end{figure}
+
 
 % Variable local para emacs, para  que encuentre el fichero maestro de
 % compilación y funcionen mejor algunas teclas rápidas de AucTeX

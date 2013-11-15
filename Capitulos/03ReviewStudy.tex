@@ -51,7 +51,7 @@ Basically, the \ac{CWSN} node scheme responds to a standard \ac{WSN} model based
 {CWSN node model.}
 %poner una unica pila
 
-Figure \ref{fig:CWSNnodeModel} gives a view about the basic seeked model. It shows together software and hardware modules in a simplified way.
+Figure \ref{fig:CWSNnodeModel} gives a view about the basic sought model. It shows together software and hardware modules in a simplified way.
 Additionally, cognition tasks compulsory require several functions to take into account at the design stage: 
 
 \begin{itemize}
@@ -108,7 +108,7 @@ Regarding firmware options, the situation resulting from combining three differe
 
 The node comprises two \ac{USB} terminals and an RS232 interface for debugging and interconnection purposes. Power supply system accepts 3.3 V and 5 V options including a voltage regulator and a charge pump.
 
-Maintaining all these interfaces supposes larger device size and greater power consumption. A review about keeping all them as well as all the power supply options will be brought to pass, some of them seemed unuseful and inefficient.
+Maintaining all these interfaces supposes larger device size and greater power consumption. A review about keeping all them as well as all the power supply options will be brought to pass, some of them seemed useless and inefficient.
 
 Regarding other issues, reducing the general size, making the device more scalable or modular are indeed needed on the \ac{CNGD}.
 
@@ -141,9 +141,9 @@ This software module must be taken into account at the design stage for its incl
 \label{cap3:sec:crmodulereview}
 %-------------------------------------------------------------------
 
-This module is designed to operate under PIC32 architectures. It was thought to run over the previous described firmware. Its development took place over the \ac{FCD} and all the implementation proccess is set out on \cite{guillepfc}.
+This module is designed to operate under PIC32 architectures. It was thought to run over the previous described firmware. Its development took place over the \ac{FCD} and all the implementation process is set out on \cite{guillepfc}.
 
-This software module represents an actual realization of the architecture described in \cite{conbrok} and, somewhat, enhances it by introducing sligth changes. 
+This software module represents an actual realization of the architecture described in \cite{conbrok} and, somewhat, enhances it by introducing slight changes. 
 
 An overview to the general performance shows an scheme based on different modules such as Repository, Discovery, Optimization, Execution, Access Control, Policy, Messenger and Virtual Control Channel. Each module performs a defined tasks and connect each other attending to defined policies. Figure \ref{fig:cap3:crmodel} illustrates the general scheme, for a further view consult the given references.
 
@@ -281,7 +281,7 @@ One of the desired requirements is enabling radio activity over three \ac{ISM} b
 
 The \ac{FCD} access the 868 MHz band using a Tulio$^{TM}$ module. This module brings global complexity to the design, it includes a core itself and the communication between cores are driven by the \ac{UART}. To keep the single-core architecture, lowering-down power consumption and meeting the described requirements, this module will be suppressed and it will be looked for a replacement.
 
-MRF24WB0MA Wi-Fi transceiver, embedded by the \ac{FCD}, raises up the power consumption to unsuitable levels in a \ac{WSN}. The protocol stack is very computationally heavy and memory-consuming compared other usual protocol stacks in \ac{WSN}s. New ways to establish a IEEE 802.11 gateway will be studied, maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme seeked in the \ac{CNGD} cannot afford to include this transceiver.
+MRF24WB0MA Wi-Fi transceiver, embedded by the \ac{FCD}, raises up the power consumption to unsuitable levels in a \ac{WSN}. The protocol stack is very computationally heavy and memory-consuming compared other usual protocol stacks in \ac{WSN}s. New ways to establish a IEEE 802.11 gateway will be studied, maybe through a pluggable expansion module. The low-consumption, low-resources and simple scheme sought in the \ac{CNGD} cannot afford to include this transceiver.
 
 Table \ref{tab:cap3:ri} shows transceivers and modules supported by the chosen firmware that enables communication at the desired bands. Modules such as the MRF49XA PICtail$^{TM}$ Daughter Board, Figure \ref{fig:cap3:pictail}, whose size does not suit our requirements, have not been considered.
 
@@ -310,7 +310,7 @@ MRF89XAM8A & \multirow{2}{*}{868} & & FSK: 40 & & 16 mA  @ +1 dBm &  & & & \mult
 \figura{Bitmap/Capitulo4/pictail}{width=.4\textwidth}{fig:cap3:pictail}%
 {MRF49XA PICtail$^{TM}$ Daughter Board}
 
-There are not complete modules available for 434 MHz band. For 868 MHz, module MRF89XAM8A is available. However, MRF49XA transceiver, which provies communications at these two bands, is susceptible to be included into an ad-hoc designed \ac{RI} board. Figure \ref{fig:cap2:wirelesscomparison} gives a comparison among wireless networking protocols.
+There are not complete modules available for 434 MHz band. For 868 MHz, module MRF89XAM8A is available. However, MRF49XA transceiver, which provides communications at these two bands, is susceptible to be included into an ad-hoc designed \ac{RI} board. Figure \ref{fig:cap2:wirelesscomparison} gives a comparison among wireless networking protocols.
 
 \figura{Bitmap/Capitulo3/wirelesscomparison}{width=.7\textwidth}{fig:cap2:wirelesscomparison}%
 {Main wireless networking options comparison}
@@ -318,7 +318,7 @@ There are not complete modules available for 434 MHz band. For 868 MHz, module M
 %-------------------------------------------------------------------
 \subsection{Serial Communication}
 %-------------------------------------------------------------------
-Serial communication is a very important feature for applications development and debugging. It allows wiring the node and establishing communication between the \ac{CNGD} and any other device, normally a computer or storing devices to track data. Peripherals such as the \ac{UART} is commonly used to stablish these communication tasks. More recent implementations enable communications through \ac{USB}.
+Serial communication is a very important feature for applications development and debugging. It allows wiring the node and establishing communication between the \ac{CNGD} and any other device, normally a computer or storing devices to track data. Peripherals such as the \ac{UART} is commonly used to establish these communication tasks. More recent implementations enable communications through \ac{USB}.
 
 While the \ac{FCD} includes two \ac{USB} connectors, a $\mu$USB and an A-type, together with an RS232 communication module, three communication ways to interface the node seems too many. These modules are size and power consuming.
 
@@ -326,7 +326,7 @@ $\mu$USB connectors show a reduced size compared to first connectors and they do
 
 The idea of including an A-type \ac{USB} connector gives some interconnection opportunities with attachable devices like mouses, keyboards, or portable memories in which the node adopts a \emph{master} role facing a \emph{slave} device. This feature supposes the inclusion of a power consuming circuitry to raise the voltage up to 5 V into the USB, subtracting simplicity to the design. In order to fit the requirements, it does not seem to be needed this last capability on each node. A $\mu$USB connector would be enough.
 
-RS232 communication so does need its own power supply. The size and cost for an RS232 connector and circuitry, which requires a MAX3232 chip, is too high for a default serial communication module within each node. An optional module for RS232 might be a good option given its wide acceptance and utility in embbeded systems despite the global use of \ac{USB}.
+RS232 communication so does need its own power supply. The size and cost for an RS232 connector and circuitry, which requires a MAX3232 chip, is too high for a default serial communication module within each node. An optional module for RS232 might be a good option given its wide acceptance and utility in embedded systems despite the global use of \ac{USB}.
 
 %-------------------------------------------------------------------
 \subsection{Power Supply System}
@@ -387,7 +387,7 @@ After having a review all over the, hardware and software, recent implementation
 	\item A Tulio$^{TM}$ transceiver whose inclusion, hosting a core by itself, supposes a multi-core implementation.  	
 	\end{itemize}
 
-A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a \ac{WSN} standard protocol such as IEEE 802.15.4. In addition, desirable requirements call for a third frequency band to implement. The lack of fittable modules over 434 MHz band claims for a custom \ac{RI} design.
+A reconfiguration of the \ac{RI}s is needed. Bringing homogeneity and a \ac{WSN} standard protocol such as IEEE 802.15.4. In addition, desirable requirements call for a third frequency band to implement. The lack of suitable modules over 434 MHz band claims for a custom \ac{RI} design.
 
 \item Serial communication system claims for simplifications, the same as the power supply system.
 

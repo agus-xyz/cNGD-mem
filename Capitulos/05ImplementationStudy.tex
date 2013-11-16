@@ -136,9 +136,9 @@ Figure \ref{fig:cap5:mtrans} shows detailed top and bottom picture of the $\mu$T
 
 The \ac{CNGD} \ac{PCB} has to implement the whole design described in Section \ref{cap4:sec:cNGD} attending to expand functionality and usability, and reducing size and cost. Since this is the key board of the whole system, most part of the operation requirements weight relies on it. It must mainly contain the three \ac{RI}s, give support to expansion modules, include the power supply and battery room, programming system, and \ac{MCU}. In addition, it must provide an easy access to the control modules (\ac{LED}s and push buttons) and an easy deployment. Regarding its test-bed character, the module must include some kind of anchors to fix it anywhere or encrust some feet. All these features must be achieved keeping size and cost limited, so the module become affordable and valuable. Figure \ref{fig:cap5:cngdshape} shows the \ac{PCB} shape.
 
-Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at the large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngdfront} can give a better view of these ideas.  
+Power supply system, $\mu$USB and PGE connector are gathered together as entire interfacing slot at the large edge 2 of the \ac{PCB}. \ac{RI}s are thought to be placed at the three short edges. 434 MHz \ac{RI} at edge 1, 868 MHZ \ac{RI} at edge 2 and 2.4 GHz \ac{RI} at edge 3. Figure \ref{fig:cap5:cngd} can give a better view of these ideas.  
 
-The board includes four holes for the battery to be attached. Figure \ref{fig:cap5:headersystem} illustrates the way it works, four legs fix together the board and the batteries-holder.
+The board includes four holes for the battery to be attached. Figure \ref{fig:cap5:batterysystem} illustrates the way it works, four legs fix together the board and the batteries-holder.
 
 \begin{figure}[!h]
 \centering
@@ -149,7 +149,7 @@ The board includes four holes for the battery to be attached. Figure \ref{fig:ca
 \label{fig:cap5:batterysystem}
 \end{figure}
 
-Headers module has been placed relying on the 1 and 3 large edges, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exactly equal headers. This way, stacking several expansion modules ones above others will be possible. The headers footprint to include in future expansion modules, that fits the design, is illustrated in Figure \ref{fig:cap5:headersystem}.
+Headers module has been placed relying on the 1 and 3 large edges, Figure \ref{fig:cap5:cngdheader} shows it. Future expansion modules will be attached to this module through exactly equal headers. This way, stacking several expansion modules ones above others will be possible. The headers footprint to include in future expansion modules, that fits the design, is illustrated in Figure \ref{fig:cap5:headerfootprint}.
 
 \begin{figure}[!h]
 \centering 
@@ -210,7 +210,7 @@ Figure \ref{fig:cap5:cngd} shows detailed top and bottom pictures of the \ac{CNG
 %-------------------------------------------------------------------
 This module is an expansion board or shield for the \ac{CNGD} module. The \ac{CNGD} sets the interface with the shield over the already described headers. The board shape posses a total size of 67.9x33 mm.
 
-The \ac{RX} signal is shorted to pin 21 and \ac{TX} signal to pin 38. MAX3232 chip within a SOIC package shows suitable power and size features for this device. 
+The \ac{RX} signal is shorted to pin 21 and \ac{TX} signal to pin 38. MAX3232 chip within a \ac{SOIC} package shows suitable power and size features for this device. 
 
 In addition, the module contains a RS232 female connector to be connected to the computer or other device. Minimal track spacing is set to 0.2 mm while the tracks width is from 0.2 mm to 1.2 mm on power tracks. Vias through holes keep set to a 0.4 mm diameter. Table \ref{tab:cap5:rs232components} at Appendix \ref{ap2:layouts} details the components needed for this module. 
 

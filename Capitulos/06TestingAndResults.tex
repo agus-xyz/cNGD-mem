@@ -10,7 +10,7 @@
 \begin{Frase}
 She's up all night to the sun\\
 I'm up all night to get some\\
-She's up all night for good fun\\
+she's up all night for good fun\\
 I'm up all night to get lucky 
 \end{Frase}
 \begin{Fuente}
@@ -156,7 +156,7 @@ Spectrum energy scan & 194.48 ms & 908 ms & 410.13 ms\\ \hline \hline
 %-------------------------------------------------------------------
 Effective rate provided by the MRF49XA and MRF24J40 transceivers when driven by the firmware was already described in \cite{juanpfc}. The obtained performance must match performance achieved at the \ac{CNGD}. Hence, this checking supposes a partial test compared to the full previous characterization. However, it tries new unchecked aspects of the \ac{RI}s management and proves functionality. 
 
-This test is mostly obtained from the firmware, so the description is covered at the referred literature. Employed protocol at the test-bench, for simplicity, is MiWi$^{TM}$ P2P. The three \ac{RI}s are checked and different maintenance task periods for the protocol stack are tried. In total, periods of 1 ms, 25 ms and 500 ms were tested, not obtaining performance differences among them. To avoid redundancy, shown results correspond to 25 ms period.
+Employed protocol at the test-bench, for simplicity, is MiWi$^{TM}$ P2P. The three \ac{RI}s are checked and different maintenance task periods for the protocol stack are tried. In total, periods of 1 ms, 25 ms and 500 ms were tested, not obtaining performance differences among them. To avoid redundancy, shown results correspond to 25 ms period.
 
 The two tried \ac{TX} modes are broadcast and unicast (8 Bytes address). Main communication parameters set for the test follow:
 
@@ -228,7 +228,7 @@ Unicast & 140 (56 \%) & 100800 & 3.54 & 28.474 \\ \hline \hline
 
 A worrying issue, already described in \cite{juanpfc}, is the packet loss even transmitting at unicast mode. The reason for this fact still remains certainly unknown, but there are some possible explanations. Most feasible option at the current moment is that \ac{ACK} packets are misinterpreted by the receiver and it considers a single \ac{ACK} response for more than one packet. This is possible because \ac{ACK} packets are not numerically sequenced at MiWi$^{TM}$ protocol. In order to solve this issue, a work at the \ac{LSI} presented in \cite{guillepfc} shows a flow control mechanism at MiWi$^{TM}$ \ac{MAC} layer that apparently avoid packet losses at unicast mode.
 
-The results show how the bottleneck is placed at \ac{RX} rate, which sets the maximum communication bit-rate between two devices around 25-30 kbps for all the \ac{RI}s.
+It has been concluded that the communication rate bottleneck is placed at \ac{RX} rate, which sets the maximum communication bit-rate between two devices around 25-30 kbps for all the \ac{RI}s.
 
 %-------------------------------------------------------------------
 \section{chargerSHIELD performance test}
